@@ -58,6 +58,11 @@
       <groupId>com.shopizer</groupId>
       <artifactId>sm-core-model</artifactId>
     </dependency>
+	  <dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <scope>test</scope>
+	  </dependency>
   </dependencies>
 
   <build>

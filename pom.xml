@@ -230,7 +230,7 @@
 				<version>${oracle.version}</version> 
 			</dependency> 
 			 -->
-			
+
 
 			<!-- For connecting to postgresql -->
 			<!--
@@ -520,8 +520,8 @@
 			<version>${oracle.version}</version> 
 		</dependency>
 		 -->
-		
-		
+
+
 		<!--  postgres 
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -694,6 +694,23 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- PIT -->
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.5.2</version>
+                <configuration>
+                    <targetClasses>
+                        <param>com.salesmanager.core.*</param>
+	                    <param>com.salesmanager.shop.*</param>
+                    </targetClasses>
+	                <outputFormats>XML,CSV</outputFormats>
+	                <threads>4</threads>
+                </configuration>
+            </plugin>
+            <!-- -->
+
 		</plugins>
 	</build>
 </project>
