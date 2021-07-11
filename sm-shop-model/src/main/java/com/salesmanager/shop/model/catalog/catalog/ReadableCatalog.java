@@ -26,13 +26,13 @@ public class ReadableCatalog extends ReadableCatalogName {
 	}*/
 
 	public ReadableMerchantStore getStore() {
-		return store;
+		System.out.println("$#8726#"); return store;
 	}
 	public void setStore(ReadableMerchantStore store) {
 		this.store = store;
 	}
 	public List<ReadableCategory> getCategory() {
-		return category;
+		System.out.println("$#8727#"); return category;
 	}
 	public void setCategory(List<ReadableCategory> category) {
 		this.category = category;

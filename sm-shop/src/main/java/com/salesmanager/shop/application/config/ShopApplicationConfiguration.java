@@ -59,20 +59,20 @@ public class ShopApplicationConfiguration implements WebMvcConfigurer {
   @Bean
   public TilesConfigurer tilesConfigurer() {
     TilesConfigurer tilesConfigurer = new TilesConfigurer();
-    tilesConfigurer.setDefinitions(
+				System.out.println("$#7920#"); tilesConfigurer.setDefinitions(
         "/WEB-INF/tiles/tiles-admin.xml",
         "/WEB-INF/tiles/tiles-shop.xml");
-    tilesConfigurer.setCheckRefresh(true);
-    return tilesConfigurer;
+				System.out.println("$#7921#"); tilesConfigurer.setCheckRefresh(true);
+				System.out.println("$#7922#"); return tilesConfigurer;
   }
 
   /** Configure ViewResolvers to deliver preferred views. */
   @Bean
   public TilesViewResolver tilesViewResolver() {
     final TilesViewResolver resolver = new TilesViewResolver();
-    resolver.setViewClass(TilesView.class);
-    resolver.setOrder(0);
-    return resolver;
+				System.out.println("$#7923#"); resolver.setViewClass(TilesView.class);
+				System.out.println("$#7924#"); resolver.setOrder(0);
+				System.out.println("$#7925#"); return resolver;
   }
   
 
@@ -85,7 +85,7 @@ public class ShopApplicationConfiguration implements WebMvcConfigurer {
 
   @Override
   public void addViewControllers(ViewControllerRegistry registry) {
-    registry.addViewController("/").setViewName("shop");
+				System.out.println("$#7926#"); registry.addViewController("/").setViewName("shop");
   }
 
   @Override
@@ -114,9 +114,9 @@ public class ShopApplicationConfiguration implements WebMvcConfigurer {
   @Override
   public void configureViewResolvers(ViewResolverRegistry registry) {
     InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
-    internalResourceViewResolver.setPrefix("/WEB-INF/views/");
-    internalResourceViewResolver.setSuffix(".jsp");
-    registry.viewResolver(internalResourceViewResolver);
+				System.out.println("$#7927#"); internalResourceViewResolver.setPrefix("/WEB-INF/views/");
+				System.out.println("$#7928#"); internalResourceViewResolver.setSuffix(".jsp");
+				System.out.println("$#7929#"); registry.viewResolver(internalResourceViewResolver);
   }
 
   @Bean
@@ -125,54 +125,54 @@ public class ShopApplicationConfiguration implements WebMvcConfigurer {
 
     ByteArrayHttpMessageConverter byteArrayHttpMessageConverter =
         new ByteArrayHttpMessageConverter();
-    byteArrayHttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
-    return byteArrayHttpMessageConverter;
+				System.out.println("$#7930#"); byteArrayHttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
+				System.out.println("$#7931#"); return byteArrayHttpMessageConverter;
   }
 
   @Bean
   public LocaleChangeInterceptor localeChangeInterceptor() {
-    return new LocaleChangeInterceptor();
+				System.out.println("$#7932#"); return new LocaleChangeInterceptor();
   }
 
   @Bean
   public StoreFilter storeFilter() {
-    return new StoreFilter();
+				System.out.println("$#7933#"); return new StoreFilter();
   }
 
   @Bean
   public CorsFilter corsFilter() {
-    return new CorsFilter();
+				System.out.println("$#7934#"); return new CorsFilter();
   }
 
   @Bean
   public AdminFilter adminFilter() {
-    return new AdminFilter();
+				System.out.println("$#7935#"); return new AdminFilter();
   }
 
   @Bean
   public SessionLocaleResolver localeResolver() {
     SessionLocaleResolver slr = new SessionLocaleResolver();
-    slr.setDefaultLocale(Locale.ENGLISH);
-    return slr;
+				System.out.println("$#7936#"); slr.setDefaultLocale(Locale.ENGLISH);
+				System.out.println("$#7937#"); return slr;
   }
 
   @Bean
   public ReloadableResourceBundleMessageSource messageSource() {
     ReloadableResourceBundleMessageSource messageSource =
         new ReloadableResourceBundleMessageSource();
-    messageSource.setBasenames(
+				System.out.println("$#7938#"); messageSource.setBasenames(
         "classpath:bundles/shopizer",
         "classpath:bundles/messages",
         "classpath:bundles/shipping",
         "classpath:bundles/payment");
 
-    messageSource.setDefaultEncoding("UTF-8");
-    return messageSource;
+				System.out.println("$#7939#"); messageSource.setDefaultEncoding("UTF-8");
+				System.out.println("$#7940#"); return messageSource;
   }
 
   @Bean
   public LabelUtils messages() {
-    return new LabelUtils();
+				System.out.println("$#7941#"); return new LabelUtils();
   }
 
 }

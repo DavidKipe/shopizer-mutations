@@ -14,7 +14,7 @@ public class CloudFilePathUtils extends AbstractimageFilePath {
 
 	@Override
 	public String getBasePath() {
-		return basePath;
+		System.out.println("$#15594#"); return basePath;
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class CloudFilePathUtils extends AbstractimageFilePath {
 	}
 	@Override
 	public String getContextPath() {
-		return super.getProperties().getProperty(CONTEXT_PATH);
+		System.out.println("$#15595#"); return super.getProperties().getProperty(CONTEXT_PATH);
 	}
 	
 	/**
@@ -36,10 +36,10 @@ public class CloudFilePathUtils extends AbstractimageFilePath {
 	@Override
 	public String buildStaticImageUtils(MerchantStore store, String imageName) {
 		StringBuilder imgName = new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH);
-				if(!StringUtils.isBlank(imageName)) {
+				System.out.println("$#15596#"); if(!StringUtils.isBlank(imageName)) {
 					imgName.append(imageName);
 				}
-		return imgName.toString();
+		System.out.println("$#15597#"); return imgName.toString();
 				
 	}
 	
@@ -53,13 +53,13 @@ public class CloudFilePathUtils extends AbstractimageFilePath {
 	@Override
 	public String buildStaticImageUtils(MerchantStore store, String type, String imageName) {
 		StringBuilder imgName = new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH);
-		if(type!=null && !FileContentType.IMAGE.name().equals(type)) {
+		System.out.println("$#15598#"); if(type!=null && !FileContentType.IMAGE.name().equals(type)) {
 			imgName.append(type).append(Constants.SLASH);
 		}
-		if(!StringUtils.isBlank(imageName)) {
+		System.out.println("$#15600#"); if(!StringUtils.isBlank(imageName)) {
 			imgName.append(imageName);
 		}
-		return imgName.toString();
+		System.out.println("$#15601#"); return imgName.toString();
 
 	}
 

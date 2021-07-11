@@ -17,13 +17,13 @@ public class ReadableImage implements Serializable {
 	private String name;
 	private String path;
 	public String getPath() {
-		return path;
+		System.out.println("$#9025#"); return path;
 	}
 	public void setPath(String path) {
 		this.path = path;
 	}
 	public String getName() {
-		return name;
+		System.out.println("$#9026#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;

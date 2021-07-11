@@ -153,7 +153,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 
 	@Override
 	public Long getId() {
-		return this.id;
+		System.out.println("$#4860#"); return this.id;
 	}
 
 	@Override
@@ -163,7 +163,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4861#"); return auditSection;
 	}
 
 	@Override
@@ -173,7 +173,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getAdminName() {
-		return adminName;
+		System.out.println("$#4862#"); return adminName;
 	}
 
 	public void setAdminName(String adminName) {
@@ -181,7 +181,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getAdminEmail() {
-		return adminEmail;
+		System.out.println("$#4863#"); return adminEmail;
 	}
 
 	public void setAdminEmail(String adminEmail) {
@@ -189,7 +189,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getAdminPassword() {
-		return adminPassword;
+		System.out.println("$#4864#"); return adminPassword;
 	}
 
 	public void setAdminPassword(String adminPassword) {
@@ -197,7 +197,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getFirstName() {
-		return firstName;
+		System.out.println("$#4865#"); return firstName;
 	}
 
 	public void setFirstName(String firstName) {
@@ -205,7 +205,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getLastName() {
-		return lastName;
+		System.out.println("$#4866#"); return lastName;
 	}
 
 	public void setLastName(String lastName) {
@@ -213,7 +213,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public Language getDefaultLanguage() {
-		return defaultLanguage;
+		System.out.println("$#4867#"); return defaultLanguage;
 	}
 
 	public void setDefaultLanguage(Language defaultLanguage) {
@@ -221,7 +221,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getQuestion1() {
-		return question1;
+		System.out.println("$#4868#"); return question1;
 	}
 
 	public void setQuestion1(String question1) {
@@ -229,7 +229,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getQuestion2() {
-		return question2;
+		System.out.println("$#4869#"); return question2;
 	}
 
 	public void setQuestion2(String question2) {
@@ -237,7 +237,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getQuestion3() {
-		return question3;
+		System.out.println("$#4870#"); return question3;
 	}
 
 	public void setQuestion3(String question3) {
@@ -245,7 +245,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getAnswer1() {
-		return answer1;
+		System.out.println("$#4871#"); return answer1;
 	}
 
 	public void setAnswer1(String answer1) {
@@ -253,7 +253,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getAnswer2() {
-		return answer2;
+		System.out.println("$#4872#"); return answer2;
 	}
 
 	public void setAnswer2(String answer2) {
@@ -261,7 +261,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public String getAnswer3() {
-		return answer3;
+		System.out.println("$#4873#"); return answer3;
 	}
 
 	public void setAnswer3(String answer3) {
@@ -273,11 +273,11 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public List<Group> getGroups() {
-		return groups;
+		System.out.println("$#4874#"); return groups;
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4875#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -289,7 +289,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public boolean isActive() {
-		return active;
+		System.out.println("$#4877#"); System.out.println("$#4876#"); return active;
 	}
 
 	public void setLastAccess(Date lastAccess) {
@@ -297,7 +297,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public Date getLastAccess() {
-		return lastAccess;
+		System.out.println("$#4878#"); return lastAccess;
 	}
 
 	public void setLoginTime(Date loginTime) {
@@ -305,11 +305,11 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public Date getLoginTime() {
-		return loginTime;
+		System.out.println("$#4879#"); return loginTime;
 	}
 
 	public String getResetPasswordToken() {
-		return resetPasswordToken;
+		System.out.println("$#4880#"); return resetPasswordToken;
 	}
 
 	public void setResetPasswordToken(String resetPasswordToken) {
@@ -317,7 +317,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 
 	public Date getTokenPasswordExpiration() {
-		return tokenPasswordExpiration;
+		System.out.println("$#4881#"); return tokenPasswordExpiration;
 	}
 
 	public void setTokenPasswordExpiration(Date tokenPasswordExpiration) {

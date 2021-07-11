@@ -95,22 +95,22 @@ public class OrderShippingApi {
       // get customer id
       Customer customer = customerService.getByNick(userName);
 
-      if (customer == null) {
-        response.sendError(503, "Error while getting user details to calculate shipping quote");
+						System.out.println("$#11768#"); if (customer == null) {
+								System.out.println("$#11769#"); response.sendError(503, "Error while getting user details to calculate shipping quote");
       }
 
       ShoppingCart cart = shoppingCartService.getByCode(code, merchantStore);
 
-      if (cart == null) {
-        response.sendError(404, "Cart code " + code + " does not exist");
+						System.out.println("$#11770#"); if (cart == null) {
+								System.out.println("$#11771#"); response.sendError(404, "Cart code " + code + " does not exist");
       }
 
-      if (cart.getCustomerId() == null) {
-        response.sendError(404, "Cart code " + code + " does not exist for exist for user " + userName);
+						System.out.println("$#11772#"); if (cart.getCustomerId() == null) {
+								System.out.println("$#11773#"); response.sendError(404, "Cart code " + code + " does not exist for exist for user " + userName);
       }
 
-      if (cart.getCustomerId().longValue() != customer.getId().longValue()) {
-        response.sendError(404, "Cart code " + code + " does not exist for exist for user " + userName);
+						System.out.println("$#11774#"); if (cart.getCustomerId().longValue() != customer.getId().longValue()) {
+								System.out.println("$#11775#"); response.sendError(404, "Cart code " + code + " does not exist for exist for user " + userName);
       }
 
       ShippingQuote quote = orderFacade.getShippingQuote(customer, cart, merchantStore, language);
@@ -119,12 +119,12 @@ public class OrderShippingApi {
 
       ReadableShippingSummary shippingSummary = new ReadableShippingSummary();
       ReadableShippingSummaryPopulator populator = new ReadableShippingSummaryPopulator();
-      populator.setPricingService(pricingService);
+						System.out.println("$#11776#"); populator.setPricingService(pricingService);
       populator.populate(summary, shippingSummary, merchantStore, language);
 
       List<ShippingOption> options = quote.getShippingOptions();
 
-      if (!CollectionUtils.isEmpty(options)) {
+						System.out.println("$#11777#"); if (!CollectionUtils.isEmpty(options)) {
 
         for (ShippingOption shipOption : options) {
 
@@ -137,11 +137,11 @@ public class OrderShippingApi {
 
           String note = messages.getMessage(moduleName.append(".note").toString(), locale, "");
 
-          shipOption.setDescription(carrier);
-          shipOption.setNote(note);
+										System.out.println("$#11778#"); shipOption.setDescription(carrier);
+										System.out.println("$#11779#"); shipOption.setNote(note);
 
           // option name
-          if (!StringUtils.isBlank(shipOption.getOptionCode())) {
+										System.out.println("$#11780#"); if (!StringUtils.isBlank(shipOption.getOptionCode())) {
             // try to get the translate
             StringBuilder optionCodeBuilder = new StringBuilder();
             try {
@@ -150,22 +150,22 @@ public class OrderShippingApi {
                   .append("module.shipping.")
                   .append(shipOption.getShippingModuleCode());
               String optionName = messages.getMessage(optionCodeBuilder.toString(), locale);
-              shipOption.setOptionName(optionName);
+														System.out.println("$#11781#"); shipOption.setOptionName(optionName);
             } catch (Exception e) { // label not found
               LOGGER.warn("No shipping code found for " + optionCodeBuilder.toString());
             }
           }
         }
 
-        shippingSummary.setShippingOptions(options);
+								System.out.println("$#11782#"); shippingSummary.setShippingOptions(options);
       }
 
-      return shippingSummary;
+						System.out.println("$#11783#"); return shippingSummary;
 
     } catch (Exception e) {
       LOGGER.error("Error while getting shipping quote", e);
       try {
-        response.sendError(503, "Error while getting shipping quote" + e.getMessage());
+								System.out.println("$#11784#"); response.sendError(503, "Error while getting shipping quote" + e.getMessage());
       } catch (Exception ignore) {
       }
       return null;
@@ -205,26 +205,26 @@ public class OrderShippingApi {
 
       ShoppingCart cart = shoppingCartService.getById(id, merchantStore);
 
-      if (cart == null) {
-        response.sendError(404, "Cart id " + id + " does not exist");
+						System.out.println("$#11785#"); if (cart == null) {
+								System.out.println("$#11786#"); response.sendError(404, "Cart id " + id + " does not exist");
       }
 
       
       Delivery addr = new Delivery();
-      addr.setPostalCode(address.getPostalCode());
+						System.out.println("$#11787#"); addr.setPostalCode(address.getPostalCode());
 
       Country c = countryService.getByCode(address.getCountryCode());
       
-      if(c==null) {
-        response.sendError(503, "Error while getting shipping quote, Country code " + address.getCountryCode() + " not found");
+						System.out.println("$#11788#"); if(c==null) {
+								System.out.println("$#11789#"); response.sendError(503, "Error while getting shipping quote, Country code " + address.getCountryCode() + " not found");
         return null;
       }
-      addr.setCountry(c);
+						System.out.println("$#11790#"); addr.setCountry(c);
 
       
       Customer temp = new Customer();
-      temp.setAnonymous(true);
-      temp.setDelivery(addr);
+						System.out.println("$#11791#"); temp.setAnonymous(true);
+						System.out.println("$#11792#"); temp.setDelivery(addr);
       
       ShippingQuote quote = orderFacade.getShippingQuote(temp, cart, merchantStore, language);
 
@@ -232,12 +232,12 @@ public class OrderShippingApi {
 
       ReadableShippingSummary shippingSummary = new ReadableShippingSummary();
       ReadableShippingSummaryPopulator populator = new ReadableShippingSummaryPopulator();
-      populator.setPricingService(pricingService);
+						System.out.println("$#11793#"); populator.setPricingService(pricingService);
       populator.populate(summary, shippingSummary, merchantStore, language);
 
       List<ShippingOption> options = quote.getShippingOptions();
 
-      if (!CollectionUtils.isEmpty(options)) {
+						System.out.println("$#11794#"); if (!CollectionUtils.isEmpty(options)) {
 
         for (ShippingOption shipOption : options) {
 
@@ -250,11 +250,11 @@ public class OrderShippingApi {
 
           String note = messages.getMessage(moduleName.append(".note").toString(), locale, "");
 
-          shipOption.setDescription(carrier);
-          shipOption.setNote(note);
+										System.out.println("$#11795#"); shipOption.setDescription(carrier);
+										System.out.println("$#11796#"); shipOption.setNote(note);
 
           // option name
-          if (!StringUtils.isBlank(shipOption.getOptionCode())) {
+										System.out.println("$#11797#"); if (!StringUtils.isBlank(shipOption.getOptionCode())) {
             // try to get the translate
             StringBuilder optionCodeBuilder = new StringBuilder();
             try {
@@ -263,22 +263,22 @@ public class OrderShippingApi {
                   .append("module.shipping.")
                   .append(shipOption.getShippingModuleCode());
               String optionName = messages.getMessage(optionCodeBuilder.toString(), locale);
-              shipOption.setOptionName(optionName);
+														System.out.println("$#11798#"); shipOption.setOptionName(optionName);
             } catch (Exception e) { // label not found
               LOGGER.warn("No shipping code found for " + optionCodeBuilder.toString());
             }
           }
         }
 
-        shippingSummary.setShippingOptions(options);
+								System.out.println("$#11799#"); shippingSummary.setShippingOptions(options);
       }
 
-      return shippingSummary;
+						System.out.println("$#11800#"); return shippingSummary;
 
     } catch (Exception e) {
       LOGGER.error("Error while getting shipping quote", e);
       try {
-        response.sendError(503, "Error while getting shipping quote" + e.getMessage());
+								System.out.println("$#11801#"); response.sendError(503, "Error while getting shipping quote" + e.getMessage());
       } catch (Exception ignore) {
       }
       return null;

@@ -39,7 +39,7 @@ public class JWTCustomerAuthenticationManager extends CustomAuthenticationManage
 		final String requestHeader = request.getHeader(super.getTokenHeader());//token
         String username = null;
         String authToken = null;
-        if (requestHeader != null && requestHeader.startsWith("Bearer ")) {//Bearer
+								System.out.println("$#15275#"); if (requestHeader != null && requestHeader.startsWith("Bearer ")) {//Bearer
             authToken = requestHeader.substring(7);
             try {
                 username = jwtTokenUtil.getUsernameFromToken(authToken);
@@ -56,7 +56,7 @@ public class JWTCustomerAuthenticationManager extends CustomAuthenticationManage
 		
         
         logger.info("checking authentication for user " + username);
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+								System.out.println("$#15277#"); if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
             // It is not compelling necessary to load the use details from the database. You could also store the information
             // in the token and read it from it. It's up to you ;)
@@ -64,15 +64,15 @@ public class JWTCustomerAuthenticationManager extends CustomAuthenticationManage
 
             // For simple validation it is completely sufficient to just check the token integrity. You don't have to call
             // the database compellingly. Again it's up to you ;)
-            if (userDetails != null && jwtTokenUtil.validateToken(authToken, userDetails)) {
+												System.out.println("$#15279#"); if (userDetails != null && jwtTokenUtil.validateToken(authToken, userDetails)) {
                 authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+																System.out.println("$#15281#"); authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 logger.info("authenticated user " + username + ", setting security context");
                 //SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
 		
-		return authentication;
+		System.out.println("$#15282#"); return authentication;
 	}
 
 	@Override

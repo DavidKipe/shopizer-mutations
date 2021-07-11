@@ -88,7 +88,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	private Delivery delivery = null;
 
 	public Long getOrderId() {
-		return orderId;
+		System.out.println("$#4547#"); return orderId;
 	}
 
 	public void setOrderId(Long orderId) {
@@ -96,7 +96,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public Long getCustomerId() {
-		return customerId;
+		System.out.println("$#4548#"); return customerId;
 	}
 
 	public void setCustomerId(Long customerId) {
@@ -104,7 +104,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public String getModule() {
-		return module;
+		System.out.println("$#4549#"); return module;
 	}
 
 	public void setModule(String module) {
@@ -112,7 +112,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public String getOptionName() {
-		return optionName;
+		System.out.println("$#4550#"); return optionName;
 	}
 
 	public void setOptionName(String optionName) {
@@ -120,7 +120,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public String getOptionCode() {
-		return optionCode;
+		System.out.println("$#4551#"); return optionCode;
 	}
 
 	public void setOptionCode(String optionCode) {
@@ -128,7 +128,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public Date getOptionDeliveryDate() {
-		return optionDeliveryDate;
+		System.out.println("$#4552#"); return optionDeliveryDate;
 	}
 
 	public void setOptionDeliveryDate(Date optionDeliveryDate) {
@@ -136,7 +136,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public Date getOptionShippingDate() {
-		return optionShippingDate;
+		System.out.println("$#4553#"); return optionShippingDate;
 	}
 
 	public void setOptionShippingDate(Date optionShippingDate) {
@@ -144,7 +144,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public Date getQuoteDate() {
-		return quoteDate;
+		System.out.println("$#4554#"); return quoteDate;
 	}
 
 	public void setQuoteDate(Date quoteDate) {
@@ -152,7 +152,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public Integer getEstimatedNumberOfDays() {
-		return estimatedNumberOfDays;
+		System.out.println("$#4555#"); return estimatedNumberOfDays;
 	}
 
 	public void setEstimatedNumberOfDays(Integer estimatedNumberOfDays) {
@@ -160,7 +160,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		System.out.println("$#4556#"); return price;
 	}
 
 	public void setPrice(BigDecimal price) {
@@ -168,7 +168,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public Delivery getDelivery() {
-		return delivery;
+		System.out.println("$#4557#"); return delivery;
 	}
 
 	public void setDelivery(Delivery delivery) {
@@ -176,7 +176,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 	
 	public boolean isFreeShipping() {
-		return freeShipping;
+		System.out.println("$#4559#"); System.out.println("$#4558#"); return freeShipping;
 	}
 
 	public void setFreeShipping(boolean freeShipping) {
@@ -185,7 +185,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4560#"); return id;
 	}
 
 	@Override
@@ -195,7 +195,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 	
 	public BigDecimal getHandling() {
-		return handling;
+		System.out.println("$#4561#"); return handling;
 	}
 
 	public void setHandling(BigDecimal handling) {
@@ -203,7 +203,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 	
 	public Long getCartId() {
-		return cartId;
+		System.out.println("$#4562#"); return cartId;
 	}
 
 	public void setCartId(Long cartId) {
@@ -211,7 +211,7 @@ public class Quote extends SalesManagerEntity<Long, Quote> {
 	}
 
 	public String getIpAddress() {
-		return ipAddress;
+		System.out.println("$#4563#"); return ipAddress;
 	}
 
 	public void setIpAddress(String ipAddress) {

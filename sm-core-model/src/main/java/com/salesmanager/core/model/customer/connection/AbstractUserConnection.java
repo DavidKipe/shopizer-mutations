@@ -26,7 +26,7 @@ public abstract class AbstractUserConnection<P> implements RemoteUser,
 
 
 	public String getAccessToken() {
-		return accessToken;
+		System.out.println("$#4153#"); return accessToken;
 	}
 
 	public void setAccessToken(String accessToken) {
@@ -34,7 +34,7 @@ public abstract class AbstractUserConnection<P> implements RemoteUser,
 	}
 
 	public String getDisplayName() {
-		return displayName;
+		System.out.println("$#4154#"); return displayName;
 	}
 
 	public void setDisplayName(String displayName) {
@@ -42,7 +42,7 @@ public abstract class AbstractUserConnection<P> implements RemoteUser,
 	}
 
 	public Long getExpireTime() {
-		return expireTime;
+		System.out.println("$#4155#"); return expireTime;
 	}
 
 	public void setExpireTime(Long expireTime) {
@@ -50,7 +50,7 @@ public abstract class AbstractUserConnection<P> implements RemoteUser,
 	}
 
 	public String getImageUrl() {
-		return imageUrl;
+		System.out.println("$#4156#"); return imageUrl;
 	}
 
 	public void setImageUrl(String imageUrl) {
@@ -58,7 +58,7 @@ public abstract class AbstractUserConnection<P> implements RemoteUser,
 	}
 
 	public String getProfileUrl() {
-		return profileUrl;
+		System.out.println("$#4157#"); return profileUrl;
 	}
 
 	public void setProfileUrl(String profileUrl) {
@@ -74,7 +74,7 @@ public abstract class AbstractUserConnection<P> implements RemoteUser,
 	public abstract void setProviderUserId(String providerUserId);
 
 	public int getRank() {
-		return userRank;
+		System.out.println("$#4158#"); return userRank;
 	}
 
 	public void setRank(int userRank) {
@@ -82,7 +82,7 @@ public abstract class AbstractUserConnection<P> implements RemoteUser,
 	}
 
 	public String getRefreshToken() {
-		return refreshToken;
+		System.out.println("$#4159#"); return refreshToken;
 	}
 
 	public void setRefreshToken(String refreshToken) {
@@ -90,7 +90,7 @@ public abstract class AbstractUserConnection<P> implements RemoteUser,
 	}
 
 	public String getSecret() {
-		return secret;
+		System.out.println("$#4160#"); return secret;
 	}
 
 	public void setSecret(String secret) {

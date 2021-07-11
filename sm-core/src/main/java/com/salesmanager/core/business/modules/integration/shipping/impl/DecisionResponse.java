@@ -6,7 +6,7 @@ public class DecisionResponse {
 	private String customPrice;
 
 	public String getModuleName() {
-		return moduleName;
+		System.out.println("$#1052#"); return moduleName;
 	}
 
 	public void setModuleName(String moduleName) {
@@ -14,7 +14,7 @@ public class DecisionResponse {
 	}
 
 	public String getCustomPrice() {
-		return customPrice;
+		System.out.println("$#1053#"); return customPrice;
 	}
 
 	public void setCustomPrice(String customPrice) {

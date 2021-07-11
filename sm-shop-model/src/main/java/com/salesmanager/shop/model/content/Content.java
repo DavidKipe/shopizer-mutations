@@ -29,11 +29,11 @@ public abstract class Content implements Serializable {
   }
 
   public String getName() {
-    return name;
+				System.out.println("$#8986#"); return name;
   }
 
   public String getContentType() {
-    return contentType;
+				System.out.println("$#8987#"); return contentType;
   }
 
   public void setContentType(String contentType) {

@@ -49,7 +49,7 @@ public class ContactApi {
       @ApiIgnore Language language,
       HttpServletRequest request) {
     Locale locale = languageService.toLocale(language, merchantStore);
-    emailTemplatesUtils.sendContactEmail(contact, merchantStore, locale, request.getContextPath());
-    return new ResponseEntity<Void>(HttpStatus.OK);
+				System.out.println("$#12135#"); emailTemplatesUtils.sendContactEmail(contact, merchantStore, locale, request.getContextPath());
+				System.out.println("$#12136#"); return new ResponseEntity<Void>(HttpStatus.OK);
   }
 }

@@ -36,7 +36,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#3767#"); return auditSection;
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#3768#"); return id;
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
 	}
 	
 	public MerchantStore getStore() {
-		return store;
+		System.out.println("$#3769#"); return store;
 	}
 
 	public void setStore(MerchantStore store) {
@@ -64,7 +64,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#3770#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -72,7 +72,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
 	}
 
 	public List<CatalogDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#3771#"); return descriptions;
 	}
 
 	public void setDescriptions(List<CatalogDescription> descriptions) {

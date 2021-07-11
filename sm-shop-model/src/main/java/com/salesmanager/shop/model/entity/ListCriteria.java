@@ -11,7 +11,7 @@ public class ListCriteria {
 	private String type;
 
 	public String getType() {
-		return type;
+		System.out.println("$#9097#"); return type;
 	}
 
 	public void setType(String type) {
@@ -19,7 +19,7 @@ public class ListCriteria {
 	}
 
 	public String getName() {
-		return name;
+		System.out.println("$#9098#"); return name;
 	}
 
 	public void setName(String name) {

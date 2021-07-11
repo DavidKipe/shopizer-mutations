@@ -37,12 +37,12 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
           "select distinct u from User as u left join fetch u.groups ug left join fetch u.defaultLanguage ud join fetch u.merchantStore um");
       StringBuilder countBuilder = new StringBuilder();
       countBuilder.append("select count(distinct u) from User as u join u.merchantStore um");
-      if (!StringUtils.isBlank(criteria.getStoreCode())) {
+						System.out.println("$#1720#"); if (!StringUtils.isBlank(criteria.getStoreCode())) {
         req.append("  where um.code=:storeCode");
         countBuilder.append(" where um.code=:storeCode");
       }
       
-      if(!StringUtils.isBlank(criteria.getCriteriaOrderByField())) {
+						System.out.println("$#1721#"); if(!StringUtils.isBlank(criteria.getCriteriaOrderByField())) {
         req.append(" order by u." + criteria.getCriteriaOrderByField() + " "
             + criteria.getOrderBy().name().toLowerCase());
       }
@@ -52,10 +52,10 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
       String hql = req.toString();
       Query q = this.em.createQuery(hql);
 
-      if(!StringUtils.isBlank(criteria.getSearch())) {
+						System.out.println("$#1722#"); if(!StringUtils.isBlank(criteria.getSearch())) {
         
       } else {
-        if (criteria.getStoreCode() != null) {
+								System.out.println("$#1723#"); if (criteria.getStoreCode() != null) {
           countQ.setParameter("storeCode", criteria.getStoreCode());
           q.setParameter("storeCode", criteria.getStoreCode());
         }
@@ -65,7 +65,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
       @SuppressWarnings("rawtypes")
       GenericEntityList entityList = new GenericEntityList();
-      entityList.setTotalCount(count.intValue());
+						System.out.println("$#1724#"); entityList.setTotalCount(count.intValue());
       
       /**
        * Configure pagination using setMaxResults and setFirstResult method
@@ -87,9 +87,9 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
       }*/
 
       List<User> users = q.getResultList();
-      entityList.setList(users);
+						System.out.println("$#1725#"); entityList.setList(users);
 
-      return entityList;
+						System.out.println("$#1726#"); return entityList;
 
 
 

@@ -27,12 +27,12 @@ public class AuthenticationRequest implements Serializable {
     }
 
     public AuthenticationRequest(String username, String password) {
-        this.setUsername(username);
-        this.setPassword(password);
+								System.out.println("$#15240#"); this.setUsername(username);
+								System.out.println("$#15241#"); this.setPassword(password);
     }
 
     public String getUsername() {
-        return this.username;
+								System.out.println("$#15242#"); return this.username;
     }
 
     public void setUsername(String username) {
@@ -40,7 +40,7 @@ public class AuthenticationRequest implements Serializable {
     }
 
     public String getPassword() {
-        return this.password;
+								System.out.println("$#15243#"); return this.password;
     }
 
     public void setPassword(String password) {

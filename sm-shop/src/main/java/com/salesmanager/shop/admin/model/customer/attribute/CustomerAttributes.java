@@ -8,7 +8,7 @@ public class CustomerAttributes {
 	private List<CustomerOption> customerOptions;
 
 	public List<CustomerOption> getCustomerOptions() {
-		return customerOptions;
+		System.out.println("$#7800#"); return customerOptions;
 	}
 
 	public void setCustomerOptions(List<CustomerOption> customerOptions) {

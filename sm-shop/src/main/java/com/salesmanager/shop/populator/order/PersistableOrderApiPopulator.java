@@ -69,17 +69,17 @@ public class PersistableOrderApiPopulator extends AbstractDataPopulator<Persista
 		Validate.notNull(productService,"productService must be set");
 		Validate.notNull(productAttributeService,"productAttributeService must be set");
 		Validate.notNull(digitalProductService,"digitalProductService must be set");*/
-		Validate.notNull(source.getPayment(),"Payment cannot be null");
+		System.out.println("$#10517#"); Validate.notNull(source.getPayment(),"Payment cannot be null");
 		
 		try {
 			
-			if(target == null) {
+			System.out.println("$#10518#"); if(target == null) {
 				target = new Order();
 			}
 		
 			//target.setLocale(LocaleUtils.getLocale(store));
 
-			target.setLocale(LocaleUtils.getLocale(store));
+			System.out.println("$#10519#"); target.setLocale(LocaleUtils.getLocale(store));
 			
 			
 			Currency currency = null;
@@ -89,23 +89,23 @@ public class PersistableOrderApiPopulator extends AbstractDataPopulator<Persista
 				throw new ConversionException("Currency not found for code " + source.getCurrency());
 			}
 			
-			if(currency==null) {
+			System.out.println("$#10520#"); if(currency==null) {
 				throw new ConversionException("Currency not found for code " + source.getCurrency());
 			}
 			
 			//Customer
 			Customer customer = null;
-			if(source.getCustomerId() != null && source.getCustomerId().longValue() >0) {
+			System.out.println("$#10522#"); System.out.println("$#10521#"); if(source.getCustomerId() != null && source.getCustomerId().longValue() >0) {
 			  Long customerId = source.getCustomerId();
 			  customer = customerService.getById(customerId);
 
-			  if(customer == null) {
+					System.out.println("$#10524#"); if(customer == null) {
 				throw new ConversionException("Curstomer with id " + source.getCustomerId() + " does not exist");
 			  }
-			  target.setCustomerId(customerId);
+					System.out.println("$#10525#"); target.setCustomerId(customerId);
 			
 			} else {
-			  if(source instanceof PersistableAnonymousOrder) {
+					System.out.println("$#10526#"); if(source instanceof PersistableAnonymousOrder) {
 			    PersistableCustomer persistableCustomer = ((PersistableAnonymousOrder)source).getCustomer();
 			    customer = new Customer();
 			    customer = customerPopulator.populate(persistableCustomer, customer, store, language);
@@ -115,49 +115,49 @@ public class PersistableOrderApiPopulator extends AbstractDataPopulator<Persista
 			}
 			
 			
-			target.setCustomerEmailAddress(customer.getEmailAddress());
+			System.out.println("$#10527#"); target.setCustomerEmailAddress(customer.getEmailAddress());
 			
 			Delivery delivery = customer.getDelivery();
-			target.setDelivery(delivery);
+			System.out.println("$#10528#"); target.setDelivery(delivery);
 			
 			Billing billing = customer.getBilling();
-			target.setBilling(billing);
+			System.out.println("$#10529#"); target.setBilling(billing);
 			
-			if(source.getAttributes() != null && source.getAttributes().size() > 0) {
+			System.out.println("$#10531#"); System.out.println("$#10530#"); if(source.getAttributes() != null && source.getAttributes().size() > 0) {
 				Set<OrderAttribute> attrs = new HashSet<OrderAttribute>();
 				for(com.salesmanager.shop.model.order.OrderAttribute attribute : source.getAttributes()) {
 					OrderAttribute attr = new OrderAttribute();
-					attr.setKey(attribute.getKey());
-					attr.setValue(attribute.getValue());
-					attr.setOrder(target);
+					System.out.println("$#10533#"); attr.setKey(attribute.getKey());
+					System.out.println("$#10534#"); attr.setValue(attribute.getValue());
+					System.out.println("$#10535#"); attr.setOrder(target);
 					attrs.add(attr);
 				}
-				target.setOrderAttributes(attrs);
+				System.out.println("$#10536#"); target.setOrderAttributes(attrs);
 			}
 
-			target.setDatePurchased(new Date());
-			target.setCurrency(currency);
-			target.setCurrencyValue(new BigDecimal(0));
-			target.setMerchant(store);
-			target.setChannel(OrderChannel.API);
+			System.out.println("$#10537#"); target.setDatePurchased(new Date());
+			System.out.println("$#10538#"); target.setCurrency(currency);
+			System.out.println("$#10539#"); target.setCurrencyValue(new BigDecimal(0));
+			System.out.println("$#10540#"); target.setMerchant(store);
+			System.out.println("$#10541#"); target.setChannel(OrderChannel.API);
 			//need this
-			target.setStatus(OrderStatus.ORDERED);
-			target.setPaymentModuleCode(source.getPayment().getPaymentModule());
-			target.setPaymentType(PaymentType.valueOf(source.getPayment().getPaymentType()));
+			System.out.println("$#10542#"); target.setStatus(OrderStatus.ORDERED);
+			System.out.println("$#10543#"); target.setPaymentModuleCode(source.getPayment().getPaymentModule());
+			System.out.println("$#10544#"); target.setPaymentType(PaymentType.valueOf(source.getPayment().getPaymentType()));
 			
-			target.setCustomerAgreement(source.isCustomerAgreement());
-			target.setConfirmedAddress(true);//force this to true, cannot perform this activity from the API
+			System.out.println("$#10545#"); target.setCustomerAgreement(source.isCustomerAgreement());
+			System.out.println("$#10546#"); target.setConfirmedAddress(true);//force this to true, cannot perform this activity from the API
 
 			
-			if(!StringUtils.isBlank(source.getComments())) {
+			System.out.println("$#10547#"); if(!StringUtils.isBlank(source.getComments())) {
 				OrderStatusHistory statusHistory = new OrderStatusHistory();
-				statusHistory.setStatus(null);
-				statusHistory.setOrder(target);
-				statusHistory.setComments(source.getComments());
+				System.out.println("$#10548#"); statusHistory.setStatus(null);
+				System.out.println("$#10549#"); statusHistory.setOrder(target);
+				System.out.println("$#10550#"); statusHistory.setComments(source.getComments());
 				target.getOrderHistory().add(statusHistory);
 			}
 			
-			return target;
+			System.out.println("$#10551#"); return target;
 		
 		} catch(Exception e) {
 			throw new ConversionException(e);

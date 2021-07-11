@@ -17,7 +17,7 @@ public class PersistableCustomerOptionValue extends CustomerOptionValueEntity
 	}
 
 	public List<CustomerOptionValueDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#9052#"); return descriptions;
 	}
 
 }

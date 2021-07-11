@@ -30,7 +30,7 @@ public class ReadableProductAttributeMapper implements Mapper<ProductAttribute, 
 	@Override
 	public ReadableProductAttributeEntity convert(ProductAttribute source, MerchantStore store, Language language) {
 		ReadableProductAttributeEntity productAttribute = new ReadableProductAttributeEntity();
-		return convert(source, productAttribute, store, language);
+		System.out.println("$#8434#"); return convert(source, productAttribute, store, language);
 	}
 
 	@Override
@@ -38,33 +38,33 @@ public class ReadableProductAttributeMapper implements Mapper<ProductAttribute, 
 			MerchantStore store, Language language) {
 
 		ReadableProductAttributeEntity attr = new ReadableProductAttributeEntity();
-		if(destination !=null) {
+		System.out.println("$#8435#"); if(destination !=null) {
 			attr = destination;
 		}
 		try {
-			attr.setId(source.getId());//attribute of the option
+			System.out.println("$#8436#"); attr.setId(source.getId());//attribute of the option
 	
-			if(source.getProductAttributePrice()!=null && source.getProductAttributePrice().doubleValue()>0) {
+			System.out.println("$#8438#"); System.out.println("$#8437#"); if(source.getProductAttributePrice()!=null && source.getProductAttributePrice().doubleValue()>0) {
 				String formatedPrice;
 				formatedPrice = pricingService.getDisplayAmount(source.getProductAttributePrice(), store);
-				attr.setProductAttributePrice(formatedPrice);
+				System.out.println("$#8440#"); attr.setProductAttributePrice(formatedPrice);
 			}
 			
-			attr.setProductAttributeWeight(source.getAttributeAdditionalWeight());
-			attr.setAttributeDisplayOnly(source.getAttributeDisplayOnly());
-			attr.setAttributeDefault(source.getAttributeDefault());
-			if(!StringUtils.isBlank(source.getAttributeSortOrder())) {
-				attr.setSortOrder(Integer.parseInt(source.getAttributeSortOrder()));
+			System.out.println("$#8441#"); attr.setProductAttributeWeight(source.getAttributeAdditionalWeight());
+			System.out.println("$#8442#"); attr.setAttributeDisplayOnly(source.getAttributeDisplayOnly());
+			System.out.println("$#8443#"); attr.setAttributeDefault(source.getAttributeDefault());
+			System.out.println("$#8444#"); if(!StringUtils.isBlank(source.getAttributeSortOrder())) {
+				System.out.println("$#8445#"); attr.setSortOrder(Integer.parseInt(source.getAttributeSortOrder()));
 			}
 			
-			if(source.getProductOption()!=null) {
+			System.out.println("$#8446#"); if(source.getProductOption()!=null) {
 				ReadableProductOptionEntity option = readableProductOptionMapper.convert(source.getProductOption(), store, language);
-				attr.setOption(option);
+				System.out.println("$#8447#"); attr.setOption(option);
 			}
 			
-			if(source.getProductOptionValue()!=null) {
+			System.out.println("$#8448#"); if(source.getProductOptionValue()!=null) {
 				ReadableProductOptionValueEntity optionValue = readableProductOptionValueMapper.convert(source.getProductOptionValue(), store, language);
-				attr.setOptionValue(optionValue);
+				System.out.println("$#8449#"); attr.setOptionValue(optionValue);
 			}
 		
 		} catch (Exception e) {
@@ -72,7 +72,7 @@ public class ReadableProductAttributeMapper implements Mapper<ProductAttribute, 
 		}
 		
 		
-		return attr;
+		System.out.println("$#8450#"); return attr;
 	}
 
 }

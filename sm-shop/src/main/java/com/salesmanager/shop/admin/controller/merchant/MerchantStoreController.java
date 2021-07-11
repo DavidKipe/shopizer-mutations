@@ -89,8 +89,8 @@ public class MerchantStoreController {
 	public String displayStores(Model model, HttpServletRequest request, HttpServletResponse response, Locale locale)
 			throws Exception {
 
-		setMenu(model, request);
-		return ControllerConstants.Tiles.Store.stores;
+		System.out.println("$#5554#"); setMenu(model, request);
+		System.out.println("$#5555#"); return ControllerConstants.Tiles.Store.stores;
 	}
 
 	@PreAuthorize("hasRole('ADMIN')")
@@ -105,29 +105,29 @@ public class MerchantStoreController {
 
 			for (MerchantStore store : stores) {
 
-				if (!store.getCode().equals(MerchantStore.DEFAULT_STORE)) {
+				System.out.println("$#5556#"); if (!store.getCode().equals(MerchantStore.DEFAULT_STORE)) {
 					Map<String, String> entry = new HashMap<String, String>();
 					entry.put("storeId", String.valueOf(store.getId()));
 					entry.put("code", store.getCode());
 					entry.put("name", store.getStorename());
 					entry.put("email", store.getStoreEmailAddress());
-					resp.addDataEntry(entry);
+					System.out.println("$#5557#"); resp.addDataEntry(entry);
 				}
 
 			}
 
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5558#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5559#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 
 		String returnString = resp.toJSONString();
 
 		final HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+		System.out.println("$#5560#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5561#"); return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasRole('STORE')")
@@ -135,19 +135,19 @@ public class MerchantStoreController {
 	public String displayMerchantStoreCreate(Model model, HttpServletRequest request, HttpServletResponse response,
 			Locale locale) throws Exception {
 
-		setMenu(model, request);
+		System.out.println("$#5562#"); setMenu(model, request);
 
 		MerchantStore store = new MerchantStore();
 
 		MerchantStore sessionStore = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
-		store.setCurrency(sessionStore.getCurrency());
-		store.setCountry(sessionStore.getCountry());
-		store.setZone(sessionStore.getZone());
-		store.setStorestateprovince(sessionStore.getStorestateprovince());
-		store.setLanguages(sessionStore.getLanguages());
-		store.setDomainName(sessionStore.getDomainName());
+		System.out.println("$#5563#"); store.setCurrency(sessionStore.getCurrency());
+		System.out.println("$#5564#"); store.setCountry(sessionStore.getCountry());
+		System.out.println("$#5565#"); store.setZone(sessionStore.getZone());
+		System.out.println("$#5566#"); store.setStorestateprovince(sessionStore.getStorestateprovince());
+		System.out.println("$#5567#"); store.setLanguages(sessionStore.getLanguages());
+		System.out.println("$#5568#"); store.setDomainName(sessionStore.getDomainName());
 
-		return displayMerchantStore(store, model, request, response, locale);
+		System.out.println("$#5569#"); return displayMerchantStore(store, model, request, response, locale);
 	}
 
 	@PreAuthorize("hasRole('STORE')")
@@ -155,9 +155,9 @@ public class MerchantStoreController {
 	public String displayMerchantStore(Model model, HttpServletRequest request, HttpServletResponse response,
 			Locale locale) throws Exception {
 
-		setMenu(model, request);
+		System.out.println("$#5570#"); setMenu(model, request);
 		MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
-		return displayMerchantStore(store, model, request, response, locale);
+		System.out.println("$#5571#"); return displayMerchantStore(store, model, request, response, locale);
 	}
 
 	@PreAuthorize("hasRole('STORE')")
@@ -165,31 +165,31 @@ public class MerchantStoreController {
 	public String displayMerchantStore(@ModelAttribute("id") Integer id, Model model, HttpServletRequest request,
 			HttpServletResponse response, Locale locale) throws Exception {
 
-		setMenu(model, request);
+		System.out.println("$#5572#"); setMenu(model, request);
 		MerchantStore store = merchantStoreService.getById(id);
-		return displayMerchantStore(store, model, request, response, locale);
+		System.out.println("$#5573#"); return displayMerchantStore(store, model, request, response, locale);
 	}
 
 	private String displayMerchantStore(MerchantStore store, Model model, HttpServletRequest request,
 			HttpServletResponse response, Locale locale) throws Exception {
 
-		setMenu(model, request);
+		System.out.println("$#5574#"); setMenu(model, request);
 		Language language = (Language) request.getAttribute("LANGUAGE");
 		List<Language> languages = languageService.getLanguages();
 		List<Currency> currencies = currencyService.list();
-		if (CollectionUtils.isNotEmpty(currencies)) {
-			  Collections.sort(currencies, new Comparator<Currency>() {
+		System.out.println("$#5575#"); if (CollectionUtils.isNotEmpty(currencies)) {
+					System.out.println("$#5576#"); Collections.sort(currencies, new Comparator<Currency>() {
 			      @Override
 			      public int compare(final Currency object1, final Currency object2) {
-			          return object1.getName().compareTo(object2.getName());
+													System.out.println("$#5638#"); return object1.getName().compareTo(object2.getName());
 			      }
 			  });
 			}
 		Date dt = store.getInBusinessSince();
-		if (dt != null) {
-			store.setDateBusinessSince(DateUtil.formatDate(dt));
+		System.out.println("$#5577#"); if (dt != null) {
+			System.out.println("$#5578#"); store.setDateBusinessSince(DateUtil.formatDate(dt));
 		} else {
-			store.setDateBusinessSince(DateUtil.formatDate(new Date()));
+			System.out.println("$#5579#"); store.setDateBusinessSince(DateUtil.formatDate(new Date()));
 		}
 
 		// get countries
@@ -213,7 +213,7 @@ public class MerchantStoreController {
 		model.addAttribute("sizes", sizes);
 		model.addAttribute("store", store);
 
-		return "admin-store";
+		System.out.println("$#5580#"); return "admin-store";
 
 	}
 
@@ -222,24 +222,24 @@ public class MerchantStoreController {
 	public String saveMerchantStore(@Valid @ModelAttribute("store") MerchantStore store, BindingResult result,
 			Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
-		setMenu(model, request);
+		System.out.println("$#5581#"); setMenu(model, request);
 		MerchantStore sessionStore = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
-		if (store.getId() != null) {
-			if (store.getId().intValue() != sessionStore.getId().intValue()) {
-				return "redirect:/admin/store/store.html";
+		System.out.println("$#5582#"); if (store.getId() != null) {
+			System.out.println("$#5583#"); if (store.getId().intValue() != sessionStore.getId().intValue()) {
+				System.out.println("$#5584#"); return "redirect:/admin/store/store.html";
 			}
 		}
 
 		Date date = new Date();
-		if (!StringUtils.isBlank(store.getDateBusinessSince())) {
+		System.out.println("$#5585#"); if (!StringUtils.isBlank(store.getDateBusinessSince())) {
 			try {
 				date = DateUtil.getDate(store.getDateBusinessSince());
-				store.setInBusinessSince(date);
+				System.out.println("$#5586#"); store.setInBusinessSince(date);
 			} catch (Exception e) {
 				ObjectError error = new ObjectError("dateBusinessSince",
 						messages.getMessage("message.invalid.date", locale));
-				result.addError(error);
+				System.out.println("$#5587#"); result.addError(error);
 			}
 		}
 
@@ -269,22 +269,22 @@ public class MerchantStoreController {
 		Country c = store.getCountry();
 		List<Zone> zonesList = zoneService.getZones(c, language);
 
-		if ((zonesList == null || zonesList.size() == 0) && StringUtils.isBlank(store.getStorestateprovince())) {
+		System.out.println("$#5588#"); if ((zonesList == null || zonesList.size() == 0) && StringUtils.isBlank(store.getStorestateprovince())) {
 
 			ObjectError error = new ObjectError("zone.code", messages.getMessage("merchant.zone.invalid", locale));
-			result.addError(error);
+			System.out.println("$#5591#"); result.addError(error);
 
 		}
 
-		if (result.hasErrors()) {
-			return "admin-store";
+		System.out.println("$#5592#"); if (result.hasErrors()) {
+			System.out.println("$#5593#"); return "admin-store";
 		}
 
 		// get country
 		Country country = store.getCountry();
 		country = countryService.getByCode(country.getIsoCode());
 		Zone zone = store.getZone();
-		if (zone != null) {
+		System.out.println("$#5594#"); if (zone != null) {
 			zone = zoneService.getByCode(zone.getCode());
 		}
 		Currency currency = store.getCurrency();
@@ -296,7 +296,7 @@ public class MerchantStoreController {
 		for (Language lang : supportedLanguages) {
 
 			Language l = languagesMap.get(lang.getCode());
-			if (l != null) {
+			System.out.println("$#5595#"); if (l != null) {
 				supportedLanguagesList.add(l);
 			}
 
@@ -304,23 +304,23 @@ public class MerchantStoreController {
 
 		Language defaultLanguage = store.getDefaultLanguage();
 		defaultLanguage = languageService.getById(defaultLanguage.getId());
-		if (defaultLanguage != null) {
-			store.setDefaultLanguage(defaultLanguage);
+		System.out.println("$#5596#"); if (defaultLanguage != null) {
+			System.out.println("$#5597#"); store.setDefaultLanguage(defaultLanguage);
 		}
 
 		Locale storeLocale = LocaleUtils.getLocale(defaultLanguage);
 
-		store.setStoreTemplate(sessionStore.getStoreTemplate());
-		store.setCountry(country);
-		store.setZone(zone);
-		store.setCurrency(currency);
-		store.setDefaultLanguage(defaultLanguage);
-		store.setLanguages(supportedLanguagesList);
-		store.setLanguages(supportedLanguagesList);
+		System.out.println("$#5598#"); store.setStoreTemplate(sessionStore.getStoreTemplate());
+		System.out.println("$#5599#"); store.setCountry(country);
+		System.out.println("$#5600#"); store.setZone(zone);
+		System.out.println("$#5601#"); store.setCurrency(currency);
+		System.out.println("$#5602#"); store.setDefaultLanguage(defaultLanguage);
+		System.out.println("$#5603#"); store.setLanguages(supportedLanguagesList);
+		System.out.println("$#5604#"); store.setLanguages(supportedLanguagesList);
 
-		merchantStoreService.saveOrUpdate(store);
+		System.out.println("$#5605#"); merchantStoreService.saveOrUpdate(store);
 
-		if (!store.getCode().equals(sessionStore.getCode())) {// create store
+		System.out.println("$#5606#"); if (!store.getCode().equals(sessionStore.getCode())) {// create store
 			// send email
 
 			try {
@@ -339,14 +339,14 @@ public class MerchantStoreController {
 				templateTokens.put(EmailConstants.EMAIL_ADMIN_URL, filePathUtils.buildAdminUri(store, request));
 
 				Email email = new Email();
-				email.setFrom(store.getStorename());
-				email.setFromEmail(store.getStoreEmailAddress());
-				email.setSubject(messages.getMessage("email.newstore.title", storeLocale));
-				email.setTo(store.getStoreEmailAddress());
-				email.setTemplateName(NEW_STORE_TMPL);
-				email.setTemplateTokens(templateTokens);
+				System.out.println("$#5607#"); email.setFrom(store.getStorename());
+				System.out.println("$#5608#"); email.setFromEmail(store.getStoreEmailAddress());
+				System.out.println("$#5609#"); email.setSubject(messages.getMessage("email.newstore.title", storeLocale));
+				System.out.println("$#5610#"); email.setTo(store.getStoreEmailAddress());
+				System.out.println("$#5611#"); email.setTemplateName(NEW_STORE_TMPL);
+				System.out.println("$#5612#"); email.setTemplateTokens(templateTokens);
 
-				emailService.sendHtmlEmail(store, email);
+				System.out.println("$#5613#"); emailService.sendHtmlEmail(store, email);
 
 			} catch (Exception e) {
 				LOGGER.error("Cannot send email to user", e);
@@ -357,12 +357,12 @@ public class MerchantStoreController {
 		sessionStore = merchantStoreService.getByCode(sessionStore.getCode());
 
 		// update session store
-		request.getSession().setAttribute(Constants.ADMIN_STORE, sessionStore);
+		System.out.println("$#5614#"); request.getSession().setAttribute(Constants.ADMIN_STORE, sessionStore);
 
 		model.addAttribute("success", "success");
 		model.addAttribute("store", store);
 
-		return "admin-store";
+		System.out.println("$#5615#"); return "admin-store";
 	}
 
 	@PreAuthorize("hasRole('AUTH')")
@@ -374,33 +374,33 @@ public class MerchantStoreController {
 		AjaxResponse resp = new AjaxResponse();
 
 		final HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5616#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		try {
 
-			if (StringUtils.isBlank(code)) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
-				return new ResponseEntity<String>(resp.toJSONString(), httpHeaders, HttpStatus.OK);
+			System.out.println("$#5617#"); if (StringUtils.isBlank(code)) {
+				System.out.println("$#5618#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+				System.out.println("$#5619#"); return new ResponseEntity<String>(resp.toJSONString(), httpHeaders, HttpStatus.OK);
 			}
 
 			MerchantStore store = merchantStoreService.getByCode(code);
 
-			if (store != null) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
-				return new ResponseEntity<String>(resp.toJSONString(), httpHeaders, HttpStatus.OK);
+			System.out.println("$#5620#"); if (store != null) {
+				System.out.println("$#5621#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+				System.out.println("$#5622#"); return new ResponseEntity<String>(resp.toJSONString(), httpHeaders, HttpStatus.OK);
 			}
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#5623#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while getting user", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5624#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5625#"); resp.setErrorMessage(e);
 		}
 
 		String returnString = resp.toJSONString();
 
-		return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+		System.out.println("$#5626#"); return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasRole('ADMIN')")
@@ -412,7 +412,7 @@ public class MerchantStoreController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5627#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		try {
 
@@ -427,30 +427,30 @@ public class MerchantStoreController {
 
 			// check if the user removed has group SUPERADMIN
 			boolean isSuperAdmin = false;
-			if (UserUtils.userInGroup(user, Constants.GROUP_SUPERADMIN)) {
+			System.out.println("$#5628#"); if (UserUtils.userInGroup(user, Constants.GROUP_SUPERADMIN)) {
 				isSuperAdmin = true;
 			}
 
-			if (!isSuperAdmin) {
-				resp.setStatusMessage(messages.getMessage("message.security.caanotremovesuperadmin", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5629#"); if (!isSuperAdmin) {
+				System.out.println("$#5630#"); resp.setStatusMessage(messages.getMessage("message.security.caanotremovesuperadmin", locale));
+				System.out.println("$#5631#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+				System.out.println("$#5632#"); return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
 			}
 
-			merchantStoreService.delete(store);
+			System.out.println("$#5633#"); merchantStoreService.delete(store);
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#5634#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product price", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5635#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5636#"); resp.setErrorMessage(e);
 		}
 
 		String returnString = resp.toJSONString();
 
-		return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+		System.out.println("$#5637#"); return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
 
 	}
 

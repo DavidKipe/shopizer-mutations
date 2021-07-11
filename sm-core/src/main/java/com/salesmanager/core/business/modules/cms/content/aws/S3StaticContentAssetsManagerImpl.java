@@ -47,11 +47,11 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 
 	public static S3StaticContentAssetsManagerImpl getInstance() {
 
-		if (fileManager == null) {
+		System.out.println("$#39#"); if (fileManager == null) {
 			fileManager = new S3StaticContentAssetsManagerImpl();
 		}
 
-		return fileManager;
+		System.out.println("$#40#"); return fileManager;
 
 	}
 
@@ -67,7 +67,7 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 			S3Object o = s3.getObject(bucketName, nodePath(merchantStoreCode, fileContentType) + contentName);
 
 			LOGGER.info("Content getFile");
-			return getOutputContentFile(IOUtils.toByteArray(o.getObjectContent()));
+			System.out.println("$#41#"); return getOutputContentFile(IOUtils.toByteArray(o.getObjectContent()));
 		} catch (final Exception e) {
 			LOGGER.error("Error while getting file", e);
 			throw new ServiceException(e);
@@ -91,20 +91,20 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 			ListObjectsV2Result results = s3.listObjectsV2(listObjectsRequest);
 			List<S3ObjectSummary> objects = results.getObjectSummaries();
 			for (S3ObjectSummary os : objects) {
-				if (isInsideSubFolder(os.getKey())) {
+				System.out.println("$#42#"); if (isInsideSubFolder(os.getKey())) {
 					continue;
 				}
-				if (fileNames == null) {
+				System.out.println("$#43#"); if (fileNames == null) {
 					fileNames = new ArrayList<String>();
 				}
 				String mimetype = URLConnection.guessContentTypeFromName(os.getKey());
-				if (!StringUtils.isBlank(mimetype)) {
+				System.out.println("$#44#"); if (!StringUtils.isBlank(mimetype)) {
 					fileNames.add(getName(os.getKey()));
 				}
 			}
 
 			LOGGER.info("Content get file names");
-			return fileNames;
+			System.out.println("$#45#"); return fileNames;
 		} catch (final Exception e) {
 			LOGGER.error("Error while getting file names", e);
 			throw new ServiceException(e);
@@ -127,23 +127,23 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 			ListObjectsV2Result results = s3.listObjectsV2(listObjectsRequest);
 			List<S3ObjectSummary> objects = results.getObjectSummaries();
 			for (S3ObjectSummary os : objects) {
-				if (files == null) {
+				System.out.println("$#46#"); if (files == null) {
 					files = new ArrayList<OutputContentFile>();
 				}
 				String mimetype = URLConnection.guessContentTypeFromName(os.getKey());
-				if (!StringUtils.isBlank(mimetype)) {
+				System.out.println("$#47#"); if (!StringUtils.isBlank(mimetype)) {
 					S3Object o = s3.getObject(bucketName, os.getKey());
 					byte[] byteArray = IOUtils.toByteArray(o.getObjectContent());
 					ByteArrayOutputStream baos = new ByteArrayOutputStream(byteArray.length);
-					baos.write(byteArray, 0, byteArray.length);
+					System.out.println("$#48#"); baos.write(byteArray, 0, byteArray.length);
 					OutputContentFile ct = new OutputContentFile();
-					ct.setFile(baos);
+					System.out.println("$#49#"); ct.setFile(baos);
 					files.add(ct);
 				}
 			}
 
 			LOGGER.info("Content getFiles");
-			return files;
+			System.out.println("$#50#"); return files;
 		} catch (final Exception e) {
 			LOGGER.error("Error while getting files", e);
 			throw new ServiceException(e);
@@ -163,10 +163,10 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 			final AmazonS3 s3 = s3Client();
 
 			ObjectMetadata metadata = new ObjectMetadata();
-			metadata.setContentType(inputStaticContentData.getMimeType());
+			System.out.println("$#51#"); metadata.setContentType(inputStaticContentData.getMimeType());
 			PutObjectRequest request = new PutObjectRequest(bucketName, nodePath + inputStaticContentData.getFileName(),
 					inputStaticContentData.getFile(), metadata);
-			request.setCannedAcl(CannedAccessControlList.PublicRead);
+			System.out.println("$#52#"); request.setCannedAcl(CannedAccessControlList.PublicRead);
 
 			s3.putObject(request);
 
@@ -183,9 +183,9 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 	public void addFiles(String merchantStoreCode, Optional<String> folderPath, List<InputContentFile> inputStaticContentDataList)
 			throws ServiceException {
 
-		if (CollectionUtils.isNotEmpty(inputStaticContentDataList)) {
+		System.out.println("$#53#"); if (CollectionUtils.isNotEmpty(inputStaticContentDataList)) {
 			for (InputContentFile inputFile : inputStaticContentDataList) {
-				this.addFile(merchantStoreCode, folderPath, inputFile);
+				System.out.println("$#54#"); this.addFile(merchantStoreCode, folderPath, inputFile);
 			}
 
 		}
@@ -201,7 +201,7 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 			String bucketName = bucketName();
 
 			final AmazonS3 s3 = s3Client();
-			s3.deleteObject(bucketName, nodePath(merchantStoreCode, staticContentType) + fileName);
+			System.out.println("$#55#"); s3.deleteObject(bucketName, nodePath(merchantStoreCode, staticContentType) + fileName);
 
 			LOGGER.info("Remove file");
 		} catch (final Exception e) {
@@ -220,7 +220,7 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 			String bucketName = bucketName();
 
 			final AmazonS3 s3 = s3Client();
-			s3.deleteObject(bucketName, nodePath(merchantStoreCode));
+			System.out.println("$#56#"); s3.deleteObject(bucketName, nodePath(merchantStoreCode));
 
 			LOGGER.info("Remove folder");
 		} catch (final Exception e) {
@@ -236,32 +236,32 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 		Bucket named_bucket = null;
 		List<Bucket> buckets = s3.listBuckets();
 		for (Bucket b : buckets) {
-			if (b.getName().equals(bucket_name)) {
+			System.out.println("$#57#"); if (b.getName().equals(bucket_name)) {
 				named_bucket = b;
 			}
 		}
 
-		if (named_bucket == null) {
+		System.out.println("$#58#"); if (named_bucket == null) {
 			named_bucket = createBucket(bucket_name);
 		}
 
-		return named_bucket;
+		System.out.println("$#59#"); return named_bucket;
 	}
 
 	private Bucket createBucket(String bucket_name) {
 		final AmazonS3 s3 = s3Client();
 		Bucket b = null;
-		if (s3.doesBucketExistV2(bucket_name)) {
+		System.out.println("$#60#"); if (s3.doesBucketExistV2(bucket_name)) {
 			System.out.format("Bucket %s already exists.\n", bucket_name);
 			b = getBucket(bucket_name);
 		} else {
 			try {
 				b = s3.createBucket(bucket_name);
 			} catch (AmazonS3Exception e) {
-				System.err.println(e.getErrorMessage());
+				System.out.println("$#61#"); System.err.println(e.getErrorMessage());
 			}
 		}
-		return b;
+		System.out.println("$#62#"); return b;
 	}
 
 	/**
@@ -282,19 +282,19 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 																			// against
 				.build();
 
-		return s3;
+		System.out.println("$#63#"); return s3;
 	}
 
 	private String regionName() {
 		String regionName = getCmsManager().getLocation();
-		if (StringUtils.isBlank(regionName)) {
+		System.out.println("$#64#"); if (StringUtils.isBlank(regionName)) {
 			regionName = DEFAULT_REGION_NAME;
 		}
-		return regionName;
+		System.out.println("$#65#"); return regionName;
 	}
 
 	public CMSManager getCmsManager() {
-		return cmsManager;
+		System.out.println("$#66#"); return cmsManager;
 	}
 
 	public void setCmsManager(CMSManager cmsManager) {
@@ -317,7 +317,7 @@ public class S3StaticContentAssetsManagerImpl implements ContentAssetsManager {
 	@Override
 	public List<String> listFolders(String merchantStoreCode, Optional<String> path) throws ServiceException {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("$#67#"); return null;
 	}
 
 }

@@ -16,6 +16,6 @@ public enum OrderStatus {
 	}
 	
 	public String getValue() {
-		return value;
+		System.out.println("$#4377#"); return value;
 	}
 }

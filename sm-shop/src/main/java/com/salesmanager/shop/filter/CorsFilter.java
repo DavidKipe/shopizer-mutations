@@ -31,15 +31,15 @@ public class CorsFilter extends HandlerInterceptorAdapter {
         	HttpServletResponse httpResponse = (HttpServletResponse) response;
         	
         	String origin = "*";
-        	if(!StringUtils.isBlank(request.getHeader("origin"))) {
+									System.out.println("$#8044#"); if(!StringUtils.isBlank(request.getHeader("origin"))) {
         		origin = request.getHeader("origin");
         	}
 	
-	        httpResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
-        	httpResponse.setHeader("Access-Control-Allow-Headers", "X-Auth-Token, Content-Type, Authorization, Cache-Control, X-Requested-With");
-        	httpResponse.setHeader("Access-Control-Allow-Origin", origin);
+									System.out.println("$#8045#"); httpResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
+									System.out.println("$#8046#"); httpResponse.setHeader("Access-Control-Allow-Headers", "X-Auth-Token, Content-Type, Authorization, Cache-Control, X-Requested-With");
+									System.out.println("$#8047#"); httpResponse.setHeader("Access-Control-Allow-Origin", origin);
 	        
-        	return true;
+									System.out.println("$#8048#"); return true;
 			
 		}
 }

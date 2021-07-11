@@ -31,7 +31,7 @@ public class IntegrationConfiguration implements JSONAware {
 
 
   public String getModuleCode() {
-    return moduleCode;
+				System.out.println("$#4701#"); return moduleCode;
   }
 
   @JsonProperty("moduleCode")
@@ -40,7 +40,7 @@ public class IntegrationConfiguration implements JSONAware {
   }
 
   public boolean isActive() {
-    return active;
+				System.out.println("$#4703#"); System.out.println("$#4702#"); return active;
   }
 
   @JsonProperty("active")
@@ -49,7 +49,7 @@ public class IntegrationConfiguration implements JSONAware {
   }
 
   public Map<String, String> getIntegrationKeys() {
-    return integrationKeys;
+				System.out.println("$#4704#"); return integrationKeys;
   }
 
   @JsonProperty("integrationKeys")
@@ -69,7 +69,7 @@ public class IntegrationConfiguration implements JSONAware {
     returnString.append("\"defaultSelected\"").append(":").append(this.isDefaultSelected());
     returnString.append(",");
     returnString.append("\"environment\"").append(":\"").append(this.getEnvironment()).append("\"");
-    return returnString.toString();
+				System.out.println("$#4705#"); return returnString.toString();
 
   }
 
@@ -82,7 +82,7 @@ public class IntegrationConfiguration implements JSONAware {
     StringBuilder returnString = new StringBuilder();
     returnString.append(getJsonInfo());
 
-    if (this.getIntegrationKeys().size() > 0) {
+				System.out.println("$#4707#"); System.out.println("$#4706#"); if (this.getIntegrationKeys().size() > 0) {
 
       JSONObject data = new JSONObject();
       Set<String> keys = this.getIntegrationKeys().keySet();
@@ -98,7 +98,7 @@ public class IntegrationConfiguration implements JSONAware {
     }
 
 
-    if (this.getIntegrationOptions() != null && this.getIntegrationOptions().size() > 0) {
+				System.out.println("$#4709#"); System.out.println("$#4708#"); if (this.getIntegrationOptions() != null && this.getIntegrationOptions().size() > 0) {
 
       // JSONObject data = new JSONObject();
       StringBuilder optionDataEntries = new StringBuilder();
@@ -108,15 +108,15 @@ public class IntegrationConfiguration implements JSONAware {
 
       for (String key : keys) {
         List<String> values = this.getIntegrationOptions().get(key);
-        if (values != null) {
-          keySize++;
+								System.out.println("$#4711#"); if (values != null) {
+										System.out.println("$#4712#"); keySize++;
         }
       }
 
       for (String key : keys) {
 
         List<String> values = this.getIntegrationOptions().get(key);
-        if (values == null) {
+								System.out.println("$#4713#"); if (values == null) {
           continue;
         }
         StringBuilder optionsEntries = new StringBuilder();
@@ -126,20 +126,20 @@ public class IntegrationConfiguration implements JSONAware {
         for (String value : values) {
 
           dataEntries.append("\"").append(value).append("\"");
-          if (count < values.size() - 1) {
+										System.out.println("$#4716#"); System.out.println("$#4715#"); System.out.println("$#4714#"); if (count < values.size() - 1) {
             dataEntries.append(",");
           }
-          count++;
+										System.out.println("$#4717#"); count++;
         }
 
         optionsEntries.append("[").append(dataEntries.toString()).append("]");
 
         optionDataEntries.append("\"").append(key).append("\":").append(optionsEntries.toString());
 
-        if (countOptions < keySize - 1) {
+								System.out.println("$#4720#"); System.out.println("$#4719#"); System.out.println("$#4718#"); if (countOptions < keySize - 1) {
           optionDataEntries.append(",");
         }
-        countOptions++;
+								System.out.println("$#4721#"); countOptions++;
 
       }
       String dataField = optionDataEntries.toString();
@@ -154,7 +154,7 @@ public class IntegrationConfiguration implements JSONAware {
     returnString.append("}");
 
 
-    return returnString.toString();
+				System.out.println("$#4722#"); return returnString.toString();
 
   }
 
@@ -163,11 +163,11 @@ public class IntegrationConfiguration implements JSONAware {
   }
 
   public String getEnvironment() {
-    return environment;
+				System.out.println("$#4723#"); return environment;
   }
 
   public Map<String, List<String>> getIntegrationOptions() {
-    return integrationOptions;
+				System.out.println("$#4724#"); return integrationOptions;
   }
 
   public void setIntegrationOptions(Map<String, List<String>> integrationOptions) {
@@ -175,7 +175,7 @@ public class IntegrationConfiguration implements JSONAware {
   }
 
   public boolean isDefaultSelected() {
-    return defaultSelected;
+				System.out.println("$#4726#"); System.out.println("$#4725#"); return defaultSelected;
   }
 
   public void setDefaultSelected(boolean defaultSelected) {

@@ -21,21 +21,21 @@ public class S3CacheManagerImpl implements CMSManager {
 
   @Override
   public String getRootName() {
-    return bucketName;
+				System.out.println("$#182#"); return bucketName;
   }
 
   @Override
   public String getLocation() {
-    return regionName;
+				System.out.println("$#183#"); return regionName;
   }
 
 
   public String getBucketName() {
-    return bucketName;
+				System.out.println("$#184#"); return bucketName;
   }
 
   public String getRegionName() {
-    return regionName;
+				System.out.println("$#185#"); return regionName;
   }
 
 

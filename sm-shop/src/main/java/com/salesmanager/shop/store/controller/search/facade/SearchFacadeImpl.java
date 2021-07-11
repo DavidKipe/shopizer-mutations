@@ -81,7 +81,7 @@ public class SearchFacadeImpl implements SearchFacade {
 		List<Product> products = productService.listByStore(store);
 
 		for (Product product : products) {
-			searchService.index(store, product);
+			System.out.println("$#13589#"); searchService.index(store, product);
 		}
 
 	}
@@ -90,7 +90,7 @@ public class SearchFacadeImpl implements SearchFacade {
 	public SearchProductList search(MerchantStore store, Language language, SearchProductRequest searchRequest) {
 		SearchResponse response = search(store, language.getCode(), searchRequest.getQuery(), searchRequest.getCount(),
 				searchRequest.getStart());
-		return convertToSearchProductList(response, store, searchRequest.getStart(), searchRequest.getCount(),
+		System.out.println("$#13590#"); return convertToSearchProductList(response, store, searchRequest.getStart(), searchRequest.getCount(),
 				language);
 	}
 
@@ -98,7 +98,7 @@ public class SearchFacadeImpl implements SearchFacade {
 			Integer start) {
 		try {
 			LOGGER.debug("Search " + query);
-			return searchService.search(store, languageCode, query, count, start);
+			System.out.println("$#13591#"); return searchService.search(store, languageCode, query, count, start);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException(e);
 		}
@@ -111,15 +111,15 @@ public class SearchFacadeImpl implements SearchFacade {
 		SearchProductList returnList = new SearchProductList();
 		List<SearchEntry> entries = searchResponse.getEntries();
 
-		if (CollectionUtils.isNotEmpty(entries)) {
+		System.out.println("$#13592#"); if (CollectionUtils.isNotEmpty(entries)) {
 			List<Long> ids = entries.stream().map(SearchEntry::getIndexProduct).map(IndexProduct::getId)
 					.map(Long::parseLong).collect(Collectors.toList());
 
 			ProductCriteria searchCriteria = new ProductCriteria();
-			searchCriteria.setMaxCount(count);
-			searchCriteria.setStartIndex(start);
-			searchCriteria.setProductIds(ids);
-			searchCriteria.setAvailable(true);
+			System.out.println("$#13593#"); searchCriteria.setMaxCount(count);
+			System.out.println("$#13594#"); searchCriteria.setStartIndex(start);
+			System.out.println("$#13595#"); searchCriteria.setProductIds(ids);
+			System.out.println("$#13596#"); searchCriteria.setAvailable(true);
 
 			ProductList productList = productService.listByStore(merchantStore, language, searchCriteria);
 
@@ -128,7 +128,7 @@ public class SearchFacadeImpl implements SearchFacade {
 					.collect(Collectors.toList());
 
 			returnList.getProducts().addAll(readableProducts);
-			returnList.setProductCount(productList.getProducts().size());
+			System.out.println("$#13598#"); returnList.setProductCount(productList.getProducts().size());
 		}
 
 		// Facets
@@ -136,16 +136,16 @@ public class SearchFacadeImpl implements SearchFacade {
 				.orElse(Collections.emptyMap());
 
 		List<ReadableCategory> categoryProxies = getCategoryFacets(merchantStore, language, facets);
-		returnList.setCategoryFacets(categoryProxies);
+		System.out.println("$#13599#"); returnList.setCategoryFacets(categoryProxies);
 
 		List<SearchFacet> manufacturersFacets = facets.entrySet().stream()
 				.filter(e -> MANUFACTURER_FACET_NAME.equals(e.getKey())).findFirst().map(Entry::getValue)
 				.orElse(Collections.emptyList());
 
-		if (CollectionUtils.isNotEmpty(manufacturersFacets)) {
+		System.out.println("$#13602#"); if (CollectionUtils.isNotEmpty(manufacturersFacets)) {
 			// TODO add manufacturer facets
 		}
-		return returnList;
+		System.out.println("$#13603#"); return returnList;
 	}
 
 	private List<ReadableCategory> getCategoryFacets(MerchantStore merchantStore, Language language,
@@ -154,7 +154,7 @@ public class SearchFacadeImpl implements SearchFacade {
 				.filter(e -> CATEGORY_FACET_NAME.equals(e.getKey())).findFirst().map(Entry::getValue)
 				.orElse(Collections.emptyList());
 
-		if (CollectionUtils.isNotEmpty(categoriesFacets)) {
+		System.out.println("$#13606#"); if (CollectionUtils.isNotEmpty(categoriesFacets)) {
 
 			List<String> categoryCodes = categoriesFacets.stream().map(SearchFacet::getName)
 					.collect(Collectors.toList());
@@ -163,7 +163,7 @@ public class SearchFacadeImpl implements SearchFacade {
 					.collect(Collectors.toMap(SearchFacet::getKey, SearchFacet::getCount));
 
 			List<Category> categories = categoryService.listByCodes(merchantStore, categoryCodes, language);
-			return categories.stream().map(category -> convertCategoryToReadableCategory(merchantStore, language,
+			System.out.println("$#13608#"); System.out.println("$#13607#"); return categories.stream().map(category -> convertCategoryToReadableCategory(merchantStore, language,
 					productCategoryCount, category)).collect(Collectors.toList());
 		} else {
 			return Collections.emptyList();
@@ -177,10 +177,10 @@ public class SearchFacadeImpl implements SearchFacade {
 			ReadableCategory categoryProxy = populator.populate(category, new ReadableCategory(), merchantStore,
 					language);
 			Long total = productCategoryCount.get(categoryProxy.getCode());
-			if (total != null) {
-				categoryProxy.setProductCount(total.intValue());
+			System.out.println("$#13609#"); if (total != null) {
+				System.out.println("$#13610#"); categoryProxy.setProductCount(total.intValue());
 			}
-			return categoryProxy;
+			System.out.println("$#13611#"); return categoryProxy;
 		} catch (ConversionException e) {
 			throw new ConversionRuntimeException(e);
 		}
@@ -190,11 +190,11 @@ public class SearchFacadeImpl implements SearchFacade {
 			Language language) {
 
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#13612#"); populator.setPricingService(pricingService);
+		System.out.println("$#13613#"); populator.setimageUtils(imageUtils);
 
 		try {
-			return populator.populate(product, new ReadableProduct(), merchantStore, language);
+			System.out.println("$#13614#"); return populator.populate(product, new ReadableProduct(), merchantStore, language);
 		} catch (ConversionException e) {
 			throw new ConversionRuntimeException(e);
 		}
@@ -212,14 +212,14 @@ public class SearchFacadeImpl implements SearchFacade {
 
 		SearchKeywords keywords = getSearchKeywords(req, word);
 		ValueList returnList = new ValueList();
-		returnList.setValues(keywords.getKeywords());
-		return returnList;
+		System.out.println("$#13615#"); returnList.setValues(keywords.getKeywords());
+		System.out.println("$#13616#"); return returnList;
 	}
 
 	private SearchKeywords getSearchKeywords(AutoCompleteRequest req, String word) {
 		try {
 			LOGGER.debug("Search auto comlete " + word);
-			return searchService.searchForKeywords(req.getCollectionName(), word, AUTOCOMPLETE_ENTRIES_COUNT);
+			System.out.println("$#13617#"); return searchService.searchForKeywords(req.getCollectionName(), word, AUTOCOMPLETE_ENTRIES_COUNT);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException(e);
 		}

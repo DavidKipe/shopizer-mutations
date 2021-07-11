@@ -74,7 +74,7 @@ public class ProductOption extends SalesManagerEntity<Long, ProductOption> {
 	}
 	
 	public Integer getProductOptionSortOrder() {
-		return productOptionSortOrder;
+		System.out.println("$#3802#"); return productOptionSortOrder;
 	}
 	
 	public void setProductOptionSortOrder(Integer productOptionSortOrder) {
@@ -82,7 +82,7 @@ public class ProductOption extends SalesManagerEntity<Long, ProductOption> {
 	}
 	
 	public String getProductOptionType() {
-		return productOptionType;
+		System.out.println("$#3803#"); return productOptionType;
 	}
 
 	public void setProductOptionType(String productOptionType) {
@@ -90,7 +90,7 @@ public class ProductOption extends SalesManagerEntity<Long, ProductOption> {
 	}
 	
 	public Set<ProductOptionDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#3804#"); return descriptions;
 	}
 
 	public void setDescriptions(Set<ProductOptionDescription> descriptions) {
@@ -99,7 +99,7 @@ public class ProductOption extends SalesManagerEntity<Long, ProductOption> {
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#3805#"); return id;
 	}
 	
 	@Override
@@ -110,7 +110,7 @@ public class ProductOption extends SalesManagerEntity<Long, ProductOption> {
 
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#3806#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -122,15 +122,15 @@ public class ProductOption extends SalesManagerEntity<Long, ProductOption> {
 	}
 
 	public List<ProductOptionDescription> getDescriptionsList() {
-		return descriptionsList;
+		System.out.println("$#3807#"); return descriptionsList;
 	}
 	
 
 	public List<ProductOptionDescription> getDescriptionsSettoList() {
-		if(descriptionsList==null || descriptionsList.size()==0) {
+		System.out.println("$#3808#"); if(descriptionsList==null || descriptionsList.size()==0) {
 			descriptionsList = new ArrayList<ProductOptionDescription>(this.getDescriptions());
 		} 
-		return descriptionsList;
+		System.out.println("$#3810#"); return descriptionsList;
 
 	}
 
@@ -139,7 +139,7 @@ public class ProductOption extends SalesManagerEntity<Long, ProductOption> {
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#3811#"); return code;
 	}
 
 	public void setReadOnly(boolean readOnly) {
@@ -147,6 +147,6 @@ public class ProductOption extends SalesManagerEntity<Long, ProductOption> {
 	}
 
 	public boolean isReadOnly() {
-		return readOnly;
+		System.out.println("$#3813#"); System.out.println("$#3812#"); return readOnly;
 	}
 }

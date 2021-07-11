@@ -24,16 +24,16 @@ public class VendorCacheManager {
 
 
   public static VendorCacheManager getInstance() {
-    if (vendorCacheManager == null) {
+				System.out.println("$#192#"); if (vendorCacheManager == null) {
       vendorCacheManager = new VendorCacheManager();
 
     }
-    return vendorCacheManager;
+				System.out.println("$#193#"); return vendorCacheManager;
   }
 
 
   public EmbeddedCacheManager getManager() {
-    return manager;
+				System.out.println("$#194#"); return manager;
   }
 
 }

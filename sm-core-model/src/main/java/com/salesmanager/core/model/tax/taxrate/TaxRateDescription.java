@@ -48,7 +48,7 @@ public class TaxRateDescription extends Description {
 	}
 
 	public TaxRate getTaxRate() {
-		return taxRate;
+		System.out.println("$#4843#"); return taxRate;
 	}
 
 	public void setTaxRate(TaxRate taxRate) {

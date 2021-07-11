@@ -59,7 +59,7 @@ public class CustomProductGroupsController {
 	public String displayProductGroups(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		setMenu(model,request);
+		System.out.println("$#5973#"); setMenu(model,request);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
@@ -69,7 +69,7 @@ public class CustomProductGroupsController {
 		
 		model.addAttribute("group", group);
 
-		return ControllerConstants.Tiles.Product.customGroups;
+		System.out.println("$#5974#"); return ControllerConstants.Tiles.Product.customGroups;
 		
 	}
 	
@@ -91,31 +91,31 @@ public class CustomProductGroupsController {
 			
 			for(ProductRelationship relationship : relationships) {
 				
-				if(!"FEATURED_ITEM".equals(relationship.getCode())) {//do not add featured items
+				System.out.println("$#5975#"); if(!"FEATURED_ITEM".equals(relationship.getCode())) {//do not add featured items
 
 					Map entry = new HashMap();
 					entry.put("code", relationship.getCode());
 					entry.put("active", relationship.isActive());
 	
-					resp.addDataEntry(entry);
+					System.out.println("$#5976#"); resp.addDataEntry(entry);
 				
 				}
 				
 			}
 			
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5977#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5978#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5979#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5980#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5981#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 
 
 	}
@@ -124,17 +124,17 @@ public class CustomProductGroupsController {
 	@RequestMapping(value="/admin/products/groups/save.html", method=RequestMethod.POST)
 	public String saveCustomProductGroup(@ModelAttribute("group") ProductRelationship group, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5982#"); setMenu(model,request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		
 		//check if group already exist
 		
 		
-		if(StringUtils.isBlank(group.getCode())) {
+		System.out.println("$#5983#"); if(StringUtils.isBlank(group.getCode())) {
 			FieldError fieldError = new FieldError("group","code",group.getCode(),false,null,null,messages.getMessage("message.group.required",locale));
-			result.addError(fieldError);
-			return ControllerConstants.Tiles.Product.customGroups;
+			System.out.println("$#5984#"); result.addError(fieldError);
+			System.out.println("$#5985#"); return ControllerConstants.Tiles.Product.customGroups;
 		}
 		
 		//String msg = messages.getMessage("message.group.alerady.exists",locale);
@@ -144,26 +144,26 @@ public class CustomProductGroupsController {
 		
 		List<ProductRelationship> groups = productRelationshipService.getGroups(store);
 		for(ProductRelationship grp : groups) {
-			if(grp.getCode().equalsIgnoreCase(group.getCode())) {
+			System.out.println("$#5986#"); if(grp.getCode().equalsIgnoreCase(group.getCode())) {
 				String[] args = {group.getCode()};
 				FieldError fieldError = new FieldError("group","code",group.getCode(),false,messages,args,null);
-				result.addError(fieldError);
+				System.out.println("$#5987#"); result.addError(fieldError);
 			}
 		}
 		
-		if(result.hasErrors()) {
-			return ControllerConstants.Tiles.Product.customGroups;
+		System.out.println("$#5988#"); if(result.hasErrors()) {
+			System.out.println("$#5989#"); return ControllerConstants.Tiles.Product.customGroups;
 		}
 
-		group.setActive(true);
-		group.setStore(store);
+		System.out.println("$#5990#"); group.setActive(true);
+		System.out.println("$#5991#"); group.setStore(store);
 		
-		productRelationshipService.addGroup(store,group.getCode());
+		System.out.println("$#5992#"); productRelationshipService.addGroup(store,group.getCode());
 
 		
 		model.addAttribute("success","success");
 		
-		return ControllerConstants.Tiles.Product.customGroups;
+		System.out.println("$#5993#"); return ControllerConstants.Tiles.Product.customGroups;
 		
 	}
 	
@@ -178,18 +178,18 @@ public class CustomProductGroupsController {
 
 		try {
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-			productRelationshipService.deleteGroup(store, groupCode);
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#5994#"); productRelationshipService.deleteGroup(store, groupCode);
+			System.out.println("$#5995#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting a group", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5996#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5997#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5998#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 
 	}
 	
@@ -215,26 +215,26 @@ public class CustomProductGroupsController {
 			List<ProductRelationship> groups = productRelationshipService.getGroups(store);
 			
 			for(ProductRelationship relation : groups) {
-				if(relation.getCode().equals(groupCode)) {
-					if("true".equals(active)) {
-						relation.setActive(true);
+				System.out.println("$#5999#"); if(relation.getCode().equals(groupCode)) {
+					System.out.println("$#6000#"); if("true".equals(active)) {
+						System.out.println("$#6001#"); relation.setActive(true);
 					} else {
-						relation.setActive(false);
+						System.out.println("$#6002#"); relation.setActive(false);
 					}
-					productRelationshipService.saveOrUpdate(relation);
+					System.out.println("$#6003#"); productRelationshipService.saveOrUpdate(relation);
 				}
 			}
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6004#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while updateing groups", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6005#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6006#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#6007#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
@@ -242,7 +242,7 @@ public class CustomProductGroupsController {
 	public String displayCustomProductGroup(@RequestParam("id") String groupCode, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		setMenu(model,request);
+		System.out.println("$#6008#"); setMenu(model,request);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
@@ -252,7 +252,7 @@ public class CustomProductGroupsController {
 		
 		model.addAttribute("group", groupCode);
 		model.addAttribute("categories", readableCategories);
-		return ControllerConstants.Tiles.Product.customGroupsDetails;
+		System.out.println("$#6009#"); return ControllerConstants.Tiles.Product.customGroupsDetails;
 		
 	}
 	
@@ -286,7 +286,7 @@ public class CustomProductGroupsController {
 				ProductDescription description = product.getDescriptions().iterator().next();
 				Set<ProductDescription> descriptions = product.getDescriptions();
 				for(ProductDescription desc : descriptions) {
-					if(desc.getLanguage().getId().intValue()==language.getId().intValue()) {
+					System.out.println("$#6010#"); if(desc.getLanguage().getId().intValue()==language.getId().intValue()) {
 						description = desc;
 					}
 				}
@@ -294,23 +294,23 @@ public class CustomProductGroupsController {
 				entry.put("name", description.getName());
 				entry.put("sku", product.getSku());
 				entry.put("available", product.isAvailable());
-				resp.addDataEntry(entry);
+				System.out.println("$#6011#"); resp.addDataEntry(entry);
 				
 			}
 			
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#6012#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6013#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6014#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6015#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#6016#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 
 
 	}
@@ -326,7 +326,7 @@ public class CustomProductGroupsController {
 		AjaxResponse resp = new AjaxResponse();
 		
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6017#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		try {
 			
@@ -337,38 +337,38 @@ public class CustomProductGroupsController {
 			
 			Product product = productService.getById(lProductId);
 			
-			if(product==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6018#"); if(product==null) {
+				System.out.println("$#6019#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6020#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6021#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6022#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6023#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
 
 			ProductRelationship relationship = new ProductRelationship();
-			relationship.setActive(true);
-			relationship.setCode(code);
-			relationship.setStore(store);
-			relationship.setRelatedProduct(product);
+			System.out.println("$#6024#"); relationship.setActive(true);
+			System.out.println("$#6025#"); relationship.setCode(code);
+			System.out.println("$#6026#"); relationship.setStore(store);
+			System.out.println("$#6027#"); relationship.setRelatedProduct(product);
 			
-			productRelationshipService.saveOrUpdate(relationship);
+			System.out.println("$#6028#"); productRelationshipService.saveOrUpdate(relationship);
 			
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#6029#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6030#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6031#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6032#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	
@@ -381,7 +381,7 @@ public class CustomProductGroupsController {
 		AjaxResponse resp = new AjaxResponse();
 		
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6033#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		try {
 			
@@ -392,16 +392,16 @@ public class CustomProductGroupsController {
 			
 			Product product = productService.getById(lproductId);
 			
-			if(product==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6034#"); if(product==null) {
+				System.out.println("$#6035#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6036#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6037#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6038#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6039#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			
@@ -409,40 +409,40 @@ public class CustomProductGroupsController {
 			List<ProductRelationship> relationships = productRelationshipService.getByGroup(store, code);
 			
 			for(ProductRelationship r : relationships) {
-				if(r.getRelatedProduct().getId().longValue()==lproductId.longValue()) {
+				System.out.println("$#6040#"); if(r.getRelatedProduct().getId().longValue()==lproductId.longValue()) {
 					relationship = r;
 					break;
 				}
 			}
 			
-			if(relationship==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6041#"); if(relationship==null) {
+				System.out.println("$#6042#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6043#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(relationship.getStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6044#"); if(relationship.getStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6045#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6046#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
 
 			
 			
-			productRelationshipService.delete(relationship);
+			System.out.println("$#6047#"); productRelationshipService.delete(relationship);
 			
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6048#"); resp.setStatus(AjaxPageableResponse.RESPONSE_OPERATION_COMPLETED);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6049#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6050#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6051#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 

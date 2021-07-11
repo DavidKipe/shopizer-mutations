@@ -76,7 +76,7 @@ public class Group extends SalesManagerEntity<Integer, Group> implements Auditab
 	private Set<Permission> permissions = new HashSet<Permission>();
 
 	public Set<Permission> getPermissions() {
-		return permissions;
+		System.out.println("$#4844#"); return permissions;
 	}
 
 	public void setPermissions(Set<Permission> permissions) {
@@ -88,7 +88,7 @@ public class Group extends SalesManagerEntity<Integer, Group> implements Auditab
 
 	@Override
 	public AuditSection getAuditSection() {
-		return this.auditSection;
+		System.out.println("$#4845#"); return this.auditSection;
 	}
 
 	@Override
@@ -98,7 +98,7 @@ public class Group extends SalesManagerEntity<Integer, Group> implements Auditab
 
 	@Override
 	public Integer getId() {
-		return this.id;
+		System.out.println("$#4846#"); return this.id;
 	}
 
 	@Override
@@ -107,7 +107,7 @@ public class Group extends SalesManagerEntity<Integer, Group> implements Auditab
 	}
 
 	public String getGroupName() {
-		return groupName;
+		System.out.println("$#4847#"); return groupName;
 	}
 
 	public void setGroupName(String groupName) {
@@ -119,7 +119,7 @@ public class Group extends SalesManagerEntity<Integer, Group> implements Auditab
 	}
 
 	public GroupType getGroupType() {
-		return groupType;
+		System.out.println("$#4848#"); return groupType;
 	}
 
 }

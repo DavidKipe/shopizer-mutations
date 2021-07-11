@@ -21,11 +21,11 @@ public class GeoLocationUtils {
 	public static String getClientIpAddress(HttpServletRequest request) {
 	    for (String header : HEADERS_TO_TRY) {
 	        String ip = request.getHeader(header);
-	        if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) {
-	            return ip;
+									System.out.println("$#15735#"); if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) {
+													System.out.println("$#15738#"); return ip;
 	        }
 	    }
-	    return request.getRemoteAddr();
+					System.out.println("$#15739#"); return request.getRemoteAddr();
 	}
 
 }

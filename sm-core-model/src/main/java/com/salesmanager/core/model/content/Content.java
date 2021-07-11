@@ -89,7 +89,7 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 	private String productGroup;
 
 	public String getProductGroup() {
-		return productGroup;
+		System.out.println("$#4086#"); return productGroup;
 	}
 
 	public void setProductGroup(String productGroup) {
@@ -98,7 +98,7 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 
 	@Override
 	public Long getId() {
-		return this.id;
+		System.out.println("$#4087#"); return this.id;
 	}
 
 	@Override
@@ -112,11 +112,11 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 	}
 
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4088#"); return auditSection;
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4089#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -124,7 +124,7 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4090#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -132,7 +132,7 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 	}
 
 	public boolean isVisible() {
-		return visible;
+		System.out.println("$#4092#"); System.out.println("$#4091#"); return visible;
 	}
 
 	public void setVisible(boolean visible) {
@@ -142,7 +142,7 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 
 
 	public List<ContentDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#4093#"); return descriptions;
 	}
 
 	public void setDescriptions(List<ContentDescription> descriptions) {
@@ -154,13 +154,13 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 	}
 
 	public ContentType getContentType() {
-		return contentType;
+		System.out.println("$#4094#"); return contentType;
 	}
 	
 	public ContentDescription getDescription() {
 		
-		if(this.getDescriptions()!=null && this.getDescriptions().size()>0) {
-			return this.getDescriptions().get(0);
+		System.out.println("$#4096#"); System.out.println("$#4095#"); if(this.getDescriptions()!=null && this.getDescriptions().size()>0) {
+			System.out.println("$#4098#"); return this.getDescriptions().get(0);
 		}
 		
 		return null;
@@ -172,7 +172,7 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 	}
 
 	public Integer getSortOrder() {
-		return sortOrder;
+		System.out.println("$#4099#"); return sortOrder;
 	}
 
 	public void setContentPosition(ContentPosition contentPosition) {
@@ -180,13 +180,13 @@ public class Content extends SalesManagerEntity<Long, Content> implements Serial
 	}
 
 	public ContentPosition getContentPosition() {
-		return contentPosition;
+		System.out.println("$#4100#"); return contentPosition;
 	}
 	
 
 
 	public boolean isLinkToMenu() {
-		return linkToMenu;
+		System.out.println("$#4102#"); System.out.println("$#4101#"); return linkToMenu;
 	}
 
 	public void setLinkToMenu(boolean linkToMenu) {

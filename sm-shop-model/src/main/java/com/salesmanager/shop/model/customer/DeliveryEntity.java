@@ -24,7 +24,7 @@ public class DeliveryEntity extends Address implements Serializable {
 
 
 	public String getCountryName() {
-		return countryName;
+		System.out.println("$#9079#"); return countryName;
 	}
 
 	public void setCountryName(String countryName) {
@@ -32,7 +32,7 @@ public class DeliveryEntity extends Address implements Serializable {
 	}
 
 	public String getProvinceName() {
-		return provinceName;
+		System.out.println("$#9080#"); return provinceName;
 	}
 
 	public void setProvinceName(String provinceName) {

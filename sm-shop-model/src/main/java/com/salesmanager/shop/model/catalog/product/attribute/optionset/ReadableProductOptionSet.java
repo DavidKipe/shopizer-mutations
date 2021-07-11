@@ -18,19 +18,19 @@ public class ReadableProductOptionSet extends ProductOptionSetEntity {
 	private List<ReadableProductType> productTypes;
 	
 	public ReadableProductOption getOption() {
-		return option;
+		System.out.println("$#8791#"); return option;
 	}
 	public void setOption(ReadableProductOption option) {
 		this.option = option;
 	}
 	public List<ReadableProductOptionValue> getValues() {
-		return values;
+		System.out.println("$#8792#"); return values;
 	}
 	public void setValues(List<ReadableProductOptionValue> values) {
 		this.values = values;
 	}
 	public List<ReadableProductType> getProductTypes() {
-		return productTypes;
+		System.out.println("$#8793#"); return productTypes;
 	}
 	public void setProductTypes(List<ReadableProductType> productTypes) {
 		this.productTypes = productTypes;

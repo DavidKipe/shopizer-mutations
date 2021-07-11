@@ -26,7 +26,7 @@ public class GeoLocationImpl implements GeoLocation {
 	@Override
 	public Address getAddress(String ipAddress) throws Exception {
 		
-			if(reader==null) {
+			System.out.println("$#1499#"); if(reader==null) {
 					try {
 						java.io.InputStream inputFile = GeoLocationImpl.class.getClassLoader().getResourceAsStream("reference/GeoLite2-City.mmdb");
 						reader = new DatabaseReader.Builder(inputFile).build();
@@ -41,10 +41,10 @@ public class GeoLocationImpl implements GeoLocation {
 			
 			CityResponse response = reader.city(InetAddress.getByName(ipAddress));
 
-			address.setCountry(response.getCountry().getIsoCode());
-			address.setPostalCode(response.getPostal().getCode());
-			address.setZone(response.getMostSpecificSubdivision().getIsoCode());
-			address.setCity(response.getCity().getName());
+			System.out.println("$#1500#"); address.setCountry(response.getCountry().getIsoCode());
+			System.out.println("$#1501#"); address.setPostalCode(response.getPostal().getCode());
+			System.out.println("$#1502#"); address.setZone(response.getMostSpecificSubdivision().getIsoCode());
+			System.out.println("$#1503#"); address.setCity(response.getCity().getName());
 			
 			} catch(com.maxmind.geoip2.exception.AddressNotFoundException ne) {
 				LOGGER.debug("Address not fount in DB " + ne.getMessage());
@@ -53,7 +53,7 @@ public class GeoLocationImpl implements GeoLocation {
 			}
 
 		
-			return address;
+			System.out.println("$#1504#"); return address;
 		
 		
 	}

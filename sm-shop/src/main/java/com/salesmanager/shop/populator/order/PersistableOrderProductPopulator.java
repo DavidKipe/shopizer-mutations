@@ -32,7 +32,7 @@ public class PersistableOrderProductPopulator extends
 
 
 	public ProductAttributeService getProductAttributeService() {
-		return productAttributeService;
+		System.out.println("$#10609#"); return productAttributeService;
 	}
 
 	public void setProductAttributeService(
@@ -41,7 +41,7 @@ public class PersistableOrderProductPopulator extends
 	}
 
 	public DigitalProductService getDigitalProductService() {
-		return digitalProductService;
+		System.out.println("$#10610#"); return digitalProductService;
 	}
 
 	public void setDigitalProductService(DigitalProductService digitalProductService) {
@@ -56,41 +56,41 @@ public class PersistableOrderProductPopulator extends
 	public OrderProduct populate(PersistableOrderProduct source, OrderProduct target,
 			MerchantStore store, Language language) throws ConversionException {
 		
-		Validate.notNull(productService,"productService must be set");
-		Validate.notNull(digitalProductService,"digitalProductService must be set");
-		Validate.notNull(productAttributeService,"productAttributeService must be set");
+		System.out.println("$#10611#"); Validate.notNull(productService,"productService must be set");
+		System.out.println("$#10612#"); Validate.notNull(digitalProductService,"digitalProductService must be set");
+		System.out.println("$#10613#"); Validate.notNull(productAttributeService,"productAttributeService must be set");
 
 		
 		try {
 			Product modelProduct = productService.getById(source.getProduct().getId());
-			if(modelProduct==null) {
+			System.out.println("$#10614#"); if(modelProduct==null) {
 				throw new ConversionException("Cannot get product with id (productId) " + source.getProduct().getId());
 			}
 			
-			if(modelProduct.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#10615#"); if(modelProduct.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 				throw new ConversionException("Invalid product id " + source.getProduct().getId());
 			}
 
 			DigitalProduct digitalProduct = digitalProductService.getByProduct(store, modelProduct);
 			
-			if(digitalProduct!=null) {
+			System.out.println("$#10616#"); if(digitalProduct!=null) {
 				OrderProductDownload orderProductDownload = new OrderProductDownload();	
-				orderProductDownload.setOrderProductFilename(digitalProduct.getProductFileName());
-				orderProductDownload.setOrderProduct(target);
-				orderProductDownload.setDownloadCount(0);
-				orderProductDownload.setMaxdays(ApplicationConstants.MAX_DOWNLOAD_DAYS);
+				System.out.println("$#10617#"); orderProductDownload.setOrderProductFilename(digitalProduct.getProductFileName());
+				System.out.println("$#10618#"); orderProductDownload.setOrderProduct(target);
+				System.out.println("$#10619#"); orderProductDownload.setDownloadCount(0);
+				System.out.println("$#10620#"); orderProductDownload.setMaxdays(ApplicationConstants.MAX_DOWNLOAD_DAYS);
 				target.getDownloads().add(orderProductDownload);
 			}
 
-			target.setOneTimeCharge(source.getPrice());	
-			target.setProductName(source.getProduct().getDescription().getName());
-			target.setProductQuantity(source.getOrderedQuantity());
-			target.setSku(source.getProduct().getSku());
+			System.out.println("$#10621#"); target.setOneTimeCharge(source.getPrice());
+			System.out.println("$#10622#"); target.setProductName(source.getProduct().getDescription().getName());
+			System.out.println("$#10623#"); target.setProductQuantity(source.getOrderedQuantity());
+			System.out.println("$#10624#"); target.setSku(source.getProduct().getSku());
 			
 			OrderProductPrice orderProductPrice = new OrderProductPrice();
-			orderProductPrice.setDefaultPrice(true);
-			orderProductPrice.setProductPrice(source.getPrice());
-			orderProductPrice.setOrderProduct(target);
+			System.out.println("$#10625#"); orderProductPrice.setDefaultPrice(true);
+			System.out.println("$#10626#"); orderProductPrice.setProductPrice(source.getPrice());
+			System.out.println("$#10627#"); orderProductPrice.setOrderProduct(target);
 			
 
 			
@@ -108,35 +108,35 @@ public class PersistableOrderProductPopulator extends
 				}
 			}*/
 			
-			target.setPrices(prices);
+			System.out.println("$#10628#"); target.setPrices(prices);
 			
 			//OrderProductAttribute
 			List<ProductAttribute> attributeItems = source.getAttributes();
-			if(!CollectionUtils.isEmpty(attributeItems)) {
+			System.out.println("$#10629#"); if(!CollectionUtils.isEmpty(attributeItems)) {
 				Set<OrderProductAttribute> attributes = new HashSet<OrderProductAttribute>();
 				for(ProductAttribute attribute : attributeItems) {
 					OrderProductAttribute orderProductAttribute = new OrderProductAttribute();
-					orderProductAttribute.setOrderProduct(target);
+					System.out.println("$#10630#"); orderProductAttribute.setOrderProduct(target);
 					Long id = attribute.getId();
 					com.salesmanager.core.model.catalog.product.attribute.ProductAttribute attr = productAttributeService.getById(id);
-					if(attr==null) {
+					System.out.println("$#10631#"); if(attr==null) {
 						throw new ConversionException("Attribute id " + id + " does not exists");
 					}
 					
-					if(attr.getProduct().getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+					System.out.println("$#10632#"); if(attr.getProduct().getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 						throw new ConversionException("Attribute id " + id + " invalid for this store");
 					}
 					
-					orderProductAttribute.setProductAttributeIsFree(attr.getProductAttributeIsFree());
-					orderProductAttribute.setProductAttributeName(attr.getProductOption().getDescriptionsSettoList().get(0).getName());
-					orderProductAttribute.setProductAttributeValueName(attr.getProductOptionValue().getDescriptionsSettoList().get(0).getName());
-					orderProductAttribute.setProductAttributePrice(attr.getProductAttributePrice());
-					orderProductAttribute.setProductAttributeWeight(attr.getProductAttributeWeight());
-					orderProductAttribute.setProductOptionId(attr.getProductOption().getId());
-					orderProductAttribute.setProductOptionValueId(attr.getProductOptionValue().getId());
+					System.out.println("$#10633#"); orderProductAttribute.setProductAttributeIsFree(attr.getProductAttributeIsFree());
+					System.out.println("$#10634#"); orderProductAttribute.setProductAttributeName(attr.getProductOption().getDescriptionsSettoList().get(0).getName());
+					System.out.println("$#10635#"); orderProductAttribute.setProductAttributeValueName(attr.getProductOptionValue().getDescriptionsSettoList().get(0).getName());
+					System.out.println("$#10636#"); orderProductAttribute.setProductAttributePrice(attr.getProductAttributePrice());
+					System.out.println("$#10637#"); orderProductAttribute.setProductAttributeWeight(attr.getProductAttributeWeight());
+					System.out.println("$#10638#"); orderProductAttribute.setProductOptionId(attr.getProductOption().getId());
+					System.out.println("$#10639#"); orderProductAttribute.setProductOptionValueId(attr.getProductOptionValue().getId());
 					attributes.add(orderProductAttribute);
 				}
-				target.setOrderAttributes(attributes);
+				System.out.println("$#10640#"); target.setOrderAttributes(attributes);
 			}
 
 			
@@ -145,7 +145,7 @@ public class PersistableOrderProductPopulator extends
 		}
 		
 		
-		return target;
+		System.out.println("$#10641#"); return target;
 	}
 
 	@Override
@@ -158,7 +158,7 @@ public class PersistableOrderProductPopulator extends
 	}
 
 	public ProductService getProductService() {
-		return productService;
+		System.out.println("$#10642#"); return productService;
 	}
 	
 

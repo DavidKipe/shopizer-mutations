@@ -110,7 +110,7 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4685#"); return auditSection;
 	}
 
 	@Override
@@ -121,7 +121,7 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4686#"); return id;
 	}
 
 	@Override
@@ -137,7 +137,7 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 	}
 
 	public Set<ShoppingCartAttributeItem> getAttributes() {
-		return attributes;
+		System.out.println("$#4687#"); return attributes;
 	}
 
 	public void setItemPrice(BigDecimal itemPrice) {
@@ -145,7 +145,7 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 	}
 
 	public BigDecimal getItemPrice() {
-		return itemPrice;
+		System.out.println("$#4688#"); return itemPrice;
 	}
 
 	public void setQuantity(Integer quantity) {
@@ -153,13 +153,13 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 	}
 
 	public Integer getQuantity() {
-		return quantity;
+		System.out.println("$#4689#"); return quantity;
 	}
 
 
 
 	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
+		System.out.println("$#4690#"); return shoppingCart;
 	}
 
 	public void setShoppingCart(ShoppingCart shoppingCart) {
@@ -171,7 +171,7 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 	}
 
 	public Long getProductId() {
-		return productId;
+		System.out.println("$#4691#"); return productId;
 	}
 
 	public void setProduct(Product product) {
@@ -179,7 +179,7 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 	}
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#4692#"); return product;
 	}
 
 	public void addAttributes(ShoppingCartAttributeItem shoppingCartAttributeItem)
@@ -201,7 +201,7 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 	}
 
 	public BigDecimal getSubTotal() {
-		return subTotal;
+		System.out.println("$#4693#"); return subTotal;
 	}
 
 	public void setFinalPrice(FinalPrice finalPrice) {
@@ -209,11 +209,11 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 	}
 
 	public FinalPrice getFinalPrice() {
-		return finalPrice;
+		System.out.println("$#4694#"); return finalPrice;
 	}
 
 	public boolean isObsolete() {
-		return obsolete;
+		System.out.println("$#4696#"); System.out.println("$#4695#"); return obsolete;
 	}
 
 	public void setObsolete(boolean obsolete) {
@@ -222,7 +222,7 @@ public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem>
 
 
 	public boolean isProductVirtual() {
-		return productVirtual;
+		System.out.println("$#4698#"); System.out.println("$#4697#"); return productVirtual;
 	}
 
 	public void setProductVirtual(boolean productVirtual) {

@@ -14,7 +14,7 @@ public class PersistableProductReview extends ProductReviewEntity implements
 	@NotNull
 	private Long customerId;
 	public Long getCustomerId() {
-		return customerId;
+		System.out.println("$#8874#"); return customerId;
 	}
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;

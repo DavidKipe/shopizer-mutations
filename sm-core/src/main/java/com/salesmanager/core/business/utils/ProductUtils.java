@@ -13,7 +13,7 @@ public class ProductUtils {
 		Set<OrderProductAttribute> oAttributes = orderProduct.getOrderAttributes();
 		StringBuilder attributeName = null;
 		for(OrderProductAttribute oProductAttribute : oAttributes) {
-			if(attributeName == null) {
+			System.out.println("$#3687#"); if(attributeName == null) {
 				attributeName = new StringBuilder();
 				attributeName.append("[");
 			} else {
@@ -29,12 +29,12 @@ public class ProductUtils {
 		StringBuilder productName = new StringBuilder();
 		productName.append(pName);
 		
-		if(attributeName!=null) {
+		System.out.println("$#3688#"); if(attributeName!=null) {
 			attributeName.append("]");
 			productName.append(" ").append(attributeName.toString());
 		}
 		
-		return productName.toString();
+		System.out.println("$#3689#"); return productName.toString();
 		
 		
 	}

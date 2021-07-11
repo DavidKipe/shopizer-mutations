@@ -121,7 +121,7 @@ public class ShippingServiceImpl implements ShippingService {
 		
 		ShippingConfiguration shippingConfiguration = null;
 		
-		if(configuration!=null) {
+		System.out.println("$#2904#"); if(configuration!=null) {
 			String value = configuration.getValue();
 			
 			ObjectMapper mapper = new ObjectMapper();
@@ -131,7 +131,7 @@ public class ShippingServiceImpl implements ShippingService {
 				throw new ServiceException("Cannot parse json string " + value);
 			}
 		}
-		return shippingConfiguration;
+		System.out.println("$#2905#"); return shippingConfiguration;
 		
 	}
 	
@@ -140,10 +140,10 @@ public class ShippingServiceImpl implements ShippingService {
 
 		
 		Map<String,IntegrationConfiguration> configuredModules = getShippingModulesConfigured(store);
-		if(configuredModules!=null) {
+		System.out.println("$#2906#"); if(configuredModules!=null) {
 			for(String key : configuredModules.keySet()) {
-				if(key.equals(moduleCode)) {
-					return configuredModules.get(key);	
+				System.out.println("$#2907#"); if(key.equals(moduleCode)) {
+					System.out.println("$#2908#"); return configuredModules.get(key);
 				}
 			}
 		}
@@ -157,10 +157,10 @@ public class ShippingServiceImpl implements ShippingService {
 
 		
 		ShippingQuoteModule quoteModule = (ShippingQuoteModule)shippingModules.get(moduleCode);
-		if(quoteModule==null) {
+		System.out.println("$#2909#"); if(quoteModule==null) {
 			return null;
 		}
-		return quoteModule.getCustomModuleConfiguration(store);
+		System.out.println("$#2910#"); return quoteModule.getCustomModuleConfiguration(store);
 		
 	}
 	
@@ -169,15 +169,15 @@ public class ShippingServiceImpl implements ShippingService {
 		
 		MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(ShippingConstants.SHIPPING_CONFIGURATION, store);
 
-		if(configuration==null) {
+		System.out.println("$#2911#"); if(configuration==null) {
 			configuration = new MerchantConfiguration();
-			configuration.setMerchantStore(store);
-			configuration.setKey(ShippingConstants.SHIPPING_CONFIGURATION);
+			System.out.println("$#2912#"); configuration.setMerchantStore(store);
+			System.out.println("$#2913#"); configuration.setKey(ShippingConstants.SHIPPING_CONFIGURATION);
 		}
 		
 		String value = shippingConfiguration.toJSONString();
-		configuration.setValue(value);
-		merchantConfigurationService.saveOrUpdate(configuration);
+		System.out.println("$#2914#"); configuration.setValue(value);
+		System.out.println("$#2915#"); merchantConfigurationService.saveOrUpdate(configuration);
 		
 	}
 	
@@ -186,7 +186,7 @@ public class ShippingServiceImpl implements ShippingService {
 		
 		
 		ShippingQuoteModule quoteModule = (ShippingQuoteModule)shippingModules.get(moduleCode);
-		if(quoteModule==null) {
+		System.out.println("$#2916#"); if(quoteModule==null) {
 			throw new ServiceException("Shipping module " + moduleCode + " does not exist");
 		}
 		
@@ -197,14 +197,14 @@ public class ShippingServiceImpl implements ShippingService {
 
 			MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(moduleCode, store);
 	
-			if(configuration==null) {
+			System.out.println("$#2917#"); if(configuration==null) {
 
 				configuration = new MerchantConfiguration();
-				configuration.setKey(moduleCode);
-				configuration.setMerchantStore(store);
+				System.out.println("$#2918#"); configuration.setKey(moduleCode);
+				System.out.println("$#2919#"); configuration.setMerchantStore(store);
 			}
-			configuration.setValue(configurationValue);
-			merchantConfigurationService.saveOrUpdate(configuration);
+			System.out.println("$#2920#"); configuration.setValue(configurationValue);
+			System.out.println("$#2921#"); merchantConfigurationService.saveOrUpdate(configuration);
 		
 		} catch (Exception e) {
 			throw new IntegrationException(e);
@@ -222,14 +222,14 @@ public class ShippingServiceImpl implements ShippingService {
 		List<IntegrationModule> returnModules = new ArrayList<IntegrationModule>();
 		
 		for(IntegrationModule module : modules) {
-			if(module.getRegionsSet().contains(store.getCountry().getIsoCode())
+			System.out.println("$#2922#"); if(module.getRegionsSet().contains(store.getCountry().getIsoCode())
 					|| module.getRegionsSet().contains("*")) {
 				
 				returnModules.add(module);
 			}
 		}
 		
-		return returnModules;
+		System.out.println("$#2924#"); return returnModules;
 	}
 	
 	@Override
@@ -240,10 +240,10 @@ public class ShippingServiceImpl implements ShippingService {
 				
 				String moduleCode = configuration.getModuleCode();
 				ShippingQuoteModule quoteModule = (ShippingQuoteModule)shippingModules.get(moduleCode);
-				if(quoteModule==null) {
+				System.out.println("$#2925#"); if(quoteModule==null) {
 					throw new ServiceException("Shipping quote module " + moduleCode + " does not exist");
 				}
-				quoteModule.validateModuleConfiguration(configuration, store);
+				System.out.println("$#2926#"); quoteModule.validateModuleConfiguration(configuration, store);
 				
 			} catch (IntegrationException ie) {
 				throw ie;
@@ -252,24 +252,24 @@ public class ShippingServiceImpl implements ShippingService {
 			try {
 				Map<String,IntegrationConfiguration> modules = new HashMap<String,IntegrationConfiguration>();
 				MerchantConfiguration merchantConfiguration = merchantConfigurationService.getMerchantConfiguration(SHIPPING_MODULES, store);
-				if(merchantConfiguration!=null) {
-					if(!StringUtils.isBlank(merchantConfiguration.getValue())) {
+				System.out.println("$#2927#"); if(merchantConfiguration!=null) {
+					System.out.println("$#2928#"); if(!StringUtils.isBlank(merchantConfiguration.getValue())) {
 						
 						String decrypted = encryption.decrypt(merchantConfiguration.getValue());
 						modules = ConfigurationModulesLoader.loadIntegrationConfigurations(decrypted);
 					}
 				} else {
 					merchantConfiguration = new MerchantConfiguration();
-					merchantConfiguration.setMerchantStore(store);
-					merchantConfiguration.setKey(SHIPPING_MODULES);
+					System.out.println("$#2929#"); merchantConfiguration.setMerchantStore(store);
+					System.out.println("$#2930#"); merchantConfiguration.setKey(SHIPPING_MODULES);
 				}
 				modules.put(configuration.getModuleCode(), configuration);
 				
 				String configs =  ConfigurationModulesLoader.toJSONString(modules);
 				
 				String encrypted = encryption.encrypt(configs);
-				merchantConfiguration.setValue(encrypted);
-				merchantConfigurationService.saveOrUpdate(merchantConfiguration);
+				System.out.println("$#2931#"); merchantConfiguration.setValue(encrypted);
+				System.out.println("$#2932#"); merchantConfigurationService.saveOrUpdate(merchantConfiguration);
 				
 			} catch (Exception e) {
 				throw new ServiceException(e);
@@ -285,8 +285,8 @@ public class ShippingServiceImpl implements ShippingService {
 		try {
 			Map<String,IntegrationConfiguration> modules = new HashMap<String,IntegrationConfiguration>();
 			MerchantConfiguration merchantConfiguration = merchantConfigurationService.getMerchantConfiguration(SHIPPING_MODULES, store);
-			if(merchantConfiguration!=null) {
-				if(!StringUtils.isBlank(merchantConfiguration.getValue())) {
+			System.out.println("$#2933#"); if(merchantConfiguration!=null) {
+				System.out.println("$#2934#"); if(!StringUtils.isBlank(merchantConfiguration.getValue())) {
 					String decrypted = encryption.decrypt(merchantConfiguration.getValue());
 					modules = ConfigurationModulesLoader.loadIntegrationConfigurations(decrypted);
 				}
@@ -294,17 +294,17 @@ public class ShippingServiceImpl implements ShippingService {
 				modules.remove(moduleCode);
 				String configs =  ConfigurationModulesLoader.toJSONString(modules);
 				String encrypted = encryption.encrypt(configs);
-				merchantConfiguration.setValue(encrypted);
-				merchantConfigurationService.saveOrUpdate(merchantConfiguration);
+				System.out.println("$#2935#"); merchantConfiguration.setValue(encrypted);
+				System.out.println("$#2936#"); merchantConfigurationService.saveOrUpdate(merchantConfiguration);
 				
 				
 			} 
 			
 			MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(moduleCode, store);
 			
-			if(configuration!=null) {//custom module
+			System.out.println("$#2937#"); if(configuration!=null) {//custom module
 
-				merchantConfigurationService.delete(configuration);
+				System.out.println("$#2938#"); merchantConfigurationService.delete(configuration);
 			}
 
 			
@@ -321,10 +321,10 @@ public class ShippingServiceImpl implements ShippingService {
 
 		try {
 			
-			removeShippingQuoteModuleConfiguration(moduleCode,store);
+			System.out.println("$#2939#"); removeShippingQuoteModuleConfiguration(moduleCode,store);
 			MerchantConfiguration merchantConfiguration = merchantConfigurationService.getMerchantConfiguration(moduleCode, store);
-			if(merchantConfiguration!=null) {
-				merchantConfigurationService.delete(merchantConfiguration);
+			System.out.println("$#2940#"); if(merchantConfiguration!=null) {
+				System.out.println("$#2941#"); merchantConfigurationService.delete(merchantConfiguration);
 			} 
 			
 			
@@ -341,14 +341,14 @@ public class ShippingServiceImpl implements ShippingService {
 
 			Map<String,IntegrationConfiguration> modules = new HashMap<String,IntegrationConfiguration>();
 			MerchantConfiguration merchantConfiguration = merchantConfigurationService.getMerchantConfiguration(SHIPPING_MODULES, store);
-			if(merchantConfiguration!=null) {
-				if(!StringUtils.isBlank(merchantConfiguration.getValue())) {
+			System.out.println("$#2942#"); if(merchantConfiguration!=null) {
+				System.out.println("$#2943#"); if(!StringUtils.isBlank(merchantConfiguration.getValue())) {
 					String decrypted = encryption.decrypt(merchantConfiguration.getValue());
 					modules = ConfigurationModulesLoader.loadIntegrationConfigurations(decrypted);
 					
 				}
 			}
-			return modules;
+			System.out.println("$#2944#"); return modules;
 		
 		
 		} catch (Exception e) {
@@ -361,13 +361,13 @@ public class ShippingServiceImpl implements ShippingService {
 	public ShippingSummary getShippingSummary(MerchantStore store, ShippingQuote shippingQuote, ShippingOption selectedShippingOption) throws ServiceException {
 		
 		ShippingSummary shippingSummary = new ShippingSummary();
-		shippingSummary.setFreeShipping(shippingQuote.isFreeShipping());
-		shippingSummary.setHandling(shippingQuote.getHandlingFees());
-		shippingSummary.setShipping(selectedShippingOption.getOptionPrice());
-		shippingSummary.setShippingModule(shippingQuote.getShippingModuleCode());
-		shippingSummary.setShippingOption(selectedShippingOption.getDescription());
+		System.out.println("$#2945#"); shippingSummary.setFreeShipping(shippingQuote.isFreeShipping());
+		System.out.println("$#2946#"); shippingSummary.setHandling(shippingQuote.getHandlingFees());
+		System.out.println("$#2947#"); shippingSummary.setShipping(selectedShippingOption.getOptionPrice());
+		System.out.println("$#2948#"); shippingSummary.setShippingModule(shippingQuote.getShippingModuleCode());
+		System.out.println("$#2949#"); shippingSummary.setShippingOption(selectedShippingOption.getDescription());
 		
-		return shippingSummary;
+		System.out.println("$#2950#"); return shippingSummary;
 	}
 
 	@Override
@@ -392,9 +392,9 @@ public class ShippingServiceImpl implements ShippingService {
 		try {
 			
 			
-			if(StringUtils.isBlank(delivery.getPostalCode())) {
+			System.out.println("$#2951#"); if(StringUtils.isBlank(delivery.getPostalCode())) {
 				shippingQuote.getWarnings().add("No postal code in delivery address");
-				shippingQuote.setShippingReturnCode(ShippingQuote.NO_POSTAL_CODE);
+				System.out.println("$#2952#"); shippingQuote.setShippingReturnCode(ShippingQuote.NO_POSTAL_CODE);
 			}
 		
 			//get configuration
@@ -403,22 +403,22 @@ public class ShippingServiceImpl implements ShippingService {
 			
 			/** get shipping origin **/
 			ShippingOrigin shippingOrigin = shippingOriginService.getByStore(store);
-			if(shippingOrigin == null || !shippingOrigin.isActive()) {
+			System.out.println("$#2953#"); if(shippingOrigin == null || !shippingOrigin.isActive()) {
 				shippingOrigin = new ShippingOrigin();
-				shippingOrigin.setAddress(store.getStoreaddress());
-				shippingOrigin.setCity(store.getStorecity());
-				shippingOrigin.setCountry(store.getCountry());
-				shippingOrigin.setPostalCode(store.getStorepostalcode());
-				shippingOrigin.setState(store.getStorestateprovince());
-				shippingOrigin.setZone(store.getZone());
+				System.out.println("$#2955#"); shippingOrigin.setAddress(store.getStoreaddress());
+				System.out.println("$#2956#"); shippingOrigin.setCity(store.getStorecity());
+				System.out.println("$#2957#"); shippingOrigin.setCountry(store.getCountry());
+				System.out.println("$#2958#"); shippingOrigin.setPostalCode(store.getStorepostalcode());
+				System.out.println("$#2959#"); shippingOrigin.setState(store.getStorestateprovince());
+				System.out.println("$#2960#"); shippingOrigin.setZone(store.getZone());
 			}
 			
 			
-			if(shippingConfiguration==null) {
+			System.out.println("$#2961#"); if(shippingConfiguration==null) {
 				shippingConfiguration = new ShippingConfiguration();
 			}
 			
-			if(shippingConfiguration.getShippingType()!=null) {
+			System.out.println("$#2962#"); if(shippingConfiguration.getShippingType()!=null) {
 					shippingType = shippingConfiguration.getShippingType();
 			}
 
@@ -429,27 +429,27 @@ public class ShippingServiceImpl implements ShippingService {
 			Validate.notNull(shipCountry,"Ship to Country cannot be null");
 			Validate.notNull(store.getCountry(), "Store Country canot be null");
 			
-			if(shippingType.name().equals(ShippingType.NATIONAL.name())){
+			System.out.println("$#2963#"); if(shippingType.name().equals(ShippingType.NATIONAL.name())){
 				//customer country must match store country
-				if(!shipCountry.getIsoCode().equals(store.getCountry().getIsoCode())) {
-					shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_TO_SELECTED_COUNTRY + " " + shipCountry.getIsoCode());
-					return shippingQuote;
+				System.out.println("$#2964#"); if(!shipCountry.getIsoCode().equals(store.getCountry().getIsoCode())) {
+					System.out.println("$#2965#"); shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_TO_SELECTED_COUNTRY + " " + shipCountry.getIsoCode());
+					System.out.println("$#2966#"); return shippingQuote;
 				}
-			} else if(shippingType.name().equals(ShippingType.INTERNATIONAL.name())){
+			} else if(shippingType.name().equals(ShippingType.INTERNATIONAL.name())){ System.out.println("$#2967#");
 				
 				//customer shipping country code must be in accepted list
 				List<String> supportedCountries = this.getSupportedCountries(store);
-				if(!supportedCountries.contains(shipCountry.getIsoCode())) {
-					shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_TO_SELECTED_COUNTRY + " " + shipCountry.getIsoCode());
-					return shippingQuote;
+				System.out.println("$#2968#"); if(!supportedCountries.contains(shipCountry.getIsoCode())) {
+					System.out.println("$#2969#"); shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_TO_SELECTED_COUNTRY + " " + shipCountry.getIsoCode());
+					System.out.println("$#2970#"); return shippingQuote;
 				}
 			}
 			
 			//must have a shipping module configured
 			Map<String, IntegrationConfiguration> modules = this.getShippingModulesConfigured(store);
-			if(modules == null){
-				shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_MODULE_CONFIGURED);
-				return shippingQuote;
+			System.out.println("$#2971#"); if(modules == null){
+				System.out.println("$#2972#"); shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_MODULE_CONFIGURED);
+				System.out.println("$#2973#"); return shippingQuote;
 			}
 
 			
@@ -460,9 +460,9 @@ public class ShippingServiceImpl implements ShippingService {
 				moduleName = module;
 				configuration = modules.get(module);
 				//use the first active module
-				if(configuration.isActive()) {
+				System.out.println("$#2974#"); if(configuration.isActive()) {
 					shippingQuoteModule = shippingModules.get(module);
-					if(shippingQuoteModule instanceof ShippingQuotePrePostProcessModule) {
+					System.out.println("$#2975#"); if(shippingQuoteModule instanceof ShippingQuotePrePostProcessModule) {
 						shippingQuoteModule = null;
 						continue;
 					} else {
@@ -471,25 +471,25 @@ public class ShippingServiceImpl implements ShippingService {
 				}
 			}
 			
-			if(shippingQuoteModule==null){
-				shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_MODULE_CONFIGURED);
-				return shippingQuote;
+			System.out.println("$#2976#"); if(shippingQuoteModule==null){
+				System.out.println("$#2977#"); shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_MODULE_CONFIGURED);
+				System.out.println("$#2978#"); return shippingQuote;
 			}
 			
 			/** merchant module configs **/
 			List<IntegrationModule> shippingMethods = this.getShippingMethods(store);
 			IntegrationModule shippingModule = null;
 			for(IntegrationModule mod : shippingMethods) {
-				if(mod.getCode().equals(moduleName)){
+				System.out.println("$#2979#"); if(mod.getCode().equals(moduleName)){
 					shippingModule = mod;
 					break;
 				}
 			}
 			
 			/** general module configs **/
-			if(shippingModule==null) {
-				shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_MODULE_CONFIGURED);
-				return shippingQuote;
+			System.out.println("$#2980#"); if(shippingModule==null) {
+				System.out.println("$#2981#"); shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_MODULE_CONFIGURED);
+				System.out.println("$#2982#"); return shippingQuote;
 			}
 			
 			//calculate order total
@@ -498,22 +498,22 @@ public class ShippingServiceImpl implements ShippingService {
 			
 			//free shipping ?
 			boolean freeShipping = false;
-			if(shippingConfiguration.isFreeShippingEnabled()) {
+			System.out.println("$#2983#"); if(shippingConfiguration.isFreeShippingEnabled()) {
 				BigDecimal freeShippingAmount = shippingConfiguration.getOrderTotalFreeShipping();
-				if(freeShippingAmount!=null) {
-					if(orderTotal.doubleValue()>freeShippingAmount.doubleValue()) {
-						if(shippingConfiguration.getFreeShippingType() == ShippingType.NATIONAL) {
-							if(store.getCountry().getIsoCode().equals(shipCountry.getIsoCode())) {
+				System.out.println("$#2984#"); if(freeShippingAmount!=null) {
+					System.out.println("$#2986#"); System.out.println("$#2985#"); if(orderTotal.doubleValue()>freeShippingAmount.doubleValue()) {
+						System.out.println("$#2987#"); if(shippingConfiguration.getFreeShippingType() == ShippingType.NATIONAL) {
+							System.out.println("$#2988#"); if(store.getCountry().getIsoCode().equals(shipCountry.getIsoCode())) {
 								freeShipping = true;
-								shippingQuote.setFreeShipping(true);
-								shippingQuote.setFreeShippingAmount(freeShippingAmount);
-								return shippingQuote;
+								System.out.println("$#2989#"); shippingQuote.setFreeShipping(true);
+								System.out.println("$#2990#"); shippingQuote.setFreeShippingAmount(freeShippingAmount);
+								System.out.println("$#2991#"); return shippingQuote;
 							}
 						} else {//international all
 							freeShipping = true;
-							shippingQuote.setFreeShipping(true);
-							shippingQuote.setFreeShippingAmount(freeShippingAmount);
-							return shippingQuote;
+							System.out.println("$#2992#"); shippingQuote.setFreeShipping(true);
+							System.out.println("$#2993#"); shippingQuote.setFreeShippingAmount(freeShippingAmount);
+							System.out.println("$#2994#"); return shippingQuote;
 						}
 	
 					}
@@ -523,12 +523,12 @@ public class ShippingServiceImpl implements ShippingService {
 
 			//handling fees
 			BigDecimal handlingFees = shippingConfiguration.getHandlingFees();
-			if(handlingFees!=null) {
-				shippingQuote.setHandlingFees(handlingFees);
+			System.out.println("$#2995#"); if(handlingFees!=null) {
+				System.out.println("$#2996#"); shippingQuote.setHandlingFees(handlingFees);
 			}
 			
 			//tax basis
-			shippingQuote.setApplyTaxOnShipping(shippingConfiguration.isTaxOnShipping());
+			System.out.println("$#2997#"); shippingQuote.setApplyTaxOnShipping(shippingConfiguration.isTaxOnShipping());
 			
 
 			Locale locale = languageService.toLocale(language, store);
@@ -536,16 +536,16 @@ public class ShippingServiceImpl implements ShippingService {
 			//invoke pre processors
 			//the main pre-processor determines at runtime the shipping module
 			//also available distance calculation
-			if(!CollectionUtils.isEmpty(shippingModulePreProcessors)) {
+			System.out.println("$#2998#"); if(!CollectionUtils.isEmpty(shippingModulePreProcessors)) {
 				for(ShippingQuotePrePostProcessModule preProcessor : shippingModulePreProcessors) {
 					//System.out.println("Using pre-processor " + preProcessor.getModuleCode());
-					preProcessor.prePostProcessShippingQuotes(shippingQuote, packages, orderTotal, delivery, shippingOrigin, store, configuration, shippingModule, shippingConfiguration, shippingMethods, locale);
+					System.out.println("$#2999#"); preProcessor.prePostProcessShippingQuotes(shippingQuote, packages, orderTotal, delivery, shippingOrigin, store, configuration, shippingModule, shippingConfiguration, shippingMethods, locale);
 					//TODO switch module if required
-					if(shippingQuote.getCurrentShippingModule()!=null && !shippingQuote.getCurrentShippingModule().getCode().equals(shippingModule.getCode())) {
+					System.out.println("$#3000#"); if(shippingQuote.getCurrentShippingModule()!=null && !shippingQuote.getCurrentShippingModule().getCode().equals(shippingModule.getCode())) {
 						shippingModule = shippingQuote.getCurrentShippingModule();//determines the shipping module
 						configuration = modules.get(shippingModule.getCode());
-						if(configuration!=null) {
-							if(configuration.isActive()) {
+						System.out.println("$#3002#"); if(configuration!=null) {
+							System.out.println("$#3003#"); if(configuration.isActive()) {
 								moduleName = shippingModule.getCode();
 								shippingQuoteModule = this.shippingModules.get(shippingModule.getCode());
 								configuration = modules.get(shippingModule.getCode());
@@ -573,46 +573,46 @@ public class ShippingServiceImpl implements ShippingService {
 				return shippingQuote;*/
 			}
 			
-			if(shippingOptions==null && !StringUtils.isBlank(delivery.getPostalCode())) {
+			System.out.println("$#3004#"); if(shippingOptions==null && !StringUtils.isBlank(delivery.getPostalCode())) {
 				
 				//absolutely need to use in this case store pickup or other default shipping quote
-				shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_TO_SELECTED_COUNTRY);
+				System.out.println("$#3006#"); shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_TO_SELECTED_COUNTRY);
 			}
 			
 			
-			shippingQuote.setShippingModuleCode(moduleName);	
+			System.out.println("$#3007#"); shippingQuote.setShippingModuleCode(moduleName);
 			
 			//filter shipping options
 			ShippingOptionPriceType shippingOptionPriceType = shippingConfiguration.getShippingOptionPriceType();
 			ShippingOption selectedOption = null;
 			
-			if(shippingOptions!=null) {
+			System.out.println("$#3008#"); if(shippingOptions!=null) {
 				
 				for(ShippingOption option : shippingOptions) {
-					if(selectedOption==null) {
+					System.out.println("$#3009#"); if(selectedOption==null) {
 						selectedOption = option;
 					}
 					//set price text
 					String priceText = pricingService.getDisplayAmount(option.getOptionPrice(), store);
-					option.setOptionPriceText(priceText);
-					option.setShippingModuleCode(moduleName);
+					System.out.println("$#3010#"); option.setOptionPriceText(priceText);
+					System.out.println("$#3011#"); option.setShippingModuleCode(moduleName);
 				
-					if(StringUtils.isBlank(option.getOptionName())) {
+					System.out.println("$#3012#"); if(StringUtils.isBlank(option.getOptionName())) {
 						
 						String countryName = delivery.getCountry().getName();
-						if(countryName == null) {
+						System.out.println("$#3013#"); if(countryName == null) {
 							Map<String,Country> deliveryCountries = countryService.getCountriesMap(language);
 							Country dCountry = (Country)deliveryCountries.get(delivery.getCountry().getIsoCode());
-							if(dCountry!=null) {
+							System.out.println("$#3014#"); if(dCountry!=null) {
 								countryName = dCountry.getName();
 							} else {
 								countryName = delivery.getCountry().getIsoCode();
 							}
 						}
-							option.setOptionName(countryName);		
+							System.out.println("$#3015#"); option.setOptionName(countryName);
 					}
 				
-					if(shippingOptionPriceType.name().equals(ShippingOptionPriceType.HIGHEST.name())) {
+					System.out.println("$#3016#"); if(shippingOptionPriceType.name().equals(ShippingOptionPriceType.HIGHEST.name())) {
 
 						if (option.getOptionPrice()
 								.longValue() > selectedOption
@@ -623,7 +623,7 @@ public class ShippingServiceImpl implements ShippingService {
 					}
 
 				
-					if(shippingOptionPriceType.name().equals(ShippingOptionPriceType.LEAST.name())) {
+					System.out.println("$#3019#"); if(shippingOptionPriceType.name().equals(ShippingOptionPriceType.LEAST.name())) {
 
 						if (option.getOptionPrice()
 								.longValue() < selectedOption
@@ -634,7 +634,7 @@ public class ShippingServiceImpl implements ShippingService {
 					}
 					
 				
-					if(shippingOptionPriceType.name().equals(ShippingOptionPriceType.ALL.name())) {
+					System.out.println("$#3022#"); if(shippingOptionPriceType.name().equals(ShippingOptionPriceType.ALL.name())) {
 	
 						if (option.getOptionPrice()
 								.longValue() < selectedOption
@@ -646,9 +646,9 @@ public class ShippingServiceImpl implements ShippingService {
 
 				}
 				
-				shippingQuote.setSelectedShippingOption(selectedOption);
+				System.out.println("$#3025#"); shippingQuote.setSelectedShippingOption(selectedOption);
 				
-				if(selectedOption!=null && !shippingOptionPriceType.name().equals(ShippingOptionPriceType.ALL.name())) {
+				System.out.println("$#3026#"); if(selectedOption!=null && !shippingOptionPriceType.name().equals(ShippingOptionPriceType.ALL.name())) {
 					shippingOptions = new ArrayList<ShippingOption>();
 					shippingOptions.add(selectedOption);
 				}
@@ -656,13 +656,13 @@ public class ShippingServiceImpl implements ShippingService {
 			}
 			
 			/** set final delivery address **/
-			shippingQuote.setDeliveryAddress(delivery);
+			System.out.println("$#3028#"); shippingQuote.setDeliveryAddress(delivery);
 			
-			shippingQuote.setShippingOptions(shippingOptions);
+			System.out.println("$#3029#"); shippingQuote.setShippingOptions(shippingOptions);
 			
 			/** post processors **/
 			//invoke pre processors
-			if(!CollectionUtils.isEmpty(shippingModulePostProcessors)) {
+			System.out.println("$#3030#"); if(!CollectionUtils.isEmpty(shippingModulePostProcessors)) {
 				for(ShippingQuotePrePostProcessModule postProcessor : shippingModulePostProcessors) {
 					//get module info
 					
@@ -671,71 +671,71 @@ public class ShippingServiceImpl implements ShippingService {
 					
 					IntegrationModule postProcessModule = null;
 					for(IntegrationModule mod : shippingMethods) {
-						if(mod.getCode().equals(postProcessor.getModuleCode())){
+						System.out.println("$#3031#"); if(mod.getCode().equals(postProcessor.getModuleCode())){
 							postProcessModule = mod;
 							break;
 						}
 					}
 					
 					IntegrationModule module = postProcessModule;
-					postProcessor.prePostProcessShippingQuotes(shippingQuote, packages, orderTotal, delivery, shippingOrigin, store, integrationConfiguration, module, shippingConfiguration, shippingMethods, locale);
+					System.out.println("$#3032#"); postProcessor.prePostProcessShippingQuotes(shippingQuote, packages, orderTotal, delivery, shippingOrigin, store, integrationConfiguration, module, shippingConfiguration, shippingMethods, locale);
 				}
 			}
 			String ipAddress = null;
 	    	UserContext context = UserContext.getCurrentInstance();
-	    	if(context != null) {
+						System.out.println("$#3033#"); if(context != null) {
 	    		ipAddress = context.getIpAddress();
 	    	}
 			
-			if(shippingQuote!=null && CollectionUtils.isNotEmpty(shippingQuote.getShippingOptions())) {
+			System.out.println("$#3034#"); if(shippingQuote!=null && CollectionUtils.isNotEmpty(shippingQuote.getShippingOptions())) {
 				//save SHIPPING OPTIONS
 				List<ShippingOption> finalShippingOptions = shippingQuote.getShippingOptions();
 				for(ShippingOption option : finalShippingOptions) {
 					
 					//transform to Quote
 					Quote q = new Quote();
-					q.setCartId(shoppingCartId);
-					q.setDelivery(delivery);
-					if(!StringUtils.isBlank(ipAddress)) {
-						q.setIpAddress(ipAddress);
+					System.out.println("$#3036#"); q.setCartId(shoppingCartId);
+					System.out.println("$#3037#"); q.setDelivery(delivery);
+					System.out.println("$#3038#"); if(!StringUtils.isBlank(ipAddress)) {
+						System.out.println("$#3039#"); q.setIpAddress(ipAddress);
 					}
-					if(!StringUtils.isBlank(option.getEstimatedNumberOfDays())) {
+					System.out.println("$#3040#"); if(!StringUtils.isBlank(option.getEstimatedNumberOfDays())) {
 						try {
-							q.setEstimatedNumberOfDays(new Integer(option.getEstimatedNumberOfDays()));
+							System.out.println("$#3041#"); q.setEstimatedNumberOfDays(new Integer(option.getEstimatedNumberOfDays()));
 						} catch(Exception e) {
 							LOGGER.error("Cannot cast to integer " + option.getEstimatedNumberOfDays());
 						}
 					}
 					
-					if(freeShipping) {
-						q.setFreeShipping(true);
-						q.setPrice(new BigDecimal(0));
-						q.setModule("FREE");
-						q.setOptionCode("FREE");
-						q.setOptionName("FREE");
+					System.out.println("$#3042#"); if(freeShipping) {
+						System.out.println("$#3043#"); q.setFreeShipping(true);
+						System.out.println("$#3044#"); q.setPrice(new BigDecimal(0));
+						System.out.println("$#3045#"); q.setModule("FREE");
+						System.out.println("$#3046#"); q.setOptionCode("FREE");
+						System.out.println("$#3047#"); q.setOptionName("FREE");
 					} else {
-						q.setModule(option.getShippingModuleCode());
-						q.setOptionCode(option.getOptionCode());
-						if(!StringUtils.isBlank(option.getOptionDeliveryDate())) {
+						System.out.println("$#3048#"); q.setModule(option.getShippingModuleCode());
+						System.out.println("$#3049#"); q.setOptionCode(option.getOptionCode());
+						System.out.println("$#3050#"); if(!StringUtils.isBlank(option.getOptionDeliveryDate())) {
 							try {
-							q.setOptionDeliveryDate(DateUtil.formatDate(option.getOptionDeliveryDate()));
+							System.out.println("$#3051#"); q.setOptionDeliveryDate(DateUtil.formatDate(option.getOptionDeliveryDate()));
 							} catch(Exception e) {
 								LOGGER.error("Cannot transform to date " + option.getOptionDeliveryDate());
 							}
 						}
-						q.setOptionName(option.getOptionName());
-						q.setOptionShippingDate(new Date());
-						q.setPrice(option.getOptionPrice());
+						System.out.println("$#3052#"); q.setOptionName(option.getOptionName());
+						System.out.println("$#3053#"); q.setOptionShippingDate(new Date());
+						System.out.println("$#3054#"); q.setPrice(option.getOptionPrice());
 						
 					}
 					
-					if(handlingFees != null) {
-						q.setHandling(handlingFees);
+					System.out.println("$#3055#"); if(handlingFees != null) {
+						System.out.println("$#3056#"); q.setHandling(handlingFees);
 					}
 					
-					q.setQuoteDate(new Date());
-					shippingQuoteService.save(q);
-					option.setShippingQuoteOptionId(q.getId());
+					System.out.println("$#3057#"); q.setQuoteDate(new Date());
+					System.out.println("$#3058#"); shippingQuoteService.save(q);
+					System.out.println("$#3059#"); option.setShippingQuoteOptionId(q.getId());
 					
 				}
 			}
@@ -747,7 +747,7 @@ public class ShippingServiceImpl implements ShippingService {
 			throw new ServiceException(e);
 		}
 		
-		return shippingQuote;
+		System.out.println("$#3060#"); return shippingQuote;
 		
 	}
 
@@ -757,23 +757,23 @@ public class ShippingServiceImpl implements ShippingService {
 		List<String> supportedCountries = new ArrayList<String>();
 		MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(SUPPORTED_COUNTRIES, store);
 		
-		if(configuration!=null) {
+		System.out.println("$#3061#"); if(configuration!=null) {
 			
 			String countries = configuration.getValue();
-			if(!StringUtils.isBlank(countries)) {
+			System.out.println("$#3062#"); if(!StringUtils.isBlank(countries)) {
 
 				Object objRegions=JSONValue.parse(countries); 
 				JSONArray arrayRegions=(JSONArray)objRegions;
 				@SuppressWarnings("rawtypes")
 				Iterator i = arrayRegions.iterator();
-				while(i.hasNext()) {
+				System.out.println("$#3063#"); while(i.hasNext()) {
 					supportedCountries.add((String)i.next());
 				}
 			}
 			
 		}
 		
-		return supportedCountries;
+		System.out.println("$#3064#"); return supportedCountries;
 	}
 	
 	@Override
@@ -783,16 +783,16 @@ public class ShippingServiceImpl implements ShippingService {
 		ShippingConfiguration shippingConfiguration = getShippingConfiguration(store);
 		ShippingType shippingType = ShippingType.INTERNATIONAL;
 		List<String> supportedCountries = new ArrayList<String>();
-		if(shippingConfiguration==null) {
+		System.out.println("$#3065#"); if(shippingConfiguration==null) {
 			shippingConfiguration = new ShippingConfiguration();
 		}
 		
-		if(shippingConfiguration.getShippingType()!=null) {
+		System.out.println("$#3066#"); if(shippingConfiguration.getShippingType()!=null) {
 				shippingType = shippingConfiguration.getShippingType();
 		}
 
 		
-		if(shippingType.name().equals(ShippingType.NATIONAL.name())){
+		System.out.println("$#3067#"); if(shippingType.name().equals(ShippingType.NATIONAL.name())){
 			
 			supportedCountries.add(store.getCountry().getIsoCode());
 			
@@ -800,16 +800,16 @@ public class ShippingServiceImpl implements ShippingService {
 
 			MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(SUPPORTED_COUNTRIES, store);
 			
-			if(configuration!=null) {
+			System.out.println("$#3068#"); if(configuration!=null) {
 				
 				String countries = configuration.getValue();
-				if(!StringUtils.isBlank(countries)) {
+				System.out.println("$#3069#"); if(!StringUtils.isBlank(countries)) {
 
 					Object objRegions=JSONValue.parse(countries); 
 					JSONArray arrayRegions=(JSONArray)objRegions;
 					@SuppressWarnings("rawtypes")
 					Iterator i = arrayRegions.iterator();
-					while(i.hasNext()) {
+					System.out.println("$#3070#"); while(i.hasNext()) {
 						supportedCountries.add((String)i.next());
 					}
 				}
@@ -818,7 +818,7 @@ public class ShippingServiceImpl implements ShippingService {
 
 		}
 		
-		return countryService.getCountries(supportedCountries, language);
+		System.out.println("$#3071#"); return countryService.getCountries(supportedCountries, language);
 
 	}
 	
@@ -835,16 +835,17 @@ public class ShippingServiceImpl implements ShippingService {
 			
 			MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(SUPPORTED_COUNTRIES, store);
 			
-			if(configuration==null) {
+			System.out.println("$#3072#"); if(configuration==null) {
 				configuration = new MerchantConfiguration();
+				System.out.println("$#3073#");
 				configuration.
 				setKey(SUPPORTED_COUNTRIES);
-				configuration.setMerchantStore(store);
+				System.out.println("$#3074#"); configuration.setMerchantStore(store);
 			} 
 			
-			configuration.setValue(value);
+			System.out.println("$#3075#"); configuration.setValue(value);
 
-			merchantConfigurationService.saveOrUpdate(configuration);
+			System.out.println("$#3076#"); merchantConfigurationService.saveOrUpdate(configuration);
 			
 		} catch (Exception e) {
 			throw new ServiceException(e);
@@ -863,7 +864,7 @@ public class ShippingServiceImpl implements ShippingService {
 		}
 		
 		
-		return total;
+		System.out.println("$#3077#"); return total;
 		
 		
 	}
@@ -878,17 +879,17 @@ public class ShippingServiceImpl implements ShippingService {
 		ShippingConfiguration shippingConfiguration = this.getShippingConfiguration(store);
 		//determine if the system has to use BOX or ITEM
 		ShippingPackageType shippingPackageType = ShippingPackageType.ITEM;
-		if(shippingConfiguration!=null) {
+		System.out.println("$#3078#"); if(shippingConfiguration!=null) {
 			shippingPackageType = shippingConfiguration.getShippingPackageType();
 		}
 		
-		if(shippingPackageType.name().equals(ShippingPackageType.BOX.name())){
+		System.out.println("$#3079#"); if(shippingPackageType.name().equals(ShippingPackageType.BOX.name())){
 			packages = packaging.getBoxPackagesDetails(products, store);
 		} else {
 			packages = packaging.getItemPackagesDetails(products, store);
 		}
 		
-		return packages;
+		System.out.println("$#3080#"); return packages;
 		
 	}
 
@@ -899,12 +900,12 @@ public class ShippingServiceImpl implements ShippingService {
 		boolean requiresShipping = false;
 		for(ShoppingCartItem item : items) {
 			Product product = item.getProduct();
-			if(!product.isProductVirtual() && product.isProductShipeable()) {
+			System.out.println("$#3081#"); if(!product.isProductVirtual() && product.isProductShipeable()) {
 				requiresShipping = true;
 			}
 		}
 
-		return requiresShipping;		
+		System.out.println("$#3084#"); System.out.println("$#3083#"); return requiresShipping;
 	}
 
 	@Override
@@ -918,43 +919,43 @@ public class ShippingServiceImpl implements ShippingService {
 
 		// configured country
 		List<Country> countries = getShipToCountryList(store, store.getDefaultLanguage());
-		metaData.setShipToCountry(countries);
+		System.out.println("$#3085#"); metaData.setShipToCountry(countries);
 		
 		// configured modules
 		Map<String,IntegrationConfiguration> modules = getShippingModulesConfigured(store);
 		List<String> moduleKeys = new ArrayList<String>();
-		if(modules!=null) {
+		System.out.println("$#3086#"); if(modules!=null) {
 			for(String key : modules.keySet()) {
 				moduleKeys.add(key);
 			}
 		}
-		metaData.setModules(moduleKeys);
+		System.out.println("$#3087#"); metaData.setModules(moduleKeys);
 		
 		// pre processors
 		List<ShippingQuotePrePostProcessModule> preProcessors = this.shippingModulePreProcessors;
 		List<String> preProcessorKeys = new ArrayList<String>();
-		if(preProcessors!=null) {
+		System.out.println("$#3088#"); if(preProcessors!=null) {
 			for(ShippingQuotePrePostProcessModule processor : preProcessors) {
 				preProcessorKeys.add(processor.getModuleCode());
-				if(SHIPPING_DISTANCE.equals(processor.getModuleCode())) {
-					metaData.setUseDistanceModule(true);
+				System.out.println("$#3089#"); if(SHIPPING_DISTANCE.equals(processor.getModuleCode())) {
+					System.out.println("$#3090#"); metaData.setUseDistanceModule(true);
 				}
 			}
 		}
-		metaData.setPreProcessors(preProcessorKeys);
+		System.out.println("$#3091#"); metaData.setPreProcessors(preProcessorKeys);
 		
 		//post processors
 		List<ShippingQuotePrePostProcessModule> postProcessors = this.shippingModulePostProcessors;
 		List<String> postProcessorKeys = new ArrayList<String>();
-		if(postProcessors!=null) {
+		System.out.println("$#3092#"); if(postProcessors!=null) {
 			for(ShippingQuotePrePostProcessModule processor : postProcessors) {
 				postProcessorKeys.add(processor.getModuleCode());
 			}
 		}
-		metaData.setPostProcessors(postProcessorKeys);
+		System.out.println("$#3093#"); metaData.setPostProcessors(postProcessorKeys);
 		
 		
-		return metaData;
+		System.out.println("$#3094#"); return metaData;
 		
 		} catch(Exception e) {
 			throw new ServiceException("Exception while getting shipping metadata ",e);
@@ -964,6 +965,6 @@ public class ShippingServiceImpl implements ShippingService {
 	@Override
 	public boolean hasTaxOnShipping(MerchantStore store) throws ServiceException {
 		ShippingConfiguration shippingConfiguration = getShippingConfiguration(store);
-		return shippingConfiguration.isTaxOnShipping();
+		System.out.println("$#3096#"); System.out.println("$#3095#"); return shippingConfiguration.isTaxOnShipping();
 	}
 }

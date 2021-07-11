@@ -29,17 +29,17 @@ public class MerchantConfigurationServiceImpl extends
 
 	@Override
 	public MerchantConfiguration getMerchantConfiguration(String key, MerchantStore store) throws ServiceException {
-		return merchantConfigurationRepository.findByMerchantStoreAndKey(store.getId(), key);
+		System.out.println("$#3220#"); return merchantConfigurationRepository.findByMerchantStoreAndKey(store.getId(), key);
 	}
 	
 	@Override
 	public List<MerchantConfiguration> listByStore(MerchantStore store) throws ServiceException {
-		return merchantConfigurationRepository.findByMerchantStore(store.getId());
+		System.out.println("$#3221#"); return merchantConfigurationRepository.findByMerchantStore(store.getId());
 	}
 	
 	@Override
 	public List<MerchantConfiguration> listByType(MerchantConfigurationType type, MerchantStore store) throws ServiceException {
-		return merchantConfigurationRepository.findByMerchantStoreAndType(store.getId(), type);
+		System.out.println("$#3222#"); return merchantConfigurationRepository.findByMerchantStoreAndType(store.getId(), type);
 	}
 	
 	@Override
@@ -47,10 +47,10 @@ public class MerchantConfigurationServiceImpl extends
 		
 
 		
-		if(entity.getId()!=null && entity.getId()>0) {
-			super.update(entity);
+		System.out.println("$#3224#"); System.out.println("$#3223#"); if(entity.getId()!=null && entity.getId()>0) {
+			System.out.println("$#3226#"); super.update(entity);
 		} else {
-			super.create(entity);
+			System.out.println("$#3227#"); super.create(entity);
 
 		}
 	}
@@ -59,8 +59,8 @@ public class MerchantConfigurationServiceImpl extends
 	@Override
 	public void delete(MerchantConfiguration merchantConfiguration) throws ServiceException {
 		MerchantConfiguration config = merchantConfigurationRepository.getOne(merchantConfiguration.getId());
-		if(config!=null) {
-			super.delete(config);
+		System.out.println("$#3228#"); if(config!=null) {
+			System.out.println("$#3229#"); super.delete(config);
 		}
 	}
 	
@@ -70,7 +70,7 @@ public class MerchantConfigurationServiceImpl extends
 		MerchantConfiguration configuration = merchantConfigurationRepository.findByMerchantStoreAndKey(store.getId(), MerchantConfigurationType.CONFIG.name());
 		
 		MerchantConfig config = null;
-		if(configuration!=null) {
+		System.out.println("$#3230#"); if(configuration!=null) {
 			String value = configuration.getValue();
 			
 			ObjectMapper mapper = new ObjectMapper();
@@ -80,7 +80,7 @@ public class MerchantConfigurationServiceImpl extends
 				throw new ServiceException("Cannot parse json string " + value);
 			}
 		}
-		return config;
+		System.out.println("$#3231#"); return config;
 		
 	}
 	
@@ -89,19 +89,19 @@ public class MerchantConfigurationServiceImpl extends
 		
 		MerchantConfiguration configuration = merchantConfigurationRepository.findByMerchantStoreAndKey(store.getId(), MerchantConfigurationType.CONFIG.name());
 
-		if(configuration==null) {
+		System.out.println("$#3232#"); if(configuration==null) {
 			configuration = new MerchantConfiguration();
-			configuration.setMerchantStore(store);
-			configuration.setKey(MerchantConfigurationType.CONFIG.name());
-			configuration.setMerchantConfigurationType(MerchantConfigurationType.CONFIG);
+			System.out.println("$#3233#"); configuration.setMerchantStore(store);
+			System.out.println("$#3234#"); configuration.setKey(MerchantConfigurationType.CONFIG.name());
+			System.out.println("$#3235#"); configuration.setMerchantConfigurationType(MerchantConfigurationType.CONFIG);
 		}
 		
 		String value = config.toJSONString();
-		configuration.setValue(value);
-		if(configuration.getId()!=null && configuration.getId()>0) {
-			super.update(configuration);
+		System.out.println("$#3236#"); configuration.setValue(value);
+		System.out.println("$#3238#"); System.out.println("$#3237#"); if(configuration.getId()!=null && configuration.getId()>0) {
+			System.out.println("$#3240#"); super.update(configuration);
 		} else {
-			super.create(configuration);
+			System.out.println("$#3241#"); super.create(configuration);
 
 		}
 		

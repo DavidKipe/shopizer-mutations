@@ -51,7 +51,7 @@ public class ProductDescription extends Description {
 	}
 
 	public String getProductHighlight() {
-		return productHighlight;
+		System.out.println("$#3865#"); return productHighlight;
 	}
 
 	public void setProductHighlight(String productHighlight) {
@@ -59,7 +59,7 @@ public class ProductDescription extends Description {
 	}
 
 	public String getProductExternalDl() {
-		return productExternalDl;
+		System.out.println("$#3866#"); return productExternalDl;
 	}
 
 	public void setProductExternalDl(String productExternalDl) {
@@ -67,7 +67,7 @@ public class ProductDescription extends Description {
 	}
 
 	public String getSeUrl() {
-		return seUrl;
+		System.out.println("$#3867#"); return seUrl;
 	}
 
 	public void setSeUrl(String seUrl) {
@@ -75,7 +75,7 @@ public class ProductDescription extends Description {
 	}
 
 	public String getMetatagTitle() {
-		return metatagTitle;
+		System.out.println("$#3868#"); return metatagTitle;
 	}
 
 	public void setMetatagTitle(String metatagTitle) {
@@ -83,7 +83,7 @@ public class ProductDescription extends Description {
 	}
 
 	public String getMetatagKeywords() {
-		return metatagKeywords;
+		System.out.println("$#3869#"); return metatagKeywords;
 	}
 
 	public void setMetatagKeywords(String metatagKeywords) {
@@ -91,7 +91,7 @@ public class ProductDescription extends Description {
 	}
 
 	public String getMetatagDescription() {
-		return metatagDescription;
+		System.out.println("$#3870#"); return metatagDescription;
 	}
 
 	public void setMetatagDescription(String metatagDescription) {
@@ -99,7 +99,7 @@ public class ProductDescription extends Description {
 	}
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#3871#"); return product;
 	}
 
 	public void setProduct(Product product) {

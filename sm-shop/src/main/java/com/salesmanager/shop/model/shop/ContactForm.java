@@ -16,26 +16,26 @@ public class ContactForm {
 
 	
 	public String getName() {
-		return name;
+		System.out.println("$#9287#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getEmail() {
-		return email;
+		System.out.println("$#9288#"); return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
 	public String getComment() {
-		return comment;
+		System.out.println("$#9289#"); return comment;
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
 
 	public String getSubject() {
-		return subject;
+		System.out.println("$#9290#"); return subject;
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;

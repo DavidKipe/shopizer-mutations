@@ -14,21 +14,21 @@ public class ReadableTaxClassMapper implements Mapper<TaxClass, ReadableTaxClass
 	@Override
 	public ReadableTaxClass convert(TaxClass source, MerchantStore store, Language language) {
 		ReadableTaxClass taxClass = new ReadableTaxClass();
-		taxClass.setId(source.getId());
-		taxClass.setCode(source.getCode());
-		taxClass.setName(source.getTitle());
-		taxClass.setStore(store.getCode());
-		return taxClass;
+		System.out.println("$#8682#"); taxClass.setId(source.getId());
+		System.out.println("$#8683#"); taxClass.setCode(source.getCode());
+		System.out.println("$#8684#"); taxClass.setName(source.getTitle());
+		System.out.println("$#8685#"); taxClass.setStore(store.getCode());
+		System.out.println("$#8686#"); return taxClass;
 	}
 
 	@Override
 	public ReadableTaxClass convert(TaxClass source, ReadableTaxClass destination, MerchantStore store,
 			Language language) {
-		destination.setId(source.getId());
-		destination.setCode(source.getCode());
-		destination.setName(source.getTitle());
-		destination.setStore(store.getCode());
-		return destination;
+		System.out.println("$#8687#"); destination.setId(source.getId());
+		System.out.println("$#8688#"); destination.setCode(source.getCode());
+		System.out.println("$#8689#"); destination.setName(source.getTitle());
+		System.out.println("$#8690#"); destination.setStore(store.getCode());
+		System.out.println("$#8691#"); return destination;
 	}
 
 }

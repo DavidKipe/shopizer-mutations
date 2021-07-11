@@ -41,7 +41,7 @@ public class CustomerOptionServiceImpl extends
 	@Override
 	public List<CustomerOption> listByStore(MerchantStore store, Language language) throws ServiceException {
 
-		return customerOptionRepository.findByStore(store.getId(), language.getId());
+		System.out.println("$#2182#"); return customerOptionRepository.findByStore(store.getId(), language.getId());
 
 	}
 	
@@ -51,10 +51,10 @@ public class CustomerOptionServiceImpl extends
 		
 		
 		//save or update (persist and attach entities
-		if(entity.getId()!=null && entity.getId()>0) {
-			super.update(entity);
+		System.out.println("$#2184#"); System.out.println("$#2183#"); if(entity.getId()!=null && entity.getId()>0) {
+			System.out.println("$#2186#"); super.update(entity);
 		} else {
-			super.save(entity);
+			System.out.println("$#2187#"); super.save(entity);
 		}
 		
 	}
@@ -67,7 +67,7 @@ public class CustomerOptionServiceImpl extends
 		List<CustomerAttribute> attributes = customerAttributeService.getByOptionId(customerOption.getMerchantStore(), customerOption.getId());
 		
 		for(CustomerAttribute attribute : attributes) {
-			customerAttributeService.delete(attribute);
+			System.out.println("$#2188#"); customerAttributeService.delete(attribute);
 		}
 		
 		CustomerOption option = this.getById(customerOption.getId());
@@ -75,17 +75,17 @@ public class CustomerOptionServiceImpl extends
 		List<CustomerOptionSet> optionSets = customerOptionSetService.listByOption(customerOption, customerOption.getMerchantStore());
 		
 		for(CustomerOptionSet optionSet : optionSets) {
-			customerOptionSetService.delete(optionSet);
+			System.out.println("$#2189#"); customerOptionSetService.delete(optionSet);
 		}
 		
 		//remove option
-		super.delete(option);
+		System.out.println("$#2190#"); super.delete(option);
 		
 	}
 	
 	@Override
 	public CustomerOption getByCode(MerchantStore store, String optionCode) {
-		return customerOptionRepository.findByCode(store.getId(), optionCode);
+		System.out.println("$#2191#"); return customerOptionRepository.findByCode(store.getId(), optionCode);
 	}
 	
 

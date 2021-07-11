@@ -113,7 +113,7 @@ public class ShopProductController {
 	 */
 	@RequestMapping("/{friendlyUrl}.html/ref={ref}")
 	public String displayProductWithReference(@PathVariable final String friendlyUrl, @PathVariable final String ref, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		return display(ref, friendlyUrl, model, request, response, locale);
+		System.out.println("$#13508#"); return display(ref, friendlyUrl, model, request, response, locale);
 	}
 
 	
@@ -130,7 +130,7 @@ public class ShopProductController {
 	 */
 	@RequestMapping("/{friendlyUrl}.html")
 	public String displayProduct(@PathVariable final String friendlyUrl, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		return display(null, friendlyUrl, model, request, response, locale);
+		System.out.println("$#13509#"); return display(null, friendlyUrl, model, request, response, locale);
 	}
 
 
@@ -143,28 +143,28 @@ public class ShopProductController {
 		
 		Product product = productService.getBySeUrl(store, friendlyUrl, locale);
 				
-		if(product==null) {
-			return PageBuilderUtils.build404(store);
+		System.out.println("$#13510#"); if(product==null) {
+			System.out.println("$#13511#"); return PageBuilderUtils.build404(store);
 		}
 		
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#13512#"); populator.setPricingService(pricingService);
+		System.out.println("$#13513#"); populator.setimageUtils(imageUtils);
 		
 		ReadableProduct productProxy = populator.populate(product, new ReadableProduct(), store, language);
 
 		//meta information
 		PageInformation pageInformation = new PageInformation();
-		pageInformation.setPageDescription(productProxy.getDescription().getMetaDescription());
-		pageInformation.setPageKeywords(productProxy.getDescription().getKeyWords());
-		pageInformation.setPageTitle(productProxy.getDescription().getTitle());
-		pageInformation.setPageUrl(productProxy.getDescription().getFriendlyUrl());
+		System.out.println("$#13514#"); pageInformation.setPageDescription(productProxy.getDescription().getMetaDescription());
+		System.out.println("$#13515#"); pageInformation.setPageKeywords(productProxy.getDescription().getKeyWords());
+		System.out.println("$#13516#"); pageInformation.setPageTitle(productProxy.getDescription().getTitle());
+		System.out.println("$#13517#"); pageInformation.setPageUrl(productProxy.getDescription().getFriendlyUrl());
 		
-		request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
+		System.out.println("$#13518#"); request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
 		
 		Breadcrumb breadCrumb = breadcrumbsUtils.buildProductBreadcrumb(reference, productProxy, store, language, request.getContextPath());
-		request.getSession().setAttribute(Constants.BREADCRUMB, breadCrumb);
-		request.setAttribute(Constants.BREADCRUMB, breadCrumb);
+		System.out.println("$#13519#"); request.getSession().setAttribute(Constants.BREADCRUMB, breadCrumb);
+		System.out.println("$#13520#"); request.setAttribute(Constants.BREADCRUMB, breadCrumb);
 		
 
 		
@@ -184,20 +184,20 @@ public class ShopProductController {
 		Map<Long,List<ReadableProduct>> relatedItemsMap = null;
 		List<ReadableProduct> relatedItems = null;
 		
-		if(store.isUseCache()) {
+		System.out.println("$#13521#"); if(store.isUseCache()) {
 
 			//get from the cache
 			relatedItemsMap = (Map<Long,List<ReadableProduct>>) cache.getFromCache(relatedItemsCacheKey.toString());
-			if(relatedItemsMap==null) {
+			System.out.println("$#13522#"); if(relatedItemsMap==null) {
 				//get from missed cache
 				//Boolean missedContent = (Boolean)cache.getFromCache(relatedItemsMissed.toString());
 
 				//if(missedContent==null) {
 					relatedItems = relatedItems(store, product, language);
-					if(relatedItems!=null) {
+					System.out.println("$#13523#"); if(relatedItems!=null) {
 						relatedItemsMap = new HashMap<Long,List<ReadableProduct>>();
 						relatedItemsMap.put(product.getId(), relatedItems);
-						cache.putInCache(relatedItemsMap, relatedItemsCacheKey.toString());
+						System.out.println("$#13524#"); cache.putInCache(relatedItemsMap, relatedItemsCacheKey.toString());
 					} else {
 						//cache.putInCache(new Boolean(true), relatedItemsMissed.toString());
 					}
@@ -218,75 +218,75 @@ public class ShopProductController {
 		Map<Long,Attribute> readOnlyAttributes = null;
 		Map<Long,Attribute> selectableOptions = null;
 		
-		if(!CollectionUtils.isEmpty(attributes)) {
+		System.out.println("$#13525#"); if(!CollectionUtils.isEmpty(attributes)) {
 						
 			for(ProductAttribute attribute : attributes) {
 				Attribute attr = null;
 				AttributeValue attrValue = new AttributeValue();
 				ProductOptionValue optionValue = attribute.getProductOptionValue();
 				
-				if(attribute.getAttributeDisplayOnly()==true) {//read only attribute
-					if(readOnlyAttributes==null) {
+				System.out.println("$#13526#"); if(attribute.getAttributeDisplayOnly()==true) {//read only attribute
+					System.out.println("$#13527#"); if(readOnlyAttributes==null) {
 						readOnlyAttributes = new TreeMap<Long,Attribute>();
 					}
 					attr = readOnlyAttributes.get(attribute.getProductOption().getId());
-					if(attr==null) {
+					System.out.println("$#13528#"); if(attr==null) {
 						attr = createAttribute(attribute, language);
 					}
-					if(attr!=null) {
+					System.out.println("$#13529#"); if(attr!=null) {
 						readOnlyAttributes.put(attribute.getProductOption().getId(), attr);
-						attr.setReadOnlyValue(attrValue);
+						System.out.println("$#13530#"); attr.setReadOnlyValue(attrValue);
 					}
 				} else {//selectable option
-					if(selectableOptions==null) {
+					System.out.println("$#13531#"); if(selectableOptions==null) {
 						selectableOptions = new TreeMap<Long,Attribute>();
 					}
 					attr = selectableOptions.get(attribute.getProductOption().getId());
-					if(attr==null) {
+					System.out.println("$#13532#"); if(attr==null) {
 						attr = createAttribute(attribute, language);
 					}
-					if(attr!=null) {
+					System.out.println("$#13533#"); if(attr!=null) {
 						selectableOptions.put(attribute.getProductOption().getId(), attr);
 					}
 				}
 				
 				
 				
-				attrValue.setDefaultAttribute(attribute.getAttributeDefault());
-				attrValue.setId(attribute.getId());//id of the attribute
-				attrValue.setLanguage(language.getCode());
-				if(attribute.getProductAttributePrice()!=null && attribute.getProductAttributePrice().doubleValue()>0) {
+				System.out.println("$#13534#"); attrValue.setDefaultAttribute(attribute.getAttributeDefault());
+				System.out.println("$#13535#"); attrValue.setId(attribute.getId());//id of the attribute
+				System.out.println("$#13536#"); attrValue.setLanguage(language.getCode());
+				System.out.println("$#13538#"); System.out.println("$#13537#"); if(attribute.getProductAttributePrice()!=null && attribute.getProductAttributePrice().doubleValue()>0) {
 					String formatedPrice = pricingService.getDisplayAmount(attribute.getProductAttributePrice(), store);
-					attrValue.setPrice(formatedPrice);
+					System.out.println("$#13540#"); attrValue.setPrice(formatedPrice);
 				}
 				
-				if(!StringUtils.isBlank(attribute.getProductOptionValue().getProductOptionValueImage())) {
-					attrValue.setImage(imageUtils.buildProductPropertyImageUtils(store, attribute.getProductOptionValue().getProductOptionValueImage()));
+				System.out.println("$#13541#"); if(!StringUtils.isBlank(attribute.getProductOptionValue().getProductOptionValueImage())) {
+					System.out.println("$#13542#"); attrValue.setImage(imageUtils.buildProductPropertyImageUtils(store, attribute.getProductOptionValue().getProductOptionValueImage()));
 				}
-				attrValue.setSortOrder(0);
-				if(attribute.getProductOptionSortOrder()!=null) {
-					attrValue.setSortOrder(attribute.getProductOptionSortOrder().intValue());
+				System.out.println("$#13543#"); attrValue.setSortOrder(0);
+				System.out.println("$#13544#"); if(attribute.getProductOptionSortOrder()!=null) {
+					System.out.println("$#13545#"); attrValue.setSortOrder(attribute.getProductOptionSortOrder().intValue());
 				}
 				
 				List<ProductOptionValueDescription> descriptions = optionValue.getDescriptionsSettoList();
 				ProductOptionValueDescription description = null;
-				if(descriptions!=null && descriptions.size()>0) {
+				System.out.println("$#13547#"); System.out.println("$#13546#"); if(descriptions!=null && descriptions.size()>0) {
 					description = descriptions.get(0);
-					if(descriptions.size()>1) {
+					System.out.println("$#13550#"); System.out.println("$#13549#"); if(descriptions.size()>1) {
 						for(ProductOptionValueDescription optionValueDescription : descriptions) {
-							if(optionValueDescription.getLanguage().getId().intValue()==language.getId().intValue()) {
+							System.out.println("$#13551#"); if(optionValueDescription.getLanguage().getId().intValue()==language.getId().intValue()) {
 								description = optionValueDescription;
 								break;
 							}
 						}
 					}
 				}
-				attrValue.setName(description.getName());
-				attrValue.setDescription(description.getDescription());
+				System.out.println("$#13552#"); attrValue.setName(description.getName());
+				System.out.println("$#13553#"); attrValue.setDescription(description.getDescription());
 				List<AttributeValue> attrs = attr.getValues();
-				if(attrs==null) {
+				System.out.println("$#13554#"); if(attrs==null) {
 					attrs = new ArrayList<AttributeValue>();
-					attr.setValues(attrs);
+					System.out.println("$#13555#"); attr.setValues(attrs);
 				}
 				attrs.add(attrValue);
 			}
@@ -296,7 +296,7 @@ public class ShopProductController {
 		
 
 		List<ProductReview> reviews = productReviewService.getByProduct(product, language);
-		if(!CollectionUtils.isEmpty(reviews)) {
+		System.out.println("$#13556#"); if(!CollectionUtils.isEmpty(reviews)) {
 			List<ReadableProductReview> revs = new ArrayList<ReadableProductReview>();
 			ReadableProductReviewPopulator reviewPopulator = new ReadableProductReviewPopulator();
 			for(ProductReview review : reviews) {
@@ -308,20 +308,20 @@ public class ShopProductController {
 		}
 		
 		List<Attribute> attributesList = null;
-		if(readOnlyAttributes!=null) {
+		System.out.println("$#13557#"); if(readOnlyAttributes!=null) {
 			attributesList = new ArrayList<Attribute>(readOnlyAttributes.values());
 		}
 		
 		List<Attribute> optionsList = null;
-		if(selectableOptions!=null) {
+		System.out.println("$#13558#"); if(selectableOptions!=null) {
 			optionsList = new ArrayList<Attribute>(selectableOptions.values());
 			//order attributes by sort order
 			for(Attribute attr : optionsList) {
-				Collections.sort(attr.getValues(), new Comparator<AttributeValue>(){
+				System.out.println("$#13559#"); Collections.sort(attr.getValues(), new Comparator<AttributeValue>(){
 				     public int compare(AttributeValue o1, AttributeValue o2){
-					         if(o1.getSortOrder()== o2.getSortOrder())
+														System.out.println("$#13585#"); if(o1.getSortOrder()== o2.getSortOrder())
 					             return 0;
-					         return o1.getSortOrder() < o2.getSortOrder() ? -1 : 1;
+														System.out.println("$#13588#"); System.out.println("$#13587#"); System.out.println("$#13586#"); return o1.getSortOrder() < o2.getSortOrder() ? -1 : 1;
 				    	
 				     }
 				});
@@ -337,7 +337,7 @@ public class ShopProductController {
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Product.product).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#13560#"); return template.toString();
 	}
 	
     @RequestMapping(value={"/{productId}/calculatePrice.json"}, method=RequestMethod.POST)
@@ -356,7 +356,7 @@ public class ShopProductController {
 		List<ProductAttribute> attributes = productAttributeService.getByAttributeIds(store, product, ids);      
 		
 		for(ProductAttribute attribute : attributes) {
-			if(attribute.getProduct().getId().longValue()!=productId.longValue()) {
+			System.out.println("$#13561#"); if(attribute.getProduct().getId().longValue()!=productId.longValue()) {
 				return null;
 			}
 		}
@@ -364,24 +364,24 @@ public class ShopProductController {
 		FinalPrice price = pricingService.calculateProductPrice(product, attributes);
     	ReadableProductPrice readablePrice = new ReadableProductPrice();
     	ReadableFinalPricePopulator populator = new ReadableFinalPricePopulator();
-    	populator.setPricingService(pricingService);
+					System.out.println("$#13562#"); populator.setPricingService(pricingService);
     	populator.populate(price, readablePrice, store, language);
-    	return readablePrice;
+					System.out.println("$#13563#"); return readablePrice;
     	
     }
 	
 	private Attribute createAttribute(ProductAttribute productAttribute, Language language) {
 		
 		Attribute attribute = new Attribute();
-		attribute.setId(productAttribute.getProductOption().getId());//attribute of the option
-		attribute.setType(productAttribute.getProductOption().getProductOptionType());
+		System.out.println("$#13564#"); attribute.setId(productAttribute.getProductOption().getId());//attribute of the option
+		System.out.println("$#13565#"); attribute.setType(productAttribute.getProductOption().getProductOptionType());
 		List<ProductOptionDescription> descriptions = productAttribute.getProductOption().getDescriptionsSettoList();
 		ProductOptionDescription description = null;
-		if(descriptions!=null && descriptions.size()>0) {
+		System.out.println("$#13567#"); System.out.println("$#13566#"); if(descriptions!=null && descriptions.size()>0) {
 			description = descriptions.get(0);
-			if(descriptions.size()>1) {
+			System.out.println("$#13570#"); System.out.println("$#13569#"); if(descriptions.size()>1) {
 				for(ProductOptionDescription optionDescription : descriptions) {
-					if(optionDescription.getLanguage().getId().intValue()==language.getId().intValue()) {
+					System.out.println("$#13571#"); if(optionDescription.getLanguage().getId().intValue()==language.getId().intValue()) {
 						description = optionDescription;
 						break;
 					}
@@ -389,17 +389,17 @@ public class ShopProductController {
 			}
 		}
 		
-		if(description==null) {
+		System.out.println("$#13572#"); if(description==null) {
 			return null;
 		}
 		
-		attribute.setType(productAttribute.getProductOption().getProductOptionType());
-		attribute.setLanguage(language.getCode());
-		attribute.setName(description.getName());
-		attribute.setCode(productAttribute.getProductOption().getCode());
+		System.out.println("$#13573#"); attribute.setType(productAttribute.getProductOption().getProductOptionType());
+		System.out.println("$#13574#"); attribute.setLanguage(language.getCode());
+		System.out.println("$#13575#"); attribute.setName(description.getName());
+		System.out.println("$#13576#"); attribute.setCode(productAttribute.getProductOption().getCode());
 
 		
-		return attribute;
+		System.out.println("$#13577#"); return attribute;
 		
 	}
 	
@@ -407,21 +407,21 @@ public class ShopProductController {
 		
 		
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#13578#"); populator.setPricingService(pricingService);
+		System.out.println("$#13579#"); populator.setimageUtils(imageUtils);
 		
 		List<ProductRelationship> relatedItems = productRelationshipService.getByType(store, product, ProductRelationshipType.RELATED_ITEM);
-		if(relatedItems!=null && relatedItems.size()>0) {
+		System.out.println("$#13581#"); System.out.println("$#13580#"); if(relatedItems!=null && relatedItems.size()>0) {
 			List<ReadableProduct> items = new ArrayList<ReadableProduct>();
 			for(ProductRelationship relationship : relatedItems) {
 				Product relatedProduct = relationship.getRelatedProduct();
 				ReadableProduct proxyProduct = populator.populate(relatedProduct, new ReadableProduct(), store, language);
 				items.add(proxyProduct);
 			}
-			return items;
+			System.out.println("$#13583#"); return items;
 		}
 		
-		return null;
+		System.out.println("$#13584#"); return null;
 	}
 	
 

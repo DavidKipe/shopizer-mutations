@@ -45,21 +45,21 @@ public class ZoneServiceImpl extends SalesManagerEntityServiceImpl<Long, Zone> i
 	@Override
 	@Cacheable("zoneByCode")
 	public Zone getByCode(String code) {
-		return zoneRepository.findByCode(code);
+		System.out.println("$#2808#"); return zoneRepository.findByCode(code);
 	}
 
 	@Override
 	public void addDescription(Zone zone, ZoneDescription description) throws ServiceException {
-		if (zone.getDescriptions()!=null) {
-				if(!zone.getDescriptions().contains(description)) {
+		System.out.println("$#2809#"); if (zone.getDescriptions()!=null) {
+				System.out.println("$#2810#"); if(!zone.getDescriptions().contains(description)) {
 					zone.getDescriptions().add(description);
-					update(zone);
+					System.out.println("$#2811#"); update(zone);
 				}
 		} else {
 			List<ZoneDescription> descriptions = new ArrayList<ZoneDescription>();
 			descriptions.add(description);
-			zone.setDescriptons(descriptions);
-			update(zone);
+			System.out.println("$#2812#"); zone.setDescriptons(descriptions);
+			System.out.println("$#2813#"); update(zone);
 		}
 	}
 	
@@ -68,13 +68,13 @@ public class ZoneServiceImpl extends SalesManagerEntityServiceImpl<Long, Zone> i
 	public List<Zone> getZones(Country country, Language language) throws ServiceException {
 		
 		//Validate.notNull(country,"Country cannot be null");
-		Validate.notNull(language,"Language cannot be null");
+		System.out.println("$#2814#"); Validate.notNull(language,"Language cannot be null");
 		
 		List<Zone> zones = null;
 		try {
 			
 			String countryCode = Constants.DEFAULT_COUNTRY;
-			if(country!=null) {
+			System.out.println("$#2815#"); if(country!=null) {
 				countryCode = country.getIsoCode();
 			}
 
@@ -84,23 +84,23 @@ public class ZoneServiceImpl extends SalesManagerEntityServiceImpl<Long, Zone> i
 
 		
 		
-			if(zones==null) {
+			System.out.println("$#2816#"); if(zones==null) {
 			
 				zones = zoneRepository.listByLanguageAndCountry(countryCode, language.getId());
 			
 				//set names
 				for(Zone zone : zones) {
 					ZoneDescription description = zone.getDescriptions().get(0);
-					zone.setName(description.getName());
+					System.out.println("$#2817#"); zone.setName(description.getName());
 					
 				}
-				cache.putInCache(zones, cacheKey);
+				System.out.println("$#2818#"); cache.putInCache(zones, cacheKey);
 			}
 
 		} catch (Exception e) {
 			LOGGER.error("getZones()", e);
 		}
-		return zones;
+		System.out.println("$#2819#"); return zones;
 		
 		
 	}
@@ -109,8 +109,8 @@ public class ZoneServiceImpl extends SalesManagerEntityServiceImpl<Long, Zone> i
 	@Override
 	public List<Zone> getZones(String countryCode, Language language) throws ServiceException {
 		
-		Validate.notNull(countryCode,"countryCode cannot be null");
-		Validate.notNull(language,"Language cannot be null");
+		System.out.println("$#2820#"); Validate.notNull(countryCode,"countryCode cannot be null");
+		System.out.println("$#2821#"); Validate.notNull(language,"Language cannot be null");
 		
 		List<Zone> zones = null;
 		try {
@@ -122,23 +122,23 @@ public class ZoneServiceImpl extends SalesManagerEntityServiceImpl<Long, Zone> i
 
 		
 		
-			if(zones==null) {
+			System.out.println("$#2822#"); if(zones==null) {
 			
 				zones = zoneRepository.listByLanguageAndCountry(countryCode, language.getId());
 			
 				//set names
 				for(Zone zone : zones) {
 					ZoneDescription description = zone.getDescriptions().get(0);
-					zone.setName(description.getName());
+					System.out.println("$#2823#"); zone.setName(description.getName());
 					
 				}
-				cache.putInCache(zones, cacheKey);
+				System.out.println("$#2824#"); cache.putInCache(zones, cacheKey);
 			}
 
 		} catch (Exception e) {
 			LOGGER.error("getZones()", e);
 		}
-		return zones;
+		System.out.println("$#2825#"); return zones;
 		
 		
 	}
@@ -156,24 +156,24 @@ public class ZoneServiceImpl extends SalesManagerEntityServiceImpl<Long, Zone> i
 
 		
 		
-			if(zones==null) {
+			System.out.println("$#2826#"); if(zones==null) {
 				zones = new HashMap<String, Zone>();
 				List<Zone> zns = zoneRepository.listByLanguage(language.getId());
 			
 				//set names
 				for(Zone zone : zns) {
 					ZoneDescription description = zone.getDescriptions().get(0);
-					zone.setName(description.getName());
+					System.out.println("$#2827#"); zone.setName(description.getName());
 					zones.put(zone.getCode(), zone);
 					
 				}
-				cache.putInCache(zones, cacheKey);
+				System.out.println("$#2828#"); cache.putInCache(zones, cacheKey);
 			}
 
 		} catch (Exception e) {
 			LOGGER.error("getZones()", e);
 		}
-		return zones;
+		System.out.println("$#2829#"); return zones;
 		
 		
 	}

@@ -30,7 +30,7 @@ public class PermissionRepositoryImpl implements PermissionRepositoryCustom {
 		StringBuilder countBuilderWhere = new StringBuilder();
 		
 		
-		if(criteria.getGroupIds()!=null && criteria.getGroupIds().size()>0) {
+		System.out.println("$#1698#"); System.out.println("$#1697#"); if(criteria.getGroupIds()!=null && criteria.getGroupIds().size()>0) {
 			countBuilderSelect.append(" INNER JOIN p.groups grous");
 			countBuilderWhere.append(" where grous.id in (:cid)");
 		}
@@ -39,24 +39,26 @@ public class PermissionRepositoryImpl implements PermissionRepositoryCustom {
 		Query countQ = em.createQuery(
 				countBuilderSelect.toString() + countBuilderWhere.toString());
 
-		if(criteria.getGroupIds()!=null && criteria.getGroupIds().size()>0) {
+		System.out.println("$#1701#"); System.out.println("$#1700#"); if(criteria.getGroupIds()!=null && criteria.getGroupIds().size()>0) {
 			countQ.setParameter("cid", criteria.getGroupIds());
 		}
 		
 
 		Number count = (Number) countQ.getSingleResult ();
 
-		permissionList.setTotalCount(count.intValue());
-		
-        if(count.intValue()==0)
-        	return permissionList;
+		System.out.println("$#1703#"); permissionList.setTotalCount(count.intValue());
+
+		System.out.println("$#1704#"); if(count.intValue()==0) {
+			System.out.println("$#1705#");
+			return permissionList;
+		}
 
 		
 		StringBuilder qs = new StringBuilder();
 		qs.append("select p from Permission as p ");
 		qs.append("join fetch p.groups grous ");
 		
-		if(criteria.getGroupIds()!=null && criteria.getGroupIds().size()>0) {
+		System.out.println("$#1707#"); System.out.println("$#1706#"); if(criteria.getGroupIds()!=null && criteria.getGroupIds().size()>0) {
 			qs.append(" where grous.id in (:cid)");
 		}
 		
@@ -66,29 +68,29 @@ public class PermissionRepositoryImpl implements PermissionRepositoryCustom {
 		Query q = em.createQuery(hql);
 
 
-    	if(criteria.getGroupIds()!=null && criteria.getGroupIds().size()>0) {
+					System.out.println("$#1710#"); System.out.println("$#1709#"); if(criteria.getGroupIds()!=null && criteria.getGroupIds().size()>0) {
     		q.setParameter("cid", criteria.getGroupIds());
     	}
     	
-    	if(criteria.getMaxCount()>0) {
+					System.out.println("$#1713#"); System.out.println("$#1712#"); if(criteria.getMaxCount()>0) {
     		
     		
 	    	q.setFirstResult(criteria.getStartIndex());
-	    	if(criteria.getMaxCount()<count.intValue()) {
+						System.out.println("$#1715#"); System.out.println("$#1714#"); if(criteria.getMaxCount()<count.intValue()) {
 	    		q.setMaxResults(criteria.getMaxCount());
-	    		permissionList.setTotalCount(criteria.getMaxCount());
+							System.out.println("$#1716#"); permissionList.setTotalCount(criteria.getMaxCount());
 	    	}
 	    	else {
 	    		q.setMaxResults(count.intValue());
-	    		permissionList.setTotalCount(count.intValue());
+							System.out.println("$#1717#"); permissionList.setTotalCount(count.intValue());
 	    	}
     	}
     	
     	@SuppressWarnings("unchecked")
 		List<Permission> permissions =  q.getResultList();
-    	permissionList.setPermissions(permissions);
+					System.out.println("$#1718#"); permissionList.setPermissions(permissions);
     	
-    	return permissionList;
+					System.out.println("$#1719#"); return permissionList;
 	}   
 
 }

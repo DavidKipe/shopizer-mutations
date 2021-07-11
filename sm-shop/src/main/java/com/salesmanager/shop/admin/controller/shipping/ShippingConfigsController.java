@@ -61,7 +61,7 @@ public class ShippingConfigsController {
 	@RequestMapping(value="/admin/shipping/shippingConfigs.html", method=RequestMethod.GET)
 	public String displayShippingConfigs(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		this.setMenu(model, request);
+		System.out.println("$#7272#"); this.setMenu(model, request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -69,14 +69,14 @@ public class ShippingConfigsController {
 		
 		ShippingConfiguration shippingConfiguration =  shippingService.getShippingConfiguration(store);
 		
-		if(shippingConfiguration==null) {
+		System.out.println("$#7273#"); if(shippingConfiguration==null) {
 			shippingConfiguration = new ShippingConfiguration();
-			shippingConfiguration.setShippingType(ShippingType.INTERNATIONAL);
+			System.out.println("$#7274#"); shippingConfiguration.setShippingType(ShippingType.INTERNATIONAL);
 		}
 		
 
 		model.addAttribute("configuration", shippingConfiguration);
-		return "shipping-configs";
+		System.out.println("$#7275#"); return "shipping-configs";
 		
 		
 	}
@@ -85,23 +85,23 @@ public class ShippingConfigsController {
 	@RequestMapping(value="/admin/shipping/saveShippingConfiguration.html", method=RequestMethod.POST)
 	public String saveShippingConfiguration(@ModelAttribute("configuration") ShippingConfiguration configuration, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		this.setMenu(model, request);
+		System.out.println("$#7276#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		//get original configuration
 		ShippingConfiguration shippingConfiguration =  shippingService.getShippingConfiguration(store);
 		
-		if(shippingConfiguration==null) {
+		System.out.println("$#7277#"); if(shippingConfiguration==null) {
 			shippingConfiguration = new ShippingConfiguration();
 		}
 		
-		shippingConfiguration.setShippingType(configuration.getShippingType());
+		System.out.println("$#7278#"); shippingConfiguration.setShippingType(configuration.getShippingType());
 		
-		shippingService.saveShippingConfiguration(shippingConfiguration, store);
+		System.out.println("$#7279#"); shippingService.saveShippingConfiguration(shippingConfiguration, store);
 		
 		model.addAttribute("configuration", shippingConfiguration);
 		model.addAttribute("success","success");
-		return "shipping-configs";
+		System.out.println("$#7280#"); return "shipping-configs";
 		
 	}
 	
@@ -133,32 +133,32 @@ public class ShippingConfigsController {
 				entry.put("code", country.getIsoCode());
 				entry.put("name", country.getName());
 				
-				if(includedCountries.contains(key)) {
+				System.out.println("$#7281#"); if(includedCountries.contains(key)) {
 					entry.put("supported", true);
 				} else {
 					entry.put("supported", false);
 				}
 				
-				if(!StringUtils.isBlank(countryName)) {
-					if(country.getName().contains(countryName)){
-						resp.addDataEntry(entry);
+				System.out.println("$#7282#"); if(!StringUtils.isBlank(countryName)) {
+					System.out.println("$#7283#"); if(country.getName().contains(countryName)){
+						System.out.println("$#7284#"); resp.addDataEntry(entry);
 					}
 				} else {
-					resp.addDataEntry(entry);
+					System.out.println("$#7285#"); resp.addDataEntry(entry);
 				}
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7286#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while paging shipping countries", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7287#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7288#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#7289#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasRole('SHIPPING')")
@@ -187,8 +187,8 @@ public class ShippingConfigsController {
 			//get list of countries
 			List<String> includedCountries = shippingService.getSupportedCountries(store);
 			
-			if(!StringUtils.isBlank(supported)) {
-				if("true".equals(supported)) {
+			System.out.println("$#7290#"); if(!StringUtils.isBlank(supported)) {
+				System.out.println("$#7291#"); if("true".equals(supported)) {
 					includedCountries.add(countryCode);
 				} else {
 					includedCountries.remove(countryCode);
@@ -196,21 +196,21 @@ public class ShippingConfigsController {
 			}
 			
 			
-			shippingService.setSupportedCountries(store, includedCountries);
+			System.out.println("$#7292#"); shippingService.setSupportedCountries(store, includedCountries);
 			
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#7293#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 			
 
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging shipping countries", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7294#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7295#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#7296#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	private void setMenu(Model model, HttpServletRequest request) throws Exception {

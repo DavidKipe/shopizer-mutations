@@ -24,19 +24,19 @@ public class ReadableShoppingCartItem extends ReadableProduct implements Seriali
 	
 
 	public BigDecimal getSubTotal() {
-		return subTotal;
+		System.out.println("$#9314#"); return subTotal;
 	}
 	public void setSubTotal(BigDecimal subTotal) {
 		this.subTotal = subTotal;
 	}
 	public String getDisplaySubTotal() {
-		return displaySubTotal;
+		System.out.println("$#9315#"); return displaySubTotal;
 	}
 	public void setDisplaySubTotal(String displaySubTotal) {
 		this.displaySubTotal = displaySubTotal;
 	}
 	public List<ReadableShoppingCartAttribute> getCartItemattributes() {
-		return cartItemattributes;
+		System.out.println("$#9316#"); return cartItemattributes;
 	}
 	public void setCartItemattributes(List<ReadableShoppingCartAttribute> cartItemattributes) {
 		this.cartItemattributes = cartItemattributes;

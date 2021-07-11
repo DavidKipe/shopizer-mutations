@@ -14,7 +14,7 @@ public class ReadableMerchantStoreList extends ReadableList {
   private List<ReadableMerchantStore> data = new ArrayList<ReadableMerchantStore>();
 
   public List<ReadableMerchantStore> getData() {
-    return data;
+				System.out.println("$#9378#"); return data;
   }
 
   public void setData(List<ReadableMerchantStore> data) {

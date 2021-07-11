@@ -55,7 +55,7 @@ public class JWTAdminAuthenticationManager extends CustomAuthenticationManager {
     UsernamePasswordAuthenticationToken authentication = null;
 
     logger.info("checking authentication for user " + username);
-    if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+				System.out.println("$#15223#"); if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
       // It is not compelling necessary to load the use details from the database. You could also
       // store the information
@@ -65,16 +65,16 @@ public class JWTAdminAuthenticationManager extends CustomAuthenticationManager {
       // For simple validation it is completely sufficient to just check the token integrity. You
       // don't have to call
       // the database compellingly. Again it's up to you ;)
-      if (userDetails != null && jwtTokenUtil.validateToken(authToken, userDetails)) {
+						System.out.println("$#15225#"); if (userDetails != null && jwtTokenUtil.validateToken(authToken, userDetails)) {
         authentication = new UsernamePasswordAuthenticationToken(userDetails, null,
             userDetails.getAuthorities());
-        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+								System.out.println("$#15227#"); authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         logger.info("authenticated user " + username + ", setting security context");
         // SecurityContextHolder.getContext().setAuthentication(authentication);
       }
     }
 
-    return authentication;
+				System.out.println("$#15228#"); return authentication;
   }
 
   @Override

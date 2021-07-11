@@ -33,40 +33,40 @@ public class PersistableManufacturerPopulator extends AbstractDataPopulator<Pers
 			Manufacturer target, MerchantStore store, Language language)
 			throws ConversionException {
 		
-		Validate.notNull(languageService, "Requires to set LanguageService");
+		System.out.println("$#10428#"); Validate.notNull(languageService, "Requires to set LanguageService");
 		
 		try {
 			
-			target.setMerchantStore(store);
-			target.setCode(source.getCode());
+			System.out.println("$#10429#"); target.setMerchantStore(store);
+			System.out.println("$#10430#"); target.setCode(source.getCode());
 			
 
-			if(!CollectionUtils.isEmpty(source.getDescriptions())) {
+			System.out.println("$#10431#"); if(!CollectionUtils.isEmpty(source.getDescriptions())) {
 				Set<com.salesmanager.core.model.catalog.product.manufacturer.ManufacturerDescription> descriptions = new HashSet<com.salesmanager.core.model.catalog.product.manufacturer.ManufacturerDescription>();
 				for(ManufacturerDescription description : source.getDescriptions()) {
 					com.salesmanager.core.model.catalog.product.manufacturer.ManufacturerDescription desc = new com.salesmanager.core.model.catalog.product.manufacturer.ManufacturerDescription();
-					if(desc.getId() != null && desc.getId().longValue()>0) {
-						desc.setId(description.getId());
+					System.out.println("$#10433#"); System.out.println("$#10432#"); if(desc.getId() != null && desc.getId().longValue()>0) {
+						System.out.println("$#10435#"); desc.setId(description.getId());
 					}
-					if(target.getDescriptions() != null) {
+					System.out.println("$#10436#"); if(target.getDescriptions() != null) {
 						for(com.salesmanager.core.model.catalog.product.manufacturer.ManufacturerDescription d : target.getDescriptions()) {
-							if(d.getLanguage().getCode().equals(description.getLanguage()) || desc.getId() != null && d.getId().longValue() == desc.getId().longValue()) {
+							System.out.println("$#10437#"); if(d.getLanguage().getCode().equals(description.getLanguage()) || desc.getId() != null && d.getId().longValue() == desc.getId().longValue()) {
 								desc = d;
 							}
 						}
 					}
 					
-					desc.setManufacturer(target);
-					desc.setDescription(description.getDescription());
-					desc.setName(description.getName());
+					System.out.println("$#10440#"); desc.setManufacturer(target);
+					System.out.println("$#10441#"); desc.setDescription(description.getDescription());
+					System.out.println("$#10442#"); desc.setName(description.getName());
 					Language lang = languageService.getByCode(description.getLanguage());
-					if(lang==null) {
+					System.out.println("$#10443#"); if(lang==null) {
 						throw new ConversionException("Language is null for code " + description.getLanguage() + " use language ISO code [en, fr ...]");
 					}
-					desc.setLanguage(lang);
+					System.out.println("$#10444#"); desc.setLanguage(lang);
 					descriptions.add(desc);
 				}
-				target.setDescriptions(descriptions);
+				System.out.println("$#10445#"); target.setDescriptions(descriptions);
 			}
 		
 		} catch (Exception e) {
@@ -74,7 +74,7 @@ public class PersistableManufacturerPopulator extends AbstractDataPopulator<Pers
 		}
 	
 		
-		return target;
+		System.out.println("$#10446#"); return target;
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class PersistableManufacturerPopulator extends AbstractDataPopulator<Pers
 	}
 
 	public LanguageService getLanguageService() {
-		return languageService;
+		System.out.println("$#10447#"); return languageService;
 	}
 
 

@@ -45,7 +45,7 @@ public class CustomerAttributeServiceImpl extends
 		
 		//override method, this allows the error that we try to remove a detached instance
 		attribute = this.getById(attribute.getId());
-		super.delete(attribute);
+		System.out.println("$#2177#"); super.delete(attribute);
 		
 	}
 	
@@ -53,27 +53,27 @@ public class CustomerAttributeServiceImpl extends
 
 	@Override
 	public CustomerAttribute getByCustomerOptionId(MerchantStore store, Long customerId, Long id) {
-		return customerAttributeRepository.findByOptionId(store.getId(), customerId, id);
+		System.out.println("$#2178#"); return customerAttributeRepository.findByOptionId(store.getId(), customerId, id);
 	}
 
 
 
 	@Override
 	public List<CustomerAttribute> getByCustomer(MerchantStore store, Customer customer) {
-		return customerAttributeRepository.findByCustomerId(store.getId(), customer.getId());
+		System.out.println("$#2179#"); return customerAttributeRepository.findByCustomerId(store.getId(), customer.getId());
 	}
 
 
 	@Override
 	public List<CustomerAttribute> getByCustomerOptionValueId(MerchantStore store,
 			Long id) {
-		return customerAttributeRepository.findByOptionValueId(store.getId(), id);
+		System.out.println("$#2180#"); return customerAttributeRepository.findByOptionValueId(store.getId(), id);
 	}
 	
 	@Override
 	public List<CustomerAttribute> getByOptionId(MerchantStore store,
 			Long id) {
-		return customerAttributeRepository.findByOptionId(store.getId(), id);
+		System.out.println("$#2181#"); return customerAttributeRepository.findByOptionId(store.getId(), id);
 	}
 
 }

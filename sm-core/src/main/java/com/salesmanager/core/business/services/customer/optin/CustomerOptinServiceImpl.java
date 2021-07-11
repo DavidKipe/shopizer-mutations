@@ -29,7 +29,7 @@ public class CustomerOptinServiceImpl extends SalesManagerEntityServiceImpl<Long
 
 	@Override
 	public void optinCumtomer(CustomerOptin optin) throws ServiceException {
-		Validate.notNull(optin,"CustomerOptin must not be null");
+		System.out.println("$#2225#"); Validate.notNull(optin,"CustomerOptin must not be null");
 		
 		customerOptinRepository.save(optin);
 		
@@ -38,15 +38,15 @@ public class CustomerOptinServiceImpl extends SalesManagerEntityServiceImpl<Long
 
 	@Override
 	public void optoutCumtomer(CustomerOptin optin) throws ServiceException {
-		Validate.notNull(optin,"CustomerOptin must not be null");
+		System.out.println("$#2226#"); Validate.notNull(optin,"CustomerOptin must not be null");
 		
-		customerOptinRepository.delete(optin);
+		System.out.println("$#2227#"); customerOptinRepository.delete(optin);
 
 	}
 
 	@Override
 	public CustomerOptin findByEmailAddress(MerchantStore store, String emailAddress, String code) throws ServiceException {
-		return customerOptinRepository.findByMerchantAndCodeAndEmail(store.getId(), code, emailAddress);
+		System.out.println("$#2228#"); return customerOptinRepository.findByMerchantAndCodeAndEmail(store.getId(), code, emailAddress);
 	}
 
 }

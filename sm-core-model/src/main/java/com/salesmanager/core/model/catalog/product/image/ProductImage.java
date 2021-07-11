@@ -72,7 +72,7 @@ public class ProductImage extends SalesManagerEntity<Long, ProductImage> {
 	}
 
 	public String getProductImage() {
-		return productImage;
+		System.out.println("$#3875#"); return productImage;
 	}
 
 	public void setProductImage(String productImage) {
@@ -80,7 +80,7 @@ public class ProductImage extends SalesManagerEntity<Long, ProductImage> {
 	}
 
 	public boolean isDefaultImage() {
-		return defaultImage;
+		System.out.println("$#3877#"); System.out.println("$#3876#"); return defaultImage;
 	}
 
 	public void setDefaultImage(boolean defaultImage) {
@@ -88,7 +88,7 @@ public class ProductImage extends SalesManagerEntity<Long, ProductImage> {
 	}
 
 	public int getImageType() {
-		return imageType;
+		System.out.println("$#3878#"); return imageType;
 	}
 
 	public void setImageType(int imageType) {
@@ -96,7 +96,7 @@ public class ProductImage extends SalesManagerEntity<Long, ProductImage> {
 	}
 
 	public boolean isImageCrop() {
-		return imageCrop;
+		System.out.println("$#3880#"); System.out.println("$#3879#"); return imageCrop;
 	}
 
 	public void setImageCrop(boolean imageCrop) {
@@ -105,7 +105,7 @@ public class ProductImage extends SalesManagerEntity<Long, ProductImage> {
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#3881#"); return id;
 	}
 
 	@Override
@@ -114,7 +114,7 @@ public class ProductImage extends SalesManagerEntity<Long, ProductImage> {
 	}
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#3882#"); return product;
 	}
 
 	public void setProduct(Product product) {
@@ -126,11 +126,11 @@ public class ProductImage extends SalesManagerEntity<Long, ProductImage> {
 	}
 
 	public List<ProductImageDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#3883#"); return descriptions;
 	}
 
 	public InputStream getImage() {
-		return image;
+		System.out.println("$#3884#"); return image;
 	}
 
 	public void setImage(InputStream image) {
@@ -138,7 +138,7 @@ public class ProductImage extends SalesManagerEntity<Long, ProductImage> {
 	}
 
 	public String getProductImageUrl() {
-		return productImageUrl;
+		System.out.println("$#3885#"); return productImageUrl;
 	}
 
 	public void setProductImageUrl(String productImageUrl) {

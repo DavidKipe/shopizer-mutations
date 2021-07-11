@@ -14,7 +14,7 @@ public abstract class ReadableList implements Serializable {
 	private int recordsFiltered;
 
 	public int getTotalPages() {
-		return totalPages;
+		System.out.println("$#9103#"); return totalPages;
 	}
 
 	public void setTotalPages(int totalCount) {
@@ -22,7 +22,7 @@ public abstract class ReadableList implements Serializable {
 	}
 
 	public long getRecordsTotal() {
-		return recordsTotal;
+		System.out.println("$#9104#"); return recordsTotal;
 	}
 
 	public void setRecordsTotal(long recordsTotal) {
@@ -30,7 +30,7 @@ public abstract class ReadableList implements Serializable {
 	}
 
 	public int getRecordsFiltered() {
-		return recordsFiltered;
+		System.out.println("$#9105#"); return recordsFiltered;
 	}
 
 	public void setRecordsFiltered(int recordsFiltered) {
@@ -38,7 +38,7 @@ public abstract class ReadableList implements Serializable {
 	}
 
 	public int getNumber() {
-		return number;
+		System.out.println("$#9106#"); return number;
 	}
 
 	public void setNumber(int number) {

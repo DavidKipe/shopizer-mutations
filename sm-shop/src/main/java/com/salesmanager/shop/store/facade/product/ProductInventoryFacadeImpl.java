@@ -48,11 +48,11 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
     try {
       Product product = productService.getById(productId);
 
-      if (product == null) {
+						System.out.println("$#14909#"); if (product == null) {
         throw new ResourceNotFoundException("Product with id [" + productId + "] not found");
       }
 
-      if (product.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+						System.out.println("$#14910#"); if (product.getMerchantStore().getId().intValue() != store.getId().intValue()) {
         throw new ResourceNotFoundException("Product with id [" + productId
             + "] not found for store id [" + store.getInvoiceTemplate() + "]");
       }
@@ -61,9 +61,9 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
 
       Page<ProductAvailability> availabilities =
           productAvailabilityService.listByProduct(product, store, child, page, count);
-      returnList.setTotalPages(availabilities.getTotalPages());
-      returnList.setRecordsTotal(availabilities.getTotalElements());
-      returnList.setNumber(availabilities.getNumber());
+						System.out.println("$#14911#"); returnList.setTotalPages(availabilities.getTotalPages());
+						System.out.println("$#14912#"); returnList.setRecordsTotal(availabilities.getTotalElements());
+						System.out.println("$#14913#"); returnList.setNumber(availabilities.getNumber());
 
       for (ProductAvailability availability : availabilities) {
         ReadableInventory inv = new ReadableInventory();
@@ -71,7 +71,7 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
         returnList.getInventory().add(inv);
       }
 
-      return returnList;
+						System.out.println("$#14914#"); return returnList;
 
 
     } catch (ServiceException e) {
@@ -86,7 +86,7 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
   public void delete(Long inventoryId, MerchantStore store) {
     try {
       ProductAvailability availability = productAvailabilityService.getById(inventoryId, store);
-      productAvailabilityService.delete(availability);
+						System.out.println("$#14915#"); productAvailabilityService.delete(availability);
     } catch (ServiceException e) {
       throw new ServiceRuntimeException("Error while deleting inventory", e);
     }
@@ -98,12 +98,12 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
     try {
 
       ProductAvailability availability = productAvailabilityService.getById(inventoryId, store);
-      if (availability == null) {
+						System.out.println("$#14916#"); if (availability == null) {
         throw new ResourceNotFoundException("Inventory with id [" + inventoryId + "] not found");
       }
       ReadableInventory inv = new ReadableInventory();
       inv = readableInventoryMapper.convert(availability, inv, store, language);
-      return inv;
+						System.out.println("$#14917#"); return inv;
 
 
     } catch (ServiceException e) {
@@ -120,15 +120,15 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
       Product product = productService.getById(productId);
       MerchantStore store = merchantStoreService.getByCode(child);
 
-      if (product == null) {
+						System.out.println("$#14918#"); if (product == null) {
         throw new ResourceNotFoundException("Product with id [" + productId + "] not found");
       }
 
-      if (store == null) {
+						System.out.println("$#14919#"); if (store == null) {
         throw new ResourceNotFoundException("MerchantStore [" + child + "] not found");
       }
 
-      if (store.getParent() == null || store.getParent().getId().intValue() != product
+						System.out.println("$#14920#"); if (store.getParent() == null || store.getParent().getId().intValue() != product
           .getMerchantStore().getId().intValue()) {
         throw new ResourceNotFoundException(
             "MerchantStore [" + child + "] is not a store of retailer [" + store.getCode() + "]");
@@ -137,12 +137,12 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
       ProductAvailability availability;
 
       availability = productAvailabilityService.getByStore(product, store);
-      if (availability == null) {
+						System.out.println("$#14922#"); if (availability == null) {
         throw new ResourceNotFoundException("Inventory with not found");
       }
       ReadableInventory inv = new ReadableInventory();
       inv = readableInventoryMapper.convert(availability, inv, store, language);
-      return inv;
+						System.out.println("$#14923#"); return inv;
     } catch (ServiceException e) {
       throw new ServiceRuntimeException("Error while getting inventory", e);
     }
@@ -161,22 +161,22 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
 
     Product product = productService.getById(productId);
 
-    if (product == null) {
+				System.out.println("$#14924#"); if (product == null) {
       throw new ResourceNotFoundException("Product with id [" + productId + "] not found");
     }
 
     ProductAvailability availability =
         productInventoryMapper.convert(inventory, store, store.getDefaultLanguage());
-    availability.setProduct(product);
-    availability.setMerchantStore(store);
+				System.out.println("$#14925#"); availability.setProduct(product);
+				System.out.println("$#14926#"); availability.setMerchantStore(store);
     // add product
 
     try {
-      productAvailabilityService.saveOrUpdate(availability);
+						System.out.println("$#14927#"); productAvailabilityService.saveOrUpdate(availability);
 
       ReadableInventory returnObject = get(availability.getId(), store, language);
 
-      return returnObject;
+						System.out.println("$#14928#"); return returnObject;
     } catch (ServiceException e) {
       throw new ServiceRuntimeException("Cannot create Inventory", e);
     }
@@ -191,11 +191,11 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
     try {
       Product product = productService.getById(productId);
 
-      if (product == null) {
+						System.out.println("$#14929#"); if (product == null) {
         throw new ResourceNotFoundException("Product with id [" + productId + "] not found");
       }
 
-      if (product.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+						System.out.println("$#14930#"); if (product.getMerchantStore().getId().intValue() != store.getId().intValue()) {
         throw new ResourceNotFoundException(
             "Product with id [" + productId + "] not found for store [" + store.getCode() + "]");
       }
@@ -204,12 +204,12 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
       ProductAvailability availability;
 
       availability = productAvailabilityService.getByInventoryId(productId, inventoryId, store);
-      if (availability == null) {
+						System.out.println("$#14931#"); if (availability == null) {
         throw new ResourceNotFoundException("Inventory with id [" + inventoryId + "] not found");
       }
       ReadableInventory inv = new ReadableInventory();
       inv = readableInventoryMapper.convert(availability, inv, store, language);
-      return inv;
+						System.out.println("$#14932#"); return inv;
     } catch (ServiceException e) {
       throw new ServiceRuntimeException("Error while getting inventory", e);
     }
@@ -228,32 +228,32 @@ public class ProductInventoryFacadeImpl implements ProductInventoryFacade {
     try {
       Product product = productService.getById(productId);
 
-      if (product == null) {
+						System.out.println("$#14933#"); if (product == null) {
         throw new ResourceNotFoundException("Product with id [" + productId + "] not found");
       }
 
       ProductAvailability availability =
           productAvailabilityService.getById(inventory.getId(), store);
 
-      if (availability == null) {
+						System.out.println("$#14934#"); if (availability == null) {
         throw new ResourceNotFoundException(
             "Availability with id [" + inventory.getId() + "] not found");
       }
       
-      if(availability.getProduct().getId().longValue() != productId) {
+						System.out.println("$#14935#"); if(availability.getProduct().getId().longValue() != productId) {
           throw new ResourceNotFoundException(
                   "Availability with id [" + inventory.getId() + "] not found for product id [" + productId + "]");
       }
       
-      inventory.setProductId(product.getId());
+						System.out.println("$#14936#"); inventory.setProductId(product.getId());
 
       availability = productInventoryMapper.convert(inventory, availability, store, language);
-      availability.setProduct(product);
-      availability.setMerchantStore(store);
+						System.out.println("$#14937#"); availability.setProduct(product);
+						System.out.println("$#14938#"); availability.setMerchantStore(store);
       // add product
 
 
-      productAvailabilityService.saveOrUpdate(availability);
+						System.out.println("$#14939#"); productAvailabilityService.saveOrUpdate(availability);
 
     } catch (ServiceException e) {
       throw new ServiceRuntimeException("Cannot create Inventory", e);

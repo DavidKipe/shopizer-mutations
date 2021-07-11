@@ -18,38 +18,38 @@ public class Address implements Serializable {
 	
 	private boolean active = true;
 	public boolean isActive() {
-		return active;
+		System.out.println("$#9249#"); System.out.println("$#9248#"); return active;
 	}
 	public void setActive(boolean active) {
 		this.active = active;
 	}
 
 	public String getCountry() {
-		return country;
+		System.out.println("$#9250#"); return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;
 	}
 	public String getAddress() {
-		return address;
+		System.out.println("$#9251#"); return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
 	}
 	public String getPostalCode() {
-		return postalCode;
+		System.out.println("$#9252#"); return postalCode;
 	}
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 	public String getCity() {
-		return city;
+		System.out.println("$#9253#"); return city;
 	}
 	public void setCity(String city) {
 		this.city = city;
 	}
 	public String getStateProvince() {
-		return stateProvince;
+		System.out.println("$#9254#"); return stateProvince;
 	}
 	public void setStateProvince(String stateProvince) {
 		this.stateProvince = stateProvince;

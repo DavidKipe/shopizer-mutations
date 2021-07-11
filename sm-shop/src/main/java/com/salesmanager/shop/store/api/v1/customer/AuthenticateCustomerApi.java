@@ -89,11 +89,11 @@ public class AuthenticateCustomerApi {
             Language language = languageUtils.getRESTLanguage(request);  
             
             //Transition
-            customer.setUserName(customer.getEmailAddress());
+												System.out.println("$#11636#"); customer.setUserName(customer.getEmailAddress());
             
-            Validate.notNull(customer.getUserName(),"Username cannot be null");
-            Validate.notNull(customer.getBilling(),"Requires customer Country code");
-            Validate.notNull(customer.getBilling().getCountry(),"Requires customer Country code");
+												System.out.println("$#11637#"); Validate.notNull(customer.getUserName(),"Username cannot be null");
+												System.out.println("$#11638#"); Validate.notNull(customer.getBilling(),"Requires customer Country code");
+												System.out.println("$#11639#"); Validate.notNull(customer.getBilling().getCountry(),"Requires customer Country code");
             
             customerFacade.registerCustomer(customer, merchantStore, language);
             
@@ -109,21 +109,21 @@ public class AuthenticateCustomerApi {
                 );
                 
             } catch(Exception e) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+																System.out.println("$#11640#"); return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             
-            if(authentication == null) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+												System.out.println("$#11641#"); if(authentication == null) {
+																System.out.println("$#11642#"); return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+												System.out.println("$#11643#"); SecurityContextHolder.getContext().setAuthentication(authentication);
 
             // Reload password post-security so we can generate token
             final JWTUser userDetails = (JWTUser)jwtCustomerDetailsService.loadUserByUsername(customer.getUserName());
             final String token = jwtTokenUtil.generateToken(userDetails);
 
             // Return the token
-            return ResponseEntity.ok(new AuthenticationResponse(customer.getId(),token));
+												System.out.println("$#11644#"); return ResponseEntity.ok(new AuthenticationResponse(customer.getId(),token));
 
         
     }
@@ -155,16 +155,16 @@ public class AuthenticateCustomerApi {
                 );
 
         } catch(BadCredentialsException unn) {
-        	return new ResponseEntity<>("{\"message\":\"Bad credentials\"}",HttpStatus.UNAUTHORIZED);
+									System.out.println("$#11645#"); return new ResponseEntity<>("{\"message\":\"Bad credentials\"}",HttpStatus.UNAUTHORIZED);
         } catch(Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+												System.out.println("$#11646#"); return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         
-        if(authentication == null) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+								System.out.println("$#11647#"); if(authentication == null) {
+												System.out.println("$#11648#"); return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+								System.out.println("$#11649#"); SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // Reload password post-security so we can generate token
         // todo create one for social
@@ -173,23 +173,23 @@ public class AuthenticateCustomerApi {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         // Return the token
-        return ResponseEntity.ok(new AuthenticationResponse(userDetails.getId(),token));
+								System.out.println("$#11650#"); return ResponseEntity.ok(new AuthenticationResponse(userDetails.getId(),token));
     }
 
     @RequestMapping(value = "/auth/customer/refresh", method = RequestMethod.GET, produces ={ "application/json" })
     public ResponseEntity<?> refreshToken(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
 
-        System.out.println("--------------------- TOKEN : " + token);
+								System.out.println("$#11651#"); System.out.println("--------------------- TOKEN : " + token);
 
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JWTUser user = (JWTUser) jwtCustomerDetailsService.loadUserByUsername(username);
 
-        if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
+								System.out.println("$#11652#"); if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
             String refreshedToken = jwtTokenUtil.refreshToken(token);
-            return ResponseEntity.ok(new AuthenticationResponse(user.getId(),refreshedToken));
+												System.out.println("$#11653#"); return ResponseEntity.ok(new AuthenticationResponse(user.getId(),refreshedToken));
         } else {
-            return ResponseEntity.badRequest().body(null);
+												System.out.println("$#11654#"); return ResponseEntity.badRequest().body(null);
         }
     }
     
@@ -206,15 +206,15 @@ public class AuthenticateCustomerApi {
             
             Customer customer = customerFacade.getCustomerByUserName(authenticationRequest.getUsername(), merchantStore);
             
-            if(customer == null){
-                return ResponseEntity.notFound().build();
+												System.out.println("$#11655#"); if(customer == null){
+																System.out.println("$#11656#"); return ResponseEntity.notFound().build();
             }
             
-            customerFacade.resetPassword(customer, merchantStore, language);            
-            return ResponseEntity.ok(Void.class);
+												System.out.println("$#11657#"); customerFacade.resetPassword(customer, merchantStore, language);
+												System.out.println("$#11658#"); return ResponseEntity.ok(Void.class);
             
         } catch(Exception e) {
-            return ResponseEntity.badRequest().body("Exception when reseting password "+e.getMessage());
+												System.out.println("$#11659#"); return ResponseEntity.badRequest().body("Exception when reseting password "+e.getMessage());
         }
     }
     
@@ -230,24 +230,24 @@ public class AuthenticateCustomerApi {
 
             Customer customer = customerFacade.getCustomerByUserName(passwordRequest.getUsername(), merchantStore);
             
-            if(customer == null){
-                return ResponseEntity.notFound().build();
+												System.out.println("$#11660#"); if(customer == null){
+																System.out.println("$#11661#"); return ResponseEntity.notFound().build();
             }
             
             //need to validate if password matches
-            if(!customerFacade.passwordMatch(passwordRequest.getCurrent(), customer)) {
+												System.out.println("$#11662#"); if(!customerFacade.passwordMatch(passwordRequest.getCurrent(), customer)) {
               throw new ResourceNotFoundException("Username or password does not match");
             }
             
-            if(!passwordRequest.getPassword().equals(passwordRequest.getRepeatPassword())) {
+												System.out.println("$#11663#"); if(!passwordRequest.getPassword().equals(passwordRequest.getRepeatPassword())) {
               throw new ResourceNotFoundException("Both passwords do not match");
             }
             
-            customerFacade.changePassword(customer, passwordRequest.getPassword());           
-            return ResponseEntity.ok(Void.class);
+												System.out.println("$#11664#"); customerFacade.changePassword(customer, passwordRequest.getPassword());
+												System.out.println("$#11665#"); return ResponseEntity.ok(Void.class);
             
         } catch(Exception e) {
-            return ResponseEntity.badRequest().body("Exception when reseting password "+e.getMessage());
+												System.out.println("$#11666#"); return ResponseEntity.badRequest().body("Exception when reseting password "+e.getMessage());
         }
     }
 }

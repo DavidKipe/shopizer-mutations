@@ -13,12 +13,12 @@ public class UserUtils {
 		
 		List<Group> logedInUserGroups = user.getGroups();
 		for(Group group : logedInUserGroups) {
-			if(group.getGroupName().equals(groupName)) {
-				return true;
+			System.out.println("$#15814#"); if(group.getGroupName().equals(groupName)) {
+				System.out.println("$#15815#"); return true;
 			}
 		}
 		
-		return false;
+		System.out.println("$#15816#"); return false;
 		
 	}
 

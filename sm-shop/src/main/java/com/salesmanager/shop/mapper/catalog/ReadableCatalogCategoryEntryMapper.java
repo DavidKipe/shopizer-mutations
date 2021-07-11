@@ -32,13 +32,13 @@ public class ReadableCatalogCategoryEntryMapper implements Mapper<CatalogCategor
 	@Override
 	public ReadableCatalogCategoryEntry convert(CatalogCategoryEntry source, MerchantStore store, Language language) {
 		ReadableCatalogCategoryEntry destination = new ReadableCatalogCategoryEntry();
-		return convert(source, destination, store, language);
+		System.out.println("$#8343#"); return convert(source, destination, store, language);
 	}
 
 	@Override
 	public ReadableCatalogCategoryEntry convert(CatalogCategoryEntry source, ReadableCatalogCategoryEntry destination, MerchantStore store,
 			Language language) {
-		if(destination == null) {
+		System.out.println("$#8344#"); if(destination == null) {
 			destination = new ReadableCatalogCategoryEntry();
 		}
 		
@@ -51,13 +51,13 @@ public class ReadableCatalogCategoryEntryMapper implements Mapper<CatalogCategor
 			//ReadableProduct readableProduct = readableProductPopulator.populate(source.getProduct(), store, language);
 			ReadableCategory readableCategory = readableCategoryMapper.convert(source.getCategory(), store, language);
 			
-			destination.setCatalog(source.getCatalog().getCode());
+			System.out.println("$#8345#"); destination.setCatalog(source.getCatalog().getCode());
 			
-			destination.setId(source.getId());
-			destination.setVisible(source.isVisible());
-			destination.setCategory(readableCategory);
+			System.out.println("$#8346#"); destination.setId(source.getId());
+			System.out.println("$#8347#"); destination.setVisible(source.isVisible());
+			System.out.println("$#8348#"); destination.setCategory(readableCategory);
 			//destination.setProduct(readableProduct);
-			return destination;
+			System.out.println("$#8349#"); return destination;
 			
 		} catch (Exception e) {
 			throw new ConversionRuntimeException("Error while creating ReadableCatalogEntry", e);

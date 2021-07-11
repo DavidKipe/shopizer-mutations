@@ -29,55 +29,55 @@ public class ShippingSummary implements Serializable {
 	
 	
 	public BigDecimal getShipping() {
-		return shipping;
+		System.out.println("$#4656#"); return shipping;
 	}
 	public void setShipping(BigDecimal shipping) {
 		this.shipping = shipping;
 	}
 	public BigDecimal getHandling() {
-		return handling;
+		System.out.println("$#4657#"); return handling;
 	}
 	public void setHandling(BigDecimal handling) {
 		this.handling = handling;
 	}
 	public String getShippingModule() {
-		return shippingModule;
+		System.out.println("$#4658#"); return shippingModule;
 	}
 	public void setShippingModule(String shippingModule) {
 		this.shippingModule = shippingModule;
 	}
 	public String getShippingOption() {
-		return shippingOption;
+		System.out.println("$#4659#"); return shippingOption;
 	}
 	public void setShippingOption(String shippingOption) {
 		this.shippingOption = shippingOption;
 	}
 	public boolean isFreeShipping() {
-		return freeShipping;
+		System.out.println("$#4661#"); System.out.println("$#4660#"); return freeShipping;
 	}
 	public void setFreeShipping(boolean freeShipping) {
 		this.freeShipping = freeShipping;
 	}
 	public boolean isTaxOnShipping() {
-		return taxOnShipping;
+		System.out.println("$#4663#"); System.out.println("$#4662#"); return taxOnShipping;
 	}
 	public void setTaxOnShipping(boolean taxOnShipping) {
 		this.taxOnShipping = taxOnShipping;
 	}
 	public Delivery getDeliveryAddress() {
-		return deliveryAddress;
+		System.out.println("$#4664#"); return deliveryAddress;
 	}
 	public void setDeliveryAddress(Delivery deliveryAddress) {
 		this.deliveryAddress = deliveryAddress;
 	}
 	public String getShippingOptionCode() {
-		return shippingOptionCode;
+		System.out.println("$#4665#"); return shippingOptionCode;
 	}
 	public void setShippingOptionCode(String shippingOptionCode) {
 		this.shippingOptionCode = shippingOptionCode;
 	}
 	public boolean isShippingQuote() {
-		return shippingQuote;
+		System.out.println("$#4667#"); System.out.println("$#4666#"); return shippingQuote;
 	}
 	public void setShippingQuote(boolean shippingQuote) {
 		this.shippingQuote = shippingQuote;

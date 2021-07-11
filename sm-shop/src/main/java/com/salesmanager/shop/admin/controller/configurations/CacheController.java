@@ -45,7 +45,7 @@ public class CacheController {
 	@RequestMapping(value="/admin/cache/cacheManagement.html", method=RequestMethod.GET)
 	public String displayAccounts(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		this.setMenu(model, request);
+		System.out.println("$#5019#"); this.setMenu(model, request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -54,7 +54,7 @@ public class CacheController {
 
 		model.addAttribute("keys", cacheKeysList);
 
-		return ControllerConstants.Tiles.Configuration.cache;
+		System.out.println("$#5020#"); return ControllerConstants.Tiles.Configuration.cache;
 		
 	}
 	
@@ -73,23 +73,23 @@ public class CacheController {
 			StringBuilder key = new StringBuilder();
 			key.append(store.getId()).append("_").append(cacheKey);
 			
-			if(cacheKey!=null) {
-				cache.removeFromCache(key.toString());
+			System.out.println("$#5021#"); if(cacheKey!=null) {
+				System.out.println("$#5022#"); cache.removeFromCache(key.toString());
 			} else {
-				cache.removeAllFromCache(store);
+				System.out.println("$#5023#"); cache.removeAllFromCache(store);
 			}
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#5024#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while updateing groups", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5025#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5026#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5027#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 

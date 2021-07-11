@@ -43,12 +43,12 @@ public class PageableCategoryRepositoryImpl implements PageableCategoryRepositor
 	  query.setParameter(2, languageId);
 	  query.setParameter(3, name == null ? "" : name);
 	  query.setMaxResults(pageable.getPageSize());
-	  query.setFirstResult(pageable.getPageNumber() * pageable.getPageSize());
+			System.out.println("$#1512#"); query.setFirstResult(pageable.getPageNumber() * pageable.getPageSize());
 	  Page<Category> page = (Page<Category>) new PageImpl<Category>(
 	          query.getResultList(),
 	          pageable,
 	          countQueryResult.getMaxResults());
-	  return page;
+			System.out.println("$#1513#"); return page;
 	}
 
 }

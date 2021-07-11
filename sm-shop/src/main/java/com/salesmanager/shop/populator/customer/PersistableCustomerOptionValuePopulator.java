@@ -26,36 +26,36 @@ public class PersistableCustomerOptionValuePopulator extends
 			throws ConversionException {
 		
 		
-		Validate.notNull(languageService, "Requires to set LanguageService");
+		System.out.println("$#10177#"); Validate.notNull(languageService, "Requires to set LanguageService");
 		
 		
 		try {
 			
-			target.setCode(source.getCode());
-			target.setMerchantStore(store);
-			target.setSortOrder(source.getOrder());
+			System.out.println("$#10178#"); target.setCode(source.getCode());
+			System.out.println("$#10179#"); target.setMerchantStore(store);
+			System.out.println("$#10180#"); target.setSortOrder(source.getOrder());
 			
-			if(!CollectionUtils.isEmpty(source.getDescriptions())) {
+			System.out.println("$#10181#"); if(!CollectionUtils.isEmpty(source.getDescriptions())) {
 				Set<com.salesmanager.core.model.customer.attribute.CustomerOptionValueDescription> descriptions = new HashSet<com.salesmanager.core.model.customer.attribute.CustomerOptionValueDescription>();
 				for(CustomerOptionValueDescription desc  : source.getDescriptions()) {
 					com.salesmanager.core.model.customer.attribute.CustomerOptionValueDescription description = new com.salesmanager.core.model.customer.attribute.CustomerOptionValueDescription();
 					Language lang = languageService.getByCode(desc.getLanguage());
-					if(lang==null) {
+					System.out.println("$#10182#"); if(lang==null) {
 						throw new ConversionException("Language is null for code " + description.getLanguage() + " use language ISO code [en, fr ...]");
 					}
-					description.setLanguage(lang);
-					description.setName(desc.getName());
-					description.setTitle(desc.getTitle());
-					description.setCustomerOptionValue(target);
+					System.out.println("$#10183#"); description.setLanguage(lang);
+					System.out.println("$#10184#"); description.setName(desc.getName());
+					System.out.println("$#10185#"); description.setTitle(desc.getTitle());
+					System.out.println("$#10186#"); description.setCustomerOptionValue(target);
 					descriptions.add(description);
 				}
-				target.setDescriptions(descriptions);
+				System.out.println("$#10187#"); target.setDescriptions(descriptions);
 			}
 			
 		} catch (Exception e) {
 			throw new ConversionException(e);
 		}
-		return target;
+		System.out.println("$#10188#"); return target;
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class PersistableCustomerOptionValuePopulator extends
 	}
 
 	public LanguageService getLanguageService() {
-		return languageService;
+		System.out.println("$#10189#"); return languageService;
 	}
 
 }

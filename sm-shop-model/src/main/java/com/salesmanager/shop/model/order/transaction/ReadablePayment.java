@@ -12,13 +12,13 @@ public class ReadablePayment extends PaymentEntity {
 	private PaymentType paymentType;
 	private TransactionType transactionType;
 	public TransactionType getTransactionType() {
-		return transactionType;
+		System.out.println("$#9207#"); return transactionType;
 	}
 	public void setTransactionType(TransactionType transactionType) {
 		this.transactionType = transactionType;
 	}
 	public PaymentType getPaymentType() {
-		return paymentType;
+		System.out.println("$#9208#"); return paymentType;
 	}
 	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;

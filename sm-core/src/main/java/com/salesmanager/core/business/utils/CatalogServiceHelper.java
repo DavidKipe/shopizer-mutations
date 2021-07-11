@@ -25,35 +25,35 @@ public class CatalogServiceHelper {
 		
 		
 	Set<ProductAttribute> attributes = p.getAttributes();
-		if(attributes!=null) {
+		System.out.println("$#3445#"); if(attributes!=null) {
 			
 			for(ProductAttribute attribute : attributes) {
 
 				ProductOption po = attribute.getProductOption();
 				Set<ProductOptionDescription> spod = po.getDescriptions();
-				if(spod!=null) {
+				System.out.println("$#3446#"); if(spod!=null) {
 					Set<ProductOptionDescription> podDescriptions = new HashSet<ProductOptionDescription>();
 					for(ProductOptionDescription pod : spod) {
 						//System.out.println("    ProductOptionDescription : " + pod.getProductOptionName());
-						if(pod.getLanguage().getId()==language) {
+						System.out.println("$#3447#"); if(pod.getLanguage().getId()==language) {
 							podDescriptions.add(pod);
 						}
 					}
-					po.setDescriptions(podDescriptions);
+					System.out.println("$#3448#"); po.setDescriptions(podDescriptions);
 				}
 				
 				ProductOptionValue pov = attribute.getProductOptionValue();
 				
 				
 				Set<ProductOptionValueDescription> spovd = pov.getDescriptions();
-				if(spovd!=null) {
+				System.out.println("$#3449#"); if(spovd!=null) {
 					Set<ProductOptionValueDescription> povdDescriptions = new HashSet();
 					for(ProductOptionValueDescription povd : spovd) {
-						if(povd.getLanguage().getId()==language) {
+						System.out.println("$#3450#"); if(povd.getLanguage().getId()==language) {
 							povdDescriptions.add(povd);
 						}
 					}
-					pov.setDescriptions(povdDescriptions);
+					System.out.println("$#3451#"); pov.setDescriptions(povdDescriptions);
 				}
 					
 			}
@@ -75,24 +75,24 @@ public class CatalogServiceHelper {
 		
 		for(ProductAvailability availability : availabilities) {
 			
-			if(availability.getRegion().equals(Constants.ALL_REGIONS)) {
+			System.out.println("$#3452#"); if(availability.getRegion().equals(Constants.ALL_REGIONS)) {
 				defaultAvailability = availability;
 			} 
-			if(availability.getRegion().equals(locale.getCountry())) {
+			System.out.println("$#3453#"); if(availability.getRegion().equals(locale.getCountry())) {
 				localeAvailability = availability;
 			}
 			
 		}
 		
-		if(defaultAvailability!=null || localeAvailability!=null) {
+		System.out.println("$#3454#"); if(defaultAvailability!=null || localeAvailability!=null) {
 			Set<ProductAvailability> productAvailabilities = new HashSet<ProductAvailability>();
-			if(defaultAvailability!=null) {
+			System.out.println("$#3456#"); if(defaultAvailability!=null) {
 				productAvailabilities.add(defaultAvailability);
 			}
-			if(localeAvailability!=null) {
+			System.out.println("$#3457#"); if(localeAvailability!=null) {
 				productAvailabilities.add(localeAvailability);
 			}
-			product.setAvailabilities(productAvailabilities);
+			System.out.println("$#3458#"); product.setAvailabilities(productAvailabilities);
 		}
 		
 	}

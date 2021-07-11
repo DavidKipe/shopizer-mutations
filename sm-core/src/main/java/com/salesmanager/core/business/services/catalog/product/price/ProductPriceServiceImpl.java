@@ -26,23 +26,23 @@ public class ProductPriceServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	public void addDescription(ProductPrice price,
 			ProductPriceDescription description) throws ServiceException {
 		price.getDescriptions().add(description);
-		update(price);
+		System.out.println("$#1939#"); update(price);
 	}
 	
 	
 	@Override
 	public void saveOrUpdate(ProductPrice price) throws ServiceException {
 		
-		if(price.getId()!=null && price.getId().longValue() > 0) {
-			this.update(price);
+		System.out.println("$#1941#"); System.out.println("$#1940#"); if(price.getId()!=null && price.getId().longValue() > 0) {
+			System.out.println("$#1943#"); this.update(price);
 		} else {
 			
 			Set<ProductPriceDescription> descriptions = price.getDescriptions();
-			price.setDescriptions(new HashSet<ProductPriceDescription>());
-			this.create(price);
+			System.out.println("$#1944#"); price.setDescriptions(new HashSet<ProductPriceDescription>());
+			System.out.println("$#1945#"); this.create(price);
 			for(ProductPriceDescription description : descriptions) {
-				description.setProductPrice(price);
-				this.addDescription(price, description);
+				System.out.println("$#1946#"); description.setProductPrice(price);
+				System.out.println("$#1947#"); this.addDescription(price, description);
 			}
 			
 		}
@@ -56,7 +56,7 @@ public class ProductPriceServiceImpl extends SalesManagerEntityServiceImpl<Long,
 		
 		//override method, this allows the error that we try to remove a detached instance
 		price = this.getById(price.getId());
-		super.delete(price);
+		System.out.println("$#1948#"); super.delete(price);
 		
 	}
 	

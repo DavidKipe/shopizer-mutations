@@ -38,67 +38,67 @@ public class CustomerEntityPopulator
         {
 
             
-            target.setId( source.getId() );
-            if(StringUtils.isNotBlank( source.getEmailAddress() )){
-                target.setEmailAddress( source.getEmailAddress() );
+												System.out.println("$#10012#"); target.setId( source.getId() );
+												System.out.println("$#10013#"); if(StringUtils.isNotBlank( source.getEmailAddress() )){
+																System.out.println("$#10014#"); target.setEmailAddress( source.getEmailAddress() );
             }
             
           
 
-            if ( source.getBilling() != null )
+												System.out.println("$#10015#"); if ( source.getBilling() != null )
             {
                 Address address = new Address();
-                address.setCity( source.getBilling().getCity() );
-                address.setAddress(source.getBilling().getAddress());
-                address.setCompany( source.getBilling().getCompany() );
-                address.setFirstName( source.getBilling().getFirstName() );
-                address.setLastName( source.getBilling().getLastName() );
-                address.setPostalCode( source.getBilling().getPostalCode() );
-                address.setPhone( source.getBilling().getTelephone() );
-                if ( source.getBilling().getCountry() != null )
+																System.out.println("$#10016#"); address.setCity( source.getBilling().getCity() );
+																System.out.println("$#10017#"); address.setAddress(source.getBilling().getAddress());
+																System.out.println("$#10018#"); address.setCompany( source.getBilling().getCompany() );
+																System.out.println("$#10019#"); address.setFirstName( source.getBilling().getFirstName() );
+																System.out.println("$#10020#"); address.setLastName( source.getBilling().getLastName() );
+																System.out.println("$#10021#"); address.setPostalCode( source.getBilling().getPostalCode() );
+																System.out.println("$#10022#"); address.setPhone( source.getBilling().getTelephone() );
+																System.out.println("$#10023#"); if ( source.getBilling().getCountry() != null )
                 {
-                    address.setCountry( source.getBilling().getCountry().getIsoCode() );
+																				System.out.println("$#10024#"); address.setCountry( source.getBilling().getCountry().getIsoCode() );
                 }
-                if ( source.getBilling().getZone() != null )
+																System.out.println("$#10025#"); if ( source.getBilling().getZone() != null )
                 {
-                    address.setZone( source.getBilling().getZone().getCode() );
+																				System.out.println("$#10026#"); address.setZone( source.getBilling().getZone().getCode() );
                 }
                 
-                address.setStateProvince(source.getBilling().getState());
+																System.out.println("$#10027#"); address.setStateProvince(source.getBilling().getState());
 
-                target.setBilling( address );
+																System.out.println("$#10028#"); target.setBilling( address );
             }
             
-    		if(source.getCustomerReviewAvg() != null) {
-    			target.setRating(source.getCustomerReviewAvg().doubleValue());
+						System.out.println("$#10029#"); if(source.getCustomerReviewAvg() != null) {
+							System.out.println("$#10030#"); target.setRating(source.getCustomerReviewAvg().doubleValue());
     		}
     		
-    		if(source.getCustomerReviewCount() != null) {
-    			target.setRatingCount(source.getCustomerReviewCount().intValue());
+						System.out.println("$#10031#"); if(source.getCustomerReviewCount() != null) {
+							System.out.println("$#10032#"); target.setRatingCount(source.getCustomerReviewCount().intValue());
     		}
 
-            if ( source.getDelivery() != null )
+												System.out.println("$#10033#"); if ( source.getDelivery() != null )
             {
                 Address address = new Address();
-                address.setCity( source.getDelivery().getCity() );
-                address.setAddress(source.getDelivery().getAddress());
-                address.setCompany( source.getDelivery().getCompany() );
-                address.setFirstName( source.getDelivery().getFirstName() );
-                address.setLastName( source.getDelivery().getLastName() );
-                address.setPostalCode( source.getDelivery().getPostalCode() );
-                address.setPhone( source.getDelivery().getTelephone() );
-                if ( source.getDelivery().getCountry() != null )
+																System.out.println("$#10034#"); address.setCity( source.getDelivery().getCity() );
+																System.out.println("$#10035#"); address.setAddress(source.getDelivery().getAddress());
+																System.out.println("$#10036#"); address.setCompany( source.getDelivery().getCompany() );
+																System.out.println("$#10037#"); address.setFirstName( source.getDelivery().getFirstName() );
+																System.out.println("$#10038#"); address.setLastName( source.getDelivery().getLastName() );
+																System.out.println("$#10039#"); address.setPostalCode( source.getDelivery().getPostalCode() );
+																System.out.println("$#10040#"); address.setPhone( source.getDelivery().getTelephone() );
+																System.out.println("$#10041#"); if ( source.getDelivery().getCountry() != null )
                 {
-                    address.setCountry( source.getDelivery().getCountry().getIsoCode() );
+																				System.out.println("$#10042#"); address.setCountry( source.getDelivery().getCountry().getIsoCode() );
                 }
-                if ( source.getDelivery().getZone() != null )
+																System.out.println("$#10043#"); if ( source.getDelivery().getZone() != null )
                 {
-                    address.setZone( source.getDelivery().getZone().getCode() );
+																				System.out.println("$#10044#"); address.setZone( source.getDelivery().getZone().getCode() );
                 }
                 
-                address.setStateProvince(source.getDelivery().getState());
+																System.out.println("$#10045#"); address.setStateProvince(source.getDelivery().getState());
 
-                target.setDelivery( address );
+																System.out.println("$#10046#"); target.setDelivery( address );
             }
 
         }
@@ -107,13 +107,13 @@ public class CustomerEntityPopulator
             throw new ConversionException( e );
         }
 
-        return target;
+								System.out.println("$#10047#"); return target;
     }
 
     @Override
     protected CustomerEntity createTarget()
     {
-        return new CustomerEntity();
+								System.out.println("$#10048#"); return new CustomerEntity();
     }
 
 }

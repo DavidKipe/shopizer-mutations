@@ -117,30 +117,30 @@ public class ShopProductRESTController {
 		try {
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11341#"); if(merchantStore!=null) {
+				System.out.println("$#11342#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11343#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11344#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11345#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 			
 			productFacade.saveProduct(merchantStore, product, merchantStore.getDefaultLanguage());
 			
-			return product;
+			System.out.println("$#11346#"); return product;
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while saving product",e);
 			try {
-				response.sendError(503, "Error while saving product " + e.getMessage());
+				System.out.println("$#11347#"); response.sendError(503, "Error while saving product " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			
@@ -154,10 +154,10 @@ public class ShopProductRESTController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteProduct(@PathVariable final String store, @PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Product product = productService.getById(id);
-		if(product != null && product.getMerchantStore().getCode().equalsIgnoreCase(store)){
-			productService.delete(product);
+		System.out.println("$#11348#"); if(product != null && product.getMerchantStore().getCode().equalsIgnoreCase(store)){
+			System.out.println("$#11350#"); productService.delete(product);
 		}else{
-			response.sendError(404, "No Product found for ID : " + id);
+			System.out.println("$#11351#"); response.sendError(404, "No Product found for ID : " + id);
 		}
 	}
 	
@@ -179,39 +179,39 @@ public class ShopProductRESTController {
 		try {
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11352#"); if(merchantStore!=null) {
+				System.out.println("$#11353#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11354#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11355#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11356#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 
 			PersistableManufacturerPopulator populator = new PersistableManufacturerPopulator();
-			populator.setLanguageService(languageService);
+			System.out.println("$#11357#"); populator.setLanguageService(languageService);
 			
 			com.salesmanager.core.model.catalog.product.manufacturer.Manufacturer manuf = new com.salesmanager.core.model.catalog.product.manufacturer.Manufacturer();
 			
 			populator.populate(manufacturer, manuf, merchantStore, merchantStore.getDefaultLanguage());
 		
-			manufacturerService.save(manuf);
+			System.out.println("$#11358#"); manufacturerService.save(manuf);
 			
-			manufacturer.setId(manuf.getId());
+			System.out.println("$#11359#"); manufacturer.setId(manuf.getId());
 			
-			return manufacturer;
+			System.out.println("$#11360#"); return manufacturer;
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while saving product",e);
 			try {
-				response.sendError(503, "Error while saving product " + e.getMessage());
+				System.out.println("$#11361#"); response.sendError(503, "Error while saving product " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			
@@ -230,38 +230,38 @@ public class ShopProductRESTController {
 		try {
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11362#"); if(merchantStore!=null) {
+				System.out.println("$#11363#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11364#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11365#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11366#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 
 			PersistableProductOptionValuePopulator populator = new PersistableProductOptionValuePopulator();
-			populator.setLanguageService(languageService);
+			System.out.println("$#11367#"); populator.setLanguageService(languageService);
 			
 			com.salesmanager.core.model.catalog.product.attribute.ProductOptionValue optValue = new com.salesmanager.core.model.catalog.product.attribute.ProductOptionValue();
 			populator.populate(optionValue, optValue, merchantStore, merchantStore.getDefaultLanguage());
 		
-			productOptionValueService.save(optValue);
+			System.out.println("$#11368#"); productOptionValueService.save(optValue);
 			
-			optionValue.setId(optValue.getId());
+			System.out.println("$#11369#"); optionValue.setId(optValue.getId());
 			
-			return optionValue;
+			System.out.println("$#11370#"); return optionValue;
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while saving product option value",e);
 			try {
-				response.sendError(503, "Error while saving product option value" + e.getMessage());
+				System.out.println("$#11371#"); response.sendError(503, "Error while saving product option value" + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			
@@ -280,38 +280,38 @@ public class ShopProductRESTController {
 		try {
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11372#"); if(merchantStore!=null) {
+				System.out.println("$#11373#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11374#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11375#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11376#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 
 			PersistableProductOptionPopulator populator = new PersistableProductOptionPopulator();
-			populator.setLanguageService(languageService);
+			System.out.println("$#11377#"); populator.setLanguageService(languageService);
 			
 			com.salesmanager.core.model.catalog.product.attribute.ProductOption opt = new com.salesmanager.core.model.catalog.product.attribute.ProductOption();
 			populator.populate(option, opt, merchantStore, merchantStore.getDefaultLanguage());
 		
-			productOptionService.save(opt);
+			System.out.println("$#11378#"); productOptionService.save(opt);
 			
-			option.setId(opt.getId());
+			System.out.println("$#11379#"); option.setId(opt.getId());
 			
-			return option;
+			System.out.println("$#11380#"); return option;
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while saving product option",e);
 			try {
-				response.sendError(503, "Error while saving product option" + e.getMessage());
+				System.out.println("$#11381#"); response.sendError(503, "Error while saving product option" + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			
@@ -329,57 +329,57 @@ public class ShopProductRESTController {
 		try {
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11382#"); if(merchantStore!=null) {
+				System.out.println("$#11383#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11384#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11385#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(500, "Merchant store is null for code " + store);
+				System.out.println("$#11386#"); response.sendError(500, "Merchant store is null for code " + store);
 				return null;
 			}
 			
 			
 			//rating already exist
 			ProductReview prodReview = productReviewService.getByProductAndCustomer(review.getProductId(), review.getCustomerId());
-			if(prodReview!=null) {
-				response.sendError(500, "A review already exist for this customer and product");
+			System.out.println("$#11387#"); if(prodReview!=null) {
+				System.out.println("$#11388#"); response.sendError(500, "A review already exist for this customer and product");
 				return null;
 			}
 			
 			//rating maximum 5
-			if(review.getRating()>Constants.MAX_REVIEW_RATING_SCORE) {
-				response.sendError(503, "Maximum rating score is " + Constants.MAX_REVIEW_RATING_SCORE);
+			System.out.println("$#11390#"); System.out.println("$#11389#"); if(review.getRating()>Constants.MAX_REVIEW_RATING_SCORE) {
+				System.out.println("$#11391#"); response.sendError(503, "Maximum rating score is " + Constants.MAX_REVIEW_RATING_SCORE);
 				return null;
 			}
 			
 			
 
 			PersistableProductReviewPopulator populator = new PersistableProductReviewPopulator();
-			populator.setLanguageService(languageService);
-			populator.setCustomerService(customerService);
-			populator.setProductService(productService);
+			System.out.println("$#11392#"); populator.setLanguageService(languageService);
+			System.out.println("$#11393#"); populator.setCustomerService(customerService);
+			System.out.println("$#11394#"); populator.setProductService(productService);
 			
 			com.salesmanager.core.model.catalog.product.review.ProductReview rev = new com.salesmanager.core.model.catalog.product.review.ProductReview();
 			populator.populate(review, rev, merchantStore, merchantStore.getDefaultLanguage());
 		
-			productReviewService.create(rev);
+			System.out.println("$#11395#"); productReviewService.create(rev);
 
 			
-			review.setId(rev.getId());
+			System.out.println("$#11396#"); review.setId(rev.getId());
 			
-			return review;
+			System.out.println("$#11397#"); return review;
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while saving product review",e);
 			try {
-				response.sendError(503, "Error while saving product review" + e.getMessage());
+				System.out.println("$#11398#"); response.sendError(503, "Error while saving product review" + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			
@@ -396,19 +396,19 @@ public class ShopProductRESTController {
 		/** default routine **/
 		
 		MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-		if(merchantStore!=null) {
-			if(!merchantStore.getCode().equals(store)) {
+		System.out.println("$#11399#"); if(merchantStore!=null) {
+			System.out.println("$#11400#"); if(!merchantStore.getCode().equals(store)) {
 				merchantStore = null;
 			}
 		}
 		
-		if(merchantStore== null) {
+		System.out.println("$#11401#"); if(merchantStore== null) {
 			merchantStore = merchantStoreService.getByCode(store);
 		}
 		
-		if(merchantStore==null) {
+		System.out.println("$#11402#"); if(merchantStore==null) {
 			LOGGER.error("Merchant store is null for code " + store);
-			response.sendError(503, "Merchant store is null for code " + store);
+			System.out.println("$#11403#"); response.sendError(503, "Merchant store is null for code " + store);
 			return null;
 		}
 		
@@ -416,7 +416,7 @@ public class ShopProductRESTController {
 		
 		String lang = l.getCode();
 		
-		if(!StringUtils.isBlank(request.getParameter(Constants.LANG))) {
+		System.out.println("$#11404#"); if(!StringUtils.isBlank(request.getParameter(Constants.LANG))) {
 			
 			lang = request.getParameter(Constants.LANG);
 			
@@ -428,7 +428,7 @@ public class ShopProductRESTController {
 		
 
 		
-		return this.getProducts(0, 10000, store, lang, null, null, request, response);
+		System.out.println("$#11405#"); return this.getProducts(0, 10000, store, lang, null, null, request, response);
 	}
 	
 /*	*//**
@@ -537,11 +537,11 @@ public class ShopProductRESTController {
 		
 		List<QueryFilter> queryFilters = null;
 		try {
-			if(filterType.equals(QueryFilterType.BRAND.name())) {//the only one implemented so far
+			System.out.println("$#11406#"); if(filterType.equals(QueryFilterType.BRAND.name())) {//the only one implemented so far
 				QueryFilter filter = new QueryFilter();
-				filter.setFilterType(QueryFilterType.BRAND);
-				filter.setFilterId(Long.parseLong(filterValue));
-				if(queryFilters==null) {
+				System.out.println("$#11407#"); filter.setFilterType(QueryFilterType.BRAND);
+				System.out.println("$#11408#"); filter.setFilterId(Long.parseLong(filterValue));
+				System.out.println("$#11409#"); if(queryFilters==null) {
 					queryFilters = new ArrayList<QueryFilter>();
 				}
 				queryFilters.add(filter);
@@ -550,7 +550,7 @@ public class ShopProductRESTController {
 			LOGGER.error("Invalid filter or filter-value " + filterType + " - " + filterValue,e);
 		}
 		
-		return this.getProducts(start, max, store, language, category, queryFilters, request, response);
+		System.out.println("$#11410#"); return this.getProducts(start, max, store, language, category, queryFilters, request, response);
 	}
 	
 	
@@ -570,40 +570,40 @@ public class ShopProductRESTController {
 			
 			Map<String,Language> langs = languageService.getLanguagesMap();
 			
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11411#"); if(merchantStore!=null) {
+				System.out.println("$#11412#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null; //reset for the current request
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11413#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11414#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
+				System.out.println("$#11415#"); response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
 				return null;
 			}
 			
 
 
 			Language lang = langs.get(language);
-			if(lang==null) {
+			System.out.println("$#11416#"); if(lang==null) {
 				lang = langs.get(Constants.DEFAULT_LANGUAGE);
 			}
 			
 			ProductCriteria productCriteria = new ProductCriteria();
-			productCriteria.setMaxCount(max);
-			productCriteria.setStartIndex(start);
+			System.out.println("$#11417#"); productCriteria.setMaxCount(max);
+			System.out.println("$#11418#"); productCriteria.setStartIndex(start);
 			
 			//get the category by code
-			if(!StringUtils.isBlank(category)) {
+			System.out.println("$#11419#"); if(!StringUtils.isBlank(category)) {
 				Category cat = categoryService.getBySeUrl(merchantStore, category);
 				
-				if(cat==null) {
+				System.out.println("$#11420#"); if(cat==null) {
 					LOGGER.error("Category " + category + " is null");
-					response.sendError(503, "Category is null");//TODO localized message
+					System.out.println("$#11421#"); response.sendError(503, "Category is null");//TODO localized message
 					return null;
 				}
 				
@@ -613,7 +613,7 @@ public class ShopProductRESTController {
 				List<Category> categories = categoryService.getListByLineage(store, lineage);
 				
 				List<Long> ids = new ArrayList<Long>();
-				if(categories!=null && categories.size()>0) {
+				System.out.println("$#11423#"); System.out.println("$#11422#"); if(categories!=null && categories.size()>0) {
 					for(Category c : categories) {
 						ids.add(c.getId());
 					}
@@ -621,13 +621,13 @@ public class ShopProductRESTController {
 				ids.add(cat.getId());
 				
 				
-				productCriteria.setCategoryIds(ids);
+				System.out.println("$#11425#"); productCriteria.setCategoryIds(ids);
 			}
 			
-			if(filters!=null) {
+			System.out.println("$#11426#"); if(filters!=null) {
 				for(QueryFilter filter : filters) {
-					if(filter.getFilterType().name().equals(QueryFilterType.BRAND.name())) {//the only filter implemented
-						productCriteria.setManufacturerId(filter.getFilterId());
+					System.out.println("$#11427#"); if(filter.getFilterType().name().equals(QueryFilterType.BRAND.name())) {//the only filter implemented
+						System.out.println("$#11428#"); productCriteria.setManufacturerId(filter.getFilterId());
 					}
 				}
 			}
@@ -636,8 +636,8 @@ public class ShopProductRESTController {
 
 			
 			ReadableProductPopulator populator = new ReadableProductPopulator();
-			populator.setPricingService(pricingService);
-			populator.setimageUtils(imageUtils);
+			System.out.println("$#11429#"); populator.setPricingService(pricingService);
+			System.out.println("$#11430#"); populator.setimageUtils(imageUtils);
 			
 			
 			ReadableProductList productList = new ReadableProductList();
@@ -649,15 +649,15 @@ public class ShopProductRESTController {
 				
 			}
 			
-			productList.setTotalPages(products.getTotalCount());
+			System.out.println("$#11431#"); productList.setTotalPages(products.getTotalCount());
 			
 			
-			return productList;
+			System.out.println("$#11432#"); return productList;
 			
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while getting products",e);
-			response.sendError(503, "An error occured while retrieving products " + e.getMessage());
+			System.out.println("$#11433#"); response.sendError(503, "An error occured while retrieving products " + e.getMessage());
 		}
 		
 		return null;
@@ -672,40 +672,40 @@ public class ShopProductRESTController {
 		
 		/** bcz of the filter **/
 		MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-		if(merchantStore!=null) {
-			if(!merchantStore.getCode().equals(store)) {
+		System.out.println("$#11434#"); if(merchantStore!=null) {
+			System.out.println("$#11435#"); if(!merchantStore.getCode().equals(store)) {
 				merchantStore = null;
 			}
 		}
 
-		if(store!=null) {
+		System.out.println("$#11436#"); if(store!=null) {
 			merchantStore = merchantStoreService.getByCode(store);
 		}
 		
-		if(merchantStore==null) {
+		System.out.println("$#11437#"); if(merchantStore==null) {
 			LOGGER.error("Merchant store is null for code " + store);
-			response.sendError(503, "Merchant store is null for code " + store);
+			System.out.println("$#11438#"); response.sendError(503, "Merchant store is null for code " + store);
 			return null;
 		}
 
 		Language language = null;
 		
-		if(!StringUtils.isBlank(lang)) {
+		System.out.println("$#11439#"); if(!StringUtils.isBlank(lang)) {
 			language = languageService.getByCode(lang);
 		}
 		
-		if(language==null) {
+		System.out.println("$#11440#"); if(language==null) {
 			language = merchantStore.getDefaultLanguage();
 		}
 		
 		ReadableProduct product = productFacade.getProduct(merchantStore, id, language);
 		
-		if(product==null) {
-			response.sendError(404, "Product not fount for id " + id);
+		System.out.println("$#11441#"); if(product==null) {
+			System.out.println("$#11442#"); response.sendError(404, "Product not fount for id " + id);
 			return null;
 		}
 		
-		return product;
+		System.out.println("$#11443#"); return product;
 		
 	}
 
@@ -723,8 +723,8 @@ public class ShopProductRESTController {
 		try {
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11444#"); if(merchantStore!=null) {
+				System.out.println("$#11445#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
@@ -732,43 +732,43 @@ public class ShopProductRESTController {
 			String lang = request.getParameter("lang");
 			Language language = null;
 			
-			if(merchantStore== null) {
+			System.out.println("$#11446#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11447#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11448#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 			
-			if(StringUtils.isBlank(lang)) {
+			System.out.println("$#11449#"); if(StringUtils.isBlank(lang)) {
 				language = merchantStore.getDefaultLanguage();
 			} else {
 				language = languageService.getByCode(lang);
 			}
 			
-			if(language==null) {
+			System.out.println("$#11450#"); if(language==null) {
 				language = merchantStore.getDefaultLanguage();
 			}
 			
 			ReadableProduct product = productFacade.getProduct(merchantStore, sku, language);
 			
-			if(product==null) {
+			System.out.println("$#11451#"); if(product==null) {
 				LOGGER.error("Product is null for sku " +sku);
-				response.sendError(503, "Product is null for sku " +sku);
+				System.out.println("$#11452#"); response.sendError(503, "Product is null for sku " +sku);
 				return null;
 			}
 			
 			product = productFacade.updateProductPrice(product, price, language);
 			
-			return product;
+			System.out.println("$#11453#"); return product;
 
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while saving product",e);
 			try {
-				response.sendError(503, "Error while updating product " + e.getMessage());
+				System.out.println("$#11454#"); response.sendError(503, "Error while updating product " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			
@@ -790,8 +790,8 @@ public class ShopProductRESTController {
 		try {
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11455#"); if(merchantStore!=null) {
+				System.out.println("$#11456#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
@@ -799,43 +799,43 @@ public class ShopProductRESTController {
 			String lang = request.getParameter("lang");
 			Language language = null;
 			
-			if(merchantStore== null) {
+			System.out.println("$#11457#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11458#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11459#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 			
-			if(StringUtils.isBlank(lang)) {
+			System.out.println("$#11460#"); if(StringUtils.isBlank(lang)) {
 				language = merchantStore.getDefaultLanguage();
 			} else {
 				language = languageService.getByCode(lang);
 			}
 			
-			if(language==null) {
+			System.out.println("$#11461#"); if(language==null) {
 				language = merchantStore.getDefaultLanguage();
 			}
 			
 			ReadableProduct product = productFacade.getProduct(merchantStore, sku, language);
 			
-			if(product==null) {
+			System.out.println("$#11462#"); if(product==null) {
 				LOGGER.error("Product is null for sku " +sku);
-				response.sendError(503, "Product is null for sku " +sku);
+				System.out.println("$#11463#"); response.sendError(503, "Product is null for sku " +sku);
 				return null;
 			}
 			
 			product = productFacade.updateProductQuantity(product, qty, language);
 			
-			return product;
+			System.out.println("$#11464#"); return product;
 
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while saving product",e);
 			try {
-				response.sendError(503, "Error while updating product " + e.getMessage());
+				System.out.println("$#11465#"); response.sendError(503, "Error while updating product " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			

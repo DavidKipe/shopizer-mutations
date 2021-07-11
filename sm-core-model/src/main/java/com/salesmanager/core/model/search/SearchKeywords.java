@@ -15,7 +15,7 @@ public class SearchKeywords implements JSONAware{
 	}
 
 	public List<String> getKeywords() {
-		return keywords;
+		System.out.println("$#4519#"); return keywords;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -28,7 +28,7 @@ public class SearchKeywords implements JSONAware{
 			data.put("value", kw);
 			jsonArray.add(data);
 		}
-		return jsonArray.toJSONString();
+		System.out.println("$#4520#"); return jsonArray.toJSONString();
 	}
 
 }

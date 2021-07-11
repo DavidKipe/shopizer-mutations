@@ -27,8 +27,8 @@ public class EmailServiceImpl implements EmailService {
 
 		EmailConfig emailConfig = getEmailConfiguration(store);
 		
-		sender.setEmailConfig(emailConfig);
-		sender.send(email);
+		System.out.println("$#3211#"); sender.setEmailConfig(emailConfig);
+		System.out.println("$#3212#"); sender.send(email);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class EmailServiceImpl implements EmailService {
 		
 		MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(Constants.EMAIL_CONFIG, store);
 		EmailConfig emailConfig = null;
-		if(configuration!=null) {
+		System.out.println("$#3213#"); if(configuration!=null) {
 			String value = configuration.getValue();
 			
 			ObjectMapper mapper = new ObjectMapper();
@@ -46,22 +46,22 @@ public class EmailServiceImpl implements EmailService {
 				throw new ServiceException("Cannot parse json string " + value);
 			}
 		}
-		return emailConfig;
+		System.out.println("$#3214#"); return emailConfig;
 	}
 	
 	
 	@Override
 	public void saveEmailConfiguration(EmailConfig emailConfig, MerchantStore store) throws ServiceException {
 		MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(Constants.EMAIL_CONFIG, store);
-		if(configuration==null) {
+		System.out.println("$#3215#"); if(configuration==null) {
 			configuration = new MerchantConfiguration();
-			configuration.setMerchantStore(store);
-			configuration.setKey(Constants.EMAIL_CONFIG);
+			System.out.println("$#3216#"); configuration.setMerchantStore(store);
+			System.out.println("$#3217#"); configuration.setKey(Constants.EMAIL_CONFIG);
 		}
 		
 		String value = emailConfig.toJSONString();
-		configuration.setValue(value);
-		merchantConfigurationService.saveOrUpdate(configuration);
+		System.out.println("$#3218#"); configuration.setValue(value);
+		System.out.println("$#3219#"); merchantConfigurationService.saveOrUpdate(configuration);
 	}
 
 }

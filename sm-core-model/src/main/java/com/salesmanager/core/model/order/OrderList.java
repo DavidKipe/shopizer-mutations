@@ -17,7 +17,7 @@ public class OrderList extends EntityList {
 	}
 
 	public List<Order> getOrders() {
-		return orders;
+		System.out.println("$#4342#"); return orders;
 	}
 
 }

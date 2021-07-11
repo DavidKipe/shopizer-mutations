@@ -33,7 +33,7 @@ public class ProductOptionValueDescription extends Description {
 	}
 
 	public ProductOptionValue getProductOptionValue() {
-		return productOptionValue;
+		System.out.println("$#3837#"); return productOptionValue;
 	}
 
 	public void setProductOptionValue(ProductOptionValue productOptionValue) {

@@ -72,7 +72,7 @@ public class CustomerOptionValue extends SalesManagerEntity<Long, CustomerOption
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4142#"); return id;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class CustomerOptionValue extends SalesManagerEntity<Long, CustomerOption
 
 
 	public Set<CustomerOptionValueDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#4143#"); return descriptions;
 	}
 
 	public void setDescriptions(Set<CustomerOptionValueDescription> descriptions) {
@@ -90,7 +90,7 @@ public class CustomerOptionValue extends SalesManagerEntity<Long, CustomerOption
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4144#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -102,14 +102,14 @@ public class CustomerOptionValue extends SalesManagerEntity<Long, CustomerOption
 	}
 
 	public List<CustomerOptionValueDescription> getDescriptionsList() {
-		return descriptionsList; 
+		System.out.println("$#4145#"); return descriptionsList;
 	}
 	
 	public List<CustomerOptionValueDescription> getDescriptionsSettoList() {
-		if(descriptionsList==null || descriptionsList.size()==0) {
+		System.out.println("$#4146#"); if(descriptionsList==null || descriptionsList.size()==0) {
 			descriptionsList = new ArrayList<CustomerOptionValueDescription>(this.getDescriptions());
 		} 
-		return descriptionsList;
+		System.out.println("$#4148#"); return descriptionsList;
 	}
 
 	//public void setImage(MultipartFile image) {
@@ -122,7 +122,7 @@ public class CustomerOptionValue extends SalesManagerEntity<Long, CustomerOption
 
 
 	public String getCustomerOptionValueImage() {
-		return customerOptionValueImage;
+		System.out.println("$#4149#"); return customerOptionValueImage;
 	}
 
 	public void setCustomerOptionValueImage(String customerOptionValueImage) {
@@ -130,7 +130,7 @@ public class CustomerOptionValue extends SalesManagerEntity<Long, CustomerOption
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4150#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -143,7 +143,7 @@ public class CustomerOptionValue extends SalesManagerEntity<Long, CustomerOption
 	}
 
 	public Integer getSortOrder() {
-		return sortOrder;
+		System.out.println("$#4151#"); return sortOrder;
 	}
 	
 

@@ -58,22 +58,22 @@ public class TaxFacadeImpl implements TaxFacade {
 
 	@Override
 	public Entity createTaxClass(PersistableTaxClass taxClass, MerchantStore store, Language language) {
-		Validate.notNull(taxClass,"TaxClass cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15097#"); Validate.notNull(taxClass,"TaxClass cannot be null");
+		System.out.println("$#15098#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15099#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		try {
 			
 			
-			if(this.existsTaxClass(taxClass.getCode(), store, language)) {
+			System.out.println("$#15100#"); if(this.existsTaxClass(taxClass.getCode(), store, language)) {
 				throw new OperationNotAllowedException("Tax class [" + taxClass.getCode() + "] already exist for store [" + store.getCode() + "]");
 			}
 
-			taxClass.setStore(store.getCode());
+			System.out.println("$#15101#"); taxClass.setStore(store.getCode());
 			TaxClass model = persistableTaxClassMapper.convert(taxClass, store, language);
 			model = taxClassService.saveOrUpdate(model);;
 			Entity id = new Entity();
-			id.setId(model.getId());
-			return id;
+			System.out.println("$#15102#"); id.setId(model.getId());
+			System.out.println("$#15103#"); return id;
 
 		} catch (ServiceException e) {
 			LOGGER.error("Error while saving taxClass [" +  taxClass.getCode() + "] for store [" + store.getCode() + "]", e);
@@ -84,19 +84,19 @@ public class TaxFacadeImpl implements TaxFacade {
 
 	@Override
 	public void deleteTaxClass(Long id, MerchantStore store, Language language) {
-		Validate.notNull(id,"TaxClass id cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15104#"); Validate.notNull(id,"TaxClass id cannot be null");
+		System.out.println("$#15105#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15106#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		try {
 			TaxClass model = taxClassService.getById(id);
-			if(model == null) {
+			System.out.println("$#15107#"); if(model == null) {
 				throw new ResourceNotFoundException("TaxClass not found [" + id + "] for store [" + store.getCode() + "]");
 			} else {
-				if(!model.getMerchantStore().getCode().equals(store.getCode())) {
+				System.out.println("$#15108#"); if(!model.getMerchantStore().getCode().equals(store.getCode())) {
 					throw new UnauthorizedException("MerchantStore [" + store.getCode() + "] cannot delete tax class [" + id + "]");
 				}
 			}
-			taxClassService.delete(model);
+			System.out.println("$#15109#"); taxClassService.delete(model);
 				
 		} catch (ServiceException e) {
 			LOGGER.error("Error while getting taxClasse [" + id + "] for store [" + store.getCode() + "]", e);
@@ -107,20 +107,20 @@ public class TaxFacadeImpl implements TaxFacade {
 
 	@Override
 	public ReadableEntityList<ReadableTaxClass> taxClasses(MerchantStore store, Language language) {
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15110#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15111#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		try {
 			List<TaxClass> models = taxClassService.listByStore(store);
 			
 			List<ReadableTaxClass> taxClasses = models.stream().map(t -> convertToReadableTaxClass(t, store, language)).collect(Collectors.toList());
 
 			ReadableEntityList<ReadableTaxClass> list = new ReadableEntityList<ReadableTaxClass>();
-			list.setItems(taxClasses);
-			list.setNumber(taxClasses.size());
-			list.setTotalPages(1);
-			list.setRecordsTotal(taxClasses.size());
+			System.out.println("$#15113#"); list.setItems(taxClasses);
+			System.out.println("$#15114#"); list.setNumber(taxClasses.size());
+			System.out.println("$#15115#"); list.setTotalPages(1);
+			System.out.println("$#15116#"); list.setRecordsTotal(taxClasses.size());
 			
-			return list;
+			System.out.println("$#15117#"); return list;
 			
 		} catch (ServiceException e) {
 			LOGGER.error("Error while getting taxClasses for store [" + store.getCode() + "]", e);
@@ -129,20 +129,20 @@ public class TaxFacadeImpl implements TaxFacade {
 	}
 	
 	private ReadableTaxClass convertToReadableTaxClass(TaxClass t, MerchantStore store, Language language) {
-		return readableTaxClassMapper.convert(t, store, language);
+		System.out.println("$#15118#"); return readableTaxClassMapper.convert(t, store, language);
 	}
 	
 	@Override
 	public void updateTaxClass(Long id, PersistableTaxClass taxClass, MerchantStore store, Language language) {
-		Validate.notNull(taxClass,"TaxClass cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15119#"); Validate.notNull(taxClass,"TaxClass cannot be null");
+		System.out.println("$#15120#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15121#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		try {
 			TaxClass model = taxClassService.getById(id);
-			if(model == null) {
+			System.out.println("$#15122#"); if(model == null) {
 				throw new ResourceNotFoundException("TaxClass not found [" + id + "] for store [" + store.getCode() + "]");
 			} else {
-				if(!model.getMerchantStore().getCode().equals(store.getCode())) {
+				System.out.println("$#15123#"); if(!model.getMerchantStore().getCode().equals(store.getCode())) {
 					throw new UnauthorizedException("MerchantStore [" + store.getCode() + "] cannot update tax class [" + taxClass.getCode() + "]");
 				}
 			}
@@ -158,21 +158,21 @@ public class TaxFacadeImpl implements TaxFacade {
 	@Override
 	public ReadableTaxClass taxClass(String code, MerchantStore store, Language language) {
 		
-		Validate.notNull(code,"TaxClass code cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15124#"); Validate.notNull(code,"TaxClass code cannot be null");
+		System.out.println("$#15125#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15126#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		
 		try {
 			TaxClass model = taxClassService.getByCode(code, store);
-			if(model == null) {
+			System.out.println("$#15127#"); if(model == null) {
 				throw new ResourceNotFoundException("TaxClass not found [" + code + "] for store [" + store.getCode() + "]");
 			}
-			if(model != null) {
-				if(!model.getMerchantStore().getCode().equals(store.getCode())) {
+			System.out.println("$#15128#"); if(model != null) {
+				System.out.println("$#15129#"); if(!model.getMerchantStore().getCode().equals(store.getCode())) {
 					throw new UnauthorizedException("MerchantStore [" + store.getCode() + "] cannot get tax class [" + code + "]");
 				}
 			}
-			return readableTaxClassMapper.convert(model, store, language);
+			System.out.println("$#15130#"); return readableTaxClassMapper.convert(model, store, language);
 		} catch (ServiceException e) {
 			LOGGER.error("Error while getting taxClass [" +  code + "] for store [" + store.getCode() + "]", e);
 			throw new ServiceRuntimeException("Error while getting taxClass [" +  code + "] for store [" + store.getCode() + "]", e);
@@ -184,7 +184,7 @@ public class TaxFacadeImpl implements TaxFacade {
 	public boolean existsTaxClass(String code, MerchantStore store, Language language) {
 		try {
 			boolean exist = taxClassService.exists(code, store);
-			return exist;
+			System.out.println("$#15132#"); System.out.println("$#15131#"); return exist;
 		} catch (ServiceException e) {
 			LOGGER.error("Error while getting taxClass [" +  code + "] for store [" + store.getCode() + "]", e);
 			throw new ServiceRuntimeException("Error while saving taxClass [" +  code + "] for store [" + store.getCode() + "]", e);
@@ -195,21 +195,21 @@ public class TaxFacadeImpl implements TaxFacade {
 	//get by code
 	private TaxRate taxRateByCode(String code, MerchantStore store, Language language) {
 		
-		Validate.notNull(code,"TaxRate code cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15133#"); Validate.notNull(code,"TaxRate code cannot be null");
+		System.out.println("$#15134#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15135#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		
 		try {
 			TaxRate model = taxRateService.getByCode(code, store);
-			if(model == null) {
+			System.out.println("$#15136#"); if(model == null) {
 				throw new ResourceNotFoundException("TaxRate not found [" + code + "] for store [" + store.getCode() + "]");
 			}
-			if(model != null) {
-				if(!model.getMerchantStore().getCode().equals(store.getCode())) {
+			System.out.println("$#15137#"); if(model != null) {
+				System.out.println("$#15138#"); if(!model.getMerchantStore().getCode().equals(store.getCode())) {
 					throw new UnauthorizedException("MerchantStore [" + store.getCode() + "] cannot get tax rate [" + code + "]");
 				}
 			}
-			return model;
+			System.out.println("$#15139#"); return model;
 		} catch (ServiceException e) {
 			LOGGER.error("Error while getting taxRate [" +  code + "] for store [" + store.getCode() + "]", e);
 			throw new ServiceRuntimeException("Error while getting taxRate [" +  code + "] for store [" + store.getCode() + "]", e);
@@ -220,16 +220,16 @@ public class TaxFacadeImpl implements TaxFacade {
 	//get by id
 	private TaxRate taxRateById(Long id, MerchantStore store, Language language) {
 		
-		Validate.notNull(id,"TaxRate id cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15140#"); Validate.notNull(id,"TaxRate id cannot be null");
+		System.out.println("$#15141#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15142#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		
 		try {
 			TaxRate model = taxRateService.getById(id, store);
-			if(model == null) {
+			System.out.println("$#15143#"); if(model == null) {
 				throw new ResourceNotFoundException("TaxRate not found [" + id + "]");
 			} 
-			return model;
+			System.out.println("$#15144#"); return model;
 		} catch (Exception e) {
 			LOGGER.error("Error while getting taxRate [" +  id + "] for store [" + store.getCode() + "]", e);
 			throw new ServiceRuntimeException("Error while getting taxRate [" +  id + "] for store [" + store.getCode() + "]", e);
@@ -242,7 +242,7 @@ public class TaxFacadeImpl implements TaxFacade {
 	public void deleteTaxRate(Long id, MerchantStore store, Language language) {
 		TaxRate model = taxRateById(id, store, language);
 		try {
-			taxRateService.delete(model);
+			System.out.println("$#15145#"); taxRateService.delete(model);
 		} catch (ServiceException e) {
 			LOGGER.error("Error while deleting taxRate [" +  id + "] for store [" + store.getCode() + "]", e);
 			throw new ServiceRuntimeException("Error deleting taxRate [" +  id + "] for store [" + store.getCode() + "]", e);
@@ -254,23 +254,23 @@ public class TaxFacadeImpl implements TaxFacade {
 	public ReadableTaxRate taxRate(Long id, MerchantStore store, Language language) {
 		
 		TaxRate model = taxRateById(id, store, language);
-		return readableTaxRateMapper.convert(model, store, language);
+		System.out.println("$#15146#"); return readableTaxRateMapper.convert(model, store, language);
 	}
 
 	@Override
 	public Entity createTaxRate(PersistableTaxRate taxRate, MerchantStore store, Language language) {
 		
-		Validate.notNull(taxRate,"TaxRate cannot be null");
-		Validate.notNull(taxRate.getCode(),"TaxRate code cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15147#"); Validate.notNull(taxRate,"TaxRate cannot be null");
+		System.out.println("$#15148#"); Validate.notNull(taxRate.getCode(),"TaxRate code cannot be null");
+		System.out.println("$#15149#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15150#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		
 
 		
 		try {
 			
 			TaxRate model = taxRateService.getByCode(taxRate.getCode(), store);
-			if(model!=null) {
+			System.out.println("$#15151#"); if(model!=null) {
 				throw new OperationNotAllowedException("Tax rate [" + taxRate.getCode() + "] already exist for store [" + store.getCode() + "]");
 			}
 
@@ -280,8 +280,8 @@ public class TaxFacadeImpl implements TaxFacade {
 			model = taxRateService.saveOrUpdate(model);
 			
 			Entity id = new Entity();
-			id.setId(model.getId());
-			return id;
+			System.out.println("$#15152#"); id.setId(model.getId());
+			System.out.println("$#15153#"); return id;
 		} catch (ServiceException e) {
 			LOGGER.error("Error while saving taxRate [" +  taxRate.getCode() + "] for store [" + store.getCode() + "]", e);
 			throw new ServiceRuntimeException("Error while saving taxRate [" +  taxRate.getCode() + "] for store [" + store.getCode() + "]", e);
@@ -293,10 +293,10 @@ public class TaxFacadeImpl implements TaxFacade {
 	@Override
 	public void updateTaxRate(Long id, PersistableTaxRate taxRate, MerchantStore store, Language language) {
 		
-		Validate.notNull(taxRate,"TaxRate cannot be null");
-		Validate.notNull(id,"TaxRate id cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15154#"); Validate.notNull(taxRate,"TaxRate cannot be null");
+		System.out.println("$#15155#"); Validate.notNull(id,"TaxRate id cannot be null");
+		System.out.println("$#15156#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15157#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 
 		TaxRate model = taxRateById(id, store, language);
 		
@@ -316,34 +316,34 @@ public class TaxFacadeImpl implements TaxFacade {
 	@Override
 	public boolean existsTaxRate(String code, MerchantStore store, Language language) {
 
-		Validate.notNull(code,"TaxRate code cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15158#"); Validate.notNull(code,"TaxRate code cannot be null");
+		System.out.println("$#15159#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15160#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		
 		TaxRate rate = taxRateByCode(code, store, language);
-		if(rate == null) {
-			return false;
+		System.out.println("$#15161#"); if(rate == null) {
+			System.out.println("$#15162#"); return false;
 		}
-		return true;
+		System.out.println("$#15163#"); return true;
 	}
 
 	@Override
 	public ReadableEntityList<ReadableTaxRate> taxRates(MerchantStore store, Language language) {
 		
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
+		System.out.println("$#15164#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15165#"); Validate.notNull(store.getCode(),"MerchantStore code cannot be null");
 		
 		try {
 			List<TaxRate> rates = taxRateService.listByStore(store, language);
 			List<ReadableTaxRate> readableRates = rates.stream().map(r -> readableTaxRateMapper.convert(r, store, language)).collect(Collectors.toList());
 			
 			ReadableEntityList<ReadableTaxRate> returnRates = new ReadableEntityList<ReadableTaxRate>();
-			returnRates.setItems(readableRates);
-			returnRates.setTotalPages(1);
-			returnRates.setNumber(readableRates.size());
-			returnRates.setRecordsTotal(readableRates.size());
+			System.out.println("$#15167#"); returnRates.setItems(readableRates);
+			System.out.println("$#15168#"); returnRates.setTotalPages(1);
+			System.out.println("$#15169#"); returnRates.setNumber(readableRates.size());
+			System.out.println("$#15170#"); returnRates.setRecordsTotal(readableRates.size());
 			
-			return returnRates;
+			System.out.println("$#15171#"); return returnRates;
 		} catch (ServiceException e) {
 			LOGGER.error("Error while getting taxRates for store [" + store.getCode() + "]", e);
 			throw new ServiceRuntimeException("Error while getting taxRates for store [" + store.getCode() + "]", e);

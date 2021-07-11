@@ -35,7 +35,7 @@ public class MerchantStoreEntity implements Serializable {
 	
 
 	public int getId() {
-		return id;
+		System.out.println("$#9351#"); return id;
 	}
 
 	public void setId(int id) {
@@ -43,7 +43,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#9352#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -51,7 +51,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public String getDefaultLanguage() {
-		return defaultLanguage;
+		System.out.println("$#9353#"); return defaultLanguage;
 	}
 
 	public void setDefaultLanguage(String defaultLanguage) {
@@ -59,7 +59,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		System.out.println("$#9354#"); return name;
 	}
 
 	public void setName(String name) {
@@ -67,7 +67,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public String getCurrency() {
-		return currency;
+		System.out.println("$#9355#"); return currency;
 	}
 
 	public void setCurrency(String currency) {
@@ -75,7 +75,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public String getInBusinessSince() {
-		return inBusinessSince;
+		System.out.println("$#9356#"); return inBusinessSince;
 	}
 
 	public void setInBusinessSince(String inBusinessSince) {
@@ -83,7 +83,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public String getEmail() {
-		return email;
+		System.out.println("$#9357#"); return email;
 	}
 
 	public void setEmail(String email) {
@@ -91,7 +91,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public String getTemplate() {
-		return template;
+		System.out.println("$#9358#"); return template;
 	}
 
 	public void setTemplate(String template) {
@@ -99,7 +99,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public boolean isCurrencyFormatNational() {
-		return currencyFormatNational;
+		System.out.println("$#9360#"); System.out.println("$#9359#"); return currencyFormatNational;
 	}
 
 	public void setCurrencyFormatNational(boolean currencyFormatNational) {
@@ -107,7 +107,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public String getPhone() {
-		return phone;
+		System.out.println("$#9361#"); return phone;
 	}
 
 	public void setPhone(String phone) {
@@ -115,7 +115,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public boolean isUseCache() {
-		return useCache;
+		System.out.println("$#9363#"); System.out.println("$#9362#"); return useCache;
 	}
 
 	public void setUseCache(boolean useCache) {
@@ -123,7 +123,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public MeasureUnit getDimension() {
-		return dimension;
+		System.out.println("$#9364#"); return dimension;
 	}
 
 	public void setDimension(MeasureUnit dimension) {
@@ -131,7 +131,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public MeasureUnit getWeight() {
-		return weight;
+		System.out.println("$#9365#"); return weight;
 	}
 
 	public void setWeight(MeasureUnit weight) {
@@ -139,7 +139,7 @@ public class MerchantStoreEntity implements Serializable {
 	}
 
 	public boolean isRetailer() {
-		return retailer;
+		System.out.println("$#9367#"); System.out.println("$#9366#"); return retailer;
 	}
 
 	public void setRetailer(boolean retailer) {

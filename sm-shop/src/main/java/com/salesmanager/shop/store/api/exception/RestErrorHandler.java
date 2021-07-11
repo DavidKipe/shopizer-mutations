@@ -25,7 +25,7 @@ public class RestErrorHandler {
         log.error(exception.getMessage(), exception);
         ErrorEntity errorEntity = createErrorEntity(null, exception.getMessage(),
                 exception.getLocalizedMessage());
-        return errorEntity;
+								System.out.println("$#11213#"); return errorEntity;
     }
 
     /**
@@ -38,7 +38,7 @@ public class RestErrorHandler {
         log.error(exception.getErrorMessage(), exception);
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
                 exception.getLocalizedMessage());
-        return errorEntity;
+								System.out.println("$#11214#"); return errorEntity;
     }
 
     @RequestMapping(produces = "application/json")
@@ -48,7 +48,7 @@ public class RestErrorHandler {
         log.error(exception.getErrorMessage(), exception);
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
             exception.getLocalizedMessage());
-        return errorEntity;
+								System.out.println("$#11215#"); return errorEntity;
     }
 
     @RequestMapping(produces = "application/json")
@@ -59,7 +59,7 @@ public class RestErrorHandler {
 
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
                 exception.getLocalizedMessage());
-        return errorEntity;
+								System.out.println("$#11216#"); return errorEntity;
     }
     
     @RequestMapping(produces = "application/json")
@@ -70,7 +70,7 @@ public class RestErrorHandler {
 
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
                 exception.getLocalizedMessage());
-        return errorEntity;
+								System.out.println("$#11217#"); return errorEntity;
     }
 
     @RequestMapping(produces = "application/json")
@@ -81,7 +81,7 @@ public class RestErrorHandler {
 
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
                 exception.getLocalizedMessage());
-        return errorEntity;
+								System.out.println("$#11218#"); return errorEntity;
     }
 
     private ErrorEntity createErrorEntity(String errorCode, String message, String detailMessage) {
@@ -92,6 +92,6 @@ public class RestErrorHandler {
         String resultMessage = message != null ? message : detailMessage;
         Optional.ofNullable(resultMessage)
                 .ifPresent(errorEntity::setMessage);
-        return errorEntity;
+								System.out.println("$#11222#"); return errorEntity;
     }
 }

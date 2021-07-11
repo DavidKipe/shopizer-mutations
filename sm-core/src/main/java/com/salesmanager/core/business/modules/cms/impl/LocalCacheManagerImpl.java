@@ -17,7 +17,7 @@ public class LocalCacheManagerImpl implements CMSManager {
 
   @Override
   public String getRootName() {
-    return rootName;
+				System.out.println("$#181#"); return rootName;
   }
 
   @Override

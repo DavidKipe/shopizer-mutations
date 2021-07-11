@@ -10,7 +10,7 @@ public class ExpeditionConfiguration {
 	private List<String> shipToCountry = new ArrayList<String>();
 
 	public boolean isIternationalShipping() {
-		return iternationalShipping;
+		System.out.println("$#9272#"); System.out.println("$#9271#"); return iternationalShipping;
 	}
 
 	public void setIternationalShipping(boolean iternationalShipping) {
@@ -18,7 +18,7 @@ public class ExpeditionConfiguration {
 	}
 
 	public List<String> getShipToCountry() {
-		return shipToCountry;
+		System.out.println("$#9273#"); return shipToCountry;
 	}
 
 	public void setShipToCountry(List<String> shipToCountry) {
@@ -26,7 +26,7 @@ public class ExpeditionConfiguration {
 	}
 
 	public boolean isTaxOnShipping() {
-		return taxOnShipping;
+		System.out.println("$#9275#"); System.out.println("$#9274#"); return taxOnShipping;
 	}
 
 	public void setTaxOnShipping(boolean taxOnShipping) {

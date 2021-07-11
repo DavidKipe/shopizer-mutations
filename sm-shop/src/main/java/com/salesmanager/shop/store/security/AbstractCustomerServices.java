@@ -58,7 +58,7 @@ public abstract class AbstractCustomerServices implements UserDetailsService{
 
 				user = customerService.getByNick(userName);
 			
-				if(user==null) {
+				System.out.println("$#15216#"); if(user==null) {
 					//return null;
 					throw new UsernameNotFoundException("User " + userName + " not found");
 				}
@@ -75,7 +75,7 @@ public abstract class AbstractCustomerServices implements UserDetailsService{
 			}
 			
 	
-			if(CollectionUtils.isNotEmpty(groupsId)) {
+			System.out.println("$#15217#"); if(CollectionUtils.isNotEmpty(groupsId)) {
 		    	List<Permission> permissions = permissionService.getPermissions(groupsId);
 		    	for(Permission permission : permissions) {
 		    		GrantedAuthority auth = new SimpleGrantedAuthority(permission.getPermissionName());
@@ -89,7 +89,7 @@ public abstract class AbstractCustomerServices implements UserDetailsService{
 			throw new SecurityDataAccessException("Cannot authenticate customer",e);
 		}
 
-		return userDetails(userName, user, authorities);
+		System.out.println("$#15218#"); return userDetails(userName, user, authorities);
 		
 	}
 

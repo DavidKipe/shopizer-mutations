@@ -64,7 +64,7 @@ public class MerchantLog extends SalesManagerEntity<Long, MerchantLog> implement
 
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4776#"); return id;
 	}
 
 
@@ -74,7 +74,7 @@ public class MerchantLog extends SalesManagerEntity<Long, MerchantLog> implement
 
 
 	public MerchantStore getStore() {
-		return store;
+		System.out.println("$#4777#"); return store;
 	}
 
 
@@ -84,7 +84,7 @@ public class MerchantLog extends SalesManagerEntity<Long, MerchantLog> implement
 
 
 	public String getModule() {
-		return module;
+		System.out.println("$#4778#"); return module;
 	}
 
 
@@ -94,7 +94,7 @@ public class MerchantLog extends SalesManagerEntity<Long, MerchantLog> implement
 
 
 	public String getLog() {
-		return log;
+		System.out.println("$#4779#"); return log;
 	}
 
 

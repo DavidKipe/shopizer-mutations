@@ -25,46 +25,46 @@ public class ProductPriceEntity extends ProductPrice implements Serializable {
 	private BigDecimal discountedPrice;
 	
 	public boolean isDiscounted() {
-		return discounted;
+		System.out.println("$#8905#"); System.out.println("$#8904#"); return discounted;
 	}
 	public void setDiscounted(boolean discounted) {
 		this.discounted = discounted;
 	}
 	public String getDiscountStartDate() {
-		return discountStartDate;
+		System.out.println("$#8906#"); return discountStartDate;
 	}
 	public void setDiscountStartDate(String discountStartDate) {
 		this.discountStartDate = discountStartDate;
 	}
 	public String getDiscountEndDate() {
-		return discountEndDate;
+		System.out.println("$#8907#"); return discountEndDate;
 	}
 	public void setDiscountEndDate(String discountEndDate) {
 		this.discountEndDate = discountEndDate;
 	}
 	public boolean isDefaultPrice() {
-		return defaultPrice;
+		System.out.println("$#8909#"); System.out.println("$#8908#"); return defaultPrice;
 	}
 	public void setDefaultPrice(boolean defaultPrice) {
 		this.defaultPrice = defaultPrice;
 	}
 	public BigDecimal getOriginalPrice() {
-		return originalPrice;
+		System.out.println("$#8910#"); return originalPrice;
 	}
 	public void setOriginalPrice(BigDecimal originalPrice) {
 		this.originalPrice = originalPrice;
 	}
 	public BigDecimal getDiscountedPrice() {
-		return discountedPrice;
+		System.out.println("$#8911#"); return discountedPrice;
 	}
 	public void setDiscountedPrice(BigDecimal discountedPrice) {
 		this.discountedPrice = discountedPrice;
 	}
 	public String getCode() {
-		if(StringUtils.isBlank(this.code)) {
+		System.out.println("$#8912#"); if(StringUtils.isBlank(this.code)) {
 			code = DEFAULT_PRICE_CODE;
 		}
-		return code;
+		System.out.println("$#8913#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;

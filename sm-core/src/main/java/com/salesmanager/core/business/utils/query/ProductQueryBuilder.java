@@ -61,7 +61,7 @@ public class ProductQueryBuilder {
 		qs.append("left join fetch p.type type ");
 		qs.append("left join fetch p.taxClass tx ");
 		
-		return qs.toString();
+		System.out.println("$#3690#"); return qs.toString();
 	}
 
 }

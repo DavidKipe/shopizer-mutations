@@ -40,7 +40,7 @@ public class CustomerOptionValueServiceImpl extends
 	@Override
 	public List<CustomerOptionValue> listByStore(MerchantStore store, Language language) throws ServiceException {
 		
-		return customerOptionValueRepository.findByStore(store.getId(), language.getId());
+		System.out.println("$#2200#"); return customerOptionValueRepository.findByStore(store.getId(), language.getId());
 	}
 	
 
@@ -51,13 +51,13 @@ public class CustomerOptionValueServiceImpl extends
 		
 		
 		//save or update (persist and attach entities
-		if(entity.getId()!=null && entity.getId()>0) {
+		System.out.println("$#2202#"); System.out.println("$#2201#"); if(entity.getId()!=null && entity.getId()>0) {
 
-			super.update(entity);
+			System.out.println("$#2204#"); super.update(entity);
 			
 		} else {
 			
-			super.save(entity);
+			System.out.println("$#2205#"); super.save(entity);
 			
 		}
 		
@@ -70,25 +70,25 @@ public class CustomerOptionValueServiceImpl extends
 		List<CustomerAttribute> attributes = customerAttributeService.getByCustomerOptionValueId(customerOptionValue.getMerchantStore(), customerOptionValue.getId());
 		
 		for(CustomerAttribute attribute : attributes) {
-			customerAttributeService.delete(attribute);
+			System.out.println("$#2206#"); customerAttributeService.delete(attribute);
 		}
 		
 		List<CustomerOptionSet> optionSets = customerOptionSetService.listByOptionValue(customerOptionValue, customerOptionValue.getMerchantStore());
 		
 		for(CustomerOptionSet optionSet : optionSets) {
-			customerOptionSetService.delete(optionSet);
+			System.out.println("$#2207#"); customerOptionSetService.delete(optionSet);
 		}
 		
 		CustomerOptionValue option = super.getById(customerOptionValue.getId());
 		
 		//remove option
-		super.delete(option);
+		System.out.println("$#2208#"); super.delete(option);
 		
 	}
 	
 	@Override
 	public CustomerOptionValue getByCode(MerchantStore store, String optionValueCode) {
-		return customerOptionValueRepository.findByCode(store.getId(), optionValueCode);
+		System.out.println("$#2209#"); return customerOptionValueRepository.findByCode(store.getId(), optionValueCode);
 	}
 
 

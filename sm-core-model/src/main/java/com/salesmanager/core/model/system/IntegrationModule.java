@@ -82,7 +82,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	private Map<String, String> details = new HashMap<String, String>();
 
 	public Map<String, String> getDetails() {
-		return details;
+		System.out.println("$#4727#"); return details;
 	}
 
 	public void setDetails(Map<String, String> details) {
@@ -94,7 +94,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4728#"); return auditSection;
 	}
 
 	@Override
@@ -105,7 +105,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4729#"); return id;
 	}
 
 	@Override
@@ -114,7 +114,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public String getModule() {
-		return module;
+		System.out.println("$#4730#"); return module;
 	}
 
 	public void setModule(String module) {
@@ -122,7 +122,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public String getRegions() {
-		return regions;
+		System.out.println("$#4731#"); return regions;
 	}
 
 	public void setRegions(String regions) {
@@ -130,7 +130,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public String getConfiguration() {
-		return configuration;
+		System.out.println("$#4732#"); return configuration;
 	}
 
 	public void setConfiguration(String configuration) {
@@ -142,7 +142,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public Set<String> getRegionsSet() {
-		return regionsSet;
+		System.out.println("$#4733#"); return regionsSet;
 	}
 
 	public void setCode(String code) {
@@ -150,7 +150,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4734#"); return code;
 	}
 
 	public void setModuleConfigs(Map<String, ModuleConfig> moduleConfigs) {
@@ -158,7 +158,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public Map<String, ModuleConfig> getModuleConfigs() {
-		return moduleConfigs;
+		System.out.println("$#4735#"); return moduleConfigs;
 	}
 
 	public void setImage(String image) {
@@ -166,7 +166,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public String getImage() {
-		return image;
+		System.out.println("$#4736#"); return image;
 	}
 
 	public void setCustomModule(boolean customModule) {
@@ -174,11 +174,11 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public boolean isCustomModule() {
-		return customModule;
+		System.out.println("$#4738#"); System.out.println("$#4737#"); return customModule;
 	}
 
 	public String getConfigDetails() {
-		return configDetails;
+		System.out.println("$#4739#"); return configDetails;
 	}
 
 	public void setConfigDetails(String configDetails) {
@@ -190,7 +190,7 @@ public class IntegrationModule extends SalesManagerEntity<Long, IntegrationModul
 	}
 
 	public String getType() {
-		return type;
+		System.out.println("$#4740#"); return type;
 	}
 
 }

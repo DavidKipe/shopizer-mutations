@@ -57,9 +57,9 @@ public class ManufacturerController {
 	@RequestMapping(value="/admin/catalogue/manufacturer/list.html", method=RequestMethod.GET)
 	public String getManufacturers(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	
-		this.setMenu(model, request);
+		System.out.println("$#6129#"); this.setMenu(model, request);
 		
-		return ControllerConstants.Tiles.Product.manufacturerList;
+		System.out.println("$#6130#"); return ControllerConstants.Tiles.Product.manufacturerList;
 	}
 	
 	
@@ -67,20 +67,20 @@ public class ManufacturerController {
 	@RequestMapping(value="/admin/catalogue/manufacturer/create.html", method=RequestMethod.GET)
 	public String createManufacturer(  Model model,  HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		return displayManufacturer(null,model,request,response);		
+		System.out.println("$#6131#"); return displayManufacturer(null,model,request,response);
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/catalogue/manufacturer/edit.html", method=RequestMethod.GET)
 	public String editManufacturer(@RequestParam("id") long manufacturerId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return displayManufacturer(manufacturerId,model,request,response);
+		System.out.println("$#6132#"); return displayManufacturer(manufacturerId,model,request,response);
 	}
 	
 	private String displayManufacturer(Long manufacturerId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		//display menu
-		setMenu(model,request);
+		System.out.println("$#6133#"); setMenu(model,request);
 		
 		//List<Language> languages = languageService.getLanguages();
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
@@ -91,17 +91,17 @@ public class ManufacturerController {
 		List<ManufacturerDescription> descriptions = new ArrayList<ManufacturerDescription>();
 
 		
-		if( manufacturerId!=null && manufacturerId.longValue()!=0) {	//edit mode
+		System.out.println("$#6134#"); if( manufacturerId!=null && manufacturerId.longValue()!=0) {	//edit mode
 
 			Manufacturer dbManufacturer = new Manufacturer();
 			dbManufacturer = manufacturerService.getById( manufacturerId );
 			
-			if(dbManufacturer==null) {
-				return ControllerConstants.Tiles.Product.manufacturerList;
+			System.out.println("$#6136#"); if(dbManufacturer==null) {
+				System.out.println("$#6137#"); return ControllerConstants.Tiles.Product.manufacturerList;
 			}
 			
-			if(dbManufacturer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				return ControllerConstants.Tiles.Product.manufacturerList;
+			System.out.println("$#6138#"); if(dbManufacturer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6139#"); return ControllerConstants.Tiles.Product.manufacturerList;
 			}
 			
 			Set<ManufacturerDescription> manufacturerDescriptions = dbManufacturer.getDescriptions();
@@ -110,11 +110,11 @@ public class ManufacturerController {
 			for(Language l : languages) {
 				
 				ManufacturerDescription manufDescription = null;
-				if(manufacturerDescriptions!=null) {
+				System.out.println("$#6140#"); if(manufacturerDescriptions!=null) {
 					
 					for(ManufacturerDescription desc : manufacturerDescriptions) {				
 						String code = desc.getLanguage().getCode();
-						if(code.equals(l.getCode())) {
+						System.out.println("$#6141#"); if(code.equals(l.getCode())) {
 							manufDescription = desc;
 						}
 
@@ -122,31 +122,31 @@ public class ManufacturerController {
 					
 				}
 				
-				if(manufDescription==null) {
+				System.out.println("$#6142#"); if(manufDescription==null) {
 					manufDescription = new ManufacturerDescription();
-					manufDescription.setLanguage(l);
+					System.out.println("$#6143#"); manufDescription.setLanguage(l);
 				}
 				
 				manufacturer.getDescriptions().add(manufDescription);
 				
 			}
 			
-			manufacturer.setManufacturer( dbManufacturer );
+			System.out.println("$#6144#"); manufacturer.setManufacturer( dbManufacturer );
 		
-			manufacturer.setCode(dbManufacturer.getCode());
-			manufacturer.setOrder( dbManufacturer.getOrder() );
+			System.out.println("$#6145#"); manufacturer.setCode(dbManufacturer.getCode());
+			System.out.println("$#6146#"); manufacturer.setOrder( dbManufacturer.getOrder() );
 			
 		} else {	// Create mode
 
 			Manufacturer manufacturerTmp = new Manufacturer();
-			manufacturer.setManufacturer( manufacturerTmp );
+			System.out.println("$#6147#"); manufacturer.setManufacturer( manufacturerTmp );
 			
 			for(Language l : languages) {// for each store language
 				
 				ManufacturerDescription manufacturerDesc = new ManufacturerDescription();
-				manufacturerDesc.setLanguage(l);
+				System.out.println("$#6148#"); manufacturerDesc.setLanguage(l);
 				descriptions.add(  manufacturerDesc );
-				manufacturer.setDescriptions(descriptions);
+				System.out.println("$#6149#"); manufacturer.setDescriptions(descriptions);
 				
 			}
 		}
@@ -154,20 +154,20 @@ public class ManufacturerController {
 		model.addAttribute("languages",languages);
 		model.addAttribute("manufacturer", manufacturer);
 		
-		return ControllerConstants.Tiles.Product.manufacturerDetails;
+		System.out.println("$#6150#"); return ControllerConstants.Tiles.Product.manufacturerDetails;
 	}
 		
 	@PreAuthorize("hasRole('PRODUCTS')")  
 	@RequestMapping(value="/admin/catalogue/manufacturer/save.html", method=RequestMethod.POST)
 	public String saveManufacturer( @Valid @ModelAttribute("manufacturer") com.salesmanager.shop.admin.model.catalog.Manufacturer manufacturer, BindingResult result, Model model,  HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
-		this.setMenu(model, request);
+		System.out.println("$#6151#"); this.setMenu(model, request);
 		//save or edit a manufacturer
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		List<Language> languages = languageService.getLanguages();
 
-		if(manufacturer.getDescriptions()!=null && manufacturer.getDescriptions().size()>0) {
+		System.out.println("$#6153#"); System.out.println("$#6152#"); if(manufacturer.getDescriptions()!=null && manufacturer.getDescriptions().size()>0) {
 
 			for(ManufacturerDescription description : manufacturer.getDescriptions()) {
 
@@ -187,7 +187,7 @@ public class ManufacturerController {
 
 
 	//validate image
-		if(manufacturer.getImage()!=null && !manufacturer.getImage().isEmpty()) {
+		System.out.println("$#6155#"); if(manufacturer.getImage()!=null && !manufacturer.getImage().isEmpty()) {
 
 			try {
 
@@ -197,30 +197,30 @@ public class ManufacturerController {
 
 				BufferedImage image = ImageIO.read(manufacturer.getImage().getInputStream());
 
-				if(!StringUtils.isBlank(maxHeight)) {
+				System.out.println("$#6157#"); if(!StringUtils.isBlank(maxHeight)) {
 
 					int maxImageHeight = Integer.parseInt(maxHeight);
-					if(image.getHeight()>maxImageHeight) {
+					System.out.println("$#6159#"); System.out.println("$#6158#"); if(image.getHeight()>maxImageHeight) {
 						ObjectError error = new ObjectError("image",messages.getMessage("message.image.height", locale) + " {"+maxHeight+"}");
-						result.addError(error);
+						System.out.println("$#6160#"); result.addError(error);
 					}
 				}
 
-				if(!StringUtils.isBlank(maxWidth)) {
+				System.out.println("$#6161#"); if(!StringUtils.isBlank(maxWidth)) {
 
 					int maxImageWidth = Integer.parseInt(maxWidth);
-					if(image.getWidth()>maxImageWidth) {
+					System.out.println("$#6163#"); System.out.println("$#6162#"); if(image.getWidth()>maxImageWidth) {
 						ObjectError error = new ObjectError("image",messages.getMessage("message.image.width", locale) + " {"+maxWidth+"}");
-						result.addError(error);
+						System.out.println("$#6164#"); result.addError(error);
 					}
 				}
 
-				if(!StringUtils.isBlank(maxSize)) {
+				System.out.println("$#6165#"); if(!StringUtils.isBlank(maxSize)) {
 
 					int maxImageSize = Integer.parseInt(maxSize);
-					if(manufacturer.getImage().getSize()>maxImageSize) {
+					System.out.println("$#6167#"); System.out.println("$#6166#"); if(manufacturer.getImage().getSize()>maxImageSize) {
 						ObjectError error = new ObjectError("image",messages.getMessage("message.image.size", locale) + " {"+maxSize+"}");
-						result.addError(error);
+						System.out.println("$#6168#"); result.addError(error);
 					}
 				}
 
@@ -230,19 +230,19 @@ public class ManufacturerController {
 
 		}
 
-		if (result.hasErrors()) {
+		System.out.println("$#6169#"); if (result.hasErrors()) {
 			model.addAttribute("languages",languages);
-			return ControllerConstants.Tiles.Product.manufacturerDetails;
+			System.out.println("$#6170#"); return ControllerConstants.Tiles.Product.manufacturerDetails;
 		}
 
 		Manufacturer newManufacturer = manufacturer.getManufacturer();
 
-		if ( manufacturer.getManufacturer().getId() !=null && manufacturer.getManufacturer().getId()  > 0 ){
+		System.out.println("$#6172#"); System.out.println("$#6171#"); if ( manufacturer.getManufacturer().getId() !=null && manufacturer.getManufacturer().getId()  > 0 ){
 
 			newManufacturer = manufacturerService.getById( manufacturer.getManufacturer().getId() );
 
-			if(newManufacturer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				return ControllerConstants.Tiles.Product.manufacturerList;
+			System.out.println("$#6174#"); if(newManufacturer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6175#"); return ControllerConstants.Tiles.Product.manufacturerList;
 			}
 
 		}
@@ -254,18 +254,18 @@ public class ManufacturerController {
 //		}
 
 		Set<ManufacturerDescription> descriptions = new HashSet<ManufacturerDescription>();
-		if(manufacturer.getDescriptions()!=null && manufacturer.getDescriptions().size()>0) {
+		System.out.println("$#6177#"); System.out.println("$#6176#"); if(manufacturer.getDescriptions()!=null && manufacturer.getDescriptions().size()>0) {
 			
 			for(ManufacturerDescription desc : manufacturer.getDescriptions()) {
 				
-				desc.setManufacturer(newManufacturer);
+				System.out.println("$#6179#"); desc.setManufacturer(newManufacturer);
 				descriptions.add(desc);
 			}
 		}
-		newManufacturer.setDescriptions(descriptions );
-		newManufacturer.setOrder( manufacturer.getOrder() );
-		newManufacturer.setMerchantStore(store);
-		newManufacturer.setCode(manufacturer.getCode());
+		System.out.println("$#6180#"); newManufacturer.setDescriptions(descriptions );
+		System.out.println("$#6181#"); newManufacturer.setOrder( manufacturer.getOrder() );
+		System.out.println("$#6182#"); newManufacturer.setMerchantStore(store);
+		System.out.println("$#6183#"); newManufacturer.setCode(manufacturer.getCode());
 
 
 //		if(manufacturer.getManufacturerImage()!=null && manufacturer.getManufacturerImage().getId() == null) {
@@ -274,7 +274,7 @@ public class ManufacturerController {
 
 
 
-		if(manufacturer.getImage()!=null && !manufacturer.getImage().isEmpty()) {
+		System.out.println("$#6184#"); if(manufacturer.getImage()!=null && !manufacturer.getImage().isEmpty()) {
 //
 //			String imageName = manufacturer.getImage().getOriginalFilename();
 //
@@ -308,14 +308,14 @@ public class ManufacturerController {
 
 		} else {
 
-			manufacturerService.saveOrUpdate(newManufacturer);
+			System.out.println("$#6186#"); manufacturerService.saveOrUpdate(newManufacturer);
 		}
 
 		model.addAttribute("manufacturer", manufacturer);
 		model.addAttribute("languages",languages);
 		model.addAttribute("success","success");
 
-		return ControllerConstants.Tiles.Product.manufacturerDetails;
+		System.out.println("$#6187#"); return ControllerConstants.Tiles.Product.manufacturerDetails;
 
 	}
 	
@@ -346,23 +346,23 @@ public class ManufacturerController {
 				entry.put("name", description.getName());
 				entry.put("code", manufacturer.getCode());
 				entry.put("order", manufacturer.getOrder());
-				resp.addDataEntry(entry);
+				System.out.println("$#6188#"); resp.addDataEntry(entry);
 				
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);	
+			System.out.println("$#6189#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging Manufacturers", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6190#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
-		resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+		System.out.println("$#6191#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6192#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#6193#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	
@@ -375,39 +375,39 @@ public class ManufacturerController {
 		AjaxResponse resp = new AjaxResponse();
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6194#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		try{
 			Manufacturer delManufacturer = manufacturerService.getById( sid  );				
-			if(delManufacturer==null || delManufacturer.getMerchantStore().getId().intValue() != store.getId().intValue()) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#6195#"); if(delManufacturer==null || delManufacturer.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+				System.out.println("$#6197#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#6198#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6199#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			} 
 			
 			int count = manufacturerService.getCountManufAttachedProducts( delManufacturer ).intValue();
 			//IF already attached to products it can't be deleted
-			if ( count > 0 ){
-				resp.setStatusMessage(messages.getMessage("message.product.association", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#6201#"); System.out.println("$#6200#"); if ( count > 0 ){
+				System.out.println("$#6202#"); resp.setStatusMessage(messages.getMessage("message.product.association", locale));
+				System.out.println("$#6203#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6204#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}	
 
-			manufacturerService.delete( delManufacturer );
+			System.out.println("$#6205#"); manufacturerService.delete( delManufacturer );
 			
-			resp.setStatusMessage(messages.getMessage("message.success", locale));
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6206#"); resp.setStatusMessage(messages.getMessage("message.success", locale));
+			System.out.println("$#6207#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 			
 		} catch (Exception e) {
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);	
+			System.out.println("$#6208#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 			LOGGER.error("Cannot delete manufacturer.", e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6209#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	
@@ -420,16 +420,16 @@ public class ManufacturerController {
 
 
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6210#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		
 		AjaxResponse resp = new AjaxResponse();
 		
-		if(StringUtils.isBlank(code)) {
-			resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+		System.out.println("$#6211#"); if(StringUtils.isBlank(code)) {
+			System.out.println("$#6212#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#6213#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 
 		
@@ -437,26 +437,26 @@ public class ManufacturerController {
 			
 		Manufacturer manufacturer = manufacturerService.getByCode(store, code);
 		
-		if(manufacturer!=null && StringUtils.isBlank(id)) {
-			resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+		System.out.println("$#6214#"); if(manufacturer!=null && StringUtils.isBlank(id)) {
+			System.out.println("$#6216#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#6217#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 		
 		
-		if(manufacturer!=null && !StringUtils.isBlank(id)) {
+		System.out.println("$#6218#"); if(manufacturer!=null && !StringUtils.isBlank(id)) {
 			try {
 				Long lid = Long.parseLong(id);
 				
-				if(manufacturer.getCode().equals(code) && manufacturer.getId().longValue()==lid) {
-					resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+				System.out.println("$#6220#"); if(manufacturer.getCode().equals(code) && manufacturer.getId().longValue()==lid) {
+					System.out.println("$#6222#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 					String returnString = resp.toJSONString();
-					return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6223#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 				}
 			} catch (Exception e) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+				System.out.println("$#6224#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6225#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
 		}
@@ -470,16 +470,16 @@ public class ManufacturerController {
 			
 
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6226#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while getting manufacturer", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6227#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6228#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6229#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

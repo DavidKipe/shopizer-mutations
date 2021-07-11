@@ -9,7 +9,7 @@ public class ProductImages extends ContentFiles {
 	private long productId;
 
 	public long getProductId() {
-		return productId;
+		System.out.println("$#7799#"); return productId;
 	}
 
 	public void setProductId(long productId) {

@@ -37,12 +37,12 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 	@Override
 	public Product getById(Long productId, MerchantStore store) {
-		return get(productId, store);
+		System.out.println("$#1514#"); return get(productId, store);
 	}
 
 	@Override
 	public Product getById(Long productId) {
-		return get(productId, null);
+		System.out.println("$#1515#"); return get(productId, null);
 	}
 
 
@@ -56,7 +56,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		q.setParameter("pid", productId);
 
 		try {
-			return (Product)q.getSingleResult();
+			System.out.println("$#1516#"); return (Product)q.getSingleResult();
 		} catch (NoResultException ignored) {
 			return null;
 		}
@@ -105,16 +105,16 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 			qs.append(productQuery());
 
 			qs.append("where p.id=:pid");
-			if (merchant != null) {
+			System.out.println("$#1517#"); if (merchant != null) {
 				merchantId = merchant.getId();
 				ids.add(merchantId);
-				if(merchant.getParent()!=null) {
+				System.out.println("$#1518#"); if(merchant.getParent()!=null) {
 					parentId = merchant.getParent().getId();
 					ids.add(parentId);
 				}
 			}
 
-			if(merchantId != null) {
+			System.out.println("$#1519#"); if(merchantId != null) {
 				//qs.append(" and merch.id=:mid");
 				qs.append(" and merch.id in (:mid)");
 			}
@@ -127,14 +127,14 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 				//q.setParameter("mid", merchant.getId());
 			//}
 
-			if(merchantId != null) {
+			System.out.println("$#1520#"); if(merchantId != null) {
 				//q.setParameter("mid", merchant.getId());
 				q.setParameter("mid", ids);
 			}
 
 			Product p = (Product) q.getSingleResult();
 
-			return p;
+			System.out.println("$#1521#"); return p;
 
 		} catch (javax.persistence.NoResultException ers) {
 			return null;
@@ -189,7 +189,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 			Product p = (Product) q.getSingleResult();
 
-			return p;
+			System.out.println("$#1522#"); return p;
 
 		} catch (javax.persistence.NoResultException ers) {
 			return null;
@@ -248,7 +248,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		try {
 			List<Product> products = q.getResultList();
-			if (products.size() > 1) {
+			System.out.println("$#1524#"); System.out.println("$#1523#"); if (products.size() > 1) {
 				LOGGER.error("Found multiple products for list of criterias with main criteria [" + seUrl + "]");
 			}
 			// p = (Product)q.getSingleResult();
@@ -257,7 +257,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		}
 
-		return p;
+		System.out.println("$#1525#"); return p;
 
 	}
 
@@ -267,7 +267,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		ProductList products = this.getProductsListForLocale(store, categoryIds, language, locale, 0, -1);
 
-		return products.getProducts();
+		System.out.println("$#1526#"); return products.getProducts();
 	}
 
 	@Override
@@ -319,10 +319,12 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		@SuppressWarnings("unchecked")
 		List<Product> results = q.getResultList();
-		if (results.isEmpty())
+		System.out.println("$#1527#"); if (results.isEmpty())
 			return null;
-		else if (results.size() == 1)
+		else if (results.size() == 1) { System.out.println("$#1691#");
+			System.out.println("$#1529#");
 			return (Product) results.get(0);
+		}
 		throw new NonUniqueResultException();
 
 	}
@@ -381,7 +383,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		@SuppressWarnings("unchecked")
 		List<Product> products = q.getResultList();
 
-		return products;
+		System.out.println("$#1530#"); return products;
 
 	}
 
@@ -444,7 +446,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		@SuppressWarnings("unchecked")
 		List<Product> products = q.getResultList();
 
-		return products;
+		System.out.println("$#1531#"); return products;
 
 	}
 
@@ -461,7 +463,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		q.setParameter("pid", productds);
 		q.setParameter("dt", new Date());
 
-		return q.getResultList();
+		System.out.println("$#1532#"); return q.getResultList();
 	}
 
 	/**
@@ -475,7 +477,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		List regionList = new ArrayList();
 		regionList.add(Constants.ALL_REGIONS);
-		if (locale != null) {
+		System.out.println("$#1533#"); if (locale != null) {
 			regionList.add(locale.getCountry());
 		}
 
@@ -491,10 +493,12 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		Number count = (Number) countQ.getSingleResult();
 
-		productList.setTotalCount(count.intValue());
+		System.out.println("$#1534#"); productList.setTotalCount(count.intValue());
 
-		if (count.intValue() == 0)
+		System.out.println("$#1535#"); if (count.intValue() == 0) {
+			System.out.println("$#1536#");
 			return productList;
+		}
 
 		StringBuilder qs = new StringBuilder();
 		qs.append("select p from Product as p ");
@@ -544,10 +548,10 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		q.setParameter("mId", store.getId());
 
 		q.setFirstResult(first);
-		if (max > 0) {
-			int maxCount = first + max;
+		System.out.println("$#1538#"); System.out.println("$#1537#"); if (max > 0) {
+			System.out.println("$#1539#"); int maxCount = first + max;
 
-			if (maxCount < count.intValue()) {
+			System.out.println("$#1541#"); System.out.println("$#1540#"); if (maxCount < count.intValue()) {
 				q.setMaxResults(maxCount);
 			} else {
 				q.setMaxResults(count.intValue());
@@ -555,9 +559,9 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		}
 
 		List<Product> products = q.getResultList();
-		productList.setProducts(products);
+		System.out.println("$#1542#"); productList.setProducts(products);
 
-		return productList;
+		System.out.println("$#1543#"); return productList;
 
 	}
 
@@ -580,44 +584,44 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		StringBuilder countBuilderWhere = new StringBuilder();
 		countBuilderWhere.append(" where p.merchantStore.id=:mId");
 
-		if (!CollectionUtils.isEmpty(criteria.getProductIds())) {
+		System.out.println("$#1544#"); if (!CollectionUtils.isEmpty(criteria.getProductIds())) {
 			countBuilderWhere.append(" and p.id in (:pId)");
 		}
 
 		countBuilderSelect.append(" inner join p.descriptions pd");
-		if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
+		System.out.println("$#1545#"); if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
 			countBuilderWhere.append(" and pd.language.code=:lang");
 		}
 
-		if (!StringUtils.isBlank(criteria.getProductName())) {
+		System.out.println("$#1547#"); if (!StringUtils.isBlank(criteria.getProductName())) {
 			countBuilderWhere.append(" and lower(pd.name) like:nm");
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getCategoryIds())) {
+		System.out.println("$#1548#"); if (!CollectionUtils.isEmpty(criteria.getCategoryIds())) {
 			countBuilderSelect.append(" INNER JOIN p.categories categs");
 			countBuilderWhere.append(" and categs.id in (:cid)");
 		}
 
-		if (criteria.getManufacturerId() != null) {
+		System.out.println("$#1549#"); if (criteria.getManufacturerId() != null) {
 			countBuilderSelect.append(" INNER JOIN p.manufacturer manuf");
 			countBuilderWhere.append(" and manuf.id = :manufid");
 		}
 
-		if (!StringUtils.isBlank(criteria.getCode())) {
+		System.out.println("$#1550#"); if (!StringUtils.isBlank(criteria.getCode())) {
 			countBuilderWhere.append(" and lower(p.sku) like :sku");
 		}
 
 		// RENTAL
-		if (!StringUtils.isBlank(criteria.getStatus())) {
+		System.out.println("$#1551#"); if (!StringUtils.isBlank(criteria.getStatus())) {
 			countBuilderWhere.append(" and p.rentalStatus = :status");
 		}
 
-		if (criteria.getOwnerId() != null) {
+		System.out.println("$#1552#"); if (criteria.getOwnerId() != null) {
 			countBuilderSelect.append(" INNER JOIN p.owner owner");
 			countBuilderWhere.append(" and owner.id = :ownerid");
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
+		System.out.println("$#1553#"); if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
 
 			countBuilderSelect.append(" INNER JOIN p.attributes pattr");
 			countBuilderSelect.append(" INNER JOIN pattr.productOption po");
@@ -625,21 +629,21 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 			countBuilderSelect.append(" INNER JOIN pov.descriptions povd ");
 			int count = 0;
 			for (AttributeCriteria attributeCriteria : criteria.getAttributeCriteria()) {
-				if (count == 0) {
+				System.out.println("$#1554#"); if (count == 0) {
 					countBuilderWhere.append(" and po.code =:").append(attributeCriteria.getAttributeCode());
 					countBuilderWhere.append(" and povd.description like :").append("val").append(count)
 							.append(attributeCriteria.getAttributeCode());
 				}
-				count++;
+				System.out.println("$#1555#"); count++;
 			}
-			if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
+			System.out.println("$#1556#"); if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
 				countBuilderWhere.append(" and povd.language.code=:lang");
 			}
 
 		}
 
-		if (criteria.getAvailable() != null) {
-			if (criteria.getAvailable().booleanValue()) {
+		System.out.println("$#1558#"); if (criteria.getAvailable() != null) {
+			System.out.println("$#1559#"); if (criteria.getAvailable().booleanValue()) {
 				countBuilderWhere.append(" and p.available=true and p.dateAvailable<=:dt");
 			} else {
 				countBuilderWhere.append(" and p.available=false or p.dateAvailable>:dt");
@@ -650,61 +654,63 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		countQ.setParameter("mId", store.getId());
 
-		if (!CollectionUtils.isEmpty(criteria.getCategoryIds())) {
+		System.out.println("$#1560#"); if (!CollectionUtils.isEmpty(criteria.getCategoryIds())) {
 			countQ.setParameter("cid", criteria.getCategoryIds());
 		}
 
-		if (criteria.getAvailable() != null) {
+		System.out.println("$#1561#"); if (criteria.getAvailable() != null) {
 			countQ.setParameter("dt", new Date());
 		}
 
-		if (!StringUtils.isBlank(criteria.getCode())) {
+		System.out.println("$#1562#"); if (!StringUtils.isBlank(criteria.getCode())) {
 			countQ.setParameter("sku",
 					new StringBuilder().append("%").append(criteria.getCode().toLowerCase()).append("%").toString());
 		}
 
-		if (criteria.getManufacturerId() != null) {
+		System.out.println("$#1563#"); if (criteria.getManufacturerId() != null) {
 			countQ.setParameter("manufid", criteria.getManufacturerId());
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
+		System.out.println("$#1564#"); if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
 			int count = 0;
 			for (AttributeCriteria attributeCriteria : criteria.getAttributeCriteria()) {
 				countQ.setParameter(attributeCriteria.getAttributeCode(), attributeCriteria.getAttributeCode());
 				countQ.setParameter("val" + count + attributeCriteria.getAttributeCode(),
 						"%" + attributeCriteria.getAttributeValue() + "%");
-				count++;
+				System.out.println("$#1565#"); count++;
 			}
 		}
 
-		if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
+		System.out.println("$#1566#"); if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
 			countQ.setParameter("lang", language.getCode());
 		}
 
-		if (!StringUtils.isBlank(criteria.getProductName())) {
+		System.out.println("$#1568#"); if (!StringUtils.isBlank(criteria.getProductName())) {
 			countQ.setParameter("nm", new StringBuilder().append("%").append(criteria.getProductName().toLowerCase())
 					.append("%").toString());
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getProductIds())) {
+		System.out.println("$#1569#"); if (!CollectionUtils.isEmpty(criteria.getProductIds())) {
 			countQ.setParameter("pId", criteria.getProductIds());
 		}
 
 		// RENTAL
-		if (!StringUtils.isBlank(criteria.getStatus())) {
+		System.out.println("$#1570#"); if (!StringUtils.isBlank(criteria.getStatus())) {
 			countQ.setParameter("status", criteria.getStatus());
 		}
 
-		if (criteria.getOwnerId() != null) {
+		System.out.println("$#1571#"); if (criteria.getOwnerId() != null) {
 			countQ.setParameter("ownerid", criteria.getOwnerId());
 		}
 
 		Number count = (Number) countQ.getSingleResult();
 
-		productList.setTotalCount(count.intValue());
+		System.out.println("$#1572#"); productList.setTotalCount(count.intValue());
 
-		if (count.intValue() == 0)
+		System.out.println("$#1573#"); if (count.intValue() == 0) {
+			System.out.println("$#1574#");
 			return productList;
+		}
 
 		StringBuilder qs = new StringBuilder();
 		qs.append("select distinct p from Product as p ");
@@ -729,7 +735,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		qs.append("left join fetch p.owner owner ");
 
 		// attributes
-		if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
+		System.out.println("$#1575#"); if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
 			qs.append(" inner join p.attributes pattr");
 			qs.append(" inner join pattr.productOption po");
 			qs.append(" inner join po.descriptions pod");
@@ -746,56 +752,56 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		qs.append(" left join fetch p.relationships pr");
 
 		qs.append(" where merch.id=:mId");
-		if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
+		System.out.println("$#1576#"); if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
 			qs.append(" and pd.language.code=:lang");
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getProductIds())) {
+		System.out.println("$#1578#"); if (!CollectionUtils.isEmpty(criteria.getProductIds())) {
 			qs.append(" and p.id in (:pId)");
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getCategoryIds())) {
+		System.out.println("$#1579#"); if (!CollectionUtils.isEmpty(criteria.getCategoryIds())) {
 			qs.append(" and categs.id in (:cid)");
 		}
 
-		if (criteria.getManufacturerId() != null) {
+		System.out.println("$#1580#"); if (criteria.getManufacturerId() != null) {
 			qs.append(" and manuf.id = :manufid");
 		}
 
-		if (criteria.getAvailable() != null) {
-			if (criteria.getAvailable().booleanValue()) {
+		System.out.println("$#1581#"); if (criteria.getAvailable() != null) {
+			System.out.println("$#1582#"); if (criteria.getAvailable().booleanValue()) {
 				qs.append(" and p.available=true and p.dateAvailable<=:dt");
 			} else {
 				qs.append(" and p.available=false and p.dateAvailable>:dt");
 			}
 		}
 
-		if (!StringUtils.isBlank(criteria.getProductName())) {
+		System.out.println("$#1583#"); if (!StringUtils.isBlank(criteria.getProductName())) {
 			qs.append(" and lower(pd.name) like :nm");
 		}
 
-		if (!StringUtils.isBlank(criteria.getCode())) {
+		System.out.println("$#1584#"); if (!StringUtils.isBlank(criteria.getCode())) {
 			qs.append(" and lower(p.sku) like :sku");
 		}
 
 		// RENTAL
-		if (!StringUtils.isBlank(criteria.getStatus())) {
+		System.out.println("$#1585#"); if (!StringUtils.isBlank(criteria.getStatus())) {
 			qs.append(" and p.rentalStatus = :status");
 		}
 
-		if (criteria.getOwnerId() != null) {
+		System.out.println("$#1586#"); if (criteria.getOwnerId() != null) {
 			qs.append(" and owner.id = :ownerid");
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
+		System.out.println("$#1587#"); if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
 			int cnt = 0;
 			for (AttributeCriteria attributeCriteria : criteria.getAttributeCriteria()) {
 				qs.append(" and po.code =:").append(attributeCriteria.getAttributeCode());
 				qs.append(" and povd.description like :").append("val").append(cnt)
 						.append(attributeCriteria.getAttributeCode());
-				cnt++;
+				System.out.println("$#1588#"); cnt++;
 			}
-			if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
+			System.out.println("$#1589#"); if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
 				qs.append(" and povd.language.code=:lang");
 			}
 
@@ -805,68 +811,68 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		String hql = qs.toString();
 		Query q = this.em.createQuery(hql);
 
-		if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
+		System.out.println("$#1591#"); if (criteria.getLanguage() != null && !criteria.getLanguage().equals("_all")) {
 			q.setParameter("lang", language.getCode());
 		}
 		q.setParameter("mId", store.getId());
 
-		if (!CollectionUtils.isEmpty(criteria.getCategoryIds())) {
+		System.out.println("$#1593#"); if (!CollectionUtils.isEmpty(criteria.getCategoryIds())) {
 			q.setParameter("cid", criteria.getCategoryIds());
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getProductIds())) {
+		System.out.println("$#1594#"); if (!CollectionUtils.isEmpty(criteria.getProductIds())) {
 			q.setParameter("pId", criteria.getProductIds());
 		}
 
-		if (criteria.getAvailable() != null) {
+		System.out.println("$#1595#"); if (criteria.getAvailable() != null) {
 			q.setParameter("dt", new Date());
 		}
 
-		if (criteria.getManufacturerId() != null) {
+		System.out.println("$#1596#"); if (criteria.getManufacturerId() != null) {
 			q.setParameter("manufid", criteria.getManufacturerId());
 		}
 
-		if (!StringUtils.isBlank(criteria.getCode())) {
+		System.out.println("$#1597#"); if (!StringUtils.isBlank(criteria.getCode())) {
 			q.setParameter("sku",
 					new StringBuilder().append("%").append(criteria.getCode().toLowerCase()).append("%").toString());
 		}
 
-		if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
+		System.out.println("$#1598#"); if (!CollectionUtils.isEmpty(criteria.getAttributeCriteria())) {
 			int cnt = 0;
 			for (AttributeCriteria attributeCriteria : criteria.getAttributeCriteria()) {
 				q.setParameter(attributeCriteria.getAttributeCode(), attributeCriteria.getAttributeCode());
 				q.setParameter("val" + cnt + attributeCriteria.getAttributeCode(),
 						"%" + attributeCriteria.getAttributeValue() + "%");
-				cnt++;
+				System.out.println("$#1599#"); cnt++;
 			}
 		}
 
 		// RENTAL
-		if (!StringUtils.isBlank(criteria.getStatus())) {
+		System.out.println("$#1600#"); if (!StringUtils.isBlank(criteria.getStatus())) {
 			q.setParameter("status", criteria.getStatus());
 		}
 
-		if (criteria.getOwnerId() != null) {
+		System.out.println("$#1601#"); if (criteria.getOwnerId() != null) {
 			q.setParameter("ownerid", criteria.getOwnerId());
 		}
 
-		if (!StringUtils.isBlank(criteria.getProductName())) {
+		System.out.println("$#1602#"); if (!StringUtils.isBlank(criteria.getProductName())) {
 			q.setParameter("nm", new StringBuilder().append("%").append(criteria.getProductName().toLowerCase())
 					.append("%").toString());
 		}
 
 	    @SuppressWarnings("rawtypes")
 	    GenericEntityList entityList = new GenericEntityList();
-	    entityList.setTotalCount(count.intValue());
+					System.out.println("$#1603#"); entityList.setTotalCount(count.intValue());
 
 		q = RepositoryHelper.paginateQuery(q, count, entityList, criteria);
 
 
 		@SuppressWarnings("unchecked")
 		List<Product> products = q.getResultList();
-		productList.setProducts(products);
+		System.out.println("$#1604#"); productList.setProducts(products);
 
-		return productList;
+		System.out.println("$#1605#"); return productList;
 
 	}
 
@@ -919,7 +925,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		@SuppressWarnings("unchecked")
 		List<Product> products = q.getResultList();
 
-		return products;
+		System.out.println("$#1606#"); return products;
 
 	}
 
@@ -972,7 +978,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		@SuppressWarnings("unchecked")
 		List<Product> products = q.getResultList();
 
-		return products;
+		System.out.println("$#1607#"); return products;
 
 	}
 
@@ -1013,7 +1019,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 		// RENTAL
 		qs.append("left join fetch p.owner owner ");
-		return qs.toString();
+		System.out.println("$#1608#"); return qs.toString();
 	}
 
 }

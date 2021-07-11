@@ -19,37 +19,37 @@ public class PersistableTaxRate extends TaxRateEntity {
 	private List<TaxRateDescription> descriptions = new ArrayList<TaxRateDescription>();
 	
 	public BigDecimal getRate() {
-		return rate;
+		System.out.println("$#9409#"); return rate;
 	}
 	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}
 	public String getStore() {
-		return store;
+		System.out.println("$#9410#"); return store;
 	}
 	public void setStore(String store) {
 		this.store = store;
 	}
 	public String getZone() {
-		return zone;
+		System.out.println("$#9411#"); return zone;
 	}
 	public void setZone(String zone) {
 		this.zone = zone;
 	}
 	public String getCountry() {
-		return country;
+		System.out.println("$#9412#"); return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;
 	}
 	public List<TaxRateDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#9413#"); return descriptions;
 	}
 	public void setDescriptions(List<TaxRateDescription> descriptions) {
 		this.descriptions = descriptions;
 	}
 	public String getTaxClass() {
-		return taxClass;
+		System.out.println("$#9414#"); return taxClass;
 	}
 	public void setTaxClass(String taxClass) {
 		this.taxClass = taxClass;

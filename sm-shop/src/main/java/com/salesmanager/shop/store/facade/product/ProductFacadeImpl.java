@@ -91,15 +91,15 @@ public class ProductFacadeImpl implements ProductFacade {
 	public PersistableProduct saveProduct(MerchantStore store, PersistableProduct product, Language language) {
 
 		String manufacturer = Manufacturer.DEFAULT_MANUFACTURER;
-		if (product.getProductSpecifications() != null) {
+		System.out.println("$#14794#"); if (product.getProductSpecifications() != null) {
 			manufacturer = product.getProductSpecifications().getManufacturer();
 		} else {
 			ProductSpecification specifications = new ProductSpecification();
-			specifications.setManufacturer(manufacturer);
+			System.out.println("$#14795#"); specifications.setManufacturer(manufacturer);
 		}
 
 		Product target = null;
-		if (product.getId() != null && product.getId().longValue() > 0) {
+		System.out.println("$#14797#"); System.out.println("$#14796#"); if (product.getId() != null && product.getId().longValue() > 0) {
 			target = productService.getById(product.getId());
 		} else {
 			target = new Product();
@@ -107,14 +107,14 @@ public class ProductFacadeImpl implements ProductFacade {
 
 		try {
 			persistableProductPopulator.populate(product, target, store, language);
-			if (target.getId() != null && target.getId() > 0) {
-				productService.update(target);
+			System.out.println("$#14800#"); System.out.println("$#14799#"); if (target.getId() != null && target.getId() > 0) {
+				System.out.println("$#14802#"); productService.update(target);
 			} else {
-				productService.create(target);
-				product.setId(target.getId());
+				System.out.println("$#14803#"); productService.create(target);
+				System.out.println("$#14804#"); product.setId(target.getId());
 			}
 
-			return product;
+			System.out.println("$#14805#"); return product;
 		} catch (Exception e) {
 			throw new ServiceRuntimeException(e);
 		}
@@ -123,8 +123,8 @@ public class ProductFacadeImpl implements ProductFacade {
 
 	public void updateProduct(MerchantStore store, PersistableProduct product, Language language) {
 
-		Validate.notNull(product, "Product must not be null");
-		Validate.notNull(product.getId(), "Product id must not be null");
+		System.out.println("$#14806#"); Validate.notNull(product, "Product must not be null");
+		System.out.println("$#14807#"); Validate.notNull(product.getId(), "Product id must not be null");
 
 		// get original product
 		Product productModel = productService.getById(product.getId());
@@ -156,21 +156,21 @@ public class ProductFacadeImpl implements ProductFacade {
 	public ReadableProduct getProduct(MerchantStore store, Long id, Language language) throws Exception {
 
 		Product product = productService.findOne(id, store);
-		if (product == null) {
+		System.out.println("$#14808#"); if (product == null) {
 			throw new ResourceNotFoundException("Product [" + id + "] not found");
 		}
 
-		if (product.getMerchantStore().getId() != store.getId()) {
+		System.out.println("$#14809#"); if (product.getMerchantStore().getId() != store.getId()) {
 			throw new ResourceNotFoundException("Product [" + id + "] not found for store [" + store.getId() + "]");
 		}
 
 		ReadableProduct readableProduct = new ReadableProduct();
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14810#"); populator.setPricingService(pricingService);
+		System.out.println("$#14811#"); populator.setimageUtils(imageUtils);
 		readableProduct = populator.populate(product, readableProduct, store, language);
 
-		return readableProduct;
+		System.out.println("$#14812#"); return readableProduct;
 	}
 
 	@Override
@@ -178,7 +178,7 @@ public class ProductFacadeImpl implements ProductFacade {
 
 		Product product = productService.getByCode(sku, language);
 
-		if (product == null) {
+		System.out.println("$#14813#"); if (product == null) {
 			return null;
 		}
 
@@ -186,11 +186,11 @@ public class ProductFacadeImpl implements ProductFacade {
 
 		ReadableProductPopulator populator = new ReadableProductPopulator();
 
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14814#"); populator.setPricingService(pricingService);
+		System.out.println("$#14815#"); populator.setimageUtils(imageUtils);
 		populator.populate(product, readableProduct, store, language);
 
-		return readableProduct;
+		System.out.println("$#14816#"); return readableProduct;
 	}
 
 	@Override
@@ -199,39 +199,39 @@ public class ProductFacadeImpl implements ProductFacade {
 
 		Product persistable = productService.getById(product.getId());
 
-		if (persistable == null) {
+		System.out.println("$#14817#"); if (persistable == null) {
 			throw new Exception("product is null for id " + product.getId());
 		}
 
 		java.util.Set<ProductAvailability> availabilities = persistable.getAvailabilities();
 		for (ProductAvailability availability : availabilities) {
 			ProductPrice productPrice = availability.defaultPrice();
-			productPrice.setProductPriceAmount(price.getOriginalPrice());
-			if (price.isDiscounted()) {
-				productPrice.setProductPriceSpecialAmount(price.getDiscountedPrice());
-				if (!StringUtils.isBlank(price.getDiscountStartDate())) {
+			System.out.println("$#14818#"); productPrice.setProductPriceAmount(price.getOriginalPrice());
+			System.out.println("$#14819#"); if (price.isDiscounted()) {
+				System.out.println("$#14820#"); productPrice.setProductPriceSpecialAmount(price.getDiscountedPrice());
+				System.out.println("$#14821#"); if (!StringUtils.isBlank(price.getDiscountStartDate())) {
 					Date startDate = DateUtil.getDate(price.getDiscountStartDate());
-					productPrice.setProductPriceSpecialStartDate(startDate);
+					System.out.println("$#14822#"); productPrice.setProductPriceSpecialStartDate(startDate);
 				}
-				if (!StringUtils.isBlank(price.getDiscountEndDate())) {
+				System.out.println("$#14823#"); if (!StringUtils.isBlank(price.getDiscountEndDate())) {
 					Date endDate = DateUtil.getDate(price.getDiscountEndDate());
-					productPrice.setProductPriceSpecialEndDate(endDate);
+					System.out.println("$#14824#"); productPrice.setProductPriceSpecialEndDate(endDate);
 				}
 			}
 
 		}
 
-		productService.update(persistable);
+		System.out.println("$#14825#"); productService.update(persistable);
 
 		ReadableProduct readableProduct = new ReadableProduct();
 
 		ReadableProductPopulator populator = new ReadableProductPopulator();
 
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14826#"); populator.setPricingService(pricingService);
+		System.out.println("$#14827#"); populator.setimageUtils(imageUtils);
 		populator.populate(persistable, readableProduct, persistable.getMerchantStore(), language);
 
-		return readableProduct;
+		System.out.println("$#14828#"); return readableProduct;
 	}
 
 	@Override
@@ -239,31 +239,31 @@ public class ProductFacadeImpl implements ProductFacade {
 			throws Exception {
 		Product persistable = productService.getById(product.getId());
 
-		if (persistable == null) {
+		System.out.println("$#14829#"); if (persistable == null) {
 			throw new Exception("product is null for id " + product.getId());
 		}
 
 		java.util.Set<ProductAvailability> availabilities = persistable.getAvailabilities();
 		for (ProductAvailability availability : availabilities) {
-			availability.setProductQuantity(quantity);
+			System.out.println("$#14830#"); availability.setProductQuantity(quantity);
 		}
 
-		productService.update(persistable);
+		System.out.println("$#14831#"); productService.update(persistable);
 
 		ReadableProduct readableProduct = new ReadableProduct();
 
 		ReadableProductPopulator populator = new ReadableProductPopulator();
 
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14832#"); populator.setPricingService(pricingService);
+		System.out.println("$#14833#"); populator.setimageUtils(imageUtils);
 		populator.populate(persistable, readableProduct, persistable.getMerchantStore(), language);
 
-		return readableProduct;
+		System.out.println("$#14834#"); return readableProduct;
 	}
 
 	@Override
 	public void deleteProduct(Product product) throws Exception {
-		productService.delete(product);
+		System.out.println("$#14835#"); productService.delete(product);
 
 	}
 
@@ -271,17 +271,17 @@ public class ProductFacadeImpl implements ProductFacade {
 	public ReadableProductList getProductListsByCriterias(MerchantStore store, Language language,
 			ProductCriteria criterias) throws Exception {
 
-		Validate.notNull(criterias, "ProductCriteria must be set for this product");
+		System.out.println("$#14836#"); Validate.notNull(criterias, "ProductCriteria must be set for this product");
 
 		/** This is for category **/
-		if (CollectionUtils.isNotEmpty(criterias.getCategoryIds())) {
+		System.out.println("$#14837#"); if (CollectionUtils.isNotEmpty(criterias.getCategoryIds())) {
 
-			if (criterias.getCategoryIds().size() == 1) {
+			System.out.println("$#14838#"); if (criterias.getCategoryIds().size() == 1) {
 
 				com.salesmanager.core.model.catalog.category.Category category = categoryService
 						.getById(criterias.getCategoryIds().get(0));
 
-				if (category != null) {
+				System.out.println("$#14839#"); if (category != null) {
 					String lineage = new StringBuilder().append(category.getLineage()).append(Constants.SLASH)
 							.toString();
 
@@ -289,13 +289,13 @@ public class ProductFacadeImpl implements ProductFacade {
 							.getListByLineage(store, lineage);
 
 					List<Long> ids = new ArrayList<Long>();
-					if (categories != null && categories.size() > 0) {
+					System.out.println("$#14841#"); System.out.println("$#14840#"); if (categories != null && categories.size() > 0) {
 						for (com.salesmanager.core.model.catalog.category.Category c : categories) {
 							ids.add(c.getId());
 						}
 					}
 					ids.add(category.getId());
-					criterias.setCategoryIds(ids);
+					System.out.println("$#14843#"); criterias.setCategoryIds(ids);
 				}
 			}
 		}
@@ -304,11 +304,11 @@ public class ProductFacadeImpl implements ProductFacade {
 				criterias);
 		
 		List<Product> prds = products.getProducts().stream().sorted(Comparator.comparing(Product::getSortOrder)).collect(Collectors.toList());
-		products.setProducts(prds);
+		System.out.println("$#14844#"); products.setProducts(prds);
 		
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14845#"); populator.setPricingService(pricingService);
+		System.out.println("$#14846#"); populator.setimageUtils(imageUtils);
 
 		ReadableProductList productList = new ReadableProductList();
 		for (Product product : products.getProducts()) {
@@ -320,45 +320,45 @@ public class ProductFacadeImpl implements ProductFacade {
 		}
 
 		// productList.setTotalPages(products.getTotalCount());
-		productList.setRecordsTotal(products.getTotalCount());
-		productList.setNumber(products.getTotalCount() >= criterias.getMaxCount() ? products.getTotalCount()
+		System.out.println("$#14847#"); productList.setRecordsTotal(products.getTotalCount());
+		System.out.println("$#14850#"); System.out.println("$#14848#"); productList.setNumber(products.getTotalCount() >= criterias.getMaxCount() ? products.getTotalCount()
 				: criterias.getMaxCount());
 
-		int lastPageNumber = (int) (Math.ceil(products.getTotalCount() / criterias.getPageSize()));
-		productList.setTotalPages(lastPageNumber);
+		System.out.println("$#14851#"); int lastPageNumber = (int) (Math.ceil(products.getTotalCount() / criterias.getPageSize()));
+		System.out.println("$#14852#"); productList.setTotalPages(lastPageNumber);
 
-		return productList;
+		System.out.println("$#14853#"); return productList;
 	}
 
 	@Override
 	public ReadableProduct addProductToCategory(Category category, Product product, Language language)
 			throws Exception {
 
-		Validate.notNull(category, "Category cannot be null");
-		Validate.notNull(product, "Product cannot be null");
+		System.out.println("$#14854#"); Validate.notNull(category, "Category cannot be null");
+		System.out.println("$#14855#"); Validate.notNull(product, "Product cannot be null");
 
 		// not alloweed if category already attached
 		List<Category> assigned = product.getCategories().stream()
 				.filter(cat -> cat.getId().longValue() == category.getId().longValue()).collect(Collectors.toList());
 
-		if (assigned.size() > 0) {
+		System.out.println("$#14859#"); System.out.println("$#14858#"); if (assigned.size() > 0) {
 			throw new OperationNotAllowedException("Category with id [" + category.getId()
 					+ "] already attached to product [" + product.getId() + "]");
 		}
 
 		product.getCategories().add(category);
 
-		productService.update(product);
+		System.out.println("$#14860#"); productService.update(product);
 
 		ReadableProduct readableProduct = new ReadableProduct();
 
 		ReadableProductPopulator populator = new ReadableProductPopulator();
 
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14861#"); populator.setPricingService(pricingService);
+		System.out.println("$#14862#"); populator.setimageUtils(imageUtils);
 		populator.populate(product, readableProduct, product.getMerchantStore(), language);
 
-		return readableProduct;
+		System.out.println("$#14863#"); return readableProduct;
 
 	}
 
@@ -366,21 +366,21 @@ public class ProductFacadeImpl implements ProductFacade {
 	public ReadableProduct removeProductFromCategory(Category category, Product product, Language language)
 			throws Exception {
 
-		Validate.notNull(category, "Category cannot be null");
-		Validate.notNull(product, "Product cannot be null");
+		System.out.println("$#14864#"); Validate.notNull(category, "Category cannot be null");
+		System.out.println("$#14865#"); Validate.notNull(product, "Product cannot be null");
 
 		product.getCategories().remove(category);
-		productService.update(product);
+		System.out.println("$#14866#"); productService.update(product);
 
 		ReadableProduct readableProduct = new ReadableProduct();
 
 		ReadableProductPopulator populator = new ReadableProductPopulator();
 
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14867#"); populator.setPricingService(pricingService);
+		System.out.println("$#14868#"); populator.setimageUtils(imageUtils);
 		populator.populate(product, readableProduct, product.getMerchantStore(), language);
 
-		return readableProduct;
+		System.out.println("$#14869#"); return readableProduct;
 	}
 
 	@Override
@@ -393,37 +393,37 @@ public class ProductFacadeImpl implements ProductFacade {
 
 		ReadableProductPopulator populator = new ReadableProductPopulator();
 
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14870#"); populator.setPricingService(pricingService);
+		System.out.println("$#14871#"); populator.setimageUtils(imageUtils);
 		populator.populate(product, readableProduct, product.getMerchantStore(), language);
 
-		return readableProduct;
+		System.out.println("$#14872#"); return readableProduct;
 	}
 
 	@Override
 	public void saveOrUpdateReview(PersistableProductReview review, MerchantStore store, Language language)
 			throws Exception {
 		PersistableProductReviewPopulator populator = new PersistableProductReviewPopulator();
-		populator.setLanguageService(languageService);
-		populator.setCustomerService(customerService);
-		populator.setProductService(productService);
+		System.out.println("$#14873#"); populator.setLanguageService(languageService);
+		System.out.println("$#14874#"); populator.setCustomerService(customerService);
+		System.out.println("$#14875#"); populator.setProductService(productService);
 
 		com.salesmanager.core.model.catalog.product.review.ProductReview rev = new com.salesmanager.core.model.catalog.product.review.ProductReview();
 		populator.populate(review, rev, store, language);
 
-		if (review.getId() == null) {
-			productReviewService.create(rev);
+		System.out.println("$#14876#"); if (review.getId() == null) {
+			System.out.println("$#14877#"); productReviewService.create(rev);
 		} else {
-			productReviewService.update(rev);
+			System.out.println("$#14878#"); productReviewService.update(rev);
 		}
 
-		review.setId(rev.getId());
+		System.out.println("$#14879#"); review.setId(rev.getId());
 
 	}
 
 	@Override
 	public void deleteReview(ProductReview review, MerchantStore store, Language language) throws Exception {
-		productReviewService.delete(review);
+		System.out.println("$#14880#"); productReviewService.delete(review);
 
 	}
 
@@ -443,19 +443,19 @@ public class ProductFacadeImpl implements ProductFacade {
 			productReviews.add(readableReview);
 		}
 
-		return productReviews;
+		System.out.println("$#14881#"); return productReviews;
 	}
 
 	@Override
 	public List<ReadableProduct> relatedItems(MerchantStore store, Product product, Language language)
 			throws Exception {
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14882#"); populator.setPricingService(pricingService);
+		System.out.println("$#14883#"); populator.setimageUtils(imageUtils);
 
 		List<ProductRelationship> relatedItems = productRelationshipService.getByType(store, product,
 				ProductRelationshipType.RELATED_ITEM);
-		if (relatedItems != null && relatedItems.size() > 0) {
+		System.out.println("$#14885#"); System.out.println("$#14884#"); if (relatedItems != null && relatedItems.size() > 0) {
 			List<ReadableProduct> items = new ArrayList<ReadableProduct>();
 			for (ProductRelationship relationship : relatedItems) {
 				Product relatedProduct = relationship.getRelatedProduct();
@@ -463,9 +463,9 @@ public class ProductFacadeImpl implements ProductFacade {
 						language);
 				items.add(proxyProduct);
 			}
-			return items;
+			System.out.println("$#14887#"); return items;
 		}
-		return null;
+		System.out.println("$#14888#"); return null;
 	}
 
 	@Override
@@ -474,16 +474,16 @@ public class ProductFacadeImpl implements ProductFacade {
 		Product modified = productService.findOne(productId, merchant);
 
 		// Update product with minimal set
-		modified.setAvailable(product.isAvailable());
+		System.out.println("$#14889#"); modified.setAvailable(product.isAvailable());
 
 		for (ProductAvailability availability : modified.getAvailabilities()) {
-			availability.setProductQuantity(product.getQuantity());
-			if (!StringUtils.isBlank(product.getPrice())) {
+			System.out.println("$#14890#"); availability.setProductQuantity(product.getQuantity());
+			System.out.println("$#14891#"); if (!StringUtils.isBlank(product.getPrice())) {
 				// set default price
 				for (ProductPrice price : availability.getPrices()) {
-					if (price.isDefaultPrice()) {
+					System.out.println("$#14892#"); if (price.isDefaultPrice()) {
 						try {
-							price.setProductPriceAmount(pricingService.getAmount(product.getPrice()));
+							System.out.println("$#14893#"); price.setProductPriceAmount(pricingService.getAmount(product.getPrice()));
 						} catch (ServiceException e) {
 							throw new ServiceRuntimeException("Invalid product price format");
 						}
@@ -493,7 +493,7 @@ public class ProductFacadeImpl implements ProductFacade {
 		}
 
 		try {
-			productService.save(modified);
+			System.out.println("$#14894#"); productService.save(modified);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Cannot update product ", e);
 		}
@@ -504,36 +504,36 @@ public class ProductFacadeImpl implements ProductFacade {
 	public boolean exists(String sku, MerchantStore store) {
 		boolean exists = false;
 		Product product = productService.getByCode(sku, store.getDefaultLanguage());
-		if (product != null && product.getMerchantStore().getId().intValue() == store.getId().intValue()) {
+		System.out.println("$#14895#"); if (product != null && product.getMerchantStore().getId().intValue() == store.getId().intValue()) {
 			exists = true;
 		}
-		return exists;
+		System.out.println("$#14898#"); System.out.println("$#14897#"); return exists;
 	}
 
 	@Override
 	public Product getProduct(String sku, MerchantStore store) {
-		return productService.getByCode(sku, store.getDefaultLanguage());
+		System.out.println("$#14899#"); return productService.getByCode(sku, store.getDefaultLanguage());
 	}
 
 	@Override
 	public void deleteProduct(Long id, MerchantStore store) {
 
-		Validate.notNull(id, "Product id cannot be null");
-		Validate.notNull(store, "store cannot be null");
+		System.out.println("$#14900#"); Validate.notNull(id, "Product id cannot be null");
+		System.out.println("$#14901#"); Validate.notNull(store, "store cannot be null");
 
 		Product p = productService.getById(id);
 
-		if (p == null) {
+		System.out.println("$#14902#"); if (p == null) {
 			throw new ResourceNotFoundException("Product with id [" + id + " not found");
 		}
 
-		if (p.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+		System.out.println("$#14903#"); if (p.getMerchantStore().getId().intValue() != store.getId().intValue()) {
 			throw new ResourceNotFoundException(
 					"Product with id [" + id + " not found for store [" + store.getCode() + "]");
 		}
 
 		try {
-			productService.delete(p);
+			System.out.println("$#14904#"); productService.delete(p);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Error while deleting ptoduct with id [" + id + "]", e);
 		}
@@ -545,7 +545,7 @@ public class ProductFacadeImpl implements ProductFacade {
 
 		Product product = productService.getBySeUrl(store, friendlyUrl, LocaleUtils.getLocale(language));
 
-		if (product == null) {
+		System.out.println("$#14905#"); if (product == null) {
 			return null;
 		}
 
@@ -553,11 +553,11 @@ public class ProductFacadeImpl implements ProductFacade {
 
 		ReadableProductPopulator populator = new ReadableProductPopulator();
 
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14906#"); populator.setPricingService(pricingService);
+		System.out.println("$#14907#"); populator.setimageUtils(imageUtils);
 		populator.populate(product, readableProduct, store, language);
 
-		return readableProduct;
+		System.out.println("$#14908#"); return readableProduct;
 	}
 
 }

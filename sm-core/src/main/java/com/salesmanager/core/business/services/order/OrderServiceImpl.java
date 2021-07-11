@@ -109,20 +109,20 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
     @Override
     public void addOrderStatusHistory(Order order, OrderStatusHistory history) throws ServiceException {
         order.getOrderHistory().add(history);
-        history.setOrder(order);
-        update(order);
+								System.out.println("$#2281#"); history.setOrder(order);
+								System.out.println("$#2282#"); update(order);
     }
     
     @Override
     public Order processOrder(Order order, Customer customer, List<ShoppingCartItem> items, OrderTotalSummary summary, Payment payment, MerchantStore store) throws ServiceException {
     	
-    	return process(order, customer, items, summary, payment, null, store);
+					System.out.println("$#2283#"); return process(order, customer, items, summary, payment, null, store);
     }
     
     @Override
     public Order processOrder(Order order, Customer customer, List<ShoppingCartItem> items, OrderTotalSummary summary, Payment payment, Transaction transaction, MerchantStore store) throws ServiceException {
     	
-    	return process(order, customer, items, summary, payment, transaction, store);
+					System.out.println("$#2284#"); return process(order, customer, items, summary, payment, transaction, store);
     }
     
 	private Order process(Order order, Customer customer, List<ShoppingCartItem> items, OrderTotalSummary summary, Payment payment, Transaction transaction, MerchantStore store) throws ServiceException {
@@ -136,10 +136,10 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
     	Validate.notNull(summary, "Order total Summary cannot be null");
     	
     	UserContext context = UserContext.getCurrentInstance();
-    	if(context != null) {
+					System.out.println("$#2285#"); if(context != null) {
     		String ipAddress = context.getIpAddress();
-    		if(!StringUtils.isBlank(ipAddress)) {
-    			order.setIpAddress(ipAddress);
+						System.out.println("$#2286#"); if(!StringUtils.isBlank(ipAddress)) {
+							System.out.println("$#2287#"); order.setIpAddress(ipAddress);
     		}
     	}
 
@@ -147,44 +147,44 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
     	//first process payment
     	Transaction processTransaction = paymentService.processPayment(customer, store, payment, items, order);
     	
-    	if(order.getOrderHistory()==null || order.getOrderHistory().size()==0 || order.getStatus()==null) {
+					System.out.println("$#2288#"); if(order.getOrderHistory()==null || order.getOrderHistory().size()==0 || order.getStatus()==null) {
     		OrderStatus status = order.getStatus();
-    		if(status==null) {
+						System.out.println("$#2291#"); if(status==null) {
     			status = OrderStatus.ORDERED;
-    			order.setStatus(status);
+							System.out.println("$#2292#"); order.setStatus(status);
     		}
     		Set<OrderStatusHistory> statusHistorySet = new HashSet<OrderStatusHistory>();
     		OrderStatusHistory statusHistory = new OrderStatusHistory();
-    		statusHistory.setStatus(status);
-    		statusHistory.setDateAdded(new Date());
-    		statusHistory.setOrder(order);
+						System.out.println("$#2293#"); statusHistory.setStatus(status);
+						System.out.println("$#2294#"); statusHistory.setDateAdded(new Date());
+						System.out.println("$#2295#"); statusHistory.setOrder(order);
     		statusHistorySet.add(statusHistory);
-    		order.setOrderHistory(statusHistorySet);
+						System.out.println("$#2296#"); order.setOrderHistory(statusHistorySet);
     		
     	}
     	
-        if(customer.getId()==null || customer.getId()==0) {
-          customerService.create(customer);
+								System.out.println("$#2297#"); if(customer.getId()==null || customer.getId()==0) {
+										System.out.println("$#2299#"); customerService.create(customer);
         }
       
-        order.setCustomerId(customer.getId());
-        this.create(order);
+								System.out.println("$#2300#"); order.setCustomerId(customer.getId());
+								System.out.println("$#2301#"); this.create(order);
 
-    	if(transaction!=null) {
-    		transaction.setOrder(order);
-    		if(transaction.getId()==null || transaction.getId()==0) {
-    			transactionService.create(transaction);
+					System.out.println("$#2302#"); if(transaction!=null) {
+						System.out.println("$#2303#"); transaction.setOrder(order);
+						System.out.println("$#2304#"); if(transaction.getId()==null || transaction.getId()==0) {
+							System.out.println("$#2306#"); transactionService.create(transaction);
     		} else {
-    			transactionService.update(transaction);
+							System.out.println("$#2307#"); transactionService.update(transaction);
     		}
     	}
     	
-    	if(processTransaction!=null) {
-    		processTransaction.setOrder(order);
-    		if(processTransaction.getId()==null || processTransaction.getId()==0) {
-    			transactionService.create(processTransaction);
+					System.out.println("$#2308#"); if(processTransaction!=null) {
+						System.out.println("$#2309#"); processTransaction.setOrder(order);
+						System.out.println("$#2310#"); if(processTransaction.getId()==null || processTransaction.getId()==0) {
+							System.out.println("$#2312#"); transactionService.create(processTransaction);
     		} else {
-    			transactionService.update(processTransaction);
+							System.out.println("$#2313#"); transactionService.update(processTransaction);
     		}
     	}
 
@@ -196,22 +196,22 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
         for(OrderProduct orderProduct : products) {
             orderProduct.getProductQuantity();
             Product p = productService.getByCode(orderProduct.getSku(), store.getDefaultLanguage());
-            if(p == null) 
+												System.out.println("$#2314#"); if(p == null)
                 throw new ServiceException(ServiceException.EXCEPTION_INVENTORY_MISMATCH);
             for(ProductAvailability availability : p.getAvailabilities()) {
                 int qty = availability.getProductQuantity();
-                if(qty < orderProduct.getProductQuantity()) {
+																System.out.println("$#2316#"); System.out.println("$#2315#"); if(qty < orderProduct.getProductQuantity()) {
                     throw new ServiceException(ServiceException.EXCEPTION_INVENTORY_MISMATCH);
                 }
-                qty = qty - orderProduct.getProductQuantity();
-                availability.setProductQuantity(qty);
+																System.out.println("$#2317#"); qty = qty - orderProduct.getProductQuantity();
+																System.out.println("$#2318#"); availability.setProductQuantity(qty);
             }
-            productService.update(p);
+												System.out.println("$#2319#"); productService.update(p);
         }
 
 
         
-    	return order;
+					System.out.println("$#2320#"); return order;
     }
 
     private OrderTotalSummary caculateOrder(OrderSummary summary, Customer customer, final MerchantStore store, final Language language) throws Exception {
@@ -235,36 +235,36 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
         for(ShoppingCartItem item : summary.getProducts()) {
 
             BigDecimal st = item.getItemPrice().multiply(new BigDecimal(item.getQuantity()));
-            item.setSubTotal(st);
+												System.out.println("$#2321#"); item.setSubTotal(st);
             subTotal = subTotal.add(st);
             //Other prices
             FinalPrice finalPrice = item.getFinalPrice();
-            if(finalPrice!=null) {
+												System.out.println("$#2322#"); if(finalPrice!=null) {
                 List<FinalPrice> otherPrices = finalPrice.getAdditionalPrices();
-                if(otherPrices!=null) {
+																System.out.println("$#2323#"); if(otherPrices!=null) {
                     for(FinalPrice price : otherPrices) {
-                        if(!price.isDefaultPrice()) {
+																								System.out.println("$#2324#"); if(!price.isDefaultPrice()) {
                             OrderTotal itemSubTotal = otherPricesTotals.get(price.getProductPrice().getCode());
 
-                            if(itemSubTotal==null) {
+																												System.out.println("$#2325#"); if(itemSubTotal==null) {
                                 itemSubTotal = new OrderTotal();
-                                itemSubTotal.setModule(Constants.OT_ITEM_PRICE_MODULE_CODE);
-                                itemSubTotal.setTitle(Constants.OT_ITEM_PRICE_MODULE_CODE);
-                                itemSubTotal.setOrderTotalCode(price.getProductPrice().getCode());
-                                itemSubTotal.setOrderTotalType(OrderTotalType.PRODUCT);
-                                itemSubTotal.setSortOrder(0);
+																																System.out.println("$#2326#"); itemSubTotal.setModule(Constants.OT_ITEM_PRICE_MODULE_CODE);
+																																System.out.println("$#2327#"); itemSubTotal.setTitle(Constants.OT_ITEM_PRICE_MODULE_CODE);
+																																System.out.println("$#2328#"); itemSubTotal.setOrderTotalCode(price.getProductPrice().getCode());
+																																System.out.println("$#2329#"); itemSubTotal.setOrderTotalType(OrderTotalType.PRODUCT);
+																																System.out.println("$#2330#"); itemSubTotal.setSortOrder(0);
                                 otherPricesTotals.put(price.getProductPrice().getCode(), itemSubTotal);
                             }
 
                             BigDecimal orderTotalValue = itemSubTotal.getValue();
-                            if(orderTotalValue==null) {
+																												System.out.println("$#2331#"); if(orderTotalValue==null) {
                                 orderTotalValue = new BigDecimal(0);
                                 orderTotalValue.setScale(2, RoundingMode.HALF_UP);
                             }
 
                             orderTotalValue = orderTotalValue.add(price.getFinalPrice());
-                            itemSubTotal.setValue(orderTotalValue);
-                            if(price.getProductPrice().getProductPriceType().name().equals(OrderValueType.ONE_TIME)) {
+																												System.out.println("$#2332#"); itemSubTotal.setValue(orderTotalValue);
+																												System.out.println("$#2333#"); if(price.getProductPrice().getProductPriceType().name().equals(OrderValueType.ONE_TIME)) {
                                 subTotal = subTotal.add(price.getFinalPrice());
                             }
                         }
@@ -286,9 +286,9 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 	        
 	        int currentCount = 10;
 	        
-	        if(CollectionUtils.isNotEmpty(orderTotalVariation.getVariations())) {
+									System.out.println("$#2336#"); if(CollectionUtils.isNotEmpty(orderTotalVariation.getVariations())) {
 	        	for(OrderTotal variation : orderTotalVariation.getVariations()) {
-	        		variation.setSortOrder(currentCount++);
+											System.out.println("$#2338#"); System.out.println("$#2337#"); variation.setSortOrder(currentCount++);
 	        		orderTotals.add(variation);
 	        		subTotal = subTotal.subtract(variation.getValue());
 	        	}
@@ -297,55 +297,55 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
         }
 
 
-        totalSummary.setSubTotal(subTotal);
+								System.out.println("$#2339#"); totalSummary.setSubTotal(subTotal);
         grandTotal=grandTotal.add(subTotal);
 
         OrderTotal orderTotalSubTotal = new OrderTotal();
-        orderTotalSubTotal.setModule(Constants.OT_SUBTOTAL_MODULE_CODE);
-        orderTotalSubTotal.setOrderTotalType(OrderTotalType.SUBTOTAL);
-        orderTotalSubTotal.setOrderTotalCode("order.total.subtotal");
-        orderTotalSubTotal.setTitle(Constants.OT_SUBTOTAL_MODULE_CODE);
+								System.out.println("$#2340#"); orderTotalSubTotal.setModule(Constants.OT_SUBTOTAL_MODULE_CODE);
+								System.out.println("$#2341#"); orderTotalSubTotal.setOrderTotalType(OrderTotalType.SUBTOTAL);
+								System.out.println("$#2342#"); orderTotalSubTotal.setOrderTotalCode("order.total.subtotal");
+								System.out.println("$#2343#"); orderTotalSubTotal.setTitle(Constants.OT_SUBTOTAL_MODULE_CODE);
         //orderTotalSubTotal.setText("order.total.subtotal");
-        orderTotalSubTotal.setSortOrder(5);
-        orderTotalSubTotal.setValue(subTotal);
+								System.out.println("$#2344#"); orderTotalSubTotal.setSortOrder(5);
+								System.out.println("$#2345#"); orderTotalSubTotal.setValue(subTotal);
         
         orderTotals.add(orderTotalSubTotal);
 
 
         //shipping
-        if(summary.getShippingSummary()!=null) {
+								System.out.println("$#2346#"); if(summary.getShippingSummary()!=null) {
 
 
 	            OrderTotal shippingSubTotal = new OrderTotal();
-	            shippingSubTotal.setModule(Constants.OT_SHIPPING_MODULE_CODE);
-	            shippingSubTotal.setOrderTotalType(OrderTotalType.SHIPPING);
-	            shippingSubTotal.setOrderTotalCode("order.total.shipping");
-	            shippingSubTotal.setTitle(Constants.OT_SHIPPING_MODULE_CODE);
+													System.out.println("$#2347#"); shippingSubTotal.setModule(Constants.OT_SHIPPING_MODULE_CODE);
+													System.out.println("$#2348#"); shippingSubTotal.setOrderTotalType(OrderTotalType.SHIPPING);
+													System.out.println("$#2349#"); shippingSubTotal.setOrderTotalCode("order.total.shipping");
+													System.out.println("$#2350#"); shippingSubTotal.setTitle(Constants.OT_SHIPPING_MODULE_CODE);
 	            //shippingSubTotal.setText("order.total.shipping");
-	            shippingSubTotal.setSortOrder(100);
+													System.out.println("$#2351#"); shippingSubTotal.setSortOrder(100);
 	
 	            orderTotals.add(shippingSubTotal);
 
-            if(!summary.getShippingSummary().isFreeShipping()) {
-                shippingSubTotal.setValue(summary.getShippingSummary().getShipping());
+												System.out.println("$#2352#"); if(!summary.getShippingSummary().isFreeShipping()) {
+																System.out.println("$#2353#"); shippingSubTotal.setValue(summary.getShippingSummary().getShipping());
                 grandTotal=grandTotal.add(summary.getShippingSummary().getShipping());
             } else {
-                shippingSubTotal.setValue(new BigDecimal(0));
+																System.out.println("$#2354#"); shippingSubTotal.setValue(new BigDecimal(0));
                 grandTotal=grandTotal.add(new BigDecimal(0));
             }
 
             //check handling fees
             shippingConfiguration = shippingService.getShippingConfiguration(store);
-            if(summary.getShippingSummary().getHandling()!=null && summary.getShippingSummary().getHandling().doubleValue()>0) {
-                if(shippingConfiguration.getHandlingFees()!=null && shippingConfiguration.getHandlingFees().doubleValue()>0) {
+												System.out.println("$#2356#"); System.out.println("$#2355#"); if(summary.getShippingSummary().getHandling()!=null && summary.getShippingSummary().getHandling().doubleValue()>0) {
+																System.out.println("$#2359#"); System.out.println("$#2358#"); if(shippingConfiguration.getHandlingFees()!=null && shippingConfiguration.getHandlingFees().doubleValue()>0) {
                     OrderTotal handlingubTotal = new OrderTotal();
-                    handlingubTotal.setModule(Constants.OT_HANDLING_MODULE_CODE);
-                    handlingubTotal.setOrderTotalType(OrderTotalType.HANDLING);
-                    handlingubTotal.setOrderTotalCode("order.total.handling");
-                    handlingubTotal.setTitle(Constants.OT_HANDLING_MODULE_CODE);
+																				System.out.println("$#2361#"); handlingubTotal.setModule(Constants.OT_HANDLING_MODULE_CODE);
+																				System.out.println("$#2362#"); handlingubTotal.setOrderTotalType(OrderTotalType.HANDLING);
+																				System.out.println("$#2363#"); handlingubTotal.setOrderTotalCode("order.total.handling");
+																				System.out.println("$#2364#"); handlingubTotal.setTitle(Constants.OT_HANDLING_MODULE_CODE);
                     //handlingubTotal.setText("order.total.handling");
-                    handlingubTotal.setSortOrder(120);
-                    handlingubTotal.setValue(summary.getShippingSummary().getHandling());
+																				System.out.println("$#2365#"); handlingubTotal.setSortOrder(120);
+																				System.out.println("$#2366#"); handlingubTotal.setValue(summary.getShippingSummary().getHandling());
                     orderTotals.add(handlingubTotal);
                     grandTotal=grandTotal.add(summary.getShippingSummary().getHandling());
                 }
@@ -354,46 +354,46 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 
         //tax
         List<TaxItem> taxes = taxService.calculateTax(summary, customer, store, language);
-        if(taxes!=null && taxes.size()>0) {
+								System.out.println("$#2368#"); System.out.println("$#2367#"); if(taxes!=null && taxes.size()>0) {
         	BigDecimal totalTaxes = new BigDecimal(0);
         	totalTaxes.setScale(2, RoundingMode.HALF_UP);
             int taxCount = 200;
             for(TaxItem tax : taxes) {
 
                 OrderTotal taxLine = new OrderTotal();
-                taxLine.setModule(Constants.OT_TAX_MODULE_CODE);
-                taxLine.setOrderTotalType(OrderTotalType.TAX);
-                taxLine.setOrderTotalCode(tax.getLabel());
-                taxLine.setSortOrder(taxCount);
-                taxLine.setTitle(Constants.OT_TAX_MODULE_CODE);
-                taxLine.setText(tax.getLabel());
-                taxLine.setValue(tax.getItemPrice());
+																System.out.println("$#2370#"); taxLine.setModule(Constants.OT_TAX_MODULE_CODE);
+																System.out.println("$#2371#"); taxLine.setOrderTotalType(OrderTotalType.TAX);
+																System.out.println("$#2372#"); taxLine.setOrderTotalCode(tax.getLabel());
+																System.out.println("$#2373#"); taxLine.setSortOrder(taxCount);
+																System.out.println("$#2374#"); taxLine.setTitle(Constants.OT_TAX_MODULE_CODE);
+																System.out.println("$#2375#"); taxLine.setText(tax.getLabel());
+																System.out.println("$#2376#"); taxLine.setValue(tax.getItemPrice());
 
                 totalTaxes = totalTaxes.add(tax.getItemPrice());
                 orderTotals.add(taxLine);
                 //grandTotal=grandTotal.add(tax.getItemPrice());
 
-                taxCount ++;
+																System.out.println("$#2377#"); taxCount ++;
 
             }
             grandTotal = grandTotal.add(totalTaxes);
-            totalSummary.setTaxTotal(totalTaxes);
+												System.out.println("$#2378#"); totalSummary.setTaxTotal(totalTaxes);
         }
 
         // grand total
         OrderTotal orderTotal = new OrderTotal();
-        orderTotal.setModule(Constants.OT_TOTAL_MODULE_CODE);
-        orderTotal.setOrderTotalType(OrderTotalType.TOTAL);
-        orderTotal.setOrderTotalCode("order.total.total");
-        orderTotal.setTitle(Constants.OT_TOTAL_MODULE_CODE);
+								System.out.println("$#2379#"); orderTotal.setModule(Constants.OT_TOTAL_MODULE_CODE);
+								System.out.println("$#2380#"); orderTotal.setOrderTotalType(OrderTotalType.TOTAL);
+								System.out.println("$#2381#"); orderTotal.setOrderTotalCode("order.total.total");
+								System.out.println("$#2382#"); orderTotal.setTitle(Constants.OT_TOTAL_MODULE_CODE);
         //orderTotal.setText("order.total.total");
-        orderTotal.setSortOrder(500);
-        orderTotal.setValue(grandTotal);
+								System.out.println("$#2383#"); orderTotal.setSortOrder(500);
+								System.out.println("$#2384#"); orderTotal.setValue(grandTotal);
         orderTotals.add(orderTotal);
 
-        totalSummary.setTotal(grandTotal);
-        totalSummary.setTotals(orderTotals);
-        return totalSummary;
+								System.out.println("$#2385#"); totalSummary.setTotal(grandTotal);
+								System.out.println("$#2386#"); totalSummary.setTotals(orderTotals);
+								System.out.println("$#2387#"); return totalSummary;
 
     }
 
@@ -406,7 +406,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
         Validate.notNull(customer,"Customer cannot be null");
 
         try {
-            return caculateOrder(orderSummary, customer, store, language);
+												System.out.println("$#2388#"); return caculateOrder(orderSummary, customer, store, language);
         } catch (Exception e) {
             throw new ServiceException(e);
         }
@@ -422,7 +422,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
         Validate.notNull(store,"MerchantStore cannot be null");
 
         try {
-            return caculateOrder(orderSummary, null, store, language);
+												System.out.println("$#2389#"); return caculateOrder(orderSummary, null, store, language);
         } catch (Exception e) {
             throw new ServiceException(e);
         }
@@ -433,31 +433,31 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 
 
     	OrderSummary orderSummary = new OrderSummary();
-    	orderSummary.setOrderSummaryType(OrderSummaryType.SHOPPINGCART);
+					System.out.println("$#2390#"); orderSummary.setOrderSummaryType(OrderSummaryType.SHOPPINGCART);
     	
-    	if(!StringUtils.isBlank(shoppingCart.getPromoCode())) {
+					System.out.println("$#2391#"); if(!StringUtils.isBlank(shoppingCart.getPromoCode())) {
     		Date promoDateAdded = shoppingCart.getPromoAdded();//promo valid 1 day
     		Instant instant = promoDateAdded.toInstant();
     		ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
     		LocalDate date = zdt.toLocalDate();
     		//date added < date + 1 day
     		LocalDate tomorrow = LocalDate.now().plusDays(1);
-    		if(date.isBefore(tomorrow)) {
-    			orderSummary.setPromoCode(shoppingCart.getPromoCode());
+						System.out.println("$#2392#"); if(date.isBefore(tomorrow)) {
+							System.out.println("$#2393#"); orderSummary.setPromoCode(shoppingCart.getPromoCode());
     		} else {
     			//clear promo
-    			shoppingCart.setPromoCode(null);
-    			shoppingCartService.saveOrUpdate(shoppingCart);
+							System.out.println("$#2394#"); shoppingCart.setPromoCode(null);
+							System.out.println("$#2395#"); shoppingCartService.saveOrUpdate(shoppingCart);
     		}
     	}    	
     	
     	List<ShoppingCartItem> itemList = new ArrayList<ShoppingCartItem>(shoppingCart.getLineItems());
     	//filter out unavailable
     	itemList = itemList.stream().filter(p -> p.getProduct().isAvailable()).collect(Collectors.toList());
-    	orderSummary.setProducts(itemList);
+					System.out.println("$#2398#"); orderSummary.setProducts(itemList);
     	
     	
-    	return caculateOrder(orderSummary, customer, store, language);
+					System.out.println("$#2399#"); return caculateOrder(orderSummary, customer, store, language);
 
     }
 
@@ -482,7 +482,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
         Validate.notNull(customer,"Customery cannot be null");
         Validate.notNull(store,"MerchantStore cannot be null.");
         try {
-            return caculateShoppingCart(shoppingCart, customer, store, language);
+												System.out.println("$#2400#"); return caculateShoppingCart(shoppingCart, customer, store, language);
         } catch (Exception e) {
             LOGGER.error( "Error while calculating shopping cart total" +e );
             throw new ServiceException(e);
@@ -512,7 +512,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
         Validate.notNull(store,"MerchantStore cannot be null");
 
         try {
-            return caculateShoppingCart(shoppingCart, null, store, language);
+												System.out.println("$#2401#"); return caculateShoppingCart(shoppingCart, null, store, language);
         } catch (Exception e) {
             LOGGER.error( "Error while calculating shopping cart total" +e );
             throw new ServiceException(e);
@@ -523,7 +523,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
     public void delete(final Order order) throws ServiceException {
 
 
-        super.delete(order);
+								System.out.println("$#2402#"); super.delete(order);
     }
 
 
@@ -535,7 +535,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 
         try {
             ByteArrayOutputStream stream = invoiceModule.createInvoice(store, order, language);
-            return stream;
+												System.out.println("$#2403#"); return stream;
         } catch(Exception e) {
             throw new ServiceException(e);
         }
@@ -548,32 +548,32 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
     public Order getOrder(final Long orderId, MerchantStore store ) {
     	Validate.notNull(orderId, "Order id cannot be null");
     	Validate.notNull(store, "Store cannot be null");
-        return orderRepository.findOne(orderId, store.getId());
+								System.out.println("$#2404#"); return orderRepository.findOne(orderId, store.getId());
     }
 
 
     /** legacy **/
     @Override
     public OrderList listByStore(final MerchantStore store, final OrderCriteria criteria) {
-        return orderRepository.listByStore(store, criteria);
+								System.out.println("$#2405#"); return orderRepository.listByStore(store, criteria);
     }
 
     @Override
     public OrderList getOrders(final OrderCriteria criteria, MerchantStore store) {
-        return orderRepository.listOrders(store, criteria);
+								System.out.println("$#2406#"); return orderRepository.listOrders(store, criteria);
     }
 
 
     @Override
     public void saveOrUpdate(final Order order) throws ServiceException {
 
-        if(order.getId()!=null && order.getId()>0) {
+								System.out.println("$#2408#"); System.out.println("$#2407#"); if(order.getId()!=null && order.getId()>0) {
             LOGGER.debug("Updating Order");
-            super.update(order);
+												System.out.println("$#2410#"); super.update(order);
 
         } else {
             LOGGER.debug("Creating Order");
-            super.create(order);
+												System.out.println("$#2411#"); super.create(order);
 
         }
     }
@@ -588,13 +588,13 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 		boolean hasDownloads = false;
 		for(OrderProduct orderProduct : order.getOrderProducts()) {
 			
-			if(CollectionUtils.isNotEmpty(orderProduct.getDownloads())) {
+			System.out.println("$#2412#"); if(CollectionUtils.isNotEmpty(orderProduct.getDownloads())) {
 				hasDownloads = true;
 				break;
 			}
 		}
 		
-		return hasDownloads;
+		System.out.println("$#2414#"); System.out.println("$#2413#"); return hasDownloads;
 	}
 
 	@Override
@@ -604,7 +604,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 		
 		List<Order> returnOrders = null;
 
-		if(!CollectionUtils.isEmpty(transactions)) {
+		System.out.println("$#2415#"); if(!CollectionUtils.isEmpty(transactions)) {
 			
 			returnOrders = new ArrayList<Order>();
 			
@@ -615,13 +615,13 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 			
 			for(Transaction trx : transactions) {
 				Order order = trx.getOrder();
-				if(TransactionType.AUTHORIZE.name().equals(trx.getTransactionType().name())) {
+				System.out.println("$#2416#"); if(TransactionType.AUTHORIZE.name().equals(trx.getTransactionType().name())) {
 					preAuthOrders.put(order.getId(), order);
 				}
 				
 				//put transaction
 				List<Transaction> listTransactions = null;
-				if(processingTransactions.containsKey(order.getId())) {
+				System.out.println("$#2417#"); if(processingTransactions.containsKey(order.getId())) {
 					listTransactions = processingTransactions.get(order.getId());
 				} else {
 					listTransactions = new ArrayList<Transaction>();
@@ -646,22 +646,22 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 			for(Long orderId : processingTransactions.keySet()) {
 				
 				List<Transaction> trx = processingTransactions.get(orderId);
-				if(CollectionUtils.isNotEmpty(trx)) {
+				System.out.println("$#2418#"); if(CollectionUtils.isNotEmpty(trx)) {
 					
 					boolean capturable = true;
 					for(Transaction t : trx) {
 						
-						if(TransactionType.CAPTURE.name().equals(t.getTransactionType().name())) {
+						System.out.println("$#2419#"); if(TransactionType.CAPTURE.name().equals(t.getTransactionType().name())) {
 							capturable = false;
-						} else if(TransactionType.AUTHORIZECAPTURE.name().equals(t.getTransactionType().name())) {
+						} else if(TransactionType.AUTHORIZECAPTURE.name().equals(t.getTransactionType().name())) { System.out.println("$#2420#");
 							capturable = false;
-						} else if(TransactionType.REFUND.name().equals(t.getTransactionType().name())) {
+						} else if(TransactionType.REFUND.name().equals(t.getTransactionType().name())) { System.out.println("$#2421#");
 							capturable = false;
 						}
 						
 					}
 					
-					if(capturable) {
+					System.out.println("$#2422#"); if(capturable) {
 						Order o = preAuthOrders.get(orderId);
 						returnOrders.add(o);
 					}
@@ -672,7 +672,7 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 			}
 		}
 
-		return returnOrders;
+		System.out.println("$#2423#"); return returnOrders;
 	}
 
 

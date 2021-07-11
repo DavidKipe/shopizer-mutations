@@ -55,7 +55,7 @@ public class CustomerOptionSet extends SalesManagerEntity<Long, CustomerOptionSe
 
 
 	public int getSortOrder() {
-		return sortOrder;
+		System.out.println("$#4138#"); return sortOrder;
 	}
 
 	public void setSortOrder(int sortOrder) {
@@ -67,7 +67,7 @@ public class CustomerOptionSet extends SalesManagerEntity<Long, CustomerOptionSe
 	}
 
 	public CustomerOptionValue getCustomerOptionValue() {
-		return customerOptionValue;
+		System.out.println("$#4139#"); return customerOptionValue;
 	}
 
 	public void setCustomerOption(CustomerOption customerOption) {
@@ -75,12 +75,12 @@ public class CustomerOptionSet extends SalesManagerEntity<Long, CustomerOptionSe
 	}
 
 	public CustomerOption getCustomerOption() {
-		return customerOption;
+		System.out.println("$#4140#"); return customerOption;
 	}
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4141#"); return id;
 	}
 
 	@Override

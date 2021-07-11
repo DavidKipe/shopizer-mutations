@@ -64,31 +64,31 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 		
 		//validate integrationKeys['accessKey']
 		Map<String,String> keys = integrationConfiguration.getIntegrationKeys();
-		if(keys==null || StringUtils.isBlank(keys.get("accessKey"))) {
+		System.out.println("$#1282#"); if(keys==null || StringUtils.isBlank(keys.get("accessKey"))) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("accessKey");
 		}
 		
-		if(keys==null || StringUtils.isBlank(keys.get("userId"))) {
+		System.out.println("$#1284#"); if(keys==null || StringUtils.isBlank(keys.get("userId"))) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("userId");
 		}
 		
-		if(keys==null || StringUtils.isBlank(keys.get("password"))) {
+		System.out.println("$#1286#"); if(keys==null || StringUtils.isBlank(keys.get("password"))) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("password");
 		}
 
 		//validate at least one integrationOptions['packages']
 		Map<String,List<String>> options = integrationConfiguration.getIntegrationOptions();
-		if(options==null) {
+		System.out.println("$#1288#"); if(options==null) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("packages");
 		}
 		
 		List<String> packages = options.get("packages");
-		if(packages==null || packages.size()==0) {
-			if(errorFields==null) {
+		System.out.println("$#1289#"); if(packages==null || packages.size()==0) {
+			System.out.println("$#1291#"); if(errorFields==null) {
 				errorFields = new ArrayList<String>();
 			}
 			errorFields.add("packages");
@@ -109,9 +109,9 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			errorFields.add("services");
 		}*/
 		
-		if(errorFields!=null) {
+		System.out.println("$#1292#"); if(errorFields!=null) {
 			IntegrationException ex = new IntegrationException(IntegrationException.ERROR_VALIDATION_SAVE);
-			ex.setErrorFields(errorFields);
+			System.out.println("$#1293#"); ex.setErrorFields(errorFields);
 			throw ex;
 			
 		}
@@ -129,17 +129,17 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			ShippingConfiguration shippingConfiguration, Locale locale)
 			throws IntegrationException {
 		
-		Validate.notNull(configuration, "IntegrationConfiguration must not be null for USPS shipping module");
+		System.out.println("$#1294#"); Validate.notNull(configuration, "IntegrationConfiguration must not be null for USPS shipping module");
 
 		
-		if(StringUtils.isBlank(delivery.getPostalCode())) {
-			return null;
+		System.out.println("$#1295#"); if(StringUtils.isBlank(delivery.getPostalCode())) {
+			System.out.println("$#1296#"); return null;
 		}
 		
 		BigDecimal total = orderTotal;
 
-		if (packages == null) {
-			return null;
+		System.out.println("$#1297#"); if (packages == null) {
+			System.out.println("$#1298#"); return null;
 		}
 		
 		List<ShippingOption> options = null;
@@ -149,14 +149,14 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 		
 
 		
-		if(!(country.getIsoCode().equals("US") || country.getIsoCode().equals("CA"))) {
-			return null;
+		System.out.println("$#1299#"); if(!(country.getIsoCode().equals("US") || country.getIsoCode().equals("CA"))) {
+			System.out.println("$#1301#"); return null;
 			//throw new IntegrationException("UPS Not configured for shipping in country " + country.getIsoCode());
 		}
 
 		// supports en and fr
 		String language = locale.getLanguage();
-		if (!language.equals(Locale.FRENCH.getLanguage())
+		System.out.println("$#1302#"); if (!language.equals(Locale.FRENCH.getLanguage())
 				&& !language.equals(Locale.ENGLISH.getLanguage())) {
 			language = Locale.ENGLISH.getLanguage();
 		}
@@ -182,7 +182,7 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			String env = configuration.getEnvironment();
 			
 			Set<String> regions = module.getRegionsSet();
-			if(!regions.contains(store.getCountry().getIsoCode())) {
+			System.out.println("$#1304#"); if(!regions.contains(store.getCountry().getIsoCode())) {
 				throw new IntegrationException("Can't use the service for store country code ");
 			}
 			
@@ -190,7 +190,7 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			for(String key : moduleConfigsMap.keySet()) {
 				
 				ModuleConfig moduleConfig = (ModuleConfig)moduleConfigsMap.get(key);
-				if(moduleConfig.getEnv().equals(env)) {
+				System.out.println("$#1305#"); if(moduleConfig.getEnv().equals(env)) {
 					host = moduleConfig.getHost();
 					protocol = moduleConfig.getScheme();
 					port = moduleConfig.getPort();
@@ -219,7 +219,7 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			String weightCode = store.getWeightunitcode();
 			String measureCode = store.getSeizeunitcode();
 
-			if (weightCode.equals("KG")) {
+			System.out.println("$#1306#"); if (weightCode.equals("KG")) {
 				weightCode = "KGS";
 			} else {
 				weightCode = "LBS";
@@ -288,7 +288,7 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			xmldatabuffer.append(store.getStorecity());
 			xmldatabuffer.append("</City>");
 			// if(!StringUtils.isBlank(store.getStorestateprovince())) {
-			if (store.getZone() != null) {
+			System.out.println("$#1307#"); if (store.getZone() != null) {
 				xmldatabuffer.append("<StateProvinceCode>");
 				xmldatabuffer.append(store.getZone().getCode());// zone code
 				xmldatabuffer.append("</StateProvinceCode>");
@@ -308,7 +308,7 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			xmldatabuffer.append(delivery.getCity());
 			xmldatabuffer.append("</City>");
 			// if(!StringUtils.isBlank(customer.getCustomerState())) {
-			if (delivery.getZone() != null) {
+			System.out.println("$#1308#"); if (delivery.getZone() != null) {
 				xmldatabuffer.append("<StateProvinceCode>");
 				xmldatabuffer.append(delivery.getZone().getCode());// zone code
 				xmldatabuffer.append("</StateProvinceCode>");
@@ -387,7 +387,7 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			StringEntity entity = new StringEntity(xmlbuffer.toString(),ContentType.APPLICATION_ATOM_XML);
 			//RequestEntity entity = new StringRequestEntity(
 			//		xmlbuffer.toString(), "text/plain", "UTF-8");
-			httppost.setEntity(entity);
+			System.out.println("$#1309#"); httppost.setEntity(entity);
             // Create a custom response handler
             ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
 
@@ -395,9 +395,9 @@ public class UPSShippingQuote implements ShippingQuoteModule {
                 public String handleResponse(
                         final HttpResponse response) throws ClientProtocolException, IOException {
                     int status = response.getStatusLine().getStatusCode();
-                    if (status >= 200 && status < 300) {
+																				System.out.println("$#1339#"); System.out.println("$#1337#"); if (status >= 200 && status < 300) {
                         HttpEntity entity = response.getEntity();
-                        return entity != null ? EntityUtils.toString(entity) : null;
+																								System.out.println("$#1342#"); System.out.println("$#1341#"); return entity != null ? EntityUtils.toString(entity) : null;
                     } else {
                     	LOGGER.error("Communication Error with ups quote " + status);
         				throw new ClientProtocolException("UPS quote communication error " + status);
@@ -420,11 +420,11 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			UPSParsedElements parsed = new UPSParsedElements();
 
 			Digester digester = new Digester();
-			digester.push(parsed);
-			digester.addCallMethod(
+			System.out.println("$#1310#"); digester.push(parsed);
+			System.out.println("$#1311#"); digester.addCallMethod(
 					"RatingServiceSelectionResponse/Response/Error",
 					"setErrorCode", 0);
-			digester.addCallMethod(
+			System.out.println("$#1312#"); digester.addCallMethod(
 					"RatingServiceSelectionResponse/Response/ErrorDescriprion",
 					"setError", 0);
 			digester
@@ -440,7 +440,7 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 							"RatingServiceSelectionResponse/Response/Error/ErrorDescription",
 							"setError", 0);
 
-			digester.addObjectCreate(
+			System.out.println("$#1316#"); digester.addObjectCreate(
 					"RatingServiceSelectionResponse/RatedShipment",
 					ShippingOption.class);
 			// digester.addSetProperties(
@@ -466,7 +466,7 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 					.addCallMethod(
 							"RatingServiceSelectionResponse/RatedShipment/GuaranteedDaysToDelivery",
 							"setEstimatedNumberOfDays", 0);
-			digester.addSetNext("RatingServiceSelectionResponse/RatedShipment",
+			System.out.println("$#1321#"); digester.addSetNext("RatingServiceSelectionResponse/RatedShipment",
 					"addOption");
 
 			// <?xml
@@ -479,20 +479,20 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 
 			digester.parse(xmlreader);
 
-			if (!StringUtils.isBlank(parsed.getErrorCode())) {
+			System.out.println("$#1322#"); if (!StringUtils.isBlank(parsed.getErrorCode())) {
 
 					LOGGER.error("Can't process UPS statusCode="
 							+ parsed.getErrorCode() + " message= "
 							+ parsed.getError());
 				throw new IntegrationException(parsed.getError());
 			}
-			if (!StringUtils.isBlank(parsed.getStatusCode())
+			System.out.println("$#1323#"); if (!StringUtils.isBlank(parsed.getStatusCode())
 					&& !parsed.getStatusCode().equals("1")) {
 
 				throw new IntegrationException(parsed.getError());
 			}
 
-			if (parsed.getOptions() == null || parsed.getOptions().size() == 0) {
+			System.out.println("$#1325#"); if (parsed.getOptions() == null || parsed.getOptions().size() == 0) {
 
 				throw new IntegrationException("No shipping options available for the configuration");
 			}
@@ -531,19 +531,19 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 			}*/
 
 			List<ShippingOption> shippingOptions = parsed.getOptions();
-			if(shippingOptions!=null) {
+			System.out.println("$#1327#"); if(shippingOptions!=null) {
 				Map<String,String> details = module.getDetails();
 				for(ShippingOption option : shippingOptions) {
 					String name = details.get(option.getOptionCode());
-					option.setOptionName(name);
-					if(option.getOptionPrice()==null) {
+					System.out.println("$#1328#"); option.setOptionName(name);
+					System.out.println("$#1329#"); if(option.getOptionPrice()==null) {
 						String priceText = option.getOptionPriceText();
-						if(StringUtils.isBlank(priceText)) {
+						System.out.println("$#1330#"); if(StringUtils.isBlank(priceText)) {
 							throw new IntegrationException("Price text is null for option " + name);
 						}
 						try {
 							BigDecimal price = new BigDecimal(priceText);
-							option.setOptionPrice(price);
+							System.out.println("$#1331#"); option.setOptionPrice(price);
 						} catch(Exception e) {
 							throw new IntegrationException("Can't convert to numeric price " + priceText);
 						}
@@ -621,21 +621,21 @@ public class UPSShippingQuote implements ShippingQuoteModule {
 
 
 
-			return shippingOptions;
+			System.out.println("$#1332#"); return shippingOptions;
 	}
 		} catch (Exception e1) {
 			LOGGER.error("UPS quote error",e1);
 			throw new IntegrationException(e1);
 		} finally {
-			if (reader != null) {
+			System.out.println("$#1333#"); if (reader != null) {
 				try {
-					reader.close();
+					System.out.println("$#1334#"); reader.close();
 				} catch (Exception ignore) {
 				}
 			}
 
-			if (httppost != null) {
-				httppost.releaseConnection();
+			System.out.println("$#1335#"); if (httppost != null) {
+				System.out.println("$#1336#"); httppost.releaseConnection();
 			}
 		}
 }
@@ -662,11 +662,11 @@ class UPSParsedElements  {
 	}
 
 	public List<ShippingOption> getOptions() {
-		return options;
+		System.out.println("$#1277#"); return options;
 	}
 
 	public String getStatusCode() {
-		return statusCode;
+		System.out.println("$#1278#"); return statusCode;
 	}
 
 	public void setStatusCode(String statusCode) {
@@ -674,7 +674,7 @@ class UPSParsedElements  {
 	}
 
 	public String getStatusMessage() {
-		return statusMessage;
+		System.out.println("$#1279#"); return statusMessage;
 	}
 
 	public void setStatusMessage(String statusMessage) {
@@ -682,7 +682,7 @@ class UPSParsedElements  {
 	}
 
 	public String getError() {
-		return error;
+		System.out.println("$#1280#"); return error;
 	}
 
 	public void setError(String error) {
@@ -690,7 +690,7 @@ class UPSParsedElements  {
 	}
 
 	public String getErrorCode() {
-		return errorCode;
+		System.out.println("$#1281#"); return errorCode;
 	}
 
 	public void setErrorCode(String errorCode) {

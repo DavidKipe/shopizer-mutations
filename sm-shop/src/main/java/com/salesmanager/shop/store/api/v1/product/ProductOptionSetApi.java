@@ -52,7 +52,7 @@ public class ProductOptionSetApi {
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		productOptionSetFacade.create(optionSet, merchantStore, language);
+		System.out.println("$#11961#"); productOptionSetFacade.create(optionSet, merchantStore, language);
 
 	}
 
@@ -67,7 +67,7 @@ public class ProductOptionSetApi {
 			@ApiIgnore Language language) {
 
 		boolean isOptionExist = productOptionSetFacade.exists(code, merchantStore);
-		return new ResponseEntity<EntityExists>(new EntityExists(isOptionExist), HttpStatus.OK);
+		System.out.println("$#11962#"); return new ResponseEntity<EntityExists>(new EntityExists(isOptionExist), HttpStatus.OK);
 	}
 
 
@@ -81,7 +81,7 @@ public class ProductOptionSetApi {
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		return productOptionSetFacade.get(id, merchantStore, language);
+		System.out.println("$#11963#"); return productOptionSetFacade.get(id, merchantStore, language);
 
 	}
 
@@ -96,8 +96,8 @@ public class ProductOptionSetApi {
 			@ApiIgnore MerchantStore merchantStore, 
 			@ApiIgnore Language language) {
 		
-		option.setId(id);
-		productOptionSetFacade.update(id, option, merchantStore, language);
+		System.out.println("$#11964#"); option.setId(id);
+		System.out.println("$#11965#"); productOptionSetFacade.update(id, option, merchantStore, language);
 
 	}
 
@@ -112,7 +112,7 @@ public class ProductOptionSetApi {
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		productOptionSetFacade.delete(id, merchantStore);
+		System.out.println("$#11966#"); productOptionSetFacade.delete(id, merchantStore);
 
 	}
 
@@ -125,7 +125,7 @@ public class ProductOptionSetApi {
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		return productOptionSetFacade.list(merchantStore, language);
+		System.out.println("$#11967#"); return productOptionSetFacade.list(merchantStore, language);
 		
 	}
 

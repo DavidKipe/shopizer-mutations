@@ -14,13 +14,13 @@ public class SecurityQuestion implements Serializable {
 		this.label = label;
 	}
 	public String getLabel() {
-		return label;
+		System.out.println("$#7867#"); return label;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
 	public String getId() {
-		return id;
+		System.out.println("$#7868#"); return id;
 	}
 
 }

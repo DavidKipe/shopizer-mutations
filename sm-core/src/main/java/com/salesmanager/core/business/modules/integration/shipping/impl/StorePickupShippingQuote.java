@@ -62,7 +62,7 @@ public class StorePickupShippingQuote implements ShippingQuoteModule, ShippingQu
 		//validate integrationKeys['account']
 		Map<String,String> keys = integrationConfiguration.getIntegrationKeys();
 		//if(keys==null || StringUtils.isBlank(keys.get("price"))) {
-		if(keys==null) {
+		System.out.println("$#1259#"); if(keys==null) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("price");
 		} else {
@@ -76,16 +76,16 @@ public class StorePickupShippingQuote implements ShippingQuoteModule, ShippingQu
 		}
 		
 		//if(keys==null || StringUtils.isBlank(keys.get("note"))) {
-		if(keys==null) {
+		System.out.println("$#1260#"); if(keys==null) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("note");
 		}
 
 
 		
-		if(errorFields!=null) {
+		System.out.println("$#1261#"); if(errorFields!=null) {
 			IntegrationException ex = new IntegrationException(IntegrationException.ERROR_VALIDATION_SAVE);
-			ex.setErrorFields(errorFields);
+			System.out.println("$#1262#"); ex.setErrorFields(errorFields);
 			throw ex;
 			
 		}
@@ -102,7 +102,7 @@ public class StorePickupShippingQuote implements ShippingQuoteModule, ShippingQu
 			throws IntegrationException {
 
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("$#1263#"); return null;
 
 	}
 
@@ -123,12 +123,12 @@ public class StorePickupShippingQuote implements ShippingQuoteModule, ShippingQu
 			List<IntegrationModule> allModules, Locale locale)
 			throws IntegrationException {
 		
-		Validate.notNull(globalShippingConfiguration, "IntegrationConfiguration must not be null for StorePickUp");
+		System.out.println("$#1264#"); Validate.notNull(globalShippingConfiguration, "IntegrationConfiguration must not be null for StorePickUp");
 		
 		
 		try {
 			
-			if(!globalShippingConfiguration.isActive())
+			System.out.println("$#1265#"); if(!globalShippingConfiguration.isActive())
 				return;
 
 			String region = null;
@@ -136,32 +136,32 @@ public class StorePickupShippingQuote implements ShippingQuoteModule, ShippingQu
 			String price = globalShippingConfiguration.getIntegrationKeys().get("price");
 	
 	
-			if(delivery.getZone()!=null) {
+			System.out.println("$#1266#"); if(delivery.getZone()!=null) {
 				region = delivery.getZone().getCode();
 			} else {
 				region = delivery.getState();
 			}
 			
 			ShippingOption shippingOption = new ShippingOption();
-			shippingOption.setShippingModuleCode(MODULE_CODE);
-			shippingOption.setOptionCode(MODULE_CODE);
-			shippingOption.setOptionId(new StringBuilder().append(MODULE_CODE).append("_").append(region).toString());
+			System.out.println("$#1267#"); shippingOption.setShippingModuleCode(MODULE_CODE);
+			System.out.println("$#1268#"); shippingOption.setOptionCode(MODULE_CODE);
+			System.out.println("$#1269#"); shippingOption.setOptionId(new StringBuilder().append(MODULE_CODE).append("_").append(region).toString());
 			
-			shippingOption.setOptionPrice(productPriceUtils.getAmount(price));
+			System.out.println("$#1270#"); shippingOption.setOptionPrice(productPriceUtils.getAmount(price));
 	
-			shippingOption.setOptionPriceText(productPriceUtils.getStoreFormatedAmountWithCurrency(store, productPriceUtils.getAmount(price)));
+			System.out.println("$#1271#"); shippingOption.setOptionPriceText(productPriceUtils.getStoreFormatedAmountWithCurrency(store, productPriceUtils.getAmount(price)));
 	
 			List<ShippingOption> options = quote.getShippingOptions();
 			
-			if(options == null) {
+			System.out.println("$#1272#"); if(options == null) {
 				options = new ArrayList<ShippingOption>();
-				quote.setShippingOptions(options);
+				System.out.println("$#1273#"); quote.setShippingOptions(options);
 			}
 
 			options.add(shippingOption);
 			
-			if(quote.getSelectedShippingOption()==null) {
-				quote.setSelectedShippingOption(shippingOption);
+			System.out.println("$#1274#"); if(quote.getSelectedShippingOption()==null) {
+				System.out.println("$#1275#"); quote.setSelectedShippingOption(shippingOption);
 			}
 
 		
@@ -176,7 +176,7 @@ public class StorePickupShippingQuote implements ShippingQuoteModule, ShippingQu
 	@Override
 	public String getModuleCode() {
 		// TODO Auto-generated method stub
-		return MODULE_CODE;
+		System.out.println("$#1276#"); return MODULE_CODE;
 	}
 
 

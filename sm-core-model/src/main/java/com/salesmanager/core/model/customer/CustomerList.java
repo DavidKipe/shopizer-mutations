@@ -17,7 +17,7 @@ public class CustomerList extends EntityList {
 		this.customers = customers;
 	}
 	public List<Customer> getCustomers() {
-		return customers;
+		System.out.println("$#4208#"); return customers;
 	}
 
 }

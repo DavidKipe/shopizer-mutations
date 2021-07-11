@@ -20,7 +20,7 @@ public class Order extends Entity {
 
 
 	public boolean isCustomerAgreement() {
-		return customerAgreement;
+		System.out.println("$#9232#"); System.out.println("$#9231#"); return customerAgreement;
 	}
 
 	public void setCustomerAgreement(boolean customerAgreement) {
@@ -28,7 +28,7 @@ public class Order extends Entity {
 	}
 
 	public String getComments() {
-		return comments;
+		System.out.println("$#9233#"); return comments;
 	}
 
 	public void setComments(String comments) {
@@ -36,7 +36,7 @@ public class Order extends Entity {
 	}
 
 	public String getCurrency() {
-		return currency;
+		System.out.println("$#9234#"); return currency;
 	}
 
 	public void setCurrency(String currency) {
@@ -44,7 +44,7 @@ public class Order extends Entity {
 	}
 
 	public List<OrderAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#9235#"); return attributes;
 	}
 
 	public void setAttributes(List<OrderAttribute> attributes) {

@@ -103,26 +103,26 @@ public class ProductItemsRESTController {
 			
 			Map<String,Language> langs = languageService.getLanguagesMap();
 			
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11323#"); if(merchantStore!=null) {
+				System.out.println("$#11324#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null; //reset for the current request
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11325#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11326#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
+				System.out.println("$#11327#"); response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
 				return null;
 			}
 			
 	
 	
 			Language lang = langs.get(language);
-			if(lang==null) {
+			System.out.println("$#11328#"); if(lang==null) {
 				lang = langs.get(Constants.DEFAULT_LANGUAGE);
 			}
 			
@@ -131,11 +131,11 @@ public class ProductItemsRESTController {
 			ReadableProductList list = productItemsFacade.listItemsByManufacturer(merchantStore, lang, id, start, max);
 			
 			
-			return list;
+			System.out.println("$#11329#"); return list;
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while getting products",e);
-			response.sendError(503, "An error occured while retrieving products " + e.getMessage());
+			System.out.println("$#11330#"); response.sendError(503, "An error occured while retrieving products " + e.getMessage());
 		}
 		
 		return null;
@@ -163,19 +163,19 @@ public class ProductItemsRESTController {
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 
 			
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11331#"); if(merchantStore!=null) {
+				System.out.println("$#11332#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null; //reset for the current request
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11333#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11334#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
+				System.out.println("$#11335#"); response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
 				return null;
 			}
 			
@@ -186,26 +186,26 @@ public class ProductItemsRESTController {
 			//get product group
 			List<ProductRelationship> group = productRelationshipService.getByGroup(merchantStore, code, lang);
 
-			if(group!=null) {
+			System.out.println("$#11336#"); if(group!=null) {
 				
 				Date today = new Date();
 				List<Long> ids = new ArrayList<Long>();
 				for(ProductRelationship relationship : group) {
 					Product product = relationship.getRelatedProduct();
-					if(product.isAvailable() && DateUtil.dateBeforeEqualsDate(product.getDateAvailable(), today)) {
+					System.out.println("$#11337#"); if(product.isAvailable() && DateUtil.dateBeforeEqualsDate(product.getDateAvailable(), today)) {
 						ids.add(product.getId());
 					}
 				}
 				
 				ReadableProductList list = productItemsFacade.listItemsByIds(merchantStore, lang, ids, 0, 0);
-				return list;
+				System.out.println("$#11339#"); return list;
 			}
 			
 			
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while getting products",e);
-			response.sendError(503, "An error occured while retrieving products " + e.getMessage());
+			System.out.println("$#11340#"); response.sendError(503, "An error occured while retrieving products " + e.getMessage());
 		}
 		
 		return null;

@@ -75,7 +75,7 @@ public class ContentApi {
 	public List<ReadableContentPage> pages(
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
-		return contentFacade.getContentPage(merchantStore, language);
+		System.out.println("$#11614#"); return contentFacade.getContentPage(merchantStore, language);
 	}
 
 	@GetMapping(value = "/content/summary", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -83,7 +83,7 @@ public class ContentApi {
 	@ApiImplicitParams({ @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
 			@ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en") })
 	public List<ReadableContentBox> pagesSummary(@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
-		return contentFacade.getContentBoxes(ContentType.BOX, "summary_", merchantStore, language);
+		System.out.println("$#11615#"); return contentFacade.getContentBoxes(ContentType.BOX, "summary_", merchantStore, language);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class ContentApi {
 	@ApiImplicitParams({ @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
 			@ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en") })
 	public List<ReadableContentBox> boxes(@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
-		return contentFacade.getContentBoxes(ContentType.BOX, "summary_", merchantStore, language);
+		System.out.println("$#11616#"); return contentFacade.getContentBoxes(ContentType.BOX, "summary_", merchantStore, language);
 	}
 
 
@@ -109,7 +109,7 @@ public class ContentApi {
 	public ReadableContentPage page(@PathVariable("code") String code, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		return contentFacade.getContentPage(code, merchantStore, language);
+		System.out.println("$#11617#"); return contentFacade.getContentPage(code, merchantStore, language);
 
 	}
 
@@ -120,7 +120,7 @@ public class ContentApi {
 	public ReadableContentPage pageByName(@PathVariable("name") String name, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		return contentFacade.getContentPageByName(name, merchantStore, language);
+		System.out.println("$#11618#"); return contentFacade.getContentPageByName(name, merchantStore, language);
 
 	}
 
@@ -131,7 +131,7 @@ public class ContentApi {
 	public ReadableContentFull content(@PathVariable("code") String code, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		return contentFacade.getContent(code, merchantStore, language);
+		System.out.println("$#11619#"); return contentFacade.getContent(code, merchantStore, language);
 
 	}
 
@@ -142,7 +142,7 @@ public class ContentApi {
 	public List<ReadableContentEntity> contents(@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
 		Optional<String> op = Optional.empty();
-		return contentFacade.getContents(op, merchantStore, language);
+		System.out.println("$#11620#"); return contentFacade.getContents(op, merchantStore, language);
 
 	}
 
@@ -152,7 +152,7 @@ public class ContentApi {
 			@ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en") })
 	public ReadableContentBox getBoxByCode(@PathVariable("code") String code, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
-		return contentFacade.getContentBox(code, merchantStore, language);
+		System.out.println("$#11621#"); return contentFacade.getContentBox(code, merchantStore, language);
 	}
 
 
@@ -193,7 +193,7 @@ public class ContentApi {
 
 		//String decodedPath = decodeContentPath(path);
 		ContentFolder folder = contentFacade.getContentFolder(path, merchantStore);
-		return folder;
+		System.out.println("$#11622#"); return folder;
 	}
 
 
@@ -211,15 +211,15 @@ public class ContentApi {
 			@ApiIgnore Language language) {
 
 		ContentFile f = new ContentFile();
-		f.setContentType(file.getContentType());
-		f.setName(file.getOriginalFilename());
+		System.out.println("$#11623#"); f.setContentType(file.getContentType());
+		System.out.println("$#11624#"); f.setName(file.getOriginalFilename());
 		try {
-			f.setFile(file.getBytes());
+			System.out.println("$#11625#"); f.setFile(file.getBytes());
 		} catch (IOException e) {
 			throw new ServiceRuntimeException("Error while getting file bytes");
 		}
 
-		contentFacade.addContentFile(f, merchantStore.getCode());
+		System.out.println("$#11626#"); contentFacade.addContentFile(f, merchantStore.getCode());
 
 	}
 
@@ -235,11 +235,11 @@ public class ContentApi {
 
 		for (MultipartFile f : files) {
 			ContentFile cf = new ContentFile();
-			cf.setContentType(f.getContentType());
-			cf.setName(f.getName());
+			System.out.println("$#11627#"); cf.setContentType(f.getContentType());
+			System.out.println("$#11628#"); cf.setName(f.getName());
 			try {
-				cf.setFile(f.getBytes());
-				contentFacade.addContentFile(cf, merchantStore.getCode());
+				System.out.println("$#11629#"); cf.setFile(f.getBytes());
+				System.out.println("$#11630#"); contentFacade.addContentFile(cf, merchantStore.getCode());
 			} catch (IOException e) {
 				throw new ServiceRuntimeException("Error while getting file bytes");
 			}
@@ -263,7 +263,7 @@ public class ContentApi {
 	public void savePage(@RequestBody @Valid PersistableContentEntity page, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		contentFacade.saveContentPage(page, merchantStore, language);
+		System.out.println("$#11631#"); contentFacade.saveContentPage(page, merchantStore, language);
 	}
 	
 
@@ -277,8 +277,8 @@ public class ContentApi {
 
 	public void updatePage(@PathVariable Long id, @RequestBody @Valid PersistableContentEntity page,
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
-		page.setId(id);
-		contentFacade.saveContentPage(page, merchantStore, language);
+		System.out.println("$#11632#"); page.setId(id);
+		System.out.println("$#11633#"); contentFacade.saveContentPage(page, merchantStore, language);
 	}
 
 	/**
@@ -290,7 +290,7 @@ public class ContentApi {
 	@ApiOperation(httpMethod = "DELETE", value = "Deletes a content from CMS", notes = "Delete a content box or page", response = Void.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT") })
 	public void deleteContent(Long id, @ApiIgnore MerchantStore merchantStore) {
-		contentFacade.delete(merchantStore, id);
+		System.out.println("$#11634#"); contentFacade.delete(merchantStore, id);
 	}
 
 	/*  *//**
@@ -324,7 +324,7 @@ public class ContentApi {
 			@ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en") })
 	public void deleteFile(@Valid ContentName name, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
-		contentFacade.delete(merchantStore, name.getName(), name.getContentType());
+		System.out.println("$#11635#"); contentFacade.delete(merchantStore, name.getName(), name.getContentType());
 	}
 
 

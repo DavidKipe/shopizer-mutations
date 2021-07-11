@@ -13,7 +13,7 @@ public class GroupEntity implements Serializable {
 	private String type;
 
 	public String getName() {
-		return name;
+		System.out.println("$#9265#"); return name;
 	}
 
 	public void setName(String name) {
@@ -21,7 +21,7 @@ public class GroupEntity implements Serializable {
 	}
 
 	public String getType() {
-		return type;
+		System.out.println("$#9266#"); return type;
 	}
 
 	public void setType(String type) {

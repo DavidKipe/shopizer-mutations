@@ -14,7 +14,7 @@ public class BeanUtils
     }
     
     public static BeanUtils newInstance(){
-        return new BeanUtils();
+								System.out.println("$#15536#"); return new BeanUtils();
     }
     
     @SuppressWarnings( "nls" )
@@ -22,26 +22,26 @@ public class BeanUtils
         throws IntrospectionException, IllegalArgumentException, IllegalAccessException, InvocationTargetException
     {
         
-        if (bean == null) {
+								System.out.println("$#15537#"); if (bean == null) {
             throw new IllegalArgumentException("No bean specified");
         }
-        if(property == null){
+								System.out.println("$#15538#"); if(property == null){
             
             throw new IllegalArgumentException("No name specified for bean class '" + bean.getClass() + "'");
         }
         Class<?> beanClass = bean.getClass();
         PropertyDescriptor propertyDescriptor = getPropertyDescriptor( beanClass, property );
-        if ( propertyDescriptor == null )
+								System.out.println("$#15539#"); if ( propertyDescriptor == null )
         {
             throw new IllegalArgumentException( "No such property " + property + " for " + beanClass + " exists" );
         }
 
         Method readMethod = propertyDescriptor.getReadMethod();
-        if ( readMethod == null )
+								System.out.println("$#15540#"); if ( readMethod == null )
         {
             throw new IllegalStateException( "No getter available for property " + property + " on " + beanClass );
         }
-        return readMethod.invoke( bean );
+								System.out.println("$#15541#"); return readMethod.invoke( bean );
     }
 
     private PropertyDescriptor getPropertyDescriptor( Class<?> beanClass, String propertyname )
@@ -50,16 +50,16 @@ public class BeanUtils
         BeanInfo beanInfo = Introspector.getBeanInfo( beanClass );
         PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
         PropertyDescriptor propertyDescriptor = null;
-        for ( int i = 0; i < propertyDescriptors.length; i++ )
+								System.out.println("$#15543#"); System.out.println("$#15542#"); for ( int i = 0; i < propertyDescriptors.length; i++ )
         {
             PropertyDescriptor currentPropertyDescriptor = propertyDescriptors[i];
-            if ( currentPropertyDescriptor.getName().equals( propertyname ) )
+												System.out.println("$#15544#"); if ( currentPropertyDescriptor.getName().equals( propertyname ) )
             {
                 propertyDescriptor = currentPropertyDescriptor;
             }
 
         }
-        return propertyDescriptor;
+								System.out.println("$#15545#"); return propertyDescriptor;
     }
     
 }

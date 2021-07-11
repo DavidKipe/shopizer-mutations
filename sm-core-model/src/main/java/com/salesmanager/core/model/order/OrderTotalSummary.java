@@ -22,7 +22,7 @@ public class OrderTotalSummary implements Serializable {
 	private List<OrderTotal> totals;//all other fees (tax, shipping ....)
 
 	public BigDecimal getSubTotal() {
-		return subTotal;
+		System.out.println("$#4400#"); return subTotal;
 	}
 
 	public void setSubTotal(BigDecimal subTotal) {
@@ -30,7 +30,7 @@ public class OrderTotalSummary implements Serializable {
 	}
 
 	public BigDecimal getTotal() {
-		return total;
+		System.out.println("$#4401#"); return total;
 	}
 
 	public void setTotal(BigDecimal total) {
@@ -38,7 +38,7 @@ public class OrderTotalSummary implements Serializable {
 	}
 
 	public List<OrderTotal> getTotals() {
-		return totals;
+		System.out.println("$#4402#"); return totals;
 	}
 
 	public void setTotals(List<OrderTotal> totals) {
@@ -46,7 +46,7 @@ public class OrderTotalSummary implements Serializable {
 	}
 
 	public BigDecimal getTaxTotal() {
-		return taxTotal;
+		System.out.println("$#4403#"); return taxTotal;
 	}
 
 	public void setTaxTotal(BigDecimal taxTotal) {

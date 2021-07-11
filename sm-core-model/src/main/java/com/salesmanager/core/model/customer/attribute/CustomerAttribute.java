@@ -58,7 +58,7 @@ public class CustomerAttribute extends SalesManagerEntity<Long, CustomerAttribut
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4117#"); return id;
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class CustomerAttribute extends SalesManagerEntity<Long, CustomerAttribut
 
 
 	public CustomerOption getCustomerOption() {
-		return customerOption;
+		System.out.println("$#4118#"); return customerOption;
 	}
 
 	public void setCustomerOption(CustomerOption customerOption) {
@@ -77,7 +77,7 @@ public class CustomerAttribute extends SalesManagerEntity<Long, CustomerAttribut
 	}
 
 	public CustomerOptionValue getCustomerOptionValue() {
-		return customerOptionValue;
+		System.out.println("$#4119#"); return customerOptionValue;
 	}
 
 	public void setCustomerOptionValue(CustomerOptionValue customerOptionValue) {
@@ -86,7 +86,7 @@ public class CustomerAttribute extends SalesManagerEntity<Long, CustomerAttribut
 
 
 	public Customer getCustomer() {
-		return customer;
+		System.out.println("$#4120#"); return customer;
 	}
 
 	public void setCustomer(Customer customer) {
@@ -98,7 +98,7 @@ public class CustomerAttribute extends SalesManagerEntity<Long, CustomerAttribut
 	}
 
 	public String getTextValue() {
-		return textValue;
+		System.out.println("$#4121#"); return textValue;
 	}
 
 

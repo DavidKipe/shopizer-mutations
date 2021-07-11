@@ -12,7 +12,7 @@ public class ValueList implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<String> values = new ArrayList<String>();
 	public List<String> getValues() {
-		return values;
+		System.out.println("$#9112#"); return values;
 	}
 	public void setValues(List<String> values) {
 		this.values = values;

@@ -24,15 +24,15 @@ public class LocationImageConfig {
   @Bean
   public ImageFilePath img() {
 	  
-	if(!StringUtils.isEmpty(method) && !method.equals("default")) {
+	System.out.println("$#7887#"); if(!StringUtils.isEmpty(method) && !method.equals("default")) {
 	    CloudFilePathUtils cloudFilePathUtils = new CloudFilePathUtils();
-	    cloudFilePathUtils.setBasePath(contentUrl);
-	    return cloudFilePathUtils;
+					System.out.println("$#7889#"); cloudFilePathUtils.setBasePath(contentUrl);
+					System.out.println("$#7890#"); return cloudFilePathUtils;
 
 	} else {
 	    LocalImageFilePathUtils localImageFilePathUtils = new LocalImageFilePathUtils();
-	    localImageFilePathUtils.setBasePath(staticPath);
-	    return localImageFilePathUtils;
+					System.out.println("$#7891#"); localImageFilePathUtils.setBasePath(staticPath);
+					System.out.println("$#7892#"); return localImageFilePathUtils;
 	}
 	  
 

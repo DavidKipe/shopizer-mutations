@@ -15,19 +15,19 @@ public class ReadableInventory extends InventoryEntity {
   private ReadableMerchantStore store;
   private List<ReadableProductPrice> prices;
   public ReadableMerchantStore getStore() {
-    return store;
+				System.out.println("$#8848#"); return store;
   }
   public void setStore(ReadableMerchantStore store) {
     this.store = store;
   }
   public List<ReadableProductPrice> getPrices() {
-    return prices;
+				System.out.println("$#8849#"); return prices;
   }
   public void setPrices(List<ReadableProductPrice> prices) {
     this.prices = prices;
   }
   public String getCreationDate() {
-    return creationDate;
+				System.out.println("$#8850#"); return creationDate;
   }
   public void setCreationDate(String creationDate) {
     this.creationDate = creationDate;

@@ -55,17 +55,17 @@ public class ShippingConfiguration implements JSONAware {
 	
 	
 	public String getShipType() {
-		return shipType;
+		System.out.println("$#4564#"); return shipType;
 	}
 
 
 	public String getShipBaseType() {
-		return shipBaseType;
+		System.out.println("$#4565#"); return shipBaseType;
 	}
 
 
 	public String getShipOptionPriceType() {
-		return shipOptionPriceType;
+		System.out.println("$#4566#"); return shipOptionPriceType;
 	}
 
 
@@ -77,7 +77,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public ShippingOptionPriceType getShippingOptionPriceType() {
-		return shippingOptionPriceType;
+		System.out.println("$#4567#"); return shippingOptionPriceType;
 	}
 
 
@@ -88,7 +88,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public ShippingBasisType getShippingBasisType() {
-		return shippingBasisType;
+		System.out.println("$#4568#"); return shippingBasisType;
 	}
 
 
@@ -99,11 +99,11 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public ShippingType getShippingType() {
-		return shippingType;
+		System.out.println("$#4569#"); return shippingType;
 	}
 	
 	public ShippingPackageType getShippingPackageType() {
-		return shippingPackageType;
+		System.out.println("$#4570#"); return shippingPackageType;
 	}
 
 
@@ -114,7 +114,7 @@ public class ShippingConfiguration implements JSONAware {
 	
 	
 	public String getShipPackageType() {
-		return shipPackageType;
+		System.out.println("$#4571#"); return shipPackageType;
 	}
 
 	
@@ -122,33 +122,33 @@ public class ShippingConfiguration implements JSONAware {
 	public void setShipType(String shipType) {
 		this.shipType = shipType;
 		ShippingType sType = ShippingType.NATIONAL;
-		if(shipType.equals(ShippingType.INTERNATIONAL.name())) {
+		System.out.println("$#4572#"); if(shipType.equals(ShippingType.INTERNATIONAL.name())) {
 			sType = ShippingType.INTERNATIONAL;
 		}
-		setShippingType(sType);
+		System.out.println("$#4573#"); setShippingType(sType);
 	}
 
 
 	public void setShipOptionPriceType(String shipOptionPriceType) {
 		this.shipOptionPriceType = shipOptionPriceType;
 		ShippingOptionPriceType sType = ShippingOptionPriceType.ALL;
-		if(shipOptionPriceType.equals(ShippingOptionPriceType.HIGHEST.name())) {
+		System.out.println("$#4574#"); if(shipOptionPriceType.equals(ShippingOptionPriceType.HIGHEST.name())) {
 			sType = ShippingOptionPriceType.HIGHEST;
 		}
-		if(shipOptionPriceType.equals(ShippingOptionPriceType.LEAST.name())) {
+		System.out.println("$#4575#"); if(shipOptionPriceType.equals(ShippingOptionPriceType.LEAST.name())) {
 			sType = ShippingOptionPriceType.LEAST;
 		}
-		setShippingOptionPriceType(sType);
+		System.out.println("$#4576#"); setShippingOptionPriceType(sType);
 	}
 
 
 	public void setShipBaseType(String shipBaseType) {
 		this.shipBaseType = shipBaseType;
 		ShippingBasisType sType = ShippingBasisType.SHIPPING;
-		if(shipBaseType.equals(ShippingBasisType.BILLING.name())) {
+		System.out.println("$#4577#"); if(shipBaseType.equals(ShippingBasisType.BILLING.name())) {
 			sType = ShippingBasisType.BILLING;
 		}
-		setShippingBasisType(sType);
+		System.out.println("$#4578#"); setShippingBasisType(sType);
 	}
 
 
@@ -156,28 +156,28 @@ public class ShippingConfiguration implements JSONAware {
 	public void setShipPackageType(String shipPackageType) {
 		this.shipPackageType = shipPackageType;
 		ShippingPackageType sType = ShippingPackageType.ITEM;
-		if(shipPackageType.equals(ShippingPackageType.BOX.name())) {
+		System.out.println("$#4579#"); if(shipPackageType.equals(ShippingPackageType.BOX.name())) {
 			sType = ShippingPackageType.BOX;
 		}
-		this.setShippingPackageType(sType);
+		System.out.println("$#4580#"); this.setShippingPackageType(sType);
 	}
 	
 	public void setShipDescription(String shipDescription) {
 		this.shipDescription = shipDescription;
 		ShippingDescription sType = ShippingDescription.SHORT_DESCRIPTION;
-		if(shipDescription.equals(ShippingDescription.LONG_DESCRIPTION.name())) {
+		System.out.println("$#4581#"); if(shipDescription.equals(ShippingDescription.LONG_DESCRIPTION.name())) {
 			sType = ShippingDescription.LONG_DESCRIPTION;
 		}
-		this.setShippingDescription(sType);
+		System.out.println("$#4582#"); this.setShippingDescription(sType);
 	}
 	
 	public void setShipFreeType(String shipFreeType) {
 		this.shipFreeType = shipFreeType;
 		ShippingType sType = ShippingType.NATIONAL;
-		if(shipFreeType.equals(ShippingType.INTERNATIONAL.name())) {
+		System.out.println("$#4583#"); if(shipFreeType.equals(ShippingType.INTERNATIONAL.name())) {
 			sType = ShippingType.INTERNATIONAL;
 		}
-		setFreeShippingType(sType);
+		System.out.println("$#4584#"); setFreeShippingType(sType);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -188,7 +188,7 @@ public class ShippingConfiguration implements JSONAware {
 		data.put("shipOptionPriceType", this.getShippingOptionPriceType().name());
 		data.put("shipType", this.getShippingType().name());
 		data.put("shipPackageType", this.getShippingPackageType().name());
-		if(shipFreeType!=null) {
+		System.out.println("$#4585#"); if(shipFreeType!=null) {
 			data.put("shipFreeType", this.getFreeShippingType().name());
 		}
 		data.put("shipDescription", this.getShippingDescription().name());
@@ -214,7 +214,7 @@ public class ShippingConfiguration implements JSONAware {
 		data.put("packages", jsonArray);
 		
 		
-		return data.toJSONString();
+		System.out.println("$#4586#"); return data.toJSONString();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -229,12 +229,12 @@ public class ShippingConfiguration implements JSONAware {
 		data.put("code", p.getCode());
 		data.put("shipPackageType", p.getShipPackageType().name());
 		data.put("defaultPackaging", p.isDefaultPackaging());
-		return data;
+		System.out.println("$#4587#"); return data;
 	}
 
 
 	public int getBoxWidth() {
-		return boxWidth;
+		System.out.println("$#4588#"); return boxWidth;
 	}
 
 
@@ -244,7 +244,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public int getBoxHeight() {
-		return boxHeight;
+		System.out.println("$#4589#"); return boxHeight;
 	}
 
 
@@ -254,7 +254,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public int getBoxLength() {
-		return boxLength;
+		System.out.println("$#4590#"); return boxLength;
 	}
 
 
@@ -264,7 +264,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public double getBoxWeight() {
-		return boxWeight;
+		System.out.println("$#4591#"); return boxWeight;
 	}
 
 
@@ -274,7 +274,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public double getMaxWeight() {
-		return maxWeight;
+		System.out.println("$#4592#"); return maxWeight;
 	}
 
 
@@ -284,7 +284,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public boolean isFreeShippingEnabled() {
-		return freeShippingEnabled;
+		System.out.println("$#4594#"); System.out.println("$#4593#"); return freeShippingEnabled;
 	}
 
 
@@ -294,7 +294,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public BigDecimal getOrderTotalFreeShipping() {
-		return orderTotalFreeShipping;
+		System.out.println("$#4595#"); return orderTotalFreeShipping;
 	}
 
 
@@ -309,7 +309,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public BigDecimal getHandlingFees() {
-		return handlingFees;
+		System.out.println("$#4596#"); return handlingFees;
 	}
 
 
@@ -319,7 +319,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public boolean isTaxOnShipping() {
-		return taxOnShipping;
+		System.out.println("$#4598#"); System.out.println("$#4597#"); return taxOnShipping;
 	}
 
 
@@ -327,7 +327,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public String getShipDescription() {
-		return shipDescription;
+		System.out.println("$#4599#"); return shipDescription;
 	}
 
 
@@ -337,7 +337,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public ShippingDescription getShippingDescription() {
-		return shippingDescription;
+		System.out.println("$#4600#"); return shippingDescription;
 	}
 
 
@@ -347,13 +347,13 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public ShippingType getFreeShippingType() {
-		return freeShippingType;
+		System.out.println("$#4601#"); return freeShippingType;
 	}
 
 
 
 	public String getShipFreeType() {
-		return shipFreeType;
+		System.out.println("$#4602#"); return shipFreeType;
 	}
 
 
@@ -363,7 +363,7 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public String getOrderTotalFreeShippingText() {
-		return orderTotalFreeShippingText;
+		System.out.println("$#4603#"); return orderTotalFreeShippingText;
 	}
 
 
@@ -373,12 +373,12 @@ public class ShippingConfiguration implements JSONAware {
 
 
 	public String getHandlingFeesText() {
-		return handlingFeesText;
+		System.out.println("$#4604#"); return handlingFeesText;
 	}
 
 
 	public List<Package> getPackages() {
-		return packages;
+		System.out.println("$#4605#"); return packages;
 	}
 
 

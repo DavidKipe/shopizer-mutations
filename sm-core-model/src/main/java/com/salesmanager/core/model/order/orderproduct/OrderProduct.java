@@ -62,7 +62,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4343#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -71,7 +71,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 
 
 	public String getProductName() {
-		return productName;
+		System.out.println("$#4344#"); return productName;
 	}
 
 	public void setProductName(String productName) {
@@ -79,7 +79,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 	}
 
 	public int getProductQuantity() {
-		return productQuantity;
+		System.out.println("$#4345#"); return productQuantity;
 	}
 
 	public void setProductQuantity(int productQuantity) {
@@ -89,7 +89,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 
 
 	public Order getOrder() {
-		return order;
+		System.out.println("$#4346#"); return order;
 	}
 
 	public void setOrder(Order order) {
@@ -98,7 +98,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 
 
 	public Set<OrderProductAttribute> getOrderAttributes() {
-		return orderAttributes;
+		System.out.println("$#4347#"); return orderAttributes;
 	}
 
 	public void setOrderAttributes(Set<OrderProductAttribute> orderAttributes) {
@@ -106,7 +106,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 	}
 
 	public Set<OrderProductPrice> getPrices() {
-		return prices;
+		System.out.println("$#4348#"); return prices;
 	}
 
 	public void setPrices(Set<OrderProductPrice> prices) {
@@ -114,7 +114,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 	}
 
 	public Set<OrderProductDownload> getDownloads() {
-		return downloads;
+		System.out.println("$#4349#"); return downloads;
 	}
 
 	public void setDownloads(Set<OrderProductDownload> downloads) {
@@ -127,7 +127,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 	}
 
 	public String getSku() {
-		return sku;
+		System.out.println("$#4350#"); return sku;
 	}
 
 	public void setOneTimeCharge(BigDecimal oneTimeCharge) {
@@ -135,7 +135,7 @@ public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
 	}
 
 	public BigDecimal getOneTimeCharge() {
-		return oneTimeCharge;
+		System.out.println("$#4351#"); return oneTimeCharge;
 	}
 	
 }

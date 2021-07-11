@@ -19,23 +19,23 @@ public class ReadableCategory extends CategoryEntity {
 		this.description = description;
 	}
 	public CategoryDescription getDescription() {
-		return description;
+		System.out.println("$#8744#"); return description;
 	}
 
 	public int getProductCount() {
-		return productCount;
+		System.out.println("$#8745#"); return productCount;
 	}
 	public void setProductCount(int productCount) {
 		this.productCount = productCount;
 	}
 	public List<ReadableCategory> getChildren() {
-		return children;
+		System.out.println("$#8746#"); return children;
 	}
 	public void setChildren(List<ReadableCategory> children) {
 		this.children = children;
 	}
 	public String getStore() {
-		return store;
+		System.out.println("$#8747#"); return store;
 	}
 	public void setStore(String store) {
 		this.store = store;

@@ -57,7 +57,7 @@ public class ShopProductRelationshipTag extends RequestContextAwareTag  {
 
 
 	public String getGroupName() {
-		return groupName;
+		System.out.println("$#15471#"); return groupName;
 	}
 
 
@@ -69,11 +69,11 @@ public class ShopProductRelationshipTag extends RequestContextAwareTag  {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected int doStartTagInternal() throws Exception {
-		if (productRelationshipService == null || pricingService==null || imageUtils==null) {
+		System.out.println("$#15472#"); if (productRelationshipService == null || pricingService==null || imageUtils==null) {
 			LOGGER.debug("Autowiring ProductRelationshipService");
             WebApplicationContext wac = getRequestContext().getWebApplicationContext();
             AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-            factory.autowireBean(this);
+												System.out.println("$#15475#"); factory.autowireBean(this);
         }
 		
 		HttpServletRequest request = (HttpServletRequest) pageContext
@@ -100,17 +100,17 @@ public class ShopProductRelationshipTag extends RequestContextAwareTag  {
 		
 		List<ReadableProduct> objects = null;
 		
-		if(store.isUseCache()) {
+		System.out.println("$#15476#"); if(store.isUseCache()) {
 		
 			//get from the cache
 			objects = (List<ReadableProduct>) cache.getFromCache(groupKey.toString());
 			Boolean missedContent = null;
 
-			if(objects==null && missedContent==null) {
+			System.out.println("$#15477#"); if(objects==null && missedContent==null) {
 				objects = getProducts(request);
 
 				//put in cache
-				cache.putInCache(objects, groupKey.toString());
+				System.out.println("$#15479#"); cache.putInCache(objects, groupKey.toString());
 					
 			} else {
 				//put in missed cache
@@ -120,8 +120,8 @@ public class ShopProductRelationshipTag extends RequestContextAwareTag  {
 		} else {
 			objects = getProducts(request);
 		}
-		if(objects!=null && objects.size()>0) {
-			request.setAttribute(this.getGroupName(), objects);
+		System.out.println("$#15481#"); System.out.println("$#15480#"); if(objects!=null && objects.size()>0) {
+			System.out.println("$#15483#"); request.setAttribute(this.getGroupName(), objects);
 		}
 		
 		return SKIP_BODY;
@@ -130,7 +130,7 @@ public class ShopProductRelationshipTag extends RequestContextAwareTag  {
 
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15484#"); return EVAL_PAGE;
 	}
 	
 	private List<ReadableProduct> getProducts(HttpServletRequest request) throws Exception {
@@ -141,8 +141,8 @@ public class ShopProductRelationshipTag extends RequestContextAwareTag  {
 		List<ProductRelationship> relationships = productRelationshipService.getByGroup(store, this.getGroupName(), language);
 		
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#15485#"); populator.setPricingService(pricingService);
+		System.out.println("$#15486#"); populator.setimageUtils(imageUtils);
 		
 		List<ReadableProduct> products = new ArrayList<ReadableProduct>();
 		for(ProductRelationship relationship : relationships) {
@@ -154,7 +154,7 @@ public class ShopProductRelationshipTag extends RequestContextAwareTag  {
 
 		}
 		
-		return products;
+		System.out.println("$#15487#"); return products;
 		
 	}
 

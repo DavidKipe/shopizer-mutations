@@ -20,7 +20,7 @@ public class ReadableGroup extends GroupEntity {
   }
 
   public Long getId() {
-    return id;
+				System.out.println("$#9270#"); return id;
   }
 
 

@@ -48,7 +48,7 @@ public class DigitalProduct extends SalesManagerEntity<Long, DigitalProduct> {
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#3872#"); return id;
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class DigitalProduct extends SalesManagerEntity<Long, DigitalProduct> {
 	}
 
 	public String getProductFileName() {
-		return productFileName;
+		System.out.println("$#3873#"); return productFileName;
 	}
 
 	public void setProductFileName(String productFileName) {
@@ -65,7 +65,7 @@ public class DigitalProduct extends SalesManagerEntity<Long, DigitalProduct> {
 	}
 	
 	public Product getProduct() {
-		return product;
+		System.out.println("$#3874#"); return product;
 	}
 
 	public void setProduct(Product product) {

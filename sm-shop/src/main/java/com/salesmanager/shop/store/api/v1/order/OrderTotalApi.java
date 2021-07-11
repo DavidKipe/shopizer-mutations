@@ -85,25 +85,25 @@ public class OrderTotalApi {
 
       Customer customer = customerService.getByNick(userName);
 
-      if (customer == null) {
-        response.sendError(503, "Error while getting user details to calculate shipping quote");
+						System.out.println("$#11806#"); if (customer == null) {
+								System.out.println("$#11807#"); response.sendError(503, "Error while getting user details to calculate shipping quote");
       }
 
       ShoppingCart shoppingCart = shoppingCartFacade.getShoppingCartModel(id, merchantStore);
 
-      if (shoppingCart == null) {
-        response.sendError(404, "Cart id " + id + " does not exist");
+						System.out.println("$#11808#"); if (shoppingCart == null) {
+								System.out.println("$#11809#"); response.sendError(404, "Cart id " + id + " does not exist");
         return null;
       }
 
-      if (shoppingCart.getCustomerId() == null) {
-        response.sendError(
+						System.out.println("$#11810#"); if (shoppingCart.getCustomerId() == null) {
+								System.out.println("$#11811#"); response.sendError(
             404, "Cart id " + id + " does not exist for exist for user " + userName);
         return null;
       }
 
-      if (shoppingCart.getCustomerId().longValue() != customer.getId().longValue()) {
-        response.sendError(
+						System.out.println("$#11812#"); if (shoppingCart.getCustomerId().longValue() != customer.getId().longValue()) {
+								System.out.println("$#11813#"); response.sendError(
             404, "Cart id " + id + " does not exist for exist for user " + userName);
         return null;
       }
@@ -111,33 +111,33 @@ public class OrderTotalApi {
       ShippingSummary shippingSummary = null;
 
       // get shipping quote if asked for
-      if (quote != null) {
+						System.out.println("$#11814#"); if (quote != null) {
         shippingSummary = shippingQuoteService.getShippingSummary(quote, merchantStore);
       }
 
       OrderTotalSummary orderTotalSummary = null;
 
       OrderSummary orderSummary = new OrderSummary();
-      orderSummary.setShippingSummary(shippingSummary);
+						System.out.println("$#11815#"); orderSummary.setShippingSummary(shippingSummary);
       List<ShoppingCartItem> itemsSet =
           new ArrayList<ShoppingCartItem>(shoppingCart.getLineItems());
-      orderSummary.setProducts(itemsSet);
+						System.out.println("$#11816#"); orderSummary.setProducts(itemsSet);
 
       orderTotalSummary =
           orderService.caculateOrderTotal(orderSummary, customer, merchantStore, language);
 
       ReadableOrderTotalSummary returnSummary = new ReadableOrderTotalSummary();
       ReadableOrderSummaryPopulator populator = new ReadableOrderSummaryPopulator();
-      populator.setMessages(messages);
-      populator.setPricingService(pricingService);
+						System.out.println("$#11817#"); populator.setMessages(messages);
+						System.out.println("$#11818#"); populator.setPricingService(pricingService);
       populator.populate(orderTotalSummary, returnSummary, merchantStore, language);
 
-      return returnSummary;
+						System.out.println("$#11819#"); return returnSummary;
 
     } catch (Exception e) {
       LOGGER.error("Error while calculating order summary", e);
       try {
-        response.sendError(503, "Error while calculating order summary " + e.getMessage());
+								System.out.println("$#11820#"); response.sendError(503, "Error while calculating order summary " + e.getMessage());
       } catch (Exception ignore) {
       }
       return null;
@@ -171,9 +171,9 @@ public class OrderTotalApi {
     try {
       ShoppingCart shoppingCart = shoppingCartFacade.getShoppingCartModel(id, merchantStore);
 
-      if (shoppingCart == null) {
+						System.out.println("$#11821#"); if (shoppingCart == null) {
 
-        response.sendError(404, "Cart code " + id + " does not exist");
+								System.out.println("$#11822#"); response.sendError(404, "Cart code " + id + " does not exist");
 
         return null;
       }
@@ -181,32 +181,32 @@ public class OrderTotalApi {
       ShippingSummary shippingSummary = null;
 
       // get shipping quote if asked for
-      if (quote != null) {
+						System.out.println("$#11823#"); if (quote != null) {
         shippingSummary = shippingQuoteService.getShippingSummary(quote, merchantStore);
       }
 
       OrderTotalSummary orderTotalSummary = null;
 
       OrderSummary orderSummary = new OrderSummary();
-      orderSummary.setShippingSummary(shippingSummary);
+						System.out.println("$#11824#"); orderSummary.setShippingSummary(shippingSummary);
       List<ShoppingCartItem> itemsSet =
           new ArrayList<ShoppingCartItem>(shoppingCart.getLineItems());
-      orderSummary.setProducts(itemsSet);
+						System.out.println("$#11825#"); orderSummary.setProducts(itemsSet);
 
       orderTotalSummary = orderService.caculateOrderTotal(orderSummary, merchantStore, language);
 
       ReadableOrderTotalSummary returnSummary = new ReadableOrderTotalSummary();
       ReadableOrderSummaryPopulator populator = new ReadableOrderSummaryPopulator();
-      populator.setMessages(messages);
-      populator.setPricingService(pricingService);
+						System.out.println("$#11826#"); populator.setMessages(messages);
+						System.out.println("$#11827#"); populator.setPricingService(pricingService);
       populator.populate(orderTotalSummary, returnSummary, merchantStore, language);
 
-      return returnSummary;
+						System.out.println("$#11828#"); return returnSummary;
 
     } catch (Exception e) {
       LOGGER.error("Error while calculating order summary", e);
       try {
-        response.sendError(503, "Error while calculating order summary " + e.getMessage());
+								System.out.println("$#11829#"); response.sendError(503, "Error while calculating order summary " + e.getMessage());
       } catch (Exception ignore) {
       }
       return null;

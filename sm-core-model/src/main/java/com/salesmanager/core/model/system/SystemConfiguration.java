@@ -45,7 +45,7 @@ public class SystemConfiguration extends SalesManagerEntity<Long, SystemConfigur
 	private AuditSection auditSection = new AuditSection();
 
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4802#"); return auditSection;
 	}
 
 	public void setAuditSection(AuditSection auditSection) {
@@ -54,7 +54,7 @@ public class SystemConfiguration extends SalesManagerEntity<Long, SystemConfigur
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4803#"); return id;
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class SystemConfiguration extends SalesManagerEntity<Long, SystemConfigur
 	}
 
 	public String getKey() {
-		return key;
+		System.out.println("$#4804#"); return key;
 	}
 
 	public void setKey(String key) {
@@ -71,7 +71,7 @@ public class SystemConfiguration extends SalesManagerEntity<Long, SystemConfigur
 	}
 
 	public String getValue() {
-		return value;
+		System.out.println("$#4805#"); return value;
 	}
 
 	public void setValue(String value) {

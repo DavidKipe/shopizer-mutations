@@ -11,13 +11,13 @@ public class PermissionList implements Serializable {
 	private int totalCount;
 	private List<Permission> permissions = new ArrayList<Permission>();
 	public int getTotalCount() {
-		return totalCount;
+		System.out.println("$#4858#"); return totalCount;
 	}
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
 	public List<Permission> getPermissions() {
-		return permissions;
+		System.out.println("$#4859#"); return permissions;
 	}
 	public void setPermissions(List<Permission> permissions) {
 		this.permissions = permissions;

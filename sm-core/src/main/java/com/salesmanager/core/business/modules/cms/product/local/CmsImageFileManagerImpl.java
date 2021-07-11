@@ -63,11 +63,11 @@ public class CmsImageFileManagerImpl
 
   public static CmsImageFileManagerImpl getInstance() {
 
-    if (fileManager == null) {
+				System.out.println("$#298#"); if (fileManager == null) {
       fileManager = new CmsImageFileManagerImpl();
     }
 
-    return fileManager;
+				System.out.println("$#299#"); return fileManager;
 
   }
 
@@ -89,29 +89,29 @@ public class CmsImageFileManagerImpl
       // base path
       String rootPath = this.buildRootPath();
       Path confDir = Paths.get(rootPath);
-      this.createDirectoryIfNorExist(confDir);
+						System.out.println("$#300#"); this.createDirectoryIfNorExist(confDir);
 
       // node path
       StringBuilder nodePath = new StringBuilder();
       nodePath.append(rootPath).append(productImage.getProduct().getMerchantStore().getCode());
       Path merchantPath = Paths.get(nodePath.toString());
-      this.createDirectoryIfNorExist(merchantPath);
+						System.out.println("$#301#"); this.createDirectoryIfNorExist(merchantPath);
 
       // product path
       nodePath.append(Constants.SLASH).append(productImage.getProduct().getSku())
           .append(Constants.SLASH);
       Path dirPath = Paths.get(nodePath.toString());
-      this.createDirectoryIfNorExist(dirPath);
+						System.out.println("$#302#"); this.createDirectoryIfNorExist(dirPath);
 
       // small large
-      if (contentImage.getFileContentType().name().equals(FileContentType.PRODUCT.name())) {
+						System.out.println("$#303#"); if (contentImage.getFileContentType().name().equals(FileContentType.PRODUCT.name())) {
         nodePath.append(SMALL);
       } else if (contentImage.getFileContentType().name()
           .equals(FileContentType.PRODUCTLG.name())) {
         nodePath.append(LARGE);
       }
       Path sizePath = Paths.get(nodePath.toString());
-      this.createDirectoryIfNorExist(sizePath);
+						System.out.println("$#305#"); this.createDirectoryIfNorExist(sizePath);
 
 
       // file creation
@@ -146,7 +146,7 @@ public class CmsImageFileManagerImpl
 
     // the web server takes care of the images
 
-    return null;
+				System.out.println("$#306#"); return null;
 
   }
 
@@ -155,7 +155,7 @@ public class CmsImageFileManagerImpl
 
     // the web server takes care of the images
 
-    return null;
+				System.out.println("$#307#"); return null;
   }
 
 
@@ -250,20 +250,20 @@ public class CmsImageFileManagerImpl
 
     // the web server taks care of the images
 
-    return null;
+				System.out.println("$#308#"); return null;
   }
 
   @Override
   public OutputContentFile getProductImage(String merchantStoreCode, String productCode,
       String imageName) throws ServiceException {
-    return getProductImage(merchantStoreCode, productCode, imageName,
+				System.out.println("$#309#"); return getProductImage(merchantStoreCode, productCode, imageName,
         ProductImageSize.SMALL.name());
   }
 
   @Override
   public OutputContentFile getProductImage(String merchantStoreCode, String productCode,
       String imageName, ProductImageSize size) throws ServiceException {
-    return getProductImage(merchantStoreCode, productCode, imageName, size.name());
+				System.out.println("$#310#"); return getProductImage(merchantStoreCode, productCode, imageName, size.name());
   }
 
   private OutputContentFile getProductImage(String merchantStoreCode, String productCode,
@@ -275,7 +275,7 @@ public class CmsImageFileManagerImpl
 
 
   private String buildRootPath() {
-    return new StringBuilder().append(getRootName()).append(Constants.SLASH).append(ROOT_CONTAINER)
+				System.out.println("$#311#"); return new StringBuilder().append(getRootName()).append(Constants.SLASH).append(ROOT_CONTAINER)
         .append(Constants.SLASH).toString();
 
   }
@@ -283,7 +283,7 @@ public class CmsImageFileManagerImpl
 
   private void createDirectoryIfNorExist(Path path) throws IOException {
 
-    if (Files.notExists(path)) {
+				System.out.println("$#312#"); if (Files.notExists(path)) {
       Files.createDirectory(path);
     }
   }
@@ -293,11 +293,11 @@ public class CmsImageFileManagerImpl
   }
 
   public String getRootName() {
-    return rootName;
+				System.out.println("$#313#"); return rootName;
   }
 
   public LocalCacheManagerImpl getCacheManager() {
-    return cacheManager;
+				System.out.println("$#314#"); return cacheManager;
   }
 
   public void setCacheManager(LocalCacheManagerImpl cacheManager) {

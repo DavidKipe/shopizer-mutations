@@ -15,7 +15,7 @@ public class ReadableProductAttributeList extends ReadableList {
 	private List<ReadableProductAttributeEntity> attributes = new ArrayList<ReadableProductAttributeEntity>();
 
 	public List<ReadableProductAttributeEntity> getAttributes() {
-		return attributes;
+		System.out.println("$#8776#"); return attributes;
 	}
 
 	public void setAttributes(List<ReadableProductAttributeEntity> attributes) {

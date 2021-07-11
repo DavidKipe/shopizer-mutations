@@ -84,7 +84,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 	
 	@Override
 	public Long getId() {
-		return this.id;
+		System.out.println("$#3910#"); return this.id;
 	}
 
 	@Override
@@ -96,7 +96,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 
 
 	public BigDecimal getProductPriceAmount() {
-		return productPriceAmount;
+		System.out.println("$#3911#"); return productPriceAmount;
 	}
 
 	public void setProductPriceAmount(BigDecimal productPriceAmount) {
@@ -106,7 +106,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 
 	
 	public Date getProductPriceSpecialStartDate() {
-		return CloneUtils.clone(productPriceSpecialStartDate);
+		System.out.println("$#3912#"); return CloneUtils.clone(productPriceSpecialStartDate);
 	}
 
 	public void setProductPriceSpecialStartDate(
@@ -115,7 +115,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 	}
 
 	public Date getProductPriceSpecialEndDate() {
-		return CloneUtils.clone(productPriceSpecialEndDate);
+		System.out.println("$#3913#"); return CloneUtils.clone(productPriceSpecialEndDate);
 	}
 
 	public void setProductPriceSpecialEndDate(Date productPriceSpecialEndDate) {
@@ -125,7 +125,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 
 
 	public BigDecimal getProductPriceSpecialAmount() {
-		return productPriceSpecialAmount;
+		System.out.println("$#3914#"); return productPriceSpecialAmount;
 	}
 
 	public void setProductPriceSpecialAmount(
@@ -136,7 +136,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 
 
 	public Set<ProductPriceDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#3915#"); return descriptions;
 	}
 
 
@@ -148,7 +148,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 
 
 	public boolean isDefaultPrice() {
-		return defaultPrice;
+		System.out.println("$#3917#"); System.out.println("$#3916#"); return defaultPrice;
 	}
 
 	public void setDefaultPrice(boolean defaultPrice) {
@@ -160,7 +160,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 	}
 
 	public ProductAvailability getProductAvailability() {
-		return productAvailability;
+		System.out.println("$#3918#"); return productAvailability;
 	}
 
 	public void setCode(String code) {
@@ -168,7 +168,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#3919#"); return code;
 	}
 
 	public void setProductPriceType(ProductPriceType productPriceType) {
@@ -176,7 +176,7 @@ public class ProductPrice extends SalesManagerEntity<Long, ProductPrice> {
 	}
 
 	public ProductPriceType getProductPriceType() {
-		return productPriceType;
+		System.out.println("$#3920#"); return productPriceType;
 	}
 
 

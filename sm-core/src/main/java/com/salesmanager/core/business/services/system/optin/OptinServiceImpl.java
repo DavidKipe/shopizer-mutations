@@ -26,12 +26,12 @@ public class OptinServiceImpl extends SalesManagerEntityServiceImpl<Long, Optin>
 
 	@Override
 	public Optin getOptinByCode(MerchantStore store, String code) throws ServiceException {
-		return optinRepository.findByMerchantAndCode(store.getId(), code);
+		System.out.println("$#3264#"); return optinRepository.findByMerchantAndCode(store.getId(), code);
 	}
 
 	@Override
 	public Optin getOptinByMerchantAndType(MerchantStore store, OptinType type) throws ServiceException {
-		return optinRepository.findByMerchantAndType(store.getId(), type);
+		System.out.println("$#3265#"); return optinRepository.findByMerchantAndType(store.getId(), type);
 	}
 
 }

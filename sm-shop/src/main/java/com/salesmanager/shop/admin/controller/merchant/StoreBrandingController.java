@@ -71,7 +71,7 @@ public class StoreBrandingController {
 	@RequestMapping(value="/admin/store/storeBranding.html", method=RequestMethod.GET)
 	public String displayStoreBranding(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5639#"); setMenu(model,request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -82,7 +82,7 @@ public class StoreBrandingController {
 		
 
 		
-		return "admin-store-branding";
+		System.out.println("$#5640#"); return "admin-store-branding";
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class StoreBrandingController {
 	@RequestMapping(value="/admin/store/saveBranding.html", method=RequestMethod.POST)
 	public String saveStoreBranding(@RequestParam("file") MultipartFile file, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5641#"); setMenu(model,request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -108,45 +108,45 @@ public class StoreBrandingController {
 		
 		model.addAttribute("store", store);
 
-		if(file!=null) {
+		System.out.println("$#5642#"); if(file!=null) {
 
 			String imageName = file.getOriginalFilename();
 			InputStream inputStream = file.getInputStream();
 			String mimeType = file.getContentType();
 			
             InputContentFile cmsContentImage = new InputContentFile();
-            cmsContentImage.setFileName(imageName);
-            cmsContentImage.setMimeType(mimeType);
-            cmsContentImage.setFile( inputStream );
-            contentService.addLogo(store.getCode(), cmsContentImage);
+												System.out.println("$#5643#"); cmsContentImage.setFileName(imageName);
+												System.out.println("$#5644#"); cmsContentImage.setMimeType(mimeType);
+												System.out.println("$#5645#"); cmsContentImage.setFile( inputStream );
+												System.out.println("$#5646#"); contentService.addLogo(store.getCode(), cmsContentImage);
 			
             //Update store
-            store.setStoreLogo(imageName);
-            merchantStoreService.update(store);
-            request.getSession().setAttribute(Constants.ADMIN_STORE, store);
+												System.out.println("$#5647#"); store.setStoreLogo(imageName);
+												System.out.println("$#5648#"); merchantStoreService.update(store);
+												System.out.println("$#5649#"); request.getSession().setAttribute(Constants.ADMIN_STORE, store);
 
 		} else {
 			model.addAttribute("error","error");
-			return "admin-store-branding";
+			System.out.println("$#5650#"); return "admin-store-branding";
 		}
 
 		model.addAttribute("success","success");
-		return "admin-store-branding";
+		System.out.println("$#5651#"); return "admin-store-branding";
 	}
 	
 	@PreAuthorize("hasRole('STORE')")
 	@RequestMapping(value="/admin/store/saveTemplate.html", method=RequestMethod.POST)
 	public String saveTemplate(@ModelAttribute(value="store") final MerchantStore store, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5652#"); setMenu(model,request);
 
 		MerchantStore sessionstore = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
-		sessionstore.setStoreTemplate(store.getStoreTemplate());
+		System.out.println("$#5653#"); sessionstore.setStoreTemplate(store.getStoreTemplate());
 		
-		merchantStoreService.saveOrUpdate(sessionstore);
+		System.out.println("$#5654#"); merchantStoreService.saveOrUpdate(sessionstore);
 		
-		request.setAttribute(Constants.ADMIN_STORE, sessionstore);		
+		System.out.println("$#5655#"); request.setAttribute(Constants.ADMIN_STORE, sessionstore);
 		
 		//display templates
 		model.addAttribute("templates", templates);
@@ -154,7 +154,7 @@ public class StoreBrandingController {
 		model.addAttribute("success","success");
 		model.addAttribute("store", sessionstore);
 
-		return "admin-store-branding";
+		System.out.println("$#5656#"); return "admin-store-branding";
 	}
 	
 	@PreAuthorize("hasRole('STORE')")
@@ -169,22 +169,22 @@ public class StoreBrandingController {
 			
 
 			
-			contentService.removeFile(store.getCode(), FileContentType.LOGO, store.getStoreLogo());
+			System.out.println("$#5657#"); contentService.removeFile(store.getCode(), FileContentType.LOGO, store.getStoreLogo());
 			
-			store.setStoreLogo(null);
-			merchantStoreService.update(store);
+			System.out.println("$#5658#"); store.setStoreLogo(null);
+			System.out.println("$#5659#"); merchantStoreService.update(store);
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5660#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5661#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5662#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5663#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	private void setMenu(Model model, HttpServletRequest request) throws Exception {

@@ -38,7 +38,7 @@ public class CustomerOptionDescription extends Description {
 	}
 
 	public CustomerOption getCustomerOption() {
-		return customerOption;
+		System.out.println("$#4136#"); return customerOption;
 	}
 
 	public void setCustomerOption(CustomerOption customerOption) {
@@ -46,7 +46,7 @@ public class CustomerOptionDescription extends Description {
 	}
 
 	public String getCustomerOptionComment() {
-		return customerOptionComment;
+		System.out.println("$#4137#"); return customerOptionComment;
 	}
 
 	public void setCustomerOptionComment(String customerOptionComment) {

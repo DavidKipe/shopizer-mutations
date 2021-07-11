@@ -65,12 +65,12 @@ public class OptionsValueController {
 	public String displayOptions(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		setMenu(model,request);
+		System.out.println("$#6279#"); setMenu(model,request);
 
 		//subsequent ajax call
 
 		
-		return "catalogue-optionsvalues-list";
+		System.out.println("$#6280#"); return "catalogue-optionsvalues-list";
 		
 		
 		
@@ -79,19 +79,19 @@ public class OptionsValueController {
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/options/editOptionValue.html", method=RequestMethod.GET)
 	public String displayOptionEdit(@RequestParam("id") long optionId, HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
-		return displayOption(optionId,request,response,model,locale);
+		System.out.println("$#6281#"); return displayOption(optionId,request,response,model,locale);
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/options/createOptionValue.html", method=RequestMethod.GET)
 	public String displayOption(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
-		return displayOption(null,request,response,model,locale);
+		System.out.println("$#6282#"); return displayOption(null,request,response,model,locale);
 	}
 	
 	private String displayOption(Long optionId, HttpServletRequest request, HttpServletResponse response,Model model,Locale locale) throws Exception {
 
 		
-		this.setMenu(model, request);
+		System.out.println("$#6283#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		List<Language> languages = store.getLanguages();
@@ -100,13 +100,13 @@ public class OptionsValueController {
 		
 		ProductOptionValue option = new ProductOptionValue();
 		
-		if(optionId!=null && optionId!=0) {//edit mode
+		System.out.println("$#6284#"); if(optionId!=null && optionId!=0) {//edit mode
 			
 			
 			option = productOptionValueService.getById(store, optionId);
 
-			if(option==null) {
-				return "redirect:/admin/options/optionvalues.html";
+			System.out.println("$#6286#"); if(option==null) {
+				System.out.println("$#6287#"); return "redirect:/admin/options/optionvalues.html";
 			}
 			
 			Set<ProductOptionValueDescription> optionDescriptions = option.getDescriptions();
@@ -117,12 +117,12 @@ public class OptionsValueController {
 			
 				ProductOptionValueDescription optionDescription = null;
 				
-				if(optionDescriptions!=null) {
+				System.out.println("$#6288#"); if(optionDescriptions!=null) {
 					
 					for(ProductOptionValueDescription description : optionDescriptions) {
 						
 						String code = description.getLanguage().getCode();
-						if(code.equals(l.getCode())) {
+						System.out.println("$#6289#"); if(code.equals(l.getCode())) {
 							optionDescription = description;
 						}
 						
@@ -130,9 +130,9 @@ public class OptionsValueController {
 					
 				}
 				
-				if(optionDescription==null) {
+				System.out.println("$#6290#"); if(optionDescription==null) {
 					optionDescription = new ProductOptionValueDescription();
-					optionDescription.setLanguage(l);
+					System.out.println("$#6291#"); optionDescription.setLanguage(l);
 				}
 				
 				descriptions.add(optionDescription);
@@ -144,19 +144,19 @@ public class OptionsValueController {
 			for(Language l : languages) {
 				
 				ProductOptionValueDescription desc = new ProductOptionValueDescription();
-				desc.setLanguage(l);
+				System.out.println("$#6292#"); desc.setLanguage(l);
 				descriptions.add(desc);
 				
 			}
 			
-			option.setDescriptions(descriptions);
+			System.out.println("$#6293#"); option.setDescriptions(descriptions);
 			
 		}
 		
 
 		
 		model.addAttribute("optionValue", option);
-		return "catalogue-optionsvalues-details";
+		System.out.println("$#6294#"); return "catalogue-optionsvalues-details";
 		
 		
 	}
@@ -168,18 +168,18 @@ public class OptionsValueController {
 		
 
 		//display menu
-		setMenu(model,request);
+		System.out.println("$#6295#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		ProductOptionValue dbEntity =	null;	
 
-		if(optionValue.getId() != null && optionValue.getId() >0) { //edit entry
+		System.out.println("$#6297#"); System.out.println("$#6296#"); if(optionValue.getId() != null && optionValue.getId() >0) { //edit entry
 			
 			//get from DB
 			dbEntity = productOptionValueService.getById(store,optionValue.getId());
 			
-			if(dbEntity==null) {
-				return "redirect:/admin/options/optionsvalues.html";
+			System.out.println("$#6299#"); if(dbEntity==null) {
+				System.out.println("$#6300#"); return "redirect:/admin/options/optionsvalues.html";
 			}
 			
 			
@@ -187,9 +187,9 @@ public class OptionsValueController {
 			
 			//validate if it contains an existing code
 			ProductOptionValue byCode = productOptionValueService.getByCode(store, optionValue.getCode());
-			if(byCode!=null) {
+			System.out.println("$#6301#"); if(byCode!=null) {
 				ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
-				result.addError(error);
+				System.out.println("$#6302#"); result.addError(error);
 			}
 			
 		}
@@ -201,7 +201,7 @@ public class OptionsValueController {
 			
 
 		List<ProductOptionValueDescription> descriptions = optionValue.getDescriptionsList();
-		if(descriptions!=null && descriptions.size()>0) {
+		System.out.println("$#6304#"); System.out.println("$#6303#"); if(descriptions!=null && descriptions.size()>0) {
 			
 				Set<ProductOptionValueDescription> descs = new HashSet<ProductOptionValueDescription>();
 				
@@ -209,19 +209,19 @@ public class OptionsValueController {
 
 				//} else {
 				
-					optionValue.setDescriptions(descs);
+					System.out.println("$#6306#"); optionValue.setDescriptions(descs);
 					for(ProductOptionValueDescription description : descriptions) {
 						
-						if(StringUtils.isBlank(description.getName())) {
+						System.out.println("$#6307#"); if(StringUtils.isBlank(description.getName())) {
 							ObjectError error = new ObjectError("name",messages.getMessage("message.name.required", locale));
-							result.addError(error);
+							System.out.println("$#6308#"); result.addError(error);
 						} else {
 							
 						
 							String code = description.getLanguage().getCode();
 							Language l = langs.get(code);
-							description.setLanguage(l);
-							description.setProductOptionValue(optionValue);
+							System.out.println("$#6309#"); description.setLanguage(l);
+							System.out.println("$#6310#"); description.setProductOptionValue(optionValue);
 							descs.add(description);
 						
 						}
@@ -233,40 +233,40 @@ public class OptionsValueController {
 		} else {
 			
 			ObjectError error = new ObjectError("name",messages.getMessage("message.name.required", locale));
-			result.addError(error);
+			System.out.println("$#6311#"); result.addError(error);
 			
 		}
 			
 
-		optionValue.setMerchantStore(store);
+		System.out.println("$#6312#"); optionValue.setMerchantStore(store);
 
 		
-		if (result.hasErrors()) {
-			return "catalogue-optionsvalues-details";
+		System.out.println("$#6313#"); if (result.hasErrors()) {
+			System.out.println("$#6314#"); return "catalogue-optionsvalues-details";
 		}
 		
 
-	    if(optionValue.getImage()!=null && !optionValue.getImage().isEmpty()) {
+					System.out.println("$#6315#"); if(optionValue.getImage()!=null && !optionValue.getImage().isEmpty()) {
 
 			String imageName = optionValue.getImage().getOriginalFilename();
             InputStream inputStream = optionValue.getImage().getInputStream();
             InputContentFile cmsContentImage = new InputContentFile();
-            cmsContentImage.setFileName(imageName);
-            cmsContentImage.setMimeType( optionValue.getImage().getContentType() );
-            cmsContentImage.setFile( inputStream );
-            contentService.addOptionImage(store.getCode(), cmsContentImage);
+												System.out.println("$#6317#"); cmsContentImage.setFileName(imageName);
+												System.out.println("$#6318#"); cmsContentImage.setMimeType( optionValue.getImage().getContentType() );
+												System.out.println("$#6319#"); cmsContentImage.setFile( inputStream );
+												System.out.println("$#6320#"); contentService.addOptionImage(store.getCode(), cmsContentImage);
             
-            optionValue.setProductOptionValueImage(imageName);
+												System.out.println("$#6321#"); optionValue.setProductOptionValueImage(imageName);
 
 		}
 		
-		productOptionValueService.saveOrUpdate(optionValue);
+		System.out.println("$#6322#"); productOptionValueService.saveOrUpdate(optionValue);
 
 
 		
 
 		model.addAttribute("success","success");
-		return "catalogue-optionsvalues-details";
+		System.out.println("$#6323#"); return "catalogue-optionsvalues-details";
 	}
 
 	
@@ -291,7 +291,7 @@ public class OptionsValueController {
 			
 			List<ProductOptionValue> options = null;
 					
-			if(!StringUtils.isBlank(optionName)) {
+			System.out.println("$#6324#"); if(!StringUtils.isBlank(optionName)) {
 				
 				//productOptionValueService.getByName(store, optionName, language);
 				
@@ -314,25 +314,25 @@ public class OptionsValueController {
 				entry.put("name", description.getName());
 				//entry.put("image", new StringBuilder().append(store.getCode()).append("/").append(FileContentType.PROPERTY.name()).append("/").append(option.getProductOptionValueImage()).toString());
 				entry.put("image", imageUtils.buildProductPropertyImageUtils(store, option.getProductOptionValueImage()));
-				resp.addDataEntry(entry);
+				System.out.println("$#6325#"); resp.addDataEntry(entry);
 				
 				
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#6326#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 			
 
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging options", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6327#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6328#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#6329#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 		
 	}
@@ -353,29 +353,29 @@ public class OptionsValueController {
 			
 			ProductOptionValue entity = productOptionValueService.getById(store, id);
 
-			if(entity==null || entity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6330#"); if(entity==null || entity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#6332#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#6333#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				
 			} else {
 				
-				productOptionValueService.delete(entity);
-				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+				System.out.println("$#6334#"); productOptionValueService.delete(entity);
+				System.out.println("$#6335#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 				
 			}
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting option", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6336#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6337#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6338#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#6339#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
@@ -394,23 +394,23 @@ public class OptionsValueController {
 			
 			ProductOptionValue optionValue = productOptionValueService.getById(store, id);
 
-			contentService.removeFile(store.getCode(), FileContentType.PROPERTY, optionValue.getProductOptionValueImage());
+			System.out.println("$#6340#"); contentService.removeFile(store.getCode(), FileContentType.PROPERTY, optionValue.getProductOptionValueImage());
 			
-			store.setStoreLogo(null);
-			optionValue.setProductOptionValueImage(null);
-			productOptionValueService.update(optionValue);
+			System.out.println("$#6341#"); store.setStoreLogo(null);
+			System.out.println("$#6342#"); optionValue.setProductOptionValueImage(null);
+			System.out.println("$#6343#"); productOptionValueService.update(optionValue);
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6344#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6345#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6346#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#6347#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

@@ -59,7 +59,7 @@ public class ReferencesApi {
    */
   @GetMapping("/languages")
   public List<Language> getLanguages() {
-    return languageFacade.getLanguages();
+				System.out.println("$#12021#"); return languageFacade.getLanguages();
   }
 
   /**
@@ -73,7 +73,7 @@ public class ReferencesApi {
   public List<ReadableCountry> getCountry(HttpServletRequest request) {
     MerchantStore merchantStore = storeFacade.getByCode(request);
     Language lang = languageUtils.getRESTLanguage(request);
-    return countryFacade.getListCountryZones(lang, merchantStore);
+				System.out.println("$#12022#"); return countryFacade.getListCountryZones(lang, merchantStore);
   }
 
   @GetMapping("/zones")
@@ -81,7 +81,7 @@ public class ReferencesApi {
       @RequestParam("code") String code, HttpServletRequest request) {
     MerchantStore merchantStore = storeFacade.getByCode(request);
     Language lang = languageUtils.getRESTLanguage(request);
-    return zoneFacade.getZones(code, lang, merchantStore);
+				System.out.println("$#12023#"); return zoneFacade.getZones(code, lang, merchantStore);
   }
 
   /**
@@ -91,14 +91,14 @@ public class ReferencesApi {
    */
   @GetMapping("/currency")
   public List<Currency> getCurrency() {
-    return currencyFacade.getList();
+				System.out.println("$#12024#"); return currencyFacade.getList();
   }
 
   @GetMapping("/measures")
   public SizeReferences measures() {
     SizeReferences sizeReferences = new SizeReferences();
-    sizeReferences.setMeasures(Arrays.asList(MeasureUnit.values()));
-    sizeReferences.setWeights(Arrays.asList(WeightUnit.values()));
-    return sizeReferences;
+				System.out.println("$#12025#"); sizeReferences.setMeasures(Arrays.asList(MeasureUnit.values()));
+				System.out.println("$#12026#"); sizeReferences.setWeights(Arrays.asList(WeightUnit.values()));
+				System.out.println("$#12027#"); return sizeReferences;
   }
 }

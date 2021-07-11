@@ -23,31 +23,31 @@ public class CustomerBillingAddressPopulator extends AbstractDataPopulator<Custo
         throws ConversionException
     {
         
-        target.setCity(source.getBilling().getCity());
-        target.setCompany(source.getBilling().getCompany());
-        target.setFirstName(source.getBilling().getFirstName());
-        target.setLastName(source.getBilling().getLastName());
-        target.setPostalCode(source.getBilling().getPostalCode());
-        target.setPhone(source.getBilling().getTelephone());
-        if(source.getBilling().getTelephone()==null) {
-            target.setPhone(source.getBilling().getTelephone());
+								System.out.println("$#9971#"); target.setCity(source.getBilling().getCity());
+								System.out.println("$#9972#"); target.setCompany(source.getBilling().getCompany());
+								System.out.println("$#9973#"); target.setFirstName(source.getBilling().getFirstName());
+								System.out.println("$#9974#"); target.setLastName(source.getBilling().getLastName());
+								System.out.println("$#9975#"); target.setPostalCode(source.getBilling().getPostalCode());
+								System.out.println("$#9976#"); target.setPhone(source.getBilling().getTelephone());
+								System.out.println("$#9977#"); if(source.getBilling().getTelephone()==null) {
+												System.out.println("$#9978#"); target.setPhone(source.getBilling().getTelephone());
         }
-        target.setAddress(source.getBilling().getAddress());
-        if(source.getBilling().getCountry()!=null) {
-            target.setCountry(source.getBilling().getCountry().getIsoCode());
+								System.out.println("$#9979#"); target.setAddress(source.getBilling().getAddress());
+								System.out.println("$#9980#"); if(source.getBilling().getCountry()!=null) {
+												System.out.println("$#9981#"); target.setCountry(source.getBilling().getCountry().getIsoCode());
         }
-        if(source.getBilling().getZone()!=null) {
-            target.setZone(source.getBilling().getZone().getCode());
+								System.out.println("$#9982#"); if(source.getBilling().getZone()!=null) {
+												System.out.println("$#9983#"); target.setZone(source.getBilling().getZone().getCode());
         }
-        target.setStateProvince(source.getBilling().getState());
+								System.out.println("$#9984#"); target.setStateProvince(source.getBilling().getState());
         
-        return target;
+								System.out.println("$#9985#"); return target;
     }
 
     @Override
     protected Address createTarget()
     {
-       return new Address();
+							System.out.println("$#9986#"); return new Address();
     }
 
 }

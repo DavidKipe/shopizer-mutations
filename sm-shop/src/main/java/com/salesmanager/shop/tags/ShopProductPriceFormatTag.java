@@ -48,7 +48,7 @@ public class ShopProductPriceFormatTag extends RequestContextAwareTag  {
 
 
 	public Currency getCurrency() {
-		return currency;
+		System.out.println("$#15463#"); return currency;
 	}
 
 
@@ -59,11 +59,11 @@ public class ShopProductPriceFormatTag extends RequestContextAwareTag  {
 
 	@Override
 	protected int doStartTagInternal() throws Exception {
-		if (pricingService == null || productPriceUtils==null) {
+		System.out.println("$#15464#"); if (pricingService == null || productPriceUtils==null) {
 			LOGGER.debug("Autowiring productPriceUtils");
             WebApplicationContext wac = getRequestContext().getWebApplicationContext();
             AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-            factory.autowireBean(this);
+												System.out.println("$#15466#"); factory.autowireBean(this);
         }
 		
 		HttpServletRequest request = (HttpServletRequest) pageContext
@@ -73,13 +73,13 @@ public class ShopProductPriceFormatTag extends RequestContextAwareTag  {
 
 		String formatedPrice = null;
 		
-		if(this.getCurrency()!=null) {
+		System.out.println("$#15467#"); if(this.getCurrency()!=null) {
 			formatedPrice = productPriceUtils.getFormatedAmountWithCurrency(this.getCurrency(), this.getValue());
 		} else {
 			formatedPrice = pricingService.getDisplayAmount(this.getValue(), store);
 		}
 		
-		pageContext.getOut().print(formatedPrice);
+		System.out.println("$#15468#"); pageContext.getOut().print(formatedPrice);
 		
 		return SKIP_BODY;
 
@@ -87,7 +87,7 @@ public class ShopProductPriceFormatTag extends RequestContextAwareTag  {
 
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15469#"); return EVAL_PAGE;
 	}
 
 
@@ -97,7 +97,7 @@ public class ShopProductPriceFormatTag extends RequestContextAwareTag  {
 
 
 	public BigDecimal getValue() {
-		return value;
+		System.out.println("$#15470#"); return value;
 	}
 
 

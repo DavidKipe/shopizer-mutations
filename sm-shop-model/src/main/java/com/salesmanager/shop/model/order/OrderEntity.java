@@ -36,35 +36,35 @@ public class OrderEntity extends Order implements Serializable {
 		this.totals = totals;
 	}
 	public List<OrderTotal> getTotals() {
-		return totals;
+		System.out.println("$#9121#"); return totals;
 	}
 	public PaymentType getPaymentType() {
-		return paymentType;
+		System.out.println("$#9122#"); return paymentType;
 	}
 	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;
 	}
 	public String getPaymentModule() {
-		return paymentModule;
+		System.out.println("$#9123#"); return paymentModule;
 	}
 	public void setPaymentModule(String paymentModule) {
 		this.paymentModule = paymentModule;
 	}
 	public String getShippingModule() {
-		return shippingModule;
+		System.out.println("$#9124#"); return shippingModule;
 	}
 	public void setShippingModule(String shippingModule) {
 		this.shippingModule = shippingModule;
 	}
 
 	public CreditCard getCreditCard() {
-		return creditCard;
+		System.out.println("$#9125#"); return creditCard;
 	}
 	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
 	}
 	public Date getDatePurchased() {
-		return datePurchased;
+		System.out.println("$#9126#"); return datePurchased;
 	}
 	public void setDatePurchased(Date datePurchased) {
 		this.datePurchased = datePurchased;
@@ -73,40 +73,40 @@ public class OrderEntity extends Order implements Serializable {
 		this.previousOrderStatus = previousOrderStatus;
 	}
 	public List<OrderStatus> getPreviousOrderStatus() {
-		return previousOrderStatus;
+		System.out.println("$#9127#"); return previousOrderStatus;
 	}
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
 	}
 	public OrderStatus getOrderStatus() {
-		return orderStatus;
+		System.out.println("$#9128#"); return orderStatus;
 	}
 	public String getCurrency() {
-		return currency;
+		System.out.println("$#9129#"); return currency;
 	}
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
 	public boolean isCustomerAgreed() {
-		return customerAgreed;
+		System.out.println("$#9131#"); System.out.println("$#9130#"); return customerAgreed;
 	}
 	public void setCustomerAgreed(boolean customerAgreed) {
 		this.customerAgreed = customerAgreed;
 	}
 	public boolean isConfirmedAddress() {
-		return confirmedAddress;
+		System.out.println("$#9133#"); System.out.println("$#9132#"); return confirmedAddress;
 	}
 	public void setConfirmedAddress(boolean confirmedAddress) {
 		this.confirmedAddress = confirmedAddress;
 	}
 	public String getComments() {
-		return comments;
+		System.out.println("$#9134#"); return comments;
 	}
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
 	public List<OrderAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#9135#"); return attributes;
 	}
 	public void setAttributes(List<OrderAttribute> attributes) {
 		this.attributes = attributes;

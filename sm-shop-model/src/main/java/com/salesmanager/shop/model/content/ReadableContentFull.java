@@ -20,32 +20,32 @@ public class ReadableContentFull extends Entity {
 	private static final long serialVersionUID = 1L;
 	private List<ContentDescriptionEntity> descriptions = new ArrayList<ContentDescriptionEntity>();
 	public List<ContentDescriptionEntity> getDescriptions() {
-		return descriptions;
+		System.out.println("$#9014#"); return descriptions;
 	}
 	public void setDescriptions(List<ContentDescriptionEntity> descriptions) {
 		this.descriptions = descriptions;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#9015#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 
 	public boolean isVisible() {
-		return visible;
+		System.out.println("$#9017#"); System.out.println("$#9016#"); return visible;
 	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
 	public String getContentType() {
-		return contentType;
+		System.out.println("$#9018#"); return contentType;
 	}
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
 	public boolean isDisplayedInMenu() {
-		return isDisplayedInMenu;
+		System.out.println("$#9020#"); System.out.println("$#9019#"); return isDisplayedInMenu;
 	}
 	public void setDisplayedInMenu(boolean isDisplayedInMenu) {
 		this.isDisplayedInMenu = isDisplayedInMenu;

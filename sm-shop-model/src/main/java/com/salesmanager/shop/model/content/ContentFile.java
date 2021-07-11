@@ -17,7 +17,7 @@ public class ContentFile extends ContentPath {
 	
 
 	public byte[] getFile() {
-		return file;
+		System.out.println("$#8995#"); return file;
 	}
 	public void setFile(byte[] file) {
 		this.file = file;

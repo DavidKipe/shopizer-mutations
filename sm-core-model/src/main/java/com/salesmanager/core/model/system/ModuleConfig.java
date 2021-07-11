@@ -11,25 +11,25 @@ public class ModuleConfig {
 	private String config1;
 	private String config2;
 	public String getScheme() {
-		return scheme;
+		System.out.println("$#4780#"); return scheme;
 	}
 	public void setScheme(String scheme) {
 		this.scheme = scheme;
 	}
 	public String getHost() {
-		return host;
+		System.out.println("$#4781#"); return host;
 	}
 	public void setHost(String host) {
 		this.host = host;
 	}
 	public String getPort() {
-		return port;
+		System.out.println("$#4782#"); return port;
 	}
 	public void setPort(String port) {
 		this.port = port;
 	}
 	public String getUri() {
-		return uri;
+		System.out.println("$#4783#"); return uri;
 	}
 	public void setUri(String uri) {
 		this.uri = uri;
@@ -38,16 +38,16 @@ public class ModuleConfig {
 		this.env = env;
 	}
 	public String getEnv() {
-		return env;
+		System.out.println("$#4784#"); return env;
 	}
 	public String getConfig1() {
-		return config1;
+		System.out.println("$#4785#"); return config1;
 	}
 	public void setConfig1(String config1) {
 		this.config1 = config1;
 	}
 	public String getConfig2() {
-		return config2;
+		System.out.println("$#4786#"); return config2;
 	}
 	public void setConfig2(String config2) {
 		this.config2 = config2;

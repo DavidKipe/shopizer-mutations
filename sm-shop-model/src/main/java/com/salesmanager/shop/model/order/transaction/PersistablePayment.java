@@ -18,19 +18,19 @@ public class PersistablePayment extends PaymentEntity {
 	private String paymentToken;//any token after doing init
 	
 	public String getPaymentType() {
-		return paymentType;
+		System.out.println("$#9202#"); return paymentType;
 	}
 	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
 	}
 	public String getTransactionType() {
-		return transactionType;
+		System.out.println("$#9203#"); return transactionType;
 	}
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
 	}
 	public String getPaymentToken() {
-		return paymentToken;
+		System.out.println("$#9204#"); return paymentToken;
 	}
 	public void setPaymentToken(String paymentToken) {
 		this.paymentToken = paymentToken;

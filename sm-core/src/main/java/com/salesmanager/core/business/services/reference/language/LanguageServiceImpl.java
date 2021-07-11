@@ -47,26 +47,26 @@ public class LanguageServiceImpl extends SalesManagerEntityServiceImpl<Integer, 
 	@Override
 	@Cacheable("languageByCode")
 	public Language getByCode(String code) throws ServiceException {
-		return languageRepository.findByCode(code);
+		System.out.println("$#2709#"); return languageRepository.findByCode(code);
 	}
 	
 	@Override
 	public Locale toLocale(Language language, MerchantStore store) {
 		
-		if(store != null) {
+		System.out.println("$#2710#"); if(store != null) {
 		
 			String countryCode = store.getCountry().getIsoCode();
 			
 			//try to build valid language
-			if("CA".equals(countryCode) && language.getCode().equals("en")) {
+			System.out.println("$#2711#"); if("CA".equals(countryCode) && language.getCode().equals("en")) {
 				countryCode = "US";
 			}
 			
-			return new Locale(language.getCode(), countryCode);
+			System.out.println("$#2713#"); return new Locale(language.getCode(), countryCode);
 		
 		} else {
 			
-			return new Locale(language.getCode());
+			System.out.println("$#2714#"); return new Locale(language.getCode());
 		}
 	}
 	
@@ -75,12 +75,12 @@ public class LanguageServiceImpl extends SalesManagerEntityServiceImpl<Integer, 
 		
 		try {
 			Language lang = getLanguagesMap().get(locale.getLanguage());
-			return lang;
+			System.out.println("$#2715#"); return lang;
 		} catch (Exception e) {
 			LOGGER.error("Cannot convert locale " + locale.getLanguage() + " to language");
 		}
 		
-		return new Language(Constants.DEFAULT_LANGUAGE);
+		System.out.println("$#2716#"); return new Language(Constants.DEFAULT_LANGUAGE);
 
 	}
 	
@@ -93,7 +93,7 @@ public class LanguageServiceImpl extends SalesManagerEntityServiceImpl<Integer, 
 		for(Language lang : langs) {
 			returnMap.put(lang.getCode(), lang);
 		}
-		return returnMap;
+		System.out.println("$#2717#"); return returnMap;
 
 	}
 	
@@ -107,9 +107,9 @@ public class LanguageServiceImpl extends SalesManagerEntityServiceImpl<Integer, 
 		try {
 
 			langs = (List<Language>) cache.getFromCache("LANGUAGES");
-			if(langs==null) {
+			System.out.println("$#2718#"); if(langs==null) {
 				langs = this.list();
-				cache.putInCache(langs, "LANGUAGES");
+				System.out.println("$#2719#"); cache.putInCache(langs, "LANGUAGES");
 			}
 
 		} catch (Exception e) {
@@ -117,13 +117,13 @@ public class LanguageServiceImpl extends SalesManagerEntityServiceImpl<Integer, 
 			throw new ServiceException(e);
 		}
 		
-		return langs;
+		System.out.println("$#2720#"); return langs;
 		
 	}
 	
 	@Override
 	public Language defaultLanguage() {
-		return toLanguage(Locale.ENGLISH);
+		System.out.println("$#2721#"); return toLanguage(Locale.ENGLISH);
 	}
 
 }

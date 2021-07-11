@@ -27,7 +27,7 @@ public class CreditCard {
 	private String ccCvv;
 
 	public String getCcOwner() {
-		return ccOwner;
+		System.out.println("$#4405#"); return ccOwner;
 	}
 
 	public void setCcOwner(String ccOwner) {
@@ -35,7 +35,7 @@ public class CreditCard {
 	}
 
 	public String getCcNumber() {
-		return ccNumber;
+		System.out.println("$#4406#"); return ccNumber;
 	}
 
 	public void setCcNumber(String ccNumber) {
@@ -43,7 +43,7 @@ public class CreditCard {
 	}
 
 	public String getCcExpires() {
-		return ccExpires;
+		System.out.println("$#4407#"); return ccExpires;
 	}
 
 	public void setCcExpires(String ccExpires) {
@@ -51,7 +51,7 @@ public class CreditCard {
 	}
 
 	public String getCcCvv() {
-		return ccCvv;
+		System.out.println("$#4408#"); return ccCvv;
 	}
 
 	public void setCcCvv(String ccCvv) {
@@ -63,7 +63,7 @@ public class CreditCard {
 	}
 
 	public CreditCardType getCardType() {
-		return cardType;
+		System.out.println("$#4409#"); return cardType;
 	}
 
 }

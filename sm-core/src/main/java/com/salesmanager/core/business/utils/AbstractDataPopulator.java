@@ -25,14 +25,14 @@ public abstract class AbstractDataPopulator<Source,Target> implements DataPopula
 		this.locale = locale;
 	}
 	public Locale getLocale() {
-		return locale;
+		System.out.println("$#3382#"); return locale;
 	}
 	
 
 
 	@Override
 	public Target populate(Source source, MerchantStore store, Language language) throws ConversionException{
-	   return populate(source,createTarget(), store, language);
+				System.out.println("$#3383#"); return populate(source,createTarget(), store, language);
 	}
 	protected abstract Target createTarget();
 

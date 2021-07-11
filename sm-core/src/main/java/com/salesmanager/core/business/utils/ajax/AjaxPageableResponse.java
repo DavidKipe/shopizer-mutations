@@ -10,7 +10,7 @@ public class AjaxPageableResponse extends AjaxResponse {
 	
 	private int startRow;
 	public int getStartRow() {
-		return startRow;
+		System.out.println("$#3384#"); return startRow;
 	}
 
 
@@ -31,7 +31,7 @@ public class AjaxPageableResponse extends AjaxResponse {
 		returnString.append(this.startRow).append(",");
 		returnString.append("\"endRow\"").append(":").append(this.endRow).append(",");
 		returnString.append("\"totalRows\"").append(":").append(super.getData().size());
-		return returnString.toString();
+		System.out.println("$#3385#"); return returnString.toString();
 		
 	}
 	
@@ -46,11 +46,11 @@ public class AjaxPageableResponse extends AjaxResponse {
 		returnString.append(getJsonInfo()).append(",");
 		returnString.append(getPageInfo());
 
-		if(this.getData().size()>0) {
+		System.out.println("$#3387#"); System.out.println("$#3386#"); if(this.getData().size()>0) {
 			StringBuilder dataEntries = null;
 			int count = 0;
 			for(Map keyValue : this.getData()) {
-				if(dataEntries == null) {
+				System.out.println("$#3388#"); if(dataEntries == null) {
 					dataEntries = new StringBuilder();
 				}
 				JSONObject data = new JSONObject();
@@ -60,14 +60,14 @@ public class AjaxPageableResponse extends AjaxResponse {
 				}
 				String dataField = data.toJSONString();
 				dataEntries.append(dataField);
-				if(count<super.getData().size()-1) {
+				System.out.println("$#3391#"); System.out.println("$#3390#"); System.out.println("$#3389#"); if(count<super.getData().size()-1) {
 					dataEntries.append(",");
 				}
-				count ++;
+				System.out.println("$#3392#"); count ++;
 			}
 			
 			returnString.append(",").append("\"data\"").append(":[");
-			if(dataEntries!=null) {
+			System.out.println("$#3393#"); if(dataEntries!=null) {
 				returnString.append(dataEntries.toString());
 			}
 			returnString.append("]");
@@ -75,7 +75,7 @@ public class AjaxPageableResponse extends AjaxResponse {
 		returnString.append("}}");
 
 		
-		return returnString.toString();
+		System.out.println("$#3394#"); return returnString.toString();
 		
 		
 		
@@ -84,7 +84,7 @@ public class AjaxPageableResponse extends AjaxResponse {
 
 
 	public int getEndRow() {
-		return endRow;
+		System.out.println("$#3395#"); return endRow;
 	}
 
 
@@ -96,7 +96,7 @@ public class AjaxPageableResponse extends AjaxResponse {
 
 
 	public int getTotalRow() {
-		return totalRow;
+		System.out.println("$#3396#"); return totalRow;
 	}
 
 

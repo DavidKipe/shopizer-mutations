@@ -14,12 +14,12 @@ public class ShopServletContextListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		logger.info("===context init===");
-		System.getenv().forEach((k, v) -> {
+		System.out.println("$#7945#"); System.getenv().forEach((k, v) -> {
 		  logger.debug(k + ":" + v);
 		});
 		Properties props = System.getProperties();
 		logger.info("======");
-		props.forEach((k, v) -> {
+		System.out.println("$#7946#"); props.forEach((k, v) -> {
 		  logger.debug(k + ":" + v);
 		});
 	}
@@ -28,6 +28,6 @@ public class ShopServletContextListener implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
 		logger.info("===context destroy===");
 		VendorCacheManager cacheManager = VendorCacheManager.getInstance();
-		cacheManager.getManager().stop();
+		System.out.println("$#7947#"); cacheManager.getManager().stop();
 	}
 }

@@ -74,7 +74,7 @@ public class Optin extends SalesManagerEntity<Long, Optin> implements Serializab
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4795#"); return id;
 	}
 
 	@Override
@@ -83,7 +83,7 @@ public class Optin extends SalesManagerEntity<Long, Optin> implements Serializab
 	}
 
 	public Date getStartDate() {
-		return startDate;
+		System.out.println("$#4796#"); return startDate;
 	}
 
 	public void setStartDate(Date startDate) {
@@ -91,7 +91,7 @@ public class Optin extends SalesManagerEntity<Long, Optin> implements Serializab
 	}
 
 	public Date getEndDate() {
-		return endDate;
+		System.out.println("$#4797#"); return endDate;
 	}
 
 	public void setEndDate(Date endDate) {
@@ -99,7 +99,7 @@ public class Optin extends SalesManagerEntity<Long, Optin> implements Serializab
 	}
 
 	public MerchantStore getMerchant() {
-		return merchant;
+		System.out.println("$#4798#"); return merchant;
 	}
 
 	public void setMerchant(MerchantStore merchant) {
@@ -107,7 +107,7 @@ public class Optin extends SalesManagerEntity<Long, Optin> implements Serializab
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4799#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -115,7 +115,7 @@ public class Optin extends SalesManagerEntity<Long, Optin> implements Serializab
 	}
 
 	public String getDescription() {
-		return description;
+		System.out.println("$#4800#"); return description;
 	}
 
 	public void setDescription(String description) {
@@ -123,7 +123,7 @@ public class Optin extends SalesManagerEntity<Long, Optin> implements Serializab
 	}
 
 	public OptinType getOptinType() {
-		return optinType;
+		System.out.println("$#4801#"); return optinType;
 	}
 
 	public void setOptinType(OptinType optinType) {

@@ -31,14 +31,14 @@ public class JWTCustomerAuthenticationProvider extends DaoAuthenticationProvider
         String name = auth.getName();
         Object credentials = auth.getCredentials();
         UserDetails customer = jwtCustomerDetailsService.loadUserByUsername(name);
-        if (customer == null) {
+								System.out.println("$#15283#"); if (customer == null) {
             throw new BadCredentialsException("Username/Password does not match for " + auth.getPrincipal());
         }
         
         String pass = credentials.toString();
         String usr = name;
         
-        if(!passwordMatch(pass, usr)) {
+								System.out.println("$#15284#"); if(!passwordMatch(pass, usr)) {
         	throw new BadCredentialsException("Username/Password does not match for " + auth.getPrincipal());
         }
         
@@ -48,22 +48,22 @@ public class JWTCustomerAuthenticationProvider extends DaoAuthenticationProvider
          */
 
         
-        return new UsernamePasswordAuthenticationToken(customer, credentials, customer.getAuthorities());
+								System.out.println("$#15285#"); return new UsernamePasswordAuthenticationToken(customer, credentials, customer.getAuthorities());
     }
 	
 	
     private boolean passwordMatch(String rawPassword, String user) {
-		    return passwordEncoder.matches(rawPassword, user);
+						System.out.println("$#15287#"); System.out.println("$#15286#"); return passwordEncoder.matches(rawPassword, user);
 	}
 	
     @Override
     public boolean supports(Class<?> authentication) {
-        return true;
+								System.out.println("$#15288#"); return true;
     }
 
 
 	public UserDetailsService getJwtCustomerDetailsService() {
-		return jwtCustomerDetailsService;
+		System.out.println("$#15289#"); return jwtCustomerDetailsService;
 	}
 
 

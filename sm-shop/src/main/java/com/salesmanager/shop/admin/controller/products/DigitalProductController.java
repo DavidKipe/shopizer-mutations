@@ -48,13 +48,13 @@ public class DigitalProductController {
 	@RequestMapping(value={"/admin/products/digitalProduct.html"}, method=RequestMethod.GET)
 	public String getDigitalProduct(@RequestParam("id") long productId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		this.setMenu(model, request);
+		System.out.println("$#6052#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		Product product = productService.getById(productId);
 		
-		if(product==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6053#"); if(product==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6055#"); return "redirect:/admin/products/products.html";
 		}
 		
 		model.addAttribute("product", product);
@@ -62,7 +62,7 @@ public class DigitalProductController {
 		DigitalProduct digitalProduct = digitalProductService.getByProduct(store, product);
 
 		model.addAttribute("digitalProduct", digitalProduct);
-		return ControllerConstants.Tiles.Product.digitalProduct;
+		System.out.println("$#6056#"); return ControllerConstants.Tiles.Product.digitalProduct;
 		
 	}
 	
@@ -70,43 +70,43 @@ public class DigitalProductController {
 	@RequestMapping(value="/admin/products/product/saveDigitalProduct.html", method=RequestMethod.POST)
 	public String saveFile(@ModelAttribute(value="productFiles") @Valid final ProductFiles productFiles, final BindingResult bindingResult,final Model model, final HttpServletRequest request) throws Exception{
 	    
-		this.setMenu(model, request);
+		System.out.println("$#6057#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		Product product = productService.getById(productFiles.getProduct().getId());
 		DigitalProduct digitalProduct = new DigitalProduct();
-		if(product==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6058#"); if(product==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6060#"); return "redirect:/admin/products/products.html";
 		}
 		
-		digitalProduct.setProduct(product);
+		System.out.println("$#6061#"); digitalProduct.setProduct(product);
 		model.addAttribute("product", product);
 		model.addAttribute("digitalProduct", digitalProduct);
 	    
-		if (bindingResult.hasErrors()) {
+		System.out.println("$#6062#"); if (bindingResult.hasErrors()) {
 	        LOGGER.info( "Found {} Validation errors", bindingResult.getErrorCount());
-	        return ControllerConstants.Tiles.Product.digitalProduct;
+									System.out.println("$#6063#"); return ControllerConstants.Tiles.Product.digitalProduct;
         }
 
 	    
 	    final List<InputContentFile> contentFilesList=new ArrayList<InputContentFile>();
-        if(CollectionUtils.isNotEmpty( productFiles.getFile() )){
+								System.out.println("$#6064#"); if(CollectionUtils.isNotEmpty( productFiles.getFile() )){
             LOGGER.info("Saving {} product files for merchant {}",productFiles.getFile().size(),store.getId());
             for(final MultipartFile multipartFile:productFiles.getFile()){
-                if(!multipartFile.isEmpty()){
+																System.out.println("$#6065#"); if(!multipartFile.isEmpty()){
                     ByteArrayInputStream inputStream = new ByteArrayInputStream( multipartFile.getBytes() );
                     InputContentFile cmsContentImage = new InputContentFile();
-                    cmsContentImage.setFileName(multipartFile.getOriginalFilename() );
-                    cmsContentImage.setFileContentType( FileContentType.PRODUCT_DIGITAL );
-                    cmsContentImage.setFile( inputStream );
+																				System.out.println("$#6066#"); cmsContentImage.setFileName(multipartFile.getOriginalFilename() );
+																				System.out.println("$#6067#"); cmsContentImage.setFileContentType( FileContentType.PRODUCT_DIGITAL );
+																				System.out.println("$#6068#"); cmsContentImage.setFile( inputStream );
                     contentFilesList.add( cmsContentImage);
                 }
             }
             
-            if(CollectionUtils.isNotEmpty( contentFilesList )){
+												System.out.println("$#6069#"); if(CollectionUtils.isNotEmpty( contentFilesList )){
 
-            	digitalProduct.setProductFileName(contentFilesList.get(0).getFileName());
-            	digitalProductService.addProductFile(product, digitalProduct, contentFilesList.get(0));
+													System.out.println("$#6070#"); digitalProduct.setProductFileName(contentFilesList.get(0).getFileName());
+													System.out.println("$#6071#"); digitalProductService.addProductFile(product, digitalProduct, contentFilesList.get(0));
             	
             	//refresh digital product
             	digitalProduct = digitalProductService.getByProduct(store, product);
@@ -116,7 +116,7 @@ public class DigitalProductController {
         
         
         model.addAttribute("success","success");
-        return ControllerConstants.Tiles.Product.digitalProduct;
+								System.out.println("$#6072#"); return ControllerConstants.Tiles.Product.digitalProduct;
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
@@ -128,7 +128,7 @@ public class DigitalProductController {
 		AjaxResponse resp = new AjaxResponse();
 		
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6073#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		
 		try {
@@ -136,31 +136,31 @@ public class DigitalProductController {
 			DigitalProduct digitalProduct = digitalProductService.getById(fileId);
 			
 			//validate store
-			if(digitalProduct==null) {
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6074#"); if(digitalProduct==null) {
+				System.out.println("$#6075#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6076#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			Product product = digitalProduct.getProduct();
-			if(product.getMerchantStore().getId().intValue()!= store.getId().intValue()) {
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6077#"); if(product.getMerchantStore().getId().intValue()!= store.getId().intValue()) {
+				System.out.println("$#6078#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6079#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			digitalProductService.delete(digitalProduct);
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6080#"); digitalProductService.delete(digitalProduct);
+			System.out.println("$#6081#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6082#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6083#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6084#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

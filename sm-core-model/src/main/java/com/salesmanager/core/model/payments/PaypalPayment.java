@@ -12,20 +12,20 @@ public class PaypalPayment extends Payment {
 	private String paymentToken;
 	
 	public PaypalPayment() {
-		super.setPaymentType(PaymentType.PAYPAL);
+		System.out.println("$#4431#"); super.setPaymentType(PaymentType.PAYPAL);
 	}
 	
 	public void setPayerId(String payerId) {
 		this.payerId = payerId;
 	}
 	public String getPayerId() {
-		return payerId;
+		System.out.println("$#4432#"); return payerId;
 	}
 	public void setPaymentToken(String paymentToken) {
 		this.paymentToken = paymentToken;
 	}
 	public String getPaymentToken() {
-		return paymentToken;
+		System.out.println("$#4433#"); return paymentToken;
 	}
 
 }

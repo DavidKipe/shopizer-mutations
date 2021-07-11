@@ -80,7 +80,7 @@ public class MerchantStoreApi {
 	@ApiOperation(httpMethod = "GET", value = "Get merchant store", notes = "", response = ReadableMerchantStore.class)
 	public ReadableMerchantStore store(@PathVariable String code,
 			@RequestParam(value = "lang", required = false) String lang) {
-		return storeFacade.getByCode(code, lang);
+		System.out.println("$#12087#"); return storeFacade.getByCode(code, lang);
 	}
 
 	@GetMapping(value = { "/private/store/{code}" }, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -91,12 +91,12 @@ public class MerchantStoreApi {
 			@ApiIgnore Language language) {
 
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12088#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of("SUPERADMIN", "ADMIN_RETAILER").collect(Collectors.toList()));
-		return storeFacade.getFullByCode(code, language);
+		System.out.println("$#12089#"); userFacade.authorizedGroup(authenticatedUser, Stream.of("SUPERADMIN", "ADMIN_RETAILER").collect(Collectors.toList()));
+		System.out.println("$#12090#"); return storeFacade.getFullByCode(code, language);
 	}
 
 	@GetMapping(value = { "/private/merchant/{code}/stores" }, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -107,16 +107,16 @@ public class MerchantStoreApi {
 			@RequestParam(value = "count", required = false, defaultValue = "10") Integer count) {
 
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12091#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of("SUPERADMIN", "ADMIN_RETAILER").collect(Collectors.toList()));
+		System.out.println("$#12092#"); userFacade.authorizedGroup(authenticatedUser, Stream.of("SUPERADMIN", "ADMIN_RETAILER").collect(Collectors.toList()));
 
 		//ADMIN_RETAILER only see pertaining stores
 		
 		
-		return storeFacade.getChildStores(language, code, page, count);
+		System.out.println("$#12093#"); return storeFacade.getChildStores(language, code, page, count);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -131,24 +131,24 @@ public class MerchantStoreApi {
 			HttpServletRequest request) {
 
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12094#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
 		// requires superadmin, admin and admin retail to see all
-		userFacade.authorizedGroup(authenticatedUser,
+		System.out.println("$#12095#"); userFacade.authorizedGroup(authenticatedUser,
 				Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN_RETAIL)
 						.collect(Collectors.toList()));
 
 		MerchantStoreCriteria criteria = createMerchantStoreCriteria(request);
 		
-		if (userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
-			criteria.setStoreCode(null);
+		System.out.println("$#12096#"); if (userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
+			System.out.println("$#12097#"); criteria.setStoreCode(null);
 		} else {
-			criteria.setStoreCode(merchantStore.getCode());
+			System.out.println("$#12098#"); criteria.setStoreCode(merchantStore.getCode());
 		}
 
-		return storeFacade.findAll(criteria, language, page, count);
+		System.out.println("$#12099#"); return storeFacade.findAll(criteria, language, page, count);
 	}
 	
 
@@ -171,25 +171,25 @@ public class MerchantStoreApi {
 			) {
 		
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12100#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
 		// requires superadmin, admin and admin retail to see all
-		userFacade.authorizedGroup(authenticatedUser,
+		System.out.println("$#12101#"); userFacade.authorizedGroup(authenticatedUser,
 				Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN_RETAIL)
 						.collect(Collectors.toList()));
 
 		MerchantStoreCriteria criteria = createMerchantStoreCriteria(request);
 		
-		if (userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
-			criteria.setStoreCode(null);
+		System.out.println("$#12102#"); if (userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
+			System.out.println("$#12103#"); criteria.setStoreCode(null);
 		} else {
-			criteria.setStoreCode(merchantStore.getCode());
+			System.out.println("$#12104#"); criteria.setStoreCode(merchantStore.getCode());
 		}
 
 		ReadableMerchantStoreList list = storeFacade.findAll(criteria, language, page, count);
-		return list.getData();
+		System.out.println("$#12105#"); return list.getData();
 
 	}
 	
@@ -200,7 +200,7 @@ public class MerchantStoreApi {
 			@ApiIgnore MerchantStore merchantStore,
 			HttpServletRequest request) {
 
-		return storeFacade.supportedLanguages(merchantStore);
+		System.out.println("$#12106#"); return storeFacade.supportedLanguages(merchantStore);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -210,14 +210,14 @@ public class MerchantStoreApi {
 		
 		
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12107#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 		
-		userFacade.authorizedGroup(authenticatedUser, Stream.of("SUPERADMIN", "ADMIN_RETAILER").collect(Collectors.toList()));
+		System.out.println("$#12108#"); userFacade.authorizedGroup(authenticatedUser, Stream.of("SUPERADMIN", "ADMIN_RETAILER").collect(Collectors.toList()));
 
 		
-		storeFacade.create(store);
+		System.out.println("$#12109#"); storeFacade.create(store);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -227,20 +227,20 @@ public class MerchantStoreApi {
 			HttpServletRequest request) {
 
 		String userName = getUserFromRequest(request);
-		validateUserPermission(userName, code);
-		store.setCode(code);
-		storeFacade.update(store);
+		System.out.println("$#12110#"); validateUserPermission(userName, code);
+		System.out.println("$#12111#"); store.setCode(code);
+		System.out.println("$#12112#"); storeFacade.update(store);
 	}
 
 	private String getUserFromRequest(HttpServletRequest request) {
 		// user doing action must be attached to the store being modified
 		Principal principal = request.getUserPrincipal();
-		return principal.getName();
+		System.out.println("$#12113#"); return principal.getName();
 	}
 
 	private void validateUserPermission(String userName, String code) {
 		// TODO reviewed Spring Security should be used
-		if (!userFacade.authorizedStore(userName, code)) {
+		System.out.println("$#12114#"); if (!userFacade.authorizedStore(userName, code)) {
 			throw new UnauthorizedException("User " + userName + " not authorized");
 		}
 	}
@@ -250,8 +250,8 @@ public class MerchantStoreApi {
 	@ApiOperation(httpMethod = "GET", value = "Get store branding and marketing details", notes = "", response = ReadableBrand.class)
 	public ReadableBrand getStoreMarketing(@PathVariable String code, HttpServletRequest request) {
 		String userName = getUserFromRequest(request);
-		validateUserPermission(userName, code);
-		return storeFacade.getBrand(code);
+		System.out.println("$#12115#"); validateUserPermission(userName, code);
+		System.out.println("$#12116#"); return storeFacade.getBrand(code);
 	}
 
 	/**
@@ -271,8 +271,8 @@ public class MerchantStoreApi {
 			HttpServletRequest request) {
 
 		String userName = getUserFromRequest(request);
-		validateUserPermission(userName, code);
-		return storeFacade.getChildStores(language, code, page, count);
+		System.out.println("$#12117#"); validateUserPermission(userName, code);
+		System.out.println("$#12118#"); return storeFacade.getChildStores(language, code, page, count);
 
 	}
 
@@ -282,8 +282,8 @@ public class MerchantStoreApi {
 	public void saveStoreMarketing(@PathVariable String code, @RequestBody PersistableBrand brand,
 			HttpServletRequest request) {
 		String userName = getUserFromRequest(request);
-		validateUserPermission(userName, code);
-		storeFacade.createBrand(code, brand);
+		System.out.println("$#12119#"); validateUserPermission(userName, code);
+		System.out.println("$#12120#"); storeFacade.createBrand(code, brand);
 	}
 
 	@ResponseStatus(HttpStatus.CREATED)
@@ -295,14 +295,14 @@ public class MerchantStoreApi {
 		// user doing action must be attached to the store being modified
 		String userName = getUserFromRequest(request);
 
-		validateUserPermission(userName, code);
+		System.out.println("$#12121#"); validateUserPermission(userName, code);
 
-		if (uploadfile.isEmpty()) {
+		System.out.println("$#12122#"); if (uploadfile.isEmpty()) {
 			throw new RestApiException("Upload file is empty");
 		}
 
 		InputContentFile cmsContentImage = createInputContentFile(uploadfile);
-		storeFacade.addStoreLogo(code, cmsContentImage);
+		System.out.println("$#12123#"); storeFacade.addStoreLogo(code, cmsContentImage);
 	}
 
 	private InputContentFile createInputContentFile(MultipartFile image) {
@@ -313,16 +313,16 @@ public class MerchantStoreApi {
 
 			InputStream input = new ByteArrayInputStream(image.getBytes());
 			cmsContentImage = new InputContentFile();
-			cmsContentImage.setFileName(image.getOriginalFilename());
-			cmsContentImage.setMimeType(image.getContentType());
-			cmsContentImage.setFileContentType(FileContentType.LOGO);
-			cmsContentImage.setFile(input);
+			System.out.println("$#12124#"); cmsContentImage.setFileName(image.getOriginalFilename());
+			System.out.println("$#12125#"); cmsContentImage.setMimeType(image.getContentType());
+			System.out.println("$#12126#"); cmsContentImage.setFileContentType(FileContentType.LOGO);
+			System.out.println("$#12127#"); cmsContentImage.setFile(input);
 
 		} catch (IOException ioe) {
 			throw new RestApiException(ioe);
 		}
 
-		return cmsContentImage;
+		System.out.println("$#12128#"); return cmsContentImage;
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -332,10 +332,10 @@ public class MerchantStoreApi {
 
 		// user doing action must be attached to the store being modified
 		String userName = getUserFromRequest(request);
-		validateUserPermission(userName, code);
+		System.out.println("$#12129#"); validateUserPermission(userName, code);
 
 		// delete store logo
-		storeFacade.deleteLogo(code);
+		System.out.println("$#12130#"); storeFacade.deleteLogo(code);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -343,7 +343,7 @@ public class MerchantStoreApi {
 	@ApiOperation(httpMethod = "GET", value = "Check if store code already exists", notes = "", response = EntityExists.class)
 	public ResponseEntity<EntityExists> exists(@RequestParam(value = "code") String code) {
 		boolean isStoreExist = storeFacade.existByCode(code);
-		return new ResponseEntity<EntityExists>(new EntityExists(isStoreExist), HttpStatus.OK);
+		System.out.println("$#12131#"); return new ResponseEntity<EntityExists>(new EntityExists(isStoreExist), HttpStatus.OK);
 	}
 
 
@@ -353,14 +353,14 @@ public class MerchantStoreApi {
 	@ApiOperation(httpMethod = "DELETE", value = "Deletes a store", notes = "", response = Void.class)
 	public void delete(@PathVariable String code, HttpServletRequest request) {
 		String userName = getUserFromRequest(request);
-		validateUserPermission(userName, code);
-		storeFacade.delete(code);
+		System.out.println("$#12132#"); validateUserPermission(userName, code);
+		System.out.println("$#12133#"); storeFacade.delete(code);
 	}
 
 	
 	private MerchantStoreCriteria createMerchantStoreCriteria(HttpServletRequest request) {
 		try {
-			return (MerchantStoreCriteria)ServiceRequestCriteriaBuilderUtils.buildRequestCriterias(new MerchantStoreCriteria(), MAPPING_FIELDS,
+			System.out.println("$#12134#"); return (MerchantStoreCriteria)ServiceRequestCriteriaBuilderUtils.buildRequestCriterias(new MerchantStoreCriteria(), MAPPING_FIELDS,
 					request);
 		} catch (Exception e) {
 			throw new RestApiException("Error while binding request parameters");

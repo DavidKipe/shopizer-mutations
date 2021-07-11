@@ -29,7 +29,7 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 
 	
 	public Properties getProperties() {
-		return properties;
+		System.out.println("$#15511#"); return properties;
 	}
 
 	public void setProperties(Properties properties) {
@@ -45,10 +45,10 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 */
 	public String buildStaticImageUtils(MerchantStore store, String imageName) {
 		StringBuilder imgName = new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH).append(FileContentType.IMAGE.name()).append(Constants.SLASH);
-				if(!StringUtils.isBlank(imageName)) {
+				System.out.println("$#15512#"); if(!StringUtils.isBlank(imageName)) {
 					imgName.append(imageName);
 				}
-		return imgName.toString();
+		System.out.println("$#15513#"); return imgName.toString();
 				
 	}
 	
@@ -61,10 +61,10 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 */
 	public String buildStaticImageUtils(MerchantStore store, String type, String imageName) {
 		StringBuilder imgName = new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH).append(type).append(Constants.SLASH);
-		if(!StringUtils.isBlank(imageName)) {
+		System.out.println("$#15514#"); if(!StringUtils.isBlank(imageName)) {
 				imgName.append(imageName);
 		}
-		return imgName.toString();
+		System.out.println("$#15515#"); return imgName.toString();
 
 	}
 	
@@ -77,7 +77,7 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 * @return
 	 */
 	public String buildManufacturerImageUtils(MerchantStore store, Manufacturer manufacturer, String imageName) {
-		return new StringBuilder().append(getBasePath()).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH).
+		System.out.println("$#15516#"); return new StringBuilder().append(getBasePath()).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH).
 				append(FileContentType.MANUFACTURER.name()).append(Constants.SLASH)
 				.append(manufacturer.getId()).append(Constants.SLASH)
 				.append(imageName).toString();
@@ -92,7 +92,7 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 * @return
 	 */
 	public String buildProductImageUtils(MerchantStore store, Product product, String imageName) {
-		return new StringBuilder().append(getBasePath()).append(Constants.PRODUCTS_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH)
+		System.out.println("$#15517#"); return new StringBuilder().append(getBasePath()).append(Constants.PRODUCTS_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH)
 				.append(product.getSku()).append(Constants.SLASH).append(Constants.SMALL_IMAGE).append(Constants.SLASH).append(imageName).toString();
 	}
 	
@@ -105,7 +105,7 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 * @return
 	 */
 	public String buildProductImageUtils(MerchantStore store, String sku, String imageName) {
-		return new StringBuilder().append(getBasePath()).append(Constants.PRODUCTS_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH)
+		System.out.println("$#15518#"); return new StringBuilder().append(getBasePath()).append(Constants.PRODUCTS_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH)
 				.append(sku).append(Constants.SLASH).append(Constants.SMALL_IMAGE).append(Constants.SLASH).append(imageName).toString();
 	}
 	
@@ -117,7 +117,7 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 * @return
 	 */
 	public String buildLargeProductImageUtils(MerchantStore store, String sku, String imageName) {
-		return new StringBuilder().append(getBasePath()).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH)
+		System.out.println("$#15519#"); return new StringBuilder().append(getBasePath()).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH)
 				.append(sku).append(Constants.SLASH).append(Constants.SMALL_IMAGE).append(Constants.SLASH).append(imageName).toString();
 	}
 
@@ -129,7 +129,7 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 * @return
 	 */
 	public String buildStoreLogoFilePath(MerchantStore store) {
-		return new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH).append(FileContentType.LOGO).append(Constants.SLASH)
+		System.out.println("$#15520#"); return new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH).append(FileContentType.LOGO).append(Constants.SLASH)
 				.append(store.getStoreLogo()).toString();
 	}
 	
@@ -140,12 +140,12 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 * @return
 	 */
 	public String buildProductPropertyImageFilePath(MerchantStore store, String imageName) {
-		return new StringBuilder().append(getBasePath()).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH).append(FileContentType.PROPERTY).append(Constants.SLASH)
+		System.out.println("$#15521#"); return new StringBuilder().append(getBasePath()).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH).append(FileContentType.PROPERTY).append(Constants.SLASH)
 				.append(imageName).toString();
 	}
 	
 	public String buildProductPropertyImageUtils(MerchantStore store, String imageName) {
-		return new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append("/").append(FileContentType.PROPERTY).append("/")
+		System.out.println("$#15522#"); return new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append("/").append(FileContentType.PROPERTY).append("/")
 				.append(imageName).toString();
 	}
 	
@@ -157,10 +157,10 @@ public abstract class AbstractimageFilePath implements ImageFilePath {
 	 */
 	public String buildStaticContentFilePath(MerchantStore store, String fileName) {
 		StringBuilder sb = new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append(Constants.SLASH);
-		if(!StringUtils.isBlank(fileName)) {
+		System.out.println("$#15523#"); if(!StringUtils.isBlank(fileName)) {
 			sb.append(fileName);
 		}
-		return sb.toString();
+		System.out.println("$#15524#"); return sb.toString();
 	}
 	
 

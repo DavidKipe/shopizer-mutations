@@ -14,20 +14,20 @@ public class StoreCacheManagerImpl extends CacheManagerImpl {
 
 
   public StoreCacheManagerImpl(String location, String root) {
-    super.init(NAMED_CACHE, location);
+				System.out.println("$#189#"); super.init(NAMED_CACHE, location);
     this.root = root;
   }
 
 
   @Override
   public String getRootName() {
-    return root;
+				System.out.println("$#190#"); return root;
   }
 
 
   @Override
   public String getLocation() {
-    return location;
+				System.out.println("$#191#"); return location;
   }
 
 

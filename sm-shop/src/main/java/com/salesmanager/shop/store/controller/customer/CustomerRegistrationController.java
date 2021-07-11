@@ -122,8 +122,8 @@ public class CustomerRegistrationController extends AbstractController {
 		
 		SecuredShopPersistableCustomer customer = new SecuredShopPersistableCustomer();
 		AnonymousCustomer anonymousCustomer = (AnonymousCustomer)request.getAttribute(Constants.ANONYMOUS_CUSTOMER);
-		if(anonymousCustomer!=null) {
-			customer.setBilling(anonymousCustomer.getBilling());
+		System.out.println("$#12509#"); if(anonymousCustomer!=null) {
+			System.out.println("$#12510#"); customer.setBilling(anonymousCustomer.getBilling());
 		}
 		
 		model.addAttribute("customer", customer);
@@ -131,7 +131,7 @@ public class CustomerRegistrationController extends AbstractController {
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.register).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12511#"); return template.toString();
 
 
 	}
@@ -150,48 +150,48 @@ public class CustomerRegistrationController extends AbstractController {
         
         model.addAttribute( "recapatcha_public_key", siteKeyKey);
         
-        if(!StringUtils.isBlank(request.getParameter("g-recaptcha-response"))) {
+								System.out.println("$#12512#"); if(!StringUtils.isBlank(request.getParameter("g-recaptcha-response"))) {
         	boolean validateCaptcha = captchaRequestUtils.checkCaptcha(request.getParameter("g-recaptcha-response"));
         	
-            if ( !validateCaptcha )
+												System.out.println("$#12513#"); if ( !validateCaptcha )
             {
                 LOGGER.debug( "Captcha response does not matched" );
     			FieldError error = new FieldError("captchaChallengeField","captchaChallengeField",messages.getMessage("validaion.recaptcha.not.matched", locale));
-    			bindingResult.addError(error);
+							System.out.println("$#12514#"); bindingResult.addError(error);
             }
         }
         
 
-        if ( StringUtils.isNotBlank( customer.getUserName() ) )
+								System.out.println("$#12515#"); if ( StringUtils.isNotBlank( customer.getUserName() ) )
         {
-            if ( customerFacade.checkIfUserExists( customer.getUserName(), merchantStore ) )
+												System.out.println("$#12516#"); if ( customerFacade.checkIfUserExists( customer.getUserName(), merchantStore ) )
             {
                 LOGGER.debug( "Customer with username {} already exists for this store ", customer.getUserName() );
             	FieldError error = new FieldError("userName","userName",messages.getMessage("registration.username.already.exists", locale));
-            	bindingResult.addError(error);
+													System.out.println("$#12517#"); bindingResult.addError(error);
             }
             userName = customer.getUserName();
         }
         
         
-        if ( StringUtils.isNotBlank( customer.getPassword() ) &&  StringUtils.isNotBlank( customer.getCheckPassword() ))
+								System.out.println("$#12518#"); if ( StringUtils.isNotBlank( customer.getPassword() ) &&  StringUtils.isNotBlank( customer.getCheckPassword() ))
         {
-            if (! customer.getPassword().equals(customer.getCheckPassword()) )
+												System.out.println("$#12520#"); if (! customer.getPassword().equals(customer.getCheckPassword()) )
             {
             	FieldError error = new FieldError("password","password",messages.getMessage("message.password.checkpassword.identical", locale));
-            	bindingResult.addError(error);
+													System.out.println("$#12521#"); bindingResult.addError(error);
 
             }
             password = customer.getPassword();
         }
 
-        if ( bindingResult.hasErrors() )
+								System.out.println("$#12522#"); if ( bindingResult.hasErrors() )
         {
             LOGGER.debug( "found {} validation error while validating in customer registration ",
                          bindingResult.getErrorCount() );
             StringBuilder template =
                 new StringBuilder().append( ControllerConstants.Tiles.Customer.register ).append( "." ).append( merchantStore.getStoreTemplate() );
-            return template.toString();
+												System.out.println("$#12523#"); return template.toString();
 
         }
 
@@ -200,7 +200,7 @@ public class CustomerRegistrationController extends AbstractController {
         try
         {
             //set user clear password
-        	customer.setPassword(password);
+									System.out.println("$#12524#"); customer.setPassword(password);
         	customerData = customerFacade.registerCustomer( customer, merchantStore, language );
         }
 
@@ -208,10 +208,10 @@ public class CustomerRegistrationController extends AbstractController {
         {
             LOGGER.error( "Error while registering customer.. ", e);
         	ObjectError error = new ObjectError("registration",messages.getMessage("registration.failed", locale));
-        	bindingResult.addError(error);
+									System.out.println("$#12525#"); bindingResult.addError(error);
             StringBuilder template =
                             new StringBuilder().append( ControllerConstants.Tiles.Customer.register ).append( "." ).append( merchantStore.getStoreTemplate() );
-            return template.toString();
+												System.out.println("$#12526#"); return template.toString();
         }
         
         
@@ -220,7 +220,7 @@ public class CustomerRegistrationController extends AbstractController {
 	        /**
 	         * Send registration email
 	         */
-	        emailTemplatesUtils.sendRegistrationEmail( customer, merchantStore, locale, request.getContextPath() );
+									System.out.println("$#12527#"); emailTemplatesUtils.sendRegistrationEmail( customer, merchantStore, locale, request.getContextPath() );
 
         } catch(Exception e) {
     	   
@@ -237,48 +237,48 @@ public class CustomerRegistrationController extends AbstractController {
 	        //refresh customer
 	        Customer c = customerFacade.getCustomerByUserName(customer.getUserName(), merchantStore);
 	        //authenticate
-	        customerFacade.authenticate(c, userName, password);
-	        super.setSessionAttribute(Constants.CUSTOMER, c, request);
+									System.out.println("$#12528#"); customerFacade.authenticate(c, userName, password);
+									System.out.println("$#12529#"); super.setSessionAttribute(Constants.CUSTOMER, c, request);
 	        
 	        StringBuilder cookieValue = new StringBuilder();
             cookieValue.append(merchantStore.getCode()).append("_").append(c.getNick());
 	        
             //set username in the cookie
             Cookie cookie = new Cookie(Constants.COOKIE_NAME_USER, cookieValue.toString());
-            cookie.setMaxAge(60 * 24 * 3600);
-            cookie.setPath(Constants.SLASH);
-            response.addCookie(cookie);
+												System.out.println("$#12530#"); cookie.setMaxAge(60 * 24 * 3600);
+												System.out.println("$#12531#"); cookie.setPath(Constants.SLASH);
+												System.out.println("$#12532#"); response.addCookie(cookie);
             
             
             String sessionShoppingCartCode= (String)request.getSession().getAttribute( Constants.SHOPPING_CART );
-            if(!StringUtils.isBlank(sessionShoppingCartCode)) {
+												System.out.println("$#12533#"); if(!StringUtils.isBlank(sessionShoppingCartCode)) {
 	            ShoppingCart shoppingCart = customerFacade.mergeCart( c, sessionShoppingCartCode, merchantStore, language );
 	            ShoppingCartData shoppingCartData=this.populateShoppingCartData(shoppingCart, merchantStore, language);
-	            if(shoppingCartData !=null) {
-	                request.getSession().setAttribute(Constants.SHOPPING_CART, shoppingCartData.getCode());
+													System.out.println("$#12534#"); if(shoppingCartData !=null) {
+																	System.out.println("$#12535#"); request.getSession().setAttribute(Constants.SHOPPING_CART, shoppingCartData.getCode());
 	            }
 
 	            //set username in the cookie
 	            Cookie c1 = new Cookie(Constants.COOKIE_NAME_CART, shoppingCartData.getCode());
-	            c1.setMaxAge(60 * 24 * 3600);
-	            c1.setPath(Constants.SLASH);
-	            response.addCookie(c1);
+													System.out.println("$#12536#"); c1.setMaxAge(60 * 24 * 3600);
+													System.out.println("$#12537#"); c1.setPath(Constants.SLASH);
+													System.out.println("$#12538#"); response.addCookie(c1);
 	            
             }
 
-	        return "redirect:/shop/customer/dashboard.html";
+									System.out.println("$#12539#"); return "redirect:/shop/customer/dashboard.html";
         
         
         } catch(Exception e) {
         	LOGGER.error("Cannot authenticate user ",e);
         	ObjectError error = new ObjectError("registration",messages.getMessage("registration.failed", locale));
-        	bindingResult.addError(error);
+									System.out.println("$#12540#"); bindingResult.addError(error);
         }
         
         
         StringBuilder template =
                 new StringBuilder().append( ControllerConstants.Tiles.Customer.register ).append( "." ).append( merchantStore.getStoreTemplate() );
-        return template.toString();
+								System.out.println("$#12541#"); return template.toString();
 
     }
 	
@@ -289,18 +289,18 @@ public class CustomerRegistrationController extends AbstractController {
         Language language = (Language) request.getAttribute( "LANGUAGE" );
         try
         {
-            if ( language == null )
+												System.out.println("$#12542#"); if ( language == null )
             {
                 language = (Language) request.getAttribute( "LANGUAGE" );
             }
 
-            if ( language == null )
+												System.out.println("$#12543#"); if ( language == null )
             {
                 language = languageService.getByCode( Constants.DEFAULT_LANGUAGE );
             }
             
             List<Country> countryList=countryService.getCountries( language );
-            return countryList;
+												System.out.println("$#12544#"); return countryList;
         }
         catch ( ServiceException e )
         {
@@ -312,7 +312,7 @@ public class CustomerRegistrationController extends AbstractController {
 	
 	@ModelAttribute("zoneList")
     public List<Zone> getZones(final HttpServletRequest request){
-	    return zoneService.list();
+					System.out.println("$#12545#"); return zoneService.list();
 	}
 	
 	
@@ -323,12 +323,12 @@ public class CustomerRegistrationController extends AbstractController {
     private ShoppingCartData populateShoppingCartData(final ShoppingCart cartModel , final MerchantStore store, final Language language){
 
         ShoppingCartDataPopulator shoppingCartDataPopulator = new ShoppingCartDataPopulator();
-        shoppingCartDataPopulator.setShoppingCartCalculationService( shoppingCartCalculationService );
-        shoppingCartDataPopulator.setPricingService( pricingService );
+								System.out.println("$#12546#"); shoppingCartDataPopulator.setShoppingCartCalculationService( shoppingCartCalculationService );
+								System.out.println("$#12547#"); shoppingCartDataPopulator.setPricingService( pricingService );
         
         try
         {
-            return shoppingCartDataPopulator.populate(  cartModel ,  store,  language);
+												System.out.println("$#12548#"); return shoppingCartDataPopulator.populate(  cartModel ,  store,  language);
         }
         catch ( ConversionException ce )
         {

@@ -94,14 +94,14 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 			throws ServiceException {
 
 
-		if(product.getDescriptions()==null) {
-			product.setDescriptions(new HashSet<ProductDescription>());
+		System.out.println("$#1958#"); if(product.getDescriptions()==null) {
+			System.out.println("$#1959#"); product.setDescriptions(new HashSet<ProductDescription>());
 		}
 
 		product.getDescriptions().add(description);
-		description.setProduct(product);
-		update(product);
-		searchService.index(product.getMerchantStore(), product);
+		System.out.println("$#1960#"); description.setProduct(product);
+		System.out.println("$#1961#"); update(product);
+		System.out.println("$#1962#"); searchService.index(product.getMerchantStore(), product);
 	}
 
 	@Override
@@ -109,23 +109,23 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		Set ids = new HashSet(categoryIds);
-		return productRepository.getProductsListByCategories(ids);
+		System.out.println("$#1963#"); return productRepository.getProductsListByCategories(ids);
 
 	}
 
 	@Override
 	public List<Product> getProductsByIds(List<Long> productIds) throws ServiceException {
 		Set<Long> idSet = productIds.stream().collect(Collectors.toSet());
-		return productRepository.getProductsListByIds(idSet);
+		System.out.println("$#1964#"); return productRepository.getProductsListByIds(idSet);
 	}
 
 	public Product getById(Long productId) {
-		return productRepository.getById(productId);
+		System.out.println("$#1965#"); return productRepository.getById(productId);
 	}
 
 	@Override
 	public Product getProductWithOnlyMerchantStoreById(Long productId) {
-		return productRepository.getProductWithOnlyMerchantStoreById(productId);
+		System.out.println("$#1966#"); return productRepository.getProductWithOnlyMerchantStoreById(productId);
 	}
 
 	@Override
@@ -133,7 +133,7 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		Set<Long> ids = new HashSet(categoryIds);
-		return productRepository.getProductsListByCategories(ids, language);
+		System.out.println("$#1967#"); return productRepository.getProductsListByCategories(ids, language);
 
 	}
 
@@ -142,8 +142,8 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 	@Override
 	public ProductDescription getProductDescription(Product product, Language language) {
 		for (ProductDescription description : product.getDescriptions()) {
-			if (description.getLanguage().equals(language)) {
-				return description;
+			System.out.println("$#1968#"); if (description.getLanguage().equals(language)) {
+				System.out.println("$#1969#"); return description;
 			}
 		}
 		return null;
@@ -151,27 +151,27 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 
 	@Override
 	public Product getBySeUrl(MerchantStore store, String seUrl, Locale locale) {
-		return productRepository.getByFriendlyUrl(store, seUrl, locale);
+		System.out.println("$#1970#"); return productRepository.getByFriendlyUrl(store, seUrl, locale);
 	}
 
 	@Override
 	public Product getProductForLocale(long productId, Language language, Locale locale)
 			throws ServiceException {
 		Product product =  productRepository.getProductForLocale(productId, language, locale);
-		if(product==null) {
+		System.out.println("$#1971#"); if(product==null) {
 			return null;
 		}
 
-		CatalogServiceHelper.setToAvailability(product, locale);
-		CatalogServiceHelper.setToLanguage(product, language.getId());
-		return product;
+		System.out.println("$#1972#"); CatalogServiceHelper.setToAvailability(product, locale);
+		System.out.println("$#1973#"); CatalogServiceHelper.setToLanguage(product, language.getId());
+		System.out.println("$#1974#"); return product;
 	}
 
 	@Override
 	public List<Product> getProductsForLocale(Category category,
 			Language language, Locale locale) throws ServiceException {
 
-		if(category==null) {
+		System.out.println("$#1975#"); if(category==null) {
 			throw new ServiceException("The category is null");
 		}
 
@@ -192,30 +192,30 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 
 		//Filter availability
 
-		return products;
+		System.out.println("$#1976#"); return products;
 	}
 
 	@Override
 	public ProductList listByStore(MerchantStore store,
 			Language language, ProductCriteria criteria) {
 
-		return productRepository.listByStore(store, language, criteria);
+		System.out.println("$#1977#"); return productRepository.listByStore(store, language, criteria);
 	}
 
 	@Override
 	public List<Product> listByStore(MerchantStore store) {
 
-		return productRepository.listByStore(store);
+		System.out.println("$#1978#"); return productRepository.listByStore(store);
 	}
 
 	@Override
 	public List<Product> listByTaxClass(TaxClass taxClass) {
-		return productRepository.listByTaxClass(taxClass);
+		System.out.println("$#1979#"); return productRepository.listByTaxClass(taxClass);
 	}
 
 	@Override
 	public Product getByCode(String productCode, Language language) {
-		return productRepository.getByCode(productCode, language);
+		System.out.println("$#1980#"); return productRepository.getByCode(productCode, language);
 	}
 
 
@@ -228,43 +228,43 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 		Validate.notNull(product, "Product cannot be null");
 		Validate.notNull(product.getMerchantStore(), "MerchantStore cannot be null in product");
 		product = this.getById(product.getId());//Prevents detached entity error
-		product.setCategories(null);
+		System.out.println("$#1981#"); product.setCategories(null);
 
 		Set<ProductImage> images = product.getImages();
 
 		for(ProductImage image : images) {
-			productImageService.removeProductImage(image);
+			System.out.println("$#1982#"); productImageService.removeProductImage(image);
 		}
 
-		product.setImages(null);
+		System.out.println("$#1983#"); product.setImages(null);
 
 		//delete reviews
 		List<ProductReview> reviews = productReviewService.getByProductNoCustomers(product);
 		for(ProductReview review : reviews) {
-			productReviewService.delete(review);
+			System.out.println("$#1984#"); productReviewService.delete(review);
 		}
 
 		//related - featured
 		List<ProductRelationship> relationships = productRelationshipService.listByProduct(product);
 		for(ProductRelationship relationship : relationships) {
-			productRelationshipService.deleteRelationship(relationship);
+			System.out.println("$#1985#"); productRelationshipService.deleteRelationship(relationship);
 		}
 
-		super.delete(product);
-		searchService.deleteIndex(product.getMerchantStore(), product);
+		System.out.println("$#1986#"); super.delete(product);
+		System.out.println("$#1987#"); searchService.deleteIndex(product.getMerchantStore(), product);
 
 	}
 
 	@Override
 	public void create(Product product) throws ServiceException {
-		saveOrUpdate(product);
-		searchService.index(product.getMerchantStore(), product);
+		System.out.println("$#1988#"); saveOrUpdate(product);
+		System.out.println("$#1989#"); searchService.index(product.getMerchantStore(), product);
 	}
 
 	@Override
 	public void update(Product product) throws ServiceException {
-		saveOrUpdate(product);
-		searchService.index(product.getMerchantStore(), product);
+		System.out.println("$#1990#"); saveOrUpdate(product);
+		System.out.println("$#1991#"); searchService.index(product.getMerchantStore(), product);
 	}
 
 
@@ -279,10 +279,10 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 
 		/** save product first **/
 
-		if(product.getId()!=null && product.getId()>0) {
-			super.update(product);
+		System.out.println("$#1993#"); System.out.println("$#1992#"); if(product.getId()!=null && product.getId()>0) {
+			System.out.println("$#1995#"); super.update(product);
 		} else {
-			super.create(product);
+			System.out.println("$#1996#"); super.create(product);
 		}
 
 		/**
@@ -293,22 +293,22 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 
 		try {
 
-			if(images!=null && images.size()>0) {
+			System.out.println("$#1998#"); System.out.println("$#1997#"); if(images!=null && images.size()>0) {
 				for(ProductImage image : images) {
-					if(image.getImage()!=null && (image.getId()==null || image.getId()==0L)) {
-						image.setProduct(product);
+					System.out.println("$#2000#"); if(image.getImage()!=null && (image.getId()==null || image.getId()==0L)) {
+						System.out.println("$#2003#"); image.setProduct(product);
 
 				        InputStream inputStream = image.getImage();
 				        ImageContentFile cmsContentImage = new ImageContentFile();
-				        cmsContentImage.setFileName( image.getProductImage() );
-				        cmsContentImage.setFile( inputStream );
-				        cmsContentImage.setFileContentType(FileContentType.PRODUCT);
+												System.out.println("$#2004#"); cmsContentImage.setFileName( image.getProductImage() );
+												System.out.println("$#2005#"); cmsContentImage.setFile( inputStream );
+												System.out.println("$#2006#"); cmsContentImage.setFileContentType(FileContentType.PRODUCT);
 
-						productImageService.addProductImage(product, image, cmsContentImage);
+						System.out.println("$#2007#"); productImageService.addProductImage(product, image, cmsContentImage);
 						newImageIds.add(image.getId());
 					} else {
-					    if(image.getId()!=null) {
-    						productImageService.save(image);
+									System.out.println("$#2008#"); if(image.getId()!=null) {
+										System.out.println("$#2009#"); productImageService.save(image);
     						newImageIds.add(image.getId());
 					    }
 					}
@@ -316,23 +316,23 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 			}
 
 			//cleanup old and new images
-			if(originalProductImages!=null) {
+			System.out.println("$#2010#"); if(originalProductImages!=null) {
 				for(ProductImage image : originalProductImages) {
 
-                  if(image.getImage()!=null && image.getId()==null) {
-                     image.setProduct(product);
+																		System.out.println("$#2011#"); if(image.getImage()!=null && image.getId()==null) {
+																					System.out.println("$#2013#"); image.setProduct(product);
 
                      InputStream inputStream = image.getImage();
                      ImageContentFile cmsContentImage = new ImageContentFile();
-                     cmsContentImage.setFileName( image.getProductImage() );
-                     cmsContentImage.setFile( inputStream );
-                     cmsContentImage.setFileContentType(FileContentType.PRODUCT);
+																					System.out.println("$#2014#"); cmsContentImage.setFileName( image.getProductImage() );
+																					System.out.println("$#2015#"); cmsContentImage.setFile( inputStream );
+																					System.out.println("$#2016#"); cmsContentImage.setFileContentType(FileContentType.PRODUCT);
 
-                     productImageService.addProductImage(product, image, cmsContentImage);
+																					System.out.println("$#2017#"); productImageService.addProductImage(product, image, cmsContentImage);
                      newImageIds.add(image.getId());
                   } else {
-                    if(!newImageIds.contains(image.getId())) {
-                        productImageService.delete(image);
+																				System.out.println("$#2018#"); if(!newImageIds.contains(image.getId())) {
+																								System.out.println("$#2019#"); productImageService.delete(image);
                     }
                   }
 				}
@@ -350,7 +350,7 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
   public Product findOne(Long id, MerchantStore merchant) {
     Validate.notNull(merchant,"MerchantStore must not be null");
     Validate.notNull(id,"id must not be null");
-    return productRepository.getById(id, merchant);
+				System.out.println("$#2020#"); return productRepository.getById(id, merchant);
   }
 
 

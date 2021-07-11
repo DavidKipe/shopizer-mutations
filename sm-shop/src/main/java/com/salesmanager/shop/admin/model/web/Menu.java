@@ -21,14 +21,14 @@ public class Menu implements Serializable {
 	private int order;
 	private List<Menu> menus = new ArrayList<Menu>();
 	public String getCode() {
-		return code;
+		System.out.println("$#7855#"); return code;
 	}
 	@JsonProperty("code")  
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getUrl() {
-		return url;
+		System.out.println("$#7856#"); return url;
 	}
 	@JsonProperty("url")  
 	public void setUrl(String url) {
@@ -38,14 +38,14 @@ public class Menu implements Serializable {
 	 
 
 	public int getOrder() {
-		return order;
+		System.out.println("$#7857#"); return order;
 	}
 	@JsonProperty("order")  
 	public void setOrder(int order) {
 		this.order = order;
 	}
 	public List<Menu> getMenus() {
-		return menus;
+		System.out.println("$#7858#"); return menus;
 	}
 	@JsonProperty("menus")  
 	public void setMenus(List<Menu> menus) {
@@ -55,10 +55,10 @@ public class Menu implements Serializable {
 		this.icon = icon;
 	}
 	public String getIcon() {
-		return icon;
+		System.out.println("$#7859#"); return icon;
 	}
 	public String getRole() {
-		return role;
+		System.out.println("$#7860#"); return role;
 	}
 	@JsonProperty("role") 
 	public void setRole(String role) {

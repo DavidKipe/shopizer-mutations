@@ -118,14 +118,14 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		request.setCharacterEncoding("UTF-8");
+		System.out.println("$#8049#"); request.setCharacterEncoding("UTF-8");
 
 		/**
 		 * if url contains /services exit from here !
 		 */
-		if (request.getRequestURL().toString().toLowerCase().contains(SERVICES_URL_PATTERN)
+		System.out.println("$#8050#"); if (request.getRequestURL().toString().toLowerCase().contains(SERVICES_URL_PATTERN)
 				|| request.getRequestURL().toString().toLowerCase().contains(REFERENCE_URL_PATTERN)) {
-			return true;
+			System.out.println("$#8052#"); return true;
 		}
 
 		/*****
@@ -146,11 +146,11 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 			// remove link set from controllers for declaring active - inactive
 			// links
-			request.removeAttribute(Constants.LINK_CODE);
+			System.out.println("$#8053#"); request.removeAttribute(Constants.LINK_CODE);
 
-			if (!StringUtils.isBlank(storeCode)) {
-				if (store != null) {
-					if (!store.getCode().equals(storeCode)) {
+			System.out.println("$#8054#"); if (!StringUtils.isBlank(storeCode)) {
+				System.out.println("$#8055#"); if (store != null) {
+					System.out.println("$#8056#"); if (!store.getCode().equals(storeCode)) {
 						store = setMerchantStoreInSession(request, storeCode);
 					}
 				} else { // when url sm-shop/shop is being loaded for first time
@@ -159,14 +159,14 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 				}
 			}
 
-			if (store == null) {
+			System.out.println("$#8057#"); if (store == null) {
 				store = setMerchantStoreInSession(request, MerchantStore.DEFAULT_STORE);
 			}
 			
-			if(StringUtils.isBlank(store.getStoreTemplate())) {
-				store.setStoreTemplate(Constants.DEFAULT_TEMPLATE);
+			System.out.println("$#8058#"); if(StringUtils.isBlank(store.getStoreTemplate())) {
+				System.out.println("$#8059#"); store.setStoreTemplate(Constants.DEFAULT_TEMPLATE);
 			}
-			request.setAttribute(Constants.MERCHANT_STORE, store);
+			System.out.println("$#8060#"); request.setAttribute(Constants.MERCHANT_STORE, store);
 			
 			
 			/*
@@ -190,51 +190,51 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			String ipAddress = GeoLocationUtils.getClientIpAddress(request);
 			
 			UserContext userContext = UserContext.create();
-			userContext.setIpAddress(ipAddress);
+			System.out.println("$#8061#"); userContext.setIpAddress(ipAddress);
 
 			/** customer **/
 			Customer customer = (Customer) request.getSession().getAttribute(Constants.CUSTOMER);
-			if (customer != null) {
-				if (customer.getMerchantStore().getId().intValue() != store.getId().intValue()) {
-					request.getSession().removeAttribute(Constants.CUSTOMER);
+			System.out.println("$#8062#"); if (customer != null) {
+				System.out.println("$#8063#"); if (customer.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+					System.out.println("$#8064#"); request.getSession().removeAttribute(Constants.CUSTOMER);
 				}
-				if (!customer.isAnonymous()) {
-					if (!request.isUserInRole("AUTH_CUSTOMER")) {
-						request.removeAttribute(Constants.CUSTOMER);
+				System.out.println("$#8065#"); if (!customer.isAnonymous()) {
+					System.out.println("$#8066#"); if (!request.isUserInRole("AUTH_CUSTOMER")) {
+						System.out.println("$#8067#"); request.removeAttribute(Constants.CUSTOMER);
 					}
 				}
 				
 				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 				
-				request.setAttribute(Constants.CUSTOMER, customer);
+				System.out.println("$#8068#"); request.setAttribute(Constants.CUSTOMER, customer);
 			}
 
-			if (customer == null) {
+			System.out.println("$#8069#"); if (customer == null) {
 
 				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-				if (auth != null && request.isUserInRole("AUTH_CUSTOMER")) {
+				System.out.println("$#8070#"); if (auth != null && request.isUserInRole("AUTH_CUSTOMER")) {
 					customer = customerService.getByNick(auth.getName());
-					if (customer != null) {
-						request.setAttribute(Constants.CUSTOMER, customer);
+					System.out.println("$#8072#"); if (customer != null) {
+						System.out.println("$#8073#"); request.setAttribute(Constants.CUSTOMER, customer);
 					}
 				}
 			}
 
 			AnonymousCustomer anonymousCustomer = (AnonymousCustomer) request.getSession()
 					.getAttribute(Constants.ANONYMOUS_CUSTOMER);
-			if (anonymousCustomer == null) {
+			System.out.println("$#8074#"); if (anonymousCustomer == null) {
 
 				Address address = null;
 				try {
 
-					if(!StringUtils.isBlank(ipAddress)) {
+					System.out.println("$#8075#"); if(!StringUtils.isBlank(ipAddress)) {
 						com.salesmanager.core.model.common.Address geoAddress = customerService.getCustomerAddress(store,
 								ipAddress);
-						if (geoAddress != null) {
+						System.out.println("$#8076#"); if (geoAddress != null) {
 							address = new Address();
-							address.setCountry(geoAddress.getCountry());
-							address.setCity(geoAddress.getCity());
-							address.setZone(geoAddress.getZone());
+							System.out.println("$#8077#"); address.setCountry(geoAddress.getCountry());
+							System.out.println("$#8078#"); address.setCity(geoAddress.getCity());
+							System.out.println("$#8079#"); address.setZone(geoAddress.getZone());
 							/** no postal code **/
 							// address.setPostalCode(geoAddress.getPostalCode());
 						}
@@ -243,37 +243,37 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 					LOGGER.error("Cannot get geo ip component ", ce);
 				}
 
-				if (address == null) {
+				System.out.println("$#8080#"); if (address == null) {
 					address = new Address();
-					address.setCountry(store.getCountry().getIsoCode());
-					if (store.getZone() != null) {
-						address.setZone(store.getZone().getCode());
+					System.out.println("$#8081#"); address.setCountry(store.getCountry().getIsoCode());
+					System.out.println("$#8082#"); if (store.getZone() != null) {
+						System.out.println("$#8083#"); address.setZone(store.getZone().getCode());
 					} else {
-						address.setStateProvince(store.getStorestateprovince());
+						System.out.println("$#8084#"); address.setStateProvince(store.getStorestateprovince());
 					}
 					/** no postal code **/
 					// address.setPostalCode(store.getStorepostalcode());
 				}
 
 				anonymousCustomer = new AnonymousCustomer();
-				anonymousCustomer.setBilling(address);
-				request.getSession().setAttribute(Constants.ANONYMOUS_CUSTOMER, anonymousCustomer);
+				System.out.println("$#8085#"); anonymousCustomer.setBilling(address);
+				System.out.println("$#8086#"); request.getSession().setAttribute(Constants.ANONYMOUS_CUSTOMER, anonymousCustomer);
 			} else {
-				request.setAttribute(Constants.ANONYMOUS_CUSTOMER, anonymousCustomer);
+				System.out.println("$#8087#"); request.setAttribute(Constants.ANONYMOUS_CUSTOMER, anonymousCustomer);
 			}
 
 			/** language & locale **/
 			Language language = languageUtils.getRequestLanguage(request, response);
-			request.setAttribute(Constants.LANGUAGE, language);
+			System.out.println("$#8088#"); request.setAttribute(Constants.LANGUAGE, language);
 
 			Locale locale = languageService.toLocale(language, store);
-			request.setAttribute(Constants.LOCALE, locale);
+			System.out.println("$#8089#"); request.setAttribute(Constants.LOCALE, locale);
 
 			// Locale locale = LocaleContextHolder.getLocale();
-			LocaleContextHolder.setLocale(locale);
+			System.out.println("$#8090#"); LocaleContextHolder.setLocale(locale);
 
 			/** Breadcrumbs **/
-			setBreadcrumb(request, locale);
+			System.out.println("$#8091#"); setBreadcrumb(request, locale);
 
 			/**
 			 * Get global objects Themes are built on a similar way displaying
@@ -299,14 +299,14 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			 */
 
 			/******* CMS Objects ********/
-			this.getContentObjects(store, language, request);
+			System.out.println("$#8092#"); this.getContentObjects(store, language, request);
 
 			/******* CMS Page names **********/
-			this.getContentPageNames(store, language, request);
+			System.out.println("$#8093#"); this.getContentPageNames(store, language, request);
 
 			/******* Top Categories ********/
 			// this.getTopCategories(store, language, request);
-			this.setTopCategories(store, language, request);
+			System.out.println("$#8094#"); this.setTopCategories(store, language, request);
 
 			/******* Default metatags *******/
 
@@ -315,15 +315,15 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			 */
 
 			PageInformation pageInformation = new PageInformation();
-			pageInformation.setPageTitle(store.getStorename());
-			pageInformation.setPageDescription(store.getStorename());
-			pageInformation.setPageKeywords(store.getStorename());
+			System.out.println("$#8095#"); pageInformation.setPageTitle(store.getStorename());
+			System.out.println("$#8096#"); pageInformation.setPageDescription(store.getStorename());
+			System.out.println("$#8097#"); pageInformation.setPageKeywords(store.getStorename());
 
 			@SuppressWarnings("unchecked")
 			Map<String, ContentDescription> contents = (Map<String, ContentDescription>) request
 					.getAttribute(Constants.REQUEST_CONTENT_OBJECTS);
 
-			if (contents != null) {
+			System.out.println("$#8098#"); if (contents != null) {
 				// for(String key : contents.keySet()) {
 				// List<ContentDescription> contentsList = contents.get(key);
 				// for(Content content : contentsList) {
@@ -332,14 +332,14 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 				// List<ContentDescription> descriptions =
 				// content.getDescriptions();
 				ContentDescription contentDescription = contents.get(Constants.CONTENT_LANDING_PAGE);
-				if (contentDescription != null) {
+				System.out.println("$#8099#"); if (contentDescription != null) {
 					// for(ContentDescription contentDescription : descriptions)
 					// {
 					// if(contentDescription.getLanguage().getCode().equals(language.getCode()))
 					// {
-					pageInformation.setPageTitle(contentDescription.getName());
-					pageInformation.setPageDescription(contentDescription.getMetatagDescription());
-					pageInformation.setPageKeywords(contentDescription.getMetatagKeywords());
+					System.out.println("$#8100#"); pageInformation.setPageTitle(contentDescription.getName());
+					System.out.println("$#8101#"); pageInformation.setPageDescription(contentDescription.getMetatagDescription());
+					System.out.println("$#8102#"); pageInformation.setPageKeywords(contentDescription.getMetatagKeywords());
 					// }
 				}
 				// }
@@ -347,7 +347,7 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 				// }
 			}
 
-			request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
+			System.out.println("$#8103#"); request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
 
 			/******* Configuration objects *******/
 
@@ -357,20 +357,20 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			 * customer login - ...
 			 */
 
-			this.getMerchantConfigurations(store, request);
+			System.out.println("$#8104#"); this.getMerchantConfigurations(store, request);
 
 			/******* Shopping Cart *********/
 
 			String shoppingCarCode = (String) request.getSession().getAttribute(Constants.SHOPPING_CART);
-			if (shoppingCarCode != null) {
-				request.setAttribute(Constants.REQUEST_SHOPPING_CART, shoppingCarCode);
+			System.out.println("$#8105#"); if (shoppingCarCode != null) {
+				System.out.println("$#8106#"); request.setAttribute(Constants.REQUEST_SHOPPING_CART, shoppingCarCode);
 			}
 
 		} catch (Exception e) {
 			LOGGER.error("Error in StoreFilter", e);
 		}
 
-		return true;
+		System.out.println("$#8107#"); return true;
 
 	}
 
@@ -385,11 +385,11 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 		Map<String, Object> configs = null;
 
-		if (store.isUseCache()) {
+		System.out.println("$#8108#"); if (store.isUseCache()) {
 
 			// get from the cache
 			configs = (Map<String, Object>) cache.getFromCache(configKey.toString());
-			if (configs == null) {
+			System.out.println("$#8109#"); if (configs == null) {
 				// get from missed cache
 				// Boolean missedContent =
 				// (Boolean)cache.getFromCache(configKeyMissed.toString());
@@ -398,8 +398,8 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 				configs = this.getConfigurations(store);
 				// put in cache
 
-				if (configs != null) {
-					cache.putInCache(configs, configKey.toString());
+				System.out.println("$#8110#"); if (configs != null) {
+					System.out.println("$#8111#"); cache.putInCache(configs, configKey.toString());
 				} else {
 					// put in missed cache
 					// cache.putInCache(new Boolean(true),
@@ -412,8 +412,8 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			configs = this.getConfigurations(store);
 		}
 
-		if (configs != null && configs.size() > 0) {
-			request.setAttribute(Constants.REQUEST_CONFIGS, configs);
+		System.out.println("$#8113#"); System.out.println("$#8112#"); if (configs != null && configs.size() > 0) {
+			System.out.println("$#8115#"); request.setAttribute(Constants.REQUEST_CONFIGS, configs);
 		}
 
 	}
@@ -443,12 +443,12 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 		Map<String, List<ContentDescription>> contents = null;
 
-		if (store.isUseCache()) {
+		System.out.println("$#8116#"); if (store.isUseCache()) {
 
 			// get from the cache
 			contents = (Map<String, List<ContentDescription>>) cache.getFromCache(contentKey.toString());
 
-			if (contents == null) {
+			System.out.println("$#8117#"); if (contents == null) {
 				// get from missed cache
 				// Boolean missedContent =
 				// (Boolean)cache.getFromCache(contentKeyMissed.toString());
@@ -457,9 +457,9 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 				contents = this.getContentPagesNames(store, language);
 
-				if (contents != null) {
+				System.out.println("$#8118#"); if (contents != null) {
 					// put in cache
-					cache.putInCache(contents, contentKey.toString());
+					System.out.println("$#8119#"); cache.putInCache(contents, contentKey.toString());
 
 				} else {
 					// put in missed cache
@@ -472,11 +472,11 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			contents = this.getContentPagesNames(store, language);
 		}
 
-		if (contents != null && contents.size() > 0) {
+		System.out.println("$#8121#"); System.out.println("$#8120#"); if (contents != null && contents.size() > 0) {
 			List<ContentDescription> descriptions = contents.get(contentKey.toString());
 
-			if (descriptions != null) {
-				request.setAttribute(Constants.REQUEST_CONTENT_PAGE_OBJECTS, descriptions);
+			System.out.println("$#8123#"); if (descriptions != null) {
+				System.out.println("$#8124#"); request.setAttribute(Constants.REQUEST_CONTENT_PAGE_OBJECTS, descriptions);
 			}
 		}
 	}
@@ -506,12 +506,12 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 		Map<String, List<Content>> contents = null;
 
-		if (store.isUseCache()) {
+		System.out.println("$#8125#"); if (store.isUseCache()) {
 
 			// get from the cache
 			contents = (Map<String, List<Content>>) cache.getFromCache(contentKey.toString());
 
-			if (contents == null) {
+			System.out.println("$#8126#"); if (contents == null) {
 
 				// get from missed cache
 				// Boolean missedContent =
@@ -520,9 +520,9 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 				// if(missedContent==null) {
 
 				contents = this.getContent(store, language);
-				if (contents != null && contents.size() > 0) {
+				System.out.println("$#8128#"); System.out.println("$#8127#"); if (contents != null && contents.size() > 0) {
 					// put in cache
-					cache.putInCache(contents, contentKey.toString());
+					System.out.println("$#8130#"); cache.putInCache(contents, contentKey.toString());
 				} else {
 					// put in missed cache
 					// cache.putInCache(new Boolean(true),
@@ -537,20 +537,20 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 		}
 
-		if (contents != null && contents.size() > 0) {
+		System.out.println("$#8132#"); System.out.println("$#8131#"); if (contents != null && contents.size() > 0) {
 
 			// request.setAttribute(Constants.REQUEST_CONTENT_OBJECTS,
 			// contents);
 
 			List<Content> contentByStore = contents.get(contentKey.toString());
-			if (!CollectionUtils.isEmpty(contentByStore)) {
+			System.out.println("$#8134#"); if (!CollectionUtils.isEmpty(contentByStore)) {
 				Map<String, ContentDescription> contentMap = new HashMap<String, ContentDescription>();
 				for (Content content : contentByStore) {
-					if (content.isVisible()) {
+					System.out.println("$#8135#"); if (content.isVisible()) {
 						contentMap.put(content.getCode(), content.getDescription());
 					}
 				}
-				request.setAttribute(Constants.REQUEST_CONTENT_OBJECTS, contentMap);
+				System.out.println("$#8136#"); request.setAttribute(Constants.REQUEST_CONTENT_OBJECTS, contentMap);
 			}
 
 		}
@@ -571,10 +571,10 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 		Map<String, List<ReadableCategory>> objects = null;
 		List<ReadableCategory> loadedCategories = null;
 
-		if (store.isUseCache()) {
+		System.out.println("$#8137#"); if (store.isUseCache()) {
 			objects = (Map<String, List<ReadableCategory>>) webApplicationCache.getFromCache(categoriesKey.toString());
 
-			if (objects == null) {
+			System.out.println("$#8138#"); if (objects == null) {
 				// load categories
 				ReadableCategoryList categoryList = categoryFacade.getCategoryHierarchy(store, null, 0, language, null,
 						0, 200);// null
@@ -585,7 +585,7 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 				objects = new ConcurrentHashMap<String, List<ReadableCategory>>();
 				objects.put(language.getCode(), loadedCategories);
-				webApplicationCache.putInCache(categoriesKey.toString(), objects);
+				System.out.println("$#8141#"); webApplicationCache.putInCache(categoriesKey.toString(), objects);
 
 			} else {
 				loadedCategories = objects.get(language.getCode());
@@ -598,8 +598,8 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			loadedCategories = categoryList.getCategories();
 		}
 
-		if (loadedCategories != null) {
-			request.setAttribute(Constants.REQUEST_TOP_CATEGORIES, loadedCategories);
+		System.out.println("$#8142#"); if (loadedCategories != null) {
+			System.out.println("$#8143#"); request.setAttribute(Constants.REQUEST_TOP_CATEGORIES, loadedCategories);
 		}
 
 	}
@@ -615,7 +615,7 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 		List<ContentDescription> contentPages = contentService.listNameByType(contentTypes, store, language);
 
-		if (contentPages != null && contentPages.size() > 0) {
+		System.out.println("$#8145#"); System.out.println("$#8144#"); if (contentPages != null && contentPages.size() > 0) {
 
 			// create a Map<String,List<Content>
 			for (ContentDescription content : contentPages) {
@@ -624,16 +624,16 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 				String key = new StringBuilder().append(store.getId()).append("_")
 						.append(Constants.CONTENT_PAGE_CACHE_KEY).append("-").append(lang.getCode()).toString();
 				List<ContentDescription> contentList = null;
-				if (contents == null || contents.size() == 0) {
+				System.out.println("$#8147#"); if (contents == null || contents.size() == 0) {
 					contents = new HashMap<String, List<ContentDescription>>();
 				}
-				if (!contents.containsKey(key)) {
+				System.out.println("$#8149#"); if (!contents.containsKey(key)) {
 					contentList = new ArrayList<ContentDescription>();
 
 					contents.put(key, contentList);
 				} else {// get from key
 					contentList = contents.get(key);
-					if (contentList == null) {
+					System.out.println("$#8150#"); if (contentList == null) {
 						LOGGER.error("Cannot find content key in cache " + key);
 						continue;
 					}
@@ -641,7 +641,7 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 				contentList.add(content);
 			}
 		}
-		return contents;
+		System.out.println("$#8151#"); return contents;
 	}
 
 	private Map<String, List<Content>> getContent(MerchantStore store, Language language) throws Exception {
@@ -655,27 +655,27 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 		List<Content> contentPages = contentService.listByType(contentTypes, store, language);
 
-		if (contentPages != null && contentPages.size() > 0) {
+		System.out.println("$#8153#"); System.out.println("$#8152#"); if (contentPages != null && contentPages.size() > 0) {
 
 			// create a Map<String,List<Content>
 			for (Content content : contentPages) {
-				if (content.isVisible()) {
+				System.out.println("$#8155#"); if (content.isVisible()) {
 					List<ContentDescription> descriptions = content.getDescriptions();
 					for (ContentDescription contentDescription : descriptions) {
 						Language lang = contentDescription.getLanguage();
 						String key = new StringBuilder().append(store.getId()).append("_")
 								.append(Constants.CONTENT_CACHE_KEY).append("-").append(lang.getCode()).toString();
 						List<Content> contentList = null;
-						if (contents == null || contents.size() == 0) {
+						System.out.println("$#8156#"); if (contents == null || contents.size() == 0) {
 							contents = new HashMap<String, List<Content>>();
 						}
-						if (!contents.containsKey(key)) {
+						System.out.println("$#8158#"); if (!contents.containsKey(key)) {
 							contentList = new ArrayList<Content>();
 
 							contents.put(key, contentList);
 						} else {// get from key
 							contentList = contents.get(key);
-							if (contentList == null) {
+							System.out.println("$#8159#"); if (contentList == null) {
 								LOGGER.error("Cannot find content key in cache " + key);
 								continue;
 							}
@@ -685,7 +685,7 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 				}
 			}
 		}
-		return contents;
+		System.out.println("$#8160#"); return contents;
 	}
 
 	/**
@@ -714,11 +714,11 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 		Map<String, ReadableCategory> subs = new ConcurrentHashMap<String, ReadableCategory>();
 
-		if (categories != null && categories.size() > 0) {
+		System.out.println("$#8162#"); System.out.println("$#8161#"); if (categories != null && categories.size() > 0) {
 
 			// create a Map<String,List<Content>
 			for (Category category : categories) {
-				if (category.isVisible()) {
+				System.out.println("$#8164#"); if (category.isVisible()) {
 					// if(category.getDepth().intValue()==0) {
 					// ReadableCategory readableCategory = new
 					// ReadableCategory();
@@ -736,23 +736,23 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 						String key = new StringBuilder().append(store.getId()).append("_")
 								.append(Constants.CATEGORIES_CACHE_KEY).append("-").append(lang.getCode()).toString();
 
-						if (category.getDepth().intValue() == 0) {
+						System.out.println("$#8165#"); if (category.getDepth().intValue() == 0) {
 
 							// List<Category> cacheCategories = null;
 							List<ReadableCategory> cacheCategories = null;
-							if (objects == null || objects.size() == 0) {
+							System.out.println("$#8166#"); if (objects == null || objects.size() == 0) {
 								// objects = new HashMap<String,
 								// List<Category>>();
 								objects = new HashMap<String, List<ReadableCategory>>();
 							}
-							if (!objects.containsKey(key)) {
+							System.out.println("$#8168#"); if (!objects.containsKey(key)) {
 								// cacheCategories = new ArrayList<Category>();
 								cacheCategories = new ArrayList<ReadableCategory>();
 
 								objects.put(key, cacheCategories);
 							} else {
 								cacheCategories = objects.get(key.toString());
-								if (cacheCategories == null) {
+								System.out.println("$#8169#"); if (cacheCategories == null) {
 									LOGGER.error("Cannot find categories key in cache " + key);
 									continue;
 								}
@@ -768,7 +768,7 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			}
 
 		}
-		return objects;
+		System.out.println("$#8170#"); return objects;
 	}
 
 	@SuppressWarnings("unused")
@@ -784,15 +784,15 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			List<MerchantConfiguration> socialConfigs = merchantConfigurationService
 					.listByType(MerchantConfigurationType.SOCIAL, store);
 
-			if (!CollectionUtils.isEmpty(socialConfigs)) {
-				if (CollectionUtils.isEmpty(merchantConfiguration)) {
+			System.out.println("$#8171#"); if (!CollectionUtils.isEmpty(socialConfigs)) {
+				System.out.println("$#8172#"); if (CollectionUtils.isEmpty(merchantConfiguration)) {
 					merchantConfiguration = new ArrayList<MerchantConfiguration>();
 				}
 				merchantConfiguration.addAll(socialConfigs);
 			}
 
-			if (CollectionUtils.isEmpty(merchantConfiguration)) {
-				return configs;
+			System.out.println("$#8173#"); if (CollectionUtils.isEmpty(merchantConfiguration)) {
+				System.out.println("$#8174#"); return configs;
 			}
 
 			for (MerchantConfiguration configuration : merchantConfiguration) {
@@ -804,8 +804,8 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 			// get MerchantConfig
 			MerchantConfig merchantConfig = merchantConfigurationService.getMerchantConfig(store);
-			if (merchantConfig != null) {
-				if (configs == null) {
+			System.out.println("$#8175#"); if (merchantConfig != null) {
+				System.out.println("$#8176#"); if (configs == null) {
 					configs = new HashMap<String, Object>();
 				}
 
@@ -821,7 +821,7 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			LOGGER.error("Exception while getting configurations", e);
 		}
 
-		return configs;
+		System.out.println("$#8177#"); return configs;
 
 	}
 
@@ -832,54 +832,54 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 			// breadcrumb
 			Breadcrumb breadCrumb = (Breadcrumb) request.getSession().getAttribute(Constants.BREADCRUMB);
 			Language language = (Language) request.getAttribute(Constants.LANGUAGE);
-			if (breadCrumb == null) {
+			System.out.println("$#8178#"); if (breadCrumb == null) {
 				breadCrumb = new Breadcrumb();
-				breadCrumb.setLanguage(language);
+				System.out.println("$#8179#"); breadCrumb.setLanguage(language);
 				BreadcrumbItem item = this.getDefaultBreadcrumbItem(language, locale);
 				breadCrumb.getBreadCrumbs().add(item);
 			} else {
 
 				// check language
-				if (language.getCode().equals(breadCrumb.getLanguage().getCode())) {
+				System.out.println("$#8180#"); if (language.getCode().equals(breadCrumb.getLanguage().getCode())) {
 
 					// rebuild using the appropriate language
 					List<BreadcrumbItem> items = new ArrayList<BreadcrumbItem>();
 					for (BreadcrumbItem item : breadCrumb.getBreadCrumbs()) {
 
-						if (item.getItemType().name().equals(BreadcrumbItemType.HOME)) {
+						System.out.println("$#8181#"); if (item.getItemType().name().equals(BreadcrumbItemType.HOME)) {
 							BreadcrumbItem homeItem = this.getDefaultBreadcrumbItem(language, locale);
-							homeItem.setItemType(BreadcrumbItemType.HOME);
-							homeItem.setLabel(messages.getMessage(Constants.HOME_MENU_KEY, locale));
-							homeItem.setUrl(Constants.HOME_URL);
+							System.out.println("$#8182#"); homeItem.setItemType(BreadcrumbItemType.HOME);
+							System.out.println("$#8183#"); homeItem.setLabel(messages.getMessage(Constants.HOME_MENU_KEY, locale));
+							System.out.println("$#8184#"); homeItem.setUrl(Constants.HOME_URL);
 							items.add(homeItem);
-						} else if (item.getItemType().name().equals(BreadcrumbItemType.PRODUCT)) {
+						} else if (item.getItemType().name().equals(BreadcrumbItemType.PRODUCT)) { System.out.println("$#8185#");
 							Product product = productService.getProductForLocale(item.getId(), language, locale);
-							if (product != null) {
+							System.out.println("$#8186#"); if (product != null) {
 								BreadcrumbItem productItem = new BreadcrumbItem();
-								productItem.setId(product.getId());
-								productItem.setItemType(BreadcrumbItemType.PRODUCT);
-								productItem.setLabel(product.getProductDescription().getName());
-								productItem.setUrl(product.getProductDescription().getSeUrl());
+								System.out.println("$#8187#"); productItem.setId(product.getId());
+								System.out.println("$#8188#"); productItem.setItemType(BreadcrumbItemType.PRODUCT);
+								System.out.println("$#8189#"); productItem.setLabel(product.getProductDescription().getName());
+								System.out.println("$#8190#"); productItem.setUrl(product.getProductDescription().getSeUrl());
 								items.add(productItem);
 							}
-						} else if (item.getItemType().name().equals(BreadcrumbItemType.CATEGORY)) {
+						} else if (item.getItemType().name().equals(BreadcrumbItemType.CATEGORY)) { System.out.println("$#8191#");
 							Category category = categoryService.getOneByLanguage(item.getId(), language);
-							if (category != null) {
+							System.out.println("$#8192#"); if (category != null) {
 								BreadcrumbItem categoryItem = new BreadcrumbItem();
-								categoryItem.setId(category.getId());
-								categoryItem.setItemType(BreadcrumbItemType.CATEGORY);
-								categoryItem.setLabel(category.getDescription().getName());
-								categoryItem.setUrl(category.getDescription().getSeUrl());
+								System.out.println("$#8193#"); categoryItem.setId(category.getId());
+								System.out.println("$#8194#"); categoryItem.setItemType(BreadcrumbItemType.CATEGORY);
+								System.out.println("$#8195#"); categoryItem.setLabel(category.getDescription().getName());
+								System.out.println("$#8196#"); categoryItem.setUrl(category.getDescription().getSeUrl());
 								items.add(categoryItem);
 							}
-						} else if (item.getItemType().name().equals(BreadcrumbItemType.PAGE)) {
+						} else if (item.getItemType().name().equals(BreadcrumbItemType.PAGE)) { System.out.println("$#8197#");
 							Content content = contentService.getByLanguage(item.getId(), language);
-							if (content != null) {
+							System.out.println("$#8198#"); if (content != null) {
 								BreadcrumbItem contentItem = new BreadcrumbItem();
-								contentItem.setId(content.getId());
-								contentItem.setItemType(BreadcrumbItemType.PAGE);
-								contentItem.setLabel(content.getDescription().getName());
-								contentItem.setUrl(content.getDescription().getSeUrl());
+								System.out.println("$#8199#"); contentItem.setId(content.getId());
+								System.out.println("$#8200#"); contentItem.setItemType(BreadcrumbItemType.PAGE);
+								System.out.println("$#8201#"); contentItem.setLabel(content.getDescription().getName());
+								System.out.println("$#8202#"); contentItem.setUrl(content.getDescription().getSeUrl());
 								items.add(contentItem);
 							}
 						}
@@ -887,15 +887,15 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 					}
 
 					breadCrumb = new Breadcrumb();
-					breadCrumb.setLanguage(language);
-					breadCrumb.setBreadCrumbs(items);
+					System.out.println("$#8203#"); breadCrumb.setLanguage(language);
+					System.out.println("$#8204#"); breadCrumb.setBreadCrumbs(items);
 
 				}
 
 			}
 
-			request.getSession().setAttribute(Constants.BREADCRUMB, breadCrumb);
-			request.setAttribute(Constants.BREADCRUMB, breadCrumb);
+			System.out.println("$#8205#"); request.getSession().setAttribute(Constants.BREADCRUMB, breadCrumb);
+			System.out.println("$#8206#"); request.setAttribute(Constants.BREADCRUMB, breadCrumb);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while building breadcrumbs", e);
@@ -907,10 +907,10 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 
 		// set home page item
 		BreadcrumbItem item = new BreadcrumbItem();
-		item.setItemType(BreadcrumbItemType.HOME);
-		item.setLabel(messages.getMessage(Constants.HOME_MENU_KEY, locale));
-		item.setUrl(Constants.HOME_URL);
-		return item;
+		System.out.println("$#8207#"); item.setItemType(BreadcrumbItemType.HOME);
+		System.out.println("$#8208#"); item.setLabel(messages.getMessage(Constants.HOME_MENU_KEY, locale));
+		System.out.println("$#8209#"); item.setUrl(Constants.HOME_URL);
+		System.out.println("$#8210#"); return item;
 
 	}
 
@@ -924,27 +924,27 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 	 * @throws Exception
 	 */
 	private MerchantStore setMerchantStoreInSession(HttpServletRequest request, String storeCode) throws Exception {
-		if (storeCode == null || request == null)
+		System.out.println("$#8211#"); if (storeCode == null || request == null)
 			return null;
 		MerchantStore store = merchantService.getByCode(storeCode);
-		if (store != null) {
-			request.getSession().setAttribute(Constants.MERCHANT_STORE, store);
+		System.out.println("$#8213#"); if (store != null) {
+			System.out.println("$#8214#"); request.getSession().setAttribute(Constants.MERCHANT_STORE, store);
 		}
-		return store;
+		System.out.println("$#8215#"); return store;
 	}
 	
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			@Nullable ModelAndView modelAndView) throws Exception {
 		
-		if (request.getRequestURL().toString().toLowerCase().contains(SERVICES_URL_PATTERN)
+		System.out.println("$#8216#"); if (request.getRequestURL().toString().toLowerCase().contains(SERVICES_URL_PATTERN)
 				|| request.getRequestURL().toString().toLowerCase().contains(REFERENCE_URL_PATTERN)) {
 			return;
 		}
 		
 		UserContext userContext = UserContext.getCurrentInstance();
-		if(userContext!=null) {
-			userContext.close();
+		System.out.println("$#8218#"); if(userContext!=null) {
+			System.out.println("$#8219#"); userContext.close();
 		}
 
 		

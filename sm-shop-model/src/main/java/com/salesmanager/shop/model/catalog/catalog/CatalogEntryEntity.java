@@ -11,13 +11,13 @@ public class CatalogEntryEntity extends Entity  {
 	private String catalog;
 	private boolean visible;
 	public String getCatalog() {
-		return catalog;
+		System.out.println("$#8721#"); return catalog;
 	}
 	public void setCatalog(String catalog) {
 		this.catalog = catalog;
 	}
 	public boolean isVisible() {
-		return visible;
+		System.out.println("$#8723#"); System.out.println("$#8722#"); return visible;
 	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;

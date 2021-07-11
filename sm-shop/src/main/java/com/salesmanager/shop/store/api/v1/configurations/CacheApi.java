@@ -42,17 +42,17 @@ public class CacheApi {
       StringBuilder key =
           new StringBuilder().append(merchantStore.getId()).append("_").append(cacheKey);
 
-      if (StringUtils.isNotEmpty(cacheKey)) {
-        cache.removeFromCache(key.toString());
+						System.out.println("$#11555#"); if (StringUtils.isNotEmpty(cacheKey)) {
+								System.out.println("$#11556#"); cache.removeFromCache(key.toString());
       } else {
-        cache.removeAllFromCache(merchantStore);
+								System.out.println("$#11557#"); cache.removeAllFromCache(merchantStore);
       }
     } catch (Exception e) {
       LOGGER.error("Error while clearning cache {}", e.getCause());
       throw new ServiceRuntimeException("Error while clearing cache");
     }
 
-    return new ResponseEntity<>(HttpStatus.OK);
+				System.out.println("$#11558#"); return new ResponseEntity<>(HttpStatus.OK);
   }
 
 }

@@ -18,26 +18,26 @@ public class ReadableCountryPopulator extends AbstractDataPopulator<Country, Rea
 	public ReadableCountry populate(Country source, ReadableCountry target, MerchantStore store, Language language)
 			throws ConversionException {
 		
-		if(target==null) {
+		System.out.println("$#10886#"); if(target==null) {
 			target = new ReadableCountry();
 		}
 		
-		target.setId(new Long(source.getId()));
-		target.setCode(source.getIsoCode());
-		target.setSupported(source.getSupported());
-		if(!CollectionUtils.isEmpty(source.getDescriptions())) {
-			target.setName(source.getDescriptions().iterator().next().getName());
+		System.out.println("$#10887#"); target.setId(new Long(source.getId()));
+		System.out.println("$#10888#"); target.setCode(source.getIsoCode());
+		System.out.println("$#10889#"); target.setSupported(source.getSupported());
+		System.out.println("$#10890#"); if(!CollectionUtils.isEmpty(source.getDescriptions())) {
+			System.out.println("$#10891#"); target.setName(source.getDescriptions().iterator().next().getName());
 	    }
 		
-		if(!CollectionUtils.isEmpty(source.getZones())) {
+		System.out.println("$#10892#"); if(!CollectionUtils.isEmpty(source.getZones())) {
 			for(Zone z : source.getZones()) {
 				ReadableZone readableZone = new ReadableZone();
-				readableZone.setCountryCode(target.getCode());
-				readableZone.setId(z.getId());
-				if(!CollectionUtils.isEmpty(z.getDescriptions())) {
+				System.out.println("$#10893#"); readableZone.setCountryCode(target.getCode());
+				System.out.println("$#10894#"); readableZone.setId(z.getId());
+				System.out.println("$#10895#"); if(!CollectionUtils.isEmpty(z.getDescriptions())) {
 					for(ZoneDescription d : z.getDescriptions()) {
-						if(d.getLanguage().getId() == language.getId()) {
-							readableZone.setName(d.getName());
+						System.out.println("$#10896#"); if(d.getLanguage().getId() == language.getId()) {
+							System.out.println("$#10897#"); readableZone.setName(d.getName());
 							continue;
 						}
 					}
@@ -46,7 +46,7 @@ public class ReadableCountryPopulator extends AbstractDataPopulator<Country, Rea
 			}
 		}
 		
-		return target;
+		System.out.println("$#10898#"); return target;
 	}
 
 	@Override

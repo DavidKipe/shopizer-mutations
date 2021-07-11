@@ -61,7 +61,7 @@ public class PaymentApi {
 
 		  try {
 			  List<IntegrationModule> modules = paymentService.getPaymentMethods(merchantStore);
-			  return modules.stream().map(m -> this.integrationModule(m)).collect(Collectors.toList());
+					System.out.println("$#11831#"); System.out.println("$#11830#"); return modules.stream().map(m -> this.integrationModule(m)).collect(Collectors.toList());
 
 			} catch (ServiceException e) {
 				LOGGER.error("Error getting payment modules", e);
@@ -73,11 +73,11 @@ public class PaymentApi {
 	  
 	  private IntegrationModuleEntity integrationModule(IntegrationModule module) {
 		  IntegrationModuleEntity readable = new IntegrationModuleEntity();
-		  readable.setActive(true);
-		  readable.setCode(module.getModule());
-		  readable.setImage(module.getImage());
+				System.out.println("$#11832#"); readable.setActive(true);
+				System.out.println("$#11833#"); readable.setCode(module.getModule());
+				System.out.println("$#11834#"); readable.setImage(module.getImage());
 		  
-		  return readable;
+				System.out.println("$#11835#"); return readable;
 
 	  }
 

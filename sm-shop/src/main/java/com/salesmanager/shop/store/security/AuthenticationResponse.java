@@ -14,11 +14,11 @@ public class AuthenticationResponse extends Entity implements Serializable {
 
   public AuthenticationResponse(Long userId, String token) {
     this.token = token;
-    super.setId(userId);
+				System.out.println("$#15244#"); super.setId(userId);
   }
 
   public String getToken() {
-    return token;
+				System.out.println("$#15245#"); return token;
   }
 
 }

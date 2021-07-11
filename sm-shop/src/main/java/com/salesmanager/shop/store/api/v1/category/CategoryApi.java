@@ -71,7 +71,7 @@ public class CategoryApi {
 	public ReadableCategory get(@PathVariable(name = "id") Long categoryId, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 		ReadableCategory category = categoryFacade.getById(merchantStore, categoryId, language);
-		return category;
+		System.out.println("$#11534#"); return category;
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -82,7 +82,7 @@ public class CategoryApi {
 	public ResponseEntity<EntityExists> exists(@RequestParam(value = "code") String code,
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 		boolean isCategoryExist = categoryFacade.existByCode(merchantStore, code);
-		return new ResponseEntity<EntityExists>(new EntityExists(isCategoryExist), HttpStatus.OK);
+		System.out.println("$#11535#"); return new ResponseEntity<EntityExists>(new EntityExists(isCategoryExist), HttpStatus.OK);
 	}
 
 	/**
@@ -104,8 +104,8 @@ public class CategoryApi {
 		
 		
 		ListCriteria criteria = new ListCriteria();
-		criteria.setName(name);
-		return categoryFacade.getCategoryHierarchy(merchantStore, criteria, DEFAULT_CATEGORY_DEPTH, language, filter,
+		System.out.println("$#11536#"); criteria.setName(name);
+		System.out.println("$#11537#"); return categoryFacade.getCategoryHierarchy(merchantStore, criteria, DEFAULT_CATEGORY_DEPTH, language, filter,
 				page, count);
 	}
 
@@ -120,13 +120,13 @@ public class CategoryApi {
 
 		// superadmin, admin and admin_catalogue
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#11538#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#11539#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 
-		return categoryFacade.saveCategory(merchantStore, category);
+		System.out.println("$#11540#"); return categoryFacade.saveCategory(merchantStore, category);
 	}
 
 	@PutMapping(value = "/private/category/{id}", produces = { APPLICATION_JSON_VALUE })
@@ -136,15 +136,15 @@ public class CategoryApi {
 		
 		// superadmin, admin and admin_catalogue
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#11541#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#11542#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 		
 		
-		category.setId(id);
-		return categoryFacade.saveCategory(merchantStore, category);
+		System.out.println("$#11543#"); category.setId(id);
+		System.out.println("$#11544#"); return categoryFacade.saveCategory(merchantStore, category);
 	}
 	
 	@PatchMapping(value = "/private/category/{id}/visible", produces = { APPLICATION_JSON_VALUE })
@@ -155,14 +155,14 @@ public class CategoryApi {
 		
 		// superadmin, admin and admin_catalogue
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#11545#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#11546#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 
-		category.setId(id);
-		categoryFacade.setVisible(category, merchantStore);
+		System.out.println("$#11547#"); category.setId(id);
+		System.out.println("$#11548#"); categoryFacade.setVisible(category, merchantStore);
 	}
 
 	@PutMapping(value = "/private/category/{id}/move/{parent}", produces = { APPLICATION_JSON_VALUE })
@@ -174,14 +174,14 @@ public class CategoryApi {
 			@ApiIgnore MerchantStore merchantStore) {
 		// superadmin, admin and admin_catalogue
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#11549#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#11550#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 
 		
-		categoryFacade.move(id, parent, merchantStore);
+		System.out.println("$#11551#"); categoryFacade.move(id, parent, merchantStore);
 		return;
 	}
 
@@ -191,14 +191,14 @@ public class CategoryApi {
 		
 		// superadmin, admin and admin_catalogue
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#11552#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#11553#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_CATALOGUE, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 
 		
-		categoryFacade.deleteCategory(categoryId, merchantStore);
+		System.out.println("$#11554#"); categoryFacade.deleteCategory(categoryId, merchantStore);
 	}
 
 }

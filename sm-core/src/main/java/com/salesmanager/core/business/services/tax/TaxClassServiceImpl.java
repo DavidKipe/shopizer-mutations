@@ -28,49 +28,49 @@ public class TaxClassServiceImpl extends SalesManagerEntityServiceImpl<Long, Tax
 	
 	@Override
 	public List<TaxClass> listByStore(MerchantStore store) throws ServiceException {	
-		return taxClassRepository.findByStore(store.getId());
+		System.out.println("$#3267#"); return taxClassRepository.findByStore(store.getId());
 	}
 	
 	@Override
 	public TaxClass getByCode(String code) throws ServiceException {
-		return taxClassRepository.findByCode(code);
+		System.out.println("$#3268#"); return taxClassRepository.findByCode(code);
 	}
 	
 	@Override
 	public TaxClass getByCode(String code, MerchantStore store) throws ServiceException {
-		return taxClassRepository.findByStoreAndCode(store.getId(), code);
+		System.out.println("$#3269#"); return taxClassRepository.findByStoreAndCode(store.getId(), code);
 	}
 	
 	@Override
 	public void delete(TaxClass taxClass) throws ServiceException {
 		
 		TaxClass t = getById(taxClass.getId());
-		super.delete(t);
+		System.out.println("$#3270#"); super.delete(t);
 		
 	}
 	
 	@Override
 	public TaxClass getById(Long id) {
-		return taxClassRepository.getOne(id);
+		System.out.println("$#3271#"); return taxClassRepository.getOne(id);
 	}
 
 	@Override
 	public boolean exists(String code, MerchantStore store) throws ServiceException {
-		Validate.notNull(code, "TaxClass code cannot be empty");
-		Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#3272#"); Validate.notNull(code, "TaxClass code cannot be empty");
+		System.out.println("$#3273#"); Validate.notNull(store, "MerchantStore cannot be null");
 		
-		return taxClassRepository.findByStoreAndCode(store.getId(), code) != null ? true:false;
+		System.out.println("$#3275#"); System.out.println("$#3274#"); return taxClassRepository.findByStoreAndCode(store.getId(), code) != null ? true:false;
 
 	}
 	
 	@Override
 	public TaxClass saveOrUpdate(TaxClass taxClass) throws ServiceException {
-		if(taxClass.getId()!=null && taxClass.getId().longValue() > 0) {
-			this.update(taxClass);
+		System.out.println("$#3277#"); System.out.println("$#3276#"); if(taxClass.getId()!=null && taxClass.getId().longValue() > 0) {
+			System.out.println("$#3279#"); this.update(taxClass);
 		} else {
 			taxClass = super.saveAndFlush(taxClass);
 		}
-		return taxClass;
+		System.out.println("$#3280#"); return taxClass;
 	}
 
 	

@@ -32,12 +32,12 @@ public class TaxConfigurationController {
 	@RequestMapping(value={"/admin/tax/taxconfiguration/edit.html"}, method=RequestMethod.GET)
 	public String displayTaxConfiguration(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model, request);
+		System.out.println("$#7433#"); setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		
 		TaxConfiguration taxConfiguration = taxService.getTaxConfiguration(store);
-		if(taxConfiguration == null) {
+		System.out.println("$#7434#"); if(taxConfiguration == null) {
 			
 			taxConfiguration = new TaxConfiguration();
 			
@@ -45,7 +45,7 @@ public class TaxConfigurationController {
 		
 		model.addAttribute("taxConfiguration", taxConfiguration);
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxConfiguration;
+		System.out.println("$#7435#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxConfiguration;
 	}
 	
 	@PreAuthorize("hasRole('TAX')")
@@ -53,14 +53,14 @@ public class TaxConfigurationController {
 	public String saveTaxConfiguration(@Valid @ModelAttribute("taxConfiguration") TaxConfiguration taxConfiguration, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 		
 		
-		setMenu(model, request);
+		System.out.println("$#7436#"); setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
-		taxService.saveTaxConfiguration(taxConfiguration, store);
+		System.out.println("$#7437#"); taxService.saveTaxConfiguration(taxConfiguration, store);
 		
 		model.addAttribute("success","success");
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxConfiguration;
+		System.out.println("$#7438#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxConfiguration;
 		
 	}
 	

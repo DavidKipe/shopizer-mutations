@@ -57,42 +57,42 @@ public class ConfigurationController {
 	@RequestMapping(value="/admin/configuration/accounts.html", method=RequestMethod.GET)
 	public String displayAccountsConfguration(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		setConfigurationMenu(model, request);
+		System.out.println("$#5028#"); setConfigurationMenu(model, request);
 		List<MerchantConfiguration> configs = new ArrayList<MerchantConfiguration>();
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		MerchantConfiguration merchantFBConfiguration = merchantConfigurationService.getMerchantConfiguration(Constants.KEY_FACEBOOK_PAGE_URL,store);
-		if(null == merchantFBConfiguration)
+		System.out.println("$#5029#"); if(null == merchantFBConfiguration)
 		{
 			merchantFBConfiguration = new MerchantConfiguration();
-			merchantFBConfiguration.setKey(Constants.KEY_FACEBOOK_PAGE_URL);
-			merchantFBConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
+			System.out.println("$#5030#"); merchantFBConfiguration.setKey(Constants.KEY_FACEBOOK_PAGE_URL);
+			System.out.println("$#5031#"); merchantFBConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
 		}
 		configs.add(merchantFBConfiguration);
 		
 		MerchantConfiguration merchantGoogleAnalyticsConfiguration = merchantConfigurationService.getMerchantConfiguration(Constants.KEY_GOOGLE_ANALYTICS_URL,store);
-		if(null == merchantGoogleAnalyticsConfiguration)
+		System.out.println("$#5032#"); if(null == merchantGoogleAnalyticsConfiguration)
 		{
 			merchantGoogleAnalyticsConfiguration = new MerchantConfiguration();
-			merchantGoogleAnalyticsConfiguration.setKey(Constants.KEY_GOOGLE_ANALYTICS_URL);
-			merchantGoogleAnalyticsConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
+			System.out.println("$#5033#"); merchantGoogleAnalyticsConfiguration.setKey(Constants.KEY_GOOGLE_ANALYTICS_URL);
+			System.out.println("$#5034#"); merchantGoogleAnalyticsConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
 		}
 		configs.add(merchantGoogleAnalyticsConfiguration);
 		
 		MerchantConfiguration merchantInstagramConfiguration = merchantConfigurationService.getMerchantConfiguration(Constants.KEY_INSTAGRAM_URL,store);
-		if(null == merchantInstagramConfiguration)
+		System.out.println("$#5035#"); if(null == merchantInstagramConfiguration)
 		{
 			merchantInstagramConfiguration = new MerchantConfiguration();
-			merchantInstagramConfiguration.setKey(Constants.KEY_INSTAGRAM_URL);
-			merchantInstagramConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
+			System.out.println("$#5036#"); merchantInstagramConfiguration.setKey(Constants.KEY_INSTAGRAM_URL);
+			System.out.println("$#5037#"); merchantInstagramConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
 		}
 		configs.add(merchantInstagramConfiguration);
 		
 		MerchantConfiguration merchantPinterestConfiguration = merchantConfigurationService.getMerchantConfiguration(Constants.KEY_PINTEREST_PAGE_URL,store);
-		if(null == merchantPinterestConfiguration)
+		System.out.println("$#5038#"); if(null == merchantPinterestConfiguration)
 		{
 			merchantPinterestConfiguration = new MerchantConfiguration();
-			merchantPinterestConfiguration.setKey(Constants.KEY_PINTEREST_PAGE_URL);
-			merchantPinterestConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
+			System.out.println("$#5039#"); merchantPinterestConfiguration.setKey(Constants.KEY_PINTEREST_PAGE_URL);
+			System.out.println("$#5040#"); merchantPinterestConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
 		}
 		configs.add(merchantPinterestConfiguration);
 		
@@ -108,100 +108,100 @@ public class ConfigurationController {
 		**/
 		
 		MerchantConfiguration twitterConfiguration = merchantConfigurationService.getMerchantConfiguration(Constants.KEY_TWITTER_HANDLE,store);
-		if(null == twitterConfiguration)
+		System.out.println("$#5041#"); if(null == twitterConfiguration)
 		{
 			twitterConfiguration = new MerchantConfiguration();
-			twitterConfiguration.setKey(Constants.KEY_TWITTER_HANDLE);
-			twitterConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
+			System.out.println("$#5042#"); twitterConfiguration.setKey(Constants.KEY_TWITTER_HANDLE);
+			System.out.println("$#5043#"); twitterConfiguration.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
 		}
 		configs.add(twitterConfiguration);
 		
 		ConfigListWrapper configWrapper = new ConfigListWrapper();
-		configWrapper.setMerchantConfigs(configs);
+		System.out.println("$#5044#"); configWrapper.setMerchantConfigs(configs);
 		model.addAttribute("configuration",configWrapper);
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Configuration.accounts;
+		System.out.println("$#5045#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Configuration.accounts;
 	}
 	
 	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/configuration/saveConfiguration.html", method=RequestMethod.POST)
 	public String saveConfigurations(@ModelAttribute("configuration") ConfigListWrapper configWrapper, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception
 	{
-		setConfigurationMenu(model, request);
+		System.out.println("$#5046#"); setConfigurationMenu(model, request);
 		List<MerchantConfiguration> configs = configWrapper.getMerchantConfigs();
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		for(MerchantConfiguration mConfigs : configs)
 		{
-			mConfigs.setMerchantStore(store);
-			if(!StringUtils.isBlank(mConfigs.getValue())) {
-				mConfigs.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
-				merchantConfigurationService.saveOrUpdate(mConfigs);
+			System.out.println("$#5047#"); mConfigs.setMerchantStore(store);
+			System.out.println("$#5048#"); if(!StringUtils.isBlank(mConfigs.getValue())) {
+				System.out.println("$#5049#"); mConfigs.setMerchantConfigurationType(MerchantConfigurationType.SOCIAL);
+				System.out.println("$#5050#"); merchantConfigurationService.saveOrUpdate(mConfigs);
 			} else {//remove if submited blank and exists
 				MerchantConfiguration config = merchantConfigurationService.getMerchantConfiguration(mConfigs.getKey(), store);
-				if(config!=null) {
-					merchantConfigurationService.delete(config);
+				System.out.println("$#5051#"); if(config!=null) {
+					System.out.println("$#5052#"); merchantConfigurationService.delete(config);
 				}
 			}
 		}	
 		model.addAttribute("success","success");
 		model.addAttribute("configuration",configWrapper);
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Configuration.accounts;
+		System.out.println("$#5053#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Configuration.accounts;
 		
 	}
 	
 	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/configuration/email.html", method=RequestMethod.GET)
 	public String displayEmailSettings(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		setEmailConfigurationMenu(model, request);
+		System.out.println("$#5054#"); setEmailConfigurationMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		EmailConfig emailConfig = emailService.getEmailConfiguration(store);
-		if(emailConfig == null){
+		System.out.println("$#5055#"); if(emailConfig == null){
 			emailConfig = new EmailConfig();
 			//TODO: Need to check below properties. When there are no record available in MerchantConfguration table with EMAIL_CONFIG key, 
 			// instead of showing blank fields in setup screen, show default configured values from email.properties
-			emailConfig.setProtocol(env.getProperty("mailSender.protocol"));
-			emailConfig.setHost(env.getProperty("mailSender.host"));
-			emailConfig.setPort(env.getProperty("mailSender.port}"));
-			emailConfig.setUsername(env.getProperty("mailSender.username"));
+			System.out.println("$#5056#"); emailConfig.setProtocol(env.getProperty("mailSender.protocol"));
+			System.out.println("$#5057#"); emailConfig.setHost(env.getProperty("mailSender.host"));
+			System.out.println("$#5058#"); emailConfig.setPort(env.getProperty("mailSender.port}"));
+			System.out.println("$#5059#"); emailConfig.setUsername(env.getProperty("mailSender.username"));
 			//emailConfig.setPassword(env.getProperty("mailSender.password"));
-			emailConfig.setPassword(P_MASK);
-			emailConfig.setSmtpAuth(Boolean.parseBoolean(env.getProperty("mailSender.mail.smtp.auth")));
-			emailConfig.setStarttls(Boolean.parseBoolean(env.getProperty("mail.smtp.starttls.enable")));
+			System.out.println("$#5060#"); emailConfig.setPassword(P_MASK);
+			System.out.println("$#5061#"); emailConfig.setSmtpAuth(Boolean.parseBoolean(env.getProperty("mailSender.mail.smtp.auth")));
+			System.out.println("$#5062#"); emailConfig.setStarttls(Boolean.parseBoolean(env.getProperty("mail.smtp.starttls.enable")));
 		}
 		
 		model.addAttribute("configuration", emailConfig);
-		return ControllerConstants.Tiles.Configuration.email;
+		System.out.println("$#5063#"); return ControllerConstants.Tiles.Configuration.email;
 	}
 	
 	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/configuration/saveEmailConfiguration.html", method=RequestMethod.POST)
 	public String saveEmailSettings(@ModelAttribute("configuration") EmailConfig config, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
-		setEmailConfigurationMenu(model, request);
+		System.out.println("$#5064#"); setEmailConfigurationMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		EmailConfig emailConfig = emailService.getEmailConfiguration(store);
-		if(emailConfig == null){
+		System.out.println("$#5065#"); if(emailConfig == null){
 			emailConfig = new EmailConfig();
 		}
 		
 		// populte EmailConfig model from UI values
-		emailConfig.setProtocol(config.getProtocol());
-		emailConfig.setHost(config.getHost());
-		emailConfig.setPort(config.getPort());
-		emailConfig.setUsername(config.getUsername());
-		emailConfig.setPassword(emailConfig.getPassword());
-		if(!StringUtils.isBlank(config.getPassword())) {
-			if(!config.getPassword().equals(P_MASK)) {
-				emailConfig.setPassword(config.getPassword());
+		System.out.println("$#5066#"); emailConfig.setProtocol(config.getProtocol());
+		System.out.println("$#5067#"); emailConfig.setHost(config.getHost());
+		System.out.println("$#5068#"); emailConfig.setPort(config.getPort());
+		System.out.println("$#5069#"); emailConfig.setUsername(config.getUsername());
+		System.out.println("$#5070#"); emailConfig.setPassword(emailConfig.getPassword());
+		System.out.println("$#5071#"); if(!StringUtils.isBlank(config.getPassword())) {
+			System.out.println("$#5072#"); if(!config.getPassword().equals(P_MASK)) {
+				System.out.println("$#5073#"); emailConfig.setPassword(config.getPassword());
 			}
 		}
-		emailConfig.setSmtpAuth(config.isSmtpAuth());
-		emailConfig.setStarttls(config.isStarttls());
+		System.out.println("$#5074#"); emailConfig.setSmtpAuth(config.isSmtpAuth());
+		System.out.println("$#5075#"); emailConfig.setStarttls(config.isStarttls());
 		
-		emailService.saveEmailConfiguration(emailConfig, store);
+		System.out.println("$#5076#"); emailService.saveEmailConfiguration(emailConfig, store);
 		
 		model.addAttribute("configuration", emailConfig);
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Configuration.email;
+		System.out.println("$#5077#"); return ControllerConstants.Tiles.Configuration.email;
 	}
 	
 	private void setConfigurationMenu(Model model, HttpServletRequest request) throws Exception {

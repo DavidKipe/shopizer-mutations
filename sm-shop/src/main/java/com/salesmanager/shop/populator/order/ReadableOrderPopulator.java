@@ -49,132 +49,132 @@ public class ReadableOrderPopulator extends
 		
 		
 		
-		target.setId(source.getId());
-		target.setDatePurchased(source.getDatePurchased());
-		target.setOrderStatus(source.getStatus());
-		target.setCurrency(source.getCurrency().getCode());
-		target.setCurrencyModel(source.getCurrency());
+		System.out.println("$#10643#"); target.setId(source.getId());
+		System.out.println("$#10644#"); target.setDatePurchased(source.getDatePurchased());
+		System.out.println("$#10645#"); target.setOrderStatus(source.getStatus());
+		System.out.println("$#10646#"); target.setCurrency(source.getCurrency().getCode());
+		System.out.println("$#10647#"); target.setCurrencyModel(source.getCurrency());
 		
-		target.setPaymentType(source.getPaymentType());
-		target.setPaymentModule(source.getPaymentModuleCode());
-		target.setShippingModule(source.getShippingModuleCode());
+		System.out.println("$#10648#"); target.setPaymentType(source.getPaymentType());
+		System.out.println("$#10649#"); target.setPaymentModule(source.getPaymentModuleCode());
+		System.out.println("$#10650#"); target.setShippingModule(source.getShippingModuleCode());
 		
-		if(source.getMerchant()!=null) {
+		System.out.println("$#10651#"); if(source.getMerchant()!=null) {
 			ReadableMerchantStorePopulator merchantPopulator = new ReadableMerchantStorePopulator();
-			merchantPopulator.setCountryService(countryService);
-			merchantPopulator.setFilePath(filePath);
-			merchantPopulator.setZoneService(zoneService);
+			System.out.println("$#10652#"); merchantPopulator.setCountryService(countryService);
+			System.out.println("$#10653#"); merchantPopulator.setFilePath(filePath);
+			System.out.println("$#10654#"); merchantPopulator.setZoneService(zoneService);
 			ReadableMerchantStore readableStore = merchantPopulator.populate(source.getMerchant(), null, store, source.getMerchant().getDefaultLanguage());
-			target.setStore(readableStore);
+			System.out.println("$#10655#"); target.setStore(readableStore);
 		}
 		
 		
-		if(source.getCustomerAgreement()!=null) {
-			target.setCustomerAgreed(source.getCustomerAgreement());
+		System.out.println("$#10656#"); if(source.getCustomerAgreement()!=null) {
+			System.out.println("$#10657#"); target.setCustomerAgreed(source.getCustomerAgreement());
 		}
-		if(source.getConfirmedAddress()!=null) {
-			target.setConfirmedAddress(source.getConfirmedAddress());
+		System.out.println("$#10658#"); if(source.getConfirmedAddress()!=null) {
+			System.out.println("$#10659#"); target.setConfirmedAddress(source.getConfirmedAddress());
 		}
 		
 		com.salesmanager.shop.model.order.total.OrderTotal taxTotal = null;
 		com.salesmanager.shop.model.order.total.OrderTotal shippingTotal = null;
 		
 		
-		if(source.getBilling()!=null) {
+		System.out.println("$#10660#"); if(source.getBilling()!=null) {
 			ReadableBilling address = new ReadableBilling();
-			address.setEmail(source.getCustomerEmailAddress());
-			address.setCity(source.getBilling().getCity());
-			address.setAddress(source.getBilling().getAddress());
-			address.setCompany(source.getBilling().getCompany());
-			address.setFirstName(source.getBilling().getFirstName());
-			address.setLastName(source.getBilling().getLastName());
-			address.setPostalCode(source.getBilling().getPostalCode());
-			address.setPhone(source.getBilling().getTelephone());
-			if(source.getBilling().getCountry()!=null) {
-				address.setCountry(source.getBilling().getCountry().getIsoCode());
+			System.out.println("$#10661#"); address.setEmail(source.getCustomerEmailAddress());
+			System.out.println("$#10662#"); address.setCity(source.getBilling().getCity());
+			System.out.println("$#10663#"); address.setAddress(source.getBilling().getAddress());
+			System.out.println("$#10664#"); address.setCompany(source.getBilling().getCompany());
+			System.out.println("$#10665#"); address.setFirstName(source.getBilling().getFirstName());
+			System.out.println("$#10666#"); address.setLastName(source.getBilling().getLastName());
+			System.out.println("$#10667#"); address.setPostalCode(source.getBilling().getPostalCode());
+			System.out.println("$#10668#"); address.setPhone(source.getBilling().getTelephone());
+			System.out.println("$#10669#"); if(source.getBilling().getCountry()!=null) {
+				System.out.println("$#10670#"); address.setCountry(source.getBilling().getCountry().getIsoCode());
 			}
-			if(source.getBilling().getZone()!=null) {
-				address.setZone(source.getBilling().getZone().getCode());
+			System.out.println("$#10671#"); if(source.getBilling().getZone()!=null) {
+				System.out.println("$#10672#"); address.setZone(source.getBilling().getZone().getCode());
 			}
 			
-			target.setBilling(address);
+			System.out.println("$#10673#"); target.setBilling(address);
 		}
 		
-		if(source.getOrderAttributes()!=null && source.getOrderAttributes().size()>0) {
+		System.out.println("$#10675#"); System.out.println("$#10674#"); if(source.getOrderAttributes()!=null && source.getOrderAttributes().size()>0) {
 			for(OrderAttribute attr : source.getOrderAttributes()) {
 				com.salesmanager.shop.model.order.OrderAttribute a = new com.salesmanager.shop.model.order.OrderAttribute();
-				a.setKey(attr.getKey());
-				a.setValue(attr.getValue());
+				System.out.println("$#10677#"); a.setKey(attr.getKey());
+				System.out.println("$#10678#"); a.setValue(attr.getValue());
 				target.getAttributes().add(a);
 			}
 		}
 		
-		if(source.getDelivery()!=null) {
+		System.out.println("$#10679#"); if(source.getDelivery()!=null) {
 			ReadableDelivery address = new ReadableDelivery();
-			address.setCity(source.getDelivery().getCity());
-			address.setAddress(source.getDelivery().getAddress());
-			address.setCompany(source.getDelivery().getCompany());
-			address.setFirstName(source.getDelivery().getFirstName());
-			address.setLastName(source.getDelivery().getLastName());
-			address.setPostalCode(source.getDelivery().getPostalCode());
-			address.setPhone(source.getDelivery().getTelephone());
-			if(source.getDelivery().getCountry()!=null) {
-				address.setCountry(source.getDelivery().getCountry().getIsoCode());
+			System.out.println("$#10680#"); address.setCity(source.getDelivery().getCity());
+			System.out.println("$#10681#"); address.setAddress(source.getDelivery().getAddress());
+			System.out.println("$#10682#"); address.setCompany(source.getDelivery().getCompany());
+			System.out.println("$#10683#"); address.setFirstName(source.getDelivery().getFirstName());
+			System.out.println("$#10684#"); address.setLastName(source.getDelivery().getLastName());
+			System.out.println("$#10685#"); address.setPostalCode(source.getDelivery().getPostalCode());
+			System.out.println("$#10686#"); address.setPhone(source.getDelivery().getTelephone());
+			System.out.println("$#10687#"); if(source.getDelivery().getCountry()!=null) {
+				System.out.println("$#10688#"); address.setCountry(source.getDelivery().getCountry().getIsoCode());
 			}
-			if(source.getDelivery().getZone()!=null) {
-				address.setZone(source.getDelivery().getZone().getCode());
+			System.out.println("$#10689#"); if(source.getDelivery().getZone()!=null) {
+				System.out.println("$#10690#"); address.setZone(source.getDelivery().getZone().getCode());
 			}
 			
-			target.setDelivery(address);
+			System.out.println("$#10691#"); target.setDelivery(address);
 		}
 		
 		List<com.salesmanager.shop.model.order.total.OrderTotal> totals = new ArrayList<com.salesmanager.shop.model.order.total.OrderTotal>();
 		for(OrderTotal t : source.getOrderTotal()) {
-			if(t.getOrderTotalType()==null) {
+			System.out.println("$#10692#"); if(t.getOrderTotalType()==null) {
 				continue;
 			}
-			if(t.getOrderTotalType().name().equals(OrderTotalType.TOTAL.name())) {
+			System.out.println("$#10693#"); if(t.getOrderTotalType().name().equals(OrderTotalType.TOTAL.name())) {
 				com.salesmanager.shop.model.order.total.OrderTotal totalTotal = createTotal(t);
-				target.setTotal(totalTotal);
+				System.out.println("$#10694#"); target.setTotal(totalTotal);
 				totals.add(totalTotal);
 			}
-			else if(t.getOrderTotalType().name().equals(OrderTotalType.TAX.name())) {
+			else if(t.getOrderTotalType().name().equals(OrderTotalType.TAX.name())) { System.out.println("$#10695#");
 				com.salesmanager.shop.model.order.total.OrderTotal totalTotal = createTotal(t);
-				if(taxTotal==null) {
+				System.out.println("$#10696#"); if(taxTotal==null) {
 					taxTotal = totalTotal;
 				} else {
 					BigDecimal v = taxTotal.getValue();
 					v = v.add(totalTotal.getValue());
-					taxTotal.setValue(v);
+					System.out.println("$#10697#"); taxTotal.setValue(v);
 				}
-				target.setTax(totalTotal);
+				System.out.println("$#10698#"); target.setTax(totalTotal);
 				totals.add(totalTotal);
 			}
-			else if(t.getOrderTotalType().name().equals(OrderTotalType.SHIPPING.name())) {
+			else if(t.getOrderTotalType().name().equals(OrderTotalType.SHIPPING.name())) { System.out.println("$#10699#");
 				com.salesmanager.shop.model.order.total.OrderTotal totalTotal = createTotal(t);
-				if(shippingTotal==null) {
+				System.out.println("$#10700#"); if(shippingTotal==null) {
 					shippingTotal = totalTotal;
 				} else {
 					BigDecimal v = shippingTotal.getValue();
 					v = v.add(totalTotal.getValue());
-					shippingTotal.setValue(v);
+					System.out.println("$#10701#"); shippingTotal.setValue(v);
 				}
-				target.setShipping(totalTotal);
+				System.out.println("$#10702#"); target.setShipping(totalTotal);
 				totals.add(totalTotal);
 			}
-			else if(t.getOrderTotalType().name().equals(OrderTotalType.HANDLING.name())) {
+			else if(t.getOrderTotalType().name().equals(OrderTotalType.HANDLING.name())) { System.out.println("$#10703#");
 				com.salesmanager.shop.model.order.total.OrderTotal totalTotal = createTotal(t);
-				if(shippingTotal==null) {
+				System.out.println("$#10704#"); if(shippingTotal==null) {
 					shippingTotal = totalTotal;
 				} else {
 					BigDecimal v = shippingTotal.getValue();
 					v = v.add(totalTotal.getValue());
-					shippingTotal.setValue(v);
+					System.out.println("$#10705#"); shippingTotal.setValue(v);
 				}
-				target.setShipping(totalTotal);
+				System.out.println("$#10706#"); target.setShipping(totalTotal);
 				totals.add(totalTotal);
 			}
-			else if(t.getOrderTotalType().name().equals(OrderTotalType.SUBTOTAL.name())) {
+			else if(t.getOrderTotalType().name().equals(OrderTotalType.SUBTOTAL.name())) { System.out.println("$#10707#");
 				com.salesmanager.shop.model.order.total.OrderTotal subTotal = createTotal(t);
 				totals.add(subTotal);
 				
@@ -185,19 +185,19 @@ public class ReadableOrderPopulator extends
 			}
 		}
 		
-		target.setTotals(totals);
+		System.out.println("$#10708#"); target.setTotals(totals);
 		
-		return target;
+		System.out.println("$#10709#"); return target;
 	}
 	
 	private com.salesmanager.shop.model.order.total.OrderTotal createTotal(OrderTotal t) {
 		com.salesmanager.shop.model.order.total.OrderTotal totalTotal = new com.salesmanager.shop.model.order.total.OrderTotal();
-		totalTotal.setCode(t.getOrderTotalCode());
-		totalTotal.setId(t.getId());
-		totalTotal.setModule(t.getModule());
-		totalTotal.setOrder(t.getSortOrder());
-		totalTotal.setValue(t.getValue());
-		return totalTotal;
+		System.out.println("$#10710#"); totalTotal.setCode(t.getOrderTotalCode());
+		System.out.println("$#10711#"); totalTotal.setId(t.getId());
+		System.out.println("$#10712#"); totalTotal.setModule(t.getModule());
+		System.out.println("$#10713#"); totalTotal.setOrder(t.getSortOrder());
+		System.out.println("$#10714#"); totalTotal.setValue(t.getValue());
+		System.out.println("$#10715#"); return totalTotal;
 	}
 
 	@Override

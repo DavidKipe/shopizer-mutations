@@ -15,42 +15,42 @@ public class OrderCriteria extends Criteria {
 		this.paymentMethod = paymentMethod;
 	}
 	public String getPaymentMethod() {
-		return paymentMethod;
+		System.out.println("$#4335#"); return paymentMethod;
 	}
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
 	public String getCustomerName() {
-		return customerName;
+		System.out.println("$#4336#"); return customerName;
 	}
     public Long getCustomerId()
     {
-        return customerId;
+								System.out.println("$#4337#"); return customerId;
     }
     public void setCustomerId( Long customerId )
     {
         this.customerId = customerId;
     }
 	public String getCustomerPhone() {
-		return customerPhone;
+		System.out.println("$#4338#"); return customerPhone;
 	}
 	public void setCustomerPhone(String customerPhone) {
 		this.customerPhone = customerPhone;
 	}
 	public String getStatus() {
-		return status;
+		System.out.println("$#4339#"); return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
 	public Long getId() {
-		return id;
+		System.out.println("$#4340#"); return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getEmail() {
-		return email;
+		System.out.println("$#4341#"); return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;

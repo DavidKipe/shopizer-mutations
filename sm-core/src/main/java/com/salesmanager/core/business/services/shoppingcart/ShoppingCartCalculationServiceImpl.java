@@ -72,8 +72,8 @@ public class ShoppingCartCalculationServiceImpl implements ShoppingCartCalculati
 		Validate.notNull(customer, "Customer cannot be null");
 		OrderTotalSummary orderTotalSummary = orderService.calculateShoppingCartTotal(cartModel, customer, store,
 				language);
-		updateCartModel(cartModel);
-		return orderTotalSummary;
+		System.out.println("$#3097#"); updateCartModel(cartModel);
+		System.out.println("$#3098#"); return orderTotalSummary;
 
 	}
 
@@ -105,17 +105,17 @@ public class ShoppingCartCalculationServiceImpl implements ShoppingCartCalculati
 		Validate.notNull(cartModel.getLineItems(), "Cart should have line items.");
 		Validate.notNull(store, "MerchantStore cannot be null");
 		OrderTotalSummary orderTotalSummary = orderService.calculateShoppingCartTotal(cartModel, store, language);
-		updateCartModel(cartModel);
-		return orderTotalSummary;
+		System.out.println("$#3099#"); updateCartModel(cartModel);
+		System.out.println("$#3100#"); return orderTotalSummary;
 
 	}
 
 	public ShoppingCartService getShoppingCartService() {
-		return shoppingCartService;
+		System.out.println("$#3101#"); return shoppingCartService;
 	}
 
 	private void updateCartModel(final ShoppingCart cartModel) throws ServiceException {
-		shoppingCartService.saveOrUpdate(cartModel);
+		System.out.println("$#3102#"); shoppingCartService.saveOrUpdate(cartModel);
 	}
 
 }

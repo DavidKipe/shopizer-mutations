@@ -19,37 +19,37 @@ public class ReadableOrderProduct extends OrderProductEntity implements
 	private String sku;
 	private String image;
 	public String getProductName() {
-		return productName;
+		System.out.println("$#9140#"); return productName;
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
 	public String getSku() {
-		return sku;
+		System.out.println("$#9141#"); return sku;
 	}
 	public void setSku(String sku) {
 		this.sku = sku;
 	}
 	public String getImage() {
-		return image;
+		System.out.println("$#9142#"); return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
 	}
 	public String getPrice() {
-		return price;
+		System.out.println("$#9143#"); return price;
 	}
 	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getSubTotal() {
-		return subTotal;
+		System.out.println("$#9144#"); return subTotal;
 	}
 	public void setSubTotal(String subTotal) {
 		this.subTotal = subTotal;
 	}
 	public List<ReadableOrderProductAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#9145#"); return attributes;
 	}
 	public void setAttributes(List<ReadableOrderProductAttribute> attributes) {
 		this.attributes = attributes;

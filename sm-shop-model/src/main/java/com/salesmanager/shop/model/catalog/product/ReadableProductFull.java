@@ -13,7 +13,7 @@ public class ReadableProductFull extends ReadableProduct {
   List<ProductDescription> descriptions = new ArrayList<ProductDescription>();
 
   public List<ProductDescription> getDescriptions() {
-    return descriptions;
+				System.out.println("$#8950#"); return descriptions;
   }
 
   public void setDescriptions(List<ProductDescription> descriptions) {

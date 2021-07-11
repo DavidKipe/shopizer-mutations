@@ -46,7 +46,7 @@ public class IndexEntityProcessor {
 		RestClientBuilder builder = RestClient.builder(nodes.toArray(new HttpHost[nodes.size()]));
 		
         final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(AuthScope.ANY,
+								System.out.println("$#355#"); credentialsProvider.setCredentials(AuthScope.ANY,
             new UsernamePasswordCredentials(user,
             		password));
 		
@@ -56,13 +56,13 @@ public class IndexEntityProcessor {
                 @Override
                 public HttpAsyncClientBuilder customizeHttpClient(
                     HttpAsyncClientBuilder httpClientBuilder) {
-                  return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+																		System.out.println("$#362#"); return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
                 }
               });
         }
 
 		RestHighLevelClient client = new RestHighLevelClient(builder);		
-		return client;
+		System.out.println("$#358#"); return client;
 
 	}
 	
@@ -81,29 +81,29 @@ public class IndexEntityProcessor {
 		}
 		@SuppressWarnings("rawtypes")
 		public SalesManagerEntity getEntity() {
-			return entity;
+			System.out.println("$#363#"); return entity;
 		}
 		public Customer getCustomer() {
-			return customer;
+			System.out.println("$#364#"); return customer;
 		}
 		public String getEvent() {
-			return event;
+			System.out.println("$#365#"); return event;
 		}
 		public String getEntityType() {
-			return entityType;
+			System.out.println("$#366#"); return entityType;
 		}
 	}
 
 	protected List<String> getHosts() {
-		return hosts;
+		System.out.println("$#359#"); return hosts;
 	}
 
 	protected String getProtocol() {
-		return protocol;
+		System.out.println("$#360#"); return protocol;
 	}
 
 	protected int getPort() {
-		return port;
+		System.out.println("$#361#"); return port;
 	}
 
 

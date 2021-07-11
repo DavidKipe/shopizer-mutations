@@ -40,10 +40,10 @@ public class StoreLogoUrlTag extends RequestContextAwareTag {
 	public int doStartTagInternal() throws JspException {
 		try {
 			
-			if (filePathUtils==null || imageUtils!=null) {
+			System.out.println("$#15505#"); if (filePathUtils==null || imageUtils!=null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15507#"); factory.autowireBean(this);
 	        }
 
 			HttpServletRequest request = (HttpServletRequest) pageContext
@@ -56,7 +56,7 @@ public class StoreLogoUrlTag extends RequestContextAwareTag {
 			String baseUrl = filePathUtils.buildRelativeStoreUri(request, merchantStore);
 			imagePath.append(baseUrl);
 			
-			if(StringUtils.isBlank(merchantStore.getStoreLogo())){
+			System.out.println("$#15508#"); if(StringUtils.isBlank(merchantStore.getStoreLogo())){
 
 				imagePath
 					.append(RESOURCES).append("/")
@@ -68,7 +68,7 @@ public class StoreLogoUrlTag extends RequestContextAwareTag {
 				
 			}
 
-			pageContext.getOut().print(imagePath.toString());
+			System.out.println("$#15509#"); pageContext.getOut().print(imagePath.toString());
 
 
 			
@@ -79,7 +79,7 @@ public class StoreLogoUrlTag extends RequestContextAwareTag {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15510#"); return EVAL_PAGE;
 	}
 
 

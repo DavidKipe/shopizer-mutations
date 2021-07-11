@@ -27,7 +27,7 @@ public class IndexShoppingCartProcessor extends IndexEntityProcessor implements 
 
 	@Override
 	public void process(String event, Object entity, MerchantStore store) {
-		this.process(event, entity, new Customer(), store);
+		System.out.println("$#32#"); this.process(event, entity, new Customer(), store);
 
 	}
 
@@ -53,12 +53,12 @@ public class IndexShoppingCartProcessor extends IndexEntityProcessor implements 
 
 		    IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
 		    
-		    if(response.getResult() != DocWriteResponse.Result.CREATED && response.getResult() != DocWriteResponse.Result.UPDATED) {
+						System.out.println("$#33#"); if(response.getResult() != DocWriteResponse.Result.CREATED && response.getResult() != DocWriteResponse.Result.UPDATED) {
 		    	LOGGER.error(
 		          "An error occured while indexing an shopping cart document " + cart.getId() + " " + response.getResult().name());
 		    }
 
-			client.close();
+			System.out.println("$#35#"); client.close();
 		} catch(Exception e) {
 			LOGGER.error("Cannot index cart [" + cart.getId() + "] ", e);
 		}

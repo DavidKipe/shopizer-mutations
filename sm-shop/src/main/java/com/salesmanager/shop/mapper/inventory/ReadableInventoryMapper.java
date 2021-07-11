@@ -39,48 +39,48 @@ public class ReadableInventoryMapper implements Mapper<ProductAvailability, Read
   public ReadableInventory convert(ProductAvailability source, MerchantStore store,
       Language language) {
     ReadableInventory availability = new ReadableInventory();
-    return this.convert(source, availability, store, language);
+				System.out.println("$#8589#"); return this.convert(source, availability, store, language);
   }
 
   @Override
   public ReadableInventory convert(ProductAvailability source, ReadableInventory destination,
       MerchantStore store, Language language) {
-    Validate.notNull(destination, "Destination Product availability cannot be null");
-    Validate.notNull(source, "Source Product availability cannot be null");
+				System.out.println("$#8590#"); Validate.notNull(destination, "Destination Product availability cannot be null");
+				System.out.println("$#8591#"); Validate.notNull(source, "Source Product availability cannot be null");
 
     try {
-      destination.setQuantity(
+						System.out.println("$#8592#"); destination.setQuantity(
           source.getProductQuantity() != null ? source.getProductQuantity().intValue() : 0);
-      destination.setProductQuantityOrderMax(source.getProductQuantityOrderMax() != null
+						System.out.println("$#8595#"); destination.setProductQuantityOrderMax(source.getProductQuantityOrderMax() != null
           ? source.getProductQuantityOrderMax().intValue() : 0);
-      destination.setProductQuantityOrderMin(source.getProductQuantityOrderMin() != null
+						System.out.println("$#8597#"); destination.setProductQuantityOrderMin(source.getProductQuantityOrderMin() != null
           ? source.getProductQuantityOrderMin().intValue() : 0);
-      destination.setOwner(source.getOwner());
-      destination.setId(source.getId());
-      destination.setRegion(source.getRegion());
-      destination.setRegionVariant(source.getRegionVariant());
-      destination.setStore(store(store, language));
-      if(source.getAvailable()!=null) {
-        if(source.getProductDateAvailable()!=null) {
+						System.out.println("$#8598#"); destination.setOwner(source.getOwner());
+						System.out.println("$#8599#"); destination.setId(source.getId());
+						System.out.println("$#8600#"); destination.setRegion(source.getRegion());
+						System.out.println("$#8601#"); destination.setRegionVariant(source.getRegionVariant());
+						System.out.println("$#8602#"); destination.setStore(store(store, language));
+						System.out.println("$#8603#"); if(source.getAvailable()!=null) {
+								System.out.println("$#8604#"); if(source.getProductDateAvailable()!=null) {
           boolean isAfter = LocalDate.parse(DateUtil.getPresentDate())
               .isAfter(LocalDate.parse(DateUtil.formatDate(source.getProductDateAvailable())));
-          if(isAfter && source.getAvailable().booleanValue()) {
-            destination.setAvailable(true);
+										System.out.println("$#8605#"); if(isAfter && source.getAvailable().booleanValue()) {
+												System.out.println("$#8607#"); destination.setAvailable(true);
           }
-          destination.setDateAvailable(DateUtil.formatDate(source.getProductDateAvailable()));
+										System.out.println("$#8608#"); destination.setDateAvailable(DateUtil.formatDate(source.getProductDateAvailable()));
         } else {
-          destination.setAvailable(source.getAvailable().booleanValue());
+										System.out.println("$#8609#"); destination.setAvailable(source.getAvailable().booleanValue());
         }
       }
       
-      if(source.getAuditSection()!=null) {
-        if(source.getAuditSection().getDateCreated()!=null) {
-          destination.setCreationDate(DateUtil.formatDate(source.getAuditSection().getDateCreated()));
+						System.out.println("$#8610#"); if(source.getAuditSection()!=null) {
+								System.out.println("$#8611#"); if(source.getAuditSection().getDateCreated()!=null) {
+										System.out.println("$#8612#"); destination.setCreationDate(DateUtil.formatDate(source.getAuditSection().getDateCreated()));
         }
       }
       
       List<ReadableProductPrice> prices = prices(source, store, language);
-      destination.setPrices(prices);
+						System.out.println("$#8613#"); destination.setPrices(prices);
 
 
       
@@ -90,18 +90,18 @@ public class ReadableInventoryMapper implements Mapper<ProductAvailability, Read
 
 
 
-    return destination;
+				System.out.println("$#8614#"); return destination;
   }
 
   private ReadableMerchantStore store(MerchantStore store, Language language)
       throws ConversionException {
-    if(language == null) {
+				System.out.println("$#8615#"); if(language == null) {
       language = store.getDefaultLanguage();
     }
     ReadableMerchantStorePopulator populator = new ReadableMerchantStorePopulator();
-    populator.setCountryService(countryService);
-    populator.setZoneService(zoneService);
-    return populator.populate(store, new ReadableMerchantStore(), store, language);
+				System.out.println("$#8616#"); populator.setCountryService(countryService);
+				System.out.println("$#8617#"); populator.setZoneService(zoneService);
+				System.out.println("$#8618#"); return populator.populate(store, new ReadableMerchantStore(), store, language);
   }
   
   private List<ReadableProductPrice> prices(ProductAvailability source, MerchantStore store, Language language) throws ConversionException {
@@ -112,12 +112,12 @@ public class ReadableInventoryMapper implements Mapper<ProductAvailability, Read
     for(ProductPrice price : source.getPrices()) {
         
       populator = new ReadableProductPricePopulator();
-      populator.setPricingService(pricingService);
+						System.out.println("$#8619#"); populator.setPricingService(pricingService);
       ReadableProductPrice p = populator.populate(price, new ReadableProductPrice(), store, language);
       prices.add(p);
     
     }
-    return prices;
+				System.out.println("$#8620#"); return prices;
   }
 
 

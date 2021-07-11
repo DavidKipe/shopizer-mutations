@@ -20,34 +20,34 @@ public class ReadableImage extends Entity implements Serializable {
 		this.imageName = imageName;
 	}
 	public String getImageName() {
-		return imageName;
+		System.out.println("$#8927#"); return imageName;
 	}
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 	public String getImageUrl() {
-		return imageUrl;
+		System.out.println("$#8928#"); return imageUrl;
 	}
 	public int getImageType() {
-		return imageType;
+		System.out.println("$#8929#"); return imageType;
 	}
 	public void setImageType(int imageType) {
 		this.imageType = imageType;
 	}
 	public String getExternalUrl() {
-		return externalUrl;
+		System.out.println("$#8930#"); return externalUrl;
 	}
 	public void setExternalUrl(String externalUrl) {
 		this.externalUrl = externalUrl;
 	}
 	public String getVideoUrl() {
-		return videoUrl;
+		System.out.println("$#8931#"); return videoUrl;
 	}
 	public void setVideoUrl(String videoUrl) {
 		this.videoUrl = videoUrl;
 	}
 	public boolean isDefaultImage() {
-		return defaultImage;
+		System.out.println("$#8933#"); System.out.println("$#8932#"); return defaultImage;
 	}
 	public void setDefaultImage(boolean defaultImage) {
 		this.defaultImage = defaultImage;

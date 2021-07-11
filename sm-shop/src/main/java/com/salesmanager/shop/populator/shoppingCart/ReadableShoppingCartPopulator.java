@@ -55,19 +55,19 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
     	Validate.notNull(shoppingCartCalculationService, "Requires to set shoppingCartCalculationService");
     	Validate.notNull(imageUtils, "Requires to set imageUtils");
     	
-    	if(target == null) {
+					System.out.println("$#10907#"); if(target == null) {
     		target = new ReadableShoppingCart();
     	}
-    	target.setCode(source.getShoppingCartCode());
+					System.out.println("$#10908#"); target.setCode(source.getShoppingCartCode());
     	int cartQuantity = 0;
     	
-    	target.setCustomer(source.getCustomerId());
+					System.out.println("$#10909#"); target.setCustomer(source.getCustomerId());
     	
     	try {
     	
     		Set<com.salesmanager.core.model.shoppingcart.ShoppingCartItem> items = source.getLineItems();
 
-            if(items!=null) {
+												System.out.println("$#10910#"); if(items!=null) {
 
                 for(com.salesmanager.core.model.shoppingcart.ShoppingCartItem item : items) {
 
@@ -75,34 +75,34 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
                 	ReadableShoppingCartItem shoppingCartItem = new ReadableShoppingCartItem();
 
                 	ReadableProductPopulator readableProductPopulator = new ReadableProductPopulator();
-                	readableProductPopulator.setPricingService(pricingService);
-                	readableProductPopulator.setimageUtils(imageUtils);
+																	System.out.println("$#10911#"); readableProductPopulator.setPricingService(pricingService);
+																	System.out.println("$#10912#"); readableProductPopulator.setimageUtils(imageUtils);
                 	readableProductPopulator.populate(item.getProduct(), shoppingCartItem,  store, language);
 
 
 
-                    shoppingCartItem.setPrice(item.getItemPrice());
-					shoppingCartItem.setFinalPrice(pricingService.getDisplayAmount(item.getItemPrice(),store));
+																				System.out.println("$#10913#"); shoppingCartItem.setPrice(item.getItemPrice());
+					System.out.println("$#10914#"); shoppingCartItem.setFinalPrice(pricingService.getDisplayAmount(item.getItemPrice(),store));
 			
-                    shoppingCartItem.setQuantity(item.getQuantity());
+																				System.out.println("$#10915#"); shoppingCartItem.setQuantity(item.getQuantity());
                     
-                    cartQuantity = cartQuantity + item.getQuantity();
+																				System.out.println("$#10916#"); cartQuantity = cartQuantity + item.getQuantity();
                     
                     BigDecimal subTotal = pricingService.calculatePriceQuantity(item.getItemPrice(), item.getQuantity());
                     
                     //calculate sub total (price * quantity)
-                    shoppingCartItem.setSubTotal(subTotal);
+																				System.out.println("$#10917#"); shoppingCartItem.setSubTotal(subTotal);
 
-					shoppingCartItem.setDisplaySubTotal(pricingService.getDisplayAmount(subTotal,store));
+					System.out.println("$#10918#"); shoppingCartItem.setDisplaySubTotal(pricingService.getDisplayAmount(subTotal,store));
 
 
                     Set<com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem> attributes = item.getAttributes();
-                    if(attributes!=null) {
+																				System.out.println("$#10919#"); if(attributes!=null) {
                         for(com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem attribute : attributes) {
 
                         	ProductAttribute productAttribute = productAttributeService.getById(attribute.getProductAttributeId());
                         	
-                        	if(productAttribute==null) {
+																									System.out.println("$#10920#"); if(productAttribute==null) {
                         		LOGGER.warn("Product attribute with ID " + attribute.getId() + " not found, skipping cart attribute " + attribute.getId());
                         		continue;
                         	}
@@ -110,7 +110,7 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
                         	ReadableShoppingCartAttribute cartAttribute = new ReadableShoppingCartAttribute();
                         	
 
-                            cartAttribute.setId(attribute.getId());
+																												System.out.println("$#10921#"); cartAttribute.setId(attribute.getId());
                             
                             ProductOption option = productAttribute.getProductOption();
                             ProductOptionValue optionValue = productAttribute.getProductOptionValue();
@@ -121,20 +121,20 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
                             
                             String optName = null;
                             String optValue = null;
-                            if(!CollectionUtils.isEmpty(optionDescriptions) && !CollectionUtils.isEmpty(optionValueDescriptions)) {
+																												System.out.println("$#10922#"); if(!CollectionUtils.isEmpty(optionDescriptions) && !CollectionUtils.isEmpty(optionValueDescriptions)) {
                             	
                             	optName = optionDescriptions.get(0).getName();
                             	optValue = optionValueDescriptions.get(0).getName();
                             	
                             	for(ProductOptionDescription optionDescription : optionDescriptions) {
-                            		if(optionDescription.getLanguage() != null && optionDescription.getLanguage().getId().intValue() == language.getId().intValue()) {
+																														System.out.println("$#10924#"); if(optionDescription.getLanguage() != null && optionDescription.getLanguage().getId().intValue() == language.getId().intValue()) {
                             			optName = optionDescription.getName();
                             			break;
                             		}
                             	}
                             	
                             	for(ProductOptionValueDescription optionValueDescription : optionValueDescriptions) {
-                            		if(optionValueDescription.getLanguage() != null && optionValueDescription.getLanguage().getId().intValue() == language.getId().intValue()) {
+																														System.out.println("$#10926#"); if(optionValueDescription.getLanguage() != null && optionValueDescription.getLanguage().getId().intValue() == language.getId().intValue()) {
                             			optValue = optionValueDescription.getName();
                             			break;
                             		}
@@ -142,20 +142,20 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
 
                             }
                             
-                            if(optName != null) {
+																												System.out.println("$#10928#"); if(optName != null) {
                             	ReadableShoppingCartAttributeOption attributeOption = new ReadableShoppingCartAttributeOption();
-                            	attributeOption.setCode(option.getCode());
-                            	attributeOption.setId(option.getId());
-                            	attributeOption.setName(optName);
-                            	cartAttribute.setOption(attributeOption);
+																													System.out.println("$#10929#"); attributeOption.setCode(option.getCode());
+																													System.out.println("$#10930#"); attributeOption.setId(option.getId());
+																													System.out.println("$#10931#"); attributeOption.setName(optName);
+																													System.out.println("$#10932#"); cartAttribute.setOption(attributeOption);
                             }
                             
-                            if(optValue != null) {
+																												System.out.println("$#10933#"); if(optValue != null) {
                             	ReadableShoppingCartAttributeOptionValue attributeOptionValue = new ReadableShoppingCartAttributeOptionValue();
-                            	attributeOptionValue.setCode(optionValue.getCode());
-                            	attributeOptionValue.setId(optionValue.getId());
-                            	attributeOptionValue.setName(optValue);
-                            	cartAttribute.setOptionValue(attributeOptionValue);
+																													System.out.println("$#10934#"); attributeOptionValue.setCode(optionValue.getCode());
+																													System.out.println("$#10935#"); attributeOptionValue.setId(optionValue.getId());
+																													System.out.println("$#10936#"); attributeOptionValue.setName(optValue);
+																													System.out.println("$#10937#"); cartAttribute.setOptionValue(attributeOptionValue);
                             }
                             shoppingCartItem.getCartItemattributes().add(cartAttribute);  
                         }
@@ -171,37 +171,37 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
             OrderSummary summary = new OrderSummary();
             List<com.salesmanager.core.model.shoppingcart.ShoppingCartItem> productsList = new ArrayList<com.salesmanager.core.model.shoppingcart.ShoppingCartItem>();
             productsList.addAll(source.getLineItems());
-            summary.setProducts(productsList);
+												System.out.println("$#10938#"); summary.setProducts(productsList);
             
             //OrdetTotalSummary contains all calculations
             
             OrderTotalSummary orderSummary = shoppingCartCalculationService.calculate(source, store, language );
 
-            if(CollectionUtils.isNotEmpty(orderSummary.getTotals())) {
+												System.out.println("$#10939#"); if(CollectionUtils.isNotEmpty(orderSummary.getTotals())) {
             	List<ReadableOrderTotal> totals = new ArrayList<ReadableOrderTotal>();
             	for(com.salesmanager.core.model.order.OrderTotal t : orderSummary.getTotals()) {
             		ReadableOrderTotal total = new ReadableOrderTotal();
-            		total.setCode(t.getOrderTotalCode());
-            		total.setValue(t.getValue());
-            		total.setText(t.getText());
+														System.out.println("$#10940#"); total.setCode(t.getOrderTotalCode());
+														System.out.println("$#10941#"); total.setValue(t.getValue());
+														System.out.println("$#10942#"); total.setText(t.getText());
             		totals.add(total);
             	}
-            	target.setTotals(totals);
+													System.out.println("$#10943#"); target.setTotals(totals);
             }
             
-            target.setSubtotal(orderSummary.getSubTotal());
-            target.setDisplaySubTotal(pricingService.getDisplayAmount(orderSummary.getSubTotal(), store));
+												System.out.println("$#10944#"); target.setSubtotal(orderSummary.getSubTotal());
+												System.out.println("$#10945#"); target.setDisplaySubTotal(pricingService.getDisplayAmount(orderSummary.getSubTotal(), store));
            
             
-            target.setTotal(orderSummary.getTotal());
-            target.setDisplayTotal(pricingService.getDisplayAmount(orderSummary.getTotal(), store));
+												System.out.println("$#10946#"); target.setTotal(orderSummary.getTotal());
+												System.out.println("$#10947#"); target.setDisplayTotal(pricingService.getDisplayAmount(orderSummary.getTotal(), store));
 
             
-            target.setQuantity(cartQuantity);
-            target.setId(source.getId());
+												System.out.println("$#10948#"); target.setQuantity(cartQuantity);
+												System.out.println("$#10949#"); target.setId(source.getId());
             
-            if(source.getOrderId() != null) {
-            	target.setOrder(source.getOrderId());
+												System.out.println("$#10950#"); if(source.getOrderId() != null) {
+													System.out.println("$#10951#"); target.setOrder(source.getOrderId());
             }
             
             
@@ -209,7 +209,7 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
     		throw new ConversionException(e);
     	}
 
-        return target;
+								System.out.println("$#10952#"); return target;
     	
  
 	}
@@ -220,7 +220,7 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
 	}
 
 	public PricingService getPricingService() {
-		return pricingService;
+		System.out.println("$#10953#"); return pricingService;
 	}
 
 	public void setPricingService(PricingService pricingService) {
@@ -228,7 +228,7 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
 	}
 
 	public ShoppingCartCalculationService getShoppingCartCalculationService() {
-		return shoppingCartCalculationService;
+		System.out.println("$#10954#"); return shoppingCartCalculationService;
 	}
 
 	public void setShoppingCartCalculationService(ShoppingCartCalculationService shoppingCartCalculationService) {
@@ -236,7 +236,7 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
 	}
 
 	public ImageFilePath getImageUtils() {
-		return imageUtils;
+		System.out.println("$#10955#"); return imageUtils;
 	}
 
 	public void setImageUtils(ImageFilePath imageUtils) {
@@ -244,7 +244,7 @@ public class ReadableShoppingCartPopulator extends AbstractDataPopulator<Shoppin
 	}
 
 	public ProductAttributeService getProductAttributeService() {
-		return productAttributeService;
+		System.out.println("$#10956#"); return productAttributeService;
 	}
 
 	public void setProductAttributeService(ProductAttributeService productAttributeService) {

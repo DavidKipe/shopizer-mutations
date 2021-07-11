@@ -49,7 +49,7 @@ public class OrderProductDownload extends SalesManagerEntity<Long, OrderProductD
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4362#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -57,7 +57,7 @@ public class OrderProductDownload extends SalesManagerEntity<Long, OrderProductD
 	}
 
 	public OrderProduct getOrderProduct() {
-		return orderProduct;
+		System.out.println("$#4363#"); return orderProduct;
 	}
 
 	public void setOrderProduct(OrderProduct orderProduct) {
@@ -65,7 +65,7 @@ public class OrderProductDownload extends SalesManagerEntity<Long, OrderProductD
 	}
 
 	public String getOrderProductFilename() {
-		return orderProductFilename;
+		System.out.println("$#4364#"); return orderProductFilename;
 	}
 
 	public void setOrderProductFilename(String orderProductFilename) {
@@ -73,7 +73,7 @@ public class OrderProductDownload extends SalesManagerEntity<Long, OrderProductD
 	}
 
 	public Integer getMaxdays() {
-		return maxdays;
+		System.out.println("$#4365#"); return maxdays;
 	}
 
 	public void setMaxdays(Integer maxdays) {
@@ -81,7 +81,7 @@ public class OrderProductDownload extends SalesManagerEntity<Long, OrderProductD
 	}
 
 	public Integer getDownloadCount() {
-		return downloadCount;
+		System.out.println("$#4366#"); return downloadCount;
 	}
 
 	public void setDownloadCount(Integer downloadCount) {

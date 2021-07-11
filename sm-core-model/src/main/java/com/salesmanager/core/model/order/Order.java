@@ -168,7 +168,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4288#"); return id;
 	}
 	
 	@Override
@@ -177,7 +177,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public OrderStatus getStatus() {
-		return status;
+		System.out.println("$#4289#"); return status;
 	}
 
 	public void setStatus(OrderStatus status) {
@@ -185,7 +185,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Date getLastModified() {
-		return CloneUtils.clone(lastModified);
+		System.out.println("$#4290#"); return CloneUtils.clone(lastModified);
 	}
 
 	public void setLastModified(Date lastModified) {
@@ -193,7 +193,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Date getDatePurchased() {
-		return CloneUtils.clone(datePurchased);
+		System.out.println("$#4291#"); return CloneUtils.clone(datePurchased);
 	}
 
 	public void setDatePurchased(Date datePurchased) {
@@ -201,7 +201,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Date getOrderDateFinished() {
-		return CloneUtils.clone(orderDateFinished);
+		System.out.println("$#4292#"); return CloneUtils.clone(orderDateFinished);
 	}
 
 	public void setOrderDateFinished(Date orderDateFinished) {
@@ -209,7 +209,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public BigDecimal getCurrencyValue() {
-		return currencyValue;
+		System.out.println("$#4293#"); return currencyValue;
 	}
 
 	public void setCurrencyValue(BigDecimal currencyValue) {
@@ -217,7 +217,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public BigDecimal getTotal() {
-		return total;
+		System.out.println("$#4294#"); return total;
 	}
 
 	public void setTotal(BigDecimal total) {
@@ -226,7 +226,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 
 
 	public String getIpAddress() {
-		return ipAddress;
+		System.out.println("$#4295#"); return ipAddress;
 	}
 
 	public void setIpAddress(String ipAddress) {
@@ -235,7 +235,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 
 
 	public String getPaymentModuleCode() {
-		return paymentModuleCode;
+		System.out.println("$#4296#"); return paymentModuleCode;
 	}
 
 	public void setPaymentModuleCode(String paymentModuleCode) {
@@ -245,7 +245,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 
 
 	public String getShippingModuleCode() {
-		return shippingModuleCode;
+		System.out.println("$#4297#"); return shippingModuleCode;
 	}
 
 	public void setShippingModuleCode(String shippingModuleCode) {
@@ -255,7 +255,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 
 
 	public Currency getCurrency() {
-		return currency;
+		System.out.println("$#4298#"); return currency;
 	}
 
 	public void setCurrency(Currency currency) {
@@ -263,7 +263,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public MerchantStore getMerchant() {
-		return merchant;
+		System.out.println("$#4299#"); return merchant;
 	}
 
 	public void setMerchant(MerchantStore merchant) {
@@ -271,7 +271,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Set<OrderProduct> getOrderProducts() {
-		return orderProducts;
+		System.out.println("$#4300#"); return orderProducts;
 	}
 
 	public void setOrderProducts(Set<OrderProduct> orderProducts) {
@@ -279,7 +279,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Set<OrderTotal> getOrderTotal() {
-		return orderTotal;
+		System.out.println("$#4301#"); return orderTotal;
 	}
 
 	public void setOrderTotal(Set<OrderTotal> orderTotal) {
@@ -287,7 +287,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Set<OrderStatusHistory> getOrderHistory() {
-		return orderHistory;
+		System.out.println("$#4302#"); return orderHistory;
 	}
 
 	public void setOrderHistory(Set<OrderStatusHistory> orderHistory) {
@@ -300,7 +300,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Delivery getDelivery() {
-		return delivery;
+		System.out.println("$#4303#"); return delivery;
 	}
 
 	public void setBilling(Billing billing) {
@@ -308,11 +308,11 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Billing getBilling() {
-		return billing;
+		System.out.println("$#4304#"); return billing;
 	}
 
 	public Long getCustomerId() {
-		return customerId;
+		System.out.println("$#4305#"); return customerId;
 	}
 
 	public void setCustomerId(Long customerId) {
@@ -321,7 +321,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	
 
 	public String getCustomerEmailAddress() {
-		return customerEmailAddress;
+		System.out.println("$#4306#"); return customerEmailAddress;
 	}
 
 	public void setCustomerEmailAddress(String customerEmailAddress) {
@@ -335,7 +335,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 
 
 	public OrderChannel getChannel() {
-		return channel;
+		System.out.println("$#4307#"); return channel;
 	}
 
 
@@ -345,7 +345,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 
 
 	public CreditCard getCreditCard() {
-		return creditCard;
+		System.out.println("$#4308#"); return creditCard;
 	}
 
 
@@ -355,11 +355,11 @@ public class Order extends SalesManagerEntity<Long, Order> {
 
 
 	public PaymentType getPaymentType() {
-		return paymentType;
+		System.out.println("$#4309#"); return paymentType;
 	}
 	
 	public OrderType getOrderType() {
-		return orderType;
+		System.out.println("$#4310#"); return orderType;
 	}
 
 	public void setOrderType(OrderType orderType) {
@@ -367,7 +367,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 	
 	public Locale getLocale() {
-		return locale;
+		System.out.println("$#4311#"); return locale;
 	}
 
 	public void setLocale(Locale locale) {
@@ -375,7 +375,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 	
 	public Boolean getCustomerAgreement() {
-		return customerAgreement;
+		System.out.println("$#4313#"); System.out.println("$#4312#"); return customerAgreement;
 	}
 
 	public void setCustomerAgreement(Boolean customerAgreement) {
@@ -383,7 +383,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 
 	public Boolean getConfirmedAddress() {
-		return confirmedAddress;
+		System.out.println("$#4315#"); System.out.println("$#4314#"); return confirmedAddress;
 	}
 
 	public void setConfirmedAddress(Boolean confirmedAddress) {
@@ -391,7 +391,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 	
 	public Set<OrderAttribute> getOrderAttributes() {
-		return orderAttributes;
+		System.out.println("$#4316#"); return orderAttributes;
 	}
 
 	public void setOrderAttributes(Set<OrderAttribute> orderAttributes) {
@@ -399,7 +399,7 @@ public class Order extends SalesManagerEntity<Long, Order> {
 	}
 	
 	public String getShoppingCartCode() {
-		return shoppingCartCode;
+		System.out.println("$#4317#"); return shoppingCartCode;
 	}
 
 	public void setShoppingCartCode(String shoppingCartCode) {

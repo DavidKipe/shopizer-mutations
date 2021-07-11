@@ -22,7 +22,7 @@ public class UserConnectionPK implements Serializable {
 	private String providerUserId;
 
 	public String getUserId() {
-		return userId;
+		System.out.println("$#4168#"); return userId;
 	}
 
 	public void setUserId(String userId) {
@@ -30,7 +30,7 @@ public class UserConnectionPK implements Serializable {
 	}
 
 	public String getProviderId() {
-		return providerId;
+		System.out.println("$#4169#"); return providerId;
 	}
 
 	public void setProviderId(String providerId) {
@@ -38,7 +38,7 @@ public class UserConnectionPK implements Serializable {
 	}
 
 	public String getProviderUserId() {
-		return providerUserId;
+		System.out.println("$#4170#"); return providerUserId;
 	}
 
 	public void setProviderUserId(String providerUserId) {
@@ -46,18 +46,18 @@ public class UserConnectionPK implements Serializable {
 	}
 
 	public boolean equals(Object o) {
-		if (o instanceof UserConnectionPK) {
+		System.out.println("$#4171#"); if (o instanceof UserConnectionPK) {
 			UserConnectionPK other = (UserConnectionPK) o;
-			return other.getProviderId().equals(getProviderId())
+			System.out.println("$#4172#"); return other.getProviderId().equals(getProviderId())
 					&& other.getProviderUserId().equals(getProviderUserId())
 					&& other.getUserId().equals(getUserId());
 		} else {
-			return false;
+			System.out.println("$#4176#"); return false;
 		}
 	}
 
 	public int hashCode() {
-		return getUserId().hashCode() + getProviderId().hashCode()
+		System.out.println("$#4178#"); System.out.println("$#4177#"); System.out.println("$#4179#"); return getUserId().hashCode() + getProviderId().hashCode()
 				+ getProviderUserId().hashCode();
 	}
 

@@ -33,7 +33,7 @@ public class ProductImageDescription extends Description {
 	private String altTag;
 
 	public ProductImage getProductImage() {
-		return productImage;
+		System.out.println("$#3886#"); return productImage;
 	}
 
 	public void setProductImage(ProductImage productImage) {
@@ -41,7 +41,7 @@ public class ProductImageDescription extends Description {
 	}
 
 	public String getAltTag() {
-		return altTag;
+		System.out.println("$#3887#"); return altTag;
 	}
 
 	public void setAltTag(String altTag) {

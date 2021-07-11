@@ -21,7 +21,7 @@ public class LanguageArgumentResolver implements HandlerMethodArgumentResolver {
 
   @Override
   public boolean supportsParameter(MethodParameter parameter) {
-    return parameter.getParameterType().equals(Language.class);
+				System.out.println("$#7885#"); System.out.println("$#7884#"); return parameter.getParameterType().equals(Language.class);
   }
 
   @Override
@@ -30,7 +30,7 @@ public class LanguageArgumentResolver implements HandlerMethodArgumentResolver {
 
     HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 
-    return languageUtils.getRESTLanguage(request);
+				System.out.println("$#7886#"); return languageUtils.getRESTLanguage(request);
   }
 
 }

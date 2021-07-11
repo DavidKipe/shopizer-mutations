@@ -27,26 +27,26 @@ public class ProductReviewEntity extends ShopEntity implements Serializable {
 	@Max(5)
 	private Double rating;
 	public String getDescription() {
-		return description;
+		System.out.println("$#8914#"); return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
 	public Long getProductId() {
-		return productId;
+		System.out.println("$#8915#"); return productId;
 	}
 	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
 
 	public Double getRating() {
-		return rating;
+		System.out.println("$#8916#"); return rating;
 	}
 	public void setRating(Double rating) {
 		this.rating = rating;
 	}
 	public String getDate() {
-		return date;
+		System.out.println("$#8917#"); return date;
 	}
 	public void setDate(String date) {
 		this.date = date;

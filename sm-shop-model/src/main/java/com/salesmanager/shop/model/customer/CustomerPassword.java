@@ -21,19 +21,19 @@ public class CustomerPassword implements Serializable {
 	@Size(min=6, message="{repeatpassword.not.empty}")
 	private String checkPassword;
 	public String getCurrentPassword() {
-		return currentPassword;
+		System.out.println("$#9072#"); return currentPassword;
 	}
 	public void setCurrentPassword(String currentPassword) {
 		this.currentPassword = currentPassword;
 	}
 	public String getPassword() {
-		return password;
+		System.out.println("$#9073#"); return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	public String getCheckPassword() {
-		return checkPassword;
+		System.out.println("$#9074#"); return checkPassword;
 	}
 	public void setCheckPassword(String checkPassword) {
 		this.checkPassword = checkPassword;

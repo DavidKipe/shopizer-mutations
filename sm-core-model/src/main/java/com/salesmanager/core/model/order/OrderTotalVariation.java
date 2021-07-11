@@ -13,7 +13,7 @@ public abstract class OrderTotalVariation {
 	List<OrderTotal> variations = null;
 
 	public List<OrderTotal> getVariations() {
-		return variations;
+		System.out.println("$#4404#"); return variations;
 	}
 
 	public void setVariations(List<OrderTotal> variations) {

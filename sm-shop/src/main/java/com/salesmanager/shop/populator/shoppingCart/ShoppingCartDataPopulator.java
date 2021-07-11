@@ -52,7 +52,7 @@ public class ShoppingCartDataPopulator extends AbstractDataPopulator<ShoppingCar
     private ImageFilePath imageUtils;
 
 			public ImageFilePath getimageUtils() {
-				return imageUtils;
+				System.out.println("$#10957#"); return imageUtils;
 			}
 		
 		
@@ -68,19 +68,19 @@ public class ShoppingCartDataPopulator extends AbstractDataPopulator<ShoppingCar
     public ShoppingCartData createTarget()
     {
 
-        return new ShoppingCartData();
+								System.out.println("$#10958#"); return new ShoppingCartData();
     }
 
 
 
     public ShoppingCartCalculationService getOrderService() {
-        return shoppingCartCalculationService;
+								System.out.println("$#10959#"); return shoppingCartCalculationService;
     }
 
 
 
     public PricingService getPricingService() {
-        return pricingService;
+								System.out.println("$#10960#"); return pricingService;
     }
 
 
@@ -91,122 +91,122 @@ public class ShoppingCartDataPopulator extends AbstractDataPopulator<ShoppingCar
     	Validate.notNull(shoppingCart, "Requires ShoppingCart");
     	Validate.notNull(language, "Requires Language not null");
     	int cartQuantity = 0;
-        cart.setCode(shoppingCart.getShoppingCartCode());
+								System.out.println("$#10961#"); cart.setCode(shoppingCart.getShoppingCartCode());
         Set<com.salesmanager.core.model.shoppingcart.ShoppingCartItem> items = shoppingCart.getLineItems();
         List<ShoppingCartItem> shoppingCartItemsList=Collections.emptyList();
         try{
-            if(items!=null) {
+												System.out.println("$#10962#"); if(items!=null) {
                 shoppingCartItemsList=new ArrayList<ShoppingCartItem>();
                 for(com.salesmanager.core.model.shoppingcart.ShoppingCartItem item : items) {
                 	
                     ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
-                    shoppingCartItem.setCode(cart.getCode());
-                    shoppingCartItem.setProductCode(item.getProduct().getSku());
-                    shoppingCartItem.setProductVirtual(item.isProductVirtual());
+																				System.out.println("$#10963#"); shoppingCartItem.setCode(cart.getCode());
+																				System.out.println("$#10964#"); shoppingCartItem.setProductCode(item.getProduct().getSku());
+																				System.out.println("$#10965#"); shoppingCartItem.setProductVirtual(item.isProductVirtual());
 
-                    shoppingCartItem.setProductId(item.getProductId());
-                    shoppingCartItem.setId(item.getId());
+																				System.out.println("$#10966#"); shoppingCartItem.setProductId(item.getProductId());
+																				System.out.println("$#10967#"); shoppingCartItem.setId(item.getId());
                     
                     String itemName = item.getProduct().getProductDescription().getName();
-                    if(!CollectionUtils.isEmpty(item.getProduct().getDescriptions())) {
+																				System.out.println("$#10968#"); if(!CollectionUtils.isEmpty(item.getProduct().getDescriptions())) {
                     	for(ProductDescription productDescription : item.getProduct().getDescriptions()) {
-                    		if(language != null && language.getId().intValue() == productDescription.getLanguage().getId().intValue()) {
+																						System.out.println("$#10969#"); if(language != null && language.getId().intValue() == productDescription.getLanguage().getId().intValue()) {
                     			itemName = productDescription.getName();
                     			break;
                     		}
                     	}
                     }
                     
-                    shoppingCartItem.setName(itemName);
+																				System.out.println("$#10971#"); shoppingCartItem.setName(itemName);
 
-                    shoppingCartItem.setPrice(pricingService.getDisplayAmount(item.getItemPrice(),store));
-                    shoppingCartItem.setQuantity(item.getQuantity());
+																				System.out.println("$#10972#"); shoppingCartItem.setPrice(pricingService.getDisplayAmount(item.getItemPrice(),store));
+																				System.out.println("$#10973#"); shoppingCartItem.setQuantity(item.getQuantity());
                     
                     
-                    cartQuantity = cartQuantity + item.getQuantity();
+																				System.out.println("$#10974#"); cartQuantity = cartQuantity + item.getQuantity();
                     
-                    shoppingCartItem.setProductPrice(item.getItemPrice());
-                    shoppingCartItem.setSubTotal(pricingService.getDisplayAmount(item.getSubTotal(), store));
+																				System.out.println("$#10975#"); shoppingCartItem.setProductPrice(item.getItemPrice());
+																				System.out.println("$#10976#"); shoppingCartItem.setSubTotal(pricingService.getDisplayAmount(item.getSubTotal(), store));
                     ProductImage image = item.getProduct().getProductImage();
-                    if(image!=null && imageUtils!=null) {
+																				System.out.println("$#10977#"); if(image!=null && imageUtils!=null) {
                         String imagePath = imageUtils.buildProductImageUtils(store, item.getProduct().getSku(), image.getProductImage());
-                        shoppingCartItem.setImage(imagePath);
+																								System.out.println("$#10979#"); shoppingCartItem.setImage(imagePath);
                     }
                     Set<com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem> attributes = item.getAttributes();
-                    if(attributes!=null) {
+																				System.out.println("$#10980#"); if(attributes!=null) {
                         List<ShoppingCartAttribute> cartAttributes = new ArrayList<ShoppingCartAttribute>();
                         for(com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem attribute : attributes) {
                             ShoppingCartAttribute cartAttribute = new ShoppingCartAttribute();
-                            cartAttribute.setId(attribute.getId());
-                            cartAttribute.setAttributeId(attribute.getProductAttributeId());
-                            cartAttribute.setOptionId(attribute.getProductAttribute().getProductOption().getId());
-                            cartAttribute.setOptionValueId(attribute.getProductAttribute().getProductOptionValue().getId());
+																												System.out.println("$#10981#"); cartAttribute.setId(attribute.getId());
+																												System.out.println("$#10982#"); cartAttribute.setAttributeId(attribute.getProductAttributeId());
+																												System.out.println("$#10983#"); cartAttribute.setOptionId(attribute.getProductAttribute().getProductOption().getId());
+																												System.out.println("$#10984#"); cartAttribute.setOptionValueId(attribute.getProductAttribute().getProductOptionValue().getId());
                             List<ProductOptionDescription> optionDescriptions = attribute.getProductAttribute().getProductOption().getDescriptionsSettoList();
                             List<ProductOptionValueDescription> optionValueDescriptions = attribute.getProductAttribute().getProductOptionValue().getDescriptionsSettoList();
-                            if(!CollectionUtils.isEmpty(optionDescriptions) && !CollectionUtils.isEmpty(optionValueDescriptions)) {
+																												System.out.println("$#10985#"); if(!CollectionUtils.isEmpty(optionDescriptions) && !CollectionUtils.isEmpty(optionValueDescriptions)) {
                             	
                             	String optionName = optionDescriptions.get(0).getName();
                             	String optionValue = optionValueDescriptions.get(0).getName();
                             	
                             	for(ProductOptionDescription optionDescription : optionDescriptions) {
-                            		if(optionDescription.getLanguage() != null && optionDescription.getLanguage().getId().intValue() == language.getId().intValue()) {
+																														System.out.println("$#10987#"); if(optionDescription.getLanguage() != null && optionDescription.getLanguage().getId().intValue() == language.getId().intValue()) {
                             			optionName = optionDescription.getName();
                             			break;
                             		}
                             	}
                             	
                             	for(ProductOptionValueDescription optionValueDescription : optionValueDescriptions) {
-                            		if(optionValueDescription.getLanguage() != null && optionValueDescription.getLanguage().getId().intValue() == language.getId().intValue()) {
+																														System.out.println("$#10989#"); if(optionValueDescription.getLanguage() != null && optionValueDescription.getLanguage().getId().intValue() == language.getId().intValue()) {
                             			optionValue = optionValueDescription.getName();
                             			break;
                             		}
                             	}
-                            	cartAttribute.setOptionName(optionName);
-                            	cartAttribute.setOptionValue(optionValue);
+																													System.out.println("$#10991#"); cartAttribute.setOptionName(optionName);
+																													System.out.println("$#10992#"); cartAttribute.setOptionValue(optionValue);
                             	cartAttributes.add(cartAttribute);
                             }
                         }
-                        shoppingCartItem.setShoppingCartAttributes(cartAttributes);
+																								System.out.println("$#10993#"); shoppingCartItem.setShoppingCartAttributes(cartAttributes);
                     }
                     shoppingCartItemsList.add(shoppingCartItem);
                 }
             }
-            if(CollectionUtils.isNotEmpty(shoppingCartItemsList)){
-                cart.setShoppingCartItems(shoppingCartItemsList);
+												System.out.println("$#10994#"); if(CollectionUtils.isNotEmpty(shoppingCartItemsList)){
+																System.out.println("$#10995#"); cart.setShoppingCartItems(shoppingCartItemsList);
             }
             
-            if(shoppingCart.getOrderId() != null) {
-            	cart.setOrderId(shoppingCart.getOrderId());
+												System.out.println("$#10996#"); if(shoppingCart.getOrderId() != null) {
+													System.out.println("$#10997#"); cart.setOrderId(shoppingCart.getOrderId());
             }
 
             OrderSummary summary = new OrderSummary();
             List<com.salesmanager.core.model.shoppingcart.ShoppingCartItem> productsList = new ArrayList<com.salesmanager.core.model.shoppingcart.ShoppingCartItem>();
             productsList.addAll(shoppingCart.getLineItems());
-            summary.setProducts(productsList.stream().filter(p -> p.getProduct().isAvailable()).collect(Collectors.toList()));
+												System.out.println("$#11000#"); summary.setProducts(productsList.stream().filter(p -> p.getProduct().isAvailable()).collect(Collectors.toList()));
             OrderTotalSummary orderSummary = shoppingCartCalculationService.calculate(shoppingCart,store, language );
 
-            if(CollectionUtils.isNotEmpty(orderSummary.getTotals())) {
+												System.out.println("$#11001#"); if(CollectionUtils.isNotEmpty(orderSummary.getTotals())) {
             	List<OrderTotal> totals = new ArrayList<OrderTotal>();
             	for(com.salesmanager.core.model.order.OrderTotal t : orderSummary.getTotals()) {
             		OrderTotal total = new OrderTotal();
-            		total.setCode(t.getOrderTotalCode());
-            		total.setText(t.getText());
-            		total.setValue(t.getValue());
+														System.out.println("$#11002#"); total.setCode(t.getOrderTotalCode());
+														System.out.println("$#11003#"); total.setText(t.getText());
+														System.out.println("$#11004#"); total.setValue(t.getValue());
             		totals.add(total);
             	}
-            	cart.setTotals(totals);
+													System.out.println("$#11005#"); cart.setTotals(totals);
             }
             
-            cart.setSubTotal(pricingService.getDisplayAmount(orderSummary.getSubTotal(), store));
-            cart.setTotal(pricingService.getDisplayAmount(orderSummary.getTotal(), store));
-            cart.setQuantity(cartQuantity);
-            cart.setId(shoppingCart.getId());
+												System.out.println("$#11006#"); cart.setSubTotal(pricingService.getDisplayAmount(orderSummary.getSubTotal(), store));
+												System.out.println("$#11007#"); cart.setTotal(pricingService.getDisplayAmount(orderSummary.getTotal(), store));
+												System.out.println("$#11008#"); cart.setQuantity(cartQuantity);
+												System.out.println("$#11009#"); cart.setId(shoppingCart.getId());
         }
         catch(ServiceException ex){
             LOG.error( "Error while converting cart Model to cart Data.."+ex );
             throw new ConversionException( "Unable to create cart data", ex );
         }
-        return cart;
+								System.out.println("$#11010#"); return cart;
 
 
     };

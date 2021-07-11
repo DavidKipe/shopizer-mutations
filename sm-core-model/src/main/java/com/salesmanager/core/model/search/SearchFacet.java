@@ -9,19 +9,19 @@ public class SearchFacet {
 		this.key = key;
 	}
 	public String getKey() {
-		return key;
+		System.out.println("$#4516#"); return key;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getName() {
-		return name;
+		System.out.println("$#4517#"); return name;
 	}
 	public void setCount(long count) {
 		this.count = count;
 	}
 	public long getCount() {
-		return count;
+		System.out.println("$#4518#"); return count;
 	};
 
 }

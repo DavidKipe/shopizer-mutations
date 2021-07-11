@@ -16,7 +16,7 @@ public class PersistableMerchantStore extends MerchantStoreEntity {
 	private List<String> supportedLanguages;
 
 	public List<String> getSupportedLanguages() {
-		return supportedLanguages;
+		System.out.println("$#9368#"); return supportedLanguages;
 	}
 
 	public void setSupportedLanguages(List<String> supportedLanguages) {
@@ -24,7 +24,7 @@ public class PersistableMerchantStore extends MerchantStoreEntity {
 	}
 
 	public PersistableAddress getAddress() {
-		return address;
+		System.out.println("$#9369#"); return address;
 	}
 
 	public void setAddress(PersistableAddress address) {
@@ -32,7 +32,7 @@ public class PersistableMerchantStore extends MerchantStoreEntity {
 	}
 
   public String getRetailerStore() {
-    return retailerStore;
+				System.out.println("$#9370#"); return retailerStore;
   }
 
   public void setRetailerStore(String retailerStore) {

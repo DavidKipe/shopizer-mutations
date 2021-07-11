@@ -7,7 +7,7 @@ public class ReadableBrand extends MerchantStoreBrand {
   private ReadableImage logo;
 
   public ReadableImage getLogo() {
-    return logo;
+				System.out.println("$#9371#"); return logo;
   }
 
   public void setLogo(ReadableImage logo) {

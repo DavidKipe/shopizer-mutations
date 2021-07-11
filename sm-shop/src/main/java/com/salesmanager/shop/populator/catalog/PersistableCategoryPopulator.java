@@ -32,7 +32,7 @@ public class PersistableCategoryPopulator extends
 	}
 
 	public CategoryService getCategoryService() {
-		return categoryService;
+		System.out.println("$#9445#"); return categoryService;
 	}
 
 	public void setLanguageService(LanguageService languageService) {
@@ -40,7 +40,7 @@ public class PersistableCategoryPopulator extends
 	}
 
 	public LanguageService getLanguageService() {
-		return languageService;
+		System.out.println("$#9446#"); return languageService;
 	}
 
 
@@ -57,52 +57,52 @@ public class PersistableCategoryPopulator extends
 /*		Validate.notNull(categoryService, "Requires to set CategoryService");
 		Validate.notNull(languageService, "Requires to set LanguageService");*/
 
-		target.setMerchantStore(store);
-		target.setCode(source.getCode());
-		target.setSortOrder(source.getSortOrder());
-		target.setVisible(source.isVisible());
-		target.setFeatured(source.isFeatured());
+		System.out.println("$#9447#"); target.setMerchantStore(store);
+		System.out.println("$#9448#"); target.setCode(source.getCode());
+		System.out.println("$#9449#"); target.setSortOrder(source.getSortOrder());
+		System.out.println("$#9450#"); target.setVisible(source.isVisible());
+		System.out.println("$#9451#"); target.setFeatured(source.isFeatured());
 
 		//children
-		if(!CollectionUtils.isEmpty(source.getChildren())) {
+		System.out.println("$#9452#"); if(!CollectionUtils.isEmpty(source.getChildren())) {
 		  //no modifications to children category
 		} else {
-		  target.getCategories().clear();
+				System.out.println("$#9453#"); target.getCategories().clear();
 		}
 
 		//get parent
 
-		if(source.getParent()==null || (StringUtils.isBlank(source.getParent().getCode())) || source.getParent().getId()==null) {
-			target.setParent(null);
-			target.setDepth(0);
-			target.setLineage(new StringBuilder().append("/").append(source.getId()).append("/").toString());
+		System.out.println("$#9454#"); if(source.getParent()==null || (StringUtils.isBlank(source.getParent().getCode())) || source.getParent().getId()==null) {
+			System.out.println("$#9457#"); target.setParent(null);
+			System.out.println("$#9458#"); target.setDepth(0);
+			System.out.println("$#9459#"); target.setLineage(new StringBuilder().append("/").append(source.getId()).append("/").toString());
 		} else {
 			Category parent = null;
-			if(!StringUtils.isBlank(source.getParent().getCode())) {
+			System.out.println("$#9460#"); if(!StringUtils.isBlank(source.getParent().getCode())) {
 				 parent = categoryService.getByCode(store.getCode(), source.getParent().getCode());
-			} else if(source.getParent().getId()!=null) {
+			} else if(source.getParent().getId()!=null) { System.out.println("$#9461#");
 				 parent = categoryService.getById(source.getParent().getId(), store.getId());
 			} else {
 				throw new ConversionException("Category parent needs at least an id or a code for reference");
 			}
-			if(parent !=null && parent.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#9462#"); if(parent !=null && parent.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 				throw new ConversionException("Store id does not belong to specified parent id");
 			}
 
-			if(parent!=null) {
-				target.setParent(parent);
+			System.out.println("$#9464#"); if(parent!=null) {
+				System.out.println("$#9465#"); target.setParent(parent);
 
 				String lineage = parent.getLineage();
 				int depth = parent.getDepth();
 
-				target.setDepth(depth+1);
-				target.setLineage(new StringBuilder().append(lineage).append(parent.getId()).append("/").toString());
+				System.out.println("$#9467#"); System.out.println("$#9466#"); target.setDepth(depth+1);
+				System.out.println("$#9468#"); target.setLineage(new StringBuilder().append(lineage).append(parent.getId()).append("/").toString());
 			}
 
 		}
 
 
-		if(!CollectionUtils.isEmpty(source.getChildren())) {
+		System.out.println("$#9469#"); if(!CollectionUtils.isEmpty(source.getChildren())) {
 
 			for(PersistableCategory cat : source.getChildren()) {
 
@@ -114,16 +114,16 @@ public class PersistableCategoryPopulator extends
 		}
 
 
-		if(!CollectionUtils.isEmpty(source.getDescriptions())) {
+		System.out.println("$#9470#"); if(!CollectionUtils.isEmpty(source.getDescriptions())) {
 			Set<com.salesmanager.core.model.catalog.category.CategoryDescription> descriptions = new HashSet<com.salesmanager.core.model.catalog.category.CategoryDescription>();
-			if(CollectionUtils.isNotEmpty(target.getDescriptions())) {
+			System.out.println("$#9471#"); if(CollectionUtils.isNotEmpty(target.getDescriptions())) {
     			for(com.salesmanager.core.model.catalog.category.CategoryDescription description : target.getDescriptions()) {
     			    for(CategoryDescription d : source.getDescriptions()) {
-    			        if(StringUtils.isBlank(d.getLanguage())) {
+															System.out.println("$#9472#"); if(StringUtils.isBlank(d.getLanguage())) {
     			          throw new ConversionException("Source category description has no language");
     			        }
-    			        if(d.getLanguage().equals(description.getLanguage().getCode())) {
-            				description.setCategory(target);
+															System.out.println("$#9473#"); if(d.getLanguage().equals(description.getLanguage().getCode())) {
+																System.out.println("$#9474#"); description.setCategory(target);
             				description = buildDescription(d, description);
             				descriptions.add(description);
     			        }
@@ -135,17 +135,17 @@ public class PersistableCategoryPopulator extends
                 com.salesmanager.core.model.catalog.category.CategoryDescription t = new com.salesmanager.core.model.catalog.category.CategoryDescription();
 
 			    this.buildDescription(d, t);
-			    t.setCategory(target);
+							System.out.println("$#9475#"); t.setCategory(target);
 			    descriptions.add(t);
 
 			  }
 
 			}
-			target.setDescriptions(descriptions);
+			System.out.println("$#9476#"); target.setDescriptions(descriptions);
 		}
 
 
-		return target;
+		System.out.println("$#9477#"); return target;
 
 
 		} catch(Exception e) {
@@ -156,19 +156,19 @@ public class PersistableCategoryPopulator extends
 
 	private com.salesmanager.core.model.catalog.category.CategoryDescription buildDescription(com.salesmanager.shop.model.catalog.category.CategoryDescription source, com.salesmanager.core.model.catalog.category.CategoryDescription target) throws Exception {
       //com.salesmanager.core.model.catalog.category.CategoryDescription desc = new com.salesmanager.core.model.catalog.category.CategoryDescription();
-	  target.setCategoryHighlight(source.getHighlights());
-      target.setDescription(source.getDescription());
-      target.setName(source.getName());
-      target.setMetatagDescription(source.getMetaDescription());
-      target.setMetatagTitle(source.getTitle());
-      target.setSeUrl(source.getFriendlyUrl());
+			System.out.println("$#9478#"); target.setCategoryHighlight(source.getHighlights());
+						System.out.println("$#9479#"); target.setDescription(source.getDescription());
+						System.out.println("$#9480#"); target.setName(source.getName());
+						System.out.println("$#9481#"); target.setMetatagDescription(source.getMetaDescription());
+						System.out.println("$#9482#"); target.setMetatagTitle(source.getTitle());
+						System.out.println("$#9483#"); target.setSeUrl(source.getFriendlyUrl());
       Language lang = languageService.getByCode(source.getLanguage());
-      if(lang==null) {
+						System.out.println("$#9484#"); if(lang==null) {
           throw new ConversionException("Language is null for code " + source.getLanguage() + " use language ISO code [en, fr ...]");
       }
       //description.setId(description.getId());
-      target.setLanguage(lang);
-      return target;
+						System.out.println("$#9485#"); target.setLanguage(lang);
+						System.out.println("$#9486#"); return target;
 	}
 
 

@@ -13,7 +13,7 @@ public class AddressLocation implements Serializable {
 	private String countryCode;
 	
 	public String getPostalCode() {
-		return postalCode;
+		System.out.println("$#9041#"); return postalCode;
 	}
 
 	public void setPostalCode(String postalCode) {
@@ -21,7 +21,7 @@ public class AddressLocation implements Serializable {
 	}
 
   public String getCountryCode() {
-    return countryCode;
+				System.out.println("$#9042#"); return countryCode;
   }
 
   public void setCountryCode(String countryCode) {

@@ -15,7 +15,7 @@ public class ReadableProductOptionList extends ReadableList {
   private List<ReadableProductOptionEntity> options = new ArrayList<ReadableProductOptionEntity>();
 
   public List<ReadableProductOptionEntity> getOptions() {
-    return options;
+				System.out.println("$#8779#"); return options;
   }
 
   public void setOptions(List<ReadableProductOptionEntity> options) {

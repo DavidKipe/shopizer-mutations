@@ -28,7 +28,7 @@ public class ProductTypeDescription extends Description {
   private ProductType productType;
 
   public ProductType getProductType() {
-    return productType;
+				System.out.println("$#4010#"); return productType;
   }
 
   public void setProductType(ProductType productType) {

@@ -14,15 +14,15 @@ public class ReadableOptinMapper implements Mapper<Optin, ReadableOptin> {
   @Override
   public ReadableOptin convert(Optin source, MerchantStore store, Language language) {
     ReadableOptin optinEntity = new ReadableOptin();
-    optinEntity.setCode(source.getCode());
-    optinEntity.setDescription(source.getDescription());
-    optinEntity.setOptinType(source.getOptinType().name());
-    return optinEntity;
+				System.out.println("$#8627#"); optinEntity.setCode(source.getCode());
+				System.out.println("$#8628#"); optinEntity.setDescription(source.getDescription());
+				System.out.println("$#8629#"); optinEntity.setOptinType(source.getOptinType().name());
+				System.out.println("$#8630#"); return optinEntity;
   }
 
   @Override
   public ReadableOptin convert(Optin source, ReadableOptin destination, MerchantStore store,
       Language language) {
-    return destination;
+				System.out.println("$#8631#"); return destination;
   }
 }

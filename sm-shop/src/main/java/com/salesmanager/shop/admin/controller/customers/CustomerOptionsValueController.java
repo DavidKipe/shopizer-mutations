@@ -59,8 +59,8 @@ public class CustomerOptionsValueController {
 	public String displayOptionValues(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		setMenu(model,request);
-		return ControllerConstants.Tiles.Customer.optionsValuesList;
+		System.out.println("$#5496#"); setMenu(model,request);
+		System.out.println("$#5497#"); return ControllerConstants.Tiles.Customer.optionsValuesList;
 		
 		
 		
@@ -79,18 +79,18 @@ public class CustomerOptionsValueController {
 	@PreAuthorize("hasRole('CUSTOMER')")
 	@RequestMapping(value="/admin/customers/options/values/edit.html", method=RequestMethod.GET)
 	public String displayOptionValueEdit(@RequestParam("id") long id, HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
-		return displayOption(id,request,response,model,locale);
+		System.out.println("$#5498#"); return displayOption(id,request,response,model,locale);
 	}
 	
 	@PreAuthorize("hasRole('CUSTOMER')")
 	@RequestMapping(value="/admin/customers/options/values/create.html", method=RequestMethod.GET)
 	public String displayOptionValueCreate(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
-		return displayOption(null,request,response,model,locale);
+		System.out.println("$#5499#"); return displayOption(null,request,response,model,locale);
 	}
 	
 	private String displayOption(Long id, HttpServletRequest request, HttpServletResponse response,Model model,Locale locale) throws Exception {
 
-		this.setMenu(model, request);
+		System.out.println("$#5500#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		List<Language> languages = store.getLanguages();
@@ -98,18 +98,18 @@ public class CustomerOptionsValueController {
 		Set<CustomerOptionValueDescription> descriptions = new HashSet<CustomerOptionValueDescription>();
 		CustomerOptionValue option = new CustomerOptionValue();
 		
-		if(id!=null && id!=0) {//edit mode
+		System.out.println("$#5501#"); if(id!=null && id!=0) {//edit mode
 			
 			
 			option = customerOptionValueService.getById(id);
 			
 			
-			if(option==null) {
-				return "redirect:/admin/customers/options/values/list.html";
+			System.out.println("$#5503#"); if(option==null) {
+				System.out.println("$#5504#"); return "redirect:/admin/customers/options/values/list.html";
 			}
 			
-			if(option.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				return "redirect:/admin/customers/options/values/list.html";
+			System.out.println("$#5505#"); if(option.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#5506#"); return "redirect:/admin/customers/options/values/list.html";
 			}
 			
 			Set<CustomerOptionValueDescription> optionDescriptions = option.getDescriptions();
@@ -118,18 +118,18 @@ public class CustomerOptionsValueController {
 			
 				CustomerOptionValueDescription optionDescription = null;
 				
-				if(optionDescriptions!=null) {
+				System.out.println("$#5507#"); if(optionDescriptions!=null) {
 					for(CustomerOptionValueDescription description : optionDescriptions) {
 						String code = description.getLanguage().getCode();
-						if(code.equals(l.getCode())) {
+						System.out.println("$#5508#"); if(code.equals(l.getCode())) {
 							optionDescription = description;
 						}
 					}
 				}
 				
-				if(optionDescription==null) {
+				System.out.println("$#5509#"); if(optionDescription==null) {
 					optionDescription = new CustomerOptionValueDescription();
-					optionDescription.setLanguage(l);
+					System.out.println("$#5510#"); optionDescription.setLanguage(l);
 				}
 				
 				descriptions.add(optionDescription);
@@ -139,17 +139,17 @@ public class CustomerOptionsValueController {
 			
 			for(Language l : languages) {
 				CustomerOptionValueDescription desc = new CustomerOptionValueDescription();
-				desc.setLanguage(l);
+				System.out.println("$#5511#"); desc.setLanguage(l);
 				descriptions.add(desc);
 			}
 			
-			option.setDescriptions(descriptions);
+			System.out.println("$#5512#"); option.setDescriptions(descriptions);
 		}
 		
 
 		
 		model.addAttribute("optionValue", option);
-		return ControllerConstants.Tiles.Customer.optionsValueDetails;
+		System.out.println("$#5513#"); return ControllerConstants.Tiles.Customer.optionsValueDetails;
 		
 		
 	}
@@ -161,30 +161,30 @@ public class CustomerOptionsValueController {
 		
 
 		//display menu
-		setMenu(model,request);
+		System.out.println("$#5514#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		CustomerOptionValue dbEntity =	null;	
 
-		if(optionValue.getId() != null && optionValue.getId() >0) { //edit entry
+		System.out.println("$#5516#"); System.out.println("$#5515#"); if(optionValue.getId() != null && optionValue.getId() >0) { //edit entry
 			
 			//get from DB
 			dbEntity = customerOptionValueService.getById(optionValue.getId());
 			
-			if(dbEntity==null) {
-				return "redirect:/admin/customers/options/values/list.html";
+			System.out.println("$#5518#"); if(dbEntity==null) {
+				System.out.println("$#5519#"); return "redirect:/admin/customers/options/values/list.html";
 			}
 			
-			if(dbEntity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				return "redirect:/admin/customers/options/values/list.html";
+			System.out.println("$#5520#"); if(dbEntity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#5521#"); return "redirect:/admin/customers/options/values/list.html";
 			}
 		}
 		
 		//validate if it contains an existing code
 		CustomerOptionValue byCode = customerOptionValueService.getByCode(store, optionValue.getCode());
-		if(byCode!=null && optionValue.getId()==null) {
+		System.out.println("$#5522#"); if(byCode!=null && optionValue.getId()==null) {
 			ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
-			result.addError(error);
+			System.out.println("$#5524#"); result.addError(error);
 		}
 
 			
@@ -192,20 +192,20 @@ public class CustomerOptionsValueController {
 			
 
 		List<CustomerOptionValueDescription> descriptions = optionValue.getDescriptionsList();
-		if(descriptions!=null && descriptions.size()>0) {
+		System.out.println("$#5526#"); System.out.println("$#5525#"); if(descriptions!=null && descriptions.size()>0) {
 			
 				Set<CustomerOptionValueDescription> descs = new HashSet<CustomerOptionValueDescription>();
-					optionValue.setDescriptions(descs);
+					System.out.println("$#5528#"); optionValue.setDescriptions(descs);
 					for(CustomerOptionValueDescription description : descriptions) {
 						
-						if(StringUtils.isBlank(description.getName())) {
+						System.out.println("$#5529#"); if(StringUtils.isBlank(description.getName())) {
 							ObjectError error = new ObjectError("name",messages.getMessage("message.name.required", locale));
-							result.addError(error);
+							System.out.println("$#5530#"); result.addError(error);
 						} else {
 							String code = description.getLanguage().getCode();
 							Language l = langs.get(code);
-							description.setLanguage(l);
-							description.setCustomerOptionValue(optionValue);
+							System.out.println("$#5531#"); description.setLanguage(l);
+							System.out.println("$#5532#"); description.setCustomerOptionValue(optionValue);
 							descs.add(description);
 						}	
 					}
@@ -213,23 +213,23 @@ public class CustomerOptionsValueController {
 		} else {
 			
 			ObjectError error = new ObjectError("name",messages.getMessage("message.name.required", locale));
-			result.addError(error);
+			System.out.println("$#5533#"); result.addError(error);
 			
 		}
 			
 
-		optionValue.setMerchantStore(store);
+		System.out.println("$#5534#"); optionValue.setMerchantStore(store);
 
 		
-		if (result.hasErrors()) {
-			return ControllerConstants.Tiles.Customer.optionsValueDetails;
+		System.out.println("$#5535#"); if (result.hasErrors()) {
+			System.out.println("$#5536#"); return ControllerConstants.Tiles.Customer.optionsValueDetails;
 		}
 		
 
-		customerOptionValueService.saveOrUpdate(optionValue);
+		System.out.println("$#5537#"); customerOptionValueService.saveOrUpdate(optionValue);
 
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Customer.optionsValueDetails;
+		System.out.println("$#5538#"); return ControllerConstants.Tiles.Customer.optionsValueDetails;
 	}
 
 	
@@ -263,24 +263,24 @@ public class CustomerOptionsValueController {
 				CustomerOptionValueDescription description = option.getDescriptions().iterator().next();
 				
 				entry.put("name", description.getName());
-				resp.addDataEntry(entry);
+				System.out.println("$#5539#"); resp.addDataEntry(entry);
 				
 				
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5540#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 			
 
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging options", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5541#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5542#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5543#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 		
 	}
@@ -301,26 +301,26 @@ public class CustomerOptionsValueController {
 			
 			CustomerOptionValue entity = customerOptionValueService.getById(id);
 
-			if(entity==null || entity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#5544#"); if(entity==null || entity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#5546#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#5547#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 			} else {
-				customerOptionValueService.delete(entity);
-				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+				System.out.println("$#5548#"); customerOptionValueService.delete(entity);
+				System.out.println("$#5549#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 				
 			}
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting option", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5550#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5551#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5552#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5553#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 

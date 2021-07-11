@@ -23,49 +23,49 @@ public class OrderTotalInputParameters {
 	//might add variation based on other objects such as Customer
 	
 	public Double getDiscount() {
-		return discount;
+		System.out.println("$#1445#"); return discount;
 	}
 	public void setDiscount(Double discount) {
 		this.discount = discount;
 	}
 	public String getTotalCode() {
-		return totalCode;
+		System.out.println("$#1446#"); return totalCode;
 	}
 	public void setTotalCode(String totalCode) {
 		this.totalCode = totalCode;
 	}
 	public String getItemManufacturerCode() {
-		return itemManufacturerCode;
+		System.out.println("$#1447#"); return itemManufacturerCode;
 	}
 	public void setItemManufacturerCode(String itemManufacturerCode) {
 		this.itemManufacturerCode = itemManufacturerCode;
 	}
 	public String getItemCategoryCode() {
-		return itemCategoryCode;
+		System.out.println("$#1448#"); return itemCategoryCode;
 	}
 	public void setItemCategoryCode(String itemCategoryCode) {
 		this.itemCategoryCode = itemCategoryCode;
 	}
 	public long getProductId() {
-		return productId;
+		System.out.println("$#1449#"); return productId;
 	}
 	public void setProductId(long productId) {
 		this.productId = productId;
 	}
 	public String getShippingMethod() {
-		return shippingMethod;
+		System.out.println("$#1450#"); return shippingMethod;
 	}
 	public void setShippingMethod(String shippingMethod) {
 		this.shippingMethod = shippingMethod;
 	}
 	public String getPromoCode() {
-		return promoCode;
+		System.out.println("$#1451#"); return promoCode;
 	}
 	public void setPromoCode(String promoCode) {
 		this.promoCode = promoCode;
 	}
 	public Date getDate() {
-		return date;
+		System.out.println("$#1452#"); return date;
 	}
 	public void setDate(Date date) {
 		this.date = date;

@@ -48,22 +48,22 @@ public class MerchantConfig implements Serializable, JSONAware {
 		data.put("testMode", this.isTestMode());
 		data.put("debugMode", this.isDebugMode());
 		
-		if(useDefaultSearchConfig!=null) {
+		System.out.println("$#4741#"); if(useDefaultSearchConfig!=null) {
 			JSONObject obj = new JSONObject();
 			for(String key : useDefaultSearchConfig.keySet()) {
 				Boolean val = (Boolean)useDefaultSearchConfig.get(key);
-				if(val!=null) {
+				System.out.println("$#4742#"); if(val!=null) {
 					obj.put(key,val);
 				}
 			}
 			data.put("useDefaultSearchConfig", obj);
 		}
 		
-		if(defaultSearchConfigPath!=null) {
+		System.out.println("$#4743#"); if(defaultSearchConfigPath!=null) {
 			JSONObject obj = new JSONObject();
 			for(String key : defaultSearchConfigPath.keySet()) {
 				String val = (String)defaultSearchConfigPath.get(key);
-				if(!StringUtils.isBlank(val)) {
+				System.out.println("$#4744#"); if(!StringUtils.isBlank(val)) {
 					obj.put(key, val);
 				}
 			}
@@ -71,7 +71,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 		}
 		
 		
-		return data.toJSONString();
+		System.out.println("$#4745#"); return data.toJSONString();
 	}
 
 	public void setDisplayCustomerSection(boolean displayCustomerSection) {
@@ -79,7 +79,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public boolean isDisplayCustomerSection() {
-		return displayCustomerSection;
+		System.out.println("$#4747#"); System.out.println("$#4746#"); return displayCustomerSection;
 	}
 
 	public void setDisplayContactUs(boolean displayContactUs) {
@@ -87,11 +87,11 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public boolean isDisplayContactUs() {
-		return displayContactUs;
+		System.out.println("$#4749#"); System.out.println("$#4748#"); return displayContactUs;
 	}
 
 	public boolean isDisplayStoreAddress() {
-		return displayStoreAddress;
+		System.out.println("$#4751#"); System.out.println("$#4750#"); return displayStoreAddress;
 	}
 
 	public void setDisplayStoreAddress(boolean displayStoreAddress) {
@@ -103,7 +103,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public Map<String,Boolean> getUseDefaultSearchConfig() {
-		return useDefaultSearchConfig;
+		System.out.println("$#4752#"); return useDefaultSearchConfig;
 	}
 
 	public void setDefaultSearchConfigPath(Map<String,String> defaultSearchConfigPath) {
@@ -111,7 +111,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public Map<String,String> getDefaultSearchConfigPath() {
-		return defaultSearchConfigPath;
+		System.out.println("$#4753#"); return defaultSearchConfigPath;
 	}
 
 	public void setDisplayAddToCartOnFeaturedItems(
@@ -120,11 +120,11 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public boolean isDisplayAddToCartOnFeaturedItems() {
-		return displayAddToCartOnFeaturedItems;
+		System.out.println("$#4755#"); System.out.println("$#4754#"); return displayAddToCartOnFeaturedItems;
 	}
 
 	public boolean isDisplayCustomerAgreement() {
-		return displayCustomerAgreement;
+		System.out.println("$#4757#"); System.out.println("$#4756#"); return displayCustomerAgreement;
 	}
 
 	public void setDisplayCustomerAgreement(boolean displayCustomerAgreement) {
@@ -132,7 +132,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public boolean isAllowPurchaseItems() {
-		return allowPurchaseItems;
+		System.out.println("$#4759#"); System.out.println("$#4758#"); return allowPurchaseItems;
 	}
 
 	public void setAllowPurchaseItems(boolean allowPurchaseItems) {
@@ -140,7 +140,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public boolean isDisplaySearchBox() {
-		return displaySearchBox;
+		System.out.println("$#4761#"); System.out.println("$#4760#"); return displaySearchBox;
 	}
 
 	public void setDisplaySearchBox(boolean displaySearchBox) {
@@ -148,7 +148,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public boolean isTestMode() {
-		return testMode;
+		System.out.println("$#4763#"); System.out.println("$#4762#"); return testMode;
 	}
 
 	public void setTestMode(boolean testMode) {
@@ -156,7 +156,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public boolean isDebugMode() {
-		return debugMode;
+		System.out.println("$#4765#"); System.out.println("$#4764#"); return debugMode;
 	}
 
 	public void setDebugMode(boolean debugMode) {
@@ -164,7 +164,7 @@ public class MerchantConfig implements Serializable, JSONAware {
 	}
 
 	public boolean isDisplayPagesMenu() {
-		return displayPagesMenu;
+		System.out.println("$#4767#"); System.out.println("$#4766#"); return displayPagesMenu;
 	}
 
 	public void setDisplayPagesMenu(boolean displayPagesMenu) {

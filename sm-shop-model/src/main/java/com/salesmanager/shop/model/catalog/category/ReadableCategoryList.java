@@ -12,7 +12,7 @@ public class ReadableCategoryList extends ReadableList {
   private static final long serialVersionUID = 1L;
   private List<ReadableCategory> categories = new ArrayList<ReadableCategory>();
   public List<ReadableCategory> getCategories() {
-    return categories;
+				System.out.println("$#8749#"); return categories;
   }
   public void setCategories(List<ReadableCategory> categories) {
     this.categories = categories;

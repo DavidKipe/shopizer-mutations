@@ -49,6 +49,6 @@ public class MarketPlaceApi {
       @RequestParam(value = "lang", required = false) String lang) {
 
     Language language = languageUtils.getServiceLanguage(lang);
-    return marketPlaceFacade.get(store, language);
+				System.out.println("$#11686#"); return marketPlaceFacade.get(store, language);
   }
 }

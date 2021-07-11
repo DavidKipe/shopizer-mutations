@@ -71,7 +71,7 @@ public class TaxRatesController {
 	@RequestMapping(value={"/admin/tax/taxrates/list.html"}, method=RequestMethod.GET)
 	public String displayTaxRates(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model, request);
+		System.out.println("$#7439#"); setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
@@ -82,12 +82,12 @@ public class TaxRatesController {
 		
 		for(Language l : languages) {
 			TaxRateDescription taxRateDescription = new TaxRateDescription();
-			taxRateDescription.setLanguage(l);
+			System.out.println("$#7440#"); taxRateDescription.setLanguage(l);
 			taxRate.getDescriptions().add(taxRateDescription);
 		}
 		
-		taxRate.setMerchantStore(store);
-		taxRate.setCountry(store.getCountry());
+		System.out.println("$#7441#"); taxRate.setMerchantStore(store);
+		System.out.println("$#7442#"); taxRate.setCountry(store.getCountry());
 		
 		List<TaxRate> taxRates = taxRateService.listByStore(store);
 		List<TaxClass> taxClasses = taxClassService.listByStore(store);
@@ -97,7 +97,7 @@ public class TaxRatesController {
 		model.addAttribute("taxRates", taxRates);
 		model.addAttribute("taxClasses", taxClasses);
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRates;
+		System.out.println("$#7443#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRates;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -116,9 +116,9 @@ public class TaxRatesController {
 
 			
 			nf = NumberFormat.getInstance(Locale.US);
-			nf.setMaximumFractionDigits(Integer.parseInt(Character
+			System.out.println("$#7444#"); nf.setMaximumFractionDigits(Integer.parseInt(Character
 						.toString(DECIMALCOUNT)));
-			nf.setMinimumFractionDigits(Integer.parseInt(Character
+			System.out.println("$#7445#"); nf.setMinimumFractionDigits(Integer.parseInt(Character
 						.toString(DECIMALCOUNT)));
 			
 			
@@ -126,7 +126,7 @@ public class TaxRatesController {
 			Language language = (Language)request.getAttribute("LANGUAGE");
 			List<TaxRate> taxRates = taxRateService.listByStore(store,language);
 
-			if(taxRates!=null) {
+			System.out.println("$#7446#"); if(taxRates!=null) {
 				for (TaxRate rate : taxRates) {
 
 					Map entry = new HashMap ();
@@ -134,10 +134,10 @@ public class TaxRatesController {
 					entry.put("code", rate.getCode());
 					List<TaxRateDescription> descriptions = rate.getDescriptions();
 					String name = "";
-					if(descriptions!=null && descriptions.size()>0) {
+					System.out.println("$#7448#"); System.out.println("$#7447#"); if(descriptions!=null && descriptions.size()>0) {
 						TaxRateDescription desc = descriptions.get(0);
 						for(TaxRateDescription description : descriptions) {
-							if(description.getLanguage().getCode().equals(language.getCode())) {
+							System.out.println("$#7450#"); if(description.getLanguage().getCode().equals(language.getCode())) {
 								desc = description;
 								break;
 							}
@@ -154,50 +154,50 @@ public class TaxRatesController {
 					
 					
 					String zoneCode = rate.getStateProvince();
-					if(rate.getZone()!=null) {
+					System.out.println("$#7451#"); if(rate.getZone()!=null) {
 						zoneCode = rate.getZone().getCode();
 					}
 					entry.put("zone", zoneCode);
 					entry.put("rate", nf.format(rate.getTaxRate()));
 
-					resp.addDataEntry(entry);
+					System.out.println("$#7452#"); resp.addDataEntry(entry);
 
 				}
 			}
 
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7453#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while paging custom weight based", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7454#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7455#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#7456#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasRole('TAX')")
 	@RequestMapping(value="/admin/tax/taxrates/save.html", method=RequestMethod.POST)
 	public String saveTaxRate(@Valid @ModelAttribute("taxRate") TaxRate taxRate, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 		
-		setMenu(model, request);
+		System.out.println("$#7457#"); setMenu(model, request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
-		this.validateTaxRate(model, taxRate, result, store, language, locale);
+		System.out.println("$#7458#"); this.validateTaxRate(model, taxRate, result, store, language, locale);
 		
-		if (result.hasErrors()) {
+		System.out.println("$#7459#"); if (result.hasErrors()) {
 
-			return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRates;
+			System.out.println("$#7460#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRates;
 
 		}
 
 		
-		taxRateService.create(taxRate);
+		System.out.println("$#7461#"); taxRateService.create(taxRate);
 		
 		List<TaxRate> taxRates = taxRateService.listByStore(store);
 		
@@ -207,7 +207,7 @@ public class TaxRatesController {
 		
 		
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRates;
+		System.out.println("$#7462#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRates;
 		
 	}
 	
@@ -218,22 +218,22 @@ public class TaxRatesController {
 	public String updateTaxRate(@Valid @ModelAttribute("taxRate") TaxRate taxRate, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 		
 		
-		setMenu(model, request);
+		System.out.println("$#7463#"); setMenu(model, request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
-		this.validateTaxRate(model, taxRate, result, store, language, locale);
+		System.out.println("$#7464#"); this.validateTaxRate(model, taxRate, result, store, language, locale);
 		
-		if (result.hasErrors()) {
+		System.out.println("$#7465#"); if (result.hasErrors()) {
 
-			return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRate;
+			System.out.println("$#7466#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRate;
 
 		}
 
 		
-		taxRateService.update(taxRate);
+		System.out.println("$#7467#"); taxRateService.update(taxRate);
 		
 		List<TaxRate> taxRates = taxRateService.listByStore(store);
 		
@@ -243,7 +243,7 @@ public class TaxRatesController {
 		
 		
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRate;
+		System.out.println("$#7468#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRate;
 
 		
 	}
@@ -263,9 +263,9 @@ public class TaxRatesController {
 		model.addAttribute("taxRates", taxRates);
 		model.addAttribute("taxClasses", taxClasses);
 
-		if(StringUtils.isBlank(taxRate.getRateText())) {
+		System.out.println("$#7469#"); if(StringUtils.isBlank(taxRate.getRateText())) {
 			FieldError error = new FieldError("taxRate","rateText",messages.getMessage("NotEmpty.taxRate.rateText", locale));
-			result.addError(error);
+			System.out.println("$#7470#"); result.addError(error);
 		}
 		
 		//if(taxRate.isPiggyback() && taxRate.getParent()==null) {
@@ -275,46 +275,46 @@ public class TaxRatesController {
 		
 		try {
 			BigDecimal rate = new BigDecimal(taxRate.getRateText());
-			taxRate.setTaxRate(rate);
+			System.out.println("$#7471#"); taxRate.setTaxRate(rate);
 		} catch (Exception e) {
 			FieldError error = new FieldError("taxRate","rateText",messages.getMessage("message.invalid.rate", locale));
-			result.addError(error);
+			System.out.println("$#7472#"); result.addError(error);
 		}
 		
 		//check if code exists
 		String taxRateCode = taxRate.getCode();
 		TaxRate tr = taxRateService.getByCode(taxRateCode, store);
-		if(tr!=null) {
-			if(tr.getId().longValue()!=taxRate.getId().longValue()){
+		System.out.println("$#7473#"); if(tr!=null) {
+			System.out.println("$#7474#"); if(tr.getId().longValue()!=taxRate.getId().longValue()){
 				FieldError error = new FieldError("taxRate","code",messages.getMessage("NotEmpty.taxRate.unique.code", locale));
-				result.addError(error);
+				System.out.println("$#7475#"); result.addError(error);
 			}
 		}
 		
 
-		if(taxRate.getTaxPriority()==null) {
-			taxRate.setTaxPriority(0);
+		System.out.println("$#7476#"); if(taxRate.getTaxPriority()==null) {
+			System.out.println("$#7477#"); taxRate.setTaxPriority(0);
 		}
 
 		
-		if(taxRate.getZone()!=null) {
+		System.out.println("$#7478#"); if(taxRate.getZone()!=null) {
 			Zone z = zoneService.getById(taxRate.getZone().getId());
-			taxRate.setZone(z);
+			System.out.println("$#7479#"); taxRate.setZone(z);
 		}
 		
 
 		
 		Country  c = countryService.getByCode(taxRate.getCountry().getIsoCode());
 		
-		taxRate.setCountry(c);
+		System.out.println("$#7480#"); taxRate.setCountry(c);
 		
 		List<TaxRateDescription> descriptions = taxRate.getDescriptions();
 		for(TaxRateDescription description : descriptions) {
-			description.setTaxRate(taxRate);
+			System.out.println("$#7481#"); description.setTaxRate(taxRate);
 		}
 		
-		if(!taxRate.isPiggyback()) {
-			taxRate.setParent(null);
+		System.out.println("$#7482#"); if(!taxRate.isPiggyback()) {
+			System.out.println("$#7483#"); taxRate.setParent(null);
 		}
 		
 		return;
@@ -332,7 +332,7 @@ public class TaxRatesController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7484#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		try {
 			
@@ -343,11 +343,11 @@ public class TaxRatesController {
 			 */
 			
 
-			if(taxRateId==null){
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7485#"); if(taxRateId==null){
+				System.out.println("$#7486#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7487#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7488#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			long ltaxRateId;
@@ -355,39 +355,39 @@ public class TaxRatesController {
 				ltaxRateId = Long.parseLong(taxRateId);
 			} catch (Exception e) {
 				LOGGER.error("Invalid taxRateId " + taxRateId);
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#7489#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7490#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7491#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			TaxRate taxRate = taxRateService.getById(ltaxRateId);
 			
-			if(taxRate==null) {
+			System.out.println("$#7492#"); if(taxRate==null) {
 				LOGGER.error("Invalid taxRateId " + taxRateId);
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#7493#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7494#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7495#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 
 			
 			
-			taxRateService.delete(taxRate);
+			System.out.println("$#7496#"); taxRateService.delete(taxRate);
 			
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#7497#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting tax rate", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7498#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7499#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7500#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	
@@ -395,7 +395,7 @@ public class TaxRatesController {
 	@RequestMapping(value="/admin/tax/taxrates/edit.html", method=RequestMethod.GET)
 	public String editTaxRate(@ModelAttribute("id") String id, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#7501#"); setMenu(model,request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Language language = (Language)request.getAttribute("LANGUAGE");
@@ -406,11 +406,11 @@ public class TaxRatesController {
 			taxRate = taxRateService.getById(taxRateId);
 		} catch (Exception e) {
 			LOGGER.error("Cannot parse taxRateId " + id);
-			return "redirect:/admin/tax/taxrates/list.html";
+			System.out.println("$#7502#"); return "redirect:/admin/tax/taxrates/list.html";
 		}
 		
-		if(taxRate==null || taxRate.getMerchantStore().getId()!=store.getId()) {
-			return "redirect:/admin/tax/taxrates/list.html";
+		System.out.println("$#7503#"); if(taxRate==null || taxRate.getMerchantStore().getId()!=store.getId()) {
+			System.out.println("$#7505#"); return "redirect:/admin/tax/taxrates/list.html";
 		}
 		
 		
@@ -419,12 +419,12 @@ public class TaxRatesController {
 		
 		nf = NumberFormat.getInstance(Locale.US);
 
-		nf.setMaximumFractionDigits(Integer.parseInt(Character
+		System.out.println("$#7506#"); nf.setMaximumFractionDigits(Integer.parseInt(Character
 					.toString(DECIMALCOUNT)));
-		nf.setMinimumFractionDigits(Integer.parseInt(Character
+		System.out.println("$#7507#"); nf.setMinimumFractionDigits(Integer.parseInt(Character
 					.toString(DECIMALCOUNT)));
 		
-		taxRate.setRateText(nf.format(taxRate.getTaxRate()));
+		System.out.println("$#7508#"); taxRate.setRateText(nf.format(taxRate.getTaxRate()));
 		
 		
 		
@@ -442,7 +442,7 @@ public class TaxRatesController {
 		
 		model.addAttribute("taxRate", taxRate);
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRate;
+		System.out.println("$#7509#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxRate;
 		
 		
 		

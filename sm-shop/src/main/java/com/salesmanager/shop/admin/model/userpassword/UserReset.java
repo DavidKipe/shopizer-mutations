@@ -19,23 +19,23 @@ public class UserReset
   public static String generateRandomString()
   {
     StringBuilder randStr = new StringBuilder();
-    for (int i = 0; i < RANDOM_STRING_LENGTH; i++) {
+				System.out.println("$#7843#"); System.out.println("$#7842#"); System.out.println("$#7841#"); for (int i = 0; i < RANDOM_STRING_LENGTH; i++) {
       int number = getRandomNumber();
       char ch = CHAR_LIST_WITHNUM.charAt(number);
       randStr.append(ch);
     }
-    return randStr.toString();
+				System.out.println("$#7844#"); return randStr.toString();
   }
   
   public static String generateRandomString(int length)
   {
     StringBuilder randStr = new StringBuilder();
-    for (int i = 0; i < length; i++) {
+				System.out.println("$#7847#"); System.out.println("$#7846#"); System.out.println("$#7845#"); for (int i = 0; i < length; i++) {
       int number = getRandomNumber();
       char ch = CHAR_LIST.charAt(number);
       randStr.append(ch);
     }
-    return randStr.toString();
+				System.out.println("$#7848#"); return randStr.toString();
   }
 
   private static int getRandomNumber()
@@ -45,14 +45,14 @@ public class UserReset
     try {
       randomGenerator = SecureRandom.getInstanceStrong();
       randomInt = randomGenerator.nextInt(CHAR_LIST.length());
-      if (randomInt - 1 == -1) {
-        return randomInt;
+						System.out.println("$#7850#"); System.out.println("$#7849#"); if (randomInt - 1 == -1) {
+								System.out.println("$#7851#"); return randomInt;
       }
     } catch (NoSuchAlgorithmException e) {
       LOGGER.error("Error while generating error", e);
     }
 
-    return randomInt - 1;
+				System.out.println("$#7853#"); System.out.println("$#7852#"); return randomInt - 1;
   }
 
   

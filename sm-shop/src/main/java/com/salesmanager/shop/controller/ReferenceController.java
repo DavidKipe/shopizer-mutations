@@ -74,15 +74,15 @@ public class ReferenceController {
 			
 			Language language = null;
 			
-			if(!StringUtils.isBlank(lang)) {
+			System.out.println("$#7976#"); if(!StringUtils.isBlank(lang)) {
 				language = languageService.getByCode(lang);
 			}
 			
-			if(language==null) {
+			System.out.println("$#7977#"); if(language==null) {
 				language = (Language)request.getAttribute("LANGUAGE");
 			}
 			
-			if(language==null) {
+			System.out.println("$#7978#"); if(language==null) {
 				language = languageService.getByCode(Constants.DEFAULT_LANGUAGE);
 			}
 			
@@ -90,7 +90,7 @@ public class ReferenceController {
 			Map<String,Country> countriesMap = countryService.getCountriesMap(language);
 			Country country = countriesMap.get(countryCode);
 			List<Zone> zones = zoneService.getZones(country, language);
-			if(zones!=null && zones.size()>0) {
+			System.out.println("$#7980#"); System.out.println("$#7979#"); if(zones!=null && zones.size()>0) {
 				
 				
 				
@@ -102,24 +102,24 @@ public class ReferenceController {
 					entry.put("code", zone.getCode());
 					entry.put("id", zone.getId());
 		
-					resp.addDataEntry(entry);
+					System.out.println("$#7982#"); resp.addDataEntry(entry);
 				
 				}
 				
 				
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7983#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("GetProvinces()", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7984#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7985#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7986#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	
@@ -128,21 +128,21 @@ public class ReferenceController {
 		
 		try {
 			Language language = languageUtils.getRequestLanguage(request, response);
-			if(language==null) {
-				return countryCode;
+			System.out.println("$#7987#"); if(language==null) {
+				System.out.println("$#7988#"); return countryCode;
 			}
 			Map<String, Country> countriesMap = countryService.getCountriesMap(language);
-			if(countriesMap!=null) {
+			System.out.println("$#7989#"); if(countriesMap!=null) {
 				Country c = countriesMap.get(countryCode);
-				if(c!=null) {
-					return c.getName();
+				System.out.println("$#7990#"); if(c!=null) {
+					System.out.println("$#7991#"); return c.getName();
 				}
 			}
 		
 		} catch (ServiceException e) {
 			LOGGER.error("Error while looking up country " + countryCode);
 		}
-		return StringEscapeUtils.escapeHtml4(countryCode);
+		System.out.println("$#7992#"); return StringEscapeUtils.escapeHtml4(countryCode);
 	}
 	
 	@RequestMapping(value="/shop/reference/zoneName")
@@ -150,21 +150,21 @@ public class ReferenceController {
 		
 		try {
 			Language language = languageUtils.getRequestLanguage(request, response);
-			if(language==null) {
-				return zoneCode;
+			System.out.println("$#7993#"); if(language==null) {
+				System.out.println("$#7994#"); return zoneCode;
 			}
 			Map<String, Zone> zonesMap = zoneService.getZones(language);
-			if(zonesMap!=null) {
+			System.out.println("$#7995#"); if(zonesMap!=null) {
 				Zone z = zonesMap.get(zoneCode);
-				if(z!=null) {
-					return z.getName();
+				System.out.println("$#7996#"); if(z!=null) {
+					System.out.println("$#7997#"); return z.getName();
 				}
 			}
 		
 		} catch (ServiceException e) {
 			LOGGER.error("Error while looking up zone " + zoneCode);
 		}
-		return StringEscapeUtils.escapeHtml4(zoneCode);
+		System.out.println("$#7998#"); return StringEscapeUtils.escapeHtml4(zoneCode);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -179,20 +179,20 @@ public class ReferenceController {
 	
 			years = (List<String>)cache.getFromCache(Constants.CREDIT_CARD_YEARS_CACHE_KEY);
 			
-			if(years==null) {
+			System.out.println("$#7999#"); if(years==null) {
 			
 				years = new ArrayList<String>();
 				//current year
 				
-				for(int i = 0 ; i < 10 ; i++) {
+				System.out.println("$#8001#"); System.out.println("$#8000#"); for(int i = 0 ; i < 10 ; i++) {
 					Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
-					localCalendar.add(Calendar.YEAR, i);
+					System.out.println("$#8002#"); localCalendar.add(Calendar.YEAR, i);
 					String dt = DateUtil.formatYear(localCalendar.getTime());
 					years.add(dt);
 				}
 				//up to year + 10
 				
-				cache.putInCache(years, Constants.CREDIT_CARD_YEARS_CACHE_KEY);
+				System.out.println("$#8003#"); cache.putInCache(years, Constants.CREDIT_CARD_YEARS_CACHE_KEY);
 			
 			}
 		
@@ -206,8 +206,8 @@ public class ReferenceController {
 		}
 		
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(serialized,httpHeaders,HttpStatus.OK);
+					System.out.println("$#8004#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#8005#"); return new ResponseEntity<String>(serialized,httpHeaders,HttpStatus.OK);
 	
 	}
 	
@@ -222,14 +222,14 @@ public class ReferenceController {
 		
 		try {	
 			days = (List<String>)cache.getFromCache(Constants.MONTHS_OF_YEAR_CACHE_KEY);
-			if(days==null) {
+			System.out.println("$#8006#"); if(days==null) {
 
 				days = new ArrayList<String>();
-				for(int i = 1 ; i < 13 ; i++) {
+				System.out.println("$#8008#"); System.out.println("$#8007#"); for(int i = 1 ; i < 13 ; i++) {
 					days.add(String.format("%02d", i));
 				}
 
-				cache.putInCache(days, Constants.MONTHS_OF_YEAR_CACHE_KEY);
+				System.out.println("$#8009#"); cache.putInCache(days, Constants.MONTHS_OF_YEAR_CACHE_KEY);
 			
 			}
 		
@@ -243,8 +243,8 @@ public class ReferenceController {
 		}
 		
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(serialized,httpHeaders,HttpStatus.OK);
+					System.out.println("$#8010#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#8011#"); return new ResponseEntity<String>(serialized,httpHeaders,HttpStatus.OK);
 	
 	}
 	

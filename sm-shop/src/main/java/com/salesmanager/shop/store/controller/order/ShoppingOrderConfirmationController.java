@@ -109,29 +109,29 @@ public class ShoppingOrderConfirmationController extends AbstractController {
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 
 		Long orderId = super.getSessionAttribute(Constants.ORDER_ID, request);
-		if(orderId==null) {
-			return new StringBuilder().append("redirect:").append(Constants.SHOP_URI).toString();
+		System.out.println("$#13188#"); if(orderId==null) {
+			System.out.println("$#13189#"); return new StringBuilder().append("redirect:").append(Constants.SHOP_URI).toString();
 		}
 
 		//get the order
 		Order order = orderService.getById(orderId);
-		if(order == null) {
+		System.out.println("$#13190#"); if(order == null) {
 			LOGGER.warn("Order id [" + orderId + "] does not exist");
 			throw new Exception("Order id [" + orderId + "] does not exist");
 		}
 		
-		if(order.getMerchant().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#13191#"); if(order.getMerchant().getId().intValue()!=store.getId().intValue()) {
 			LOGGER.warn("Store id [" + store.getId() + "] differs from order.store.id [" + order.getMerchant().getId() + "]");
-			return new StringBuilder().append("redirect:").append(Constants.SHOP_URI).toString();
+			System.out.println("$#13192#"); return new StringBuilder().append("redirect:").append(Constants.SHOP_URI).toString();
 		}
 
-		if(super.getSessionAttribute(Constants.ORDER_ID_TOKEN, request)!=null) {
+		System.out.println("$#13193#"); if(super.getSessionAttribute(Constants.ORDER_ID_TOKEN, request)!=null) {
 			//set this unique token for performing unique operations in the confirmation
 			model.addAttribute("confirmation", "confirmation");
 		}
 		
 		//remove unique token
-		super.removeAttribute(Constants.ORDER_ID_TOKEN, request);
+		System.out.println("$#13194#"); super.removeAttribute(Constants.ORDER_ID_TOKEN, request);
 		
 		
         String[] orderMessageParams = {store.getStorename()};
@@ -154,15 +154,15 @@ public class ShoppingOrderConfirmationController extends AbstractController {
 		String countryCode = readableOrder.getCustomer().getBilling().getCountry();
 		Map<String,Country> countriesMap = countryService.getCountriesMap(language);
 		Country billingCountry = countriesMap.get(countryCode);
-		if(billingCountry!=null) {
-			readableOrder.getCustomer().getBilling().setCountry(billingCountry.getName());
+		System.out.println("$#13195#"); if(billingCountry!=null) {
+			System.out.println("$#13196#"); readableOrder.getCustomer().getBilling().setCountry(billingCountry.getName());
 		}
 		
 		String zoneCode = readableOrder.getCustomer().getBilling().getZone();
 		Map<String,Zone> zonesMap = zoneService.getZones(language);
 		Zone billingZone = zonesMap.get(zoneCode);
-		if(billingZone!=null) {
-			readableOrder.getCustomer().getBilling().setZone(billingZone.getName());
+		System.out.println("$#13197#"); if(billingZone!=null) {
+			System.out.println("$#13198#"); readableOrder.getCustomer().getBilling().setZone(billingZone.getName());
 		}
 		
 		
@@ -170,7 +170,7 @@ public class ShoppingOrderConfirmationController extends AbstractController {
 		
 		//check if any downloads exist for this order
 		List<OrderProductDownload> orderProductDownloads = orderProdctDownloadService.getByOrderId(order.getId());
-		if(CollectionUtils.isNotEmpty(orderProductDownloads)) {
+		System.out.println("$#13199#"); if(CollectionUtils.isNotEmpty(orderProductDownloads)) {
 			ReadableOrderProductDownloadPopulator populator = new ReadableOrderProductDownloadPopulator();
 			List<ReadableOrderProductDownload> downloads = new ArrayList<ReadableOrderProductDownload>();
 			for(OrderProductDownload download : orderProductDownloads) {
@@ -184,7 +184,7 @@ public class ShoppingOrderConfirmationController extends AbstractController {
 		
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Checkout.confirmation).append(".").append(store.getStoreTemplate());
-		return template.toString();
+		System.out.println("$#13200#"); return template.toString();
 
 		
 	}

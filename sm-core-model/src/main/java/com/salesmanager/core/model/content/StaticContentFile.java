@@ -5,7 +5,7 @@ public abstract class StaticContentFile extends ContentFile {
 	private FileContentType fileContentType;
 
 	public FileContentType getFileContentType() {
-		return fileContentType;
+		System.out.println("$#4116#"); return fileContentType;
 	}
 
 	public void setFileContentType(FileContentType fileContentType) {

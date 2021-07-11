@@ -24,31 +24,31 @@ public class PaymentMethod implements Serializable {
 	private IntegrationConfiguration informations;
 
 	public PaymentType getPaymentType() {
-		return paymentType;
+		System.out.println("$#4422#"); return paymentType;
 	}
 	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;
 	}
 	public String getPaymentMethodCode() {
-		return paymentMethodCode;
+		System.out.println("$#4423#"); return paymentMethodCode;
 	}
 	public void setPaymentMethodCode(String paymentMethodCode) {
 		this.paymentMethodCode = paymentMethodCode;
 	}
 	public boolean isDefaultSelected() {
-		return defaultSelected;
+		System.out.println("$#4425#"); System.out.println("$#4424#"); return defaultSelected;
 	}
 	public void setDefaultSelected(boolean defaultSelected) {
 		this.defaultSelected = defaultSelected;
 	}
 	public IntegrationModule getModule() {
-		return module;
+		System.out.println("$#4426#"); return module;
 	}
 	public void setModule(IntegrationModule module) {
 		this.module = module;
 	}
 	public IntegrationConfiguration getInformations() {
-		return informations;
+		System.out.println("$#4427#"); return informations;
 	}
 	public void setInformations(IntegrationConfiguration informations) {
 		this.informations = informations;

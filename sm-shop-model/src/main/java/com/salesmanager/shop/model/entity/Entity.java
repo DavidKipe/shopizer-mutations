@@ -15,7 +15,7 @@ public class Entity implements Serializable {
 		this.id = id;
 	}
 	public Long getId() {
-		return id;
+		System.out.println("$#9094#"); return id;
 	}
 
 }

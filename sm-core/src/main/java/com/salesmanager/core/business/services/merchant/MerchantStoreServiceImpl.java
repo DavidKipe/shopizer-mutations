@@ -44,91 +44,91 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	@Override
 	@CacheEvict(value="store", allEntries=true)
 	public void saveOrUpdate(MerchantStore store) throws ServiceException {
-		super.save(store);
+		System.out.println("$#2250#"); super.save(store);
 	}
 
 	@Override
 	@Cacheable("store")
 	public MerchantStore getByCode(String code) throws ServiceException {
-		return merchantRepository.findByCode(code);
+		System.out.println("$#2251#"); return merchantRepository.findByCode(code);
 	}
 
 	@Override
 	public boolean existByCode(String code) {
-		return merchantRepository.existsByCode(code);
+		System.out.println("$#2253#"); System.out.println("$#2252#"); return merchantRepository.existsByCode(code);
 	}
 
 	@Override
 	public GenericEntityList<MerchantStore> getByCriteria(MerchantStoreCriteria criteria) throws ServiceException {
-		return merchantRepository.listByCriteria(criteria);
+		System.out.println("$#2254#"); return merchantRepository.listByCriteria(criteria);
 	}
 
 	@Override
 	public Page<MerchantStore> listChildren(String code, int page, int count) throws ServiceException {
 		Pageable pageRequest = PageRequest.of(page, count);
-		return pageableMerchantRepository.listByStore(code, pageRequest);
+		System.out.println("$#2255#"); return pageableMerchantRepository.listByStore(code, pageRequest);
 	}
 
 	@Override
 	public Page<MerchantStore> listAll(Optional<String> storeName, int page, int count) throws ServiceException {
 		String store = null;
-		if (storeName != null && storeName.isPresent()) {
+		System.out.println("$#2256#"); if (storeName != null && storeName.isPresent()) {
 			store = storeName.get();
 		}
 		Pageable pageRequest = PageRequest.of(page, count);
-		return pageableMerchantRepository.listAll(store, pageRequest);
+		System.out.println("$#2258#"); return pageableMerchantRepository.listAll(store, pageRequest);
 
 	}
 
 	@Override
 	public List<MerchantStore> findAllStoreCodeNameEmail() throws ServiceException {
-		return merchantRepository.findAllStoreCodeNameEmail();
+		System.out.println("$#2259#"); return merchantRepository.findAllStoreCodeNameEmail();
 	}
 
 	@Override
 	public Page<MerchantStore> listAllRetailers(Optional<String> storeName, int page, int count)
 			throws ServiceException {
 		String store = null;
-		if (storeName != null && storeName.isPresent()) {
+		System.out.println("$#2260#"); if (storeName != null && storeName.isPresent()) {
 			store = storeName.get();
 		}
 		Pageable pageRequest = PageRequest.of(page, count);
-		return pageableMerchantRepository.listAllRetailers(store, pageRequest);
+		System.out.println("$#2262#"); return pageableMerchantRepository.listAllRetailers(store, pageRequest);
 
 	}
 
 	@Override
 	public List<MerchantStore> findAllStoreNames() throws ServiceException {
-		return merchantRepository.findAllStoreNames();
+		System.out.println("$#2263#"); return merchantRepository.findAllStoreNames();
 	}
 
 	@Override
 	public MerchantStore getParent(String code) throws ServiceException {
-		Validate.notNull(code, "MerchantStore code cannot be null");
+		System.out.println("$#2264#"); Validate.notNull(code, "MerchantStore code cannot be null");
 
 		
 		//get it
 		MerchantStore storeModel = this.getByCode(code);
 		
-		if(storeModel == null) {
+		System.out.println("$#2265#"); if(storeModel == null) {
 			throw new ServiceException("Store with code [" + code + "] is not found");
 		}
 		
-		if(storeModel.isRetailer() != null && storeModel.isRetailer() && storeModel.getParent() == null) {
-			return storeModel;
+		System.out.println("$#2266#"); if(storeModel.isRetailer() != null && storeModel.isRetailer() && storeModel.getParent() == null) {
+			System.out.println("$#2269#"); return storeModel;
 		}
 		
-		if(storeModel.getParent() == null) {
-			return storeModel;
+		System.out.println("$#2270#"); if(storeModel.getParent() == null) {
+			System.out.println("$#2271#"); return storeModel;
 		}
 	
-		return merchantRepository.getById(storeModel.getParent().getId());
+		System.out.println("$#2272#"); return merchantRepository.getById(storeModel.getParent().getId());
 	}
 
 
 	@Override
 	public List<MerchantStore> findAllStoreNames(String code) throws ServiceException {
-		return merchantRepository.findAllStoreNames(code);
+		System.out.println("$#2273#"); return merchantRepository.findAllStoreNames(code);
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 	public Page<MerchantStore> listByGroup(Optional<String> storeName, String code, int page, int count) throws ServiceException {
 		
 		String name = null;
-		if (storeName != null && storeName.isPresent()) {
+		System.out.println("$#2274#"); if (storeName != null && storeName.isPresent()) {
 			name = storeName.get();
 		}
 
@@ -155,7 +155,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 		
 		
 		Page<MerchantStore> stores = pageableMerchantRepository.listByGroup(code, id.get(), name, pageRequest);
-		return stores;
+		System.out.println("$#2276#"); return stores;
 		
 		
 	}
@@ -169,7 +169,7 @@ public class MerchantStoreServiceImpl extends SalesManagerEntityServiceImpl<Inte
 		List<MerchantStore> stores = merchantRepository.listByGroup(code, id.get());
 		
 		
-		return stores.size() > 0;
+		System.out.println("$#2279#"); System.out.println("$#2278#"); System.out.println("$#2277#"); return stores.size() > 0;
 	}
 
 

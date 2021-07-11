@@ -128,14 +128,14 @@ public class ShoppingCartController extends AbstractController {
 	    Customer customer = getSessionAttribute(  Constants.CUSTOMER, request );
 
 
-		if(customer != null) {
+		System.out.println("$#13998#"); if(customer != null) {
 			com.salesmanager.core.model.shoppingcart.ShoppingCart customerCart = shoppingCartService.getShoppingCart(customer);
-			if(customerCart!=null) {
+			System.out.println("$#13999#"); if(customerCart!=null) {
 				
 				//if this cart has been fulfilled create a new cart
-				if(customerCart.getOrderId() != null && customerCart.getOrderId().longValue() > 0) {
+				System.out.println("$#14001#"); System.out.println("$#14000#"); if(customerCart.getOrderId() != null && customerCart.getOrderId().longValue() > 0) {
 					customerCart = shoppingCartFacade.createCartModel(null, store, customer);
-					item.setCode(customerCart.getShoppingCartCode());//set new shopping cart code to item
+					System.out.println("$#14003#"); item.setCode(customerCart.getShoppingCartCode());//set new shopping cart code to item
 				}
 
 				shoppingCart = shoppingCartFacade.getShoppingCartData( customerCart, language);
@@ -144,32 +144,32 @@ public class ShoppingCartController extends AbstractController {
 			  /**
 			   * BUG that used a previous customer cart
 			   */
-			  item.setCode(null);
+					System.out.println("$#14004#"); item.setCode(null);
 			}
 		}
 
 		
-		if(shoppingCart==null && !StringUtils.isBlank(item.getCode())) {
+		System.out.println("$#14005#"); if(shoppingCart==null && !StringUtils.isBlank(item.getCode())) {
 			shoppingCart = shoppingCartFacade.getShoppingCartData(item.getCode(), store, language);
 		}
 		
-		if(shoppingCart!=null) {
-			if(shoppingCart.getOrderId() != null && shoppingCart.getOrderId().longValue() >0) {//has been ordered, can't continue to use
+		System.out.println("$#14007#"); if(shoppingCart!=null) {
+			System.out.println("$#14009#"); System.out.println("$#14008#"); if(shoppingCart.getOrderId() != null && shoppingCart.getOrderId().longValue() >0) {//has been ordered, can't continue to use
 				shoppingCart = null;
 			}
 		}
 
 
 		//if shoppingCart is null create a new one
-		if(shoppingCart==null) {
+		System.out.println("$#14011#"); if(shoppingCart==null) {
 			shoppingCart = new ShoppingCartData();
 			String code = UUID.randomUUID().toString().replaceAll("-", "");
-			shoppingCart.setCode(code);
-			item.setCode(code);
+			System.out.println("$#14012#"); shoppingCart.setCode(code);
+			System.out.println("$#14013#"); item.setCode(code);
 		}
 
 		shoppingCart=shoppingCartFacade.addItemsToShoppingCart( shoppingCart, item, store, language, customer );
-		request.getSession().setAttribute(Constants.SHOPPING_CART, shoppingCart.getCode());
+		System.out.println("$#14014#"); request.getSession().setAttribute(Constants.SHOPPING_CART, shoppingCart.getCode());
 
 
 		/******************************************************/
@@ -204,7 +204,7 @@ public class ShoppingCartController extends AbstractController {
 		//set each item price in ShoppingCartItem.price
 
 
-		return shoppingCart;
+		System.out.println("$#14015#"); return shoppingCart;
 
 	}
 
@@ -221,7 +221,7 @@ public class ShoppingCartController extends AbstractController {
         throws Exception
     {
 
-    	return this.shoppingCart(model, request, response, locale);
+					System.out.println("$#14016#"); return this.shoppingCart(model, request, response, locale);
     }
     
     private String shoppingCart( final Model model, final HttpServletRequest request, final HttpServletResponse response, final Locale locale ) throws Exception {
@@ -232,8 +232,8 @@ public class ShoppingCartController extends AbstractController {
         
 		//meta information
 		PageInformation pageInformation = new PageInformation();
-		pageInformation.setPageTitle(messages.getMessage("label.cart.placeorder", locale));
-		request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
+		System.out.println("$#14017#"); pageInformation.setPageTitle(messages.getMessage("label.cart.placeorder", locale));
+		System.out.println("$#14018#"); request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
         
         
 	    MerchantStore store = (MerchantStore) request.getAttribute(Constants.MERCHANT_STORE);
@@ -242,20 +242,20 @@ public class ShoppingCartController extends AbstractController {
         /** there must be a cart in the session **/
         String cartCode = (String)request.getSession().getAttribute(Constants.SHOPPING_CART);
         
-        if(StringUtils.isBlank(cartCode)) {
+								System.out.println("$#14019#"); if(StringUtils.isBlank(cartCode)) {
         	//display empty cart
             StringBuilder template =
                     new StringBuilder().append( ControllerConstants.Tiles.ShoppingCart.shoppingCart ).append( "." ).append( store.getStoreTemplate() );
-                return template.toString();
+																System.out.println("$#14020#"); return template.toString();
         }
                 
         ShoppingCartData shoppingCart = shoppingCartFacade.getShoppingCartData(customer, store, cartCode, language);
         
-        if(shoppingCart == null) {
+								System.out.println("$#14021#"); if(shoppingCart == null) {
         	//display empty cart
             StringBuilder template =
                     new StringBuilder().append( ControllerConstants.Tiles.ShoppingCart.shoppingCart ).append( "." ).append( store.getStoreTemplate() );
-                return template.toString();
+																System.out.println("$#14022#"); return template.toString();
         }
         
         Language lang = languageUtils.getRequestLanguage(request, response);
@@ -267,22 +267,22 @@ public class ShoppingCartController extends AbstractController {
         for(ShoppingCartItem item : items) {
         	String code = item.getProductCode();
         	Product p =productService.getByCode(code, lang);
-        	if(!p.isAvailable()) {
+									System.out.println("$#14023#"); if(!p.isAvailable()) {
         		unavailables.add(item);
         	} else {
         		availables.add(item);
         	}
         	
         }
-        shoppingCart.setShoppingCartItems(availables);
-        shoppingCart.setUnavailables(unavailables);
+								System.out.println("$#14024#"); shoppingCart.setShoppingCartItems(availables);
+								System.out.println("$#14025#"); shoppingCart.setUnavailables(unavailables);
 
         model.addAttribute( "cart", shoppingCart );
 
         /** template **/
         StringBuilder template =
             new StringBuilder().append( ControllerConstants.Tiles.ShoppingCart.shoppingCart ).append( "." ).append( store.getStoreTemplate() );
-        return template.toString();
+								System.out.println("$#14026#"); return template.toString();
     }
     
     
@@ -294,13 +294,13 @@ public class ShoppingCartController extends AbstractController {
 			
 			Language language = (Language)request.getAttribute(Constants.LANGUAGE);
 			
-			if(StringUtils.isBlank(shoppingCartCode)) {
-				return "redirect:/shop";
+			System.out.println("$#14027#"); if(StringUtils.isBlank(shoppingCartCode)) {
+				System.out.println("$#14028#"); return "redirect:/shop";
 			}
 			
 			ShoppingCartData cart =  shoppingCartFacade.getShoppingCartData(customer,merchantStore,shoppingCartCode,language);
-			if(cart==null) {
-				return "redirect:/shop";
+			System.out.println("$#14029#"); if(cart==null) {
+				System.out.println("$#14030#"); return "redirect:/shop";
 			}
 			
 			
@@ -313,28 +313,28 @@ public class ShoppingCartController extends AbstractController {
 	        for(ShoppingCartItem item : items) {
 	        	String code = item.getProductCode();
 	        	Product p =productService.getByCode(code, lang);
-	        	if(!p.isAvailable()) {
+										System.out.println("$#14031#"); if(!p.isAvailable()) {
 	        		unavailables.add(item);
 	        	} else {
 	        		availables.add(item);
 	        	}
 	        	
 	        }
-	        cart.setShoppingCartItems(availables);
-	        cart.setUnavailables(unavailables);
+									System.out.println("$#14032#"); cart.setShoppingCartItems(availables);
+									System.out.println("$#14033#"); cart.setUnavailables(unavailables);
 			
 			
 			//meta information
 			PageInformation pageInformation = new PageInformation();
-			pageInformation.setPageTitle(messages.getMessage("label.cart.placeorder", locale));
-			request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
-			request.getSession().setAttribute(Constants.SHOPPING_CART, cart.getCode());
+			System.out.println("$#14034#"); pageInformation.setPageTitle(messages.getMessage("label.cart.placeorder", locale));
+			System.out.println("$#14035#"); request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
+			System.out.println("$#14036#"); request.getSession().setAttribute(Constants.SHOPPING_CART, cart.getCode());
 	        model.addAttribute("cart", cart);
 
 	        /** template **/
 	        StringBuilder template =
 	            new StringBuilder().append( ControllerConstants.Tiles.ShoppingCart.shoppingCart ).append( "." ).append( merchantStore.getStoreTemplate() );
-	        return template.toString();
+									System.out.println("$#14037#"); return template.toString();
 			
 
 
@@ -372,26 +372,26 @@ public class ShoppingCartController extends AbstractController {
         /** there must be a cart in the session **/
         String cartCode = (String)request.getSession().getAttribute(Constants.SHOPPING_CART);
         
-        if(StringUtils.isBlank(cartCode)) {
-        	return "redirect:/shop";
+								System.out.println("$#14038#"); if(StringUtils.isBlank(cartCode)) {
+									System.out.println("$#14039#"); return "redirect:/shop";
         }
                 
         ShoppingCartData shoppingCart = shoppingCartFacade.getShoppingCartData(customer, store, cartCode, language);
                 
 		ShoppingCartData shoppingCartData=shoppingCartFacade.removeCartItem(lineItemId, shoppingCart.getCode(),store,language);
 
-		if(shoppingCartData == null) {
-			return "redirect:/shop";
+		System.out.println("$#14040#"); if(shoppingCartData == null) {
+			System.out.println("$#14041#"); return "redirect:/shop";
 		}
 		
-		if(CollectionUtils.isEmpty(shoppingCartData.getShoppingCartItems())) {
-			shoppingCartFacade.deleteShoppingCart(shoppingCartData.getId(), store);
-			return "redirect:/shop";
+		System.out.println("$#14042#"); if(CollectionUtils.isEmpty(shoppingCartData.getShoppingCartItems())) {
+			System.out.println("$#14043#"); shoppingCartFacade.deleteShoppingCart(shoppingCartData.getId(), store);
+			System.out.println("$#14044#"); return "redirect:/shop";
 		}
 		
 		
 		
-		return Constants.REDIRECT_PREFIX + "/shop/cart/shoppingCart.html";
+		System.out.println("$#14045#"); return Constants.REDIRECT_PREFIX + "/shop/cart/shoppingCart.html";
 
 
 
@@ -416,8 +416,8 @@ public class ShoppingCartController extends AbstractController {
         
         String cartCode = (String)request.getSession().getAttribute(Constants.SHOPPING_CART);
         
-        if(StringUtils.isBlank(cartCode)) {
-        	return "redirect:/shop";
+								System.out.println("$#14046#"); if(StringUtils.isBlank(cartCode)) {
+									System.out.println("$#14047#"); return "redirect:/shop";
         }
         
         /** if a promo code is captured **/
@@ -427,14 +427,14 @@ public class ShoppingCartController extends AbstractController {
         try {
         	List<ShoppingCartItem> items = Arrays.asList(shoppingCartItems);
 			ShoppingCartData shoppingCart = shoppingCartFacade.updateCartItems(promoCode, items, store, language);
-			ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#14048#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOG.error("Excption while updating cart" ,e);
-			ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#14049#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 
-        return ajaxResponse.toJSONString();
+								System.out.println("$#14050#"); return ajaxResponse.toJSONString();
 
 	}
 

@@ -4,13 +4,13 @@ public class ErrorEntity {
     private String errorCode;
     private String message;
     public String getErrorCode() {
-      return errorCode;
+						System.out.println("$#11200#"); return errorCode;
     }
     public void setErrorCode(String errorCode) {
       this.errorCode = errorCode;
     }
     public String getMessage() {
-      return message;
+						System.out.println("$#11201#"); return message;
     }
     public void setMessage(String message) {
       this.message = message;

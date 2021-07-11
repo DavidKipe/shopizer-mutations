@@ -10,13 +10,13 @@ public abstract class CustomShippingQuoteItem {
 		this.priceText = priceText;
 	}
 	public String getPriceText() {
-		return priceText;
+		System.out.println("$#4888#"); return priceText;
 	}
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	public BigDecimal getPrice() {
-		return price;
+		System.out.println("$#4889#"); return price;
 	}
 
 }

@@ -62,7 +62,7 @@ public class Delivery {
 
 
 	public String getCompany() {
-		return company;
+		System.out.println("$#4056#"); return company;
 	}
 
 	public void setCompany(String company) {
@@ -70,7 +70,7 @@ public class Delivery {
 	}
 
 	public String getAddress() {
-		return address;
+		System.out.println("$#4057#"); return address;
 	}
 
 	public void setAddress(String address) {
@@ -78,7 +78,7 @@ public class Delivery {
 	}
 
 	public String getCity() {
-		return city;
+		System.out.println("$#4058#"); return city;
 	}
 
 	public void setCity(String city) {
@@ -86,7 +86,7 @@ public class Delivery {
 	}
 
 	public String getPostalCode() {
-		return postalCode;
+		System.out.println("$#4059#"); return postalCode;
 	}
 
 	public void setPostalCode(String postalCode) {
@@ -94,7 +94,7 @@ public class Delivery {
 	}
 
 	public Country getCountry() {
-		return country;
+		System.out.println("$#4060#"); return country;
 	}
 
 	public void setCountry(Country country) {
@@ -102,7 +102,7 @@ public class Delivery {
 	}
 
 	public Zone getZone() {
-		return zone;
+		System.out.println("$#4061#"); return zone;
 	}
 
 	public void setZone(Zone zone) {
@@ -111,7 +111,7 @@ public class Delivery {
 	
 
 	public String getState() {
-		return state;
+		System.out.println("$#4062#"); return state;
 	}
 
 	public void setState(String state) {
@@ -123,11 +123,11 @@ public class Delivery {
 	}
 
 	public String getTelephone() {
-		return telephone;
+		System.out.println("$#4063#"); return telephone;
 	}	
 	
 	public String getLastName() {
-		return lastName;
+		System.out.println("$#4064#"); return lastName;
 	}
 
 	public void setLastName(String lastName) {
@@ -135,7 +135,7 @@ public class Delivery {
 	}
 	
 	public String getFirstName() {
-		return firstName;
+		System.out.println("$#4065#"); return firstName;
 	}
 
 	public void setFirstName(String firstName) {
@@ -143,7 +143,7 @@ public class Delivery {
 	}
 	
 	public String getLatitude() {
-		return latitude;
+		System.out.println("$#4066#"); return latitude;
 	}
 
 	public void setLatitude(String latitude) {
@@ -151,7 +151,7 @@ public class Delivery {
 	}
 
 	public String getLongitude() {
-		return longitude;
+		System.out.println("$#4067#"); return longitude;
 	}
 
 	public void setLongitude(String longitude) {

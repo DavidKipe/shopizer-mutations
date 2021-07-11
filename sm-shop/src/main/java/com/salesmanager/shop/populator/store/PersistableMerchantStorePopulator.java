@@ -49,48 +49,48 @@ public class PersistableMerchantStorePopulator extends AbstractDataPopulator<Per
 
 		Validate.notNull(source, "PersistableMerchantStore mst not be null");
 		
-		if(target == null) {
+		System.out.println("$#11059#"); if(target == null) {
 			target = new MerchantStore();
 		}
 		
-		target.setCode(source.getCode());
-		if(source.getId()!=0) {
-			target.setId(source.getId());
+		System.out.println("$#11060#"); target.setCode(source.getCode());
+		System.out.println("$#11061#"); if(source.getId()!=0) {
+			System.out.println("$#11062#"); target.setId(source.getId());
 		}
 		
-		if(!StringUtils.isEmpty(source.getInBusinessSince())) {
+		System.out.println("$#11063#"); if(!StringUtils.isEmpty(source.getInBusinessSince())) {
 			try {
 				Date dt = DateUtil.getDate(source.getInBusinessSince());
-				target.setInBusinessSince(dt);
+				System.out.println("$#11064#"); target.setInBusinessSince(dt);
 			} catch(Exception e) {
 				throw new ConversionException("Cannot parse date [" + source.getInBusinessSince() + "]",e);
 			}
 		}
 
-		if(source.getDimension()!=null) {
-		  target.setSeizeunitcode(source.getDimension().name());
+		System.out.println("$#11065#"); if(source.getDimension()!=null) {
+				System.out.println("$#11066#"); target.setSeizeunitcode(source.getDimension().name());
 		}
-		if(source.getWeight()!=null) {
-		  target.setWeightunitcode(source.getWeight().name());
+		System.out.println("$#11067#"); if(source.getWeight()!=null) {
+				System.out.println("$#11068#"); target.setWeightunitcode(source.getWeight().name());
 		}
-		target.setCurrencyFormatNational(source.isCurrencyFormatNational());
-		target.setStorename(source.getName());
-		target.setStorephone(source.getPhone());
-		target.setStoreEmailAddress(source.getEmail());
-		target.setUseCache(source.isUseCache());
-		target.setRetailer(source.isRetailer());
+		System.out.println("$#11069#"); target.setCurrencyFormatNational(source.isCurrencyFormatNational());
+		System.out.println("$#11070#"); target.setStorename(source.getName());
+		System.out.println("$#11071#"); target.setStorephone(source.getPhone());
+		System.out.println("$#11072#"); target.setStoreEmailAddress(source.getEmail());
+		System.out.println("$#11073#"); target.setUseCache(source.isUseCache());
+		System.out.println("$#11074#"); target.setRetailer(source.isRetailer());
 		
 		//get parent store
-		if(!StringUtils.isBlank(source.getRetailerStore())) {
-		  if(source.getRetailerStore().equals(source.getCode())) {
+		System.out.println("$#11075#"); if(!StringUtils.isBlank(source.getRetailerStore())) {
+				System.out.println("$#11076#"); if(source.getRetailerStore().equals(source.getCode())) {
 		    throw new ConversionException("Parent store [" + source.getRetailerStore() + "] cannot be parent of current store");
 		  }
 		  try {
             MerchantStore parent = merchantStoreService.getByCode(source.getRetailerStore());
-            if(parent == null) {
+												System.out.println("$#11077#"); if(parent == null) {
               throw new ConversionException("Parent store [" + source.getRetailerStore() + "] does not exist");
             }
-            target.setParent(parent);
+												System.out.println("$#11078#"); target.setParent(parent);
           } catch (ServiceException e) {
               throw new ConversionException(e);
           }
@@ -99,20 +99,20 @@ public class PersistableMerchantStorePopulator extends AbstractDataPopulator<Per
 		
 		try {
 			
-			if(!StringUtils.isEmpty(source.getDefaultLanguage())) {
+			System.out.println("$#11079#"); if(!StringUtils.isEmpty(source.getDefaultLanguage())) {
 				Language l = languageService.getByCode(source.getDefaultLanguage());
-				target.setDefaultLanguage(l);
+				System.out.println("$#11080#"); target.setDefaultLanguage(l);
 			}
 			
-			if(!StringUtils.isEmpty(source.getCurrency())) {
+			System.out.println("$#11081#"); if(!StringUtils.isEmpty(source.getCurrency())) {
 				Currency c = currencyService.getByCode(source.getCurrency());
-				target.setCurrency(c);
+				System.out.println("$#11082#"); target.setCurrency(c);
 			} else {
-				target.setCurrency(currencyService.getByCode(Constants.DEFAULT_CURRENCY.getCurrencyCode()));
+				System.out.println("$#11083#"); target.setCurrency(currencyService.getByCode(Constants.DEFAULT_CURRENCY.getCurrencyCode()));
 			}
 			
 			List<String> languages = source.getSupportedLanguages();
-			if(!CollectionUtils.isEmpty(languages)) {
+			System.out.println("$#11084#"); if(!CollectionUtils.isEmpty(languages)) {
 				for(String lang : languages) {
 					Language ll = languageService.getByCode(lang);
 					target.getLanguages().add(ll);
@@ -125,32 +125,32 @@ public class PersistableMerchantStorePopulator extends AbstractDataPopulator<Per
 		
 		//address population
 		PersistableAddress address = source.getAddress();
-		if(address != null) {
+		System.out.println("$#11085#"); if(address != null) {
 			Country country;
 			try {
 				country = countryService.getByCode(address.getCountry());
 
 				Zone zone = zoneService.getByCode(address.getStateProvince());
-				if(zone != null) {
-					target.setZone(zone);
+				System.out.println("$#11086#"); if(zone != null) {
+					System.out.println("$#11087#"); target.setZone(zone);
 				} else {
-					target.setStorestateprovince(address.getStateProvince());
+					System.out.println("$#11088#"); target.setStorestateprovince(address.getStateProvince());
 				}
 				
-				target.setStoreaddress(address.getAddress());
-				target.setStorecity(address.getCity());
-				target.setCountry(country);
-				target.setStorepostalcode(address.getPostalCode());
+				System.out.println("$#11089#"); target.setStoreaddress(address.getAddress());
+				System.out.println("$#11090#"); target.setStorecity(address.getCity());
+				System.out.println("$#11091#"); target.setCountry(country);
+				System.out.println("$#11092#"); target.setStorepostalcode(address.getPostalCode());
 				
 			} catch (ServiceException e) {
 				throw new ConversionException(e);
 			}
 		}
 
-		if (StringUtils.isNotEmpty(source.getTemplate()))
-			target.setStoreTemplate(source.getTemplate());
+		System.out.println("$#11093#"); if (StringUtils.isNotEmpty(source.getTemplate()))
+			System.out.println("$#11094#"); target.setStoreTemplate(source.getTemplate());
 		
-		return target;
+		System.out.println("$#11095#"); return target;
 	}
 
 	@Override
@@ -160,14 +160,14 @@ public class PersistableMerchantStorePopulator extends AbstractDataPopulator<Per
 	}
 
 	public ZoneService getZoneService() {
-		return zoneService;
+		System.out.println("$#11096#"); return zoneService;
 	}
 
 	public void setZoneService(ZoneService zoneService) {
 		this.zoneService = zoneService;
 	}
 	public CountryService getCountryService() {
-		return countryService;
+		System.out.println("$#11097#"); return countryService;
 	}
 
 	public void setCountryService(CountryService countryService) {
@@ -175,7 +175,7 @@ public class PersistableMerchantStorePopulator extends AbstractDataPopulator<Per
 	}
 
 	public LanguageService getLanguageService() {
-		return languageService;
+		System.out.println("$#11098#"); return languageService;
 	}
 
 	public void setLanguageService(LanguageService languageService) {
@@ -183,7 +183,7 @@ public class PersistableMerchantStorePopulator extends AbstractDataPopulator<Per
 	}
 
 	public CurrencyService getCurrencyService() {
-		return currencyService;
+		System.out.println("$#11099#"); return currencyService;
 	}
 
 	public void setCurrencyService(CurrencyService currencyService) {

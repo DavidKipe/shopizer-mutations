@@ -27,22 +27,22 @@ public class ReadableProductReviewPopulator extends
 			ReadableCustomer customer = new ReadableCustomer();
 			populator.populate(source.getCustomer(), customer, store, language);
 
-			target.setId(source.getId());
-			target.setDate(DateUtil.formatDate(source.getReviewDate()));
-			target.setCustomer(customer);
-			target.setRating(source.getReviewRating());
-			target.setProductId(source.getProduct().getId());
+			System.out.println("$#9961#"); target.setId(source.getId());
+			System.out.println("$#9962#"); target.setDate(DateUtil.formatDate(source.getReviewDate()));
+			System.out.println("$#9963#"); target.setCustomer(customer);
+			System.out.println("$#9964#"); target.setRating(source.getReviewRating());
+			System.out.println("$#9965#"); target.setProductId(source.getProduct().getId());
 			
 			Set<ProductReviewDescription> descriptions = source.getDescriptions();
-			if(descriptions!=null) {
+			System.out.println("$#9966#"); if(descriptions!=null) {
 				for(ProductReviewDescription description : descriptions) {
-					target.setDescription(description.getDescription());
-					target.setLanguage(description.getLanguage().getCode());
+					System.out.println("$#9968#"); target.setDescription(description.getDescription());
+					System.out.println("$#9969#"); target.setLanguage(description.getLanguage().getCode());
 					break;
 				}
 			}
 
-			return target;
+			System.out.println("$#9970#"); return target;
 			
 		} catch (Exception e) {
 			throw new ConversionException("Cannot populate ProductReview", e);

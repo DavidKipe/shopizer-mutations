@@ -68,19 +68,19 @@ public class SystemRESTController {
 			
 			LOGGER.debug("Creating or updating an integration module : " + json);
 			
-			moduleConfigurationService.createOrUpdateModule(json);
+			System.out.println("$#11495#"); moduleConfigurationService.createOrUpdateModule(json);
 			
-			response.setStatus(200);
+			System.out.println("$#11496#"); response.setStatus(200);
 			
-			resp.setStatus(200);
+			System.out.println("$#11497#"); resp.setStatus(200);
 			
 		} catch(Exception e) {
-			resp.setStatus(500);
-			resp.setErrorMessage(e);
-			response.sendError(503, "Exception while creating or updating the module " + e.getMessage());
+			System.out.println("$#11498#"); resp.setStatus(500);
+			System.out.println("$#11499#"); resp.setErrorMessage(e);
+			System.out.println("$#11500#"); response.sendError(503, "Exception while creating or updating the module " + e.getMessage());
 		}
 
-		return resp;
+		System.out.println("$#11501#"); return resp;
 
 	}
 	
@@ -94,16 +94,16 @@ public class SystemRESTController {
 		try {
 			LOGGER.debug("Creating an optin : " + json);
 			//moduleConfigurationService.createOrUpdateModule(json);
-			response.setStatus(200);
-			resp.setStatus(200);
+			System.out.println("$#11502#"); response.setStatus(200);
+			System.out.println("$#11503#"); resp.setStatus(200);
 			
 		} catch(Exception e) {
-			resp.setStatus(500);
-			resp.setErrorMessage(e);
-			response.sendError(503, "Exception while creating optin " + e.getMessage());
+			System.out.println("$#11504#"); resp.setStatus(500);
+			System.out.println("$#11505#"); resp.setErrorMessage(e);
+			System.out.println("$#11506#"); response.sendError(503, "Exception while creating optin " + e.getMessage());
 		}
 
-		return resp;
+		System.out.println("$#11507#"); return resp;
 
 	}
 	
@@ -117,16 +117,16 @@ public class SystemRESTController {
 		try {
 			LOGGER.debug("Delete optin : " + code);
 			//moduleConfigurationService.createOrUpdateModule(json);
-			response.setStatus(200);
-			resp.setStatus(200);
+			System.out.println("$#11508#"); response.setStatus(200);
+			System.out.println("$#11509#"); resp.setStatus(200);
 			
 		} catch(Exception e) {
-			resp.setStatus(500);
-			resp.setErrorMessage(e);
-			response.sendError(503, "Exception while deleting optin " + e.getMessage());
+			System.out.println("$#11510#"); resp.setStatus(500);
+			System.out.println("$#11511#"); resp.setErrorMessage(e);
+			System.out.println("$#11512#"); response.sendError(503, "Exception while deleting optin " + e.getMessage());
 		}
 
-		return resp;
+		System.out.println("$#11513#"); return resp;
 
 	}
 	
@@ -140,16 +140,16 @@ public class SystemRESTController {
 		try {
 			LOGGER.debug("Adding a customer optin : " + code);
 			//moduleConfigurationService.createOrUpdateModule(json);
-			response.setStatus(200);
-			resp.setStatus(200);
+			System.out.println("$#11514#"); response.setStatus(200);
+			System.out.println("$#11515#"); resp.setStatus(200);
 			
 		} catch(Exception e) {
-			resp.setStatus(500);
-			resp.setErrorMessage(e);
-			response.sendError(503, "Exception while creating uptin " + e.getMessage());
+			System.out.println("$#11516#"); resp.setStatus(500);
+			System.out.println("$#11517#"); resp.setErrorMessage(e);
+			System.out.println("$#11518#"); response.sendError(503, "Exception while creating uptin " + e.getMessage());
 		}
 
-		return resp;
+		System.out.println("$#11519#"); return resp;
 
 	}
 

@@ -17,7 +17,7 @@ public class ReadableProductVariant extends Entity implements Serializable {
   private List<ReadableProductVariantValue> options = new ArrayList<ReadableProductVariantValue>();
 
   public List<ReadableProductVariantValue> getOptions() {
-    return options;
+				System.out.println("$#8826#"); return options;
   }
 
   public void setOptions(List<ReadableProductVariantValue> options) {
@@ -25,7 +25,7 @@ public class ReadableProductVariant extends Entity implements Serializable {
   }
 
   public String getName() {
-    return name;
+				System.out.println("$#8827#"); return name;
   }
 
   public void setName(String name) {

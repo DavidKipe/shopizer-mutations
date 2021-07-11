@@ -41,34 +41,34 @@ public class PersistableUserPopulator extends AbstractDataPopulator<PersistableU
   @Override
   public User populate(PersistableUser source, User target, MerchantStore store, Language language)
       throws ConversionException {
-    Validate.notNull(source, "PersistableUser cannot be null");
-    Validate.notNull(store, "MerchantStore cannot be null");
+				System.out.println("$#11167#"); Validate.notNull(source, "PersistableUser cannot be null");
+				System.out.println("$#11168#"); Validate.notNull(store, "MerchantStore cannot be null");
 
-    if (target == null) {
+				System.out.println("$#11169#"); if (target == null) {
       target = new User();
     }
 
-    target.setFirstName(source.getFirstName());
-    target.setLastName(source.getLastName());
-    target.setAdminEmail(source.getEmailAddress());
-    target.setAdminName(source.getUserName());
-    if(!StringUtils.isBlank(source.getPassword())) {
-      target.setAdminPassword(passwordEncoder.encode(source.getPassword()));
+				System.out.println("$#11170#"); target.setFirstName(source.getFirstName());
+				System.out.println("$#11171#"); target.setLastName(source.getLastName());
+				System.out.println("$#11172#"); target.setAdminEmail(source.getEmailAddress());
+				System.out.println("$#11173#"); target.setAdminName(source.getUserName());
+				System.out.println("$#11174#"); if(!StringUtils.isBlank(source.getPassword())) {
+						System.out.println("$#11175#"); target.setAdminPassword(passwordEncoder.encode(source.getPassword()));
     }
     
-    if(!StringUtils.isBlank(source.getStore())) {
+				System.out.println("$#11176#"); if(!StringUtils.isBlank(source.getStore())) {
         try {
 			MerchantStore userStore = merchantStoreService.getByCode(source.getStore());
-			target.setMerchantStore(userStore);
+			System.out.println("$#11177#"); target.setMerchantStore(userStore);
 		} catch (ServiceException e) {
 			throw new ConversionException("Error while reading MerchantStore store [" + source.getStore() + "]",e);
 		}
     } else {
-    	target.setMerchantStore(store);
+					System.out.println("$#11178#"); target.setMerchantStore(store);
     }
     
     
-    target.setActive(source.isActive());
+				System.out.println("$#11179#"); target.setActive(source.isActive());
     
     Language lang = null;
     try {
@@ -78,7 +78,7 @@ public class PersistableUserPopulator extends AbstractDataPopulator<PersistableU
     }
 
     // set default language
-    target.setDefaultLanguage(lang);
+				System.out.println("$#11180#"); target.setDefaultLanguage(lang);
 
     List<Group> userGroups = new ArrayList<Group>();
     List<String> names = new ArrayList<String>();
@@ -94,9 +94,9 @@ public class PersistableUserPopulator extends AbstractDataPopulator<PersistableU
       throw new ConversionException("Error while getting user groups",e1);
     }
     
-    target.setGroups(userGroups);
+				System.out.println("$#11181#"); target.setGroups(userGroups);
 
-    return target;
+				System.out.println("$#11182#"); return target;
   }
 
   @Override

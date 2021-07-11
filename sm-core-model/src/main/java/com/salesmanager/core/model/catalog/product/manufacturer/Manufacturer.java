@@ -68,7 +68,7 @@ public class Manufacturer extends SalesManagerEntity<Long, Manufacturer> impleme
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#3888#"); return id;
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class Manufacturer extends SalesManagerEntity<Long, Manufacturer> impleme
 	
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#3889#"); return auditSection;
 	}
 	
 	@Override
@@ -87,7 +87,7 @@ public class Manufacturer extends SalesManagerEntity<Long, Manufacturer> impleme
 	}
 
 	public String getImage() {
-		return image;
+		System.out.println("$#3890#"); return image;
 	}
 
 	public void setImage(String image) {
@@ -95,7 +95,7 @@ public class Manufacturer extends SalesManagerEntity<Long, Manufacturer> impleme
 	}
 
 	public Set<ManufacturerDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#3891#"); return descriptions;
 	}
 
 	public void setDescriptions(Set<ManufacturerDescription> descriptions) {
@@ -105,7 +105,7 @@ public class Manufacturer extends SalesManagerEntity<Long, Manufacturer> impleme
 
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#3892#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -117,11 +117,11 @@ public class Manufacturer extends SalesManagerEntity<Long, Manufacturer> impleme
 	}
 
 	public Integer getOrder() {
-		return order;
+		System.out.println("$#3893#"); return order;
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#3894#"); return code;
 	}
 
 	public void setCode(String code) {

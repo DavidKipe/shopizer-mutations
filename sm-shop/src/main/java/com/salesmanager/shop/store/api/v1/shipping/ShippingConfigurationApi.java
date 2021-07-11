@@ -59,10 +59,10 @@ public class ShippingConfigurationApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12041#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		return shippingFacade.getShippingOrigin(merchantStore);
+		System.out.println("$#12042#"); return shippingFacade.getShippingOrigin(merchantStore);
 
 	}
 	
@@ -75,10 +75,10 @@ public class ShippingConfigurationApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12043#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		shippingFacade.saveShippingOrigin(address, merchantStore);
+		System.out.println("$#12044#"); shippingFacade.saveShippingOrigin(address, merchantStore);
 
 	}
 
@@ -95,10 +95,10 @@ public class ShippingConfigurationApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12045#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		return shippingFacade.listPackages(merchantStore);
+		System.out.println("$#12046#"); return shippingFacade.listPackages(merchantStore);
 
 
 	}
@@ -115,10 +115,10 @@ public class ShippingConfigurationApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12047#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		return shippingFacade.
+		System.out.println("$#12048#"); return shippingFacade.
 				getPackage(code, merchantStore);
 		
 
@@ -137,10 +137,10 @@ public class ShippingConfigurationApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12049#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		shippingFacade.createPackage(details, merchantStore);
+		System.out.println("$#12050#"); shippingFacade.createPackage(details, merchantStore);
 
 	}
 	
@@ -157,10 +157,10 @@ public class ShippingConfigurationApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12051#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		shippingFacade.updatePackage(code, details, merchantStore);
+		System.out.println("$#12052#"); shippingFacade.updatePackage(code, details, merchantStore);
 
 	}
 	
@@ -176,10 +176,10 @@ public class ShippingConfigurationApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12053#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		shippingFacade.deletePackage(code, merchantStore);
+		System.out.println("$#12054#"); shippingFacade.deletePackage(code, merchantStore);
 
 	}
 	

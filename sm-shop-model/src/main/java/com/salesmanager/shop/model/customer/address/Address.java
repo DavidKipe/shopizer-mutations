@@ -65,7 +65,7 @@ public class Address extends AddressLocation implements Serializable {
 
 
 	public String getCompany() {
-		return company;
+		System.out.println("$#9027#"); return company;
 	}
 
 	public void setCompany(String company) {
@@ -73,7 +73,7 @@ public class Address extends AddressLocation implements Serializable {
 	}
 
 	public String getAddress() {
-		return address;
+		System.out.println("$#9028#"); return address;
 	}
 
 	public void setAddress(String address) {
@@ -81,7 +81,7 @@ public class Address extends AddressLocation implements Serializable {
 	}
 
 	public String getCity() {
-		return city;
+		System.out.println("$#9029#"); return city;
 	}
 
 	public void setCity(String city) {
@@ -91,11 +91,11 @@ public class Address extends AddressLocation implements Serializable {
 
 
 	public String getStateProvince() {
-		return stateProvince;
+		System.out.println("$#9030#"); return stateProvince;
 	}
 
 	public String getCountry() {
-		return country;
+		System.out.println("$#9031#"); return country;
 	}
 
 	public void setZone(String zone) {
@@ -103,7 +103,7 @@ public class Address extends AddressLocation implements Serializable {
 	}
 
 	public String getZone() {
-		return zone;
+		System.out.println("$#9032#"); return zone;
 	}
 
 	public void setPhone(String phone) {
@@ -111,11 +111,11 @@ public class Address extends AddressLocation implements Serializable {
 	}
 
 	public String getPhone() {
-		return phone;
+		System.out.println("$#9033#"); return phone;
 	}
 
 	public String getFirstName() {
-		return firstName;
+		System.out.println("$#9034#"); return firstName;
 	}
 
 	public void setFirstName(String firstName) {
@@ -123,7 +123,7 @@ public class Address extends AddressLocation implements Serializable {
 	}
 
 	public String getLastName() {
-		return lastName;
+		System.out.println("$#9035#"); return lastName;
 	}
 
 	public void setLastName(String lastName) {
@@ -132,7 +132,7 @@ public class Address extends AddressLocation implements Serializable {
 
     public boolean isBillingAddress()
     {
-        return billingAddress;
+								System.out.println("$#9037#"); System.out.println("$#9036#"); return billingAddress;
     }
 
     public void setBillingAddress( boolean billingAddress )
@@ -142,7 +142,7 @@ public class Address extends AddressLocation implements Serializable {
 
     public String getBilstateOther()
     {
-        return bilstateOther;
+								System.out.println("$#9038#"); return bilstateOther;
     }
 
     public void setBilstateOther( String bilstateOther )
@@ -151,7 +151,7 @@ public class Address extends AddressLocation implements Serializable {
     }
 
 	public String getLatitude() {
-		return latitude;
+		System.out.println("$#9039#"); return latitude;
 	}
 
 	public void setLatitude(String latitude) {
@@ -159,7 +159,7 @@ public class Address extends AddressLocation implements Serializable {
 	}
 
 	public String getLongitude() {
-		return longitude;
+		System.out.println("$#9040#"); return longitude;
 	}
 
 	public void setLongitude(String longitude) {

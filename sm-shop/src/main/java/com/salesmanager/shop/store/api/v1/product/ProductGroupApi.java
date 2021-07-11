@@ -68,7 +68,7 @@ public class ProductGroupApi {
       HttpServletResponse response)
       throws Exception {
 	  
-	  return productItemsFacade.createProductGroup(group, merchantStore);
+			System.out.println("$#11902#"); return productItemsFacade.createProductGroup(group, merchantStore);
 
   }
   
@@ -87,7 +87,7 @@ public class ProductGroupApi {
       HttpServletResponse response)
       throws Exception {
 	  
-	  productItemsFacade.updateProductGroup(code, group, merchantStore);
+			System.out.println("$#11903#"); productItemsFacade.updateProductGroup(code, group, merchantStore);
 
   }
   
@@ -103,7 +103,7 @@ public class ProductGroupApi {
       HttpServletResponse response)
       throws Exception {
 	  
-	  return productItemsFacade.listProductGroups(merchantStore, language);
+			System.out.println("$#11904#"); return productItemsFacade.listProductGroups(merchantStore, language);
 
   }
   
@@ -137,16 +137,16 @@ public class ProductGroupApi {
     try {
       ReadableProductList list = productItemsFacade.listItemsByGroup(code, merchantStore, language);
 
-      if (list == null) {
-        response.sendError(404, "Group not fount for code " + code);
+						System.out.println("$#11905#"); if (list == null) {
+								System.out.println("$#11906#"); response.sendError(404, "Group not fount for code " + code);
         return null;
       }
 
-      return list;
+						System.out.println("$#11907#"); return list;
 
     } catch (Exception e) {
       LOGGER.error("Error while getting products", e);
-      response.sendError(503, "An error occured while retrieving products " + e.getMessage());
+						System.out.println("$#11908#"); response.sendError(503, "An error occured while retrieving products " + e.getMessage());
     }
 
     return null;
@@ -171,15 +171,15 @@ public class ProductGroupApi {
       // get the product
     	product = productService.getById(productId);
 
-      if (product == null) {
-        response.sendError(404, "Product not fount for id " + productId);
+						System.out.println("$#11909#"); if (product == null) {
+								System.out.println("$#11910#"); response.sendError(404, "Product not fount for id " + productId);
         return null;
       }
       
     } catch (Exception e) {
         LOGGER.error("Error while adding product to group", e);
         try {
-          response.sendError(503, "Error while adding product to group " + e.getMessage());
+										System.out.println("$#11911#"); response.sendError(503, "Error while adding product to group " + e.getMessage());
         } catch (Exception ignore) {
         }
 
@@ -189,7 +189,7 @@ public class ProductGroupApi {
       ReadableProductList list =
           productItemsFacade.addItemToGroup(product, code, merchantStore, language);
 
-      return list;
+						System.out.println("$#11912#"); return list;
 
 
   }
@@ -214,20 +214,20 @@ public class ProductGroupApi {
       // get the product
       Product product = productService.getById(productId);
 
-      if (product == null) {
-        response.sendError(404, "Product not fount for id " + productId);
+						System.out.println("$#11913#"); if (product == null) {
+								System.out.println("$#11914#"); response.sendError(404, "Product not fount for id " + productId);
         return null;
       }
 
       ReadableProductList list =
           productItemsFacade.removeItemFromGroup(product, code, merchantStore, language);
 
-      return list;
+						System.out.println("$#11915#"); return list;
 
     } catch (Exception e) {
       LOGGER.error("Error while removing product from category", e);
       try {
-        response.sendError(503, "Error while removing product from category " + e.getMessage());
+								System.out.println("$#11916#"); response.sendError(503, "Error while removing product from category " + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -248,7 +248,7 @@ public class ProductGroupApi {
 	  @ApiIgnore Language language,
       HttpServletResponse response) {
 	  
-	  productItemsFacade.deleteGroup(code, merchantStore);
+			System.out.println("$#11917#"); productItemsFacade.deleteGroup(code, merchantStore);
 
   }
 }

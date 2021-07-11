@@ -12,13 +12,13 @@ public class PersistableCustomerAttribute extends CustomerAttributeEntity {
 		this.customerOptionValue = customerOptionValue;
 	}
 	public CustomerOptionValue getCustomerOptionValue() {
-		return customerOptionValue;
+		System.out.println("$#9049#"); return customerOptionValue;
 	}
 	public void setCustomerOption(CustomerOption customerOption) {
 		this.customerOption = customerOption;
 	}
 	public CustomerOption getCustomerOption() {
-		return customerOption;
+		System.out.println("$#9050#"); return customerOption;
 	}
 
 

@@ -40,10 +40,10 @@ public class ProductDescriptionUrlTag extends RequestContextAwareTag {
 	public int doStartTagInternal() throws JspException {
 		try {
 
-			if (filePathUtils==null) {
+			System.out.println("$#15437#"); if (filePathUtils==null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15438#"); factory.autowireBean(this);
 	        }
 
 			HttpServletRequest request = (HttpServletRequest) pageContext
@@ -51,7 +51,7 @@ public class ProductDescriptionUrlTag extends RequestContextAwareTag {
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 			//*** IF USED FROM ADMIN THE STORE WILL BE NULL, THEN TRY TO USE ADMIN STORE
-			if(merchantStore==null) {
+			System.out.println("$#15439#"); if(merchantStore==null) {
 				merchantStore = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			}
 			
@@ -61,7 +61,7 @@ public class ProductDescriptionUrlTag extends RequestContextAwareTag {
 			String baseUrl = filePathUtils.buildStoreUri(merchantStore, request);
 			productPath.append(baseUrl);
 			
-			if(!StringUtils.isBlank(this.getProductDescription().getSeUrl())) {
+			System.out.println("$#15440#"); if(!StringUtils.isBlank(this.getProductDescription().getSeUrl())) {
 				productPath.append(Constants.PRODUCT_URI).append("/");
 				productPath.append(this.getProductDescription().getSeUrl());
 			} else {
@@ -73,7 +73,7 @@ public class ProductDescriptionUrlTag extends RequestContextAwareTag {
 			
 
 
-			pageContext.getOut().print(productPath.toString());
+			System.out.println("$#15441#"); pageContext.getOut().print(productPath.toString());
 
 
 			
@@ -84,7 +84,7 @@ public class ProductDescriptionUrlTag extends RequestContextAwareTag {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15442#"); return EVAL_PAGE;
 	}
 
 	public void setProductDescription(ProductDescription productDescription) {
@@ -92,7 +92,7 @@ public class ProductDescriptionUrlTag extends RequestContextAwareTag {
 	}
 
 	public ProductDescription getProductDescription() {
-		return productDescription;
+		System.out.println("$#15443#"); return productDescription;
 	}
 
 

@@ -52,7 +52,7 @@ public class SESEmailSenderImpl implements EmailModule {
 
       //String eml = email.getFrom();
 
-      Validate.notNull(region,"AWS region is null");
+						System.out.println("$#421#"); Validate.notNull(region,"AWS region is null");
 
       AmazonSimpleEmailService client = AmazonSimpleEmailServiceClientBuilder.standard()
           // Replace US_WEST_2 with the AWS Region you're using for
@@ -76,18 +76,18 @@ public class SESEmailSenderImpl implements EmailModule {
   private String prepareHtml(Email email) throws Exception {
 
 
-    freemarkerMailConfiguration.setClassForTemplateLoading(DefaultEmailSenderImpl.class, "/");
+				System.out.println("$#422#"); freemarkerMailConfiguration.setClassForTemplateLoading(DefaultEmailSenderImpl.class, "/");
     Template htmlTemplate = freemarkerMailConfiguration.getTemplate(new StringBuilder(TEMPLATE_PATH)
         .append("").append("/").append(email.getTemplateName()).toString());
     final StringWriter htmlWriter = new StringWriter();
     try {
-      htmlTemplate.process(email.getTemplateTokens(), htmlWriter);
+						System.out.println("$#423#"); htmlTemplate.process(email.getTemplateTokens(), htmlWriter);
     } catch (TemplateException e) {
       throw new MailPreparationException("Can't generate HTML mail", e);
     }
 
     String html = htmlWriter.toString();
-    return html;
+				System.out.println("$#424#"); return html;
 
   }
 

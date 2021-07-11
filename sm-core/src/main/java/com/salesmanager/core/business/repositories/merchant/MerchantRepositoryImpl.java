@@ -33,12 +33,12 @@ public class MerchantRepositoryImpl implements MerchantRepositoryCustom {
           "select distinct m from MerchantStore m left join fetch m.country mc left join fetch m.parent cp left join fetch m.currency mc left join fetch m.zone mz left join fetch m.defaultLanguage md left join fetch m.languages mls");
       StringBuilder countBuilder = new StringBuilder();
       countBuilder.append("select count(distinct m) from MerchantStore m");
-      if (criteria.getCode() != null) {
+						System.out.println("$#1649#"); if (criteria.getCode() != null) {
         req.append("  where lower(m.code) like:code");
         countBuilder.append(" where lower(m.code) like:code");
       }
-      if (criteria.getName() != null) {
-        if (criteria.getCode() == null) {
+						System.out.println("$#1650#"); if (criteria.getName() != null) {
+								System.out.println("$#1651#"); if (criteria.getCode() == null) {
           req.append(" where");
           countBuilder.append(" where ");
         } else {
@@ -49,7 +49,7 @@ public class MerchantRepositoryImpl implements MerchantRepositoryCustom {
         countBuilder.append(" lower(m.storename) like:name");
       }
 
-      if (!StringUtils.isBlank(criteria.getCriteriaOrderByField())) {
+						System.out.println("$#1652#"); if (!StringUtils.isBlank(criteria.getCriteriaOrderByField())) {
         req.append(" order by m." + criteria.getCriteriaOrderByField() + " "
             + criteria.getOrderBy().name().toLowerCase());
       }
@@ -59,15 +59,15 @@ public class MerchantRepositoryImpl implements MerchantRepositoryCustom {
       String hql = req.toString();
       Query q = this.em.createQuery(hql);
 
-      if (criteria.getCode() != null) {
+						System.out.println("$#1653#"); if (criteria.getCode() != null) {
         countQ.setParameter("code", "%" + criteria.getCode().toLowerCase() + "%");
         q.setParameter("code", "%" + criteria.getCode().toLowerCase() + "%");
       }
-      if (criteria.getName() != null) {
+						System.out.println("$#1654#"); if (criteria.getName() != null) {
         countQ.setParameter("name", "%" + criteria.getCode().toLowerCase() + "%");
         q.setParameter("name", "%" + criteria.getCode().toLowerCase() + "%");
       }
-      if (criteria.getUser() != null) {
+						System.out.println("$#1655#"); if (criteria.getUser() != null) {
       }
 
 
@@ -75,16 +75,16 @@ public class MerchantRepositoryImpl implements MerchantRepositoryCustom {
       Number count = (Number) countQ.getSingleResult();
 
       GenericEntityList entityList = new GenericEntityList();
-      entityList.setTotalCount(count.intValue());
+						System.out.println("$#1656#"); entityList.setTotalCount(count.intValue());
       
       q = RepositoryHelper.paginateQuery(q, count, entityList, criteria);
 
 
       List<MerchantStore> stores = q.getResultList();
-      entityList.setList(stores);
+						System.out.println("$#1657#"); entityList.setList(stores);
 
 
-      return entityList;
+						System.out.println("$#1658#"); return entityList;
 
 
 

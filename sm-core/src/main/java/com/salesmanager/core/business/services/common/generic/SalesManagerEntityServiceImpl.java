@@ -31,12 +31,12 @@ public abstract class SalesManagerEntityServiceImpl<K extends Serializable & Com
 	}
 	
 	protected final Class<E> getObjectClass() {
-		return objectClass;
+		System.out.println("$#2076#"); return objectClass;
 	}
 
 
 	public E getById(K id) {
-		return repository.getOne(id);
+		System.out.println("$#2077#"); return repository.getOne(id);
 	}
 
 	
@@ -46,38 +46,38 @@ public abstract class SalesManagerEntityServiceImpl<K extends Serializable & Com
 	
 	
 	public void create(E entity) throws ServiceException {
-		save(entity);
+		System.out.println("$#2078#"); save(entity);
 	}
 
 	
 	
 	public void update(E entity) throws ServiceException {
-		save(entity);
+		System.out.println("$#2079#"); save(entity);
 	}
 	
 
 	public void delete(E entity) throws ServiceException {
-		repository.delete(entity);
+		System.out.println("$#2080#"); repository.delete(entity);
 	}
 	
 	
 	public void flush() {
-		repository.flush();
+		System.out.println("$#2081#"); repository.flush();
 	}
 	
 
 	
 	public List<E> list() {
-		return repository.findAll();
+		System.out.println("$#2082#"); return repository.findAll();
 	}
 	
 
 	public Long count() {
-		return repository.count();
+		System.out.println("$#2083#"); return repository.count();
 	}
 	
 	protected E saveAndFlush(E entity) {
-		return repository.saveAndFlush(entity);
+		System.out.println("$#2084#"); return repository.saveAndFlush(entity);
 	}
 
 }

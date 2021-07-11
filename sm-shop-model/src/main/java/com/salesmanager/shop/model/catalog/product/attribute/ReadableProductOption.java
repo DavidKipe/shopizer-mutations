@@ -18,7 +18,7 @@ public class ReadableProductOption extends ProductOption {
 
 
 	public String getName() {
-		return name;
+		System.out.println("$#8820#"); return name;
 	}
 
 	public void setName(String name) {
@@ -26,7 +26,7 @@ public class ReadableProductOption extends ProductOption {
 	}
 
 	public String getLang() {
-		return lang;
+		System.out.println("$#8821#"); return lang;
 	}
 
 	public void setLang(String lang) {
@@ -34,7 +34,7 @@ public class ReadableProductOption extends ProductOption {
 	}
 
 	public List<ReadableProductOptionValueEntity> getOptionValues() {
-		return optionValues;
+		System.out.println("$#8822#"); return optionValues;
 	}
 
 	public void setOptionValues(List<ReadableProductOptionValueEntity> optionValues) {

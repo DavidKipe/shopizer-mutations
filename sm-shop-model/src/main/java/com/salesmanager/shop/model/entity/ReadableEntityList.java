@@ -11,7 +11,7 @@ public class ReadableEntityList<T> extends ReadableList {
 	private List<T> items;
 
 	public List<T> getItems() {
-		return items;
+		System.out.println("$#9102#"); return items;
 	}
 
 	public void setItems(List<T> items) {

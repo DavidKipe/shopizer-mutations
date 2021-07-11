@@ -21,10 +21,10 @@ public class EmailComponent implements HtmlEmailSender {
     switch(emailSender) 
     { 
         case "default": 
-          defaultEmailSender.send(email);
+										System.out.println("$#406#"); defaultEmailSender.send(email);
             break; 
         case "ses": 
-          sesEmailSender.send(email);
+										System.out.println("$#407#"); sesEmailSender.send(email);
             break; 
         default: 
             throw new Exception("No email implementation for " + emailSender); 
@@ -37,10 +37,10 @@ public class EmailComponent implements HtmlEmailSender {
     switch(emailSender) 
     { 
         case "default": 
-          defaultEmailSender.setEmailConfig(emailConfig);
+										System.out.println("$#408#"); defaultEmailSender.setEmailConfig(emailConfig);
             break; 
         case "ses": 
-          sesEmailSender.setEmailConfig(emailConfig);
+										System.out.println("$#409#"); sesEmailSender.setEmailConfig(emailConfig);
             break; 
         default: 
  

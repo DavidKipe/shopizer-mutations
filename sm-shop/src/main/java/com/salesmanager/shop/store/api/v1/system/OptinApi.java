@@ -46,6 +46,6 @@ public class OptinApi {
       @ApiIgnore Language language,
       HttpServletRequest request) {
     LOGGER.debug("[" + request.getUserPrincipal().getName() + "] creating optin [" + optin.getCode() + "]");
-    return optinFacade.create(optin, merchantStore, language);
+				System.out.println("$#12137#"); return optinFacade.create(optin, merchantStore, language);
   }
 }

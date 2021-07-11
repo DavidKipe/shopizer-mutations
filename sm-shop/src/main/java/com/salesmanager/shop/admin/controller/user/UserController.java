@@ -103,8 +103,8 @@ public class UserController {
 	public String displayUsers(Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
 		//The users are retrieved from the paging method
-		setMenu(model,request);
-		return ControllerConstants.Tiles.User.users;
+		System.out.println("$#7573#"); setMenu(model,request);
+		System.out.println("$#7574#"); return ControllerConstants.Tiles.User.users;
 	}
 	
 	/**
@@ -130,7 +130,7 @@ public class UserController {
 
 			User currentUser = userService.getByUserName(sCurrentUser);
 			List<User> users = null;
-			if(UserUtils.userInGroup(currentUser, Constants.GROUP_SUPERADMIN) ) {
+			System.out.println("$#7575#"); if(UserUtils.userInGroup(currentUser, Constants.GROUP_SUPERADMIN) ) {
 				users = userService.listUser();
 			} else {
 				users = userService.listByStore(store);
@@ -139,9 +139,9 @@ public class UserController {
 
 			for (User user : users) {
 				
-				if(!UserUtils.userInGroup(user, Constants.GROUP_SUPERADMIN)) {
+				System.out.println("$#7576#"); if(!UserUtils.userInGroup(user, Constants.GROUP_SUPERADMIN)) {
 					
-					if(!currentUser.equals(user.getAdminName())){
+					System.out.println("$#7577#"); if(!currentUser.equals(user.getAdminName())){
 
 						@SuppressWarnings("rawtypes")
 						Map entry = new HashMap();
@@ -149,103 +149,103 @@ public class UserController {
 						entry.put("name", user.getFirstName() + " " + user.getLastName());
 						entry.put("email", user.getAdminEmail());
 						entry.put("active", user.isActive());
-						resp.addDataEntry(entry);
+						System.out.println("$#7578#"); resp.addDataEntry(entry);
 					
 					}
 				}
 			}
 
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7579#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7580#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,HttpStatus.OK);
+		System.out.println("$#7581#"); return new ResponseEntity<String>(returnString,HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/users/password.html", method=RequestMethod.GET)
 	public String displayChangePassword(Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		setMenu(model,request);
+		System.out.println("$#7582#"); setMenu(model,request);
 		String userName = request.getRemoteUser();
 		User user = userService.getByUserName(userName);
 		
 		Password password = new Password();
-		password.setUser(user);
+		System.out.println("$#7583#"); password.setUser(user);
 		
 		model.addAttribute("password",password);
 		model.addAttribute("user",user);
-		return ControllerConstants.Tiles.User.password;
+		System.out.println("$#7584#"); return ControllerConstants.Tiles.User.password;
 	}
 	
 	
 	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/users/savePassword.html", method=RequestMethod.POST)
 	public String changePassword(@ModelAttribute("password") Password password, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		setMenu(model,request);
+		System.out.println("$#7585#"); setMenu(model,request);
 		String userName = request.getRemoteUser();
 		User dbUser = userService.getByUserName(userName);
 		
 
-		if(password.getUser().getId().longValue()!= dbUser.getId().longValue()) {
-				return "redirect:/admin/users/displayUser.html";
+		System.out.println("$#7586#"); if(password.getUser().getId().longValue()!= dbUser.getId().longValue()) {
+				System.out.println("$#7587#"); return "redirect:/admin/users/displayUser.html";
 		}
 		
 		//validate password not empty
-		if(StringUtils.isBlank(password.getPassword())) {
+		System.out.println("$#7588#"); if(StringUtils.isBlank(password.getPassword())) {
 			ObjectError error = new ObjectError("password",new StringBuilder().append(messages.getMessage("label.generic.password", locale)).append(" ").append(messages.getMessage("message.cannot.empty", locale)).toString());
-			result.addError(error);
-			return ControllerConstants.Tiles.User.password;
+			System.out.println("$#7589#"); result.addError(error);
+			System.out.println("$#7590#"); return ControllerConstants.Tiles.User.password;
 		}
 
-		if(!passwordEncoder.matches(password.getPassword(), dbUser.getAdminPassword())) {
+		System.out.println("$#7591#"); if(!passwordEncoder.matches(password.getPassword(), dbUser.getAdminPassword())) {
 			ObjectError error = new ObjectError("password",messages.getMessage("message.password.invalid", locale));
-			result.addError(error);
-			return ControllerConstants.Tiles.User.password;
+			System.out.println("$#7592#"); result.addError(error);
+			System.out.println("$#7593#"); return ControllerConstants.Tiles.User.password;
 		}
 		
 
-		if(StringUtils.isBlank(password.getNewPassword())) {
+		System.out.println("$#7594#"); if(StringUtils.isBlank(password.getNewPassword())) {
 			ObjectError error = new ObjectError("newPassword",new StringBuilder().append(messages.getMessage("label.generic.newpassword", locale)).append(" ").append(messages.getMessage("message.cannot.empty", locale)).toString());
-			result.addError(error);
+			System.out.println("$#7595#"); result.addError(error);
 		}
 		
-		if(StringUtils.isBlank(password.getRepeatPassword())) {
+		System.out.println("$#7596#"); if(StringUtils.isBlank(password.getRepeatPassword())) {
 			ObjectError error = new ObjectError("newPasswordAgain",new StringBuilder().append(messages.getMessage("label.generic.newpassword.repeat", locale)).append(" ").append(messages.getMessage("message.cannot.empty", locale)).toString());
-			result.addError(error);
+			System.out.println("$#7597#"); result.addError(error);
 		}
 		
-		if(!password.getRepeatPassword().equals(password.getNewPassword())) {
+		System.out.println("$#7598#"); if(!password.getRepeatPassword().equals(password.getNewPassword())) {
 			ObjectError error = new ObjectError("newPasswordAgain",messages.getMessage("message.password.different", locale));
-			result.addError(error);
+			System.out.println("$#7599#"); result.addError(error);
 		}
 		
-		if(password.getNewPassword().length()<6) {
+		System.out.println("$#7601#"); System.out.println("$#7600#"); if(password.getNewPassword().length()<6) {
 			ObjectError error = new ObjectError("newPassword",messages.getMessage("message.password.length", locale));
-			result.addError(error);
+			System.out.println("$#7602#"); result.addError(error);
 		}
 		
-		if (result.hasErrors()) {
-			return ControllerConstants.Tiles.User.password;
+		System.out.println("$#7603#"); if (result.hasErrors()) {
+			System.out.println("$#7604#"); return ControllerConstants.Tiles.User.password;
 		}
 		
 		
 		
 		String pass = passwordEncoder.encode(password.getNewPassword());
-		dbUser.setAdminPassword(pass);
-		userService.update(dbUser);
+		System.out.println("$#7605#"); dbUser.setAdminPassword(pass);
+		System.out.println("$#7606#"); userService.update(dbUser);
 		
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.User.password;
+		System.out.println("$#7607#"); return ControllerConstants.Tiles.User.password;
 	}
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(value="/admin/users/createUser.html", method=RequestMethod.GET)
 	public String displayUserCreate(Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		return displayUser(null,model,request,response,locale);
+		System.out.println("$#7608#"); return displayUser(null,model,request,response,locale);
 	}
 	
 
@@ -265,13 +265,13 @@ public class UserController {
 
 		User dbUser = userService.getById(id);
 		
-		if(dbUser==null) {
+		System.out.println("$#7609#"); if(dbUser==null) {
 			LOGGER.info("User is null for id " + id);
-			return "redirect://admin/users/list.html";
+			System.out.println("$#7610#"); return "redirect://admin/users/list.html";
 		}
 		
 		
-		return displayUser(dbUser,model,request,response,locale);
+		System.out.println("$#7611#"); return displayUser(dbUser,model,request,response,locale);
 
 	}
 	
@@ -291,7 +291,7 @@ public class UserController {
 		
 		String userName = request.getRemoteUser();
 		User user = userService.getByUserName(userName);
-		return displayUser(user,model,request,response,locale);
+		System.out.println("$#7612#"); return displayUser(user,model,request,response,locale);
 
 	}
 	
@@ -301,7 +301,7 @@ public class UserController {
 		List<Group> groups = new ArrayList<Group>();
 		List<Group> userGroups = groupService.listGroup(GroupType.ADMIN);
 		for(Group group : userGroups) {
-			if(!group.getGroupName().equals(Constants.GROUP_SUPERADMIN)) {
+			System.out.println("$#7613#"); if(!group.getGroupName().equals(Constants.GROUP_SUPERADMIN)) {
 				groups.add(group);
 			}
 		}
@@ -316,48 +316,48 @@ public class UserController {
 		List<SecurityQuestion> questions = new ArrayList<SecurityQuestion>();
 		
 		SecurityQuestion question = new SecurityQuestion();
-		question.setId("1");
-		question.setLabel(messages.getMessage("security.question.1", locale));
+		System.out.println("$#7614#"); question.setId("1");
+		System.out.println("$#7615#"); question.setLabel(messages.getMessage("security.question.1", locale));
 		questions.add(question);
 		
 		question = new SecurityQuestion();
-		question.setId("2");
-		question.setLabel(messages.getMessage("security.question.2", locale));
+		System.out.println("$#7616#"); question.setId("2");
+		System.out.println("$#7617#"); question.setLabel(messages.getMessage("security.question.2", locale));
 		questions.add(question);
 		
 		question = new SecurityQuestion();
-		question.setId("3");
-		question.setLabel(messages.getMessage("security.question.3", locale));
+		System.out.println("$#7618#"); question.setId("3");
+		System.out.println("$#7619#"); question.setLabel(messages.getMessage("security.question.3", locale));
 		questions.add(question);
 		
 		question = new SecurityQuestion();
-		question.setId("4");
-		question.setLabel(messages.getMessage("security.question.4", locale));
+		System.out.println("$#7620#"); question.setId("4");
+		System.out.println("$#7621#"); question.setLabel(messages.getMessage("security.question.4", locale));
 		questions.add(question);
 		
 		question = new SecurityQuestion();
-		question.setId("5");
-		question.setLabel(messages.getMessage("security.question.5", locale));
+		System.out.println("$#7622#"); question.setId("5");
+		System.out.println("$#7623#"); question.setLabel(messages.getMessage("security.question.5", locale));
 		questions.add(question);
 		
 		question = new SecurityQuestion();
-		question.setId("6");
-		question.setLabel(messages.getMessage("security.question.6", locale));
+		System.out.println("$#7624#"); question.setId("6");
+		System.out.println("$#7625#"); question.setLabel(messages.getMessage("security.question.6", locale));
 		questions.add(question);
 		
 		question = new SecurityQuestion();
-		question.setId("7");
-		question.setLabel(messages.getMessage("security.question.7", locale));
+		System.out.println("$#7626#"); question.setId("7");
+		System.out.println("$#7627#"); question.setLabel(messages.getMessage("security.question.7", locale));
 		questions.add(question);
 		
 		question = new SecurityQuestion();
-		question.setId("8");
-		question.setLabel(messages.getMessage("security.question.8", locale));
+		System.out.println("$#7628#"); question.setId("8");
+		System.out.println("$#7629#"); question.setLabel(messages.getMessage("security.question.8", locale));
 		questions.add(question);
 		
 		question = new SecurityQuestion();
-		question.setId("9");
-		question.setLabel(messages.getMessage("security.question.9", locale));
+		System.out.println("$#7630#"); question.setId("9");
+		System.out.println("$#7631#"); question.setLabel(messages.getMessage("security.question.9", locale));
 		questions.add(question);
 		
 		model.addAttribute("questions", questions);
@@ -374,27 +374,27 @@ public class UserController {
 		
 
 		//display menu
-		setMenu(model,request);
+		System.out.println("$#7632#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 
 
 		
-		if(user==null) {
+		System.out.println("$#7633#"); if(user==null) {
 			user = new User();
 		} else {
-			user.setAdminPassword("TRANSIENT");
+			System.out.println("$#7634#"); user.setAdminPassword("TRANSIENT");
 		}
 		
-		this.populateUserObjects(user, store, model, locale);
+		System.out.println("$#7635#"); this.populateUserObjects(user, store, model, locale);
 		
 
 		model.addAttribute("user", user);
 		
 		
 
-		return ControllerConstants.Tiles.User.profile;
+		System.out.println("$#7636#"); return ControllerConstants.Tiles.User.profile;
 	}
 	
 	@PreAuthorize("hasRole('AUTH')")
@@ -406,60 +406,60 @@ public class UserController {
 		AjaxResponse resp = new AjaxResponse();
 		
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7637#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		try {
 			
-			if(StringUtils.isBlank(code)) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+			System.out.println("$#7638#"); if(StringUtils.isBlank(code)) {
+				System.out.println("$#7639#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 				String returnString =  resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7640#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			User user = userService.getByUserName(code);
 		
 		
-			if(!StringUtils.isBlank(id)&& user!=null) {
+			System.out.println("$#7641#"); if(!StringUtils.isBlank(id)&& user!=null) {
 				try {
 					Long lid = Long.parseLong(id);
 					
-					if(user.getAdminName().equals(code) && user.getId()==lid) {
-						resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+					System.out.println("$#7643#"); if(user.getAdminName().equals(code) && user.getId()==lid) {
+						System.out.println("$#7645#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 						String returnString =  resp.toJSONString();
-						return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+						System.out.println("$#7646#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 					}
 				} catch (Exception e) {
-					resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+					System.out.println("$#7647#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 					String returnString =  resp.toJSONString();
-					return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7648#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 				}
 	
 			}
 
 			
-			if(StringUtils.isBlank(code)) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+			System.out.println("$#7649#"); if(StringUtils.isBlank(code)) {
+				System.out.println("$#7650#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 				String returnString =  resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7651#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
-			if(user!=null) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+			System.out.println("$#7652#"); if(user!=null) {
+				System.out.println("$#7653#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 				String returnString =  resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7654#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#7655#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while getting user", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7656#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7657#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7658#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 
 	}
 	
@@ -468,18 +468,18 @@ public class UserController {
 	public String saveUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 
 
-		setMenu(model,request);
+		System.out.println("$#7659#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		
-		this.populateUserObjects(user, store, model, locale);
+		System.out.println("$#7660#"); this.populateUserObjects(user, store, model, locale);
 		
 		Language language = user.getDefaultLanguage();
 		
 		Language l = languageService.getById(language.getId());
 		
-		user.setDefaultLanguage(l);
+		System.out.println("$#7661#"); user.setDefaultLanguage(l);
 		
 		Locale userLocale = LocaleUtils.getLocale(l);
 		
@@ -488,10 +488,10 @@ public class UserController {
 		User dbUser = null;
 		
 		//edit mode, need to get original user important information
-		if(user.getId()!=null) {
+		System.out.println("$#7662#"); if(user.getId()!=null) {
 			dbUser = userService.getByUserName(user.getAdminName());
-			if(dbUser==null) {
-				return "redirect:///admin/users/displayUser.html";
+			System.out.println("$#7663#"); if(dbUser==null) {
+				System.out.println("$#7664#"); return "redirect:///admin/users/displayUser.html";
 			}
 		}
 
@@ -504,58 +504,58 @@ public class UserController {
 
 		
 		//validate security questions not empty
-		if(StringUtils.isBlank(user.getAnswer1())) {
+		System.out.println("$#7665#"); if(StringUtils.isBlank(user.getAnswer1())) {
 			ObjectError error = new ObjectError("answer1",messages.getMessage("security.answer.question1.message", locale));
-			result.addError(error);
+			System.out.println("$#7666#"); result.addError(error);
 		}
 		
-		if(StringUtils.isBlank(user.getAnswer2())) {
+		System.out.println("$#7667#"); if(StringUtils.isBlank(user.getAnswer2())) {
 			ObjectError error = new ObjectError("answer2",messages.getMessage("security.answer.question2.message", locale));
-			result.addError(error);
+			System.out.println("$#7668#"); result.addError(error);
 		}
 		
-		if(StringUtils.isBlank(user.getAnswer3())) {
+		System.out.println("$#7669#"); if(StringUtils.isBlank(user.getAnswer3())) {
 			ObjectError error = new ObjectError("answer3",messages.getMessage("security.answer.question3.message", locale));
-			result.addError(error);
+			System.out.println("$#7670#"); result.addError(error);
 		}
 		
-		if(user.getQuestion1().equals(user.getQuestion2()) || user.getQuestion1().equals(user.getQuestion3())
+		System.out.println("$#7671#"); if(user.getQuestion1().equals(user.getQuestion2()) || user.getQuestion1().equals(user.getQuestion3())
 				|| user.getQuestion2().equals(user.getQuestion1()) || user.getQuestion1().equals(user.getQuestion3())
 				|| user.getQuestion3().equals(user.getQuestion1()) || user.getQuestion1().equals(user.getQuestion2()))
 		
 		
 		{
 			ObjectError error = new ObjectError("question1",messages.getMessage("security.questions.differentmessages", locale));
-			result.addError(error);
+			System.out.println("$#7677#"); result.addError(error);
 		}
 		
 		
 		Group superAdmin = null;
 		
-		if(user.getId()!=null && user.getId()>0) {
-			if(user.getId().longValue()!=dbUser.getId().longValue()) {
-				return "redirect:///admin/users/displayUser.html";
+		System.out.println("$#7679#"); System.out.println("$#7678#"); if(user.getId()!=null && user.getId()>0) {
+			System.out.println("$#7681#"); if(user.getId().longValue()!=dbUser.getId().longValue()) {
+				System.out.println("$#7682#"); return "redirect:///admin/users/displayUser.html";
 			}
 			
 			List<Group> groups = dbUser.getGroups();
 			//boolean removeSuperAdmin = true;
 			for(Group group : groups) {
 				//can't revoke super admin
-				if(group.getGroupName().equals("SUPERADMIN")) {
+				System.out.println("$#7683#"); if(group.getGroupName().equals("SUPERADMIN")) {
 					superAdmin = group;
 				}
 			}
 
 		} else {
 			
-			if(user.getAdminPassword().length()<6) {
+			System.out.println("$#7685#"); System.out.println("$#7684#"); if(user.getAdminPassword().length()<6) {
 				ObjectError error = new ObjectError("adminPassword",messages.getMessage("message.password.length", locale));
-				result.addError(error);
+				System.out.println("$#7686#"); result.addError(error);
 			}
 			
 		}
 		
-		if(superAdmin!=null) {
+		System.out.println("$#7687#"); if(superAdmin!=null) {
 			ids.add(superAdmin.getId());
 		}
 
@@ -563,31 +563,31 @@ public class UserController {
 		List<Group> newGroups = groupService.listGroupByIds(ids);
 
 		//set actual user groups
-		user.setGroups(newGroups);
+		System.out.println("$#7688#"); user.setGroups(newGroups);
 		
-		if (result.hasErrors()) {
-			return ControllerConstants.Tiles.User.profile;
+		System.out.println("$#7689#"); if (result.hasErrors()) {
+			System.out.println("$#7690#"); return ControllerConstants.Tiles.User.profile;
 		}
 		
 		String decodedPassword = user.getAdminPassword();
-		if(user.getId()!=null && user.getId()>0) {
-			user.setAdminPassword(dbUser.getAdminPassword());
+		System.out.println("$#7692#"); System.out.println("$#7691#"); if(user.getId()!=null && user.getId()>0) {
+			System.out.println("$#7694#"); user.setAdminPassword(dbUser.getAdminPassword());
 		} else {
 			String encoded = passwordEncoder.encode(user.getAdminPassword());
-			user.setAdminPassword(encoded);
+			System.out.println("$#7695#"); user.setAdminPassword(encoded);
 		}
 		
 		
-		if(user.getId()==null || user.getId().longValue()==0) {
+		System.out.println("$#7696#"); if(user.getId()==null || user.getId().longValue()==0) {
 			
 			//save or update user
-			userService.saveOrUpdate(user);
+			System.out.println("$#7698#"); userService.saveOrUpdate(user);
 			
 			try {
 
 				//creation of a user, send an email
 				String userName = user.getFirstName();
-				if(StringUtils.isBlank(userName)) {
+				System.out.println("$#7699#"); if(StringUtils.isBlank(userName)) {
 					userName = user.getAdminName();
 				}
 				String[] userNameArg = {userName};
@@ -607,16 +607,16 @@ public class UserController {
 	
 				
 				Email email = new Email();
-				email.setFrom(store.getStorename());
-				email.setFromEmail(store.getStoreEmailAddress());
-				email.setSubject(messages.getMessage("email.newuser.title",userLocale));
-				email.setTo(user.getAdminEmail());
-				email.setTemplateName(NEW_USER_TMPL);
-				email.setTemplateTokens(templateTokens);
+				System.out.println("$#7700#"); email.setFrom(store.getStorename());
+				System.out.println("$#7701#"); email.setFromEmail(store.getStoreEmailAddress());
+				System.out.println("$#7702#"); email.setSubject(messages.getMessage("email.newuser.title",userLocale));
+				System.out.println("$#7703#"); email.setTo(user.getAdminEmail());
+				System.out.println("$#7704#"); email.setTemplateName(NEW_USER_TMPL);
+				System.out.println("$#7705#"); email.setTemplateTokens(templateTokens);
 	
 	
 				
-				emailService.sendHtmlEmail(store, email);
+				System.out.println("$#7706#"); emailService.sendHtmlEmail(store, email);
 			
 			} catch (Exception e) {
 				LOGGER.error("Cannot send email to user",e);
@@ -624,11 +624,11 @@ public class UserController {
 			
 		} else {
 			//save or update user
-			userService.saveOrUpdate(user);
+			System.out.println("$#7707#"); userService.saveOrUpdate(user);
 		}
 
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.User.profile;
+		System.out.println("$#7708#"); return ControllerConstants.Tiles.User.profile;
 	}
 	
 	@PreAuthorize("hasRole('AUTH')")
@@ -641,7 +641,7 @@ public class UserController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7709#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		String userName = request.getRemoteUser();
 		User remoteUser = userService.getByUserName(userName);
@@ -658,49 +658,49 @@ public class UserController {
 			 */
 			
 
-			if(user==null){
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7710#"); if(user==null){
+				System.out.println("$#7711#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7712#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7713#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(!request.isUserInRole(Constants.GROUP_ADMIN)) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7714#"); if(!request.isUserInRole(Constants.GROUP_ADMIN)) {
+				System.out.println("$#7715#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7716#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7717#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
 			
 			//check if the user removed has group ADMIN
 			boolean isAdmin = false;
-			if(UserUtils.userInGroup(remoteUser, Constants.GROUP_ADMIN) || UserUtils.userInGroup(remoteUser, Constants.GROUP_SUPERADMIN)) {
+			System.out.println("$#7718#"); if(UserUtils.userInGroup(remoteUser, Constants.GROUP_ADMIN) || UserUtils.userInGroup(remoteUser, Constants.GROUP_SUPERADMIN)) {
 				isAdmin = true;
 			}
 
 			
-			if(!isAdmin) {
-				resp.setStatusMessage(messages.getMessage("message.security.caanotremovesuperadmin", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7720#"); if(!isAdmin) {
+				System.out.println("$#7721#"); resp.setStatusMessage(messages.getMessage("message.security.caanotremovesuperadmin", locale));
+				System.out.println("$#7722#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7723#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			userService.delete(user);
+			System.out.println("$#7724#"); userService.delete(user);
 			
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#7725#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting user", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7726#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7727#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7728#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	
@@ -728,7 +728,7 @@ public class UserController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7729#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 	    
 		String userName = request.getParameter("username");
 		
@@ -740,46 +740,46 @@ public class UserController {
 		 */
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("username_reset", userName);
+		System.out.println("$#7730#"); session.setAttribute("username_reset", userName);
 		
 		try {
-				if(!StringUtils.isBlank(userName)){
+				System.out.println("$#7731#"); if(!StringUtils.isBlank(userName)){
 					
 						User dbUser = userService.getByUserName(userName);
 						
-						if(dbUser==null) {
-							resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-							resp.setStatusMessage(messages.getMessage("message.username.notfound", locale));
+						System.out.println("$#7732#"); if(dbUser==null) {
+							System.out.println("$#7733#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+							System.out.println("$#7734#"); resp.setStatusMessage(messages.getMessage("message.username.notfound", locale));
 							String returnString = resp.toJSONString();
-							return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+							System.out.println("$#7735#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 						}
 					
 						Map<String,String> entry = new HashMap<String,String>();
 						entry.put(QUESTION_1, dbUser.getQuestion1());
 						entry.put(QUESTION_2, dbUser.getQuestion2());
 						entry.put(QUESTION_3, dbUser.getQuestion3());
-						resp.addDataEntry(entry);
-						resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+						System.out.println("$#7736#"); resp.addDataEntry(entry);
+						System.out.println("$#7737#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 				
 				}else
 				{
-						resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-						resp.setStatusMessage(messages.getMessage("User.resetPassword.Error", locale));
+						System.out.println("$#7738#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+						System.out.println("$#7739#"); resp.setStatusMessage(messages.getMessage("User.resetPassword.Error", locale));
 				
 				}
 			} catch (Exception e) {
-						e.printStackTrace();
-						resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-						resp.setStatusMessage(messages.getMessage("User.resetPassword.Error", locale));
+						System.out.println("$#7740#"); e.printStackTrace();
+						System.out.println("$#7741#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+						System.out.println("$#7742#"); resp.setStatusMessage(messages.getMessage("User.resetPassword.Error", locale));
 						String returnString = resp.toJSONString();
-						return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+						System.out.println("$#7743#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 	
 		
 		
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7744#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	//password reset functionality  ---  Sajid Shajahan
 	@RequestMapping(value="/admin/users/resetPasswordSecurityQtn.html", method=RequestMethod.POST)
@@ -800,17 +800,17 @@ public class UserController {
 			HttpSession session = request.getSession();
 			User dbUser = userService.getByUserName((String) session.getAttribute("username_reset"));
 			
-			if(dbUser!= null){
+			System.out.println("$#7745#"); if(dbUser!= null){
 				
-				if(dbUser.getAnswer1().equals(answer1.trim()) && dbUser.getAnswer2().equals(answer2.trim()) && dbUser.getAnswer3().equals(answer3.trim())){
+				System.out.println("$#7746#"); if(dbUser.getAnswer1().equals(answer1.trim()) && dbUser.getAnswer2().equals(answer2.trim()) && dbUser.getAnswer3().equals(answer3.trim())){
 					userLanguage = dbUser.getDefaultLanguage();	
 					userLocale =  LocaleUtils.getLocale(userLanguage);
 					
 					String tempPass = userReset.generateRandomString();
 					String pass = passwordEncoder.encode(tempPass);
 					
-					dbUser.setAdminPassword(pass);
-					userService.update(dbUser);
+					System.out.println("$#7749#"); dbUser.setAdminPassword(pass);
+					System.out.println("$#7750#"); userService.update(dbUser);
 					
 					//send email
 					
@@ -824,43 +824,43 @@ public class UserController {
 						templateTokens.put(EmailConstants.EMAIL_USER_PASSWORD, tempPass);
 
 						Email email = new Email();
-						email.setFrom(store.getStorename());
-						email.setFromEmail(store.getStoreEmailAddress());
-						email.setSubject(messages.getMessage("label.generic.changepassword",userLocale));
-						email.setTo(dbUser.getAdminEmail() );
-						email.setTemplateName(RESET_PASSWORD_TPL);
-						email.setTemplateTokens(templateTokens);
+						System.out.println("$#7751#"); email.setFrom(store.getStorename());
+						System.out.println("$#7752#"); email.setFromEmail(store.getStoreEmailAddress());
+						System.out.println("$#7753#"); email.setSubject(messages.getMessage("label.generic.changepassword",userLocale));
+						System.out.println("$#7754#"); email.setTo(dbUser.getAdminEmail() );
+						System.out.println("$#7755#"); email.setTemplateName(RESET_PASSWORD_TPL);
+						System.out.println("$#7756#"); email.setTemplateTokens(templateTokens);
 						
-						emailService.sendHtmlEmail(store, email);
+						System.out.println("$#7757#"); emailService.sendHtmlEmail(store, email);
 					
 					} catch (Exception e) {
 						LOGGER.error("Cannot send email to user",e);
 					}
 					
-					resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
-					resp.setStatusMessage(messages.getMessage("User.resetPassword.resetSuccess", locale));
+					System.out.println("$#7758#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+					System.out.println("$#7759#"); resp.setStatusMessage(messages.getMessage("User.resetPassword.resetSuccess", locale));
 				}
 				else{
-					  resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-					  resp.setStatusMessage(messages.getMessage("User.resetPassword.wrongSecurityQtn", locale));
+							System.out.println("$#7760#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+							System.out.println("$#7761#"); resp.setStatusMessage(messages.getMessage("User.resetPassword.wrongSecurityQtn", locale));
 					  
 				  }
 			  }else{
-				  resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-				  resp.setStatusMessage(messages.getMessage("User.resetPassword.userNotFound", locale));
+						System.out.println("$#7762#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+						System.out.println("$#7763#"); resp.setStatusMessage(messages.getMessage("User.resetPassword.userNotFound", locale));
 				  
 			  }
 			
 		} catch (ServiceException e) {
-			e.printStackTrace();
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setStatusMessage(messages.getMessage("User.resetPassword.Error", locale));
+			System.out.println("$#7764#"); e.printStackTrace();
+			System.out.println("$#7765#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7766#"); resp.setStatusMessage(messages.getMessage("User.resetPassword.Error", locale));
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7767#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#7768#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	}

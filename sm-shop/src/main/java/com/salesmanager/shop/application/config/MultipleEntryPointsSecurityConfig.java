@@ -43,27 +43,27 @@ public class MultipleEntryPointsSecurityConfig {
 
 	@Bean
 	public AuthenticationTokenFilter authenticationTokenFilter() {
-		return new AuthenticationTokenFilter();
+		System.out.println("$#7898#"); return new AuthenticationTokenFilter();
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+		System.out.println("$#7899#"); return new BCryptPasswordEncoder();
 	}
 
 	@Bean
 	public UserAuthenticationSuccessHandler userAuthenticationSuccessHandler() {
-		return new UserAuthenticationSuccessHandler();
+		System.out.println("$#7900#"); return new UserAuthenticationSuccessHandler();
 	}
 
 	@Bean
 	public ServicesAuthenticationSuccessHandler servicesAuthenticationSuccessHandler() {
-		return new ServicesAuthenticationSuccessHandler();
+		System.out.println("$#7901#"); return new ServicesAuthenticationSuccessHandler();
 	}
 
 	@Bean
 	public CustomerFacade customerFacade() {
-		return new com.salesmanager.shop.store.controller.customer.facade.CustomerFacadeImpl();
+		System.out.println("$#7902#"); return new com.salesmanager.shop.store.controller.customer.facade.CustomerFacadeImpl();
 	}
 
 	
@@ -81,7 +81,7 @@ public class MultipleEntryPointsSecurityConfig {
 		@Bean("customerAuthenticationManager")
 		@Override
 		public AuthenticationManager authenticationManagerBean() throws Exception {
-			return super.authenticationManagerBean();
+			System.out.println("$#7910#"); return super.authenticationManagerBean();
 		}
 
 		@Autowired
@@ -143,8 +143,8 @@ public class MultipleEntryPointsSecurityConfig {
 		@Bean
 		public AuthenticationEntryPoint shopAuthenticationEntryPoint() {
 			BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
-			entryPoint.setRealmName("shop-realm");
-			return entryPoint;
+			System.out.println("$#7911#"); entryPoint.setRealmName("shop-realm");
+			System.out.println("$#7912#"); return entryPoint;
 		}
 
 	}
@@ -193,8 +193,8 @@ public class MultipleEntryPointsSecurityConfig {
 		@Bean
 		public AuthenticationEntryPoint servicesAuthenticationEntryPoint() {
 			BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
-			entryPoint.setRealmName("rest-customer-realm");
-			return entryPoint;
+			System.out.println("$#7913#"); entryPoint.setRealmName("rest-customer-realm");
+			System.out.println("$#7914#"); return entryPoint;
 		}
 
 	}
@@ -265,8 +265,8 @@ public class MultipleEntryPointsSecurityConfig {
 		@Bean
 		public AuthenticationEntryPoint adminAuthenticationEntryPoint() {
 			BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
-			entryPoint.setRealmName("admin-realm");
-			return entryPoint;
+			System.out.println("$#7903#"); entryPoint.setRealmName("admin-realm");
+			System.out.println("$#7904#"); return entryPoint;
 		}
 
 	}
@@ -291,7 +291,7 @@ public class MultipleEntryPointsSecurityConfig {
 		@Override
 		public AuthenticationManager authenticationManagerBean() throws Exception {
 			AuthenticationManager mgr = super.authenticationManagerBean();
-			return mgr;
+			System.out.println("$#7915#"); return mgr;
 		}
 		
 		
@@ -333,15 +333,15 @@ public class MultipleEntryPointsSecurityConfig {
 	    @Bean
 	    public AuthenticationProvider authenticationProvider() {
 	    	JWTAdminAuthenticationProvider provider = new JWTAdminAuthenticationProvider();
-	        provider.setUserDetailsService(jwtUserDetailsService);
-	        return provider;
+									System.out.println("$#7916#"); provider.setUserDetailsService(jwtUserDetailsService);
+									System.out.println("$#7917#"); return provider;
 	    }
 
 		@Bean
 		public AuthenticationEntryPoint apiAdminAuthenticationEntryPoint() {
 			BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
-			entryPoint.setRealmName("api-admin-realm");
-			return entryPoint;
+			System.out.println("$#7918#"); entryPoint.setRealmName("api-admin-realm");
+			System.out.println("$#7919#"); return entryPoint;
 		}
 
 	}
@@ -371,7 +371,7 @@ public class MultipleEntryPointsSecurityConfig {
 		@Bean("jwtCustomerAuthenticationManager")
 		@Override
 		public AuthenticationManager authenticationManagerBean() throws Exception {
-			return super.authenticationManagerBean();
+			System.out.println("$#7905#"); return super.authenticationManagerBean();
 		}
 
 		@Override
@@ -401,15 +401,15 @@ public class MultipleEntryPointsSecurityConfig {
 	    @Bean
 	    public AuthenticationProvider authenticationProvider() {
 	    	JWTCustomerAuthenticationProvider provider = new JWTCustomerAuthenticationProvider();
-	        provider.setUserDetailsService(jwtCustomerDetailsService);
-	        return provider;
+									System.out.println("$#7906#"); provider.setUserDetailsService(jwtCustomerDetailsService);
+									System.out.println("$#7907#"); return provider;
 	    }
 
 		@Bean
 		public AuthenticationEntryPoint apiCustomerAuthenticationEntryPoint() {
 			BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
-			entryPoint.setRealmName("api-customer-realm");
-			return entryPoint;
+			System.out.println("$#7908#"); entryPoint.setRealmName("api-customer-realm");
+			System.out.println("$#7909#"); return entryPoint;
 		}
 
 	}

@@ -8,19 +8,19 @@ public class UserCriteria extends Criteria {
 	private String adminName;
 	private boolean active = true;
 	public String getAdminEmail() {
-		return adminEmail;
+		System.out.println("$#4882#"); return adminEmail;
 	}
 	public void setAdminEmail(String adminEmail) {
 		this.adminEmail = adminEmail;
 	}
 	public boolean isActive() {
-		return active;
+		System.out.println("$#4884#"); System.out.println("$#4883#"); return active;
 	}
 	public void setActive(boolean active) {
 		this.active = active;
 	}
 	public String getAdminName() {
-		return adminName;
+		System.out.println("$#4885#"); return adminName;
 	}
 	public void setAdminName(String adminName) {
 		this.adminName = adminName;

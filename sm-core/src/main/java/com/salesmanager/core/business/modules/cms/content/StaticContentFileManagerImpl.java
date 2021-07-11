@@ -33,7 +33,7 @@ public class StaticContentFileManagerImpl extends StaticContentFileManager {
 	@Override
 	public void addFile(final String merchantStoreCode, Optional<String> path, final InputContentFile inputContentFile)
 			throws ServiceException {
-		uploadFile.addFile(merchantStoreCode, path, inputContentFile);
+		System.out.println("$#155#"); uploadFile.addFile(merchantStoreCode, path, inputContentFile);
 
 	}
 
@@ -52,37 +52,37 @@ public class StaticContentFileManagerImpl extends StaticContentFileManager {
 	@Override
 	public void addFiles(final String merchantStoreCode, Optional<String> path, final List<InputContentFile> inputStaticContentDataList)
 			throws ServiceException {
-		uploadFile.addFiles(merchantStoreCode, path, inputStaticContentDataList);
+		System.out.println("$#156#"); uploadFile.addFiles(merchantStoreCode, path, inputStaticContentDataList);
 	}
 
 	@Override
 	public void removeFile(final String merchantStoreCode, final FileContentType staticContentType,
 			final String fileName, Optional<String> path) throws ServiceException {
-		removeFile.removeFile(merchantStoreCode, staticContentType, fileName, path);
+		System.out.println("$#157#"); removeFile.removeFile(merchantStoreCode, staticContentType, fileName, path);
 
 	}
 
 	@Override
 	public OutputContentFile getFile(String merchantStoreCode, Optional<String> path, FileContentType fileContentType, String contentName)
 			throws ServiceException {
-		return getFile.getFile(merchantStoreCode, path, fileContentType, contentName);
+		System.out.println("$#158#"); return getFile.getFile(merchantStoreCode, path, fileContentType, contentName);
 	}
 
 	@Override
 	public List<String> getFileNames(String merchantStoreCode, Optional<String> path, FileContentType fileContentType)
 			throws ServiceException {
-		return getFile.getFileNames(merchantStoreCode, path, fileContentType);
+		System.out.println("$#159#"); return getFile.getFileNames(merchantStoreCode, path, fileContentType);
 	}
 
 	@Override
 	public List<OutputContentFile> getFiles(String merchantStoreCode, Optional<String> path, FileContentType fileContentType)
 			throws ServiceException {
-		return getFile.getFiles(merchantStoreCode, path, fileContentType);
+		System.out.println("$#160#"); return getFile.getFiles(merchantStoreCode, path, fileContentType);
 	}
 
 	@Override
 	public void removeFiles(String merchantStoreCode, Optional<String> path) throws ServiceException {
-		removeFile.removeFiles(merchantStoreCode, path);
+		System.out.println("$#161#"); removeFile.removeFiles(merchantStoreCode, path);
 	}
 
 	public void setRemoveFile(FileRemove removeFile) {
@@ -90,7 +90,7 @@ public class StaticContentFileManagerImpl extends StaticContentFileManager {
 	}
 
 	public FileRemove getRemoveFile() {
-		return removeFile;
+		System.out.println("$#162#"); return removeFile;
 	}
 
 	public void setGetFile(FileGet getFile) {
@@ -98,7 +98,7 @@ public class StaticContentFileManagerImpl extends StaticContentFileManager {
 	}
 
 	public FileGet getGetFile() {
-		return getFile;
+		System.out.println("$#163#"); return getFile;
 	}
 
 	public void setUploadFile(FilePut uploadFile) {
@@ -106,22 +106,22 @@ public class StaticContentFileManagerImpl extends StaticContentFileManager {
 	}
 
 	public FilePut getUploadFile() {
-		return uploadFile;
+		System.out.println("$#164#"); return uploadFile;
 	}
 
 	@Override
 	public void removeFolder(String merchantStoreCode, String folderName, Optional<String> path) throws ServiceException {
-		this.removeFolder.removeFolder(merchantStoreCode, folderName, path);
+		System.out.println("$#165#"); this.removeFolder.removeFolder(merchantStoreCode, folderName, path);
 
 	}
 
 	@Override
 	public void addFolder(String merchantStoreCode, String folderName, Optional<String> path) throws ServiceException {
-		addFolder.addFolder(merchantStoreCode, folderName, path);
+		System.out.println("$#166#"); addFolder.addFolder(merchantStoreCode, folderName, path);
 	}
 
 	public FolderRemove getRemoveFolder() {
-		return removeFolder;
+		System.out.println("$#167#"); return removeFolder;
 	}
 
 	public void setRemoveFolder(FolderRemove removeFolder) {
@@ -129,7 +129,7 @@ public class StaticContentFileManagerImpl extends StaticContentFileManager {
 	}
 
 	public FolderPut getAddFolder() {
-		return addFolder;
+		System.out.println("$#168#"); return addFolder;
 	}
 
 	public void setAddFolder(FolderPut addFolder) {
@@ -138,11 +138,11 @@ public class StaticContentFileManagerImpl extends StaticContentFileManager {
 
 	@Override
 	public List<String> listFolders(String merchantStoreCode, Optional<String> path) throws ServiceException {
-		return this.listFolder.listFolders(merchantStoreCode, path);
+		System.out.println("$#169#"); return this.listFolder.listFolders(merchantStoreCode, path);
 	}
 
 	public FolderList getListFolder() {
-		return listFolder;
+		System.out.println("$#170#"); return listFolder;
 	}
 
 	public void setListFolder(FolderList listFolder) {

@@ -17,31 +17,31 @@ public class ShoppingCartAttribute extends ShopEntity implements Serializable {
 	private String optionName;
 	private String optionValue;
 	public long getOptionId() {
-		return optionId;
+		System.out.println("$#9317#"); return optionId;
 	}
 	public void setOptionId(long optionId) {
 		this.optionId = optionId;
 	}
 	public long getOptionValueId() {
-		return optionValueId;
+		System.out.println("$#9318#"); return optionValueId;
 	}
 	public void setOptionValueId(long optionValueId) {
 		this.optionValueId = optionValueId;
 	}
 	public String getOptionName() {
-		return optionName;
+		System.out.println("$#9319#"); return optionName;
 	}
 	public void setOptionName(String optionName) {
 		this.optionName = optionName;
 	}
 	public String getOptionValue() {
-		return optionValue;
+		System.out.println("$#9320#"); return optionValue;
 	}
 	public void setOptionValue(String optionValue) {
 		this.optionValue = optionValue;
 	}
 	public long getAttributeId() {
-		return attributeId;
+		System.out.println("$#9321#"); return attributeId;
 	}
 	public void setAttributeId(long attributeId) {
 		this.attributeId = attributeId;

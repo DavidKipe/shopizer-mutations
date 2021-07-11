@@ -21,10 +21,10 @@ public interface ContentAssetsManager extends AssetsManager, FileGet, FilePut, F
 
     default String bucketName() {
         String name = getCmsManager().getRootName();
-        if (StringUtils.isBlank(name)) {
+								System.out.println("$#68#"); if (StringUtils.isBlank(name)) {
             name = DEFAULT_BUCKET_NAME;
         }
-        return name;
+								System.out.println("$#69#"); return name;
     }
 
     default String nodePath(String store, FileContentType type) {
@@ -32,11 +32,11 @@ public interface ContentAssetsManager extends AssetsManager, FileGet, FilePut, F
         StringBuilder builder = new StringBuilder();
         String root = nodePath(store);
         builder.append(root);
-        if (type != null && !FileContentType.IMAGE.name().equals(type.name()) && !FileContentType.STATIC_FILE.name().equals(type.name())) {
+								System.out.println("$#70#"); if (type != null && !FileContentType.IMAGE.name().equals(type.name()) && !FileContentType.STATIC_FILE.name().equals(type.name())) {
             builder.append(type.name()).append(Constants.SLASH);
         }
 
-        return builder.toString();
+								System.out.println("$#73#"); return builder.toString();
 
     }
 
@@ -44,42 +44,42 @@ public interface ContentAssetsManager extends AssetsManager, FileGet, FilePut, F
 
         StringBuilder builder = new StringBuilder();
         builder.append(ROOT_NAME).append(Constants.SLASH).append(store).append(Constants.SLASH);
-        return builder.toString();
+								System.out.println("$#74#"); return builder.toString();
 
     }
 
     default OutputContentFile getOutputContentFile(byte[] byteArray) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream(byteArray.length);
-        baos.write(byteArray, 0, byteArray.length);
+								System.out.println("$#75#"); baos.write(byteArray, 0, byteArray.length);
         OutputContentFile ct = new OutputContentFile();
-        ct.setFile(baos);
-        return ct;
+								System.out.println("$#76#"); ct.setFile(baos);
+								System.out.println("$#77#"); return ct;
     }
 
     default boolean isInsideSubFolder(String key) {
         int c = StringUtils.countMatches(key, Constants.SLASH);
-        if (c > 2) {
-          return true;
+								System.out.println("$#79#"); System.out.println("$#78#"); if (c > 2) {
+										System.out.println("$#80#"); return true;
         }
     
-        return false;
+								System.out.println("$#81#"); return false;
       }
 
       default String getName(String filename) {
-        if (filename == null) {
-          return null;
+								System.out.println("$#82#"); if (filename == null) {
+										System.out.println("$#83#"); return null;
         }
         int index = indexOfLastSeparator(filename);
-        return filename.substring(index + 1);
+								System.out.println("$#85#"); System.out.println("$#84#"); return filename.substring(index + 1);
       }
     
       default int indexOfLastSeparator(String filename) {
-        if (filename == null) {
-          return -1;
+								System.out.println("$#86#"); if (filename == null) {
+										System.out.println("$#87#"); return -1;
         }
         int lastUnixPos = filename.lastIndexOf(UNIX_SEPARATOR);
         int lastWindowsPos = filename.lastIndexOf(WINDOWS_SEPARATOR);
-        return Math.max(lastUnixPos, lastWindowsPos);
+								System.out.println("$#88#"); return Math.max(lastUnixPos, lastWindowsPos);
       }
     
     

@@ -34,7 +34,7 @@ public class PaymentConfigurationFacadeImpl implements ConfigurationsFacade {
 			List<ReadableConfiguration> configurations = 
 					methods.stream()
 					.map(m -> configuration(m.getInformations(), store)).collect(Collectors.toList());
-			return configurations;
+			System.out.println("$#14783#"); return configurations;
 			
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Error while getting payment configurations",e);
@@ -55,11 +55,11 @@ public class PaymentConfigurationFacadeImpl implements ConfigurationsFacade {
 					.map(m -> this.configuration(m.getInformations(), store))
 					.findFirst();
 			
-			if(configuration.isPresent()) {
+			System.out.println("$#14787#"); if(configuration.isPresent()) {
 				config = configuration.get();
 			}
 			
-			return config;
+			System.out.println("$#14788#"); return config;
 		
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Error while getting payment configuration [" + module + "]",e);
@@ -83,12 +83,12 @@ public class PaymentConfigurationFacadeImpl implements ConfigurationsFacade {
 	private ReadableConfiguration configuration(IntegrationConfiguration source, MerchantStore store) {
 		
 		ReadableConfiguration config = new ReadableConfiguration();
-		config.setActive(source.isActive());
-		config.setCode(source.getModuleCode());
-		config.setKeys(source.getIntegrationKeys());
-		config.setIntegrationOptions(source.getIntegrationOptions());
+		System.out.println("$#14789#"); config.setActive(source.isActive());
+		System.out.println("$#14790#"); config.setCode(source.getModuleCode());
+		System.out.println("$#14791#"); config.setKeys(source.getIntegrationKeys());
+		System.out.println("$#14792#"); config.setIntegrationOptions(source.getIntegrationOptions());
 		
-		return config;
+		System.out.println("$#14793#"); return config;
 	}
 
 

@@ -12,7 +12,7 @@ public class PersistableOrderStatusHistory extends OrderStatusHistory {
 	private String date;
 
 	public String getDate() {
-		return date;
+		System.out.println("$#9117#"); return date;
 	}
 
 	public void setDate(String date) {

@@ -15,14 +15,14 @@ public class ObjectContent extends ContentPath implements ResourceUrlAccess {
   private String pageContent;
   private String language;
   public String getPageContent() {
-      return pageContent;
+						System.out.println("$#9000#"); return pageContent;
   }
   public void setPageContent(String pageContent) {
       this.pageContent = pageContent;
   }
 
   public String getSlug() {
-    return slug;
+				System.out.println("$#9001#"); return slug;
   }
 
   public void setSlug(String slug) {
@@ -30,7 +30,7 @@ public class ObjectContent extends ContentPath implements ResourceUrlAccess {
   }
 
   public String getMetaDetails() {
-    return metaDetails;
+				System.out.println("$#9002#"); return metaDetails;
   }
 
   public void setMetaDetails(String metaDetails) {
@@ -38,14 +38,14 @@ public class ObjectContent extends ContentPath implements ResourceUrlAccess {
   }
 
   public String getTitle() {
-    return title;
+				System.out.println("$#9003#"); return title;
   }
 
   public void setTitle(String title) {
     this.title = title;
   }
   public String getLanguage() {
-    return language;
+				System.out.println("$#9004#"); return language;
   }
   public void setLanguage(String language) {
     this.language = language;

@@ -15,13 +15,13 @@ public class CustomerOptionValueEntity extends CustomerOptionValue implements
 		this.order = order;
 	}
 	public int getOrder() {
-		return order;
+		System.out.println("$#9047#"); return order;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#9048#"); return code;
 	}
 
 }

@@ -59,7 +59,7 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 	private String name;
 	
 	public String getName() {
-		return name;
+		System.out.println("$#4449#"); return name;
 	}
 
 	public void setName(String name) {
@@ -70,11 +70,11 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 	}
 	
 	public Country(String isoCode) {
-		this.setIsoCode(isoCode);
+		System.out.println("$#4450#"); this.setIsoCode(isoCode);
 	}
 	
 	public boolean getSupported() {
-		return supported;
+		System.out.println("$#4452#"); System.out.println("$#4451#"); return supported;
 	}
 
 	public void setSupported(boolean supported) {
@@ -82,7 +82,7 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 	}
 
 	public String getIsoCode() {
-		return isoCode;
+		System.out.println("$#4453#"); return isoCode;
 	}
 
 	public void setIsoCode(String isoCode) {
@@ -92,7 +92,7 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 
 	@Override
 	public Integer getId() {
-		return id;
+		System.out.println("$#4454#"); return id;
 	}
 
 	@Override
@@ -102,7 +102,7 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 
 
 	public Set<Zone> getZones() {
-		return zones;
+		System.out.println("$#4455#"); return zones;
 	}
 
 	public void setZones(Set<Zone> zones) {
@@ -111,7 +111,7 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 
 
 	public GeoZone getGeoZone() {
-		return geoZone;
+		System.out.println("$#4456#"); return geoZone;
 	}
 
 	public void setGeoZone(GeoZone geoZone) {
@@ -120,7 +120,7 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 	
 	
 	public Set<CountryDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#4457#"); return descriptions;
 	}
 
 	public void setDescriptions(Set<CountryDescription> descriptions) {

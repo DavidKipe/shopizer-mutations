@@ -25,17 +25,17 @@ public class PersistableCustomer extends CustomerEntity {
 		this.attributes = attributes;
 	}
 	public List<PersistableCustomerAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#9084#"); return attributes;
 	}
 
 	public String getPassword() {
-		return password;
+		System.out.println("$#9085#"); return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	public List<PersistableGroup> getGroups() {
-		return groups;
+		System.out.println("$#9086#"); return groups;
 	}
 	public void setGroups(List<PersistableGroup> groups) {
 		this.groups = groups;

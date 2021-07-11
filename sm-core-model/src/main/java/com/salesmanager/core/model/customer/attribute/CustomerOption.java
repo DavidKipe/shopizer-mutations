@@ -78,7 +78,7 @@ public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
 
 	
 	public Set<CustomerOptionDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#4122#"); return descriptions;
 	}
 
 	public void setDescriptions(Set<CustomerOptionDescription> descriptions) {
@@ -87,7 +87,7 @@ public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4123#"); return id;
 	}
 	
 	@Override
@@ -98,7 +98,7 @@ public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
 
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4124#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -110,20 +110,20 @@ public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
 	}
 
 	public List<CustomerOptionDescription> getDescriptionsList() {
-		return descriptionsList;
+		System.out.println("$#4125#"); return descriptionsList;
 	}
 	
 
 	public List<CustomerOptionDescription> getDescriptionsSettoList() {
-		if(descriptionsList==null || descriptionsList.size()==0) {
+		System.out.println("$#4126#"); if(descriptionsList==null || descriptionsList.size()==0) {
 			descriptionsList = new ArrayList<CustomerOptionDescription>(this.getDescriptions());
 		} 
-		return descriptionsList;
+		System.out.println("$#4128#"); return descriptionsList;
 
 	}
 
 	public String getCustomerOptionType() {
-		return customerOptionType;
+		System.out.println("$#4129#"); return customerOptionType;
 	}
 
 
@@ -135,7 +135,7 @@ public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
 
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4130#"); return code;
 	}
 
 
@@ -147,7 +147,7 @@ public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
 
 
 	public boolean isActive() {
-		return active;
+		System.out.println("$#4132#"); System.out.println("$#4131#"); return active;
 	}
 
 
@@ -159,7 +159,7 @@ public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
 
 
 	public boolean isPublicOption() {
-		return publicOption;
+		System.out.println("$#4134#"); System.out.println("$#4133#"); return publicOption;
 	}
 
 
@@ -177,6 +177,6 @@ public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
 
 
 	public Integer getSortOrder() {
-		return sortOrder;
+		System.out.println("$#4135#"); return sortOrder;
 	}
 }

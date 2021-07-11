@@ -67,19 +67,19 @@ public class ShoppingCategoryRESTController {
 			/** default routine **/
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11223#"); if(merchantStore!=null) {
+				System.out.println("$#11224#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11225#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11226#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11227#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 			
@@ -110,18 +110,18 @@ public class ShoppingCategoryRESTController {
 			
 			ReadableCategory category  = categoryFacade.getById(merchantStore, id, language);
 			
-			if(category==null) {
-				response.sendError(503,  "Invalid category id");
+			System.out.println("$#11228#"); if(category==null) {
+				System.out.println("$#11229#"); response.sendError(503,  "Invalid category id");
 				return null;
 			}
 
 
-			return category;
+			System.out.println("$#11230#"); return category;
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while saving category",e);
 			try {
-				response.sendError(503, "Error while saving category " + e.getMessage());
+				System.out.println("$#11231#"); response.sendError(503, "Error while saving category " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			return null;

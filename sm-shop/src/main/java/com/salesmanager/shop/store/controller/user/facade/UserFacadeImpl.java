@@ -78,20 +78,20 @@ public class UserFacadeImpl implements UserFacade {
 	@Override
 	public ReadableUser findByUserName(String userName, String storeCode, Language lang) {
 		ReadableUser user = findByUserName(userName, lang);
-		if (user == null) {
+		System.out.println("$#14206#"); if (user == null) {
 			throw new ResourceNotFoundException("User [" + userName + "] not found");
 		}
 
-		return user;
+		System.out.println("$#14207#"); return user;
 
 	}
 
 	private ReadableUser findByUserName(String userName, Language lang) {
 		User user = getByUserName(userName);
-		if (user == null) {
+		System.out.println("$#14208#"); if (user == null) {
 			throw new ResourceNotFoundException("User [" + userName + "] not found");
 		}
-		return convertUserToReadableUser(lang, user);
+		System.out.println("$#14209#"); return convertUserToReadableUser(lang, user);
 	}
 
 	private ReadableUser convertUserToReadableUser(Language lang, User user) {
@@ -103,9 +103,9 @@ public class UserFacadeImpl implements UserFacade {
 			List<Integer> groupIds = readableUser.getGroups().stream().map(ReadableGroup::getId).map(Long::intValue)
 					.collect(Collectors.toList());
 			List<ReadablePermission> permissions = findPermissionsByGroups(groupIds);
-			readableUser.setPermissions(permissions);
+			System.out.println("$#14210#"); readableUser.setPermissions(permissions);
 
-			return readableUser;
+			System.out.println("$#14211#"); return readableUser;
 		} catch (ConversionException e) {
 			throw new ConversionRuntimeException(e);
 		}
@@ -114,7 +114,7 @@ public class UserFacadeImpl implements UserFacade {
 	private User converPersistabletUserToUser(MerchantStore store, Language lang, User userModel,
 			PersistableUser user) {
 		try {
-			return persistableUserPopulator.populate(user, userModel, store, lang);
+			System.out.println("$#14212#"); return persistableUserPopulator.populate(user, userModel, store, lang);
 		} catch (ConversionException e) {
 			throw new ConversionRuntimeException(e);
 		}
@@ -122,7 +122,7 @@ public class UserFacadeImpl implements UserFacade {
 
 	private User getByUserName(String userName) {
 		try {
-			return userService.getByUserName(userName);
+			System.out.println("$#14213#"); return userService.getByUserName(userName);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException(e);
 		}
@@ -130,7 +130,7 @@ public class UserFacadeImpl implements UserFacade {
 
 	private User getByUserName(String userName, String storeCode) {
 		try {
-			return userService.getByUserName(userName, storeCode);
+			System.out.println("$#14214#"); return userService.getByUserName(userName, storeCode);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException(e);
 		}
@@ -138,7 +138,7 @@ public class UserFacadeImpl implements UserFacade {
 
 	private User getByUserId(Long id, String storeCode) {
 		try {
-			return userService.findByStore(id, storeCode);
+			System.out.println("$#14215#"); return userService.findByStore(id, storeCode);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException(e);
 		}
@@ -146,7 +146,7 @@ public class UserFacadeImpl implements UserFacade {
 
 	private User getByUserId(Long id) {
 		try {
-			return userService.getById(id);
+			System.out.println("$#14216#"); return userService.getById(id);
 		} catch (Exception e) {
 			throw new ServiceRuntimeException(e);
 		}
@@ -154,20 +154,20 @@ public class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public List<ReadablePermission> findPermissionsByGroups(List<Integer> ids) {
-		return getPermissionsByIds(ids).stream().map(permission -> convertPermissionToReadablePermission(permission))
+		System.out.println("$#14218#"); System.out.println("$#14217#"); return getPermissionsByIds(ids).stream().map(permission -> convertPermissionToReadablePermission(permission))
 				.collect(Collectors.toList());
 	}
 
 	private ReadablePermission convertPermissionToReadablePermission(Permission permission) {
 		ReadablePermission readablePermission = new ReadablePermission();
-		readablePermission.setId(permission.getId());
-		readablePermission.setName(permission.getPermissionName());
-		return readablePermission;
+		System.out.println("$#14219#"); readablePermission.setId(permission.getId());
+		System.out.println("$#14220#"); readablePermission.setName(permission.getPermissionName());
+		System.out.println("$#14221#"); return readablePermission;
 	}
 
 	private List<Permission> getPermissionsByIds(List<Integer> ids) {
 		try {
-			return permissionService.getPermissions(ids);
+			System.out.println("$#14222#"); return permissionService.getPermissions(ids);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException(e);
 		}
@@ -190,32 +190,32 @@ public class UserFacadeImpl implements UserFacade {
 
 			// unless superadmin
 			for (ReadableGroup group : readableUser.getGroups()) {
-				if (Constants.GROUP_SUPERADMIN.equals(group.getName())) {
-					return true;
+				System.out.println("$#14224#"); if (Constants.GROUP_SUPERADMIN.equals(group.getName())) {
+					System.out.println("$#14225#"); return true;
 				}
 			}
 
 			boolean authorized = false;
 			User user = userService.findByStore(readableUser.getId(), merchantStoreCode);
-			if (user != null) {
+			System.out.println("$#14226#"); if (user != null) {
 				authorized = true;
 			} else {
 				user = userService.getByUserName(userName);
 			}
 			
-			if(user != null && !authorized) {
+			System.out.println("$#14227#"); if(user != null && !authorized) {
 
 				//get parent
 				MerchantStore store = merchantStoreService.getParent(merchantStoreCode);
 
 				//user can be in parent
 				MerchantStore st = user.getMerchantStore();
-				if(store != null &&  st.getCode().equals(store.getCode())) {
+				System.out.println("$#14229#"); if(store != null &&  st.getCode().equals(store.getCode())) {
 					authorized = true;
 				}
 			}
 
-			return authorized;
+			System.out.println("$#14232#"); System.out.println("$#14231#"); return authorized;
 		} catch (Exception e) {
 			throw new ServiceRuntimeException("Cannot authorize user " + userName + " for store " + merchantStoreCode,
 					e.getMessage());
@@ -229,7 +229,7 @@ public class UserFacadeImpl implements UserFacade {
 
 		// unless superadmin
 		for (ReadableGroup group : readableUser.getGroups()) {
-			if (groupName.contains(group.getName())) {
+			System.out.println("$#14233#"); if (groupName.contains(group.getName())) {
 				return;
 			}
 		}
@@ -242,42 +242,42 @@ public class UserFacadeImpl implements UserFacade {
 	public String authenticatedUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
-		if(authentication == null) {
+		System.out.println("$#14234#"); if(authentication == null) {
 			throw new UnauthorizedException("User Not authorized");
 		}
 		
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		System.out.println("$#14235#"); if (!(authentication instanceof AnonymousAuthenticationToken)) {
 			String currentUserName = authentication.getName();
-			return currentUserName;
+			System.out.println("$#14236#"); return currentUserName;
 		}
-		return null;
+		System.out.println("$#14237#"); return null;
 	}
 
 	@Override
 	public ReadableUser create(PersistableUser user, MerchantStore store) {
 
-		Validate.notNull(store, "MerchantStore must not be null");
-		Validate.notNull(user, "User must not be null");
-		Validate.notNull(user.getUserName(), "Username must not be null");
+		System.out.println("$#14238#"); Validate.notNull(store, "MerchantStore must not be null");
+		System.out.println("$#14239#"); Validate.notNull(user, "User must not be null");
+		System.out.println("$#14240#"); Validate.notNull(user.getUserName(), "Username must not be null");
 
 		try {
 
 			// check if user exists
 			User tempUser = userService.getByUserName(user.getUserName(), store.getCode());
-			if (tempUser != null) {
+			System.out.println("$#14241#"); if (tempUser != null) {
 				throw new ServiceRuntimeException(
 						"User [" + user.getUserName() + "] already exists for store [" + store.getCode() + "]");
 			}
 
 			User userModel = new User();
 			userModel = converPersistabletUserToUser(store, languageService.defaultLanguage(), userModel, user);
-			if (CollectionUtils.isEmpty(userModel.getGroups())) {
+			System.out.println("$#14242#"); if (CollectionUtils.isEmpty(userModel.getGroups())) {
 				throw new ServiceRuntimeException("No valid group groups associated with user " + user.getUserName());
 			}
-			userService.saveOrUpdate(userModel);
+			System.out.println("$#14243#"); userService.saveOrUpdate(userModel);
 			// now build returned object
 			User createdUser = userService.getById(userModel.getId());
-			return convertUserToReadableUser(createdUser.getDefaultLanguage(), createdUser);
+			System.out.println("$#14244#"); return convertUserToReadableUser(createdUser.getDefaultLanguage(), createdUser);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException(
 					"Cannot create user " + user.getUserName() + " for store " + store.getCode(), e);
@@ -293,13 +293,13 @@ public class UserFacadeImpl implements UserFacade {
 				ReadableUser readableUser = this.convertUserToReadableUser(language, user);
 				readableUserList.getData().add(readableUser);
 			}
-			readableUserList.setRecordsTotal(userList.getTotalCount());
-			readableUserList.setNumber(userList.getList().size());
-			readableUserList.setTotalPages(userList.getTotalPages());
+			System.out.println("$#14245#"); readableUserList.setRecordsTotal(userList.getTotalCount());
+			System.out.println("$#14246#"); readableUserList.setNumber(userList.getList().size());
+			System.out.println("$#14247#"); readableUserList.setTotalPages(userList.getTotalPages());
 			//readableUserList.setTotalPages(readableUserList.getData().size());
-			readableUserList.setRecordsFiltered(userList.getTotalCount());
+			System.out.println("$#14248#"); readableUserList.setRecordsFiltered(userList.getTotalCount());
 
-			return readableUserList;
+			System.out.println("$#14249#"); return readableUserList;
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Cannot get users by criteria user", e);
 		}
@@ -307,20 +307,20 @@ public class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public void delete(Long id, String merchant) {
-		Validate.notNull(id, "User id cannot be null");
+		System.out.println("$#14250#"); Validate.notNull(id, "User id cannot be null");
 
 		try {
 			User user = userService.findByStore(id, merchant);
-			if (user == null) {
+			System.out.println("$#14251#"); if (user == null) {
 				throw new ServiceRuntimeException("Cannot find user [" + id + "]");
 			}
 
 			// cannot delete superadmin
-			if (user.getGroups().contains(Constants.GROUP_SUPERADMIN)) {
+			System.out.println("$#14252#"); if (user.getGroups().contains(Constants.GROUP_SUPERADMIN)) {
 				throw new ServiceRuntimeException("Cannot delete superadmin user [" + id + "]");
 			}
 
-			userService.delete(user);
+			System.out.println("$#14253#"); userService.delete(user);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Cannot find user [" + id + "]", e);
 		}
@@ -329,25 +329,25 @@ public class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public ReadableUser update(Long id, String authenticatedUser, MerchantStore store, PersistableUser user) {
-		Validate.notNull(user, "User cannot be null");
-		Validate.notNull(store, "store cannot be null");
+		System.out.println("$#14254#"); Validate.notNull(user, "User cannot be null");
+		System.out.println("$#14255#"); Validate.notNull(store, "store cannot be null");
 
 		try {
 			User userModel = userService.getById(id);
-			if (userModel == null) {
+			System.out.println("$#14256#"); if (userModel == null) {
 				throw new ServiceRuntimeException("Cannot find user [" + user.getUserName() + "]");
 			}
-			if (userModel.getId().longValue() != id.longValue()) {
+			System.out.println("$#14257#"); if (userModel.getId().longValue() != id.longValue()) {
 				throw new ServiceRuntimeException(
 						"Cannot find user [" + user.getUserName() + "] id or name does not match");
 			}
 			User auth = userService.getByUserName(authenticatedUser);
-			if (auth == null) {
+			System.out.println("$#14258#"); if (auth == null) {
 				throw new ServiceRuntimeException("Cannot find user [" + authenticatedUser + "]");
 			}
 			User adminName = getByUserName(user.getUserName());
-			if (adminName != null) {
-				if (adminName.getId().longValue() != userModel.getId().longValue()) {
+			System.out.println("$#14259#"); if (adminName != null) {
+				System.out.println("$#14260#"); if (adminName.getId().longValue() != userModel.getId().longValue()) {
 					throw new ServiceRuntimeException(
 							"User id [" + userModel.getId() + "] does not match [" + user.getUserName() + "]");
 				}
@@ -366,9 +366,9 @@ public class UserFacadeImpl implements UserFacade {
 			 */
 			
 			//i'm i editing my own profile ?
-			if(authenticatedUser.equals(adminName)) {
+			System.out.println("$#14263#"); if(authenticatedUser.equals(adminName)) {
 				
-				if(!userModel.getMerchantStore().getCode().equals(store.getCode())) {
+				System.out.println("$#14264#"); if(!userModel.getMerchantStore().getCode().equals(store.getCode())) {
 					throw new OperationNotAllowedException("User [" + adminName + "] cannot change owning store");
 				}
 				
@@ -379,7 +379,7 @@ public class UserFacadeImpl implements UserFacade {
 								Constants.GROUP_SUPERADMIN.equals(group.getGroupName()) || Constants.ADMIN_USER.equals(group.getGroupName())|| Constants.ADMIN_STORE.equals(group.getGroupName()
 										))).findAny().orElse(null);
 				
-				if(!userModel.getMerchantStore().getCode().equals(store.getCode()) && adminOrSuperadmin == null) {
+				System.out.println("$#14269#"); if(!userModel.getMerchantStore().getCode().equals(store.getCode()) && adminOrSuperadmin == null) {
 					throw new OperationNotAllowedException("User [" + adminName + "] cannot change owning store");
 				}
 				
@@ -389,8 +389,8 @@ public class UserFacadeImpl implements UserFacade {
 
 			// if superadmin set original permissions, prevent removing super
 			// admin
-			if (superadmin != null) {
-				userModel.setGroups(originalGroups);
+			System.out.println("$#14271#"); if (superadmin != null) {
+				System.out.println("$#14272#"); userModel.setGroups(originalGroups);
 			}
 
 			Group adminGroup = auth.getGroups().stream()
@@ -398,14 +398,14 @@ public class UserFacadeImpl implements UserFacade {
 							|| Constants.GROUP_SUPERADMIN.equals(group.getGroupName()))
 					.findAny().orElse(null);
 
-			if (adminGroup == null) {
-				userModel.setGroups(originalGroups);
-				userModel.setActive(isActive);
+			System.out.println("$#14276#"); if (adminGroup == null) {
+				System.out.println("$#14277#"); userModel.setGroups(originalGroups);
+				System.out.println("$#14278#"); userModel.setActive(isActive);
 			}
 
-			user.setPassword(userModel.getAdminPassword());
-			userService.update(userModel);
-			return this.convertUserToReadableUser(languageService.defaultLanguage(), userModel);
+			System.out.println("$#14279#"); user.setPassword(userModel.getAdminPassword());
+			System.out.println("$#14280#"); userService.update(userModel);
+			System.out.println("$#14281#"); return this.convertUserToReadableUser(languageService.defaultLanguage(), userModel);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Cannot update user [" + user.getUserName() + "]", e);
 		}
@@ -416,9 +416,9 @@ public class UserFacadeImpl implements UserFacade {
 	@Override
 	public void changePassword(Long userId, String authenticatedUser, UserPassword changePassword) {
 
-		Validate.notNull(changePassword, "Change password request must not be null");
-		Validate.notNull(changePassword.getPassword(), "Original password request must not be null");
-		Validate.notNull(changePassword.getChangePassword(), "New password request must not be null");
+		System.out.println("$#14282#"); Validate.notNull(changePassword, "Change password request must not be null");
+		System.out.println("$#14283#"); Validate.notNull(changePassword.getPassword(), "Original password request must not be null");
+		System.out.println("$#14284#"); Validate.notNull(changePassword.getChangePassword(), "New password request must not be null");
 
 		/**
 		 * Only admin and superadmin can change other user password
@@ -427,12 +427,12 @@ public class UserFacadeImpl implements UserFacade {
 		try {
 			auth = userService.getByUserName(authenticatedUser);
 
-			if (auth == null) {
+			System.out.println("$#14285#"); if (auth == null) {
 				throw new ServiceRuntimeException("Cannot find user [" + authenticatedUser + "]");
 			}
 
 			User userModel = userService.getById(userId);
-			if (userModel == null) {
+			System.out.println("$#14286#"); if (userModel == null) {
 				throw new ServiceRuntimeException("Cannot find user [" + userId + "]");
 			}
 
@@ -440,21 +440,21 @@ public class UserFacadeImpl implements UserFacade {
 			 * need to validate if actual password match
 			 */
 
-			if (!securityFacade.matchPassword(userModel.getAdminPassword(), changePassword.getPassword())) {
+			System.out.println("$#14287#"); if (!securityFacade.matchPassword(userModel.getAdminPassword(), changePassword.getPassword())) {
 				throw new ServiceRuntimeException("Actual password does not match for user [" + userId + "]");
 			}
 
 			/**
 			 * Validate new password
 			 */
-			if (!securityFacade.validateUserPassword(changePassword.getChangePassword())) {
+			System.out.println("$#14288#"); if (!securityFacade.validateUserPassword(changePassword.getChangePassword())) {
 				throw new ServiceRuntimeException("New password does not apply to format policy");
 			}
 
 			String newPasswordEncoded = securityFacade.encodePassword(changePassword.getChangePassword());
-			userModel.setAdminPassword(newPasswordEncoded);
+			System.out.println("$#14289#"); userModel.setAdminPassword(newPasswordEncoded);
 
-			userService.update(userModel);
+			System.out.println("$#14290#"); userService.update(userModel);
 
 		} catch (ServiceException e) {
 			LOGGER.error("Error updating password");
@@ -473,33 +473,33 @@ public class UserFacadeImpl implements UserFacade {
 			Page<User> userList = null;
 			
 			Optional<String> storeCode = Optional.ofNullable(criteria.getStoreCode());
-			if(storeCode.isPresent()) {
+			System.out.println("$#14291#"); if(storeCode.isPresent()) {
 				//get store
 				MerchantStore store = merchantStoreService.getByCode(storeCode.get());
-				if(store.isRetailer()) {
+				System.out.println("$#14292#"); if(store.isRetailer()) {
 					//get group stores
 					List<MerchantStore> stores = merchantStoreService.findAllStoreNames(store.getCode());
 					List<Integer> intList = stores.stream().map(s -> s.getId()).collect(Collectors.toList());
-					criteria.setStoreIds(intList);
+					System.out.println("$#14294#"); criteria.setStoreIds(intList);
 					//search over store list
-					criteria.setStoreCode(null);
+					System.out.println("$#14295#"); criteria.setStoreCode(null);
 				}
 			} 
 			
 			
 			userList = userService.listByCriteria(criteria, page, count);
 			List<ReadableUser> readableUsers = new ArrayList<ReadableUser>();
-			if(userList != null) {
+			System.out.println("$#14296#"); if(userList != null) {
 				readableUsers = userList.getContent().stream()
 						.map(user -> convertUserToReadableUser(language, user)).collect(Collectors.toList());
 				
-				readableUserList.setRecordsTotal(userList.getTotalElements());
-				readableUserList.setTotalPages(userList.getTotalPages());
-				readableUserList.setNumber(userList.getSize());
-				readableUserList.setRecordsFiltered(userList.getSize());
+				System.out.println("$#14298#"); readableUserList.setRecordsTotal(userList.getTotalElements());
+				System.out.println("$#14299#"); readableUserList.setTotalPages(userList.getTotalPages());
+				System.out.println("$#14300#"); readableUserList.setNumber(userList.getSize());
+				System.out.println("$#14301#"); readableUserList.setRecordsFiltered(userList.getSize());
 			}
 
-			readableUserList.setData(readableUsers);
+			System.out.println("$#14302#"); readableUserList.setData(readableUsers);
 			
 /*			System.out.println(userList.getNumber());
 			System.out.println(userList.getNumberOfElements());
@@ -510,7 +510,7 @@ public class UserFacadeImpl implements UserFacade {
 			
 
 
-			return readableUserList;
+			System.out.println("$#14303#"); return readableUserList;
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Cannot get users by criteria user", e);
 		}
@@ -518,8 +518,8 @@ public class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public void authorizedGroups(String authenticatedUser, PersistableUser user) {
-		Validate.notNull(authenticatedUser, "Required authenticated user");
-		Validate.notNull(user, "Required persistable user");
+		System.out.println("$#14304#"); Validate.notNull(authenticatedUser, "Required authenticated user");
+		System.out.println("$#14305#"); Validate.notNull(user, "Required persistable user");
 		
 		
 		try {
@@ -528,7 +528,7 @@ public class UserFacadeImpl implements UserFacade {
 			boolean isSuperAdmin = false;
 			
 			for(Group g : currentUser.getGroups()) {
-				if(g.getGroupName().equals("SUPERADMIN")) {
+				System.out.println("$#14306#"); if(g.getGroupName().equals("SUPERADMIN")) {
 					isSuperAdmin = true;
 					break;
 				}
@@ -536,8 +536,8 @@ public class UserFacadeImpl implements UserFacade {
 			}
 			
 			for(PersistableGroup g : user.getGroups()) {
-				if(g.getName().equals("SUPERADMIN")) {
-					if(!isSuperAdmin) {
+				System.out.println("$#14307#"); if(g.getName().equals("SUPERADMIN")) {
+					System.out.println("$#14308#"); if(!isSuperAdmin) {
 						throw new UnauthorizedException("Superadmin group not allowed");
 					}
 				}
@@ -563,25 +563,25 @@ public class UserFacadeImpl implements UserFacade {
 		     .map(r -> r.getAuthority()).collect(Collectors.toList());
 		
 		
-		return roles.size() > 0;
+		System.out.println("$#14314#"); System.out.println("$#14313#"); System.out.println("$#14312#"); return roles.size() > 0;
 
 	}
 
 	@Override
 	public void updateEnabled(MerchantStore store, PersistableUser user) {
-		Validate.notNull(user, "User cannot be null");
-		Validate.notNull(store, "MerchantStore cannot be null");
-		Validate.notNull(user.getId(), "User.id cannot be null");
+		System.out.println("$#14315#"); Validate.notNull(user, "User cannot be null");
+		System.out.println("$#14316#"); Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#14317#"); Validate.notNull(user.getId(), "User.id cannot be null");
 		
 		try {
 			User modelUser = userService.findByStore(user.getId(), store.getCode());
 			
-			if(modelUser == null) {
+			System.out.println("$#14318#"); if(modelUser == null) {
 				throw new ResourceNotFoundException("User with id [" + user.getId() + "] not found for store [" + store.getCode() + "]");
 			}
 			
-			modelUser.setActive(user.isActive());
-			userService.saveOrUpdate(modelUser);
+			System.out.println("$#14319#"); modelUser.setActive(user.isActive());
+			System.out.println("$#14320#"); userService.saveOrUpdate(modelUser);
 			
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Error while updating user enable flag",e);
@@ -592,31 +592,31 @@ public class UserFacadeImpl implements UserFacade {
 	@Override
 	public boolean authorizeStore(MerchantStore store, String path) {
 		
-		Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#14321#"); Validate.notNull(store, "MerchantStore cannot be null");
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
 
-		if(!StringUtils.isBlank(path) && path.contains(PRIVATE_PATH)) {
+		System.out.println("$#14322#"); if(!StringUtils.isBlank(path) && path.contains(PRIVATE_PATH)) {
 
 			try {
 				
 				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 				String currentPrincipalName = authentication.getName();
 				
-				System.out.println("Principal " + currentPrincipalName);
+				System.out.println("$#14324#"); System.out.println("Principal " + currentPrincipalName);
 				
 				ReadableUser readableUser = findByUserName(currentPrincipalName, languageService.defaultLanguage());
 				
-				if(readableUser==null) {
-					return false;
+				System.out.println("$#14325#"); if(readableUser==null) {
+					System.out.println("$#14326#"); return false;
 				}
 				
 				
 				//current user match;
 				String merchant = readableUser.getMerchant();
 				
-				if(store.getCode().equalsIgnoreCase(merchant)) {
-					return true;
+				System.out.println("$#14327#"); if(store.getCode().equalsIgnoreCase(merchant)) {
+					System.out.println("$#14328#"); return true;
 				}
 				
 				Set<String> roles = authentication.getAuthorities().stream()
@@ -624,8 +624,8 @@ public class UserFacadeImpl implements UserFacade {
 
 				//is superadmin
 				for (ReadableGroup group : readableUser.getGroups()) {
-					if (Constants.GROUP_SUPERADMIN.equals(group.getName())) {
-						return true;
+					System.out.println("$#14330#"); if (Constants.GROUP_SUPERADMIN.equals(group.getName())) {
+						System.out.println("$#14331#"); return true;
 					}
 				}
 				
@@ -638,12 +638,12 @@ public class UserFacadeImpl implements UserFacade {
 				MerchantStore parent = merchantStoreService.getParent(merchant);
 	
 				//user can be in parent
-				if(parent != null &&  parent.getCode().equals(store.getCode())) {
+				System.out.println("$#14332#"); if(parent != null &&  parent.getCode().equals(store.getCode())) {
 					authorized = true;
 				}
 				
 				//else false
-				return authorized;
+				System.out.println("$#14335#"); System.out.println("$#14334#"); return authorized;
 			} catch (Exception e) {
 				throw new ServiceRuntimeException("Cannot authorize user " + authentication.getPrincipal().toString() + " for store " + store.getCode(),
 						e.getMessage());
@@ -653,34 +653,34 @@ public class UserFacadeImpl implements UserFacade {
 
 		
 		
-		return true;
+		System.out.println("$#14336#"); return true;
 	}
 
 	@Override
 	public ReadableUser findById(Long id, MerchantStore store, Language lang) {
-		Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#14337#"); Validate.notNull(store, "MerchantStore cannot be null");
 		
 		User user = userService.getById(id, store);
-		if (user == null) {
+		System.out.println("$#14338#"); if (user == null) {
 			throw new ResourceNotFoundException("User [" + id + "] not found");
 		}
 
 
-		return convertUserToReadableUser(lang, user);
+		System.out.println("$#14339#"); return convertUserToReadableUser(lang, user);
 
 	}
 
 	@Override
 	public ReadableUser findByUserName(String userName) {
-		Validate.notNull(userName, "userName cannot be null");
+		System.out.println("$#14340#"); Validate.notNull(userName, "userName cannot be null");
 		User user;
 		try {
 			user = userService.getByUserName(userName);
-			if (user == null) {
+			System.out.println("$#14341#"); if (user == null) {
 				throw new ResourceNotFoundException("User [" + userName + "] not found");
 			}
 			
-			return this.convertUserToReadableUser(user.getDefaultLanguage(), user);
+			System.out.println("$#14342#"); return this.convertUserToReadableUser(user.getDefaultLanguage(), user);
 			
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Error while getting user [" + userName+ "]",

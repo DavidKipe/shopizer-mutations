@@ -47,17 +47,17 @@ public class ManufacturerFacadeImpl implements ManufacturerFacade {
   @Override
   public List<ReadableManufacturer> getByProductInCategory(MerchantStore store, Language language,
       Long categoryId) {
-    Validate.notNull(store,"MerchantStore cannot be null");
-    Validate.notNull(language, "Language cannot be null");
-    Validate.notNull(categoryId,"Category id cannot be null");
+				System.out.println("$#14741#"); Validate.notNull(store,"MerchantStore cannot be null");
+				System.out.println("$#14742#"); Validate.notNull(language, "Language cannot be null");
+				System.out.println("$#14743#"); Validate.notNull(categoryId,"Category id cannot be null");
     
     Category category = categoryService.getById(categoryId, store.getId());
     
-    if(category == null) {
+				System.out.println("$#14744#"); if(category == null) {
       throw new ResourceNotFoundException("Category with id [" + categoryId + "] not found");
     }
     
-    if(category.getMerchantStore().getId().longValue() != store.getId().longValue()) {
+				System.out.println("$#14745#"); if(category.getMerchantStore().getId().longValue() != store.getId().longValue()) {
       throw new UnauthorizedException("Merchant [" + store.getCode() + "] not authorized");
     }
     
@@ -68,7 +68,7 @@ public class ManufacturerFacadeImpl implements ManufacturerFacade {
         .map(manuf -> readableManufacturerConverter.convert(manuf, store, language))
         .collect(Collectors.toList());
       
-      return manufacturersList;
+						System.out.println("$#14747#"); return manufacturersList;
     } catch (ServiceException e) {
       throw new ServiceRuntimeException(e);
     }
@@ -80,34 +80,34 @@ public class ManufacturerFacadeImpl implements ManufacturerFacade {
       Language language) throws Exception {
 
     PersistableManufacturerPopulator populator = new PersistableManufacturerPopulator();
-    populator.setLanguageService(languageService);
+				System.out.println("$#14748#"); populator.setLanguageService(languageService);
 
 
     Manufacturer manuf = new Manufacturer();
   
-    if(manufacturer.getId() != null && manufacturer.getId().longValue() > 0) {
+				System.out.println("$#14750#"); System.out.println("$#14749#"); if(manufacturer.getId() != null && manufacturer.getId().longValue() > 0) {
     	manuf = manufacturerService.getById(manufacturer.getId());
-    	if(manuf == null) {
+					System.out.println("$#14752#"); if(manuf == null) {
     		throw new ResourceNotFoundException("Manufacturer with id [" + manufacturer.getId() + "] not found");
     	}
     	
-    	if(manuf.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+					System.out.println("$#14753#"); if(manuf.getMerchantStore().getId().intValue() != store.getId().intValue()) {
     		throw new ResourceNotFoundException("Manufacturer with id [" + manufacturer.getId() + "] not found for store [" + store.getId() + "]");
     	}
     }
 
     populator.populate(manufacturer, manuf, store, language);
 
-    manufacturerService.saveOrUpdate(manuf);
+				System.out.println("$#14754#"); manufacturerService.saveOrUpdate(manuf);
 
-    manufacturer.setId(manuf.getId());
+				System.out.println("$#14755#"); manufacturer.setId(manuf.getId());
 
   }
 
   @Override
   public void deleteManufacturer(Manufacturer manufacturer, MerchantStore store, Language language)
       throws Exception {
-    manufacturerService.delete(manufacturer);
+				System.out.println("$#14756#"); manufacturerService.delete(manufacturer);
 
   }
 
@@ -118,11 +118,11 @@ public class ManufacturerFacadeImpl implements ManufacturerFacade {
     
     
 
-    if (manufacturer == null) {
+				System.out.println("$#14757#"); if (manufacturer == null) {
       throw new ResourceNotFoundException("Manufacturer [" + id + "] not found");
     }
     
-    if(manufacturer.getMerchantStore().getId() != store.getId()) {
+				System.out.println("$#14758#"); if(manufacturer.getMerchantStore().getId() != store.getId()) {
       throw new ResourceNotFoundException("Manufacturer [" + id + "] not found for store [" + store.getId() + "]");
     }
 
@@ -132,7 +132,7 @@ public class ManufacturerFacadeImpl implements ManufacturerFacade {
     readableManufacturer = populator.populate(manufacturer, readableManufacturer, store, language);
 
 
-    return readableManufacturer;
+				System.out.println("$#14759#"); return readableManufacturer;
   }
 
   @Override
@@ -145,29 +145,29 @@ public class ManufacturerFacadeImpl implements ManufacturerFacade {
        */
 
       List<Manufacturer> manufacturers = null;
-      if(page == 0 && count == 0) {
+						System.out.println("$#14760#"); if(page == 0 && count == 0) {
     	//need total count
         int total = manufacturerService.count(store);
 
-        if(language != null) {
+								System.out.println("$#14762#"); if(language != null) {
           manufacturers = manufacturerService.listByStore(store, language);
         } else {
           manufacturers = manufacturerService.listByStore(store);
         }
-        readableList.setRecordsTotal(total);
-        readableList.setNumber(manufacturers.size());
+								System.out.println("$#14763#"); readableList.setRecordsTotal(total);
+								System.out.println("$#14764#"); readableList.setNumber(manufacturers.size());
       } else {
 
         Page<Manufacturer> m = null;
-        if(language != null) {
+								System.out.println("$#14765#"); if(language != null) {
           m = manufacturerService.listByStore(store, language, criteria.getName(), page, count);
         } else {
           m = manufacturerService.listByStore(store, criteria.getName(), page, count);
         }
         manufacturers = m.getContent();
-        readableList.setTotalPages(m.getTotalPages());
-        readableList.setRecordsTotal(m.getTotalElements());
-        readableList.setNumber(m.getNumber());
+								System.out.println("$#14766#"); readableList.setTotalPages(m.getTotalPages());
+								System.out.println("$#14767#"); readableList.setRecordsTotal(m.getTotalElements());
+								System.out.println("$#14768#"); readableList.setNumber(m.getNumber());
       }
 
       
@@ -180,8 +180,8 @@ public class ManufacturerFacadeImpl implements ManufacturerFacade {
         returnList.add(readableManufacturer);
       }
 
-      readableList.setManufacturers(returnList);
-      return readableList;
+						System.out.println("$#14769#"); readableList.setManufacturers(returnList);
+						System.out.println("$#14770#"); return readableList;
       
     } catch (Exception e) {
       throw new ServiceRuntimeException("Error while get manufacturers",e);
@@ -191,14 +191,14 @@ public class ManufacturerFacadeImpl implements ManufacturerFacade {
 
   @Override
   public boolean manufacturerExist(MerchantStore store, String manufacturerCode) {
-    Validate.notNull(store,"Store must not be null");
-    Validate.notNull(manufacturerCode,"Manufacturer code must not be null");
+				System.out.println("$#14771#"); Validate.notNull(store,"Store must not be null");
+				System.out.println("$#14772#"); Validate.notNull(manufacturerCode,"Manufacturer code must not be null");
     boolean exists = false;
     Manufacturer manufacturer = manufacturerService.getByCode(store, manufacturerCode);
-    if(manufacturer!=null) {
+				System.out.println("$#14773#"); if(manufacturer!=null) {
       exists = true;
     }
-    return exists;
+				System.out.println("$#14775#"); System.out.println("$#14774#"); return exists;
   }
 
 @Override
@@ -215,15 +215,15 @@ public ReadableManufacturerList listByStore(MerchantStore store, Language langua
         List<Manufacturer> manufacturers = null;
 
         Page<Manufacturer> m = null;
-        if(language != null) {
+								System.out.println("$#14776#"); if(language != null) {
             m = manufacturerService.listByStore(store, language, criteria.getName(), page, count);
         } else {
             m = manufacturerService.listByStore(store, criteria.getName(), page, count);
         }
         manufacturers = m.getContent();
-        readableList.setTotalPages(m.getTotalPages());
-        readableList.setRecordsTotal(m.getTotalElements());
-        readableList.setNumber(m.getNumber());
+								System.out.println("$#14777#"); readableList.setTotalPages(m.getTotalPages());
+								System.out.println("$#14778#"); readableList.setRecordsTotal(m.getTotalElements());
+								System.out.println("$#14779#"); readableList.setNumber(m.getNumber());
 
 
         
@@ -236,8 +236,8 @@ public ReadableManufacturerList listByStore(MerchantStore store, Language langua
           returnList.add(readableManufacturer);
         }
 
-        readableList.setManufacturers(returnList);
-        return readableList;
+								System.out.println("$#14780#"); readableList.setManufacturers(returnList);
+								System.out.println("$#14781#"); return readableList;
         
       } catch (Exception e) {
         throw new ServiceRuntimeException("Error while get manufacturers",e);

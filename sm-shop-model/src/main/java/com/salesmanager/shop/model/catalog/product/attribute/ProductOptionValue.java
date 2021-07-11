@@ -17,25 +17,25 @@ public class ProductOptionValue extends Entity implements Serializable {
 	private String image;
 	
 	public String getCode() {
-		return code;
+		System.out.println("$#8807#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public boolean isDefaultValue() {
-		return defaultValue;
+		System.out.println("$#8809#"); System.out.println("$#8808#"); return defaultValue;
 	}
 	public void setDefaultValue(boolean defaultValue) {
 		this.defaultValue = defaultValue;
 	}
 	public int getSortOrder() {
-		return sortOrder;
+		System.out.println("$#8810#"); return sortOrder;
 	}
 	public void setSortOrder(int sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 	public String getImage() {
-		return image;
+		System.out.println("$#8811#"); return image;
 	}
 	public void setImage(String image) {
 		this.image = image;

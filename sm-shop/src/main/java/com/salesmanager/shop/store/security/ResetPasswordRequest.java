@@ -24,11 +24,11 @@ public class ResetPasswordRequest implements Serializable {
     }
 
     public ResetPasswordRequest(String username) {
-        this.setUsername(username);
+								System.out.println("$#15345#"); this.setUsername(username);
     }
 
     public String getUsername() {
-        return this.username;
+								System.out.println("$#15346#"); return this.username;
     }
 
     public void setUsername(String username) {

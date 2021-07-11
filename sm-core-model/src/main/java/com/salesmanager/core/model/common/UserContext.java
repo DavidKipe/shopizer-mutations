@@ -10,22 +10,22 @@ public final class UserContext implements AutoCloseable {
 	
     public static UserContext create() {
     	UserContext context = new UserContext();
-        instance.set(context);
-        return context;
+								System.out.println("$#4081#"); instance.set(context);
+								System.out.println("$#4082#"); return context;
     }
 
 
 	@Override
 	public void close() throws Exception {
-		instance.remove();
+		System.out.println("$#4083#"); instance.remove();
 	}
 	
     public static UserContext getCurrentInstance() {
-        return instance.get();
+								System.out.println("$#4084#"); return instance.get();
     }
 
 	public String getIpAddress() {
-		return ipAddress;
+		System.out.println("$#4085#"); return ipAddress;
 	}
 
 	public void setIpAddress(String ipAddress) {

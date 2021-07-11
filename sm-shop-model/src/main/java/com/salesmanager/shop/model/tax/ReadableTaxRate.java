@@ -15,38 +15,38 @@ public class ReadableTaxRate extends TaxRateEntity {
 	private ReadableTaxClass taxClass;
 	
 	public ReadableTaxClass getTaxClass() {
-		return taxClass;
+		System.out.println("$#9415#"); return taxClass;
 	}
 	public void setTaxClass(ReadableTaxClass taxClass) {
 		this.taxClass = taxClass;
 	}
 	public ReadableTaxRateDescription getDescription() {
-		return description;
+		System.out.println("$#9416#"); return description;
 	}
 	public void setDescription(ReadableTaxRateDescription description) {
 		this.description = description;
 	}
 
 	public String getRate() {
-		return rate;
+		System.out.println("$#9417#"); return rate;
 	}
 	public void setRate(String rate) {
 		this.rate = rate;
 	}
 	public String getStore() {
-		return store;
+		System.out.println("$#9418#"); return store;
 	}
 	public void setStore(String store) {
 		this.store = store;
 	}
 	public String getZone() {
-		return zone;
+		System.out.println("$#9419#"); return zone;
 	}
 	public void setZone(String zone) {
 		this.zone = zone;
 	}
 	public String getCountry() {
-		return country;
+		System.out.println("$#9420#"); return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;

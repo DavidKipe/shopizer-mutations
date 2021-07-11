@@ -41,14 +41,14 @@ public class CountryServiceImpl extends SalesManagerEntityServiceImpl<Integer, C
 	
 	@Cacheable("countrByCode")
 	public Country getByCode(String code) throws ServiceException {
-		return countryRepository.findByIsoCode(code);
+		System.out.println("$#2624#"); return countryRepository.findByIsoCode(code);
 	}
 
 	@Override
 	public void addCountryDescription(Country country, CountryDescription description) throws ServiceException {
 		country.getDescriptions().add(description);
-		description.setCountry(country);
-		update(country);
+		System.out.println("$#2625#"); description.setCountry(country);
+		System.out.println("$#2626#"); update(country);
 	}
 	
 	@Override
@@ -63,7 +63,7 @@ public class CountryServiceImpl extends SalesManagerEntityServiceImpl<Integer, C
 			returnMap.put(country.getIsoCode(), country);
 		}
 		
-		return returnMap;
+		System.out.println("$#2627#"); return returnMap;
 	}
 	
 	
@@ -71,14 +71,14 @@ public class CountryServiceImpl extends SalesManagerEntityServiceImpl<Integer, C
 	public List<Country> getCountries(final List<String> isoCodes, final Language language) throws ServiceException {
 		List<Country> countryList = getCountries(language);
 		List<Country> requestedCountryList = new ArrayList<Country>();
-		if(!CollectionUtils.isEmpty(countryList)) {
+		System.out.println("$#2628#"); if(!CollectionUtils.isEmpty(countryList)) {
 			for(Country c : countryList) {
-				if(isoCodes.contains(c.getIsoCode())) {
+				System.out.println("$#2629#"); if(isoCodes.contains(c.getIsoCode())) {
 					requestedCountryList.add(c);
 				}
 			}
 		}
-		return requestedCountryList;
+		System.out.println("$#2630#"); return requestedCountryList;
 	}
 	
 	
@@ -90,7 +90,7 @@ public class CountryServiceImpl extends SalesManagerEntityServiceImpl<Integer, C
 		try {
 
 			countries = (List<Country>) cache.getFromCache("COUNTRIES_" + language.getCode());
-			if(countries==null) {
+			System.out.println("$#2631#"); if(countries==null) {
 			
 				countries = countryRepository.listByLanguage(language.getId());
 			
@@ -98,18 +98,18 @@ public class CountryServiceImpl extends SalesManagerEntityServiceImpl<Integer, C
 				for(Country country : countries) {
 					
 					CountryDescription description = country.getDescriptions().iterator().next();
-					country.setName(description.getName());
+					System.out.println("$#2632#"); country.setName(description.getName());
 					
 				}
 				
-				cache.putInCache(countries, "COUNTRIES_" + language.getCode());
+				System.out.println("$#2633#"); cache.putInCache(countries, "COUNTRIES_" + language.getCode());
 			}
 
 		} catch (Exception e) {
 			LOGGER.error("getCountries()", e);
 		}
 		
-		return countries;
+		System.out.println("$#2634#"); return countries;
 		
 		
 	}
@@ -117,7 +117,7 @@ public class CountryServiceImpl extends SalesManagerEntityServiceImpl<Integer, C
 	@Override
 	public List<Country> listCountryZones(Language language) throws ServiceException {
 		try {
-			return countryRepository.listCountryZonesByLanguage(language.getId());
+			System.out.println("$#2635#"); return countryRepository.listCountryZonesByLanguage(language.getId());
 		} catch(Exception e) {
 			LOGGER.error("listCountryZones", e);
 			throw new ServiceException(e);

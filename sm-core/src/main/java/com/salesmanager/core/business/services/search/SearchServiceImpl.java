@@ -56,7 +56,7 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 	
 
 	public void initService() {
-		searchService.initService();
+		System.out.println("$#2833#"); searchService.initService();
 	}
 
 	@Async
@@ -97,7 +97,7 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 		 * 
 		 */
 		
-		if(configuration.getProperty(INDEX_PRODUCTS)==null || configuration.getProperty(INDEX_PRODUCTS).equals(Constants.FALSE)) {
+		System.out.println("$#2834#"); if(configuration.getProperty(INDEX_PRODUCTS)==null || configuration.getProperty(INDEX_PRODUCTS).equals(Constants.FALSE)) {
 			return;
 		}
 		
@@ -112,39 +112,39 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 			
 			IndexProduct index = new IndexProduct();
 
-			index.setId(String.valueOf(product.getId()));
-			index.setStore(store.getCode().toLowerCase());
-			index.setLang(description.getLanguage().getCode());
-			index.setAvailable(product.isAvailable());
-			index.setDescription(description.getDescription());
-			index.setName(description.getName());
-			if(product.getManufacturer()!=null) {
-				index.setManufacturer(String.valueOf(product.getManufacturer().getId()));
+			System.out.println("$#2836#"); index.setId(String.valueOf(product.getId()));
+			System.out.println("$#2837#"); index.setStore(store.getCode().toLowerCase());
+			System.out.println("$#2838#"); index.setLang(description.getLanguage().getCode());
+			System.out.println("$#2839#"); index.setAvailable(product.isAvailable());
+			System.out.println("$#2840#"); index.setDescription(description.getDescription());
+			System.out.println("$#2841#"); index.setName(description.getName());
+			System.out.println("$#2842#"); if(product.getManufacturer()!=null) {
+				System.out.println("$#2843#"); index.setManufacturer(String.valueOf(product.getManufacturer().getId()));
 			}
-			if(price!=null) {
-				index.setPrice(price.getFinalPrice().doubleValue());
+			System.out.println("$#2844#"); if(price!=null) {
+				System.out.println("$#2845#"); index.setPrice(price.getFinalPrice().doubleValue());
 			}
-			index.setHighlight(description.getProductHighlight());
-			if(!StringUtils.isBlank(description.getMetatagKeywords())){
+			System.out.println("$#2846#"); index.setHighlight(description.getProductHighlight());
+			System.out.println("$#2847#"); if(!StringUtils.isBlank(description.getMetatagKeywords())){
 				String[] tags = description.getMetatagKeywords().split(",");
 				@SuppressWarnings("unchecked")
 				List<String> tagsList = new ArrayList(Arrays.asList(tags));
-				index.setTags(tagsList);
+				System.out.println("$#2848#"); index.setTags(tagsList);
 			}
 
 			
 			Set<Category> categories = product.getCategories();
-			if(!CollectionUtils.isEmpty(categories)) {
+			System.out.println("$#2849#"); if(!CollectionUtils.isEmpty(categories)) {
 				List<String> categoryList = new ArrayList<String>();
 				for(Category category : categories) {
 					categoryList.add(category.getCode());
 				}
-				index.setCategories(categoryList);
+				System.out.println("$#2850#"); index.setCategories(categoryList);
 			}
 			
 			String jsonString = index.toJSONString();
 			try {
-				searchService.index(jsonString, collectionName.toString());
+				System.out.println("$#2851#"); searchService.index(jsonString, collectionName.toString());
 			} catch (Exception e) {
 				throw new ServiceException("Cannot index product id [" + product.getId() + "], " + e.getMessage() ,e);
 			}
@@ -154,7 +154,7 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 
 	public void deleteIndex(MerchantStore store, Product product) throws ServiceException {
 		
-		if(configuration.getProperty(INDEX_PRODUCTS)==null || configuration.getProperty(INDEX_PRODUCTS).equals(Constants.FALSE)) {
+		System.out.println("$#2852#"); if(configuration.getProperty(INDEX_PRODUCTS)==null || configuration.getProperty(INDEX_PRODUCTS).equals(Constants.FALSE)) {
 			return;
 		}
 		
@@ -165,7 +165,7 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 			collectionName.append(PRODUCT_INDEX_NAME).append(UNDERSCORE).append(description.getLanguage().getCode()).append(UNDERSCORE).append(store.getCode().toLowerCase());
 
 			try {
-				searchService.deleteObject(collectionName.toString(), String.valueOf(product.getId()));
+				System.out.println("$#2854#"); searchService.deleteObject(collectionName.toString(), String.valueOf(product.getId()));
 			} catch (Exception e) {
 				LOGGER.error("Cannot delete index for product id [" + product.getId() + "], ",e);
 			}
@@ -182,11 +182,11 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 			SearchResponse response = searchService.searchAutoComplete(collectionName, word, entriesCount);
 			
 			SearchKeywords keywords = new SearchKeywords();
-			if(response!=null && response.getInlineSearchList() != null) {
-			  keywords.setKeywords(Arrays.asList(response.getInlineSearchList()));
+			System.out.println("$#2855#"); if(response!=null && response.getInlineSearchList() != null) {
+					System.out.println("$#2857#"); keywords.setKeywords(Arrays.asList(response.getInlineSearchList()));
 			}
 			
-			return keywords;
+			System.out.println("$#2858#"); return keywords;
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while searching keywords " + word,e);
@@ -207,24 +207,24 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 			
 			
 			SearchRequest request = new SearchRequest();
-			request.addCollection(collectionName.toString());
-			request.setSize(entriesCount);
-			request.setStart(startIndex);
-			request.setMatch(term);
+			System.out.println("$#2859#"); request.addCollection(collectionName.toString());
+			System.out.println("$#2860#"); request.setSize(entriesCount);
+			System.out.println("$#2861#"); request.setStart(startIndex);
+			System.out.println("$#2862#"); request.setMatch(term);
 			
 			SearchResponse response = searchService.search(request);
 			
 			com.salesmanager.core.model.search.SearchResponse resp = new com.salesmanager.core.model.search.SearchResponse();
-			resp.setTotalCount(0);
+			System.out.println("$#2863#"); resp.setTotalCount(0);
 			
-			if(response != null) {
-				resp.setTotalCount(response.getCount());
+			System.out.println("$#2864#"); if(response != null) {
+				System.out.println("$#2865#"); resp.setTotalCount(response.getCount());
 				
 				List<SearchEntry> entries = new ArrayList<SearchEntry>();
 				
 				Collection<SearchHit> hits = response.getSearchHits();
 				
-				if(!CollectionUtils.isEmpty(hits)) {
+				System.out.println("$#2866#"); if(!CollectionUtils.isEmpty(hits)) {
 					for(SearchHit hit : hits) {
 						
 						SearchEntry entry = new SearchEntry();
@@ -234,29 +234,29 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 						IndexProduct indexProduct = new IndexProduct();
 
 						Object desc = metaEntries.get("description");
-						if(desc instanceof JsonNull == false) {
-							indexProduct.setDescription((String)metaEntries.get("description"));
+						System.out.println("$#2867#"); if(desc instanceof JsonNull == false) {
+							System.out.println("$#2868#"); indexProduct.setDescription((String)metaEntries.get("description"));
 						}
 						
 						Object hl = metaEntries.get("highlight");
-						if(hl instanceof JsonNull == false) {
-							indexProduct.setHighlight((String)metaEntries.get("highlight"));
+						System.out.println("$#2869#"); if(hl instanceof JsonNull == false) {
+							System.out.println("$#2870#"); indexProduct.setHighlight((String)metaEntries.get("highlight"));
 						}
-						indexProduct.setId((String)metaEntries.get("id"));
-						indexProduct.setLang((String)metaEntries.get("lang"));
+						System.out.println("$#2871#"); indexProduct.setId((String)metaEntries.get("id"));
+						System.out.println("$#2872#"); indexProduct.setLang((String)metaEntries.get("lang"));
 						
 						Object nm = metaEntries.get("name");
-						if(nm instanceof JsonNull == false) {
-							indexProduct.setName(((String)metaEntries.get("name")));
+						System.out.println("$#2873#"); if(nm instanceof JsonNull == false) {
+							System.out.println("$#2874#"); indexProduct.setName(((String)metaEntries.get("name")));
 						}
 						
 						Object mf = metaEntries.get("manufacturer");
-						if(mf instanceof JsonNull == false) {
-							indexProduct.setManufacturer(((String)metaEntries.get("manufacturer")));
+						System.out.println("$#2875#"); if(mf instanceof JsonNull == false) {
+							System.out.println("$#2876#"); indexProduct.setManufacturer(((String)metaEntries.get("manufacturer")));
 						}
-						indexProduct.setPrice(Double.valueOf(((String)metaEntries.get("price"))));
-						indexProduct.setStore(((String)metaEntries.get("store")));
-						entry.setIndexProduct(indexProduct);
+						System.out.println("$#2877#"); indexProduct.setPrice(Double.valueOf(((String)metaEntries.get("price"))));
+						System.out.println("$#2878#"); indexProduct.setStore(((String)metaEntries.get("store")));
+						System.out.println("$#2879#"); entry.setIndexProduct(indexProduct);
 						entries.add(entry);
 						
 						/**
@@ -265,11 +265,11 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 
 					}
 					
-					resp.setEntries(entries);
+					System.out.println("$#2880#"); resp.setEntries(entries);
 					
 					//Map<String,List<FacetEntry>> facets = response.getFacets();
 					Map<String,Facet> facets = response.getFacets();
-					if(facets!=null && facets.size() > 0) {
+					System.out.println("$#2882#"); System.out.println("$#2881#"); if(facets!=null && facets.size() > 0) {
 						Map<String,List<SearchFacet>> searchFacets = new HashMap<String,List<SearchFacet>>();
 						for(String key : facets.keySet()) {
 							
@@ -279,7 +279,7 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 							//List<FacetEntry> f = facets.get(key);
 							
 							List<SearchFacet> fs = searchFacets.get(key);
-							if(fs==null) {
+							System.out.println("$#2884#"); if(fs==null) {
 								fs = new ArrayList<SearchFacet>();
 								searchFacets.put(key, fs);
 							}
@@ -287,9 +287,9 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 							for(com.shopizer.search.services.Entry facetEntry : ent) {
 							
 								SearchFacet searchFacet = new SearchFacet();
-								searchFacet.setKey(facetEntry.getName());
-								searchFacet.setName(facetEntry.getName());
-								searchFacet.setCount(facetEntry.getCount());
+								System.out.println("$#2885#"); searchFacet.setKey(facetEntry.getName());
+								System.out.println("$#2886#"); searchFacet.setName(facetEntry.getName());
+								System.out.println("$#2887#"); searchFacet.setCount(facetEntry.getCount());
 								
 								fs.add(searchFacet);
 							
@@ -297,7 +297,7 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 							
 						}
 						
-						resp.setFacets(searchFacets);
+						System.out.println("$#2888#"); resp.setFacets(searchFacets);
 					
 					}
 				
@@ -306,7 +306,7 @@ public class SearchServiceImpl implements com.salesmanager.core.business.service
 			
 			
 			
-			return resp;
+			System.out.println("$#2889#"); return resp;
 			
 			
 		} catch (Exception e) {

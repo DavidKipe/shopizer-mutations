@@ -39,7 +39,7 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 		List<Object[]> counts =  q.getResultList();
 
     	
-    	return counts;
+					System.out.println("$#1505#"); return counts;
 		
 		
 	}
@@ -51,8 +51,8 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 		StringBuilder queryBuilder = new StringBuilder();
 		queryBuilder.append("select c from Category c join fetch c.merchantStore cm ");
 		
-		if (store == null) {
-			if (category == null) {
+		System.out.println("$#1506#"); if (store == null) {
+			System.out.println("$#1507#"); if (category == null) {
 				//query.from(qCategory)
 				queryBuilder.append(" where c.parent IsNull ");
 					//.where(qCategory.parent.isNull())
@@ -64,7 +64,7 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 					//.orderBy(qCategory.sortOrder.asc(),qCategory.id.desc());
 			}
 		} else {
-			if (category == null) {
+			System.out.println("$#1508#"); if (category == null) {
 				//query.from(qCategory)
 				queryBuilder.append(" where c.parent IsNull and cm.id=:mid ");
 					//.where(qCategory.parent.isNull()
@@ -85,12 +85,12 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 		Query q = this.em.createQuery(hql);
 
     	q.setParameter("cid", category.getId());
-    	if (store != null) {
+					System.out.println("$#1509#"); if (store != null) {
     		q.setParameter("mid", store.getId());
     	}
     	
 		
-		return q.getResultList();
+		System.out.println("$#1510#"); return q.getResultList();
 	}
 
 }

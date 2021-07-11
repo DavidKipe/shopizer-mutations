@@ -58,7 +58,7 @@ public class Permission extends SalesManagerEntity<Integer, Permission> implemen
 	
 	@Override
 	public Integer getId() {
-		return this.id;
+		System.out.println("$#4849#"); return this.id;
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class Permission extends SalesManagerEntity<Integer, Permission> implemen
 
 	@Override
 	public AuditSection getAuditSection() {
-		return this.auditSection;
+		System.out.println("$#4850#"); return this.auditSection;
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class Permission extends SalesManagerEntity<Integer, Permission> implemen
 	}
 
 	public String getPermissionName() {
-		return permissionName;
+		System.out.println("$#4851#"); return permissionName;
 	}
 
 	public void setPermissionName(String permissionName) {
@@ -91,7 +91,7 @@ public class Permission extends SalesManagerEntity<Integer, Permission> implemen
 	}
 
 	public List<Group> getGroups() {
-		return groups;
+		System.out.println("$#4852#"); return groups;
 	}
 
 }

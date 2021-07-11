@@ -18,7 +18,7 @@ public class ShippingConfiguration implements Serializable {
 
 
 	public boolean isTaxOnShipping() {
-		return taxOnShipping;
+		System.out.println("$#9277#"); System.out.println("$#9276#"); return taxOnShipping;
 	}
 
 	public void setTaxOnShipping(boolean taxOnShipping) {
@@ -26,7 +26,7 @@ public class ShippingConfiguration implements Serializable {
 	}
 
 	public List<BoxConfiguration> getBoxConfigurations() {
-		return boxConfigurations;
+		System.out.println("$#9278#"); return boxConfigurations;
 	}
 
 	public void setBoxConfigurations(List<BoxConfiguration> boxConfigurations) {

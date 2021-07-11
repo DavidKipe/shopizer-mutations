@@ -13,7 +13,7 @@ public class CountryEntity extends Entity {
 	private boolean supported;
 
 	public String getCode() {
-		return code;
+		System.out.println("$#9255#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -21,7 +21,7 @@ public class CountryEntity extends Entity {
 	}
 
 	public boolean isSupported() {
-		return supported;
+		System.out.println("$#9257#"); System.out.println("$#9256#"); return supported;
 	}
 
 	public void setSupported(boolean supported) {

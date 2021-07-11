@@ -17,13 +17,13 @@ public class GroupDetails implements Serializable {
 	private Group group;
 	private List<String> types;
 	public Group getGroup() {
-		return group;
+		System.out.println("$#7824#"); return group;
 	}
 	public void setGroup(Group group) {
 		this.group = group;
 	}
 	public List<String> getTypes() {
-		return types;
+		System.out.println("$#7825#"); return types;
 	}
 	public void setTypes(List<String> types) {
 		this.types = types;

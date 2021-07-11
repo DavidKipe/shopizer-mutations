@@ -13,7 +13,7 @@ public class RelatedProduct extends Product implements Serializable {
 		this.relationShipType = relationShipType;
 	}
 	public String getRelationShipType() {
-		return relationShipType;
+		System.out.println("$#8960#"); return relationShipType;
 	}
 
 }

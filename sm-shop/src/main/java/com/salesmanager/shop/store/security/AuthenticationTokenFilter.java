@@ -43,37 +43,37 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
         
 
     	String origin = "*";
-    	if(!StringUtils.isBlank(request.getHeader("origin"))) {
+					System.out.println("$#15246#"); if(!StringUtils.isBlank(request.getHeader("origin"))) {
     		origin = request.getHeader("origin");
     	}
     	//in flight
-    	response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
-    	response.setHeader("Access-Control-Allow-Origin", origin);
-    	response.setHeader("Access-Control-Allow-Headers", "X-Auth-Token, Content-Type, Authorization, Cache-Control, X-Requested-With");
-    	response.setHeader("Access-Control-Allow-Credentials", "true");
+					System.out.println("$#15247#"); response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
+					System.out.println("$#15248#"); response.setHeader("Access-Control-Allow-Origin", origin);
+					System.out.println("$#15249#"); response.setHeader("Access-Control-Allow-Headers", "X-Auth-Token, Content-Type, Authorization, Cache-Control, X-Requested-With");
+					System.out.println("$#15250#"); response.setHeader("Access-Control-Allow-Credentials", "true");
 
     	try {
     		
     		String ipAddress = GeoLocationUtils.getClientIpAddress(request);
     		
     		UserContext userContext = UserContext.create();
-    		userContext.setIpAddress(ipAddress);
+						System.out.println("$#15251#"); userContext.setIpAddress(ipAddress);
     		
     	} catch(Exception s) {
     		LOGGER.error("Error while getting ip address ", s);
     	}
 
 
-    	if(request.getRequestURL().toString().contains("/api/v1/auth")) {
+					System.out.println("$#15252#"); if(request.getRequestURL().toString().contains("/api/v1/auth")) {
     		//setHeader(request,response);   	
 	    	final String requestHeader = request.getHeader(this.tokenHeader);//token
 	    	
 	    	try {
-		        if (requestHeader != null && requestHeader.startsWith(BEARER_TOKEN)) {//Bearer
+										System.out.println("$#15253#"); if (requestHeader != null && requestHeader.startsWith(BEARER_TOKEN)) {//Bearer
 		        	
-		        	jwtCustomCustomerAuthenticationManager.authenticateRequest(request, response);
+											System.out.println("$#15255#"); jwtCustomCustomerAuthenticationManager.authenticateRequest(request, response);
 	
-		        } else if(requestHeader != null && requestHeader.startsWith(FACEBOOK_TOKEN)) {
+										} else if(requestHeader != null && requestHeader.startsWith(FACEBOOK_TOKEN)) { System.out.println("$#15256#");
 		        	//Facebook
 		        	//facebookCustomerAuthenticationManager.authenticateRequest(request, response);
 		        } else {
@@ -85,21 +85,21 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 	    	}
     	}
     	
-    	if(request.getRequestURL().toString().contains("/api/v1/private")) {
+					System.out.println("$#15258#"); if(request.getRequestURL().toString().contains("/api/v1/private")) {
     		
     		//setHeader(request,response);  
     		
     		Enumeration<String> headers = request.getHeaderNames();
-    		while(headers.hasMoreElements()) {
+						System.out.println("$#15259#"); while(headers.hasMoreElements()) {
     			LOGGER.debug(headers.nextElement());
     		}
 
 	    	final String requestHeader = request.getHeader(this.tokenHeader);//token
 	    	
 	    	try {
-		        if (requestHeader != null && requestHeader.startsWith(BEARER_TOKEN)) {//Bearer
+										System.out.println("$#15260#"); if (requestHeader != null && requestHeader.startsWith(BEARER_TOKEN)) {//Bearer
 		        	
-		        	jwtCustomAdminAuthenticationManager.authenticateRequest(request, response);
+											System.out.println("$#15262#"); jwtCustomAdminAuthenticationManager.authenticateRequest(request, response);
 	
 		        } else {
 		        	LOGGER.warn("couldn't find any authorization token, will ignore the header, might be a preflight check");
@@ -110,8 +110,8 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 	    	}
     	}
 
-        chain.doFilter(request, response);
-        postFilter(request, response, chain);
+								System.out.println("$#15263#"); chain.doFilter(request, response);
+								System.out.println("$#15264#"); postFilter(request, response, chain);
     }
     
     
@@ -120,8 +120,8 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
     	try {
     		
     		UserContext userContext = UserContext.getCurrentInstance();
-    		if(userContext!=null) {
-    			userContext.close();
+						System.out.println("$#15265#"); if(userContext!=null) {
+							System.out.println("$#15266#"); userContext.close();
     		}
     		
     	} catch(Exception s) {

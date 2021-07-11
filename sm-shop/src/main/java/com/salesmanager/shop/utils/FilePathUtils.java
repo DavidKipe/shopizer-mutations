@@ -54,14 +54,14 @@ public class FilePathUtils {
 	 */
 	public String buildStaticFilePath(String storeCode, String fileName) {
 		String path = FILES_URI + SLASH + storeCode + SLASH;
-		if (StringUtils.isNotBlank(fileName)) {
-			return path + fileName;
+		System.out.println("$#15711#"); if (StringUtils.isNotBlank(fileName)) {
+			System.out.println("$#15712#"); return path + fileName;
 		}
-		return path;
+		System.out.println("$#15713#"); return path;
 	}
 
 	public String buildStaticFilePath(MerchantStore store) {
-		return STATIC_URI + FILES_URI + SLASH + store.getCode() + SLASH;
+		System.out.println("$#15714#"); return STATIC_URI + FILES_URI + SLASH + store.getCode() + SLASH;
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class FilePathUtils {
 	 */
 	public String buildAdminDownloadProductFilePath(
 			MerchantStore store, DigitalProduct digitalProduct) {
-		return ADMIN_URI
+		System.out.println("$#15715#"); return ADMIN_URI
 				+ FILES_URI
 				+ DOWNLOADS
 				+ store.getCode()
@@ -82,7 +82,7 @@ public class FilePathUtils {
 	 */
 	public String buildOrderDownloadProductFilePath(
 			MerchantStore store, ReadableOrderProductDownload digitalProduct, Long orderId) {
-		return SHOP_URI
+		System.out.println("$#15716#"); return SHOP_URI
 				+ ORDER_DOWNLOAD_URI
 				+ SLASH
 				+ orderId
@@ -96,9 +96,9 @@ public class FilePathUtils {
 	 * Or example: /<shopScheme>://<domainName>/<contextPath>/files/<storeCode>/
 	 */
 	public String buildStaticFileAbsolutePath(MerchantStore store, String fileName) {
-		if (StringUtils.isNotBlank(imageUtils.getBasePath())
+		System.out.println("$#15717#"); if (StringUtils.isNotBlank(imageUtils.getBasePath())
 				&& imageUtils.getBasePath().startsWith(HTTP_SCHEME)) {
-			return imageUtils.getBasePath()
+			System.out.println("$#15719#"); return imageUtils.getBasePath()
 					+ FILES_URI
 					+ SLASH
 					+ store.getCode()
@@ -108,7 +108,7 @@ public class FilePathUtils {
 					+ fileName;
 		} else {
 			String scheme = coreConfiguration.getProperty("SHOP_SCHEME", HTTP_SCHEME);
-			return scheme
+			System.out.println("$#15720#"); return scheme
 					+ DOUBLE_SLASH
 					+ store.getDomainName()
 					+ coreConfiguration.getProperty("CONTEXT_PATH")
@@ -120,7 +120,7 @@ public class FilePathUtils {
 	 * Example: http[s]://<scheme>/<domainName>/<contextPath>
 	 */
 	public String buildStoreUri(MerchantStore store, HttpServletRequest request) {
-		return buildBaseUrl(request, store);
+		System.out.println("$#15721#"); return buildBaseUrl(request, store);
 	}
 	
 	
@@ -128,27 +128,27 @@ public class FilePathUtils {
 	 *\/<contextPath>
 	 */
 	public String buildStoreUri(MerchantStore store, String contextPath) {
-		return normalizePath(contextPath);
+		System.out.println("$#15722#"); return normalizePath(contextPath);
 	}
 
 	public String buildRelativeStoreUri(HttpServletRequest request, MerchantStore store) {
-		return "" + normalizePath(request.getContextPath());
+		System.out.println("$#15723#"); return "" + normalizePath(request.getContextPath());
 	}
 
 	/**
 	 * Access to the customer section
 	 */
 	public String buildCustomerUri(MerchantStore store, String contextPath) {
-		return buildStoreUri(store, contextPath);
+		System.out.println("$#15724#"); return buildStoreUri(store, contextPath);
 	}
 
 	public String buildAdminUri(MerchantStore store, HttpServletRequest request) {
 		String baseUrl = buildBaseUrl(request, store);
-		return baseUrl + ADMIN_URI;
+		System.out.println("$#15725#"); return baseUrl + ADMIN_URI;
 	}
 
 	public String buildCategoryUrl(MerchantStore store, String contextPath, String url) {
-		return buildStoreUri(store, contextPath)
+		System.out.println("$#15726#"); return buildStoreUri(store, contextPath)
 				+ SHOP_URI
 				+ CATEGORY_URI
 				+ SLASH
@@ -157,7 +157,7 @@ public class FilePathUtils {
 	}
 
 	public String buildProductUrl(MerchantStore store, String contextPath, String url) {
-		return buildStoreUri(store, contextPath)
+		System.out.println("$#15727#"); return buildStoreUri(store, contextPath)
 				+ SHOP_URI
 				+ Constants.PRODUCT_URI
 				+ SLASH
@@ -166,22 +166,22 @@ public class FilePathUtils {
 	}
 
 	public String getContextPath() {
-		return properties.getProperty(CONTEXT_PATH);
+		System.out.println("$#15728#"); return properties.getProperty(CONTEXT_PATH);
 	}
 
 	private String normalizePath(String path) {
-		if (SLASH.equals(path)) {
+		System.out.println("$#15729#"); if (SLASH.equals(path)) {
 			return BLANK;
 		} else {
-			return path;
+			System.out.println("$#15730#"); return path;
 		}
 	}
 
 	private String getDomainName(String domainName) {
-		if (StringUtils.isBlank(domainName)) {
-			return DEFAULT_DOMAIN_NAME;
+		System.out.println("$#15731#"); if (StringUtils.isBlank(domainName)) {
+			System.out.println("$#15732#"); return DEFAULT_DOMAIN_NAME;
 		} else {
-			return domainName;
+			System.out.println("$#15733#"); return domainName;
 		}
 	}
 
@@ -189,7 +189,7 @@ public class FilePathUtils {
 		String contextPath = normalizePath(request.getContextPath());
 		String scheme = coreConfiguration.getProperty(SHOP_SCHEME, HTTP_VALUE);
 		String domainName = getDomainName(store.getDomainName());
-		return scheme
+		System.out.println("$#15734#"); return scheme
 				+ DOUBLE_SLASH
 				+ domainName
 				+ contextPath;

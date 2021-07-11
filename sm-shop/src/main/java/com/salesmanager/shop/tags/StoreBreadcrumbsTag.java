@@ -41,16 +41,16 @@ public class StoreBreadcrumbsTag extends TagSupport {
 			
 			StringBuilder ref = new StringBuilder();
 			
-			if(breadCrumb!=null && !StringUtils.isBlank(breadCrumb.getUrlRefContent())) {
+			System.out.println("$#15488#"); if(breadCrumb!=null && !StringUtils.isBlank(breadCrumb.getUrlRefContent())) {
 				ref.append(Constants.SLASH).append(Constants.REF).append(Constants.EQUALS).append(breadCrumb.getUrlRefContent());
-				if(categoryId!=null) {
+				System.out.println("$#15490#"); if(categoryId!=null) {
 					List<String> ids = this.parseBreadCrumb(breadCrumb.getUrlRefContent());
-					if(!ids.contains(String.valueOf(this.getCategoryId()))) {
+					System.out.println("$#15491#"); if(!ids.contains(String.valueOf(this.getCategoryId()))) {
 						ref.append(",").append(this.getCategoryId().longValue());
 					}
 				}
 			} else {
-				if(categoryId!=null) {
+				System.out.println("$#15492#"); if(categoryId!=null) {
 					ref.append(Constants.SLASH).append(Constants.REF).append(Constants.EQUALS).append(Constants.REF_C).append(this.getCategoryId());
 				} else {
 					ref.append("");
@@ -58,7 +58,7 @@ public class StoreBreadcrumbsTag extends TagSupport {
 			}
 
 
-			pageContext.getOut().print(ref.toString());
+			System.out.println("$#15493#"); pageContext.getOut().print(ref.toString());
 
 
 			
@@ -74,17 +74,17 @@ public class StoreBreadcrumbsTag extends TagSupport {
 		/** c:1,2,3 **/
 		String[] categoryComa = refContent.split(":");
 		String[] categoryIds = categoryComa[1].split(",");
-		return new LinkedList(Arrays.asList(categoryIds));
+		System.out.println("$#15494#"); return new LinkedList(Arrays.asList(categoryIds));
 		
 		
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15495#"); return EVAL_PAGE;
 	}
 
 	public Long getCategoryId() {
-		return categoryId;
+		System.out.println("$#15496#"); return categoryId;
 	}
 
 	public void setCategoryId(Long categoryId) {
@@ -92,7 +92,7 @@ public class StoreBreadcrumbsTag extends TagSupport {
 	}
 
 	public Long getProductId() {
-		return productId;
+		System.out.println("$#15497#"); return productId;
 	}
 
 	public void setProductId(Long productId) {

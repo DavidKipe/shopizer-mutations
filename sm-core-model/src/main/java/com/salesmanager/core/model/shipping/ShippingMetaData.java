@@ -21,37 +21,37 @@ public class ShippingMetaData {
 	
 	
 	public List<String> getModules() {
-		return modules;
+		System.out.println("$#4606#"); return modules;
 	}
 	public void setModules(List<String> modules) {
 		this.modules = modules;
 	}
 	public List<String> getPreProcessors() {
-		return preProcessors;
+		System.out.println("$#4607#"); return preProcessors;
 	}
 	public void setPreProcessors(List<String> preProcessors) {
 		this.preProcessors = preProcessors;
 	}
 	public List<String> getPostProcessors() {
-		return postProcessors;
+		System.out.println("$#4608#"); return postProcessors;
 	}
 	public void setPostProcessors(List<String> postProcessors) {
 		this.postProcessors = postProcessors;
 	}
 	public List<Country> getShipToCountry() {
-		return shipToCountry;
+		System.out.println("$#4609#"); return shipToCountry;
 	}
 	public void setShipToCountry(List<Country> shipToCountry) {
 		this.shipToCountry = shipToCountry;
 	}
 	public boolean isUseDistanceModule() {
-		return useDistanceModule;
+		System.out.println("$#4611#"); System.out.println("$#4610#"); return useDistanceModule;
 	}
 	public void setUseDistanceModule(boolean useDistanceModule) {
 		this.useDistanceModule = useDistanceModule;
 	}
   public boolean isUseAddressAutoComplete() {
-    return useAddressAutoComplete;
+				System.out.println("$#4613#"); System.out.println("$#4612#"); return useAddressAutoComplete;
   }
   public void setUseAddressAutoComplete(boolean useAddressAutoComplete) {
     this.useAddressAutoComplete = useAddressAutoComplete;

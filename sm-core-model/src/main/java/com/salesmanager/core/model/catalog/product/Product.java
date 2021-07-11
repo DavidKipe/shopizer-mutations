@@ -193,7 +193,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 	
 	public Integer getRentalPeriod() {
-		return rentalPeriod;
+		System.out.println("$#3923#"); return rentalPeriod;
 	}
 
 	public void setRentalPeriod(Integer rentalPeriod) {
@@ -201,7 +201,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public Integer getRentalDuration() {
-		return rentalDuration;
+		System.out.println("$#3924#"); return rentalDuration;
 	}
 
 	public void setRentalDuration(Integer rentalDuration) {
@@ -221,7 +221,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 	@Override
 	public Long getId() {
-		return this.id;
+		System.out.println("$#3925#"); return this.id;
 	}
 
 	@Override
@@ -231,7 +231,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#3926#"); return auditSection;
 	}
 
 	@Override
@@ -241,13 +241,13 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 
 	public boolean isProductVirtual() {
-		return productVirtual;
+		System.out.println("$#3928#"); System.out.println("$#3927#"); return productVirtual;
 	}
 
 
 
 	public BigDecimal getProductLength() {
-		return productLength;
+		System.out.println("$#3929#"); return productLength;
 	}
 
 	public void setProductLength(BigDecimal productLength) {
@@ -255,7 +255,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public BigDecimal getProductWidth() {
-		return productWidth;
+		System.out.println("$#3930#"); return productWidth;
 	}
 
 	public void setProductWidth(BigDecimal productWidth) {
@@ -263,7 +263,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public BigDecimal getProductHeight() {
-		return productHeight;
+		System.out.println("$#3931#"); return productHeight;
 	}
 
 	public void setProductHeight(BigDecimal productHeight) {
@@ -271,7 +271,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public BigDecimal getProductWeight() {
-		return productWeight;
+		System.out.println("$#3932#"); return productWeight;
 	}
 
 	public void setProductWeight(BigDecimal productWeight) {
@@ -279,7 +279,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public BigDecimal getProductReviewAvg() {
-		return productReviewAvg;
+		System.out.println("$#3933#"); return productReviewAvg;
 	}
 
 	public void setProductReviewAvg(BigDecimal productReviewAvg) {
@@ -287,7 +287,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public Integer getProductReviewCount() {
-		return productReviewCount;
+		System.out.println("$#3934#"); return productReviewCount;
 	}
 
 	public void setProductReviewCount(Integer productReviewCount) {
@@ -297,7 +297,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 
 	public Integer getProductOrdered() {
-		return productOrdered;
+		System.out.println("$#3935#"); return productOrdered;
 	}
 
 	public void setProductOrdered(Integer productOrdered) {
@@ -305,7 +305,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public String getSku() {
-		return sku;
+		System.out.println("$#3936#"); return sku;
 	}
 
 	public void setSku(String sku) {
@@ -313,7 +313,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public Set<ProductDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#3937#"); return descriptions;
 	}
 
 	public void setDescriptions(Set<ProductDescription> descriptions) {
@@ -322,7 +322,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 
 	public boolean getProductVirtual() {
-		return productVirtual;
+		System.out.println("$#3939#"); System.out.println("$#3938#"); return productVirtual;
 	}
 
 	public void setProductVirtual(boolean productVirtual) {
@@ -330,7 +330,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public boolean getProductIsFree() {
-		return productIsFree;
+		System.out.println("$#3941#"); System.out.println("$#3940#"); return productIsFree;
 	}
 
 	public void setProductIsFree(boolean productIsFree) {
@@ -340,7 +340,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 
 	public Set<ProductAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#3942#"); return attributes;
 	}
 
 	public void setAttributes(Set<ProductAttribute> attributes) {
@@ -350,7 +350,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 
 	public Manufacturer getManufacturer() {
-		return manufacturer;
+		System.out.println("$#3943#"); return manufacturer;
 	}
 
 	public void setManufacturer(Manufacturer manufacturer) {
@@ -358,7 +358,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public ProductType getType() {
-		return type;
+		System.out.println("$#3944#"); return type;
 	}
 
 	public void setType(ProductType type) {
@@ -368,7 +368,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 
 	public Set<ProductAvailability> getAvailabilities() {
-		return availabilities;
+		System.out.println("$#3945#"); return availabilities;
 	}
 
 	public void setAvailabilities(Set<ProductAvailability> availabilities) {
@@ -376,7 +376,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public TaxClass getTaxClass() {
-		return taxClass;
+		System.out.println("$#3946#"); return taxClass;
 	}
 
 	public void setTaxClass(TaxClass taxClass) {
@@ -384,7 +384,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public Set<ProductImage> getImages() {
-		return images;
+		System.out.println("$#3947#"); return images;
 	}
 
 	public void setImages(Set<ProductImage> images) {
@@ -392,7 +392,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public Set<ProductRelationship> getRelationships() {
-		return relationships;
+		System.out.println("$#3948#"); return relationships;
 	}
 
 	public void setRelationships(Set<ProductRelationship> relationships) {
@@ -401,7 +401,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 
 	public Set<Category> getCategories() {
-		return categories;
+		System.out.println("$#3949#"); return categories;
 	}
 
 	public void setCategories(Set<Category> categories) {
@@ -409,7 +409,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#3950#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -419,7 +419,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 
 	public Date getDateAvailable() {
-		return dateAvailable;
+		System.out.println("$#3951#"); return dateAvailable;
 	}
 
 	public void setDateAvailable(Date dateAvailable) {
@@ -431,7 +431,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public Integer getSortOrder() {
-		return sortOrder;
+		System.out.println("$#3952#"); return sortOrder;
 	}
 
 
@@ -441,11 +441,11 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public boolean isAvailable() {
-		return available;
+		System.out.println("$#3954#"); System.out.println("$#3953#"); return available;
 	}
 	
 	public boolean isProductShipeable() {
-		return productShipeable;
+		System.out.println("$#3956#"); System.out.println("$#3955#"); return productShipeable;
 	}
 
 	public void setProductShipeable(Boolean productShipeable) {
@@ -454,27 +454,27 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 
 	
 	public ProductDescription getProductDescription() {
-		if(this.getDescriptions()!=null && this.getDescriptions().size()>0) {
-			return this.getDescriptions().iterator().next();
+		System.out.println("$#3958#"); System.out.println("$#3957#"); if(this.getDescriptions()!=null && this.getDescriptions().size()>0) {
+			System.out.println("$#3960#"); return this.getDescriptions().iterator().next();
 		}
 		return null;
 	}
 	
 	public ProductImage getProductImage() {
 		ProductImage productImage = null;
-		if(this.getImages()!=null && this.getImages().size()>0) {
+		System.out.println("$#3962#"); System.out.println("$#3961#"); if(this.getImages()!=null && this.getImages().size()>0) {
 			for(ProductImage image : this.getImages()) {
 				productImage = image;
-				if(productImage.isDefaultImage()) {
+				System.out.println("$#3964#"); if(productImage.isDefaultImage()) {
 					break;
 				}
 			}
 		}
-		return productImage;
+		System.out.println("$#3965#"); return productImage;
 	}
 	
 	public boolean isPreOrder() {
-		return preOrder;
+		System.out.println("$#3967#"); System.out.println("$#3966#"); return preOrder;
 	}
 
 	public void setPreOrder(boolean preOrder) {
@@ -482,7 +482,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public String getRefSku() {
-		return refSku;
+		System.out.println("$#3968#"); return refSku;
 	}
 
 	public void setRefSku(String refSku) {
@@ -490,7 +490,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public ProductCondition getCondition() {
-		return condition;
+		System.out.println("$#3969#"); return condition;
 	}
 
 	public void setCondition(ProductCondition condition) {
@@ -498,7 +498,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 
 	public RentalStatus getRentalStatus() {
-		return rentalStatus;
+		System.out.println("$#3970#"); return rentalStatus;
 	}
 
 	public void setRentalStatus(RentalStatus rentalStatus) {
@@ -506,7 +506,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	}
 	
 	public Customer getOwner() {
-		return owner;
+		System.out.println("$#3971#"); return owner;
 	}
 
 	public void setOwner(Customer owner) {

@@ -57,7 +57,7 @@ public class ProductInventoryApi {
       HttpServletResponse response) {
 
       ReadableInventory returnObject = productInventoryFacade.add(inventory.getProductId(), inventory, merchantStore, language);
-      return returnObject;
+						System.out.println("$#11934#"); return returnObject;
 
   }
   
@@ -77,9 +77,9 @@ public class ProductInventoryApi {
             @ApiIgnore Language language,
       HttpServletRequest request,
       HttpServletResponse response) {
-      inventory.setId(id);
-      inventory.setProductId(productId);
-      productInventoryFacade.update(productId, inventory, merchantStore, language);
+						System.out.println("$#11935#"); inventory.setId(id);
+						System.out.println("$#11936#"); inventory.setProductId(productId);
+						System.out.println("$#11937#"); productInventoryFacade.update(productId, inventory, merchantStore, language);
 
   }
   
@@ -98,7 +98,7 @@ public class ProductInventoryApi {
       HttpServletRequest request,
       HttpServletResponse response) {
 
-    productInventoryFacade.delete(id, merchantStore);
+				System.out.println("$#11938#"); productInventoryFacade.delete(id, merchantStore);
 
 
   }
@@ -120,7 +120,7 @@ public class ProductInventoryApi {
             @RequestParam(value = "count", required = false, defaultValue="10") Integer count) {
     
     
-      return productInventoryFacade.getInventory(id, merchantStore, child, language, page, count);
+						System.out.println("$#11939#"); return productInventoryFacade.getInventory(id, merchantStore, child, language, page, count);
 
   }
   
@@ -141,7 +141,7 @@ public class ProductInventoryApi {
       HttpServletResponse response) {
     
     
-      return productInventoryFacade.get(id, inventoryId, merchantStore, language);
+						System.out.println("$#11940#"); return productInventoryFacade.get(id, inventoryId, merchantStore, language);
 
   }
   
@@ -162,7 +162,7 @@ public class ProductInventoryApi {
       HttpServletResponse response) {
     
     
-      return productInventoryFacade.get(id, code, language);
+						System.out.println("$#11941#"); return productInventoryFacade.get(id, code, language);
 
   }
 

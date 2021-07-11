@@ -23,7 +23,7 @@ public class SearchProductRequest implements Serializable {
 	private int start = START_COUNT;
 
 	public String getQuery() {
-		return query;
+		System.out.println("$#8975#"); return query;
 	}
 
 	public void setQuery(String query) {
@@ -31,7 +31,7 @@ public class SearchProductRequest implements Serializable {
 	}
 
 	public int getStart() {
-		return start;
+		System.out.println("$#8976#"); return start;
 	}
 
 	public void setStart(int start) {
@@ -39,7 +39,7 @@ public class SearchProductRequest implements Serializable {
 	}
 
 	public int getCount() {
-		return count;
+		System.out.println("$#8977#"); return count;
 	}
 
 	public void setCount(int count) {

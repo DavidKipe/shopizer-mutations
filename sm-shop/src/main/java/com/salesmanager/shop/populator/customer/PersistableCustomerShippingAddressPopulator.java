@@ -19,70 +19,70 @@ public class PersistableCustomerShippingAddressPopulator extends AbstractDataPop
     {
         
        
-          if( target.getDelivery() == null){
+										System.out.println("$#10262#"); if( target.getDelivery() == null){
               
               Delivery delivery=new Delivery();
-              delivery.setFirstName( source.getFirstName()) ;
-              delivery.setLastName( source.getLastName() );
+														System.out.println("$#10263#"); delivery.setFirstName( source.getFirstName()) ;
+														System.out.println("$#10264#"); delivery.setLastName( source.getLastName() );
               
-              if(StringUtils.isNotBlank( source.getAddress())){
-                  delivery.setAddress( source.getAddress() ); 
+														System.out.println("$#10265#"); if(StringUtils.isNotBlank( source.getAddress())){
+																		System.out.println("$#10266#"); delivery.setAddress( source.getAddress() );
               }
               
-              if(StringUtils.isNotBlank( source.getCity())){
-                  delivery.setCity( source.getCity() );
+														System.out.println("$#10267#"); if(StringUtils.isNotBlank( source.getCity())){
+																		System.out.println("$#10268#"); delivery.setCity( source.getCity() );
               }
               
-              if(StringUtils.isNotBlank( source.getCompany())){
-                  delivery.setCompany( source.getCompany() );
+														System.out.println("$#10269#"); if(StringUtils.isNotBlank( source.getCompany())){
+																		System.out.println("$#10270#"); delivery.setCompany( source.getCompany() );
               }
               
-              if(StringUtils.isNotBlank( source.getPhone())){
-                  delivery.setTelephone( source.getPhone());
+														System.out.println("$#10271#"); if(StringUtils.isNotBlank( source.getPhone())){
+																		System.out.println("$#10272#"); delivery.setTelephone( source.getPhone());
               }
               
-              if(StringUtils.isNotBlank( source.getPostalCode())){
-                  delivery.setPostalCode( source.getPostalCode());
+														System.out.println("$#10273#"); if(StringUtils.isNotBlank( source.getPostalCode())){
+																		System.out.println("$#10274#"); delivery.setPostalCode( source.getPostalCode());
               }
               
-              if(StringUtils.isNotBlank( source.getStateProvince())){
-                  delivery.setPostalCode( source.getStateProvince());
+														System.out.println("$#10275#"); if(StringUtils.isNotBlank( source.getStateProvince())){
+																		System.out.println("$#10276#"); delivery.setPostalCode( source.getStateProvince());
               }
               
-              target.setDelivery( delivery );
+														System.out.println("$#10277#"); target.setDelivery( delivery );
           }
           else{
-           target.getDelivery().setFirstName( source.getFirstName() );
-           target.getDelivery().setLastName( source.getLastName() );
+											System.out.println("$#10278#"); target.getDelivery().setFirstName( source.getFirstName() );
+											System.out.println("$#10279#"); target.getDelivery().setLastName( source.getLastName() );
           
             // lets fill optional data now
            
-           if(StringUtils.isNotBlank( source.getAddress())){
-               target.getDelivery().setAddress( source.getAddress() ); 
+											System.out.println("$#10280#"); if(StringUtils.isNotBlank( source.getAddress())){
+															System.out.println("$#10281#"); target.getDelivery().setAddress( source.getAddress() );
            }
            
-           if(StringUtils.isNotBlank( source.getCity())){
-               target.getDelivery().setCity( source.getCity() );
+											System.out.println("$#10282#"); if(StringUtils.isNotBlank( source.getCity())){
+															System.out.println("$#10283#"); target.getDelivery().setCity( source.getCity() );
            }
            
-           if(StringUtils.isNotBlank( source.getCompany())){
-               target.getDelivery().setCompany( source.getCompany() );
+											System.out.println("$#10284#"); if(StringUtils.isNotBlank( source.getCompany())){
+															System.out.println("$#10285#"); target.getDelivery().setCompany( source.getCompany() );
            }
            
-           if(StringUtils.isNotBlank( source.getPhone())){
-               target.getDelivery().setTelephone( source.getPhone());
+											System.out.println("$#10286#"); if(StringUtils.isNotBlank( source.getPhone())){
+															System.out.println("$#10287#"); target.getDelivery().setTelephone( source.getPhone());
            }
            
-           if(StringUtils.isNotBlank( source.getPostalCode())){
-               target.getDelivery().setPostalCode( source.getPostalCode());
+											System.out.println("$#10288#"); if(StringUtils.isNotBlank( source.getPostalCode())){
+															System.out.println("$#10289#"); target.getDelivery().setPostalCode( source.getPostalCode());
            }
            
-           if(StringUtils.isNotBlank( source.getStateProvince())){
-               target.getDelivery().setPostalCode( source.getStateProvince());
+											System.out.println("$#10290#"); if(StringUtils.isNotBlank( source.getStateProvince())){
+															System.out.println("$#10291#"); target.getDelivery().setPostalCode( source.getStateProvince());
            }
           }
            
-           return target;
+											System.out.println("$#10292#"); return target;
         
     }
 

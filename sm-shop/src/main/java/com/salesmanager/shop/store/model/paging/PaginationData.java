@@ -26,7 +26,7 @@ public class PaginationData implements Serializable
 
     
     public PaginationData(int pageSize,int currentPage) {
-        if (pageSize == 0)
+								System.out.println("$#15187#"); if (pageSize == 0)
             throw new IllegalArgumentException("limit cannot be 0 for pagination.");
 
        
@@ -37,7 +37,7 @@ public class PaginationData implements Serializable
     
     public int getPageSize()
     {
-        return pageSize;
+								System.out.println("$#15188#"); return pageSize;
     }
 
     
@@ -47,10 +47,17 @@ public class PaginationData implements Serializable
     * @return the page number
     */
     public int getPageNumber() {
-        if (offset < pageSize || pageSize == 0)
-            return 1;
+	    System.out.println("$#15190#");
+	    System.out.println("$#15189#");
+	    if (offset < pageSize || pageSize == 0) {
+		    System.out.println("$#15192#");
+		    return 1;
+	    }
 
-        return (offset / pageSize) + 1;
+	    System.out.println("$#15195#");
+	    System.out.println("$#15194#");
+	    System.out.println("$#15193#");
+	    return (offset / pageSize) + 1;
     }
     
     
@@ -60,7 +67,7 @@ public class PaginationData implements Serializable
     * @return the offset
     */
         public int getOffset() {
-            return (currentPage - 1) * pageSize + 1;
+												System.out.println("$#15199#"); System.out.println("$#15198#"); System.out.println("$#15197#"); System.out.println("$#15196#"); return (currentPage - 1) * pageSize + 1;
         }
         
      
@@ -71,7 +78,7 @@ public class PaginationData implements Serializable
      */
     public PaginationData getNext()
     {
-        return new PaginationData( offset + pageSize, pageSize );
+								System.out.println("$#15201#"); System.out.println("$#15200#"); return new PaginationData( offset + pageSize, pageSize );
     }
     
     
@@ -81,17 +88,17 @@ public class PaginationData implements Serializable
     * @return new pagination object with offset shifted by offset-limit
     */
         public PaginationData getPrevious() {
-            if (pageSize >= offset) {
-                return new PaginationData(0, pageSize);
+												System.out.println("$#15203#"); System.out.println("$#15202#"); if (pageSize >= offset) {
+																System.out.println("$#15204#"); return new PaginationData(0, pageSize);
             } else {
-                return new PaginationData(offset - pageSize, pageSize);
+																System.out.println("$#15206#"); System.out.println("$#15205#"); return new PaginationData(offset - pageSize, pageSize);
             }
         }
 
 
     public int getCurrentPage()
     {
-        return currentPage;
+								System.out.println("$#15207#"); return currentPage;
     }
 
 
@@ -103,7 +110,7 @@ public class PaginationData implements Serializable
 
     public int getTotalCount()
     {
-        return totalCount;
+								System.out.println("$#15208#"); return totalCount;
     }
 
 
@@ -116,13 +123,13 @@ public class PaginationData implements Serializable
     public int getTotalPages()
     {
         
-        Integer totalPages= Integer.valueOf((int) (Math.ceil(Integer.valueOf(totalCount).doubleValue() / pageSize)));
-        return totalPages;
+								System.out.println("$#15209#"); Integer totalPages= Integer.valueOf((int) (Math.ceil(Integer.valueOf(totalCount).doubleValue() / pageSize)));
+								System.out.println("$#15210#"); return totalPages;
     }
 
 
 	public int getCountByPage() {
-		return countByPage;
+		System.out.println("$#15211#"); return countByPage;
 	}
 
 

@@ -13,13 +13,13 @@ public class PaymentEntity implements Serializable {
 	private String amount;
 	
 	public String getPaymentModule() {
-		return paymentModule;
+		System.out.println("$#9200#"); return paymentModule;
 	}
 	public void setPaymentModule(String paymentModule) {
 		this.paymentModule = paymentModule;
 	}
 	public String getAmount() {
-		return amount;
+		System.out.println("$#9201#"); return amount;
 	}
 	public void setAmount(String amount) {
 		this.amount = amount;

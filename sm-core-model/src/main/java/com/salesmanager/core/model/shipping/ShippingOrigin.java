@@ -71,7 +71,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 
 	@Override
 	public Long getId() {
-		return this.id;
+		System.out.println("$#4628#"); return this.id;
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4629#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -89,7 +89,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 	}
 
 	public boolean isActive() {
-		return active;
+		System.out.println("$#4631#"); System.out.println("$#4630#"); return active;
 	}
 
 	public void setActive(boolean active) {
@@ -97,7 +97,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 	}
 	
 	public String getAddress() {
-		return address;
+		System.out.println("$#4632#"); return address;
 	}
 
 	public void setAddress(String address) {
@@ -105,7 +105,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 	}
 
 	public String getCity() {
-		return city;
+		System.out.println("$#4633#"); return city;
 	}
 
 	public void setCity(String city) {
@@ -113,7 +113,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 	}
 
 	public String getPostalCode() {
-		return postalCode;
+		System.out.println("$#4634#"); return postalCode;
 	}
 
 	public void setPostalCode(String postalCode) {
@@ -121,7 +121,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 	}
 
 	public String getState() {
-		return state;
+		System.out.println("$#4635#"); return state;
 	}
 
 	public void setState(String state) {
@@ -129,7 +129,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 	}
 
 	public Country getCountry() {
-		return country;
+		System.out.println("$#4636#"); return country;
 	}
 
 	public void setCountry(Country country) {
@@ -137,7 +137,7 @@ public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 	}
 
 	public Zone getZone() {
-		return zone;
+		System.out.println("$#4637#"); return zone;
 	}
 
 	public void setZone(Zone zone) {

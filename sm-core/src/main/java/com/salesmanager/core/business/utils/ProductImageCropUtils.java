@@ -21,7 +21,7 @@ public class ProductImageCropUtils {
 	private int cropeBaseline = 0;// o is width, 1 is height
 
 	private int getCropeBaseline() {
-		return cropeBaseline;
+		System.out.println("$#3485#"); return cropeBaseline;
 	}
 
 
@@ -50,12 +50,12 @@ public class ProductImageCropUtils {
 				int height = originalFile.getHeight();
 		
 				/*** determine if image can be cropped ***/
-				determineCropeable(width, largeImageWidth, height, largeImageHeight);
+				System.out.println("$#3486#"); determineCropeable(width, largeImageWidth, height, largeImageHeight);
 		
 				/*** determine crop area calculation baseline ***/
 				//this.determineBaseline(width, height);
 		
-				determineCropArea(width, largeImageWidth, height, largeImageHeight);
+				System.out.println("$#3487#"); determineCropArea(width, largeImageWidth, height, largeImageHeight);
 			
 			} catch (Exception e) {
 				LOGGER.error("Image Utils error in constructor", e);
@@ -73,21 +73,21 @@ public class ProductImageCropUtils {
 			int height, int specificationsHeight) {
 		/*** determine if image can be cropped ***/
 		// height
-		int y = height - specificationsHeight;
+		System.out.println("$#3488#"); int y = height - specificationsHeight;
 		// width
-		int x = width - specificationsWidth;
+		System.out.println("$#3489#"); int x = width - specificationsWidth;
 
-		if (x < 0 || y < 0) {
-			setCropeable(false);
+		System.out.println("$#3492#"); System.out.println("$#3490#"); if (x < 0 || y < 0) {
+			System.out.println("$#3494#"); setCropeable(false);
 		}
 
-		if (x == 0 && y == 0) {
-			setCropeable(false);
+		System.out.println("$#3495#"); if (x == 0 && y == 0) {
+			System.out.println("$#3497#"); setCropeable(false);
 		}
 		
 		
-		if((height % specificationsHeight) == 0 && (width % specificationsWidth) == 0 ) {
-			setCropeable(false);
+		System.out.println("$#3500#"); System.out.println("$#3498#"); if((height % specificationsHeight) == 0 && (width % specificationsWidth) == 0 ) {
+			System.out.println("$#3502#"); setCropeable(false);
 		}
 
 		
@@ -102,12 +102,12 @@ public class ProductImageCropUtils {
 		cropAreaHeight = specificationsHeight;
 		
 		
-		double factorWidth = new Integer(width).doubleValue() / new Integer(specificationsWidth).doubleValue();
-		double factorHeight = new Integer(height).doubleValue() / new Integer(specificationsHeight).doubleValue();
+		System.out.println("$#3503#"); double factorWidth = new Integer(width).doubleValue() / new Integer(specificationsWidth).doubleValue();
+		System.out.println("$#3504#"); double factorHeight = new Integer(height).doubleValue() / new Integer(specificationsHeight).doubleValue();
 
 		double factor = factorWidth;
 		
-		if(factorWidth>factorHeight) {
+		System.out.println("$#3506#"); System.out.println("$#3505#"); if(factorWidth>factorHeight) {
 			factor = factorHeight;
 		}
 		
@@ -122,22 +122,22 @@ public class ProductImageCropUtils {
 					/ new Integer(specificationsHeight).doubleValue();
 		}*/
 
-		double w = factor * specificationsWidth;
-		double h = factor * specificationsHeight;
+		System.out.println("$#3507#"); double w = factor * specificationsWidth;
+		System.out.println("$#3508#"); double h = factor * specificationsHeight;
 		
-		if(w==h) {
-			setCropeable(false);
+		System.out.println("$#3509#"); if(w==h) {
+			System.out.println("$#3510#"); setCropeable(false);
 		}
 		
 
 		cropAreaWidth = w;
 		
-		if(cropAreaWidth > width)
+		System.out.println("$#3512#"); System.out.println("$#3511#"); if(cropAreaWidth > width)
 			cropAreaWidth = width;
 		
 		cropAreaHeight = h;
 		
-		if(cropAreaHeight > height)
+		System.out.println("$#3514#"); System.out.println("$#3513#"); if(cropAreaHeight > height)
 			cropAreaHeight = height;
 
 		/*
@@ -155,8 +155,8 @@ public class ProductImageCropUtils {
 	public File getCroppedImage(File originalFile, int x1, int y1, int width,
 			int height) throws Exception {
 		
-		if(!this.cropeable) {
-			return originalFile;
+		System.out.println("$#3515#"); if(!this.cropeable) {
+			System.out.println("$#3516#"); return originalFile;
 		}
 
 		FileNameMap fileNameMap = URLConnection.getFileNameMap();
@@ -167,9 +167,9 @@ public class ProductImageCropUtils {
 		BufferedImage image = ImageIO.read(originalFile);
 		BufferedImage out = image.getSubimage(x1, y1, width, height);
 		File tempFile = File.createTempFile("temp", "." + extension );
-		tempFile.deleteOnExit();
+		System.out.println("$#3517#"); tempFile.deleteOnExit();
 		ImageIO.write(out, extension, tempFile);
-		return tempFile;
+		System.out.println("$#3518#"); return tempFile;
 	}
 	
 	public BufferedImage getCroppedImage() throws IOException {
@@ -193,7 +193,7 @@ public class ProductImageCropUtils {
 			BufferedImage clippedImg = originalFile.getSubimage(clip.x, clip.y, clip.width, clip.height); 
 			
 
-			return clippedImg;
+			System.out.println("$#3519#"); return clippedImg;
 
 		
 		
@@ -204,7 +204,7 @@ public class ProductImageCropUtils {
 
 	
 	public double getCropAreaWidth() {
-		return cropAreaWidth;
+		System.out.println("$#3520#"); return cropAreaWidth;
 	}
 
 	public void setCropAreaWidth(int cropAreaWidth) {
@@ -212,7 +212,7 @@ public class ProductImageCropUtils {
 	}
 
 	public double getCropAreaHeight() {
-		return cropAreaHeight;
+		System.out.println("$#3521#"); return cropAreaHeight;
 	}
 
 	public void setCropAreaHeight(int cropAreaHeight) {
@@ -224,7 +224,7 @@ public class ProductImageCropUtils {
 	}
 
 	public boolean isCropeable() {
-		return cropeable;
+		System.out.println("$#3523#"); System.out.println("$#3522#"); return cropeable;
 	}
 
 

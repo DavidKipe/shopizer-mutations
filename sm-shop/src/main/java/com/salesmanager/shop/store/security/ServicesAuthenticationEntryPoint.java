@@ -17,7 +17,7 @@ public class ServicesAuthenticationEntryPoint implements AuthenticationEntryPoin
 	@Override
 	public void commence( HttpServletRequest request, HttpServletResponse response, 
 			AuthenticationException authException ) throws IOException{
-		response.sendError( HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized" );
+		System.out.println("$#15351#"); response.sendError( HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized" );
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class ServicesAuthenticationEntryPoint implements AuthenticationEntryPoin
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		if ((realmName == null) || "".equals(realmName)) {
+		System.out.println("$#15352#"); if ((realmName == null) || "".equals(realmName)) {
 			throw new IllegalArgumentException("realmName must be specified");
 		}
 		

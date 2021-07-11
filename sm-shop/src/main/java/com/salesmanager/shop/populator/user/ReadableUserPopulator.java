@@ -23,36 +23,36 @@ public class ReadableUserPopulator extends AbstractDataPopulator<User, ReadableU
   @Override
   public ReadableUser populate(User source, ReadableUser target, MerchantStore store,
       Language language) throws ConversionException {
-    Validate.notNull(source, "User cannot be null");
+				System.out.println("$#11183#"); Validate.notNull(source, "User cannot be null");
 
-    if (target == null) {
+				System.out.println("$#11184#"); if (target == null) {
       target = new ReadableUser();
     }
 
-    target.setFirstName(source.getFirstName());
-    target.setLastName(source.getLastName());
-    target.setEmailAddress(source.getAdminEmail());
-    target.setUserName(source.getAdminName());
-    target.setActive(source.isActive());
+				System.out.println("$#11185#"); target.setFirstName(source.getFirstName());
+				System.out.println("$#11186#"); target.setLastName(source.getLastName());
+				System.out.println("$#11187#"); target.setEmailAddress(source.getAdminEmail());
+				System.out.println("$#11188#"); target.setUserName(source.getAdminName());
+				System.out.println("$#11189#"); target.setActive(source.isActive());
 
-    if (source.getLastAccess() != null) {
-      target.setLastAccess(DateUtil.formatLongDate(source.getLastAccess()));
+				System.out.println("$#11190#"); if (source.getLastAccess() != null) {
+						System.out.println("$#11191#"); target.setLastAccess(DateUtil.formatLongDate(source.getLastAccess()));
     }
 
     // set default language
-    target.setDefaultLanguage(Constants.DEFAULT_LANGUAGE);
+				System.out.println("$#11192#"); target.setDefaultLanguage(Constants.DEFAULT_LANGUAGE);
 
-    if (source.getDefaultLanguage() != null)
-      target.setDefaultLanguage(source.getDefaultLanguage().getCode());
-    target.setMerchant(store.getCode());
-    target.setId(source.getId());
+				System.out.println("$#11193#"); if (source.getDefaultLanguage() != null)
+						System.out.println("$#11194#"); target.setDefaultLanguage(source.getDefaultLanguage().getCode());
+				System.out.println("$#11195#"); target.setMerchant(store.getCode());
+				System.out.println("$#11196#"); target.setId(source.getId());
 
 
     for (Group group : source.getGroups()) {
 
       ReadableGroup g = new ReadableGroup();
-      g.setName(group.getGroupName());
-      g.setId(group.getId().longValue());
+						System.out.println("$#11197#"); g.setName(group.getGroupName());
+						System.out.println("$#11198#"); g.setId(group.getId().longValue());
       target.getGroups().add(g);
     }
 
@@ -62,7 +62,7 @@ public class ReadableUserPopulator extends AbstractDataPopulator<User, ReadableU
      */
 
 
-    return target;
+				System.out.println("$#11199#"); return target;
   }
 
   @Override

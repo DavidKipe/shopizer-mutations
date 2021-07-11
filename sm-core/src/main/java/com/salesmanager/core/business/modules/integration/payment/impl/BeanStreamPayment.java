@@ -68,7 +68,7 @@ public class BeanStreamPayment implements PaymentModule {
 			List<ShoppingCartItem> items, BigDecimal amount, Payment payment,
 			IntegrationConfiguration configuration, IntegrationModule module)
 			throws IntegrationException {
-		return processTransaction(store, customer, TransactionType.AUTHORIZE,
+		System.out.println("$#427#"); return processTransaction(store, customer, TransactionType.AUTHORIZE,
 				amount,
 				payment,
 				configuration,
@@ -115,11 +115,11 @@ public class BeanStreamPayment implements PaymentModule {
 
 				Transaction response = this.sendTransaction(null, store, messageString.toString(), "PAC", TransactionType.CAPTURE, PaymentType.CREDITCARD, order.getTotal(), configuration, module);
 				
-				return response;
+				System.out.println("$#428#"); return response;
 				
 			} catch(Exception e) {
 				
-				if(e instanceof IntegrationException)
+				System.out.println("$#429#"); if(e instanceof IntegrationException)
 					throw (IntegrationException)e;
 				throw new IntegrationException("Error while processing BeanStream transaction",e);
 	
@@ -132,7 +132,7 @@ public class BeanStreamPayment implements PaymentModule {
 			List<ShoppingCartItem> items, BigDecimal amount, Payment payment,
 			IntegrationConfiguration configuration, IntegrationModule module)
 			throws IntegrationException {
-		return processTransaction(
+		System.out.println("$#430#"); return processTransaction(
 				store,
 				customer,
 				TransactionType.AUTHORIZECAPTURE,
@@ -157,7 +157,7 @@ public class BeanStreamPayment implements PaymentModule {
 			
 			
 			boolean bSandbox = false;
-			if (configuration.getEnvironment().equals("TEST")) {// sandbox
+			System.out.println("$#431#"); if (configuration.getEnvironment().equals("TEST")) {// sandbox
 				bSandbox = true;
 			}
 
@@ -166,11 +166,11 @@ public class BeanStreamPayment implements PaymentModule {
 
 			ModuleConfig configs = module.getModuleConfigs().get("PROD");
 
-			if (bSandbox == true) {
+			System.out.println("$#432#"); if (bSandbox == true) {
 				configs = module.getModuleConfigs().get("TEST");
 			} 
 			
-			if(configs==null) {
+			System.out.println("$#433#"); if(configs==null) {
 				throw new IntegrationException("Module not configured for TEST or PROD");
 			}
 			
@@ -219,20 +219,20 @@ public class BeanStreamPayment implements PaymentModule {
 			
 			Transaction response = this.sendTransaction(null, store, messageString.toString(), "R", TransactionType.REFUND, PaymentType.CREDITCARD, amount, configuration, module);
 			
-			return response;
+			System.out.println("$#434#"); return response;
 			
 		} catch(Exception e) {
 			
-			if(e instanceof IntegrationException)
+			System.out.println("$#435#"); if(e instanceof IntegrationException)
 				throw (IntegrationException)e;
 			throw new IntegrationException("Error while processing BeanStream transaction",e);
 
 		} finally {
 			
 			
-			if (conn != null) {
+			System.out.println("$#436#"); if (conn != null) {
 				try {
-					conn.disconnect();
+					System.out.println("$#437#"); conn.disconnect();
 				} catch (Exception ignore) {
 					// TODO: handle exception
 				}
@@ -306,7 +306,7 @@ public class BeanStreamPayment implements PaymentModule {
 			
 			
 			boolean bSandbox = false;
-			if (configuration.getEnvironment().equals("TEST")) {// sandbox
+			System.out.println("$#438#"); if (configuration.getEnvironment().equals("TEST")) {// sandbox
 				bSandbox = true;
 			}
 
@@ -314,11 +314,11 @@ public class BeanStreamPayment implements PaymentModule {
 			
 			ModuleConfig configs = module.getModuleConfigs().get("PROD");
 
-			if (bSandbox == true) {
+			System.out.println("$#439#"); if (bSandbox == true) {
 				configs = module.getModuleConfigs().get("TEST");
 			} 
 			
-			if(configs==null) {
+			System.out.println("$#440#"); if(configs==null) {
 				throw new IntegrationException("Module not configured for TEST or PROD");
 			}
 			
@@ -339,33 +339,33 @@ public class BeanStreamPayment implements PaymentModule {
 
 			// Set connection parameters. We need to perform input and output,
 			// so set both as true.
-			conn.setDoInput(true);
-			conn.setDoOutput(true);
+			System.out.println("$#441#"); conn.setDoInput(true);
+			System.out.println("$#442#"); conn.setDoOutput(true);
 
 			// Set the content type we are POSTing. We impersonate it as
 			// encoded form data
-			conn.setRequestProperty("Content-Type",
+			System.out.println("$#443#"); conn.setRequestProperty("Content-Type",
 					"application/x-www-form-urlencoded");
-			conn.setRequestProperty("User-Agent", agent);
+			System.out.println("$#444#"); conn.setRequestProperty("User-Agent", agent);
 
-			conn.setRequestProperty("Content-Length", String
+			System.out.println("$#445#"); conn.setRequestProperty("Content-Length", String
 					.valueOf(transaction.length()));
-			conn.setRequestMethod("POST");
+			System.out.println("$#446#"); conn.setRequestMethod("POST");
 
 			// get the output stream to POST to.
 			output = new DataOutputStream(conn.getOutputStream());
-			output.writeBytes(transaction);
-			output.flush();
+			System.out.println("$#447#"); output.writeBytes(transaction);
+			System.out.println("$#448#"); output.flush();
 
 
 			// Read input from the input stream.
 			in = new DataInputStream(conn.getInputStream());
 			int rc = conn.getResponseCode();
-			if (rc != -1) {
+			System.out.println("$#449#"); if (rc != -1) {
 				is = new BufferedReader(new InputStreamReader(conn
 						.getInputStream()));
 				String _line = null;
-				while (((_line = is.readLine()) != null)) {
+				System.out.println("$#450#"); while (((_line = is.readLine()) != null)) {
 					respText = respText + _line;
 				}
 				
@@ -387,71 +387,71 @@ public class BeanStreamPayment implements PaymentModule {
 			String authCode = (String)nvp.get("AUTHCODE");
 			String errorType = (String)nvp.get("ERRORTYPE");
 			String errorFields = (String)nvp.get("ERRORFIELDS");
-			if(!StringUtils.isBlank(orderNumber)) {
+			System.out.println("$#451#"); if(!StringUtils.isBlank(orderNumber)) {
 				nvp.put("INTERNALORDERID", orderNumber);
 			}
 			
-			if(StringUtils.isBlank(transactionApproved)) {
+			System.out.println("$#452#"); if(StringUtils.isBlank(transactionApproved)) {
 				throw new IntegrationException("Required field transactionApproved missing from BeanStream response");
 			}
 			
 			//errors
-			if(transactionApproved.equals("0")) {
+			System.out.println("$#453#"); if(transactionApproved.equals("0")) {
 
-				merchantLogService.save(
+				System.out.println("$#454#"); merchantLogService.save(
 						new MerchantLog(store,
 						"Can't process BeanStream message "
 								 + messageText + " return code id " + messageId));
 	
 				IntegrationException te = new IntegrationException(
 						"Can't process BeanStream message " + messageText);
-				te.setExceptionType(IntegrationException.EXCEPTION_PAYMENT_DECLINED);
-				te.setMessageCode("message.payment.beanstream." + messageId);
-				te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#455#"); te.setExceptionType(IntegrationException.EXCEPTION_PAYMENT_DECLINED);
+				System.out.println("$#456#"); te.setMessageCode("message.payment.beanstream." + messageId);
+				System.out.println("$#457#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 				throw te;
 			}
 			
 			//create transaction object
 
 			//return parseResponse(type,transaction,respText,nvp,order);
-			return this.parseResponse(transactionType, paymentType, nvp, amount);
+			System.out.println("$#458#"); return this.parseResponse(transactionType, paymentType, nvp, amount);
 			
 			
 		} catch(Exception e) {
-			if(e instanceof IntegrationException) {
+			System.out.println("$#459#"); if(e instanceof IntegrationException) {
 				throw (IntegrationException)e;
 			}
 			
 			throw new IntegrationException("Error while processing BeanStream transaction",e);
 
 		} finally {
-			if (is != null) {
+			System.out.println("$#460#"); if (is != null) {
 				try {
-					is.close();
+					System.out.println("$#461#"); is.close();
 				} catch (Exception ignore) {
 					// TODO: handle exception
 				}
 			}
 
-			if (in != null) {
+			System.out.println("$#462#"); if (in != null) {
 				try {
-					in.close();
+					System.out.println("$#463#"); in.close();
 				} catch (Exception ignore) {
 					// TODO: handle exception
 				}
 			}
 
-			if (output != null) {
+			System.out.println("$#464#"); if (output != null) {
 				try {
-					output.close();
+					System.out.println("$#465#"); output.close();
 				} catch (Exception ignore) {
 					// TODO: handle exception
 				}
 			}
 			
-			if (conn != null) {
+			System.out.println("$#466#"); if (conn != null) {
 				try {
-					conn.disconnect();
+					System.out.println("$#467#"); conn.disconnect();
 				} catch (Exception ignore) {
 					// TODO: handle exception
 				}
@@ -473,7 +473,7 @@ public class BeanStreamPayment implements PaymentModule {
 		
 		
 		boolean bSandbox = false;
-		if (configuration.getEnvironment().equals("TEST")) {// sandbox
+		System.out.println("$#468#"); if (configuration.getEnvironment().equals("TEST")) {// sandbox
 			bSandbox = true;
 		}
 
@@ -481,11 +481,11 @@ public class BeanStreamPayment implements PaymentModule {
 
 		ModuleConfig configs = module.getModuleConfigs().get("PROD");
 
-		if (bSandbox == true) {
+		System.out.println("$#469#"); if (bSandbox == true) {
 			configs = module.getModuleConfigs().get("TEST");
 		} 
 		
-		if(configs==null) {
+		System.out.println("$#470#"); if(configs==null) {
 			throw new IntegrationException("Module not configured for TEST or PROD");
 		}
 		
@@ -512,9 +512,9 @@ public class BeanStreamPayment implements PaymentModule {
 		StringBuilder messageString = new StringBuilder();
 		
 		String transactionType = "P";
-		if(type == TransactionType.AUTHORIZE) {
+		System.out.println("$#471#"); if(type == TransactionType.AUTHORIZE) {
 			transactionType = "PA";
-		} else if(type == TransactionType.AUTHORIZECAPTURE) {
+		} else if(type == TransactionType.AUTHORIZECAPTURE) { System.out.println("$#472#");
 			transactionType = "P";
 		} 
 		
@@ -542,7 +542,7 @@ public class BeanStreamPayment implements PaymentModule {
 		messageString.append("ordCity=").append(customer.getBilling().getCity()).append("&");
 		
 		String stateProvince = customer.getBilling().getState();
-		if(customer.getBilling().getZone()!=null) {
+		System.out.println("$#473#"); if(customer.getBilling().getZone()!=null) {
 			stateProvince = customer.getBilling().getZone().getCode();
 		}
 		
@@ -636,22 +636,22 @@ public class BeanStreamPayment implements PaymentModule {
 			
 			Transaction response = this.sendTransaction(orderNumber, store, messageString.toString(), transactionType, type, payment.getPaymentType(), amount, configuration, module);
 			
-			return response;
+			System.out.println("$#474#"); return response;
 
 
 			
 		} catch(Exception e) {
 			
-			if(e instanceof IntegrationException)
+			System.out.println("$#475#"); if(e instanceof IntegrationException)
 				throw (IntegrationException)e;
 			throw new IntegrationException("Error while processing BeanStream transaction",e);
 
 		} finally {
 			
 			
-			if (conn != null) {
+			System.out.println("$#476#"); if (conn != null) {
 				try {
-					conn.disconnect();
+					System.out.println("$#477#"); conn.disconnect();
 				} catch (Exception ignore) {}
 			}
 		}
@@ -666,29 +666,29 @@ public class BeanStreamPayment implements PaymentModule {
 		
 		
 		Transaction transaction = new Transaction();
-		transaction.setAmount(amount);
+		System.out.println("$#478#"); transaction.setAmount(amount);
 		//transaction.setOrder(order);
-		transaction.setTransactionDate(new Date());
-		transaction.setTransactionType(transactionType);
-		transaction.setPaymentType(PaymentType.CREDITCARD);
+		System.out.println("$#479#"); transaction.setTransactionDate(new Date());
+		System.out.println("$#480#"); transaction.setTransactionType(transactionType);
+		System.out.println("$#481#"); transaction.setPaymentType(PaymentType.CREDITCARD);
 		transaction.getTransactionDetails().put("TRANSACTIONID", (String)nvp.get("TRNID"));
 		transaction.getTransactionDetails().put("TRNAPPROVED", (String)nvp.get("TRNAPPROVED"));
 		transaction.getTransactionDetails().put("TRNORDERNUMBER", (String)nvp.get("TRNORDERNUMBER"));
 		transaction.getTransactionDetails().put("MESSAGETEXT", (String)nvp.get("MESSAGETEXT"));
-		if(nvp.get("INTERNALORDERID")!=null) {
+		System.out.println("$#482#"); if(nvp.get("INTERNALORDERID")!=null) {
 			transaction.getTransactionDetails().put("INTERNALORDERID", (String)nvp.get("INTERNALORDERID"));
 		}
-		return transaction;
+		System.out.println("$#483#"); return transaction;
 		
 	}
 
 	private Map formatUrlResponse(String payload) throws Exception {
 		HashMap<String,String> nvp = new HashMap<String,String> ();
 		StringTokenizer stTok = new StringTokenizer(payload, "&");
-		while (stTok.hasMoreTokens()) {
+		System.out.println("$#484#"); while (stTok.hasMoreTokens()) {
 			StringTokenizer stInternalTokenizer = new StringTokenizer(stTok
 					.nextToken(), "=");
-			if (stInternalTokenizer.countTokens() == 2) {
+			System.out.println("$#485#"); if (stInternalTokenizer.countTokens() == 2) {
 				String key = URLDecoder.decode(stInternalTokenizer.nextToken(),
 						"UTF-8");
 				String value = URLDecoder.decode(stInternalTokenizer
@@ -696,7 +696,7 @@ public class BeanStreamPayment implements PaymentModule {
 				nvp.put(key.toUpperCase(), value);
 			}
 		}
-		return nvp;
+		System.out.println("$#486#"); return nvp;
 	}
 
 	@Override
@@ -711,14 +711,14 @@ public class BeanStreamPayment implements PaymentModule {
 		Map<String,String> keys = integrationConfiguration.getIntegrationKeys();
 		
 		//validate integrationKeys['merchantid']
-		if(keys==null || StringUtils.isBlank(keys.get("merchantid"))) {
+		System.out.println("$#487#"); if(keys==null || StringUtils.isBlank(keys.get("merchantid"))) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("merchantid");
 		}
 		
 		//validate integrationKeys['username']
-		if(keys==null || StringUtils.isBlank(keys.get("username"))) {
-			if(errorFields==null) {
+		System.out.println("$#489#"); if(keys==null || StringUtils.isBlank(keys.get("username"))) {
+			System.out.println("$#491#"); if(errorFields==null) {
 				errorFields = new ArrayList<String>();
 			}
 			errorFields.add("username");
@@ -726,8 +726,8 @@ public class BeanStreamPayment implements PaymentModule {
 		
 		
 		//validate integrationKeys['password']
-		if(keys==null || StringUtils.isBlank(keys.get("password"))) {
-			if(errorFields==null) {
+		System.out.println("$#492#"); if(keys==null || StringUtils.isBlank(keys.get("password"))) {
+			System.out.println("$#494#"); if(errorFields==null) {
 				errorFields = new ArrayList<String>();
 			}
 			errorFields.add("password");
@@ -735,9 +735,9 @@ public class BeanStreamPayment implements PaymentModule {
 
 
 		
-		if(errorFields!=null) {
+		System.out.println("$#495#"); if(errorFields!=null) {
 			IntegrationException ex = new IntegrationException(IntegrationException.ERROR_VALIDATION_SAVE);
-			ex.setErrorFields(errorFields);
+			System.out.println("$#496#"); ex.setErrorFields(errorFields);
 			throw ex;
 			
 		}

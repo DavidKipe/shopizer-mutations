@@ -33,7 +33,7 @@ public class ShippingOriginServiceImpl extends SalesManagerEntityServiceImpl<Lon
 	public ShippingOrigin getByStore(MerchantStore store) {
 		// TODO Auto-generated method stub
 		ShippingOrigin origin = shippingOriginRepository.findByStore(store.getId());
-		return origin;
+		System.out.println("$#2890#"); return origin;
 	}
 	
 

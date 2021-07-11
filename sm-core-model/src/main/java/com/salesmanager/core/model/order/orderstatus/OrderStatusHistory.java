@@ -59,7 +59,7 @@ public class OrderStatusHistory implements Serializable {
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4378#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -67,7 +67,7 @@ public class OrderStatusHistory implements Serializable {
 	}
 
 	public Order getOrder() {
-		return order;
+		System.out.println("$#4379#"); return order;
 	}
 
 	public void setOrder(Order order) {
@@ -75,7 +75,7 @@ public class OrderStatusHistory implements Serializable {
 	}
 
 	public OrderStatus getStatus() {
-		return status;
+		System.out.println("$#4380#"); return status;
 	}
 
 	public void setStatus(OrderStatus status) {
@@ -83,7 +83,7 @@ public class OrderStatusHistory implements Serializable {
 	}
 
 	public Date getDateAdded() {
-		return CloneUtils.clone(dateAdded);
+		System.out.println("$#4381#"); return CloneUtils.clone(dateAdded);
 	}
 
 	public void setDateAdded(Date dateAdded) {
@@ -91,7 +91,7 @@ public class OrderStatusHistory implements Serializable {
 	}
 
 	public java.lang.Integer getCustomerNotified() {
-		return customerNotified;
+		System.out.println("$#4382#"); return customerNotified;
 	}
 
 	public void setCustomerNotified(java.lang.Integer customerNotified) {
@@ -99,7 +99,7 @@ public class OrderStatusHistory implements Serializable {
 	}
 
 	public String getComments() {
-		return comments;
+		System.out.println("$#4383#"); return comments;
 	}
 
 	public void setComments(String comments) {

@@ -21,37 +21,37 @@ public class ReadableOrderProductDownload extends Entity implements Serializable
 	private int downloadExpiryDays = 0;
 	private int downloadCount = 0;
 	public int getDownloadExpiryDays() {
-		return downloadExpiryDays;
+		System.out.println("$#9149#"); return downloadExpiryDays;
 	}
 	public void setDownloadExpiryDays(int downloadExpiryDays) {
 		this.downloadExpiryDays = downloadExpiryDays;
 	}
 	public int getDownloadCount() {
-		return downloadCount;
+		System.out.println("$#9150#"); return downloadCount;
 	}
 	public void setDownloadCount(int downloadCount) {
 		this.downloadCount = downloadCount;
 	}
 	public String getProductName() {
-		return productName;
+		System.out.println("$#9151#"); return productName;
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
 	public String getDownloadUrl() {
-		return downloadUrl;
+		System.out.println("$#9152#"); return downloadUrl;
 	}
 	public void setDownloadUrl(String downloadUrl) {
 		this.downloadUrl = downloadUrl;
 	}
 	public long getOrderId() {
-		return orderId;
+		System.out.println("$#9153#"); return orderId;
 	}
 	public void setOrderId(long orderId) {
 		this.orderId = orderId;
 	}
 	public String getFileName() {
-		return fileName;
+		System.out.println("$#9154#"); return fileName;
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;

@@ -20,16 +20,16 @@ public class CurrencyFacadeImpl implements CurrencyFacade {
   @Override
   public List<Currency> getList() {
     List<Currency> currencyList = currencyService.list();
-    if (currencyList.isEmpty()){
+				System.out.println("$#12322#"); if (currencyList.isEmpty()){
       throw new ResourceNotFoundException("No languages found");
     }
-    Collections.sort(currencyList, new Comparator<Currency>(){
+				System.out.println("$#12323#"); Collections.sort(currencyList, new Comparator<Currency>(){
 
     	  public int compare(Currency o1, Currency o2)
     	  {
-    	     return o1.getCode().compareTo(o2.getCode());
+										System.out.println("$#12325#"); return o1.getCode().compareTo(o2.getCode());
     	  }
     	});
-    return currencyList;
+				System.out.println("$#12324#"); return currencyList;
   }
 }

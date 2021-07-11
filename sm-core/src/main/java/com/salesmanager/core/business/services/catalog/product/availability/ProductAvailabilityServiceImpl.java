@@ -35,10 +35,10 @@ public class ProductAvailabilityServiceImpl extends
   @Override
   public void saveOrUpdate(ProductAvailability availability) throws ServiceException {
 
-    if (availability.getId() != null && availability.getId() > 0) {
-      this.update(availability);
+				System.out.println("$#1852#"); System.out.println("$#1851#"); if (availability.getId() != null && availability.getId() > 0) {
+						System.out.println("$#1854#"); this.update(availability);
     } else {
-      this.create(availability);
+						System.out.println("$#1855#"); this.create(availability);
     }
 
   }
@@ -53,7 +53,7 @@ public class ProductAvailabilityServiceImpl extends
       throws ServiceException {
     Validate.notNull(product, "Product cannot be null");
     Validate.notNull(store, "MerchantStore cannot be null");
-    return productAvailabilityRepository.getByStore(product.getId(), store.getCode());
+				System.out.println("$#1856#"); return productAvailabilityRepository.getByStore(product.getId(), store.getCode());
   }
 
 
@@ -70,14 +70,14 @@ public class ProductAvailabilityServiceImpl extends
     Validate.notNull(product, "Product cannot be null");
     Validate.notNull(store, "MercantStore cannot be null");
     Pageable pageRequest = PageRequest.of(page, count);
-    return pageableProductAvailabilityRepository.listByStore(product.getId(), store.getId(), child,
+				System.out.println("$#1857#"); return pageableProductAvailabilityRepository.listByStore(product.getId(), store.getId(), child,
         pageRequest);
   }
 
 
   @Override
   public int count(Product product) {
-    return productAvailabilityRepository.count(product.getId());
+				System.out.println("$#1858#"); return productAvailabilityRepository.count(product.getId());
   }
 
 
@@ -85,7 +85,7 @@ public class ProductAvailabilityServiceImpl extends
   public ProductAvailability getById(Long availabilityId, MerchantStore store)
       throws ServiceException {
     Validate.notNull(store, "Merchant must not be null");
-    return productAvailabilityRepository.getById(availabilityId);
+				System.out.println("$#1859#"); return productAvailabilityRepository.getById(availabilityId);
   }
 
 
@@ -93,7 +93,7 @@ public class ProductAvailabilityServiceImpl extends
   public ProductAvailability getByInventoryId(Long productId, Long availabilityId,
       MerchantStore store) throws ServiceException {
     Validate.notNull(store, "Merchant must not be null");
-    return productAvailabilityRepository.getByStore(productId, availabilityId);
+				System.out.println("$#1860#"); return productAvailabilityRepository.getByStore(productId, availabilityId);
   }
 
 

@@ -18,11 +18,11 @@ public class AsyncConfig implements AsyncConfigurer {
 
   @Override
   public Executor getAsyncExecutor() {
-    return Executors.newFixedThreadPool(EXECUTOR_SERVICE_NUMBER_THREADS);
+				System.out.println("$#7879#"); return Executors.newFixedThreadPool(EXECUTOR_SERVICE_NUMBER_THREADS);
   }
 
   @Override
   public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-    return new SimpleAsyncUncaughtExceptionHandler();
+				System.out.println("$#7880#"); return new SimpleAsyncUncaughtExceptionHandler();
   }
 }

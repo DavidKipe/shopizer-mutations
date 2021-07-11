@@ -19,10 +19,10 @@ public class LanguageFacadeImpl implements LanguageFacade {
   public List<Language> getLanguages() {
     try{
       List<Language> languages = languageService.getLanguages();
-      if (languages.isEmpty()) {
+						System.out.println("$#12790#"); if (languages.isEmpty()) {
         throw new ResourceNotFoundException("No languages found");
       }
-      return languages;
+						System.out.println("$#12791#"); return languages;
     } catch (ServiceException e){
       throw new ServiceRuntimeException(e);
     }

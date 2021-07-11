@@ -28,7 +28,7 @@ public class ShopGroup implements Serializable
 
     @JsonProperty("name")
     public List<String> getName() {
-        return name;
+								System.out.println("$#7828#"); return name;
     }
 
     @JsonProperty("name")
@@ -38,7 +38,7 @@ public class ShopGroup implements Serializable
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+								System.out.println("$#7829#"); return this.additionalProperties;
     }
 
     @JsonAnySetter

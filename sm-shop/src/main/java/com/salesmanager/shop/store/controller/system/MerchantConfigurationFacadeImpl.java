@@ -42,56 +42,56 @@ public class MerchantConfigurationFacadeImpl implements MerchantConfigurationFac
     MerchantConfig configs = getMerchantConfig(merchantStore);
 
     Configs readableConfig = new Configs();
-    readableConfig.setAllowOnlinePurchase(configs.isAllowPurchaseItems());
-    readableConfig.setDisplaySearchBox(configs.isDisplaySearchBox());
-    readableConfig.setDisplayContactUs(configs.isDisplayContactUs());
+				System.out.println("$#14188#"); readableConfig.setAllowOnlinePurchase(configs.isAllowPurchaseItems());
+				System.out.println("$#14189#"); readableConfig.setDisplaySearchBox(configs.isDisplaySearchBox());
+				System.out.println("$#14190#"); readableConfig.setDisplayContactUs(configs.isDisplayContactUs());
 
-    readableConfig.setDisplayCustomerSection(configs.isDisplayCustomerSection());
-    readableConfig.setDisplayAddToCartOnFeaturedItems(configs.isDisplayAddToCartOnFeaturedItems());
-    readableConfig.setDisplayCustomerAgreement(configs.isDisplayCustomerAgreement());
-    readableConfig.setDisplayPagesMenu(configs.isDisplayPagesMenu());
+				System.out.println("$#14191#"); readableConfig.setDisplayCustomerSection(configs.isDisplayCustomerSection());
+				System.out.println("$#14192#"); readableConfig.setDisplayAddToCartOnFeaturedItems(configs.isDisplayAddToCartOnFeaturedItems());
+				System.out.println("$#14193#"); readableConfig.setDisplayCustomerAgreement(configs.isDisplayCustomerAgreement());
+				System.out.println("$#14194#"); readableConfig.setDisplayPagesMenu(configs.isDisplayPagesMenu());
 
     Optional<String> facebookConfigValue = getConfigValue(KEY_FACEBOOK_PAGE_URL, merchantStore);
-    facebookConfigValue.ifPresent(readableConfig::setFacebook);
+				System.out.println("$#14195#"); facebookConfigValue.ifPresent(readableConfig::setFacebook);
 
     Optional<String> googleConfigValue = getConfigValue(KEY_GOOGLE_ANALYTICS_URL, merchantStore);
-    googleConfigValue.ifPresent(readableConfig::setGa);
+				System.out.println("$#14196#"); googleConfigValue.ifPresent(readableConfig::setGa);
 
     Optional<String> instagramConfigValue = getConfigValue(KEY_INSTAGRAM_URL, merchantStore);
-    instagramConfigValue.ifPresent(readableConfig::setInstagram);
+				System.out.println("$#14197#"); instagramConfigValue.ifPresent(readableConfig::setInstagram);
 
 
     Optional<String> pinterestConfigValue = getConfigValue(KEY_PINTEREST_PAGE_URL, merchantStore);
-    pinterestConfigValue.ifPresent(readableConfig::setPinterest);
+				System.out.println("$#14198#"); pinterestConfigValue.ifPresent(readableConfig::setPinterest);
 
-    readableConfig.setDisplayShipping(false);
+				System.out.println("$#14199#"); readableConfig.setDisplayShipping(false);
     try {
-      if(!StringUtils.isBlank(displayShipping)) {
-        readableConfig.setDisplayShipping(Boolean.valueOf(displayShipping));
+						System.out.println("$#14200#"); if(!StringUtils.isBlank(displayShipping)) {
+								System.out.println("$#14201#"); readableConfig.setDisplayShipping(Boolean.valueOf(displayShipping));
       }
     } catch(Exception e) {
       LOGGER.error("Cannot parse value of " + displayShipping);
     }
 
-    return readableConfig;
+				System.out.println("$#14202#"); return readableConfig;
   }
 
   private MerchantConfig getMerchantConfig(MerchantStore merchantStore) {
     try{
-      return merchantConfigurationService.getMerchantConfig(merchantStore);
+						System.out.println("$#14203#"); return merchantConfigurationService.getMerchantConfig(merchantStore);
     } catch (ServiceException e){
       throw new ServiceRuntimeException(e);
     }
   }
 
   private Optional<String> getConfigValue(String keyContant, MerchantStore merchantStore) {
-    return getMerchantConfiguration(keyContant, merchantStore)
+				System.out.println("$#14204#"); return getMerchantConfiguration(keyContant, merchantStore)
         .map(MerchantConfiguration::getValue);
   }
 
   private Optional<MerchantConfiguration> getMerchantConfiguration(String key, MerchantStore merchantStore) {
     try{
-      return Optional.ofNullable(merchantConfigurationService.getMerchantConfiguration(key, merchantStore));
+						System.out.println("$#14205#"); return Optional.ofNullable(merchantConfigurationService.getMerchantConfiguration(key, merchantStore));
     } catch (ServiceException e) {
       throw new ServiceRuntimeException(e);
     }

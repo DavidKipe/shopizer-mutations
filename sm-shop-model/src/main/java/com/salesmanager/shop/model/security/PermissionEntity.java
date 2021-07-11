@@ -11,13 +11,13 @@ public class PermissionEntity implements Serializable {
 	private Integer id;
 	private String name;
 	public String getName() {
-		return name;
+		System.out.println("$#9267#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public Integer getId() {
-		return id;
+		System.out.println("$#9268#"); return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;

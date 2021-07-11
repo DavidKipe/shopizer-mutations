@@ -32,7 +32,7 @@ public class PersistableProductAttributeMapper implements Mapper<PersistableProd
 	@Override
 	public ProductAttribute convert(PersistableProductAttribute source, MerchantStore store, Language language) {
 		ProductAttribute attribute = new ProductAttribute();
-		return convert(source,attribute,store,language);
+		System.out.println("$#8248#"); return convert(source,attribute,store,language);
 	}
 
 	@Override
@@ -42,60 +42,60 @@ public class PersistableProductAttributeMapper implements Mapper<PersistableProd
 		
 		ProductOption productOption = null;
 		
-		if(!StringUtils.isBlank(source.getOption().getCode())) {
+		System.out.println("$#8249#"); if(!StringUtils.isBlank(source.getOption().getCode())) {
 			productOption = productOptionService.getByCode(store, source.getOption().getCode());
 		} else {
-			Validate.notNull(source.getOption().getId(),"Product option id is null");
+			System.out.println("$#8250#"); Validate.notNull(source.getOption().getId(),"Product option id is null");
 			productOption = productOptionService.getById(source.getOption().getId());
 		}
 
-		if(productOption==null) {
+		System.out.println("$#8251#"); if(productOption==null) {
 			throw new ConversionRuntimeException("Product option id " + source.getOption().getId() + " does not exist");
 		}
 		
 		ProductOptionValue productOptionValue = null;
 		
-		if(!StringUtils.isBlank(source.getOptionValue().getCode())) {
+		System.out.println("$#8252#"); if(!StringUtils.isBlank(source.getOptionValue().getCode())) {
 			productOptionValue = productOptionValueService.getByCode(store, source.getOptionValue().getCode());
 		} else {
 			productOptionValue = productOptionValueService.getById(source.getOptionValue().getId());
 		}
 		
-		if(productOptionValue==null) {
+		System.out.println("$#8253#"); if(productOptionValue==null) {
 			throw new ConversionRuntimeException("Product option value id " + source.getOptionValue().getId() + " does not exist");
 		}
 		
-		if(productOption.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#8254#"); if(productOption.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 			throw new ConversionRuntimeException("Invalid product option id ");
 		}
 		
-		if(productOptionValue.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#8255#"); if(productOptionValue.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 			throw new ConversionRuntimeException("Invalid product option value id ");
 		}
 		
-		if(source.getProductId() != null && source.getProductId().longValue() >0 ) {
+		System.out.println("$#8257#"); System.out.println("$#8256#"); if(source.getProductId() != null && source.getProductId().longValue() >0 ) {
 			Product p = productService.getById(source.getProductId());
-			if(p == null) {
+			System.out.println("$#8259#"); if(p == null) {
 				throw new ConversionRuntimeException("Invalid product id ");
 			}
-			destination.setProduct(p);
+			System.out.println("$#8260#"); destination.setProduct(p);
 		}
 
 		
-		if(destination.getId()!=null && destination.getId().longValue()>0) {
-			destination.setId(destination.getId());
+		System.out.println("$#8262#"); System.out.println("$#8261#"); if(destination.getId()!=null && destination.getId().longValue()>0) {
+			System.out.println("$#8264#"); destination.setId(destination.getId());
 		} else {
-			destination.setId(null);
+			System.out.println("$#8265#"); destination.setId(null);
 		}
-		destination.setProductOption(productOption);
-		destination.setProductOptionValue(productOptionValue);
-		destination.setProductAttributePrice(source.getProductAttributePrice());
-		destination.setProductAttributeWeight(source.getProductAttributeWeight());
-		destination.setProductAttributePrice(source.getProductAttributePrice());
-		destination.setAttributeDisplayOnly(source.isAttributeDisplayOnly());
+		System.out.println("$#8266#"); destination.setProductOption(productOption);
+		System.out.println("$#8267#"); destination.setProductOptionValue(productOptionValue);
+		System.out.println("$#8268#"); destination.setProductAttributePrice(source.getProductAttributePrice());
+		System.out.println("$#8269#"); destination.setProductAttributeWeight(source.getProductAttributeWeight());
+		System.out.println("$#8270#"); destination.setProductAttributePrice(source.getProductAttributePrice());
+		System.out.println("$#8271#"); destination.setAttributeDisplayOnly(source.isAttributeDisplayOnly());
 
 		
-		return destination;
+		System.out.println("$#8272#"); return destination;
 	}
 
 }

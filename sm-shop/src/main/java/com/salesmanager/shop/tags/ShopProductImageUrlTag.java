@@ -46,10 +46,10 @@ public class ShopProductImageUrlTag extends RequestContextAwareTag {
 	public int doStartTagInternal() throws JspException {
 		try {
 			
-			if (filePathUtils==null || imageUtils==null) {
+			System.out.println("$#15453#"); if (filePathUtils==null || imageUtils==null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15455#"); factory.autowireBean(this);
 	        }
 
 			HttpServletRequest request = (HttpServletRequest) pageContext
@@ -62,7 +62,7 @@ public class ShopProductImageUrlTag extends RequestContextAwareTag {
 			String baseUrl = filePathUtils.buildRelativeStoreUri(request, merchantStore);
 			imagePath.append(baseUrl);
 			
-			if(StringUtils.isBlank(this.getSize()) || this.getSize().equals(SMALL)) {
+			System.out.println("$#15456#"); if(StringUtils.isBlank(this.getSize()) || this.getSize().equals(SMALL)) {
 				imagePath.append(imageUtils.buildProductImageUtils(merchantStore, this.getSku(), this.getImageName())).toString();
 			} else {
 				imagePath.append(imageUtils.buildLargeProductImageUtils(merchantStore, this.getSku(), this.getImageName())).toString();
@@ -70,7 +70,7 @@ public class ShopProductImageUrlTag extends RequestContextAwareTag {
 
 			//System.out.println("Printing image -M " + imagePath.toString());
 
-			pageContext.getOut().print(imagePath.toString());
+			System.out.println("$#15458#"); pageContext.getOut().print(imagePath.toString());
 
 
 			
@@ -82,7 +82,7 @@ public class ShopProductImageUrlTag extends RequestContextAwareTag {
 
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15459#"); return EVAL_PAGE;
 	}
 
 
@@ -91,7 +91,7 @@ public class ShopProductImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public String getImageName() {
-		return imageName;
+		System.out.println("$#15460#"); return imageName;
 	}
 
 
@@ -101,11 +101,11 @@ public class ShopProductImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public String getSku() {
-		return sku;
+		System.out.println("$#15461#"); return sku;
 	}
 
 	public String getSize() {
-		return size;
+		System.out.println("$#15462#"); return size;
 	}
 
 	public void setSize(String size) {

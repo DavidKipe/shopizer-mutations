@@ -34,7 +34,7 @@ public class ReadableOrderProductPopulator extends
 
 
 	public ImageFilePath getimageUtils() {
-		return imageUtils;
+		System.out.println("$#10724#"); return imageUtils;
 	}
 
 	public void setimageUtils(ImageFilePath imageUtils) {
@@ -49,15 +49,15 @@ public class ReadableOrderProductPopulator extends
 		Validate.notNull(productService,"Requires ProductService");
 		Validate.notNull(pricingService,"Requires PricingService");
 		Validate.notNull(imageUtils,"Requires imageUtils");
-		target.setId(source.getId());
-		target.setOrderedQuantity(source.getProductQuantity());
+		System.out.println("$#10725#"); target.setId(source.getId());
+		System.out.println("$#10726#"); target.setOrderedQuantity(source.getProductQuantity());
 		try {
-			target.setPrice(pricingService.getDisplayAmount(source.getOneTimeCharge(), store));
+			System.out.println("$#10727#"); target.setPrice(pricingService.getDisplayAmount(source.getOneTimeCharge(), store));
 		} catch(Exception e) {
 			throw new ConversionException("Cannot convert price",e);
 		}
-		target.setProductName(source.getProductName());
-		target.setSku(source.getSku());
+		System.out.println("$#10728#"); target.setProductName(source.getProductName());
+		System.out.println("$#10729#"); target.setSku(source.getSku());
 		
 		//subtotal = price * quantity
 		BigDecimal subTotal = source.getOneTimeCharge();
@@ -65,64 +65,64 @@ public class ReadableOrderProductPopulator extends
 		
 		try {
 			String subTotalPrice = pricingService.getDisplayAmount(subTotal, store);
-			target.setSubTotal(subTotalPrice);
+			System.out.println("$#10730#"); target.setSubTotal(subTotalPrice);
 		} catch(Exception e) {
 			throw new ConversionException("Cannot format price",e);
 		}
 		
-		if(source.getOrderAttributes()!=null) {
+		System.out.println("$#10731#"); if(source.getOrderAttributes()!=null) {
 			List<ReadableOrderProductAttribute> attributes = new ArrayList<ReadableOrderProductAttribute>();
 			for(OrderProductAttribute attr : source.getOrderAttributes()) {
 				ReadableOrderProductAttribute readableAttribute = new ReadableOrderProductAttribute();
 				try {
 					String price = pricingService.getDisplayAmount(attr.getProductAttributePrice(), store);
-					readableAttribute.setAttributePrice(price);
+					System.out.println("$#10732#"); readableAttribute.setAttributePrice(price);
 				} catch (ServiceException e) {
 					throw new ConversionException("Cannot format price",e);
 				}
 				
-				readableAttribute.setAttributeName(attr.getProductAttributeName());
-				readableAttribute.setAttributeValue(attr.getProductAttributeValueName());
+				System.out.println("$#10733#"); readableAttribute.setAttributeName(attr.getProductAttributeName());
+				System.out.println("$#10734#"); readableAttribute.setAttributeValue(attr.getProductAttributeValueName());
 				attributes.add(readableAttribute);
 			}
-			target.setAttributes(attributes);
+			System.out.println("$#10735#"); target.setAttributes(attributes);
 		}
 		
 
 			String productSku = source.getSku();
-			if(!StringUtils.isBlank(productSku)) {
+			System.out.println("$#10736#"); if(!StringUtils.isBlank(productSku)) {
 				Product product = productService.getByCode(productSku, language);
-				if(product!=null) {
+				System.out.println("$#10737#"); if(product!=null) {
 					
 					
 					
 					ReadableProductPopulator populator = new ReadableProductPopulator();
-					populator.setPricingService(pricingService);
-					populator.setimageUtils(imageUtils);
+					System.out.println("$#10738#"); populator.setPricingService(pricingService);
+					System.out.println("$#10739#"); populator.setimageUtils(imageUtils);
 					
 					ReadableProduct productProxy = populator.populate(product, new ReadableProduct(), store, language);
-					target.setProduct(productProxy);
+					System.out.println("$#10740#"); target.setProduct(productProxy);
 					
 					Set<ProductImage> images = product.getImages();
 					ProductImage defaultImage = null;
-					if(images!=null) {
+					System.out.println("$#10741#"); if(images!=null) {
 						for(ProductImage image : images) {
-							if(defaultImage==null) {
+							System.out.println("$#10742#"); if(defaultImage==null) {
 								defaultImage = image;
 							}
-							if(image.isDefaultImage()) {
+							System.out.println("$#10743#"); if(image.isDefaultImage()) {
 								defaultImage = image;
 							}
 						}
 					}
-					if(defaultImage!=null) {
-						target.setImage(defaultImage.getProductImage());
+					System.out.println("$#10744#"); if(defaultImage!=null) {
+						System.out.println("$#10745#"); target.setImage(defaultImage.getProductImage());
 					}
 				}
 			}
 		
 		
-		return target;
+		System.out.println("$#10746#"); return target;
 	}
 
 	@Override
@@ -132,7 +132,7 @@ public class ReadableOrderProductPopulator extends
 	}
 
 	public ProductService getProductService() {
-		return productService;
+		System.out.println("$#10747#"); return productService;
 	}
 
 	public void setProductService(ProductService productService) {
@@ -140,7 +140,7 @@ public class ReadableOrderProductPopulator extends
 	}
 	
 	public PricingService getPricingService() {
-		return pricingService;
+		System.out.println("$#10748#"); return pricingService;
 	}
 
 	public void setPricingService(PricingService pricingService) {

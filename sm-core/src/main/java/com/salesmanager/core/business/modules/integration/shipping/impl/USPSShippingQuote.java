@@ -76,21 +76,21 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 		
 		//validate integrationKeys['account']
 		Map<String,String> keys = integrationConfiguration.getIntegrationKeys();
-		if(keys==null || StringUtils.isBlank(keys.get("account"))) {
+		System.out.println("$#1348#"); if(keys==null || StringUtils.isBlank(keys.get("account"))) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("identifier");
 		}
 
 		//validate at least one integrationOptions['packages']
 		Map<String,List<String>> options = integrationConfiguration.getIntegrationOptions();
-		if(options==null) {
+		System.out.println("$#1350#"); if(options==null) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("identifier");
 		}
 		
 		List<String> packages = options.get("packages");
-		if(packages==null || packages.size()==0) {
-			if(errorFields==null) {
+		System.out.println("$#1351#"); if(packages==null || packages.size()==0) {
+			System.out.println("$#1353#"); if(errorFields==null) {
 				errorFields = new ArrayList<String>();
 			}
 			errorFields.add("packages");
@@ -111,9 +111,9 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			errorFields.add("services");
 		}*/
 		
-		if(errorFields!=null) {
+		System.out.println("$#1354#"); if(errorFields!=null) {
 			IntegrationException ex = new IntegrationException(IntegrationException.ERROR_VALIDATION_SAVE);
-			ex.setErrorFields(errorFields);
+			System.out.println("$#1355#"); ex.setErrorFields(errorFields);
 			throw ex;
 			
 		}
@@ -133,12 +133,12 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 
 	
 
-		if (packages == null) {
-			return null;
+		System.out.println("$#1356#"); if (packages == null) {
+			System.out.println("$#1357#"); return null;
 		}
 		
-		if(StringUtils.isBlank(delivery.getPostalCode())) {
-			return null;
+		System.out.println("$#1358#"); if(StringUtils.isBlank(delivery.getPostalCode())) {
+			System.out.println("$#1359#"); return null;
 		}
 		
 
@@ -153,7 +153,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 
 		// supports en and fr
 		String language = locale.getLanguage();
-		if (!language.equals(Locale.FRENCH.getLanguage())
+		System.out.println("$#1360#"); if (!language.equals(Locale.FRENCH.getLanguage())
 				&& !language.equals(Locale.ENGLISH.getLanguage())) {
 			language = Locale.ENGLISH.getLanguage();
 		}
@@ -182,8 +182,8 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 		
 			
 			Map<String,String> keys = configuration.getIntegrationKeys();
-			if(keys==null || StringUtils.isBlank(keys.get("account"))) {
-				return null;//TODO can we return null
+			System.out.println("$#1362#"); if(keys==null || StringUtils.isBlank(keys.get("account"))) {
+				System.out.println("$#1364#"); return null;//TODO can we return null
 			}
 
 			
@@ -198,7 +198,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			String env = configuration.getEnvironment();
 
 			//must be US
-			if(!store.getCountry().getIsoCode().equals("US")) {
+			System.out.println("$#1365#"); if(!store.getCountry().getIsoCode().equals("US")) {
 				throw new IntegrationException("Can't use the service for store country code ");
 			}
 
@@ -206,7 +206,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			for(String key : moduleConfigsMap.keySet()) {
 				
 				ModuleConfig moduleConfig = (ModuleConfig)moduleConfigsMap.get(key);
-				if(moduleConfig.getEnv().equals(env)) {
+				System.out.println("$#1366#"); if(moduleConfig.getEnv().equals(env)) {
 					host = moduleConfig.getHost();
 					protocol = moduleConfig.getScheme();
 					port = moduleConfig.getPort();
@@ -216,7 +216,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			
 
 			StringBuilder xmlheader = new StringBuilder();
-			if(store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
+			System.out.println("$#1367#"); if(store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
 				xmlheader.append("<RateV3Request USERID=\"").append(keys.get("account")).append("\">");
 			} else {
 				xmlheader.append("<IntlRateRequest USERID=\"").append(keys.get("account")).append("\">");
@@ -244,19 +244,19 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 				double l = DataUtils.getMeasure(detail.getShippingLength(),
 						store, MeasureUnit.IN.name());
 	
-				totalW = totalW + w;
-				totalH = totalH + h;
-				totalL = totalL + l;
+				System.out.println("$#1368#"); totalW = totalW + w;
+				System.out.println("$#1369#"); totalH = totalH + h;
+				System.out.println("$#1370#"); totalL = totalL + l;
 	
 				// Girth = Length + (Width x 2) + (Height x 2)
-				double girth = l + (w * 2) + (h * 2);
+				System.out.println("$#1374#"); System.out.println("$#1373#"); System.out.println("$#1372#"); System.out.println("$#1371#"); double girth = l + (w * 2) + (h * 2);
 		
-				totalG = totalG + girth;
+				System.out.println("$#1375#"); totalG = totalG + girth;
 	
 				// need weight in pounds
 				double p = DataUtils.getWeight(detail.getShippingWeight(), store, MeasureUnit.LB.name());
 	
-				totalP = totalP + p;
+				System.out.println("$#1376#"); totalP = totalP + p;
 
 			}
 
@@ -269,8 +269,8 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			// ship date is 3 days from here
 
 			Calendar c = Calendar.getInstance();
-			c.setTime(new Date());
-			c.add(Calendar.DATE, 3);
+			System.out.println("$#1377#"); c.setTime(new Date());
+			System.out.println("$#1378#"); c.add(Calendar.DATE, 3);
 			Date newDate = c.getTime();
 			
 			SimpleDateFormat format = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
@@ -282,18 +282,18 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 
 			// need pounds and ounces
 			int pounds = (int) totalP;
-			String ouncesString = String.valueOf(totalP - pounds);
+			System.out.println("$#1379#"); String ouncesString = String.valueOf(totalP - pounds);
 			int ouncesIndex = ouncesString.indexOf(".");
 			String ounces = "00";
-			if (ouncesIndex > -1) {
-				ounces = ouncesString.substring(ouncesIndex + 1);
+			System.out.println("$#1381#"); System.out.println("$#1380#"); if (ouncesIndex > -1) {
+				System.out.println("$#1382#"); ounces = ouncesString.substring(ouncesIndex + 1);
 			}
 
 			String size = "REGULAR";
 		
-			if (totalL + totalG <= 64) {
+			System.out.println("$#1385#"); System.out.println("$#1384#"); System.out.println("$#1383#"); if (totalL + totalG <= 64) {
 				size = "REGULAR";
-			} else if (totalL + totalG <= 108) {
+			} else if (totalL + totalG <= 108) { System.out.println("$#1386#"); System.out.println("$#1387#"); System.out.println("$#1388#");
 				size = "LARGE";
 			} else {
 				size = "OVERSIZE";
@@ -339,7 +339,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			xmldatabuffer.append("<Package ID=\"").append(i).append("\">");
 
 
-			if(store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
+			System.out.println("$#1389#"); if(store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
 
 				xmldatabuffer.append("<Service>");
 				xmldatabuffer.append("ALL");
@@ -416,7 +416,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			xmldatabuffer.append("</Package>");
 
 			String xmlfooter = "</RateV3Request>";
-			if(!store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
+			System.out.println("$#1390#"); if(!store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
 				xmlfooter = "</IntlRateRequest>";
 			}
 
@@ -430,7 +430,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			String encoded = java.net.URLEncoder.encode(xmlbuffer.toString());
 
 			String completeUri = url + "?API=RateV3&XML=" + encoded;
-			if(!store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
+			System.out.println("$#1391#"); if(!store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
 				completeUri = url + "?API=IntlRate&XML=" + encoded;
 			}
 
@@ -448,9 +448,9 @@ public class USPSShippingQuote implements ShippingQuoteModule {
                 public String handleResponse(
                         final HttpResponse response) throws ClientProtocolException, IOException {
                     int status = response.getStatusLine().getStatusCode();
-                    if (status >= 200 && status < 300) {
+																				System.out.println("$#1422#"); System.out.println("$#1420#"); if (status >= 200 && status < 300) {
                         HttpEntity entity = response.getEntity();
-                        return entity != null ? EntityUtils.toString(entity) : null;
+																								System.out.println("$#1425#"); System.out.println("$#1424#"); return entity != null ? EntityUtils.toString(entity) : null;
                     } else {
                     	LOGGER.error("Communication Error with ups quote " + status);
         				throw new ClientProtocolException("UPS quote communication error " + status);
@@ -478,60 +478,60 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			 */
 
 			Digester digester = new Digester();
-			digester.push(parsed);
+			System.out.println("$#1392#"); digester.push(parsed);
 
-			if(store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
+			System.out.println("$#1393#"); if(store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
 
-				digester.addCallMethod("Error/Description",
+				System.out.println("$#1394#"); digester.addCallMethod("Error/Description",
 						"setError", 0);
-				digester.addCallMethod("RateV3Response/Package/Error/Description",
+				System.out.println("$#1395#"); digester.addCallMethod("RateV3Response/Package/Error/Description",
 						"setError", 0);
 				digester
 						.addObjectCreate(
 								"RateV3Response/Package/Postage",
 								ShippingOption.class);
-				digester.addSetProperties("RateV3Response/Package/Postage",
+				System.out.println("$#1397#"); digester.addSetProperties("RateV3Response/Package/Postage",
 						"CLASSID", "optionId");
-				digester.addCallMethod(
+				System.out.println("$#1398#"); digester.addCallMethod(
 						"RateV3Response/Package/Postage/MailService",
 						"setOptionName", 0);
-				digester.addCallMethod(
+				System.out.println("$#1399#"); digester.addCallMethod(
 						"RateV3Response/Package/Postage/MailService",
 						"setOptionCode", 0);
-				digester.addCallMethod("RateV3Response/Package/Postage/Rate",
+				System.out.println("$#1400#"); digester.addCallMethod("RateV3Response/Package/Postage/Rate",
 						"setOptionPriceText", 0);
 				//digester
 				//		.addCallMethod(
 				//				"RateV3Response/Package/Postage/Commitment/CommitmentDate",
 				//				"estimatedNumberOfDays", 0);
-				digester.addSetNext("RateV3Response/Package/Postage",
+				System.out.println("$#1401#"); digester.addSetNext("RateV3Response/Package/Postage",
 						"addOption");
 
 			} else {
 
-				digester.addCallMethod("Error/Description",
+				System.out.println("$#1402#"); digester.addCallMethod("Error/Description",
 						"setError", 0);
-				digester.addCallMethod("IntlRateResponse/Package/Error/Description",
+				System.out.println("$#1403#"); digester.addCallMethod("IntlRateResponse/Package/Error/Description",
 						"setError", 0);
 				digester
 						.addObjectCreate(
 								"IntlRateResponse/Package/Service",
 								ShippingOption.class);
-				digester.addSetProperties("IntlRateResponse/Package/Service",
+				System.out.println("$#1405#"); digester.addSetProperties("IntlRateResponse/Package/Service",
 						"ID", "optionId");
-				digester.addCallMethod(
+				System.out.println("$#1406#"); digester.addCallMethod(
 						"IntlRateResponse/Package/Service/SvcDescription",
 						"setOptionName", 0);
-				digester.addCallMethod(
+				System.out.println("$#1407#"); digester.addCallMethod(
 						"IntlRateResponse/Package/Service/SvcDescription",
 						"setOptionCode", 0);
-				digester.addCallMethod(
+				System.out.println("$#1408#"); digester.addCallMethod(
 						"IntlRateResponse/Package/Service/Postage",
 						"setOptionPriceText", 0);
 				//digester.addCallMethod(
 				//		"IntlRateResponse/Package/Service/SvcCommitments",
 				//		"setEstimatedNumberOfDays", 0);
-				digester.addSetNext("IntlRateResponse/Package/Service",
+				System.out.println("$#1409#"); digester.addSetNext("IntlRateResponse/Package/Service",
 						"addOption");
 
 			}
@@ -552,12 +552,12 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			xmlreader = new StringReader(data);
 			digester.parse(xmlreader);
 
-			if (!StringUtils.isBlank(parsed.getError())) {
+			System.out.println("$#1410#"); if (!StringUtils.isBlank(parsed.getError())) {
 				LOGGER.error("Can't process USPS message= "
 						+ parsed.getError());
 				throw new IntegrationException(parsed.getError());
 			}
-			if (!StringUtils.isBlank(parsed.getStatusCode())
+			System.out.println("$#1411#"); if (!StringUtils.isBlank(parsed.getStatusCode())
 					&& !parsed.getStatusCode().equals("1")) {
 				LOGGER.error("Can't process USPS statusCode="
 						+ parsed.getStatusCode() + " message= "
@@ -565,7 +565,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 				throw new IntegrationException(parsed.getError());
 			}
 
-			if (parsed.getOptions() == null || parsed.getOptions().size() == 0) {
+			System.out.println("$#1413#"); if (parsed.getOptions() == null || parsed.getOptions().size() == 0) {
 				LOGGER.warn("No options returned from USPS");
 				throw new IntegrationException(parsed.getError());
 			}
@@ -666,21 +666,21 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 
 			}*/
 
-			return shippingOptions;
+			System.out.println("$#1415#"); return shippingOptions;
 			}
 
 		} catch (Exception e1) {
 			LOGGER.error("Error in USPS shipping quote ",e1);
 			throw new IntegrationException(e1);
 		} finally {
-			if (xmlreader != null) {
+			System.out.println("$#1416#"); if (xmlreader != null) {
 				try {
-					xmlreader.close();
+					System.out.println("$#1417#"); xmlreader.close();
 				} catch (Exception ignore) {
 				}
 			}
-			if (httpget != null) {
-				httpget.releaseConnection();
+			System.out.println("$#1418#"); if (httpget != null) {
+				System.out.println("$#1419#"); httpget.releaseConnection();
 			}
 		}
 
@@ -712,11 +712,11 @@ class USPSParsedElements {
 	}
 
 	public List getOptions() {
-		return options;
+		System.out.println("$#1343#"); return options;
 	}
 
 	public String getStatusCode() {
-		return statusCode;
+		System.out.println("$#1344#"); return statusCode;
 	}
 
 	public void setStatusCode(String statusCode) {
@@ -724,7 +724,7 @@ class USPSParsedElements {
 	}
 
 	public String getStatusMessage() {
-		return statusMessage;
+		System.out.println("$#1345#"); return statusMessage;
 	}
 
 	public void setStatusMessage(String statusMessage) {
@@ -732,7 +732,7 @@ class USPSParsedElements {
 	}
 
 	public String getError() {
-		return error;
+		System.out.println("$#1346#"); return error;
 	}
 
 	public void setError(String error) {
@@ -740,7 +740,7 @@ class USPSParsedElements {
 	}
 
 	public String getErrorCode() {
-		return errorCode;
+		System.out.println("$#1347#"); return errorCode;
 	}
 
 	public void setErrorCode(String errorCode) {

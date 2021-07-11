@@ -35,82 +35,82 @@ public class ReadableProductOptionSetMapper implements Mapper<ProductOptionSet, 
 	@Override
 	public ReadableProductOptionSet convert(ProductOptionSet source, MerchantStore store, Language language) {
 		ReadableProductOptionSet optionSource = new ReadableProductOptionSet();
-		return convert(source, optionSource, store, language);
+		System.out.println("$#8468#"); return convert(source, optionSource, store, language);
 	}
 
 	@Override
 	public ReadableProductOptionSet convert(ProductOptionSet source, ReadableProductOptionSet destination,
 			MerchantStore store, Language language) {
-		Validate.notNull(source,"ProductOptionSet must not be null");
-		Validate.notNull(destination,"ReadableProductOptionSet must not be null");
+		System.out.println("$#8469#"); Validate.notNull(source,"ProductOptionSet must not be null");
+		System.out.println("$#8470#"); Validate.notNull(destination,"ReadableProductOptionSet must not be null");
 		
 		
-		destination.setId(source.getId());
-		destination.setCode(source.getCode());
-		destination.setReadOnly(source.isOptionDisplayOnly());
+		System.out.println("$#8471#"); destination.setId(source.getId());
+		System.out.println("$#8472#"); destination.setCode(source.getCode());
+		System.out.println("$#8473#"); destination.setReadOnly(source.isOptionDisplayOnly());
 		
-		destination.setOption(this.option(source.getOption(), store, language));
+		System.out.println("$#8474#"); destination.setOption(this.option(source.getOption(), store, language));
 		
 		List<Long> ids = new ArrayList<Long>();
 
-		if(!CollectionUtils.isEmpty(source.getValues())) {
+		System.out.println("$#8475#"); if(!CollectionUtils.isEmpty(source.getValues())) {
 			List<ReadableProductOptionValue> values = source.getValues().stream().map(val -> optionValue(ids, val, store, language)).collect(Collectors.toList());
-			destination.setValues(values);
+			System.out.println("$#8477#"); destination.setValues(values);
 			destination.getValues().removeAll(Collections.singleton(null));
 		}
 		
-		if(!CollectionUtils.isEmpty(source.getProductTypes())) {
+		System.out.println("$#8478#"); if(!CollectionUtils.isEmpty(source.getProductTypes())) {
 			List<ReadableProductType> types = source.getProductTypes().stream().map( t -> this.productType(t, store, language)).collect(Collectors.toList());
-			destination.setProductTypes(types);
+			System.out.println("$#8480#"); destination.setProductTypes(types);
 		}
 
 		
-		return destination;
+		System.out.println("$#8481#"); return destination;
 	}
 	
 	private ReadableProductOption option (ProductOption option, MerchantStore store, Language lang) {
 
 		ReadableProductOption opt = new ReadableProductOption();
-		opt.setCode(option.getCode());
-		opt.setId(option.getId());
-		opt.setLang(lang.getCode());
-		opt.setReadOnly(option.isReadOnly());
-		opt.setType(option.getProductOptionType());
+		System.out.println("$#8482#"); opt.setCode(option.getCode());
+		System.out.println("$#8483#"); opt.setId(option.getId());
+		System.out.println("$#8484#"); opt.setLang(lang.getCode());
+		System.out.println("$#8485#"); opt.setReadOnly(option.isReadOnly());
+		System.out.println("$#8486#"); opt.setType(option.getProductOptionType());
 		ProductOptionDescription desc = this.optionDescription(option.getDescriptions(), lang);
-		if(desc != null) {
-			opt.setName(desc.getName());
+		System.out.println("$#8487#"); if(desc != null) {
+			System.out.println("$#8488#"); opt.setName(desc.getName());
 		}
 
-		return opt;
+		System.out.println("$#8489#"); return opt;
 	}
 	
 	private ReadableProductOptionValue optionValue (List<Long> ids, ProductOptionValue optionValue, MerchantStore store, Language language) {
 		
-		if(!ids.contains(optionValue.getId())) {
+		System.out.println("$#8490#"); if(!ids.contains(optionValue.getId())) {
 			ReadableProductOptionValue value = new ReadableProductOptionValue();
-			value.setCode(optionValue.getCode());
-			value.setId(optionValue.getId());
+			System.out.println("$#8491#"); value.setCode(optionValue.getCode());
+			System.out.println("$#8492#"); value.setId(optionValue.getId());
 			ProductOptionValueDescription desc = optionValueDescription(optionValue.getDescriptions(), language);
-			if(desc!=null) {
-				value.setName(desc.getName());
+			System.out.println("$#8493#"); if(desc!=null) {
+				System.out.println("$#8494#"); value.setName(desc.getName());
 			}
 			ids.add(optionValue.getId());
-			return value;
+			System.out.println("$#8495#"); return value;
 		} else {
 			return null;
 		}
 	}
 	
 	private ProductOptionDescription optionDescription(Set<ProductOptionDescription> descriptions, Language lang) {
-		return descriptions.stream().filter(desc-> desc.getLanguage().getCode().equals(lang.getCode())).findAny().orElse(null);
+		System.out.println("$#8498#"); System.out.println("$#8497#"); System.out.println("$#8496#"); return descriptions.stream().filter(desc-> desc.getLanguage().getCode().equals(lang.getCode())).findAny().orElse(null);
 	}
 	
 	private ProductOptionValueDescription optionValueDescription(Set<ProductOptionValueDescription> descriptions, Language lang) {
-		return descriptions.stream().filter(desc-> desc.getLanguage().getCode().equals(lang.getCode())).findAny().orElse(null);
+		System.out.println("$#8501#"); System.out.println("$#8500#"); System.out.println("$#8499#"); return descriptions.stream().filter(desc-> desc.getLanguage().getCode().equals(lang.getCode())).findAny().orElse(null);
 	}
 	
 	private ReadableProductType productType(ProductType type, MerchantStore store, Language language) {
-		return readableProductTypeMapper.convert(type, store, language);
+		System.out.println("$#8502#"); return readableProductTypeMapper.convert(type, store, language);
 	}
 
 }

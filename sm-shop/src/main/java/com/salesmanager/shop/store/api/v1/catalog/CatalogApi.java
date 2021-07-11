@@ -69,7 +69,7 @@ public class CatalogApi {
       @RequestParam(value = "count", required = false, defaultValue="10") Integer count,
       HttpServletRequest request) {
 
-	  return catalogFacade.listCatalogs(catalogFilter(request), merchantStore, language, page, count);
+			System.out.println("$#11520#"); return catalogFacade.listCatalogs(catalogFilter(request), merchantStore, language, page, count);
 
   }
   
@@ -87,7 +87,7 @@ public class CatalogApi {
       @ApiIgnore MerchantStore merchantStore, 
       @ApiIgnore Language language) {
       boolean existByCode = catalogFacade.uniqueCatalog(code, merchantStore);
-      return new ResponseEntity<EntityExists>(new EntityExists(existByCode), HttpStatus.OK);
+						System.out.println("$#11521#"); return new ResponseEntity<EntityExists>(new EntityExists(existByCode), HttpStatus.OK);
   }
 
 
@@ -102,7 +102,7 @@ public class CatalogApi {
       @RequestBody @Valid PersistableCatalog catalog,
       @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
     
-	  return catalogFacade.saveCatalog(catalog, merchantStore, language);
+			System.out.println("$#11522#"); return catalogFacade.saveCatalog(catalog, merchantStore, language);
 
   }
   
@@ -118,8 +118,8 @@ public class CatalogApi {
       @RequestBody @Valid PersistableCatalog catalog,
       @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
     
-	  catalog.setId(id);
-	  catalogFacade.updateCatalog(id, catalog, merchantStore, language);
+			System.out.println("$#11523#"); catalog.setId(id);
+			System.out.println("$#11524#"); catalogFacade.updateCatalog(id, catalog, merchantStore, language);
 
   }
   
@@ -134,7 +134,7 @@ public class CatalogApi {
 	  @PathVariable Long id,
       @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
-	  return catalogFacade.getCatalog(id, merchantStore, language);
+			System.out.println("$#11525#"); return catalogFacade.getCatalog(id, merchantStore, language);
 
   }
   
@@ -151,7 +151,7 @@ public class CatalogApi {
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language) {
     
-	  catalogFacade.deleteCatalog(id, merchantStore, language);
+			System.out.println("$#11526#"); catalogFacade.deleteCatalog(id, merchantStore, language);
   }
   
   @PostMapping(value = "/private/catalog/{id}")
@@ -170,12 +170,12 @@ public class CatalogApi {
 	  
 	  ReadableCatalog c = catalogFacade.getCatalog(id, merchantStore, language);
 	  
-	  if(c == null) {
+			System.out.println("$#11527#"); if(c == null) {
 		  throw new ResourceNotFoundException("Catalog id [" + id + "] not found");
 	  }
 	  
-	  catalogEntry.setCatalog(c.getCode());
-	  return catalogFacade.addCatalogEntry(catalogEntry, merchantStore, language);
+			System.out.println("$#11528#"); catalogEntry.setCatalog(c.getCode());
+			System.out.println("$#11529#"); return catalogFacade.addCatalogEntry(catalogEntry, merchantStore, language);
 
 
   }
@@ -193,7 +193,7 @@ public class CatalogApi {
       @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 	  
 	  
-	  catalogFacade.removeCatalogEntry(id, entryId, merchantStore, language);
+			System.out.println("$#11530#"); catalogFacade.removeCatalogEntry(id, entryId, merchantStore, language);
 
 
 
@@ -214,19 +214,19 @@ public class CatalogApi {
       @RequestParam(value = "count", required = false, defaultValue="10") Integer count,
       HttpServletRequest request) {
 
-	  return catalogFacade.listCatalogEntry(catalogEntryFilter(request), id, merchantStore, language, page, count);
+			System.out.println("$#11531#"); return catalogFacade.listCatalogEntry(catalogEntryFilter(request), id, merchantStore, language, page, count);
 
 
   }
   
   private Optional<String> catalogFilter(HttpServletRequest request) {
 
-	    return Optional.ofNullable((String)request.getAttribute("code"));
+					System.out.println("$#11532#"); return Optional.ofNullable((String)request.getAttribute("code"));
   }
   
   private Optional<String> catalogEntryFilter(HttpServletRequest request) {
 
-	    return Optional.ofNullable((String)request.getAttribute("name"));
+					System.out.println("$#11533#"); return Optional.ofNullable((String)request.getAttribute("name"));
 }
   
 }

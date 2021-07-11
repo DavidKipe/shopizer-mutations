@@ -53,13 +53,13 @@ public class Zone extends SalesManagerEntity<Long, Zone> {
   public Zone() {}
 
   public Zone(Country country, String name, String code) {
-    this.setCode(code);
-    this.setCountry(country);
-    this.setCode(name);
+				System.out.println("$#4487#"); this.setCode(code);
+				System.out.println("$#4488#"); this.setCountry(country);
+				System.out.println("$#4489#"); this.setCode(name);
   }
 
   public Country getCountry() {
-    return country;
+				System.out.println("$#4490#"); return country;
   }
 
   public void setCountry(Country country) {
@@ -69,7 +69,7 @@ public class Zone extends SalesManagerEntity<Long, Zone> {
 
 
   public String getCode() {
-    return code;
+				System.out.println("$#4491#"); return code;
   }
 
   public void setCode(String code) {
@@ -78,7 +78,7 @@ public class Zone extends SalesManagerEntity<Long, Zone> {
 
   @Override
   public Long getId() {
-    return id;
+				System.out.println("$#4492#"); return id;
   }
 
   @Override
@@ -87,7 +87,7 @@ public class Zone extends SalesManagerEntity<Long, Zone> {
   }
 
   public List<ZoneDescription> getDescriptions() {
-    return descriptions;
+				System.out.println("$#4493#"); return descriptions;
   }
 
   public void setDescriptons(List<ZoneDescription> descriptions) {
@@ -95,7 +95,7 @@ public class Zone extends SalesManagerEntity<Long, Zone> {
   }
 
   public String getName() {
-    return name;
+				System.out.println("$#4494#"); return name;
   }
 
   public void setName(String name) {

@@ -39,7 +39,7 @@ public class PromoCodeCalculatorModule implements OrderTotalPostProcessorModule 
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return name;
+		System.out.println("$#1455#"); return name;
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class PromoCodeCalculatorModule implements OrderTotalPostProcessorModule 
 	@Override
 	public String getCode() {
 		// TODO Auto-generated method stub
-		return code;
+		System.out.println("$#1456#"); return code;
 	}
 
 	@Override
@@ -63,10 +63,10 @@ public class PromoCodeCalculatorModule implements OrderTotalPostProcessorModule 
 	public OrderTotal caculateProductPiceVariation(OrderSummary summary, ShoppingCartItem shoppingCartItem,
 			Product product, Customer customer, MerchantStore store) throws Exception {
 		
-		Validate.notNull(summary, "OrderTotalSummary must not be null");
-		Validate.notNull(store, "MerchantStore must not be null");
+		System.out.println("$#1457#"); Validate.notNull(summary, "OrderTotalSummary must not be null");
+		System.out.println("$#1458#"); Validate.notNull(store, "MerchantStore must not be null");
 		
-		if(StringUtils.isBlank(summary.getPromoCode())) {
+		System.out.println("$#1459#"); if(StringUtils.isBlank(summary.getPromoCode())) {
 			return null;
 		}
 		
@@ -75,22 +75,22 @@ public class PromoCodeCalculatorModule implements OrderTotalPostProcessorModule 
 		OrderTotalResponse resp = new OrderTotalResponse();
 		
 		OrderTotalInputParameters inputParameters = new OrderTotalInputParameters();
-		inputParameters.setPromoCode(summary.getPromoCode());
-		inputParameters.setDate(new Date());
+		System.out.println("$#1460#"); inputParameters.setPromoCode(summary.getPromoCode());
+		System.out.println("$#1461#"); inputParameters.setDate(new Date());
 		
         kieSession.insert(inputParameters);
-        kieSession.setGlobal("total",resp);
+								System.out.println("$#1462#"); kieSession.setGlobal("total",resp);
         kieSession.fireAllRules();
 
-		if(resp.getDiscount() != null) {
+		System.out.println("$#1463#"); if(resp.getDiscount() != null) {
 			
 			OrderTotal orderTotal = null;
-			if(resp.getDiscount() != null) {
+			System.out.println("$#1464#"); if(resp.getDiscount() != null) {
 					orderTotal = new OrderTotal();
-					orderTotal.setOrderTotalCode(Constants.OT_DISCOUNT_TITLE);
-					orderTotal.setOrderTotalType(OrderTotalType.SUBTOTAL);
-					orderTotal.setTitle(Constants.OT_SUBTOTAL_MODULE_CODE);
-					orderTotal.setText(summary.getPromoCode());
+					System.out.println("$#1465#"); orderTotal.setOrderTotalCode(Constants.OT_DISCOUNT_TITLE);
+					System.out.println("$#1466#"); orderTotal.setOrderTotalType(OrderTotalType.SUBTOTAL);
+					System.out.println("$#1467#"); orderTotal.setTitle(Constants.OT_SUBTOTAL_MODULE_CODE);
+					System.out.println("$#1468#"); orderTotal.setText(summary.getPromoCode());
 					
 					//calculate discount that will be added as a negative value
 					FinalPrice productPrice = pricingService.calculateProductPrice(product);
@@ -99,14 +99,14 @@ public class PromoCodeCalculatorModule implements OrderTotalPostProcessorModule 
 					BigDecimal reduction = productPrice.getFinalPrice().multiply(new BigDecimal(discount));
 					reduction = reduction.multiply(new BigDecimal(shoppingCartItem.getQuantity()));
 					
-					orderTotal.setValue(reduction);//discount value
+					System.out.println("$#1469#"); orderTotal.setValue(reduction);//discount value
 					
 					//TODO check expiration
 			}
 				
 			
 			
-			return orderTotal;
+			System.out.println("$#1470#"); return orderTotal;
 			
 		}
 		

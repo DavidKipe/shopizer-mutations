@@ -13,7 +13,7 @@ public class SecuredShopPersistableCustomer extends SecuredCustomer {
 	
 
 	public String getCheckPassword() {
-		return checkPassword;
+		System.out.println("$#9093#"); return checkPassword;
 	}
 	public void setCheckPassword(String checkPassword) {
 		this.checkPassword = checkPassword;

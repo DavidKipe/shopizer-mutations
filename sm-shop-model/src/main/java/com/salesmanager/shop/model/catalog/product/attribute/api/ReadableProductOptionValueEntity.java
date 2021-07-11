@@ -13,13 +13,13 @@ public class ReadableProductOptionValueEntity extends ProductOptionValueEntity {
   private static final long serialVersionUID = 1L;
   private ProductOptionValueDescription description;
   public ProductOptionValueDescription getDescription() {
-    return description;
+				System.out.println("$#8780#"); return description;
   }
   public void setDescription(ProductOptionValueDescription description) {
     this.description = description;
   }
 public String getPrice() {
-	return price;
+	System.out.println("$#8781#"); return price;
 }
 public void setPrice(String price) {
 	this.price = price;

@@ -48,20 +48,20 @@ public class Product implements Serializable {
 	private ProductDescription description = null;
 	
 	public String getDateAvailable() {
-		return dateAvailable;
+		System.out.println("$#7780#"); return dateAvailable;
 	}
 	public void setDateAvailable(String dateAvailable) {
 		this.dateAvailable = dateAvailable;
 	}
 	public com.salesmanager.core.model.catalog.product.Product getProduct() {
-		return product;
+		System.out.println("$#7781#"); return product;
 	}
 	public void setProduct(com.salesmanager.core.model.catalog.product.Product product) {
 		this.product = product;
 	}
 	
 	public List<ProductDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#7782#"); return descriptions;
 	}
 	public void setDescriptions(List<ProductDescription> descriptions) {
 		this.descriptions = descriptions;
@@ -70,16 +70,16 @@ public class Product implements Serializable {
 		this.availability = availability;
 	}
 	public ProductAvailability getAvailability() {
-		return availability;
+		System.out.println("$#7783#"); return availability;
 	}
 	public void setPrice(ProductPrice price) {
 		this.price = price;
 	}
 	public ProductPrice getPrice() {
-		return price;
+		System.out.println("$#7784#"); return price;
 	}
 	public MultipartFile getImage() {
-		return image;
+		System.out.println("$#7785#"); return image;
 	}
 	public void setImage(MultipartFile image) {
 		this.image = image;
@@ -89,19 +89,19 @@ public class Product implements Serializable {
 		this.productPrice = productPrice;
 	}
 	public String getProductPrice() {
-		return productPrice;
+		System.out.println("$#7786#"); return productPrice;
 	}
 	public void setProductImage(ProductImage productImage) {
 		this.productImage = productImage;
 	}
 	public ProductImage getProductImage() {
-		return productImage;
+		System.out.println("$#7787#"); return productImage;
 	}
 	public void setDescription(ProductDescription description) {
 		this.description = description;
 	}
 	public ProductDescription getDescription() {
-		return description;
+		System.out.println("$#7788#"); return description;
 	}
 	
 

@@ -94,7 +94,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
     
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4668#"); return auditSection;
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 	
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4669#"); return id;
 	}
 
 	@Override
@@ -114,7 +114,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 	}
 
 	public boolean isObsolete() {
-		return obsolete;
+		System.out.println("$#4671#"); System.out.println("$#4670#"); return obsolete;
 	}
 
 	public void setObsolete(boolean obsolete) {
@@ -122,7 +122,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 	}
 
 	public Set<ShoppingCartItem> getLineItems() {
-		return lineItems;
+		System.out.println("$#4672#"); return lineItems;
 	}
 
 	public void setLineItems(Set<ShoppingCartItem> lineItems) {
@@ -131,7 +131,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 
     public String getShoppingCartCode()
     {
-        return shoppingCartCode;
+								System.out.println("$#4673#"); return shoppingCartCode;
     }
 
     public void setShoppingCartCode( String shoppingCartCode )
@@ -144,7 +144,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 	}
 
 	public Long getCustomerId() {
-		return customerId;
+		System.out.println("$#4674#"); return customerId;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -152,11 +152,11 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4675#"); return merchantStore;
 	}
 
 	public String getIpAddress() {
-		return ipAddress;
+		System.out.println("$#4676#"); return ipAddress;
 	}
 
 	public void setIpAddress(String ipAddress) {
@@ -165,7 +165,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 
 
 	public String getPromoCode() {
-		return promoCode;
+		System.out.println("$#4677#"); return promoCode;
 	}
 
 	public void setPromoCode(String promoCode) {
@@ -173,7 +173,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 	}
 
 	public Date getPromoAdded() {
-		return promoAdded;
+		System.out.println("$#4678#"); return promoAdded;
 	}
 
 	public void setPromoAdded(Date promoAdded) {
@@ -181,7 +181,7 @@ public class ShoppingCart extends SalesManagerEntity<Long, ShoppingCart> impleme
 	}
 	
 	public Long getOrderId() {
-		return orderId;
+		System.out.println("$#4679#"); return orderId;
 	}
 
 	public void setOrderId(Long orderId) {

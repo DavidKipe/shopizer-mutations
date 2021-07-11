@@ -16,7 +16,7 @@ public class ManufacturerEntity extends Manufacturer implements Serializable {
 		this.order = order;
 	}
 	public int getOrder() {
-		return order;
+		System.out.println("$#8752#"); return order;
 	}
 
 

@@ -15,7 +15,7 @@ public class ProductOption extends Entity implements Serializable {
   private boolean readOnly;
 
   public String getCode() {
-    return code;
+				System.out.println("$#8801#"); return code;
   }
 
   public void setCode(String code) {
@@ -23,7 +23,7 @@ public class ProductOption extends Entity implements Serializable {
   }
 
   public String getType() {
-    return type;
+				System.out.println("$#8802#"); return type;
   }
 
   public void setType(String type) {
@@ -31,7 +31,7 @@ public class ProductOption extends Entity implements Serializable {
   }
 
   public boolean isReadOnly() {
-    return readOnly;
+				System.out.println("$#8804#"); System.out.println("$#8803#"); return readOnly;
   }
 
   public void setReadOnly(boolean readOnly) {

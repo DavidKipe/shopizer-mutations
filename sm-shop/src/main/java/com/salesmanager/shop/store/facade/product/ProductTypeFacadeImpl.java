@@ -37,21 +37,21 @@ public class ProductTypeFacadeImpl implements ProductTypeFacade {
 	@Override
 	public ReadableProductTypeList getByMerchant(MerchantStore store, Language language,  int count, int page) {
 
-		Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#15065#"); Validate.notNull(store, "MerchantStore cannot be null");
 		ReadableProductTypeList returnList = new ReadableProductTypeList();
 
 		try {
 			
 			Page<ProductType> types = productTypeService.getByMerchant(store, language, page, count);
 
-			if(types != null) {
-				returnList.setList(types.getContent().stream().map(t -> readableProductTypeMapper.convert(t, store, language)).collect(Collectors.toList()));
-				returnList.setTotalPages(types.getTotalPages());
-				returnList.setRecordsTotal(types.getTotalElements());
-				returnList.setRecordsFiltered(types.getSize());
+			System.out.println("$#15066#"); if(types != null) {
+				System.out.println("$#15068#"); System.out.println("$#15067#"); returnList.setList(types.getContent().stream().map(t -> readableProductTypeMapper.convert(t, store, language)).collect(Collectors.toList()));
+				System.out.println("$#15069#"); returnList.setTotalPages(types.getTotalPages());
+				System.out.println("$#15070#"); returnList.setRecordsTotal(types.getTotalElements());
+				System.out.println("$#15071#"); returnList.setRecordsFiltered(types.getSize());
 			}
 
-			return returnList;
+			System.out.println("$#15072#"); return returnList;
 		} catch (Exception e) {
 			throw new ServiceRuntimeException(
 					"An exception occured while getting product types for merchant[ " + store.getCode() + "]", e);
@@ -62,17 +62,17 @@ public class ProductTypeFacadeImpl implements ProductTypeFacade {
 	@Override
 	public ReadableProductType get(MerchantStore store, Long id, Language language) {
 		
-		Validate.notNull(store, "MerchantStore cannot be null");
-		Validate.notNull(id, "ProductType code cannot be empty");
+		System.out.println("$#15073#"); Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#15074#"); Validate.notNull(id, "ProductType code cannot be empty");
 		try {
 			
 			ProductType type = productTypeService.getById(id, store, language);
 			ReadableProductType readableType = readableProductTypeMapper.convert(type, store, language);
-			if(readableType == null) {
+			System.out.println("$#15075#"); if(readableType == null) {
 				throw new ResourceNotFoundException("Product type [" + id + "] not found for store [" + store.getCode() + "]");
 			}
 			
-			return readableType;
+			System.out.println("$#15076#"); return readableType;
 			
 		} catch(Exception e) {
 			throw new ServiceRuntimeException(
@@ -84,21 +84,21 @@ public class ProductTypeFacadeImpl implements ProductTypeFacade {
 	@Override
 	public Long save(PersistableProductType type, MerchantStore store, Language language) {
 		
-		Validate.notNull(type,"ProductType cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(type.getCode(),"ProductType code cannot be empty");
+		System.out.println("$#15077#"); Validate.notNull(type,"ProductType cannot be null");
+		System.out.println("$#15078#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15079#"); Validate.notNull(type.getCode(),"ProductType code cannot be empty");
 		
 		try {
 						
-			if(this.exists(type.getCode(), store, language)) {
+			System.out.println("$#15080#"); if(this.exists(type.getCode(), store, language)) {
 				throw new OperationNotAllowedException(
 						"Product type [" + type.getCode() + "] already exist for store [" + store.getCode() + "]");
 			}
 			
 			ProductType model = persistableProductTypeMapper.convert(type, store, language);
-			model.setMerchantStore(store);
+			System.out.println("$#15081#"); model.setMerchantStore(store);
 			productTypeService.saveOrUpdate(model);
-			return model.getId();
+			System.out.println("$#15082#"); return model.getId();
 
 		} catch(Exception e) {
 			throw new ServiceRuntimeException(
@@ -109,20 +109,20 @@ public class ProductTypeFacadeImpl implements ProductTypeFacade {
 
 	@Override
 	public void update(PersistableProductType type, Long id, MerchantStore store, Language language) {
-		Validate.notNull(type,"ProductType cannot be null");
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(id,"id cannot be empty");
+		System.out.println("$#15083#"); Validate.notNull(type,"ProductType cannot be null");
+		System.out.println("$#15084#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15085#"); Validate.notNull(id,"id cannot be empty");
 		
 		try {
 			
 			ProductType t = productTypeService.getById(id, store, language);		
-			if(t == null) {
+			System.out.println("$#15086#"); if(t == null) {
 				throw new ResourceNotFoundException(
 						"Product type [" + type.getCode() + "] does not exist for store [" + store.getCode() + "]");
 			}
 			
-			type.setId(t.getId());
-			type.setCode(t.getCode());
+			System.out.println("$#15087#"); type.setId(t.getId());
+			System.out.println("$#15088#"); type.setCode(t.getCode());
 			
 			ProductType model = persistableProductTypeMapper.convert(type, store, language);
 			productTypeService.saveOrUpdate(model);
@@ -136,18 +136,18 @@ public class ProductTypeFacadeImpl implements ProductTypeFacade {
 
 	@Override
 	public void delete(Long id, MerchantStore store, Language language) {
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(id,"id cannot be empty");
+		System.out.println("$#15089#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#15090#"); Validate.notNull(id,"id cannot be empty");
 		
 		try {
 			
 			ProductType t = productTypeService.getById(id, store, language);		
-			if(t == null) {
+			System.out.println("$#15091#"); if(t == null) {
 				throw new ResourceNotFoundException(
 						"Product type [" + id + "] does not exist for store [" + store.getCode() + "]");
 			}
 			
-			productTypeService.delete(t);
+			System.out.println("$#15092#"); productTypeService.delete(t);
 
 
 		} catch(Exception e) {
@@ -165,10 +165,10 @@ public class ProductTypeFacadeImpl implements ProductTypeFacade {
 	    } catch (ServiceException e) {
 			throw new RuntimeException("An exception occured while getting product type [" + code + "] for merchant store [" + store.getCode() +"]",e);
 		}			
-		if(t != null) {
-			return true;
+		System.out.println("$#15093#"); if(t != null) {
+			System.out.println("$#15094#"); return true;
 		}
-		return false;
+		System.out.println("$#15095#"); return false;
 	}
 
 

@@ -66,7 +66,7 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4367#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -74,7 +74,7 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public Boolean getDefaultPrice() {
-		return defaultPrice;
+		System.out.println("$#4369#"); System.out.println("$#4368#"); return defaultPrice;
 	}
 
 	public void setDefaultPrice(Boolean defaultPrice) {
@@ -82,7 +82,7 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public String getProductPriceName() {
-		return productPriceName;
+		System.out.println("$#4370#"); return productPriceName;
 	}
 
 	public void setProductPriceName(String productPriceName) {
@@ -90,7 +90,7 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public OrderProduct getOrderProduct() {
-		return orderProduct;
+		System.out.println("$#4371#"); return orderProduct;
 	}
 
 	public void setOrderProduct(OrderProduct orderProduct) {
@@ -102,7 +102,7 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public String getProductPriceCode() {
-		return productPriceCode;
+		System.out.println("$#4372#"); return productPriceCode;
 	}
 
 	public void setProductPriceSpecialStartDate(
@@ -111,7 +111,7 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public Date getProductPriceSpecialStartDate() {
-		return productPriceSpecialStartDate;
+		System.out.println("$#4373#"); return productPriceSpecialStartDate;
 	}
 
 	public void setProductPriceSpecialEndDate(Date productPriceSpecialEndDate) {
@@ -119,7 +119,7 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public Date getProductPriceSpecialEndDate() {
-		return productPriceSpecialEndDate;
+		System.out.println("$#4374#"); return productPriceSpecialEndDate;
 	}
 
 	public void setProductPriceSpecial(BigDecimal productPriceSpecial) {
@@ -127,7 +127,7 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public BigDecimal getProductPriceSpecial() {
-		return productPriceSpecial;
+		System.out.println("$#4375#"); return productPriceSpecial;
 	}
 
 	public void setProductPrice(BigDecimal productPrice) {
@@ -135,6 +135,6 @@ public class OrderProductPrice implements Serializable {
 	}
 
 	public BigDecimal getProductPrice() {
-		return productPrice;
+		System.out.println("$#4376#"); return productPrice;
 	}
 }

@@ -103,19 +103,19 @@ public class ShoppingOrderPaymentController extends AbstractController {
 
 			Set<ShoppingCartItem> items = cart.getLineItems();
 			List<ShoppingCartItem> cartItems = new ArrayList<ShoppingCartItem>(items);
-			order.setShoppingCartItems(cartItems);
+			System.out.println("$#13473#"); order.setShoppingCartItems(cartItems);
 
 			// validate order first
 			Map<String, String> messages = new TreeMap<String, String>();
-			orderFacade.validateOrder(order, new BeanPropertyBindingResult(order, "order"), messages, store, locale);
+			System.out.println("$#13474#"); orderFacade.validateOrder(order, new BeanPropertyBindingResult(order, "order"), messages, store, locale);
 
-			if (CollectionUtils.isNotEmpty(messages.values())) {
+			System.out.println("$#13475#"); if (CollectionUtils.isNotEmpty(messages.values())) {
 				for (String key : messages.keySet()) {
 					String value = messages.get(key);
-					ajaxResponse.addValidationMessage(key, value);
+					System.out.println("$#13476#"); ajaxResponse.addValidationMessage(key, value);
 				}
-				ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_VALIDATION_FAILED);
-				return ajaxResponse.toJSONString();
+				System.out.println("$#13477#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_VALIDATION_FAILED);
+				System.out.println("$#13478#"); return ajaxResponse.toJSONString();
 			}
 
 			IntegrationConfiguration config = paymentService.getPaymentConfiguration(order.getPaymentModule(), store);
@@ -125,29 +125,29 @@ public class ShoppingOrderPaymentController extends AbstractController {
 			// OrderTotalSummary orderTotalSummary =
 			// orderFacade.calculateOrderTotal(store, order, language);
 			OrderTotalSummary orderTotalSummary = super.getSessionAttribute(Constants.ORDER_SUMMARY, request);
-			if (orderTotalSummary == null) {
+			System.out.println("$#13479#"); if (orderTotalSummary == null) {
 				orderTotalSummary = orderFacade.calculateOrderTotal(store, order, language);
-				super.setSessionAttribute(Constants.ORDER_SUMMARY, orderTotalSummary, request);
+				System.out.println("$#13480#"); super.setSessionAttribute(Constants.ORDER_SUMMARY, orderTotalSummary, request);
 			}
 
 			ShippingSummary summary = (ShippingSummary) request.getSession().getAttribute("SHIPPING_SUMMARY");
 
-			if (summary != null) {
-				order.setShippingSummary(summary);
+			System.out.println("$#13481#"); if (summary != null) {
+				System.out.println("$#13482#"); order.setShippingSummary(summary);
 			}
 
-			if (action.equals(INIT_ACTION)) {
-				if (paymentmethod.equals("PAYPAL")) {
+			System.out.println("$#13483#"); if (action.equals(INIT_ACTION)) {
+				System.out.println("$#13484#"); if (paymentmethod.equals("PAYPAL")) {
 					try {
 						PaymentModule module = paymentService.getPaymentModule("paypal-express-checkout");
 						PayPalExpressCheckoutPayment p = (PayPalExpressCheckoutPayment) module;
 						PaypalPayment payment = new PaypalPayment();
-						payment.setCurrency(store.getCurrency());
+						System.out.println("$#13485#"); payment.setCurrency(store.getCurrency());
 						Transaction transaction = p.initPaypalTransaction(store, cartItems, orderTotalSummary, payment,
 								config, integrationModule);
-						transactionService.create(transaction);
+						System.out.println("$#13486#"); transactionService.create(transaction);
 
-						super.setSessionAttribute(Constants.INIT_TRANSACTION_KEY, transaction, request);
+						System.out.println("$#13487#"); super.setSessionAttribute(Constants.INIT_TRANSACTION_KEY, transaction, request);
 
 						StringBuilder urlAppender = new StringBuilder();
 
@@ -160,22 +160,22 @@ public class ShoppingOrderPaymentController extends AbstractController {
 							StringBuilder url = new StringBuilder()
 									.append(coreConfiguration.getProperty("PAYPAL_EXPRESSCHECKOUT_PRODUCTION"))
 									.append(urlAppender.toString());
-							ajaxResponse.addEntry("url", url.toString());
+							System.out.println("$#13489#"); ajaxResponse.addEntry("url", url.toString());
 						} else {
 							StringBuilder url = new StringBuilder()
 									.append(coreConfiguration.getProperty("PAYPAL_EXPRESSCHECKOUT_SANDBOX"))
 									.append(urlAppender.toString());
-							ajaxResponse.addEntry("url", url.toString());
+							System.out.println("$#13490#"); ajaxResponse.addEntry("url", url.toString());
 						}
 
 						// keep order in session when user comes back from pp
-						super.setSessionAttribute(Constants.ORDER, order, request);
-						ajaxResponse.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+						System.out.println("$#13491#"); super.setSessionAttribute(Constants.ORDER, order, request);
+						System.out.println("$#13492#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 					} catch (Exception e) {
-						ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+						System.out.println("$#13493#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 					}
-				} else if (paymentmethod.equals("stripe3")) {
+				} else if (paymentmethod.equals("stripe3")) { System.out.println("$#13494#");
 
 					try {
 
@@ -183,43 +183,43 @@ public class ShoppingOrderPaymentController extends AbstractController {
 						Stripe3Payment p = (Stripe3Payment) module;
 
 						PaypalPayment payment = new PaypalPayment();
-						payment.setCurrency(store.getCurrency());
+						System.out.println("$#13495#"); payment.setCurrency(store.getCurrency());
 						Transaction transaction = p.initTransaction(store, null, orderTotalSummary.getTotal(), null,
 								config, integrationModule);
 
-						transactionService.create(transaction);
+						System.out.println("$#13496#"); transactionService.create(transaction);
 
-						super.setSessionAttribute(Constants.INIT_TRANSACTION_KEY, transaction, request);
+						System.out.println("$#13497#"); super.setSessionAttribute(Constants.INIT_TRANSACTION_KEY, transaction, request);
 						// keep order in session when user comes back from pp
-						super.setSessionAttribute(Constants.ORDER, order, request);
+						System.out.println("$#13498#"); super.setSessionAttribute(Constants.ORDER, order, request);
 
-						ajaxResponse.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
-						ajaxResponse.setDataMap(transaction.getTransactionDetails());
+						System.out.println("$#13499#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+						System.out.println("$#13500#"); ajaxResponse.setDataMap(transaction.getTransactionDetails());
 
 					} catch (Exception e) {
-						ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+						System.out.println("$#13501#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 					}
 				}
 			}
 
 		} catch (Exception e) {
 			LOGGER.error("Error while performing payment action " + action + " for payment method " + paymentmethod, e);
-			ajaxResponse.setErrorMessage(e);
-			ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#13502#"); ajaxResponse.setErrorMessage(e);
+			System.out.println("$#13503#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 
 		}
 
-		return ajaxResponse.toJSONString();
+		System.out.println("$#13504#"); return ajaxResponse.toJSONString();
 	}
 
 	// cancel - success paypal order
 	@RequestMapping(value = { "/paypal/checkout.html/{code}" }, method = RequestMethod.GET)
 	public String returnPayPalPayment(@PathVariable String code, HttpServletRequest request,
 			HttpServletResponse response, Locale locale) throws Exception {
-		if (Constants.SUCCESS.equals(code)) {
-			return "redirect:" + Constants.SHOP_URI + "/order/commitPreAuthorized.html";
+		System.out.println("$#13505#"); if (Constants.SUCCESS.equals(code)) {
+			System.out.println("$#13506#"); return "redirect:" + Constants.SHOP_URI + "/order/commitPreAuthorized.html";
 		} else {// process as cancel
-			return "redirect:" + Constants.SHOP_URI + "/order/checkout.html";
+			System.out.println("$#13507#"); return "redirect:" + Constants.SHOP_URI + "/order/checkout.html";
 		}
 	}
 

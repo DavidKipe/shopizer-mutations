@@ -88,7 +88,7 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 
 	@Override
 	public AuditSection getAuditSection() {
-		return this.auditSection;
+		System.out.println("$#4434#"); return this.auditSection;
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 
 	@Override
 	public Long getId() {
-		return this.id;
+		System.out.println("$#4435#"); return this.id;
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 	}
 
 	public Order getOrder() {
-		return order;
+		System.out.println("$#4436#"); return order;
 	}
 
 	public void setOrder(Order order) {
@@ -117,7 +117,7 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 	}
 
 	public BigDecimal getAmount() {
-		return amount;
+		System.out.println("$#4437#"); return amount;
 	}
 
 	public void setAmount(BigDecimal amount) {
@@ -125,7 +125,7 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 	}
 
 	public Date getTransactionDate() {
-		return transactionDate;
+		System.out.println("$#4438#"); return transactionDate;
 	}
 
 	public void setTransactionDate(Date transactionDate) {
@@ -133,11 +133,11 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 	}
 
 	public TransactionType getTransactionType() {
-		return transactionType;
+		System.out.println("$#4439#"); return transactionType;
 	}
 	
 	public String getTransactionTypeName() {
-		return this.getTransactionType()!=null?this.getTransactionType().name():"";
+		System.out.println("$#4440#"); return this.getTransactionType()!=null?this.getTransactionType().name():"";
 	}
 
 	public void setTransactionType(TransactionType transactionType) {
@@ -145,7 +145,7 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 	}
 
 	public PaymentType getPaymentType() {
-		return paymentType;
+		System.out.println("$#4441#"); return paymentType;
 	}
 
 	public void setPaymentType(PaymentType paymentType) {
@@ -153,7 +153,7 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 	}
 
 	public String getDetails() {
-		return details;
+		System.out.println("$#4442#"); return details;
 	}
 
 	public void setDetails(String details) {
@@ -161,7 +161,7 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 	}
 
 	public Map<String, String> getTransactionDetails() {
-		return transactionDetails;
+		System.out.println("$#4443#"); return transactionDetails;
 	}
 
 	public void setTransactionDetails(Map<String, String> transactionDetails) {
@@ -171,17 +171,17 @@ public class Transaction extends SalesManagerEntity<Long, Transaction> implement
 	@Override
 	public String toJSONString() {
 		
-		if(this.getTransactionDetails()!=null && this.getTransactionDetails().size()>0) {
+		System.out.println("$#4445#"); System.out.println("$#4444#"); if(this.getTransactionDetails()!=null && this.getTransactionDetails().size()>0) {
 			ObjectMapper mapper = new ObjectMapper();
 			try {
-				return mapper.writeValueAsString(this.getTransactionDetails());
+				System.out.println("$#4447#"); return mapper.writeValueAsString(this.getTransactionDetails());
 			} catch (Exception e) {
 				LOGGER.error("Cannot parse transactions map",e);
 			}
 			
 		}
 		
-		return null;
+		System.out.println("$#4448#"); return null;
 	}
 
 }

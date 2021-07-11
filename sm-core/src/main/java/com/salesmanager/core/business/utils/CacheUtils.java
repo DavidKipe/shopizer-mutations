@@ -33,7 +33,7 @@ public class CacheUtils {
 
 	public void putInCache(Object object, String keyName) throws Exception {
 
-		cache.put(keyName, object);
+		System.out.println("$#3432#"); cache.put(keyName, object);
 		
 	}
 	
@@ -41,8 +41,8 @@ public class CacheUtils {
 	public Object getFromCache(String keyName) throws Exception {
 
 		ValueWrapper vw = cache.get(keyName);
-		if(vw!=null) {
-			return vw.get();
+		System.out.println("$#3433#"); if(vw!=null) {
+			System.out.println("$#3434#"); return vw.get();
 		}
 		
 		return null;
@@ -62,9 +62,9 @@ public class CacheUtils {
 					// a key should be <storeId>_<rest of the key>
 					int delimiterPosition = sKey.indexOf(KEY_DELIMITER);
 					
-					if(delimiterPosition>0 && Character.isDigit(sKey.charAt(0))) {
+					System.out.println("$#3436#"); System.out.println("$#3435#"); if(delimiterPosition>0 && Character.isDigit(sKey.charAt(0))) {
 					
-						String keyRemaining = sKey.substring(delimiterPosition+1);
+						System.out.println("$#3438#"); String keyRemaining = sKey.substring(delimiterPosition+1);
 						returnKeys.add(keyRemaining);
 					
 					}
@@ -74,7 +74,7 @@ public class CacheUtils {
 				}  
 		  }
 
-		return returnKeys;
+		System.out.println("$#3439#"); return returnKeys;
 	}
 	
 	public void shutDownCache() throws Exception {
@@ -82,7 +82,7 @@ public class CacheUtils {
 	}
 	
 	public void removeFromCache(String keyName) throws Exception {
-		cache.evict(keyName);
+		System.out.println("$#3440#"); cache.evict(keyName);
 	}
 	
 	public void removeAllFromCache(MerchantStore store) throws Exception {
@@ -94,10 +94,10 @@ public class CacheUtils {
 					// a key should be <storeId>_<rest of the key>
 					int delimiterPosition = sKey.indexOf(KEY_DELIMITER);
 					
-					if(delimiterPosition>0 && Character.isDigit(sKey.charAt(0))) {
+					System.out.println("$#3442#"); System.out.println("$#3441#"); if(delimiterPosition>0 && Character.isDigit(sKey.charAt(0))) {
 					
 
-						cache.evict(key);
+						System.out.println("$#3444#"); cache.evict(key);
 					
 					}
 

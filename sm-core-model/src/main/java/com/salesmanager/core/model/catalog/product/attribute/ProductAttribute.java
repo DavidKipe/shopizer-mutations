@@ -106,7 +106,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	private String attributeAdditionalWeight = "0";
 	
 	public String getAttributePrice() {
-		return attributePrice;
+		System.out.println("$#3782#"); return attributePrice;
 	}
 
 	public void setAttributePrice(String attributePrice) {
@@ -123,7 +123,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#3783#"); return id;
 	}
 
 	@Override
@@ -134,7 +134,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 
 
 	public Integer getProductOptionSortOrder() {
-		return productOptionSortOrder;
+		System.out.println("$#3784#"); return productOptionSortOrder;
 	}
 
 	public void setProductOptionSortOrder(Integer productOptionSortOrder) {
@@ -142,7 +142,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public boolean getProductAttributeIsFree() {
-		return productAttributeIsFree;
+		System.out.println("$#3786#"); System.out.println("$#3785#"); return productAttributeIsFree;
 	}
 
 	public void setProductAttributeIsFree(boolean productAttributeIsFree) {
@@ -150,7 +150,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public BigDecimal getProductAttributeWeight() {
-		return productAttributeWeight;
+		System.out.println("$#3787#"); return productAttributeWeight;
 	}
 
 	public void setProductAttributeWeight(BigDecimal productAttributeWeight) {
@@ -158,7 +158,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public boolean getAttributeDefault() {
-		return attributeDefault;
+		System.out.println("$#3789#"); System.out.println("$#3788#"); return attributeDefault;
 	}
 
 	public void setAttributeDefault(boolean attributeDefault) {
@@ -166,7 +166,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public boolean getAttributeRequired() {
-		return attributeRequired;
+		System.out.println("$#3791#"); System.out.println("$#3790#"); return attributeRequired;
 	}
 
 	public void setAttributeRequired(boolean attributeRequired) {
@@ -174,7 +174,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public boolean getAttributeDisplayOnly() {
-		return attributeDisplayOnly;
+		System.out.println("$#3793#"); System.out.println("$#3792#"); return attributeDisplayOnly;
 	}
 
 	public void setAttributeDisplayOnly(boolean attributeDisplayOnly) {
@@ -182,7 +182,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public boolean getAttributeDiscounted() {
-		return attributeDiscounted;
+		System.out.println("$#3795#"); System.out.println("$#3794#"); return attributeDiscounted;
 	}
 
 	public void setAttributeDiscounted(boolean attributeDiscounted) {
@@ -190,7 +190,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public ProductOption getProductOption() {
-		return productOption;
+		System.out.println("$#3796#"); return productOption;
 	}
 
 	public void setProductOption(ProductOption productOption) {
@@ -198,7 +198,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public ProductOptionValue getProductOptionValue() {
-		return productOptionValue;
+		System.out.println("$#3797#"); return productOptionValue;
 	}
 
 	public void setProductOptionValue(ProductOptionValue productOptionValue) {
@@ -206,7 +206,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#3798#"); return product;
 	}
 
 	public void setProduct(Product product) {
@@ -215,7 +215,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	
 	
 	public String getAttributeSortOrder() {
-		return attributeSortOrder;
+		System.out.println("$#3799#"); return attributeSortOrder;
 	}
 
 	public void setAttributeSortOrder(String attributeSortOrder) {
@@ -223,7 +223,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 
 	public String getAttributeAdditionalWeight() {
-		return attributeAdditionalWeight;
+		System.out.println("$#3800#"); return attributeAdditionalWeight;
 	}
 
 	public void setAttributeAdditionalWeight(String attributeAdditionalWeight) {
@@ -231,7 +231,7 @@ public class ProductAttribute extends SalesManagerEntity<Long, ProductAttribute>
 	}
 	
 	public BigDecimal getProductAttributePrice() {
-		return productAttributePrice;
+		System.out.println("$#3801#"); return productAttributePrice;
 	}
 
 	public void setProductAttributePrice(BigDecimal productAttributePrice) {

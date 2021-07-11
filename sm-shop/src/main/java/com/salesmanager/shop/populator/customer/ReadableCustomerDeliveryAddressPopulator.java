@@ -35,77 +35,77 @@ public class ReadableCustomerDeliveryAddressPopulator extends AbstractDataPopula
     {
 
         
-		if(countryService==null) {
+		System.out.println("$#10293#"); if(countryService==null) {
 			throw new ConversionException("countryService must be set");
 		}
 		
-		if(zoneService==null) {
+		System.out.println("$#10294#"); if(zoneService==null) {
 			throw new ConversionException("zoneService must be set");
 		}
 		
 
-		target.setLatitude(source.getLatitude());
-		target.setLongitude(source.getLongitude());
+		System.out.println("$#10295#"); target.setLatitude(source.getLatitude());
+		System.out.println("$#10296#"); target.setLongitude(source.getLongitude());
 
 		
-		if(StringUtils.isNotBlank( source.getCity() )){
-            target.setCity(source.getCity());
+		System.out.println("$#10297#"); if(StringUtils.isNotBlank( source.getCity() )){
+												System.out.println("$#10298#"); target.setCity(source.getCity());
         }
         
-        if(StringUtils.isNotBlank( source.getCompany() )){
-            target.setCompany(source.getCompany());
+								System.out.println("$#10299#"); if(StringUtils.isNotBlank( source.getCompany() )){
+												System.out.println("$#10300#"); target.setCompany(source.getCompany());
         }
         
-        if(StringUtils.isNotBlank( source.getAddress() )){
-            target.setAddress(source.getAddress());
+								System.out.println("$#10301#"); if(StringUtils.isNotBlank( source.getAddress() )){
+												System.out.println("$#10302#"); target.setAddress(source.getAddress());
         }
         
-        if(StringUtils.isNotBlank( source.getFirstName() )){
-            target.setFirstName(source.getFirstName());
+								System.out.println("$#10303#"); if(StringUtils.isNotBlank( source.getFirstName() )){
+												System.out.println("$#10304#"); target.setFirstName(source.getFirstName());
         }
         
-        if(StringUtils.isNotBlank( source.getLastName() )){
-            target.setLastName(source.getLastName());
+								System.out.println("$#10305#"); if(StringUtils.isNotBlank( source.getLastName() )){
+												System.out.println("$#10306#"); target.setLastName(source.getLastName());
         }
         
-        if(StringUtils.isNotBlank( source.getPostalCode() )){
-            target.setPostalCode(source.getPostalCode());
+								System.out.println("$#10307#"); if(StringUtils.isNotBlank( source.getPostalCode() )){
+												System.out.println("$#10308#"); target.setPostalCode(source.getPostalCode());
         }
         
-        if(StringUtils.isNotBlank( source.getTelephone() )){
-            target.setPhone(source.getTelephone());
+								System.out.println("$#10309#"); if(StringUtils.isNotBlank( source.getTelephone() )){
+												System.out.println("$#10310#"); target.setPhone(source.getTelephone());
         }
       
-        target.setStateProvince(source.getState());
+								System.out.println("$#10311#"); target.setStateProvince(source.getState());
         
-        if(source.getTelephone()==null) {
-            target.setPhone(source.getTelephone());
+								System.out.println("$#10312#"); if(source.getTelephone()==null) {
+												System.out.println("$#10313#"); target.setPhone(source.getTelephone());
         }
-        target.setAddress(source.getAddress());
-        if(source.getCountry()!=null) {
-            target.setCountry(source.getCountry().getIsoCode());
+								System.out.println("$#10314#"); target.setAddress(source.getAddress());
+								System.out.println("$#10315#"); if(source.getCountry()!=null) {
+												System.out.println("$#10316#"); target.setCountry(source.getCountry().getIsoCode());
             
             //resolve country name
             try {
 				Map<String,Country> countries = countryService.getCountriesMap(language);
 				Country c =countries.get(source.getCountry().getIsoCode());
-				if(c!=null) {
-					target.setCountryName(c.getName());
+				System.out.println("$#10317#"); if(c!=null) {
+					System.out.println("$#10318#"); target.setCountryName(c.getName());
 				}
 			} catch (ServiceException e) {
 				// TODO Auto-generated catch block
 				throw new ConversionException(e);
 			}
         }
-        if(source.getZone()!=null) {
-            target.setZone(source.getZone().getCode());
+								System.out.println("$#10319#"); if(source.getZone()!=null) {
+												System.out.println("$#10320#"); target.setZone(source.getZone().getCode());
             
             //resolve zone name
             try {
 				Map<String,Zone> zones = zoneService.getZones(language);
 				Zone z = zones.get(source.getZone().getCode());
-				if(z!=null) {
-					target.setProvinceName(z.getName());
+				System.out.println("$#10321#"); if(z!=null) {
+					System.out.println("$#10322#"); target.setProvinceName(z.getName());
 				}
 			} catch (ServiceException e) {
 				// TODO Auto-generated catch block
@@ -115,7 +115,7 @@ public class ReadableCustomerDeliveryAddressPopulator extends AbstractDataPopula
         
         
 
-        return target;
+								System.out.println("$#10323#"); return target;
     }
 
 	@Override
@@ -125,7 +125,7 @@ public class ReadableCustomerDeliveryAddressPopulator extends AbstractDataPopula
 	}
 
 	public CountryService getCountryService() {
-		return countryService;
+		System.out.println("$#10324#"); return countryService;
 	}
 
 	public void setCountryService(CountryService countryService) {
@@ -133,7 +133,7 @@ public class ReadableCustomerDeliveryAddressPopulator extends AbstractDataPopula
 	}
 
 	public ZoneService getZoneService() {
-		return zoneService;
+		System.out.println("$#10325#"); return zoneService;
 	}
 
 	public void setZoneService(ZoneService zoneService) {

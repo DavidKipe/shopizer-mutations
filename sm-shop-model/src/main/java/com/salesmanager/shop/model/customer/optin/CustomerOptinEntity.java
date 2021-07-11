@@ -17,19 +17,19 @@ public class CustomerOptinEntity extends CustomerOptin {
 	@Email
 	private String email;
 	public String getFirstName() {
-		return firstName;
+		System.out.println("$#9081#"); return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return lastName;
+		System.out.println("$#9082#"); return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 	public String getEmail() {
-		return email;
+		System.out.println("$#9083#"); return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;

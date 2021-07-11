@@ -16,7 +16,7 @@ public class ProductOptionValueEntity extends ProductOptionValue implements Seri
 		this.order = order;
 	}
 	public int getOrder() {
-		return order;
+		System.out.println("$#8771#"); return order;
 	}
 
 

@@ -129,7 +129,7 @@ public class CustomerController {
 	public String displayCustomer(Long id, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 			
 		//display menu
-		this.setMenu(model, request);
+		System.out.println("$#5234#"); this.setMenu(model, request);
 		
 		//get groups
 		List<Group> groups = new ArrayList<Group>();
@@ -149,15 +149,15 @@ public class CustomerController {
 		Customer customer = null;
 		
 		//if request.attribute contains id then get this customer from customerService
-		if(id!=null && id!=0) {//edit mode
+		System.out.println("$#5235#"); if(id!=null && id!=0) {//edit mode
 			
 			//get from DB
 			customer = customerService.getById(id);
-			if(customer==null) {
-				return "redirect:/admin/customers/list.html";
+			System.out.println("$#5237#"); if(customer==null) {
+				System.out.println("$#5238#"); return "redirect:/admin/customers/list.html";
 			}
-			if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				return "redirect:/admin/customers/list.html";
+			System.out.println("$#5239#"); if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#5240#"); return "redirect:/admin/customers/list.html";
 			}
 			
 		} else {
@@ -171,12 +171,12 @@ public class CustomerController {
 		//get list of zones
 		List<Zone> zones = zoneService.list();
 		
-		this.getCustomerOptions(model, customer, store, language);
+		System.out.println("$#5241#"); this.getCustomerOptions(model, customer, store, language);
 
 		model.addAttribute("zones", zones);
 		model.addAttribute("countries", countries);
 		model.addAttribute("customer", customer);
-		return "admin-customer";	
+		System.out.println("$#5242#"); return "admin-customer";
 		
 	}
 	
@@ -185,7 +185,7 @@ public class CustomerController {
 		Map<Long,CustomerOption> options = new HashMap<Long,CustomerOption>();
 		//get options
 		List<CustomerOptionSet> optionSet = customerOptionSetService.listByStore(store, language);
-		if(!CollectionUtils.isEmpty(optionSet)) {
+		System.out.println("$#5243#"); if(!CollectionUtils.isEmpty(optionSet)) {
 			
 			
 			ReadableCustomerOptionPopulator optionPopulator = new ReadableCustomerOptionPopulator();
@@ -195,37 +195,37 @@ public class CustomerController {
 			for(CustomerOptionSet optSet : optionSet) {
 				
 				com.salesmanager.core.model.customer.attribute.CustomerOption custOption = optSet.getCustomerOption();
-				if(!custOption.isActive()) {
+				System.out.println("$#5244#"); if(!custOption.isActive()) {
 					continue;
 				}
 				CustomerOption customerOption = options.get(custOption.getId());
 				
-				optionPopulator.setOptionSet(optSet);
+				System.out.println("$#5245#"); optionPopulator.setOptionSet(optSet);
 				
 				
 				
-				if(customerOption==null) {
+				System.out.println("$#5246#"); if(customerOption==null) {
 					customerOption = new CustomerOption();
-					customerOption.setId(custOption.getId());
-					customerOption.setType(custOption.getCustomerOptionType());
-					customerOption.setName(custOption.getDescriptionsSettoList().get(0).getName());
+					System.out.println("$#5247#"); customerOption.setId(custOption.getId());
+					System.out.println("$#5248#"); customerOption.setType(custOption.getCustomerOptionType());
+					System.out.println("$#5249#"); customerOption.setName(custOption.getDescriptionsSettoList().get(0).getName());
 					
 				} 
 				
 				optionPopulator.populate(custOption, customerOption, store, language);
 				options.put(customerOption.getId(), customerOption);
 
-				if(!CollectionUtils.isEmpty(customerAttributes)) {
+				System.out.println("$#5250#"); if(!CollectionUtils.isEmpty(customerAttributes)) {
 					for(CustomerAttribute customerAttribute : customerAttributes) {
-						if(customerAttribute.getCustomerOption().getId().longValue()==customerOption.getId()){
+						System.out.println("$#5251#"); if(customerAttribute.getCustomerOption().getId().longValue()==customerOption.getId()){
 							CustomerOptionValue selectedValue = new CustomerOptionValue();
 							com.salesmanager.core.model.customer.attribute.CustomerOptionValue attributeValue = customerAttribute.getCustomerOptionValue();
-							selectedValue.setId(attributeValue.getId());
+							System.out.println("$#5252#"); selectedValue.setId(attributeValue.getId());
 							CustomerOptionValueDescription optValue = attributeValue.getDescriptionsSettoList().get(0);
-							selectedValue.setName(optValue.getName());
-							customerOption.setDefaultValue(selectedValue);
-							if(customerOption.getType().equalsIgnoreCase(CustomerOptionType.Text.name())) {
-								selectedValue.setName(customerAttribute.getTextValue());
+							System.out.println("$#5253#"); selectedValue.setName(optValue.getName());
+							System.out.println("$#5254#"); customerOption.setDefaultValue(selectedValue);
+							System.out.println("$#5255#"); if(customerOption.getType().equalsIgnoreCase(CustomerOptionType.Text.name())) {
+								System.out.println("$#5256#"); selectedValue.setName(customerAttribute.getTextValue());
 							} 
 						}
 					}
@@ -243,7 +243,7 @@ public class CustomerController {
 	@RequestMapping(value="/admin/customers/save.html", method=RequestMethod.POST)
 	public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception{
 	
-		this.setMenu(model, request);
+		System.out.println("$#5257#"); this.setMenu(model, request);
 		
 		String email_regEx = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b";
 		Pattern pattern = Pattern.compile(email_regEx);
@@ -263,78 +263,78 @@ public class CustomerController {
 		
 		model.addAttribute("groups",groups);
 		
-		this.getCustomerOptions(model, customer, store, language);
+		System.out.println("$#5258#"); this.getCustomerOptions(model, customer, store, language);
 		
 		//get countries
 		List<Country> countries = countryService.getCountries(language);
 
 		
-		if(!StringUtils.isBlank(customer.getEmailAddress() ) ){
+		System.out.println("$#5259#"); if(!StringUtils.isBlank(customer.getEmailAddress() ) ){
 			 java.util.regex.Matcher matcher = pattern.matcher(customer.getEmailAddress());
 			 
-			 if(!matcher.find()) {
+				System.out.println("$#5260#"); if(!matcher.find()) {
 				ObjectError error = new ObjectError("customerEmailAddress",messages.getMessage("Email.customer.EmailAddress", locale));
-				result.addError(error);
+				System.out.println("$#5261#"); result.addError(error);
 			 }
 		}else{
 			ObjectError error = new ObjectError("customerEmailAddress",messages.getMessage("NotEmpty.customer.EmailAddress", locale));
-			result.addError(error);
+			System.out.println("$#5262#"); result.addError(error);
 		}
 		
 
 		 
-		if( StringUtils.isBlank(customer.getBilling().getFirstName() ) ){
+		System.out.println("$#5263#"); if( StringUtils.isBlank(customer.getBilling().getFirstName() ) ){
 			 ObjectError error = new ObjectError("billingFirstName", messages.getMessage("NotEmpty.customer.billingFirstName", locale));
-			 result.addError(error);
+				System.out.println("$#5264#"); result.addError(error);
 		}
 		
-		if( StringUtils.isBlank(customer.getBilling().getLastName() ) ){
+		System.out.println("$#5265#"); if( StringUtils.isBlank(customer.getBilling().getLastName() ) ){
 			 ObjectError error = new ObjectError("billingLastName", messages.getMessage("NotEmpty.customer.billingLastName", locale));
-			 result.addError(error);
+				System.out.println("$#5266#"); result.addError(error);
 		}
 		
-		if( StringUtils.isBlank(customer.getBilling().getAddress() ) ){
+		System.out.println("$#5267#"); if( StringUtils.isBlank(customer.getBilling().getAddress() ) ){
 			 ObjectError error = new ObjectError("billingAddress", messages.getMessage("NotEmpty.customer.billingStreetAddress", locale));
-			 result.addError(error);
+				System.out.println("$#5268#"); result.addError(error);
 		}
 		 
-		if( StringUtils.isBlank(customer.getBilling().getCity() ) ){
+		System.out.println("$#5269#"); if( StringUtils.isBlank(customer.getBilling().getCity() ) ){
 			 ObjectError error = new ObjectError("billingCity",messages.getMessage("NotEmpty.customer.billingCity", locale));
-			 result.addError(error);
+				System.out.println("$#5270#"); result.addError(error);
 		}
 		 
-		if( customer.getShowBillingStateList().equalsIgnoreCase("yes" ) && customer.getBilling().getZone().getCode() == null ){
+		System.out.println("$#5271#"); if( customer.getShowBillingStateList().equalsIgnoreCase("yes" ) && customer.getBilling().getZone().getCode() == null ){
 			 ObjectError error = new ObjectError("billingState",messages.getMessage("NotEmpty.customer.billingState", locale));
-			 result.addError(error);
+				System.out.println("$#5273#"); result.addError(error);
 			 
-		}else if( customer.getShowBillingStateList().equalsIgnoreCase("no" ) && customer.getBilling().getState() == null ){
+		}else if( customer.getShowBillingStateList().equalsIgnoreCase("no" ) && customer.getBilling().getState() == null ){ System.out.println("$#5274#");
 				 ObjectError error = new ObjectError("billingState",messages.getMessage("NotEmpty.customer.billingState", locale));
-				 result.addError(error);
+					System.out.println("$#5276#"); result.addError(error);
 			
 		}
 		 
-		if( StringUtils.isBlank(customer.getBilling().getPostalCode() ) ){
+		System.out.println("$#5277#"); if( StringUtils.isBlank(customer.getBilling().getPostalCode() ) ){
 			 ObjectError error = new ObjectError("billingPostalCode", messages.getMessage("NotEmpty.customer.billingPostCode", locale));
-			 result.addError(error);
+				System.out.println("$#5278#"); result.addError(error);
 		}
 		
 		//check if error from the @valid
-		if (result.hasErrors()) {
+		System.out.println("$#5279#"); if (result.hasErrors()) {
 			model.addAttribute("countries", countries);
-			return "admin-customer";
+			System.out.println("$#5280#"); return "admin-customer";
 		}
 				
 		Customer newCustomer = new Customer();
 
-		if( customer.getId()!=null && customer.getId().longValue()>0 ) {
+		System.out.println("$#5282#"); System.out.println("$#5281#"); if( customer.getId()!=null && customer.getId().longValue()>0 ) {
 			newCustomer = customerService.getById( customer.getId() );
 			
-			if(newCustomer==null) {
-				return "redirect:/admin/customers/list.html";
+			System.out.println("$#5284#"); if(newCustomer==null) {
+				System.out.println("$#5285#"); return "redirect:/admin/customers/list.html";
 			}
 			
-			if(newCustomer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				return "redirect:/admin/customers/list.html";
+			System.out.println("$#5286#"); if(newCustomer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#5287#"); return "redirect:/admin/customers/list.html";
 			}
 			
 			
@@ -342,7 +342,7 @@ public class CustomerController {
 		}else{
 			//  new customer set marchant_Id
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-			newCustomer.setMerchantStore(merchantStore);
+			System.out.println("$#5288#"); newCustomer.setMerchantStore(merchantStore);
 		}
 		
 		List<Group> submitedGroups = customer.getGroups();
@@ -352,10 +352,10 @@ public class CustomerController {
 		}
 		
 		List<Group> newGroups = groupService.listGroupByIds(ids);
-		newCustomer.setGroups(newGroups);
+		System.out.println("$#5289#"); newCustomer.setGroups(newGroups);
 		
 
-		newCustomer.setEmailAddress(customer.getEmailAddress() );		
+		System.out.println("$#5290#"); newCustomer.setEmailAddress(customer.getEmailAddress() );
 		
 		//get Customer country/zone 		
 		Country deliveryCountry = countryService.getByCode( customer.getDelivery().getCountry().getIsoCode()); 
@@ -366,51 +366,51 @@ public class CustomerController {
 		
 
 		
-		if ("yes".equalsIgnoreCase(customer.getShowDeliveryStateList())) {
-			if(customer.getDelivery().getZone()!=null) {
+		System.out.println("$#5291#"); if ("yes".equalsIgnoreCase(customer.getShowDeliveryStateList())) {
+			System.out.println("$#5292#"); if(customer.getDelivery().getZone()!=null) {
 				deliveryZone = zoneService.getByCode(customer.getDelivery().getZone().getCode());
-				customer.getDelivery().setState( null );
+				System.out.println("$#5293#"); customer.getDelivery().setState( null );
 			}
 			
-		}else if ("no".equalsIgnoreCase(customer.getShowDeliveryStateList())){
-			if(customer.getDelivery().getState()!=null) {
+		}else if ("no".equalsIgnoreCase(customer.getShowDeliveryStateList())){ System.out.println("$#5294#");
+			System.out.println("$#5295#"); if(customer.getDelivery().getState()!=null) {
 				deliveryZone = null ;
-				customer.getDelivery().setState( customer.getDelivery().getState() );
+				System.out.println("$#5296#"); customer.getDelivery().setState( customer.getDelivery().getState() );
 			}
 		}
 	
-		if ("yes".equalsIgnoreCase(customer.getShowBillingStateList())) {
-			if(customer.getBilling().getZone()!=null) {
+		System.out.println("$#5297#"); if ("yes".equalsIgnoreCase(customer.getShowBillingStateList())) {
+			System.out.println("$#5298#"); if(customer.getBilling().getZone()!=null) {
 				billingZone = zoneService.getByCode(customer.getBilling().getZone().getCode());
-				customer.getBilling().setState( null );
+				System.out.println("$#5299#"); customer.getBilling().setState( null );
 			}
 			
-		}else if ("no".equalsIgnoreCase(customer.getShowBillingStateList())){
-			if(customer.getBilling().getState()!=null) {
+		}else if ("no".equalsIgnoreCase(customer.getShowBillingStateList())){ System.out.println("$#5300#");
+			System.out.println("$#5301#"); if(customer.getBilling().getState()!=null) {
 				billingZone = null ;
-				customer.getBilling().setState( customer.getBilling().getState() );
+				System.out.println("$#5302#"); customer.getBilling().setState( customer.getBilling().getState() );
 			}
 		}
 				
 
 		
-		newCustomer.setDefaultLanguage(customer.getDefaultLanguage() );
+		System.out.println("$#5303#"); newCustomer.setDefaultLanguage(customer.getDefaultLanguage() );
 		
-		customer.getDelivery().setZone(  deliveryZone);
-		customer.getDelivery().setCountry(deliveryCountry );
-		newCustomer.setDelivery( customer.getDelivery() );
+		System.out.println("$#5304#"); customer.getDelivery().setZone(  deliveryZone);
+		System.out.println("$#5305#"); customer.getDelivery().setCountry(deliveryCountry );
+		System.out.println("$#5306#"); newCustomer.setDelivery( customer.getDelivery() );
 		
-		customer.getBilling().setZone(  billingZone);
-		customer.getBilling().setCountry(billingCountry );
-		newCustomer.setBilling( customer.getBilling()  );
+		System.out.println("$#5307#"); customer.getBilling().setZone(  billingZone);
+		System.out.println("$#5308#"); customer.getBilling().setCountry(billingCountry );
+		System.out.println("$#5309#"); newCustomer.setBilling( customer.getBilling()  );
 		
-		customerService.saveOrUpdate(newCustomer);
+		System.out.println("$#5310#"); customerService.saveOrUpdate(newCustomer);
 		
 		model.addAttribute("customer", newCustomer);
 		model.addAttribute("countries", countries);
 		model.addAttribute("success","success");
 		
-		return "admin-customer";
+		System.out.println("$#5311#"); return "admin-customer";
 		
 	}
 	
@@ -428,7 +428,7 @@ public class CustomerController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#5312#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -439,28 +439,28 @@ public class CustomerController {
 		
 		Customer customer = null;
 		
-		while(parameterNames.hasMoreElements()) {
+		System.out.println("$#5313#"); while(parameterNames.hasMoreElements()) {
 
 			String parameterName = (String)parameterNames.nextElement();
 			String parameterValue = request.getParameter(parameterName);
-			if(CUSTOMER_ID_PARAMETER.equals(parameterName)) {
+			System.out.println("$#5314#"); if(CUSTOMER_ID_PARAMETER.equals(parameterName)) {
 				customer = customerService.getById(new Long(parameterValue));
 				break;
 			}
 		}
 		
-		if(customer==null) {
+		System.out.println("$#5315#"); if(customer==null) {
 			LOGGER.error("Customer id [customer] is not defined in the parameters");
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5316#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#5317#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 		
-		if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#5318#"); if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 			LOGGER.error("Customer id does not belong to current store");
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5319#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#5320#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 		
 		List<CustomerAttribute> customerAttributes = customerAttributeService.getByCustomer(store, customer);
@@ -472,7 +472,7 @@ public class CustomerController {
 
 		parameterNames = request.getParameterNames();
 		
-		while(parameterNames.hasMoreElements()) {
+		System.out.println("$#5321#"); while(parameterNames.hasMoreElements()) {
 			
 			String parameterName = (String)parameterNames.nextElement();
 			String parameterValue = request.getParameter(parameterName);
@@ -483,11 +483,11 @@ public class CustomerController {
 				com.salesmanager.core.model.customer.attribute.CustomerOptionValue customerOptionValue = null;
 
 				
-				if(CUSTOMER_ID_PARAMETER.equals(parameterName)) {
+				System.out.println("$#5322#"); if(CUSTOMER_ID_PARAMETER.equals(parameterName)) {
 					continue;
 				}
 				
-					if(parameterKey.length>1) {
+					System.out.println("$#5324#"); System.out.println("$#5323#"); if(parameterKey.length>1) {
 						//parse key - value
 						String key = parameterKey[0];
 						String value = parameterKey[1];
@@ -506,34 +506,34 @@ public class CustomerController {
 					//get the attribute
 					//CustomerAttribute attribute = customerAttributeService.getByCustomerOptionId(store, customer.getId(), customerOption.getId());
 					CustomerAttribute attribute = customerAttributesMap.get(customerOption.getId());
-					if(attribute==null) {
+					System.out.println("$#5325#"); if(attribute==null) {
 						attribute = new CustomerAttribute();
-						attribute.setCustomer(customer);
-						attribute.setCustomerOption(customerOption);
+						System.out.println("$#5326#"); attribute.setCustomer(customer);
+						System.out.println("$#5327#"); attribute.setCustomerOption(customerOption);
 					} else {
 						customerAttributes.remove(attribute);
 					}
 					
-					if(customerOption.getCustomerOptionType().equals(CustomerOptionType.Text.name())) {
-						if(!StringUtils.isBlank(parameterValue)) {
-							attribute.setCustomerOptionValue(customerOptionValue);
-							attribute.setTextValue(parameterValue);
+					System.out.println("$#5328#"); if(customerOption.getCustomerOptionType().equals(CustomerOptionType.Text.name())) {
+						System.out.println("$#5329#"); if(!StringUtils.isBlank(parameterValue)) {
+							System.out.println("$#5330#"); attribute.setCustomerOptionValue(customerOptionValue);
+							System.out.println("$#5331#"); attribute.setTextValue(parameterValue);
 						} else {
-							attribute.setTextValue(null);
+							System.out.println("$#5332#"); attribute.setTextValue(null);
 						}
 					} else {
-						attribute.setCustomerOptionValue(customerOptionValue);
+						System.out.println("$#5333#"); attribute.setCustomerOptionValue(customerOptionValue);
 					}
 					
 					
-					if(attribute.getId()!=null && attribute.getId().longValue()>0) {
-						if(attribute.getCustomerOptionValue()==null){
-							customerAttributeService.delete(attribute);
+					System.out.println("$#5335#"); System.out.println("$#5334#"); if(attribute.getId()!=null && attribute.getId().longValue()>0) {
+						System.out.println("$#5337#"); if(attribute.getCustomerOptionValue()==null){
+							System.out.println("$#5338#"); customerAttributeService.delete(attribute);
 						} else {
-							customerAttributeService.update(attribute);
+							System.out.println("$#5339#"); customerAttributeService.update(attribute);
 						}
 					} else {
-						customerAttributeService.save(attribute);
+						System.out.println("$#5340#"); customerAttributeService.save(attribute);
 					}
 					
 
@@ -546,12 +546,12 @@ public class CustomerController {
 		
 		//and now the remaining to be removed
 		for(CustomerAttribute attr : customerAttributes) {
-			customerAttributeService.delete(attr);
+			System.out.println("$#5341#"); customerAttributeService.delete(attr);
 		}
 		
-		resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+		System.out.println("$#5342#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#5343#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 
 	}
@@ -568,9 +568,9 @@ public class CustomerController {
 	public String displayCustomers(Model model,HttpServletRequest request) throws Exception {
 		
 		
-		this.setMenu(model, request);
+		System.out.println("$#5344#"); this.setMenu(model, request);
 	
-		return "admin-customers";
+		System.out.println("$#5345#"); return "admin-customers";
 		
 		
 		
@@ -607,33 +607,33 @@ public class CustomerController {
 			
 			
 			CustomerCriteria criteria = new CustomerCriteria();
-			criteria.setStartIndex(startRow);
-			criteria.setMaxCount(endRow);
+			System.out.println("$#5346#"); criteria.setStartIndex(startRow);
+			System.out.println("$#5347#"); criteria.setMaxCount(endRow);
 			
-			if(!StringUtils.isBlank(email)) {
-				criteria.setEmail(email);
+			System.out.println("$#5348#"); if(!StringUtils.isBlank(email)) {
+				System.out.println("$#5349#"); criteria.setEmail(email);
 			}
 			
-			if(!StringUtils.isBlank(name)) {
-				criteria.setName(name);
+			System.out.println("$#5350#"); if(!StringUtils.isBlank(name)) {
+				System.out.println("$#5351#"); criteria.setName(name);
 			}
 			
-			if(!StringUtils.isBlank(country)) {
-				criteria.setCountry(country);
+			System.out.println("$#5352#"); if(!StringUtils.isBlank(country)) {
+				System.out.println("$#5353#"); criteria.setCountry(country);
 			}
 			
-			if(!StringUtils.isBlank(firstName)) {
-				criteria.setFirstName(firstName);
+			System.out.println("$#5354#"); if(!StringUtils.isBlank(firstName)) {
+				System.out.println("$#5355#"); criteria.setFirstName(firstName);
 			}
 			
-			if(!StringUtils.isBlank(lastName)) {
-				criteria.setLastName(lastName);
+			System.out.println("$#5356#"); if(!StringUtils.isBlank(lastName)) {
+				System.out.println("$#5357#"); criteria.setLastName(lastName);
 			}
 			
 
 			CustomerList customerList = customerService.getListByStore(store,criteria);
 			
-			if(customerList.getCustomers()!=null) {
+			System.out.println("$#5358#"); if(customerList.getCustomers()!=null) {
 			
 				for(Customer customer : customerList.getCustomers()) {
 					@SuppressWarnings("rawtypes")
@@ -643,7 +643,7 @@ public class CustomerController {
 					entry.put("lastName", customer.getBilling().getLastName());
 					entry.put("email", customer.getEmailAddress());
 					entry.put("country", customer.getBilling().getCountry().getIsoCode());
-					resp.addDataEntry(entry);
+					System.out.println("$#5359#"); resp.addDataEntry(entry);
 					
 				}
 			
@@ -651,13 +651,13 @@ public class CustomerController {
 			
 		} catch (Exception e) {
 			LOGGER.error("Error while paging orders", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5360#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5361#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5362#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	
 	}
@@ -673,7 +673,7 @@ public class CustomerController {
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#5363#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		
 		
@@ -683,34 +683,34 @@ public class CustomerController {
 			
 			Customer customer = customerService.getById(id);
 			
-			if(customer==null) {
-				resp.setErrorString("Customer does not exist");
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5364#"); if(customer==null) {
+				System.out.println("$#5365#"); resp.setErrorString("Customer does not exist");
+				System.out.println("$#5366#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5367#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setErrorString("Invalid customer id");
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5368#"); if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#5369#"); resp.setErrorString("Invalid customer id");
+				System.out.println("$#5370#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5371#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			Language userLanguage = customer.getDefaultLanguage();
 			
-			customerFacade.resetPassword(customer, store, userLanguage);
+			System.out.println("$#5372#"); customerFacade.resetPassword(customer, store, userLanguage);
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5373#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 			
 		} catch (Exception e) {
 			LOGGER.error("An exception occured while changing password",e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5374#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#5375#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 		
 	}
@@ -728,7 +728,7 @@ public class CustomerController {
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#5376#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		
 		
@@ -738,25 +738,25 @@ public class CustomerController {
 			
 			Customer customer = customerService.getById(id);
 			
-			if(customer==null) {
-				resp.setErrorString("Customer does not exist");
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5377#"); if(customer==null) {
+				System.out.println("$#5378#"); resp.setErrorString("Customer does not exist");
+				System.out.println("$#5379#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5380#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setErrorString("Invalid customer id");
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5381#"); if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#5382#"); resp.setErrorString("Invalid customer id");
+				System.out.println("$#5383#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5384#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
-				resp.setErrorString("Invalid username or password");
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5385#"); if(StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
+				System.out.println("$#5387#"); resp.setErrorString("Invalid username or password");
+				System.out.println("$#5388#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5389#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			Language userLanguage = customer.getDefaultLanguage();
@@ -765,10 +765,10 @@ public class CustomerController {
 
 			String encodedPassword = passwordEncoder.encode(password);
 			
-			customer.setPassword(encodedPassword);
-			customer.setNick(userName);
+			System.out.println("$#5390#"); customer.setPassword(encodedPassword);
+			System.out.println("$#5391#"); customer.setNick(userName);
 			
-			customerService.saveOrUpdate(customer);
+			System.out.println("$#5392#"); customerService.saveOrUpdate(customer);
 			
 			//send email
 			
@@ -811,12 +811,12 @@ public class CustomerController {
 			
 		} catch (Exception e) {
 			LOGGER.error("An exception occured while changing password",e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5393#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#5394#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 		
 	}

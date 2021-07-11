@@ -29,51 +29,51 @@ public class ProductPrice {
 	
 	
 	public List <ProductPriceDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#7789#"); return descriptions;
 	}
 	public void setDescriptions(List <ProductPriceDescription> descriptions) {
 		this.descriptions = descriptions;
 	}
 	public ProductAvailability getProductAvailability() {
-		return productAvailability;
+		System.out.println("$#7790#"); return productAvailability;
 	}
 	public void setProductAvailability(ProductAvailability productAvailability) {
 		this.productAvailability = productAvailability;
 	}
 	public String getPriceText() {
-		return priceText;
+		System.out.println("$#7791#"); return priceText;
 	}
 	public void setPriceText(String priceText) {
 		this.priceText = priceText;
 	}
 	public com.salesmanager.core.model.catalog.product.price.ProductPrice getPrice() {
-		return price;
+		System.out.println("$#7792#"); return price;
 	}
 	public void setPrice(com.salesmanager.core.model.catalog.product.price.ProductPrice price) {
 		this.price = price;
 	}
 	public String getSpecialPriceText() {
-		return specialPriceText;
+		System.out.println("$#7793#"); return specialPriceText;
 	}
 	public void setSpecialPriceText(String specialPriceText) {
 		this.specialPriceText = specialPriceText;
 	}
 
 	public com.salesmanager.core.model.catalog.product.Product getProduct() {
-		return product;
+		System.out.println("$#7794#"); return product;
 	}
 	public void setProduct(com.salesmanager.core.model.catalog.product.Product product) {
 		this.product = product;
 	}
 	public String getProductPriceSpecialStartDate() {
-		return productPriceSpecialStartDate;
+		System.out.println("$#7795#"); return productPriceSpecialStartDate;
 	}
 	public void setProductPriceSpecialStartDate(
 			String productPriceSpecialStartDate) {
 		this.productPriceSpecialStartDate = productPriceSpecialStartDate;
 	}
 	public String getProductPriceSpecialEndDate() {
-		return productPriceSpecialEndDate;
+		System.out.println("$#7796#"); return productPriceSpecialEndDate;
 	}
 	public void setProductPriceSpecialEndDate(String productPriceSpecialEndDate) {
 		this.productPriceSpecialEndDate = productPriceSpecialEndDate;

@@ -41,42 +41,42 @@ public class PersistableProductOptionSetMapper implements Mapper<PersistableProd
 		
 		
 		ProductOptionSet optionSet = new ProductOptionSet();
-		return this.convert(source, optionSet, store, language);
+		System.out.println("$#8300#"); return this.convert(source, optionSet, store, language);
 
 	}
 
 	private ProductOptionValue value(Long productOptionValue, MerchantStore store) {
-		return productOptionValueService.getById(store, productOptionValue);
+		System.out.println("$#8301#"); return productOptionValueService.getById(store, productOptionValue);
 	}
 	
 	@Override
 	public ProductOptionSet convert(PersistableProductOptionSet source, ProductOptionSet destination,
 			MerchantStore store, Language language) {
-		Validate.notNull(destination, "ProductOptionSet must not be null");
+		System.out.println("$#8302#"); Validate.notNull(destination, "ProductOptionSet must not be null");
 		
-		destination.setId(source.getId());
-		destination.setCode(source.getCode());
-		destination.setOptionDisplayOnly(source.isReadOnly());
+		System.out.println("$#8303#"); destination.setId(source.getId());
+		System.out.println("$#8304#"); destination.setCode(source.getCode());
+		System.out.println("$#8305#"); destination.setOptionDisplayOnly(source.isReadOnly());
 		
 		ProductOption option = productOptionService.getById(store, source.getOption());
-		destination.setOption(option);
+		System.out.println("$#8306#"); destination.setOption(option);
 		
-		if(!CollectionUtils.isEmpty(source.getOptionValues())) {
+		System.out.println("$#8307#"); if(!CollectionUtils.isEmpty(source.getOptionValues())) {
 			List<ProductOptionValue> values = source.getOptionValues().stream().map(id -> value(id, store)).collect(Collectors.toList());
-			destination.setValues(values);
+			System.out.println("$#8309#"); destination.setValues(values);
 		}
 		
-		if(!CollectionUtils.isEmpty(source.getProductTypes())) {
+		System.out.println("$#8310#"); if(!CollectionUtils.isEmpty(source.getProductTypes())) {
 			try {
 				List<ProductType> types = productTypeService.listProductTypes(source.getProductTypes(), store, language);
 				Set<ProductType> typesSet = new HashSet<ProductType>(types);
-				destination.setProductTypes(typesSet);
+				System.out.println("$#8311#"); destination.setProductTypes(typesSet);
 			} catch (ServiceException e) {
 				throw new ConversionRuntimeException("Error while mpping ProductOptionSet", e);
 			}
 		}
 		
-		return destination;
+		System.out.println("$#8312#"); return destination;
 	}
 
 }

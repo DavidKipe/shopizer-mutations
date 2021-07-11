@@ -51,14 +51,14 @@ public class ContentRepositoryImpl implements ContentRepositoryCustom {
 					String name = c.getDescription().getName();
 					String url = c.getDescription().getSeUrl();
 					ContentDescription contentDescription = new ContentDescription();
-					contentDescription.setName(name);
-					contentDescription.setSeUrl(url);
-					contentDescription.setContent(c);
+					System.out.println("$#1618#"); contentDescription.setName(name);
+					System.out.println("$#1619#"); contentDescription.setSeUrl(url);
+					System.out.println("$#1620#"); contentDescription.setContent(c);
 					descriptions.add(contentDescription);
 					
 			}
 			
-			return descriptions;
+			System.out.println("$#1621#"); return descriptions;
 
 	}
 	
@@ -84,20 +84,20 @@ public class ContentRepositoryImpl implements ContentRepositoryCustom {
 	    	Content content = (Content)q.getSingleResult();
 			
 
-			if(content!=null) {
-					return content.getDescription();
+			System.out.println("$#1622#"); if(content!=null) {
+					System.out.println("$#1623#"); return content.getDescription();
 			}
 			
 			@SuppressWarnings("unchecked")
 			List<Content> results = q.getResultList();
-	        if (results.isEmpty()) {
+									System.out.println("$#1624#"); if (results.isEmpty()) {
 	        	return null;
-	        } else if (results.size() >= 1) {
+									} else if (results.size() >= 1) { System.out.println("$#1625#"); System.out.println("$#1626#");
 	        		content = results.get(0);
 	        }
 	        
-			if(content!=null) {
-				return content.getDescription();
+			System.out.println("$#1627#"); if(content!=null) {
+				System.out.println("$#1628#"); return content.getDescription();
 			}
 	        
 			

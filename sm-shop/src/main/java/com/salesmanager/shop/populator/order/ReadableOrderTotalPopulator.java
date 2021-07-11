@@ -32,28 +32,28 @@ public class ReadableOrderTotalPopulator extends
 			ReadableOrderTotal target, MerchantStore store, Language language)
 			throws ConversionException {
 		
-			Validate.notNull(pricingService,"PricingService must be set");
-			Validate.notNull(messages,"LabelUtils must be set");
+			System.out.println("$#10762#"); Validate.notNull(pricingService,"PricingService must be set");
+			System.out.println("$#10763#"); Validate.notNull(messages,"LabelUtils must be set");
 			
 			Locale locale = LocaleUtils.getLocale(language);
 		
 			try {
 				
-				target.setCode(source.getOrderTotalCode());
-				target.setId(source.getId());
-				target.setModule(source.getModule());
-				target.setOrder(source.getSortOrder());
+				System.out.println("$#10764#"); target.setCode(source.getOrderTotalCode());
+				System.out.println("$#10765#"); target.setId(source.getId());
+				System.out.println("$#10766#"); target.setModule(source.getModule());
+				System.out.println("$#10767#"); target.setOrder(source.getSortOrder());
 				
 
-				target.setTitle(messages.getMessage(source.getOrderTotalCode(), locale, source.getOrderTotalCode()));
-				target.setText(source.getText());
+				System.out.println("$#10768#"); target.setTitle(messages.getMessage(source.getOrderTotalCode(), locale, source.getOrderTotalCode()));
+				System.out.println("$#10769#"); target.setText(source.getText());
 				
-				target.setValue(source.getValue());
-				target.setTotal(pricingService.getDisplayAmount(source.getValue(), store));
+				System.out.println("$#10770#"); target.setValue(source.getValue());
+				System.out.println("$#10771#"); target.setTotal(pricingService.getDisplayAmount(source.getValue(), store));
 				
-				if(!StringUtils.isBlank(source.getOrderTotalCode())) {
-					if(Constants.OT_DISCOUNT_TITLE.equals(source.getOrderTotalCode())) {
-						target.setDiscounted(true);
+				System.out.println("$#10772#"); if(!StringUtils.isBlank(source.getOrderTotalCode())) {
+					System.out.println("$#10773#"); if(Constants.OT_DISCOUNT_TITLE.equals(source.getOrderTotalCode())) {
+						System.out.println("$#10774#"); target.setDiscounted(true);
 					}
 				}
 				
@@ -61,17 +61,17 @@ public class ReadableOrderTotalPopulator extends
 				throw new ConversionException(e);
 			}
 			
-			return target;
+			System.out.println("$#10775#"); return target;
 		
 	}
 
 	@Override
 	protected ReadableOrderTotal createTarget() {
-		return new ReadableOrderTotal();
+		System.out.println("$#10776#"); return new ReadableOrderTotal();
 	}
 	
 	public PricingService getPricingService() {
-		return pricingService;
+		System.out.println("$#10777#"); return pricingService;
 	}
 
 	public void setPricingService(PricingService pricingService) {
@@ -79,7 +79,7 @@ public class ReadableOrderTotalPopulator extends
 	}
 	
 	public LabelUtils getMessages() {
-		return messages;
+		System.out.println("$#10778#"); return messages;
 	}
 
 	public void setMessages(LabelUtils messages) {

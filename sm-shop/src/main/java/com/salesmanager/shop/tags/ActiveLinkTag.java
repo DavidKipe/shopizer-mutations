@@ -37,24 +37,24 @@ public class ActiveLinkTag extends TagSupport {
 
 			String requestLinkCode = (String)request.getAttribute(Constants.LINK_CODE);
 			
-			if(StringUtils.isBlank(requestLinkCode)) {
-				if(!StringUtils.isBlank(inactiveReturnCode)) {
-					pageContext.getOut().print(inactiveReturnCode);
+			System.out.println("$#15381#"); if(StringUtils.isBlank(requestLinkCode)) {
+				System.out.println("$#15382#"); if(!StringUtils.isBlank(inactiveReturnCode)) {
+					System.out.println("$#15383#"); pageContext.getOut().print(inactiveReturnCode);
 				} else {
-					pageContext.getOut().print("");
+					System.out.println("$#15384#"); pageContext.getOut().print("");
 				}
 			} else {
-				if(requestLinkCode.equalsIgnoreCase(linkCode)) {
-					if(!StringUtils.isBlank(activeReturnCode)) {
-						pageContext.getOut().print(activeReturnCode);
+				System.out.println("$#15385#"); if(requestLinkCode.equalsIgnoreCase(linkCode)) {
+					System.out.println("$#15386#"); if(!StringUtils.isBlank(activeReturnCode)) {
+						System.out.println("$#15387#"); pageContext.getOut().print(activeReturnCode);
 					} else {
-						pageContext.getOut().print(ACTIVE);
+						System.out.println("$#15388#"); pageContext.getOut().print(ACTIVE);
 					}
 				} else {
-					if(!StringUtils.isBlank(inactiveReturnCode)) {
-						pageContext.getOut().print(inactiveReturnCode);
+					System.out.println("$#15389#"); if(!StringUtils.isBlank(inactiveReturnCode)) {
+						System.out.println("$#15390#"); pageContext.getOut().print(inactiveReturnCode);
 					} else {
-						pageContext.getOut().print("");
+						System.out.println("$#15391#"); pageContext.getOut().print("");
 					}
 				}
 			}
@@ -68,11 +68,11 @@ public class ActiveLinkTag extends TagSupport {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15392#"); return EVAL_PAGE;
 	}
 
 	public String getLinkCode() {
-		return linkCode;
+		System.out.println("$#15393#"); return linkCode;
 	}
 
 	public void setLinkCode(String linkCode) {
@@ -80,7 +80,7 @@ public class ActiveLinkTag extends TagSupport {
 	}
 
 	public String getActiveReturnCode() {
-		return activeReturnCode;
+		System.out.println("$#15394#"); return activeReturnCode;
 	}
 
 	public void setActiveReturnCode(String activeReturnCode) {

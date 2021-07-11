@@ -17,49 +17,49 @@ public class InventoryEntity extends Entity {
   private int productQuantityOrderMin = 0;
   private int productQuantityOrderMax = 0;
   public int getQuantity() {
-    return quantity;
+				System.out.println("$#8836#"); return quantity;
   }
   public void setQuantity(int quantity) {
     this.quantity = quantity;
   }
   public String getRegion() {
-    return region;
+				System.out.println("$#8837#"); return region;
   }
   public void setRegion(String region) {
     this.region = region;
   }
   public String getRegionVariant() {
-    return regionVariant;
+				System.out.println("$#8838#"); return regionVariant;
   }
   public void setRegionVariant(String regionVariant) {
     this.regionVariant = regionVariant;
   }
   public String getOwner() {
-    return owner;
+				System.out.println("$#8839#"); return owner;
   }
   public void setOwner(String owner) {
     this.owner = owner;
   }
   public boolean isAvailable() {
-    return available;
+				System.out.println("$#8841#"); System.out.println("$#8840#"); return available;
   }
   public void setAvailable(boolean available) {
     this.available = available;
   }
   public int getProductQuantityOrderMin() {
-    return productQuantityOrderMin;
+				System.out.println("$#8842#"); return productQuantityOrderMin;
   }
   public void setProductQuantityOrderMin(int productQuantityOrderMin) {
     this.productQuantityOrderMin = productQuantityOrderMin;
   }
   public int getProductQuantityOrderMax() {
-    return productQuantityOrderMax;
+				System.out.println("$#8843#"); return productQuantityOrderMax;
   }
   public void setProductQuantityOrderMax(int productQuantityOrderMax) {
     this.productQuantityOrderMax = productQuantityOrderMax;
   }
   public String getDateAvailable() {
-    return dateAvailable;
+				System.out.println("$#8844#"); return dateAvailable;
   }
   public void setDateAvailable(String dateAvailable) {
     this.dateAvailable = dateAvailable;

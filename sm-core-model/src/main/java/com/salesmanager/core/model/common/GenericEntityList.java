@@ -12,7 +12,7 @@ public class GenericEntityList<T>  extends EntityList {
 	List<T> list;
 
 	public List<T> getList() {
-		return list;
+		System.out.println("$#4080#"); return list;
 	}
 
 	public void setList(List<T> list) {

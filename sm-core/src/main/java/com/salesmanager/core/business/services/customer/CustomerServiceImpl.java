@@ -44,39 +44,39 @@ public class CustomerServiceImpl extends SalesManagerEntityServiceImpl<Long, Cus
 
 	@Override
 	public List<Customer> getByName(String firstName) {
-		return customerRepository.findByName(firstName);
+		System.out.println("$#2210#"); return customerRepository.findByName(firstName);
 	}
 	
 	@Override
 	public Customer getById(Long id) {
-			return customerRepository.findOne(id);		
+			System.out.println("$#2211#"); return customerRepository.findOne(id);
 	}
 	
 	@Override
 	public Customer getByNick(String nick) {
-		return customerRepository.findByNick(nick);	
+		System.out.println("$#2212#"); return customerRepository.findByNick(nick);
 	}
 	
 	@Override
 	public Customer getByNick(String nick, int storeId) {
-		return customerRepository.findByNick(nick, storeId);	
+		System.out.println("$#2213#"); return customerRepository.findByNick(nick, storeId);
 	}
 	
 	@Override
 	public List<Customer> getListByStore(MerchantStore store) {
-		return customerRepository.findByStore(store.getId());
+		System.out.println("$#2214#"); return customerRepository.findByStore(store.getId());
 	}
 	
 	@Override
 	public CustomerList getListByStore(MerchantStore store, CustomerCriteria criteria) {
-		return customerRepository.listByStore(store,criteria);
+		System.out.println("$#2215#"); return customerRepository.listByStore(store,criteria);
 	}
 	
 	@Override
 	public Address getCustomerAddress(MerchantStore store, String ipAddress) throws ServiceException {
 		
 		try {
-			return geoLocation.getAddress(ipAddress);
+			System.out.println("$#2216#"); return geoLocation.getAddress(ipAddress);
 		} catch(Exception e) {
 			throw new ServiceException(e);
 		}
@@ -88,11 +88,11 @@ public class CustomerServiceImpl extends SalesManagerEntityServiceImpl<Long, Cus
 
 		LOGGER.debug("Creating Customer");
 		
-		if(customer.getId()!=null && customer.getId()>0) {
-			super.update(customer);
+		System.out.println("$#2218#"); System.out.println("$#2217#"); if(customer.getId()!=null && customer.getId()>0) {
+			System.out.println("$#2220#"); super.update(customer);
 		} else {			
 		
-			super.create(customer);
+			System.out.println("$#2221#"); super.create(customer);
 
 		}
 	}
@@ -102,12 +102,12 @@ public class CustomerServiceImpl extends SalesManagerEntityServiceImpl<Long, Cus
 		
 		//delete attributes
 		List<CustomerAttribute> attributes =customerAttributeService.getByCustomer(customer.getMerchantStore(), customer);
-		if(attributes!=null) {
+		System.out.println("$#2222#"); if(attributes!=null) {
 			for(CustomerAttribute attribute : attributes) {
-				customerAttributeService.delete(attribute);
+				System.out.println("$#2223#"); customerAttributeService.delete(attribute);
 			}
 		}
-		customerRepository.delete(customer);
+		System.out.println("$#2224#"); customerRepository.delete(customer);
 
 	}
 	

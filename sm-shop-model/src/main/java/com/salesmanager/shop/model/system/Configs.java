@@ -18,7 +18,7 @@ public class Configs {
 	private boolean displayPagesMenu = true;
 
 	public String getFacebook() {
-		return facebook;
+		System.out.println("$#9379#"); return facebook;
 	}
 
 	public void setFacebook(String facebook) {
@@ -26,7 +26,7 @@ public class Configs {
 	}
 
 	public String getPinterest() {
-		return pinterest;
+		System.out.println("$#9380#"); return pinterest;
 	}
 
 	public void setPinterest(String pinterest) {
@@ -34,7 +34,7 @@ public class Configs {
 	}
 
 	public String getGa() {
-		return ga;
+		System.out.println("$#9381#"); return ga;
 	}
 
 	public void setGa(String ga) {
@@ -42,7 +42,7 @@ public class Configs {
 	}
 
 	public String getInstagram() {
-		return instagram;
+		System.out.println("$#9382#"); return instagram;
 	}
 
 	public void setInstagram(String instagram) {
@@ -50,7 +50,7 @@ public class Configs {
 	}
 
 	public boolean isAllowOnlinePurchase() {
-		return allowOnlinePurchase;
+		System.out.println("$#9384#"); System.out.println("$#9383#"); return allowOnlinePurchase;
 	}
 
 	public void setAllowOnlinePurchase(boolean allowOnlinePurchase) {
@@ -58,7 +58,7 @@ public class Configs {
 	}
 
 	public boolean isDisplaySearchBox() {
-		return displaySearchBox;
+		System.out.println("$#9386#"); System.out.println("$#9385#"); return displaySearchBox;
 	}
 
 	public void setDisplaySearchBox(boolean displaySearchBox) {
@@ -66,7 +66,7 @@ public class Configs {
 	}
 
 	public boolean isDisplayContactUs() {
-		return displayContactUs;
+		System.out.println("$#9388#"); System.out.println("$#9387#"); return displayContactUs;
 	}
 
 	public void setDisplayContactUs(boolean displayContactUs) {
@@ -74,7 +74,7 @@ public class Configs {
 	}
 
 	public boolean isDisplayShipping() {
-		return displayShipping;
+		System.out.println("$#9390#"); System.out.println("$#9389#"); return displayShipping;
 	}
 
 	public void setDisplayShipping(boolean displayShipping) {
@@ -82,7 +82,7 @@ public class Configs {
 	}
 
 	public boolean isDisplayCustomerSection() {
-		return displayCustomerSection;
+		System.out.println("$#9392#"); System.out.println("$#9391#"); return displayCustomerSection;
 	}
 
 	public void setDisplayCustomerSection(boolean displayCustomerSection) {
@@ -90,7 +90,7 @@ public class Configs {
 	}
 
 	public boolean isDisplayAddToCartOnFeaturedItems() {
-		return displayAddToCartOnFeaturedItems;
+		System.out.println("$#9394#"); System.out.println("$#9393#"); return displayAddToCartOnFeaturedItems;
 	}
 
 	public void setDisplayAddToCartOnFeaturedItems(boolean displayAddToCartOnFeaturedItems) {
@@ -98,7 +98,7 @@ public class Configs {
 	}
 
 	public boolean isDisplayCustomerAgreement() {
-		return displayCustomerAgreement;
+		System.out.println("$#9396#"); System.out.println("$#9395#"); return displayCustomerAgreement;
 	}
 
 	public void setDisplayCustomerAgreement(boolean displayCustomerAgreement) {
@@ -106,7 +106,7 @@ public class Configs {
 	}
 
 	public boolean isDisplayPagesMenu() {
-		return displayPagesMenu;
+		System.out.println("$#9398#"); System.out.println("$#9397#"); return displayPagesMenu;
 	}
 
 	public void setDisplayPagesMenu(boolean displayPagesMenu) {

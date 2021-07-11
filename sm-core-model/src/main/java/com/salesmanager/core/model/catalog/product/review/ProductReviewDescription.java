@@ -47,12 +47,12 @@ public class ProductReviewDescription extends Description {
 	}
 
 	public ProductReviewDescription(Language language, String name) {
-		this.setLanguage(language);
-		this.setName(name);
+		System.out.println("$#3999#"); this.setLanguage(language);
+		System.out.println("$#4000#"); this.setName(name);
 	}
 
 	public ProductReview getProductReview() {
-		return productReview;
+		System.out.println("$#4001#"); return productReview;
 	}
 
 	public void setProductReview(ProductReview productReview) {

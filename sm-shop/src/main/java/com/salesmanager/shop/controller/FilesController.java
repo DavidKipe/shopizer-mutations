@@ -48,11 +48,11 @@ public class FilesController extends AbstractController {
 		OutputContentFile file =contentService.getContentFile(storeCode, fileType, new StringBuilder().append(fileName).append(".").append(extension).toString());
 		
 		
-		if(file!=null) {
-			return file.getFile().toByteArray();
+		System.out.println("$#7949#"); if(file!=null) {
+			System.out.println("$#7950#"); return file.getFile().toByteArray();
 		} else {
 			LOGGER.debug("File not found " + fileName + "." + extension);
-			response.sendError(404, Constants.FILE_NOT_FOUND);
+			System.out.println("$#7951#"); response.sendError(404, Constants.FILE_NOT_FOUND);
 			return null;
 		}
 	}
@@ -79,12 +79,12 @@ public class FilesController extends AbstractController {
 		OutputContentFile file = contentService.getContentFile(storeCode, fileType, fileNameAndExtension);
 		
 		
-		if(file!=null) {
-			response.setHeader("Content-Disposition", "attachment; filename=\"" + fileNameAndExtension + "\"");
-			return file.getFile().toByteArray();
+		System.out.println("$#7952#"); if(file!=null) {
+			System.out.println("$#7953#"); response.setHeader("Content-Disposition", "attachment; filename=\"" + fileNameAndExtension + "\"");
+			System.out.println("$#7954#"); return file.getFile().toByteArray();
 		} else {
 			LOGGER.debug("File not found " + fileName + "." + extension);
-			response.sendError(404, Constants.FILE_NOT_FOUND);
+			System.out.println("$#7955#"); response.sendError(404, Constants.FILE_NOT_FOUND);
 			return null;
 		}
 	}

@@ -16,7 +16,7 @@ public class PersistableGroup extends GroupEntity {
   public PersistableGroup() {}
   
   public PersistableGroup(String name) {
-    super.setName(name);
+				System.out.println("$#9269#"); super.setName(name);
   }
 
 }

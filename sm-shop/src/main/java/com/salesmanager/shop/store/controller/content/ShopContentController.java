@@ -34,22 +34,22 @@ public class ShopContentController {
 		
 		Content content = null;
 		
-		if(contentDescription!=null) {
+		System.out.println("$#12307#"); if(contentDescription!=null) {
 			
 			content = contentDescription.getContent();
 			
-			if(!content.isVisible()) {
-				return "redirect:/shop";
+			System.out.println("$#12308#"); if(!content.isVisible()) {
+				System.out.println("$#12309#"); return "redirect:/shop";
 			}
 			
 			//meta information
 			PageInformation pageInformation = new PageInformation();
-			pageInformation.setPageDescription(contentDescription.getMetatagDescription());
-			pageInformation.setPageKeywords(contentDescription.getMetatagKeywords());
-			pageInformation.setPageTitle(contentDescription.getTitle());
-			pageInformation.setPageUrl(contentDescription.getName());
+			System.out.println("$#12310#"); pageInformation.setPageDescription(contentDescription.getMetatagDescription());
+			System.out.println("$#12311#"); pageInformation.setPageKeywords(contentDescription.getMetatagKeywords());
+			System.out.println("$#12312#"); pageInformation.setPageTitle(contentDescription.getTitle());
+			System.out.println("$#12313#"); pageInformation.setPageUrl(contentDescription.getName());
 			
-			request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
+			System.out.println("$#12314#"); request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
 			
 			
 			
@@ -57,17 +57,17 @@ public class ShopContentController {
 		}
 		
 		//TODO breadcrumbs
-		request.setAttribute(Constants.LINK_CODE, contentDescription.getSeUrl());
+		System.out.println("$#12315#"); request.setAttribute(Constants.LINK_CODE, contentDescription.getSeUrl());
 		model.addAttribute("content",contentDescription);
 
-		if(!StringUtils.isBlank(content.getProductGroup())) {
+		System.out.println("$#12316#"); if(!StringUtils.isBlank(content.getProductGroup())) {
 			model.addAttribute("productGroup",content.getProductGroup());
 		}
 		
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Content.content).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12317#"); return template.toString();
 		
 		
 	}

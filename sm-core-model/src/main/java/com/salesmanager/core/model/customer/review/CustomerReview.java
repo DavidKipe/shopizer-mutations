@@ -76,7 +76,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 	private Customer reviewedCustomer;
 
 	public Customer getReviewedCustomer() {
-		return reviewedCustomer;
+		System.out.println("$#4209#"); return reviewedCustomer;
 	}
 
 	public void setReviewedCustomer(Customer reviewedCustomer) {
@@ -90,7 +90,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4210#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -98,7 +98,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 	}
 
 	public Double getReviewRating() {
-		return reviewRating;
+		System.out.println("$#4211#"); return reviewRating;
 	}
 
 	public void setReviewRating(Double reviewRating) {
@@ -106,7 +106,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 	}
 
 	public Long getReviewRead() {
-		return reviewRead;
+		System.out.println("$#4212#"); return reviewRead;
 	}
 
 	public void setReviewRead(Long reviewRead) {
@@ -114,7 +114,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 	}
 
 	public Integer getStatus() {
-		return status;
+		System.out.println("$#4213#"); return status;
 	}
 
 	public void setStatus(Integer status) {
@@ -122,7 +122,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 	}
 
 	public Customer getCustomer() {
-		return customer;
+		System.out.println("$#4214#"); return customer;
 	}
 
 	public void setCustomer(Customer customer) {
@@ -131,7 +131,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 
 
 	public Set<CustomerReviewDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#4215#"); return descriptions;
 	}
 
 	public void setDescriptions(Set<CustomerReviewDescription> descriptions) {
@@ -140,7 +140,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 	
 	@Override
 	public AuditSection getAuditSection() {
-		return audit;
+		System.out.println("$#4216#"); return audit;
 	}
 	
 	@Override
@@ -149,7 +149,7 @@ public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> imp
 	}
 	
 	public Date getReviewDate() {
-		return reviewDate;
+		System.out.println("$#4217#"); return reviewDate;
 	}
 
 	public void setReviewDate(Date reviewDate) {

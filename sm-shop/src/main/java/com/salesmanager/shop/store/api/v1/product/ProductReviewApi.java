@@ -77,27 +77,27 @@ public class ProductReviewApi {
       ProductReview prodReview =
           productReviewService.getByProductAndCustomer(
               review.getProductId(), review.getCustomerId());
-      if (prodReview != null) {
-        response.sendError(500, "A review already exist for this customer and product");
+						System.out.println("$#11974#"); if (prodReview != null) {
+								System.out.println("$#11975#"); response.sendError(500, "A review already exist for this customer and product");
         return null;
       }
 
       // rating maximum 5
-      if (review.getRating() > Constants.MAX_REVIEW_RATING_SCORE) {
-        response.sendError(503, "Maximum rating score is " + Constants.MAX_REVIEW_RATING_SCORE);
+						System.out.println("$#11977#"); System.out.println("$#11976#"); if (review.getRating() > Constants.MAX_REVIEW_RATING_SCORE) {
+								System.out.println("$#11978#"); response.sendError(503, "Maximum rating score is " + Constants.MAX_REVIEW_RATING_SCORE);
         return null;
       }
 
-      review.setProductId(id);
+						System.out.println("$#11979#"); review.setProductId(id);
 
-      productFacade.saveOrUpdateReview(review, merchantStore, language);
+						System.out.println("$#11980#"); productFacade.saveOrUpdateReview(review, merchantStore, language);
 
-      return review;
+						System.out.println("$#11981#"); return review;
 
     } catch (Exception e) {
       LOGGER.error("Error while saving product review", e);
       try {
-        response.sendError(503, "Error while saving product review" + e.getMessage());
+								System.out.println("$#11982#"); response.sendError(503, "Error while saving product review" + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -122,24 +122,24 @@ public class ProductReviewApi {
       // product exist
       Product product = productService.getById(id);
 
-      if (product == null) {
-        response.sendError(404, "Product id " + id + " does not exists");
-        return null;
+						System.out.println("$#11983#"); if (product == null) {
+								System.out.println("$#11984#"); response.sendError(404, "Product id " + id + " does not exists");
+								System.out.println("$#11985#"); return null;
       }
 
       List<ReadableProductReview> reviews =
           productFacade.getProductReviews(product, merchantStore, language);
 
-      return reviews;
+						System.out.println("$#11986#"); return reviews;
 
     } catch (Exception e) {
       LOGGER.error("Error while getting product reviews", e);
       try {
-        response.sendError(503, "Error while getting product reviews" + e.getMessage());
+								System.out.println("$#11987#"); response.sendError(503, "Error while getting product reviews" + e.getMessage());
       } catch (Exception ignore) {
       }
 
-      return null;
+						System.out.println("$#11988#"); return null;
     }
   }
 
@@ -166,32 +166,32 @@ public class ProductReviewApi {
 
     try {
       ProductReview prodReview = productReviewService.getById(reviewId);
-      if (prodReview == null) {
-        response.sendError(404, "Product review with id " + reviewId + " does not exist");
+						System.out.println("$#11989#"); if (prodReview == null) {
+								System.out.println("$#11990#"); response.sendError(404, "Product review with id " + reviewId + " does not exist");
         return null;
       }
 
-      if (prodReview.getCustomer().getId().longValue() != review.getCustomerId().longValue()) {
-        response.sendError(404, "Product review with id " + reviewId + " does not exist");
+						System.out.println("$#11991#"); if (prodReview.getCustomer().getId().longValue() != review.getCustomerId().longValue()) {
+								System.out.println("$#11992#"); response.sendError(404, "Product review with id " + reviewId + " does not exist");
         return null;
       }
 
       // rating maximum 5
-      if (review.getRating() > Constants.MAX_REVIEW_RATING_SCORE) {
-        response.sendError(503, "Maximum rating score is " + Constants.MAX_REVIEW_RATING_SCORE);
+						System.out.println("$#11994#"); System.out.println("$#11993#"); if (review.getRating() > Constants.MAX_REVIEW_RATING_SCORE) {
+								System.out.println("$#11995#"); response.sendError(503, "Maximum rating score is " + Constants.MAX_REVIEW_RATING_SCORE);
         return null;
       }
 
-      review.setProductId(id);
+						System.out.println("$#11996#"); review.setProductId(id);
 
-      productFacade.saveOrUpdateReview(review, merchantStore, language);
+						System.out.println("$#11997#"); productFacade.saveOrUpdateReview(review, merchantStore, language);
 
-      return review;
+						System.out.println("$#11998#"); return review;
 
     } catch (Exception e) {
       LOGGER.error("Error while saving product review", e);
       try {
-        response.sendError(503, "Error while saving product review" + e.getMessage());
+								System.out.println("$#11999#"); response.sendError(503, "Error while saving product review" + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -220,22 +220,22 @@ public class ProductReviewApi {
 
     try {
       ProductReview prodReview = productReviewService.getById(reviewId);
-      if (prodReview == null) {
-        response.sendError(404, "Product review with id " + reviewId + " does not exist");
+						System.out.println("$#12000#"); if (prodReview == null) {
+								System.out.println("$#12001#"); response.sendError(404, "Product review with id " + reviewId + " does not exist");
         return;
       }
 
-      if (prodReview.getProduct().getId().longValue() != id.longValue()) {
-        response.sendError(404, "Product review with id " + reviewId + " does not exist");
+						System.out.println("$#12002#"); if (prodReview.getProduct().getId().longValue() != id.longValue()) {
+								System.out.println("$#12003#"); response.sendError(404, "Product review with id " + reviewId + " does not exist");
         return;
       }
 
-      productFacade.deleteReview(prodReview, merchantStore, language);
+						System.out.println("$#12004#"); productFacade.deleteReview(prodReview, merchantStore, language);
 
     } catch (Exception e) {
       LOGGER.error("Error while deleting product review", e);
       try {
-        response.sendError(503, "Error while deleting product review" + e.getMessage());
+								System.out.println("$#12005#"); response.sendError(503, "Error while deleting product review" + e.getMessage());
       } catch (Exception ignore) {
       }
 

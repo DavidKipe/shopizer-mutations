@@ -71,7 +71,7 @@ public class ShoppingCartAttributeItem extends SalesManagerEntity<Long, Shopping
 
 
 	public ShoppingCartItem getShoppingCartItem() {
-		return shoppingCartItem;
+		System.out.println("$#4680#"); return shoppingCartItem;
 	}
 
 	public void setShoppingCartItem(ShoppingCartItem shoppingCartItem) {
@@ -80,7 +80,7 @@ public class ShoppingCartAttributeItem extends SalesManagerEntity<Long, Shopping
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4681#"); return auditSection;
 	}
 
 	@Override
@@ -91,7 +91,7 @@ public class ShoppingCartAttributeItem extends SalesManagerEntity<Long, Shopping
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4682#"); return id;
 	}
 
 	@Override
@@ -106,7 +106,7 @@ public class ShoppingCartAttributeItem extends SalesManagerEntity<Long, Shopping
 	}
 
 	public Long getProductAttributeId() {
-		return productAttributeId;
+		System.out.println("$#4683#"); return productAttributeId;
 	}
 
 	public void setProductAttribute(ProductAttribute productAttribute) {
@@ -114,7 +114,7 @@ public class ShoppingCartAttributeItem extends SalesManagerEntity<Long, Shopping
 	}
 
 	public ProductAttribute getProductAttribute() {
-		return productAttribute;
+		System.out.println("$#4684#"); return productAttribute;
 	}
 
 

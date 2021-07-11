@@ -61,7 +61,7 @@ public class CustomerApi {
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language,
       @Valid @RequestBody PersistableCustomer customer) {
-      return customerFacade.create(customer, merchantStore, language);
+						System.out.println("$#11667#"); return customerFacade.create(customer, merchantStore, language);
 
   }
   
@@ -81,8 +81,8 @@ public class CustomerApi {
       @ApiIgnore MerchantStore merchantStore,
       @Valid @RequestBody PersistableCustomer customer) {
 
-      customer.setId(id);
-      return customerFacade.update(customer, merchantStore);
+						System.out.println("$#11668#"); customer.setId(id);
+						System.out.println("$#11669#"); return customerFacade.update(customer, merchantStore);
   }
   
   @PatchMapping("/private/customer/{id}/address")
@@ -100,8 +100,8 @@ public class CustomerApi {
       @ApiIgnore MerchantStore merchantStore,
       @RequestBody PersistableCustomer customer) {
 
-      customer.setId(id);
-      customerFacade.updateAddress(customer, merchantStore);
+						System.out.println("$#11670#"); customer.setId(id);
+						System.out.println("$#11671#"); customerFacade.updateAddress(customer, merchantStore);
   }
 
   @DeleteMapping("/private/customer/{id}")
@@ -116,7 +116,7 @@ public class CustomerApi {
       @PathVariable Long id,
       @ApiIgnore MerchantStore merchantStore
       ) {
-    customerFacade.deleteById(id);
+				System.out.println("$#11672#"); customerFacade.deleteById(id);
   }
 
   /**
@@ -139,14 +139,14 @@ public class CustomerApi {
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language) {
     CustomerCriteria customerCriteria = createCustomerCriteria(page, count);
-    return customerFacade.getListByStore(merchantStore, customerCriteria, language);
+				System.out.println("$#11673#"); return customerFacade.getListByStore(merchantStore, customerCriteria, language);
   }
 
   private CustomerCriteria createCustomerCriteria(Integer start, Integer count) {
     CustomerCriteria customerCriteria = new CustomerCriteria();
-    Optional.ofNullable(start).ifPresent(customerCriteria::setStartIndex);
-    Optional.ofNullable(count).ifPresent(customerCriteria::setMaxCount);
-    return customerCriteria;
+				System.out.println("$#11674#"); Optional.ofNullable(start).ifPresent(customerCriteria::setStartIndex);
+				System.out.println("$#11675#"); Optional.ofNullable(count).ifPresent(customerCriteria::setMaxCount);
+				System.out.println("$#11676#"); return customerCriteria;
   }
 
   @GetMapping("/private/customer/{id}")
@@ -158,7 +158,7 @@ public class CustomerApi {
       @PathVariable Long id,
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language) {
-      return customerFacade.getCustomerById(id, merchantStore, language);
+						System.out.println("$#11677#"); return customerFacade.getCustomerById(id, merchantStore, language);
   }
 
   /**
@@ -179,7 +179,7 @@ public class CustomerApi {
       HttpServletRequest request) {
     Principal principal = request.getUserPrincipal();
     String userName = principal.getName();
-    return customerFacade.getCustomerByNick(userName, merchantStore, language);
+				System.out.println("$#11678#"); return customerFacade.getCustomerByNick(userName, merchantStore, language);
   }
   
   @PatchMapping("/auth/customer/address")
@@ -200,7 +200,7 @@ public class CustomerApi {
       String userName = principal.getName();
       
 
-      customerFacade.updateAddress(userName, customer, merchantStore);
+						System.out.println("$#11679#"); customerFacade.updateAddress(userName, customer, merchantStore);
   
   }
   
@@ -222,7 +222,7 @@ public class CustomerApi {
       Principal principal = request.getUserPrincipal();
       String userName = principal.getName();
 
-      return customerFacade.update(userName, customer, merchantStore);
+						System.out.println("$#11680#"); return customerFacade.update(userName, customer, merchantStore);
   }
   
   

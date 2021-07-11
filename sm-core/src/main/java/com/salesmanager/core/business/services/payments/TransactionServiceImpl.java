@@ -42,11 +42,11 @@ public class TransactionServiceImpl  extends SalesManagerEntityServiceImpl<Long,
 		
 		//parse JSON string
 		String transactionDetails = transaction.toJSONString();
-		if(!StringUtils.isBlank(transactionDetails)) {
-			transaction.setDetails(transactionDetails);
+		System.out.println("$#2596#"); if(!StringUtils.isBlank(transactionDetails)) {
+			System.out.println("$#2597#"); transaction.setDetails(transactionDetails);
 		}
 		
-		super.create(transaction);
+		System.out.println("$#2598#"); super.create(transaction);
 		
 		
 	}
@@ -57,18 +57,18 @@ public class TransactionServiceImpl  extends SalesManagerEntityServiceImpl<Long,
 		List<Transaction> transactions = transactionRepository.findByOrder(order.getId());
 		ObjectMapper mapper = new ObjectMapper();
 		for(Transaction transaction : transactions) {
-				if(!StringUtils.isBlank(transaction.getDetails())) {
+				System.out.println("$#2599#"); if(!StringUtils.isBlank(transaction.getDetails())) {
 					try {
 						@SuppressWarnings("unchecked")
 						Map<String,String> objects = mapper.readValue(transaction.getDetails(), Map.class);
-						transaction.setTransactionDetails(objects);
+						System.out.println("$#2600#"); transaction.setTransactionDetails(objects);
 					} catch (Exception e) {
 						throw new ServiceException(e);
 					}
 				}
 		}
 		
-		return transactions;
+		System.out.println("$#2601#"); return transactions;
 	}
 	
 	/**
@@ -108,11 +108,11 @@ public class TransactionServiceImpl  extends SalesManagerEntityServiceImpl<Long,
 	    
 	    String currentStep = last.getKey();
 	    
-	    System.out.println("Current step " + currentStep);
+					System.out.println("$#2604#"); System.out.println("Current step " + currentStep);
 	    
 	    //find next step
 	    
-	    return last.getValue();
+					System.out.println("$#2605#"); return last.getValue();
 	    
 
 
@@ -125,27 +125,27 @@ public class TransactionServiceImpl  extends SalesManagerEntityServiceImpl<Long,
 		ObjectMapper mapper = new ObjectMapper();
 		Transaction capturable = null;
 		for(Transaction transaction : transactions) {
-			if(transaction.getTransactionType().name().equals(TransactionType.AUTHORIZE.name())) {
-				if(!StringUtils.isBlank(transaction.getDetails())) {
+			System.out.println("$#2606#"); if(transaction.getTransactionType().name().equals(TransactionType.AUTHORIZE.name())) {
+				System.out.println("$#2607#"); if(!StringUtils.isBlank(transaction.getDetails())) {
 					try {
 						@SuppressWarnings("unchecked")
 						Map<String,String> objects = mapper.readValue(transaction.getDetails(), Map.class);
-						transaction.setTransactionDetails(objects);
+						System.out.println("$#2608#"); transaction.setTransactionDetails(objects);
 						capturable = transaction;
 					} catch (Exception e) {
 						throw new ServiceException(e);
 					}
 				}
 			}
-			if(transaction.getTransactionType().name().equals(TransactionType.CAPTURE.name())) {
+			System.out.println("$#2609#"); if(transaction.getTransactionType().name().equals(TransactionType.CAPTURE.name())) {
 				break;
 			}
-			if(transaction.getTransactionType().name().equals(TransactionType.REFUND.name())) {
+			System.out.println("$#2610#"); if(transaction.getTransactionType().name().equals(TransactionType.REFUND.name())) {
 				break;
 			}
 		}
 		
-		return capturable;
+		System.out.println("$#2611#"); return capturable;
 	}
 	
 	@Override
@@ -155,21 +155,21 @@ public class TransactionServiceImpl  extends SalesManagerEntityServiceImpl<Long,
 		Map<String,Transaction> finalTransactions = new HashMap<String,Transaction>();
 		Transaction finalTransaction = null;
 		for(Transaction transaction : transactions) {
-			if(transaction.getTransactionType().name().equals(TransactionType.AUTHORIZECAPTURE.name())) {
+			System.out.println("$#2612#"); if(transaction.getTransactionType().name().equals(TransactionType.AUTHORIZECAPTURE.name())) {
 				finalTransactions.put(TransactionType.AUTHORIZECAPTURE.name(),transaction);
 				continue;
 			}
-			if(transaction.getTransactionType().name().equals(TransactionType.CAPTURE.name())) {
+			System.out.println("$#2613#"); if(transaction.getTransactionType().name().equals(TransactionType.CAPTURE.name())) {
 				finalTransactions.put(TransactionType.CAPTURE.name(),transaction);
 				continue;
 			}
-			if(transaction.getTransactionType().name().equals(TransactionType.REFUND.name())) {
+			System.out.println("$#2614#"); if(transaction.getTransactionType().name().equals(TransactionType.REFUND.name())) {
 				//check transaction id
 				Transaction previousRefund = finalTransactions.get(TransactionType.REFUND.name());
-				if(previousRefund!=null) {
+				System.out.println("$#2615#"); if(previousRefund!=null) {
 					Date previousDate = previousRefund.getTransactionDate();
 					Date currentDate = transaction.getTransactionDate();
-					if(previousDate.before(currentDate)) {
+					System.out.println("$#2616#"); if(previousDate.before(currentDate)) {
 						finalTransactions.put(TransactionType.REFUND.name(),transaction);
 						continue;
 					}
@@ -180,32 +180,32 @@ public class TransactionServiceImpl  extends SalesManagerEntityServiceImpl<Long,
 			}
 		}
 		
-		if(finalTransactions.containsKey(TransactionType.AUTHORIZECAPTURE.name())) {
+		System.out.println("$#2617#"); if(finalTransactions.containsKey(TransactionType.AUTHORIZECAPTURE.name())) {
 			finalTransaction = finalTransactions.get(TransactionType.AUTHORIZECAPTURE.name());
 		}
 		
-		if(finalTransactions.containsKey(TransactionType.CAPTURE.name())) {
+		System.out.println("$#2618#"); if(finalTransactions.containsKey(TransactionType.CAPTURE.name())) {
 			finalTransaction = finalTransactions.get(TransactionType.CAPTURE.name());
 		}
 
-		if(finalTransaction!=null && !StringUtils.isBlank(finalTransaction.getDetails())) {
+		System.out.println("$#2619#"); if(finalTransaction!=null && !StringUtils.isBlank(finalTransaction.getDetails())) {
 			try {
 				ObjectMapper mapper = new ObjectMapper();
 				@SuppressWarnings("unchecked")
 				Map<String,String> objects = mapper.readValue(finalTransaction.getDetails(), Map.class);
-				finalTransaction.setTransactionDetails(objects);
+				System.out.println("$#2621#"); finalTransaction.setTransactionDetails(objects);
 			} catch (Exception e) {
 				throw new ServiceException(e);
 			}
 		}
 		
-		return finalTransaction;
+		System.out.println("$#2622#"); return finalTransaction;
 	}
 
 	@Override
 	public List<Transaction> listTransactions(Date startDate, Date endDate) throws ServiceException {
 		
-		return transactionRepository.findByDates(startDate, endDate);
+		System.out.println("$#2623#"); return transactionRepository.findByDates(startDate, endDate);
 	}
 
 }

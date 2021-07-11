@@ -46,10 +46,10 @@ public class ListItemsController {
 
 		Manufacturer manufacturer =null;
 		
-		if(manufacturer==null) {
+		System.out.println("$#12758#"); if(manufacturer==null) {
 			LOGGER.error("No manufacturer found for url " + url);
 			//redirect on page not found
-			return PageBuilderUtils.build404(store);
+			System.out.println("$#12759#"); return PageBuilderUtils.build404(store);
 			
 		}
 		
@@ -60,17 +60,17 @@ public class ListItemsController {
 		
 		//meta information
 		PageInformation pageInformation = new PageInformation();
-		pageInformation.setPageDescription(readableManufacturer.getDescription().getMetaDescription());
-		pageInformation.setPageKeywords(readableManufacturer.getDescription().getKeyWords());
-		pageInformation.setPageTitle(readableManufacturer.getDescription().getTitle());
-		pageInformation.setPageUrl(readableManufacturer.getDescription().getFriendlyUrl());
+		System.out.println("$#12760#"); pageInformation.setPageDescription(readableManufacturer.getDescription().getMetaDescription());
+		System.out.println("$#12761#"); pageInformation.setPageKeywords(readableManufacturer.getDescription().getKeyWords());
+		System.out.println("$#12762#"); pageInformation.setPageTitle(readableManufacturer.getDescription().getTitle());
+		System.out.println("$#12763#"); pageInformation.setPageUrl(readableManufacturer.getDescription().getFriendlyUrl());
 		
 		model.addAttribute("manufacturer", readableManufacturer);
 		
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Items.items_manufacturer).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12764#"); return template.toString();
 	}
 	
 

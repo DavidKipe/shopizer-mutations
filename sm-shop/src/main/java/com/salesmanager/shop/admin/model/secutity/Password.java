@@ -24,7 +24,7 @@ public class Password implements Serializable {
 	
 	
 	public String getPassword() {
-		return password;
+		System.out.println("$#7837#"); return password;
 	}
 
 	public void setPassword(String password) {
@@ -32,7 +32,7 @@ public class Password implements Serializable {
 	}
 
 	public String getNewPassword() {
-		return newPassword;
+		System.out.println("$#7838#"); return newPassword;
 	}
 
 	public void setNewPassword(String newPassword) {
@@ -40,7 +40,7 @@ public class Password implements Serializable {
 	}
 
 	public String getRepeatPassword() {
-		return repeatPassword;
+		System.out.println("$#7839#"); return repeatPassword;
 	}
 
 	public void setRepeatPassword(String repeatPassword) {
@@ -48,7 +48,7 @@ public class Password implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		System.out.println("$#7840#"); return user;
 	}
 
 	public void setUser(User user) {

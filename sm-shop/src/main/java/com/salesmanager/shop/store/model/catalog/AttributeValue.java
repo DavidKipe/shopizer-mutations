@@ -18,37 +18,37 @@ public class AttributeValue extends ShopEntity implements Serializable {
 	private int sortOrder;
 
 	public String getName() {
-		return name;
+		System.out.println("$#15177#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public boolean isDefaultAttribute() {
-		return defaultAttribute;
+		System.out.println("$#15179#"); System.out.println("$#15178#"); return defaultAttribute;
 	}
 	public void setDefaultAttribute(boolean defaultAttribute) {
 		this.defaultAttribute = defaultAttribute;
 	}
 	public String getImage() {
-		return image;
+		System.out.println("$#15180#"); return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
 	}
 	public String getPrice() {
-		return price;
+		System.out.println("$#15181#"); return price;
 	}
 	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getDescription() {
-		return description;
+		System.out.println("$#15182#"); return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
 	public int getSortOrder() {
-		return sortOrder;
+		System.out.println("$#15183#"); return sortOrder;
 	}
 	public void setSortOrder(int sortOrder) {
 		this.sortOrder = sortOrder;

@@ -21,7 +21,7 @@ public class ReadableUser extends UserEntity {
   
 
   public List<ReadableGroup> getGroups() {
-    return groups;
+				System.out.println("$#9430#"); return groups;
   }
 
   public void setGroups(List<ReadableGroup> groups) {
@@ -30,25 +30,25 @@ public class ReadableUser extends UserEntity {
   
   
   public String getLastAccess() {
-    return lastAccess;
+				System.out.println("$#9431#"); return lastAccess;
   }
   public void setLastAccess(String lastAccess) {
     this.lastAccess = lastAccess;
   }
   public String getLoginTime() {
-    return loginTime;
+				System.out.println("$#9432#"); return loginTime;
   }
   public void setLoginTime(String loginTime) {
     this.loginTime = loginTime;
   }
   public String getMerchant() {
-    return merchant;
+				System.out.println("$#9433#"); return merchant;
   }
   public void setMerchant(String merchant) {
     this.merchant = merchant;
   }
   public List<ReadablePermission> getPermissions() {
-    return permissions;
+				System.out.println("$#9434#"); return permissions;
   }
   public void setPermissions(List<ReadablePermission> permissions) {
     this.permissions = permissions;

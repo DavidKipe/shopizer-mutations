@@ -14,13 +14,13 @@ public class PersistableCategory extends CategoryEntity implements Serializable 
 	private List<PersistableCategory> children = new ArrayList<PersistableCategory>();
 	
 	public List<CategoryDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#8742#"); return descriptions;
 	}
 	public void setDescriptions(List<CategoryDescription> descriptions) {
 		this.descriptions = descriptions;
 	}
 	public List<PersistableCategory> getChildren() {
-		return children;
+		System.out.println("$#8743#"); return children;
 	}
 	public void setChildren(List<PersistableCategory> children) {
 		this.children = children;

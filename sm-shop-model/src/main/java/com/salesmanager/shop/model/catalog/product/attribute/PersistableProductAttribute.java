@@ -18,13 +18,13 @@ public class PersistableProductAttribute extends ProductAttributeEntity
 		this.optionValue = optionValue;
 	}
 	public ProductOptionValue getOptionValue() {
-		return optionValue;
+		System.out.println("$#8794#"); return optionValue;
 	}
 	public void setOption(ProductOption option) {
 		this.option = option;
 	}
 	public ProductOption getOption() {
-		return option;
+		System.out.println("$#8795#"); return option;
 	}
 
 	/**
@@ -32,19 +32,19 @@ public class PersistableProductAttribute extends ProductAttributeEntity
 	 */
 	private static final long serialVersionUID = 1L;
 	public BigDecimal getProductAttributeWeight() {
-		return productAttributeWeight;
+		System.out.println("$#8796#"); return productAttributeWeight;
 	}
 	public void setProductAttributeWeight(BigDecimal productAttributeWeight) {
 		this.productAttributeWeight = productAttributeWeight;
 	}
 	public BigDecimal getProductAttributePrice() {
-		return productAttributePrice;
+		System.out.println("$#8797#"); return productAttributePrice;
 	}
 	public void setProductAttributePrice(BigDecimal productAttributePrice) {
 		this.productAttributePrice = productAttributePrice;
 	}
 	public Long getProductId() {
-		return productId;
+		System.out.println("$#8798#"); return productId;
 	}
 	public void setProductId(Long productId) {
 		this.productId = productId;

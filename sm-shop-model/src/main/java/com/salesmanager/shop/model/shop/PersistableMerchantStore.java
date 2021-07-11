@@ -14,7 +14,7 @@ public class PersistableMerchantStore extends MerchantStoreEntity {
 	private String retailerStore;
 
 	public PersistableAddress getAddress() {
-		return address;
+		System.out.println("$#9295#"); return address;
 	}
 
 	public void setAddress(PersistableAddress address) {
@@ -22,7 +22,7 @@ public class PersistableMerchantStore extends MerchantStoreEntity {
 	}
 
   public String getRetailerStore() {
-    return retailerStore;
+				System.out.println("$#9296#"); return retailerStore;
   }
 
   public void setRetailerStore(String retailerStore) {

@@ -57,7 +57,7 @@ public class DocumentationConfiguration {
 		Set<String> consumes = new HashSet<>();
 		consumes.add("application/json");
 
-		return new Docket(DocumentationType.SWAGGER_2).select()
+		System.out.println("$#7881#"); return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("com.salesmanager.shop.store.api.v1")).build()
 				.securitySchemes(Collections.singletonList(new ApiKey("JWT", AUTHORIZATION, HEADER.name())))
 		        .securityContexts(singletonList(
@@ -78,7 +78,7 @@ public class DocumentationConfiguration {
 
 	@SuppressWarnings("rawtypes")
 	private ApiInfo apiInfo() {
-		return new ApiInfo("Shopizer REST API",
+		System.out.println("$#7882#"); return new ApiInfo("Shopizer REST API",
 				"API for Shopizer e-commerce. Contains public end points as well as private end points requiring basic authentication and remote authentication based on jwt bearer token. URL patterns containing /private/** use bearer token; those are authorized customer and administrators administration actions.",
 				"1.0", "urn:tos", DEFAULT_CONTACT, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0",
 				new ArrayList<VendorExtension>());
@@ -86,7 +86,7 @@ public class DocumentationConfiguration {
 	}
 
 	private static ArrayList<? extends SecurityScheme> securitySchemes() {
-		return (ArrayList<? extends SecurityScheme>) Stream.of(new ApiKey("Bearer", "Authorization", "header"))
+		System.out.println("$#7883#"); return (ArrayList<? extends SecurityScheme>) Stream.of(new ApiKey("Bearer", "Authorization", "header"))
 				.collect(Collectors.toList());
 	}
 

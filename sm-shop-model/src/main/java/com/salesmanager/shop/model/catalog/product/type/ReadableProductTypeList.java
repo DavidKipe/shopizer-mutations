@@ -15,7 +15,7 @@ public class ReadableProductTypeList extends ReadableList {
 	List<ReadableProductType> list = new ArrayList<ReadableProductType>();
 
 	public List<ReadableProductType> getList() {
-		return list;
+		System.out.println("$#8969#"); return list;
 	}
 
 	public void setList(List<ReadableProductType> list) {

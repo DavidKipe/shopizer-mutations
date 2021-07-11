@@ -6,19 +6,19 @@ public class ReadableAudit {
 	private String modified;
 	private String user;
 	public String getCreated() {
-		return created;
+		System.out.println("$#9099#"); return created;
 	}
 	public void setCreated(String created) {
 		this.created = created;
 	}
 	public String getModified() {
-		return modified;
+		System.out.println("$#9100#"); return modified;
 	}
 	public void setModified(String modified) {
 		this.modified = modified;
 	}
 	public String getUser() {
-		return user;
+		System.out.println("$#9101#"); return user;
 	}
 	public void setUser(String user) {
 		this.user = user;

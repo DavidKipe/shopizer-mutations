@@ -63,21 +63,21 @@ public class ProductImagesController {
 	public String displayProductImages(@RequestParam("id") long productId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		setMenu(model,request);
+		System.out.println("$#6733#"); setMenu(model,request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		Product product = productService.getById(productId);
 		
-		if(product==null) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6734#"); if(product==null) {
+			System.out.println("$#6735#"); return "redirect:/admin/products/products.html";
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6736#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6737#"); return "redirect:/admin/products/products.html";
 		}
 		
 		model.addAttribute("product",product);
-		return ControllerConstants.Tiles.Product.productImages;
+		System.out.println("$#6738#"); return ControllerConstants.Tiles.Product.productImages;
 		
 	}
 	
@@ -86,17 +86,17 @@ public class ProductImagesController {
 	public String displayProductImagesUrl(@RequestParam("id") long productId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		setMenu(model,request);
+		System.out.println("$#6739#"); setMenu(model,request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		Product product = productService.getById(productId);
 		
-		if(product==null) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6740#"); if(product==null) {
+			System.out.println("$#6741#"); return "redirect:/admin/products/products.html";
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6742#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6743#"); return "redirect:/admin/products/products.html";
 		}
 		
         Map< String, String > mediaTypes = new HashMap<String, String>();  
@@ -108,7 +108,7 @@ public class ProductImagesController {
 		model.addAttribute("productImage", productImage);
 		model.addAttribute("product",product);
 		model.addAttribute("mediaTypes",mediaTypes);
-		return ControllerConstants.Tiles.Product.productImagesUrl;
+		System.out.println("$#6744#"); return ControllerConstants.Tiles.Product.productImagesUrl;
 		
 	}
 	
@@ -124,7 +124,7 @@ public class ProductImagesController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6745#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		Long productId;
 		Product product = null;
@@ -132,10 +132,10 @@ public class ProductImagesController {
 		try {
 			productId = Long.parseLong(sProductId);
 		} catch (Exception e) {
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorString("Product id is not valid");
+			System.out.println("$#6746#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6747#"); resp.setErrorString("Product id is not valid");
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#6748#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 
 		
@@ -146,16 +146,16 @@ public class ProductImagesController {
 
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Merchant id is not valid");
+			System.out.println("$#6749#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6750#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6751#"); resp.setErrorString("Merchant id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6752#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
 			Set<ProductImage> images = product.getImages();
 			
-			if(images!=null) {
+			System.out.println("$#6753#"); if(images!=null) {
 				
 				for(ProductImage image : images) {
 					
@@ -168,21 +168,21 @@ public class ProductImagesController {
 						entry.put("id",image.getId());
 						entry.put("defaultImageCheckmark", image.isDefaultImage() ? "/resources/img/admin/checkmark_checked.png" : "/resources/img/admin/checkmark_unchecked.png");
 						
-						resp.addDataEntry(entry);
+						System.out.println("$#6755#"); resp.addDataEntry(entry);
 					
 				}
 			}
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#6756#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6757#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6758#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6759#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 
 
 	}
@@ -199,7 +199,7 @@ public class ProductImagesController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6760#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		Long productId;
 		Product product = null;
@@ -207,10 +207,10 @@ public class ProductImagesController {
 		try {
 			productId = Long.parseLong(sProductId);
 		} catch (Exception e) {
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorString("Product id is not valid");
+			System.out.println("$#6761#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6762#"); resp.setErrorString("Product id is not valid");
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#6763#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 
 		
@@ -221,20 +221,20 @@ public class ProductImagesController {
 
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Merchant id is not valid");
+			System.out.println("$#6764#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6765#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6766#"); resp.setErrorString("Merchant id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6767#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			Set<ProductImage> images = product.getImages();
 			
-			if(images!=null) {
+			System.out.println("$#6768#"); if(images!=null) {
 				
 				for(ProductImage image : images) {
 					
-					if(!StringUtils.isBlank(image.getProductImageUrl())) {
+					System.out.println("$#6769#"); if(!StringUtils.isBlank(image.getProductImageUrl())) {
 
 						Map entry = new HashMap();
 						entry.put("image", image.getProductImageUrl());
@@ -242,7 +242,7 @@ public class ProductImagesController {
 						entry.put("default", image.isDefaultImage());
 						entry.put("id",image.getId());
 						
-						resp.addDataEntry(entry);
+						System.out.println("$#6770#"); resp.addDataEntry(entry);
 					
 					}
 				}
@@ -251,16 +251,16 @@ public class ProductImagesController {
 
 
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#6771#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6772#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6773#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6774#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 
 
 	}
@@ -273,48 +273,48 @@ public class ProductImagesController {
 	public String saveProductImages(@ModelAttribute(value="productImages") @Valid final ProductImages productImages, final BindingResult bindingResult,final Model model, final HttpServletRequest request,Locale locale) throws Exception{
 	    
 	    
-		this.setMenu(model, request);
+		System.out.println("$#6775#"); this.setMenu(model, request);
 
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		Product product = productService.getById(productImages.getProductId());
 		model.addAttribute("product",product);
-		if(product==null) {
+		System.out.println("$#6776#"); if(product==null) {
 			FieldError error = new FieldError("productImages","image",messages.getMessage("message.error", locale));
-			bindingResult.addError(error);
-			return ControllerConstants.Tiles.Product.productImages;
+			System.out.println("$#6777#"); bindingResult.addError(error);
+			System.out.println("$#6778#"); return ControllerConstants.Tiles.Product.productImages;
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#6779#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 			FieldError error = new FieldError("productImages","image",messages.getMessage("message.error", locale));
-			bindingResult.addError(error);
+			System.out.println("$#6780#"); bindingResult.addError(error);
 		}
 		
-		if (bindingResult.hasErrors()) {
+		System.out.println("$#6781#"); if (bindingResult.hasErrors()) {
 	        LOGGER.info( "Found {} Validation errors", bindingResult.getErrorCount());
-	       return ControllerConstants.Tiles.Product.productImages;
+								System.out.println("$#6782#"); return ControllerConstants.Tiles.Product.productImages;
 	       
         }
 		
 	    final List<ProductImage> contentImagesList=new ArrayList<ProductImage>();
-        if(CollectionUtils.isNotEmpty( productImages.getFile() )){
+								System.out.println("$#6783#"); if(CollectionUtils.isNotEmpty( productImages.getFile() )){
             LOGGER.info("Saving {} content images for merchant {}",productImages.getFile().size(),store.getId());
             for(final MultipartFile multipartFile:productImages.getFile()){
-                if(!multipartFile.isEmpty()){
+																System.out.println("$#6784#"); if(!multipartFile.isEmpty()){
                 	ProductImage productImage = new ProductImage();
 
-                	productImage.setImage(multipartFile.getInputStream());
-                    productImage.setProductImage(multipartFile.getOriginalFilename() );
-                    productImage.setProduct(product);
-                    productImage.setDefaultImage(false);//default image is uploaded in the product details
+																	System.out.println("$#6785#"); productImage.setImage(multipartFile.getInputStream());
+																				System.out.println("$#6786#"); productImage.setProductImage(multipartFile.getOriginalFilename() );
+																				System.out.println("$#6787#"); productImage.setProduct(product);
+																				System.out.println("$#6788#"); productImage.setDefaultImage(false);//default image is uploaded in the product details
                     
                     contentImagesList.add( productImage);
                 }
             }
             
-            if(CollectionUtils.isNotEmpty( contentImagesList )){
-            	productImageService.addProductImages(product, contentImagesList);
+												System.out.println("$#6789#"); if(CollectionUtils.isNotEmpty( contentImagesList )){
+													System.out.println("$#6790#"); productImageService.addProductImages(product, contentImagesList);
             }
             
         }
@@ -325,7 +325,7 @@ public class ProductImagesController {
         model.addAttribute("product",product);
         model.addAttribute("success","success");
         
-        return ControllerConstants.Tiles.Product.productImages;
+								System.out.println("$#6791#"); return ControllerConstants.Tiles.Product.productImages;
 	}
 	
 
@@ -335,7 +335,7 @@ public class ProductImagesController {
 	public String saveProductImagesUrl(@ModelAttribute(value="productImage") @Valid final ProductImage productImage, final BindingResult bindingResult,final Model model, final HttpServletRequest request,Locale locale) throws Exception{
 	    
 	    
-		this.setMenu(model, request);
+		System.out.println("$#6792#"); this.setMenu(model, request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -348,32 +348,32 @@ public class ProductImagesController {
 
 		Product product = productService.getById(productImage.getId());
 		model.addAttribute("product",product);
-		if(product==null) {
+		System.out.println("$#6793#"); if(product==null) {
 			FieldError error = new FieldError("productImages","image",messages.getMessage("message.error", locale));
-			bindingResult.addError(error);
-			return ControllerConstants.Tiles.Product.productImagesUrl;
+			System.out.println("$#6794#"); bindingResult.addError(error);
+			System.out.println("$#6795#"); return ControllerConstants.Tiles.Product.productImagesUrl;
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#6796#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 			FieldError error = new FieldError("productImages","image",messages.getMessage("message.error", locale));
-			bindingResult.addError(error);
+			System.out.println("$#6797#"); bindingResult.addError(error);
 		}
 		
 		model.addAttribute("product",product);
 		
-		if (bindingResult.hasErrors()) {
+		System.out.println("$#6798#"); if (bindingResult.hasErrors()) {
 	        LOGGER.info( "Found {} Validation errors", bindingResult.getErrorCount());
-	       return ControllerConstants.Tiles.Product.productImagesUrl;
+								System.out.println("$#6799#"); return ControllerConstants.Tiles.Product.productImagesUrl;
         }
 		
-		productImage.setProduct(product);
-		productImage.setId(null);
+		System.out.println("$#6800#"); productImage.setProduct(product);
+		System.out.println("$#6801#"); productImage.setId(null);
 		
-		productImageService.saveOrUpdate(productImage);
+		System.out.println("$#6802#"); productImageService.saveOrUpdate(productImage);
         model.addAttribute("product",product);
         model.addAttribute("success","success");
         
-        return ControllerConstants.Tiles.Product.productImagesUrl;
+								System.out.println("$#6803#"); return ControllerConstants.Tiles.Product.productImagesUrl;
 	}
 
 	
@@ -389,7 +389,7 @@ public class ProductImagesController {
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6804#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		
 		try {
@@ -399,34 +399,34 @@ public class ProductImagesController {
 
 			
 			ProductImage productImage = productImageService.getById(imageId);
-			if(productImage==null) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6805#"); if(productImage==null) {
+				System.out.println("$#6806#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#6807#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6808#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(productImage.getProduct().getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);	
+			System.out.println("$#6809#"); if(productImage.getProduct().getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6810#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#6811#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6812#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			productImageService.removeProductImage(productImage);
+			System.out.println("$#6813#"); productImageService.removeProductImage(productImage);
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6814#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product price", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6815#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6816#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6817#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	
@@ -439,46 +439,46 @@ public class ProductImagesController {
 		final MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		final AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6818#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		try {
 			final Long imageId = Long.parseLong(sImageId);
 			final ProductImage productImage = productImageService.getById(imageId);
 			
-			if (productImage == null) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#6819#"); if (productImage == null) {
+				System.out.println("$#6820#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#6821#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6822#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if (productImage.getProduct().getMerchantStore().getId().intValue() != store.getId().intValue()) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#6823#"); if (productImage.getProduct().getMerchantStore().getId().intValue() != store.getId().intValue()) {
+				System.out.println("$#6824#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#6825#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6826#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			productImage.setDefaultImage(true);
-			productImageService.saveOrUpdate(productImage);
+			System.out.println("$#6827#"); productImage.setDefaultImage(true);
+			System.out.println("$#6828#"); productImageService.saveOrUpdate(productImage);
 			
 			final Set<ProductImage> images = productService.getById(productImage.getProduct().getId()).getImages();
 			for (final ProductImage image : images) {
-				if (image.getId() != productImage.getId()) {
-					image.setDefaultImage(false);
-					productImageService.saveOrUpdate(image);		
+				System.out.println("$#6829#"); if (image.getId() != productImage.getId()) {
+					System.out.println("$#6830#"); image.setDefaultImage(false);
+					System.out.println("$#6831#"); productImageService.saveOrUpdate(image);
 				}
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6832#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 		} catch (final Exception e) {
 			LOGGER.error("Error while set default image", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6833#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6834#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6835#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 
 	

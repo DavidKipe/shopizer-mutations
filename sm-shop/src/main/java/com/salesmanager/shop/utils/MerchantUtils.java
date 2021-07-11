@@ -12,7 +12,7 @@ public class MerchantUtils {
 		
 		StringBuilder footerMessage = new StringBuilder();
 		
-		if(!StringUtils.isBlank(prefix)) {
+		System.out.println("$#15787#"); if(!StringUtils.isBlank(prefix)) {
 			footerMessage.append(prefix).append(" ");
 		}
 		
@@ -20,7 +20,7 @@ public class MerchantUtils {
 		String inBusinessSince = store.getDateBusinessSince();
 		
 		
-		return null;
+		System.out.println("$#15788#"); return null;
 	}
 
 }

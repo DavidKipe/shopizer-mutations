@@ -13,43 +13,43 @@ public class ShippingInputParameters {
 	private String priceQuote;
 	
 	public String getModuleName() {
-		return moduleName;
+		System.out.println("$#1249#"); return moduleName;
 	}
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
 	}
 	public long getWeight() {
-		return weight;
+		System.out.println("$#1250#"); return weight;
 	}
 	public void setWeight(long weight) {
 		this.weight = weight;
 	}
 	public long getVolume() {
-		return volume;
+		System.out.println("$#1251#"); return volume;
 	}
 	public void setVolume(long volume) {
 		this.volume = volume;
 	}
 	public String getCountry() {
-		return country;
+		System.out.println("$#1252#"); return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;
 	}
 	public String getProvince() {
-		return province;
+		System.out.println("$#1253#"); return province;
 	}
 	public void setProvince(String province) {
 		this.province = province;
 	}
 	public long getDistance() {
-		return distance;
+		System.out.println("$#1254#"); return distance;
 	}
 	public void setDistance(long distance) {
 		this.distance = distance;
 	}
 	public String getPriceQuote() {
-		return priceQuote;
+		System.out.println("$#1255#"); return priceQuote;
 	}
 	public void setPriceQuote(String priceQuote) {
 		this.priceQuote = priceQuote;
@@ -64,17 +64,17 @@ public class ShippingInputParameters {
 		.append(" province : ").append(this.getProvince())
 		.append(" price : ").append(this.getPrice())
 		.append(" country : ").append(this.getCountry());
-		return sb.toString();	
+		System.out.println("$#1256#"); return sb.toString();
 	}
 	
 	public long getSize() {
-		return size;
+		System.out.println("$#1257#"); return size;
 	}
 	public void setSize(long size) {
 		this.size = size;
 	}
 	public int getPrice() {
-		return price;
+		System.out.println("$#1258#"); return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;

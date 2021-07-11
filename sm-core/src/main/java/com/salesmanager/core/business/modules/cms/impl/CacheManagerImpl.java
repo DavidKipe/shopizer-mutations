@@ -34,7 +34,7 @@ public abstract class CacheManagerImpl implements CacheManager {
 
       VendorCacheManager manager = VendorCacheManager.getInstance();
 
-      if (manager == null) {
+						System.out.println("$#171#"); if (manager == null) {
         LOGGER.error("CacheManager is null");
         return;
       }
@@ -68,7 +68,7 @@ public abstract class CacheManagerImpl implements CacheManager {
       
       f = new TreeCacheFactory();
       treeCache = f.createTreeCache(cache);
-      cache.start();
+						System.out.println("$#172#"); cache.start();
 
       LOGGER.debug("CMS started");
 
@@ -85,12 +85,12 @@ public abstract class CacheManagerImpl implements CacheManager {
   }
 
   public EmbeddedCacheManager getManager() {
-    return VendorCacheManager.getInstance().getManager();
+				System.out.println("$#173#"); return VendorCacheManager.getInstance().getManager();
   }
 
   @SuppressWarnings("rawtypes")
   public TreeCache getTreeCache() {
-    return treeCache;
+				System.out.println("$#174#"); return treeCache;
   }
 
 

@@ -149,7 +149,7 @@ public class CustomerAccountController extends AbstractController {
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.customerLogon).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12326#"); return template.toString();
 		
 	}
 	
@@ -167,22 +167,22 @@ public class CustomerAccountController extends AbstractController {
     		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
 
         } else {
-        	response.sendError(401, "Customer not authenticated");
+									System.out.println("$#12329#"); response.sendError(401, "Customer not authenticated");
 			return null;
         }
     	
-    	if(StringUtils.isBlank(userName)) {
-        	response.sendError(403, "Customer name required");
+					System.out.println("$#12330#"); if(StringUtils.isBlank(userName)) {
+									System.out.println("$#12331#"); response.sendError(403, "Customer name required");
 			return null;
     	}
     	
-    	if(customer==null) {
-        	response.sendError(401, "Customer not authenticated");
+					System.out.println("$#12332#"); if(customer==null) {
+									System.out.println("$#12333#"); response.sendError(401, "Customer not authenticated");
 			return null;
     	}
     	
-    	if(!customer.getNick().equals(userName)) {
-        	response.sendError(401, "Customer not authenticated");
+					System.out.println("$#12334#"); if(!customer.getNick().equals(userName)) {
+									System.out.println("$#12335#"); response.sendError(401, "Customer not authenticated");
 			return null;
     	}
     	
@@ -195,7 +195,7 @@ public class CustomerAccountController extends AbstractController {
     	ReadableCustomerPopulator readableCustomerPopulator = new ReadableCustomerPopulator();
     	readableCustomerPopulator.populate(customer, readableCustomer, store, lang);
     	
-    	return readableCustomer;
+					System.out.println("$#12336#"); return readableCustomer;
 		
 	}
 		
@@ -211,7 +211,7 @@ public class CustomerAccountController extends AbstractController {
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.customer).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12337#"); return template.toString();
 		
 	}
 	
@@ -228,7 +228,7 @@ public class CustomerAccountController extends AbstractController {
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.changePassword).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12338#"); return template.toString();
 		
 	}
 	
@@ -250,24 +250,24 @@ public class CustomerAccountController extends AbstractController {
 
         }
     	
-    	if(customer==null) {
-    		return "redirect:/"+Constants.SHOP_URI;
+					System.out.println("$#12341#"); if(customer==null) {
+						System.out.println("$#12342#"); return "redirect:/"+Constants.SHOP_URI;
     	}
     	
     	String currentPassword = password.getCurrentPassword();
 
     	BCryptPasswordEncoder encoder = (BCryptPasswordEncoder)passwordEncoder;
-    	if(!encoder.matches(currentPassword, customer.getPassword())) {
+					System.out.println("$#12343#"); if(!encoder.matches(currentPassword, customer.getPassword())) {
           FieldError error = new FieldError("password","password",messages.getMessage("message.invalidpassword", locale));
-          bindingResult.addError(error);
+										System.out.println("$#12344#"); bindingResult.addError(error);
     	}
 
     	
-        if ( bindingResult.hasErrors() )
+								System.out.println("$#12345#"); if ( bindingResult.hasErrors() )
         {
             LOGGER.info( "found {} validation error while validating customer password",
                          bindingResult.getErrorCount() );
-    		return template.toString();
+						System.out.println("$#12346#"); return template.toString();
 
         }
     	
@@ -277,15 +277,15 @@ public class CustomerAccountController extends AbstractController {
 		String newPassword = password.getPassword();
 		String encodedPassword = passwordEncoder.encode(newPassword);
 		
-		customer.setPassword(encodedPassword);
+		System.out.println("$#12347#"); customer.setPassword(encodedPassword);
 		
-		customerService.saveOrUpdate(customer);
+		System.out.println("$#12348#"); customerService.saveOrUpdate(customer);
 		
-		emailTemplatesUtils.changePasswordNotificationEmail(customer, store, LocaleUtils.getLocale(customer.getDefaultLanguage()), request.getContextPath());
+		System.out.println("$#12349#"); emailTemplatesUtils.changePasswordNotificationEmail(customer, store, LocaleUtils.getLocale(customer.getDefaultLanguage()), request.getContextPath());
 		
 		model.addAttribute("success", "success");
 
-		return template.toString();
+		System.out.println("$#12350#"); return template.toString();
 		
 	}
 	
@@ -305,7 +305,7 @@ public class CustomerAccountController extends AbstractController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#12351#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		
@@ -323,21 +323,21 @@ public class CustomerAccountController extends AbstractController {
 
         }
     	
-    	if(customer==null) {
+					System.out.println("$#12354#"); if(customer==null) {
     		LOGGER.error("Customer id [customer] is not defined in the parameters");
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#12355#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#12356#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
     	}
 		
 		
 
 		
-		if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#12357#"); if(customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 			LOGGER.error("Customer id does not belong to current store");
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#12358#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#12359#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 		
 		List<CustomerAttribute> customerAttributes = customerAttributeService.getByCustomer(store, customer);
@@ -349,7 +349,7 @@ public class CustomerAccountController extends AbstractController {
 
 		parameterNames = request.getParameterNames();
 		
-		while(parameterNames.hasMoreElements()) {
+		System.out.println("$#12360#"); while(parameterNames.hasMoreElements()) {
 			
 			String parameterName = (String)parameterNames.nextElement();
 			String parameterValue = request.getParameter(parameterName);
@@ -360,11 +360,11 @@ public class CustomerAccountController extends AbstractController {
 				com.salesmanager.core.model.customer.attribute.CustomerOptionValue customerOptionValue = null;
 
 				
-				if(CUSTOMER_ID_PARAMETER.equals(parameterName)) {
+				System.out.println("$#12361#"); if(CUSTOMER_ID_PARAMETER.equals(parameterName)) {
 					continue;
 				}
 				
-					if(parameterKey.length>1) {
+					System.out.println("$#12363#"); System.out.println("$#12362#"); if(parameterKey.length>1) {
 						//parse key - value
 						String key = parameterKey[0];
 						String value = parameterKey[1];
@@ -383,34 +383,34 @@ public class CustomerAccountController extends AbstractController {
 					//get the attribute
 					//CustomerAttribute attribute = customerAttributeService.getByCustomerOptionId(store, customer.getId(), customerOption.getId());
 					CustomerAttribute attribute = customerAttributesMap.get(customerOption.getId());
-					if(attribute==null) {
+					System.out.println("$#12364#"); if(attribute==null) {
 						attribute = new CustomerAttribute();
-						attribute.setCustomer(customer);
-						attribute.setCustomerOption(customerOption);
+						System.out.println("$#12365#"); attribute.setCustomer(customer);
+						System.out.println("$#12366#"); attribute.setCustomerOption(customerOption);
 					} else {
 						customerAttributes.remove(attribute);
 					}
 					
-					if(customerOption.getCustomerOptionType().equals(CustomerOptionType.Text.name())) {
-						if(!StringUtils.isBlank(parameterValue)) {
-							attribute.setCustomerOptionValue(customerOptionValue);
-							attribute.setTextValue(parameterValue);
+					System.out.println("$#12367#"); if(customerOption.getCustomerOptionType().equals(CustomerOptionType.Text.name())) {
+						System.out.println("$#12368#"); if(!StringUtils.isBlank(parameterValue)) {
+							System.out.println("$#12369#"); attribute.setCustomerOptionValue(customerOptionValue);
+							System.out.println("$#12370#"); attribute.setTextValue(parameterValue);
 						}  else {
-							attribute.setTextValue(null);
+							System.out.println("$#12371#"); attribute.setTextValue(null);
 						}
 					} else {
-						attribute.setCustomerOptionValue(customerOptionValue);
+						System.out.println("$#12372#"); attribute.setCustomerOptionValue(customerOptionValue);
 					}
 					
 					
-					if(attribute.getId()!=null && attribute.getId().longValue()>0) {
-						if(attribute.getCustomerOptionValue()==null){
-							customerAttributeService.delete(attribute);
+					System.out.println("$#12374#"); System.out.println("$#12373#"); if(attribute.getId()!=null && attribute.getId().longValue()>0) {
+						System.out.println("$#12376#"); if(attribute.getCustomerOptionValue()==null){
+							System.out.println("$#12377#"); customerAttributeService.delete(attribute);
 						} else {
-							customerAttributeService.update(attribute);
+							System.out.println("$#12378#"); customerAttributeService.update(attribute);
 						}
 					} else {
-						customerAttributeService.save(attribute);
+						System.out.println("$#12379#"); customerAttributeService.save(attribute);
 					}
 					
 
@@ -423,16 +423,16 @@ public class CustomerAccountController extends AbstractController {
 		
 		//and now the remaining to be removed
 		for(CustomerAttribute attr : customerAttributes) {
-			customerAttributeService.delete(attr);
+			System.out.println("$#12380#"); customerAttributeService.delete(attr);
 		}
 		
 		//refresh customer
 		Customer c = customerService.getById(customer.getId());
-		super.setSessionAttribute(Constants.CUSTOMER, c, request);
+		System.out.println("$#12381#"); super.setSessionAttribute(Constants.CUSTOMER, c, request);
 		
-		resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+		System.out.println("$#12382#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#12383#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 
 	}
@@ -454,13 +454,13 @@ public class CustomerAccountController extends AbstractController {
 
         }
     	
-    	if(customer==null) {
-    		return "redirect:/"+Constants.SHOP_URI;
+					System.out.println("$#12386#"); if(customer==null) {
+						System.out.println("$#12387#"); return "redirect:/"+Constants.SHOP_URI;
     	}
         
         
         CustomerEntity customerEntity = customerFacade.getCustomerDataByUserName( customer.getNick(), store, language );
-        if(customer !=null){
+								System.out.println("$#12388#"); if(customer !=null){
            model.addAttribute( "customer",  customerEntity);
         }
         
@@ -468,7 +468,7 @@ public class CustomerAccountController extends AbstractController {
         /** template **/
         StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.Billing).append(".").append(store.getStoreTemplate());
 
-        return template.toString();
+								System.out.println("$#12389#"); return template.toString();
         
     }
     
@@ -486,8 +486,8 @@ public class CustomerAccountController extends AbstractController {
 
         }
     	
-    	if(customer==null) {
-    		return "redirect:/"+Constants.SHOP_URI;
+					System.out.println("$#12392#"); if(customer==null) {
+						System.out.println("$#12393#"); return "redirect:/"+Constants.SHOP_URI;
     	}
         
         
@@ -496,7 +496,7 @@ public class CustomerAccountController extends AbstractController {
         model.addAttribute( "address", address);
         model.addAttribute( "customerId", customer.getId() );
         StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.EditAddress).append(".").append(store.getStoreTemplate());
-        return template.toString();
+								System.out.println("$#12394#"); return template.toString();
     }
     
     
@@ -518,30 +518,30 @@ public class CustomerAccountController extends AbstractController {
     	
     	StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.EditAddress).append(".").append(store.getStoreTemplate());
     	
-    	if(customer==null) {
-    		return "redirect:/"+Constants.SHOP_URI;
+					System.out.println("$#12397#"); if(customer==null) {
+						System.out.println("$#12398#"); return "redirect:/"+Constants.SHOP_URI;
     	}
     	
     	model.addAttribute( "address", address);
         model.addAttribute( "customerId", customer.getId() );
         
         
-        if(bindingResult.hasErrors()){
+								System.out.println("$#12399#"); if(bindingResult.hasErrors()){
             LOGGER.info( "found {} error(s) while validating  customer address ",
                          bindingResult.getErrorCount() );
-            return template.toString();
+												System.out.println("$#12400#"); return template.toString();
         }
         
 
         Language language = getSessionAttribute(Constants.LANGUAGE, request);
-        customerFacade.updateAddress( customer.getId(), store, address, language);
+								System.out.println("$#12401#"); customerFacade.updateAddress( customer.getId(), store, address, language);
         
         Customer c = customerService.getById(customer.getId());
-		super.setSessionAttribute(Constants.CUSTOMER, c, request);
+		System.out.println("$#12402#"); super.setSessionAttribute(Constants.CUSTOMER, c, request);
         
         model.addAttribute("success", "success");
         
-        return template.toString();
+								System.out.println("$#12403#"); return template.toString();
 
     }
     
@@ -552,18 +552,18 @@ public class CustomerAccountController extends AbstractController {
         Language language = (Language) request.getAttribute( "LANGUAGE" );
         try
         {
-            if ( language == null )
+												System.out.println("$#12404#"); if ( language == null )
             {
                 language = (Language) request.getAttribute( "LANGUAGE" );
             }
 
-            if ( language == null )
+												System.out.println("$#12405#"); if ( language == null )
             {
                 language = languageService.getByCode( Constants.DEFAULT_LANGUAGE );
             }
             
             List<Country> countryList=countryService.getCountries( language );
-            return countryList;
+												System.out.println("$#12406#"); return countryList;
         }
         catch ( ServiceException e )
         {

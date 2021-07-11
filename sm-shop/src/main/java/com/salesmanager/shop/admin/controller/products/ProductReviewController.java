@@ -52,24 +52,24 @@ public class ProductReviewController {
 	@RequestMapping(value="/admin/products/reviews.html", method=RequestMethod.GET)
 	public String displayProductReviews(@RequestParam("id") long productId,Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		setMenu(model, request);
+		System.out.println("$#7001#"); setMenu(model, request);
 		
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Product product = productService.getProductWithOnlyMerchantStoreById(productId);
 		
-		if(product==null) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#7002#"); if(product==null) {
+			System.out.println("$#7003#"); return "redirect:/admin/products/products.html";
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#7004#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#7005#"); return "redirect:/admin/products/products.html";
 		}
 		
 		
 		model.addAttribute("product", product);
 		
-		return ControllerConstants.Tiles.Product.productReviews;
+		System.out.println("$#7006#"); return ControllerConstants.Tiles.Product.productReviews;
 
 	}
 	
@@ -85,7 +85,7 @@ public class ProductReviewController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7007#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		Long productId;
 		Product product = null;
@@ -93,10 +93,10 @@ public class ProductReviewController {
 		try {
 			productId = Long.parseLong(sProductId);
 		} catch (Exception e) {
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorString("Product id is not valid");
+			System.out.println("$#7008#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7009#"); resp.setErrorString("Product id is not valid");
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#7010#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 
 		
@@ -105,18 +105,18 @@ public class ProductReviewController {
 			product = productService.getProductWithOnlyMerchantStoreById(productId);
 
 			
-			if(product==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#7011#"); if(product==null) {
+				System.out.println("$#7012#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#7013#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7014#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#7015#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#7016#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#7017#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7018#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			
@@ -133,7 +133,7 @@ public class ProductReviewController {
 				entry.put("rating", review.getReviewRating().intValue());
 				Set<ProductReviewDescription> descriptions = review.getDescriptions();
 				String reviewDesc= "";
-				if(!CollectionUtils.isEmpty(descriptions)) {
+				System.out.println("$#7019#"); if(!CollectionUtils.isEmpty(descriptions)) {
 					reviewDesc = descriptions.iterator().next().getDescription();
 				}
 				//for(ProductReviewDescription description : descriptions){
@@ -142,19 +142,19 @@ public class ProductReviewController {
 				//	}
 				//}
 				entry.put("description", reviewDesc);
-				resp.addDataEntry(entry);
+				System.out.println("$#7020#"); resp.addDataEntry(entry);
 			}
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7021#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7022#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7023#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7024#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 
 
 	}
@@ -169,7 +169,7 @@ public class ProductReviewController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7025#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		
 		try {
@@ -180,30 +180,30 @@ public class ProductReviewController {
 			ProductReview review = productReviewService.getById(reviewId);
 			
 
-			if(review==null || review.getProduct().getMerchantStore().getId().intValue()!=store.getId()) {
+			System.out.println("$#7026#"); if(review==null || review.getProduct().getMerchantStore().getId().intValue()!=store.getId()) {
 
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#7028#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7029#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7030#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			} 
 			
 
-			productReviewService.delete(review);
+			System.out.println("$#7031#"); productReviewService.delete(review);
 			
 			
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#7032#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting review", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7033#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7034#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7035#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

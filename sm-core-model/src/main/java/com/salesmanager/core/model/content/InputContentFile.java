@@ -15,14 +15,14 @@ public class InputContentFile extends StaticContentFile implements Serializable
     
     public InputStream getFile()
     {
-        return file;
+								System.out.println("$#4113#"); return file;
     }
     public void setFile( InputStream file )
     {
         this.file = file;
     }
 	public String getPath() {
-		return path;
+		System.out.println("$#4114#"); return path;
 	}
 	public void setPath(String path) {
 		this.path = path;

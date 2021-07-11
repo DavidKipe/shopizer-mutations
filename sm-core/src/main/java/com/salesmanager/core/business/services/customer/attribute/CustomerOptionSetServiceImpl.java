@@ -40,13 +40,13 @@ public class CustomerOptionSetServiceImpl extends
 		Validate.notNull(store,"merchant store cannot be null");
 		Validate.notNull(option,"option cannot be null");
 		
-		return customerOptionSetRepository.findByOptionId(store.getId(), option.getId());
+		System.out.println("$#2192#"); return customerOptionSetRepository.findByOptionId(store.getId(), option.getId());
 	}
 	
 	@Override
 	public void delete(CustomerOptionSet customerOptionSet) throws ServiceException {
 		customerOptionSet = customerOptionSetRepository.findOne(customerOptionSet.getId());
-		super.delete(customerOptionSet);
+		System.out.println("$#2193#"); super.delete(customerOptionSet);
 	}
 	
 	@Override
@@ -54,7 +54,7 @@ public class CustomerOptionSetServiceImpl extends
 		Validate.notNull(store,"merchant store cannot be null");
 
 		
-		return customerOptionSetRepository.findByStore(store.getId(),language.getId());
+		System.out.println("$#2194#"); return customerOptionSetRepository.findByStore(store.getId(),language.getId());
 	}
 
 
@@ -62,10 +62,10 @@ public class CustomerOptionSetServiceImpl extends
 	public void saveOrUpdate(CustomerOptionSet entity) throws ServiceException {
 		Validate.notNull(entity,"customer option set cannot be null");
 
-		if(entity.getId()>0) {
-			super.update(entity);
+		System.out.println("$#2196#"); System.out.println("$#2195#"); if(entity.getId()>0) {
+			System.out.println("$#2197#"); super.update(entity);
 		} else {
-			super.create(entity);
+			System.out.println("$#2198#"); super.create(entity);
 		}
 		
 	}
@@ -75,7 +75,7 @@ public class CustomerOptionSetServiceImpl extends
 	public List<CustomerOptionSet> listByOptionValue(
 			CustomerOptionValue optionValue, MerchantStore store)
 			throws ServiceException {
-		return customerOptionSetRepository.findByOptionValueId(store.getId(), optionValue.getId());
+		System.out.println("$#2199#"); return customerOptionSetRepository.findByOptionValueId(store.getId(), optionValue.getId());
 	}
 
 

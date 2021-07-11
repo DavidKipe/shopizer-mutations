@@ -48,7 +48,7 @@ public class ModuleConfigurationServiceImpl extends
 	
 	@Override
 	public IntegrationModule getByCode(String moduleCode) {
-		return moduleConfigurationRepository.findByCode(moduleCode);
+		System.out.println("$#3242#"); return moduleConfigurationRepository.findByCode(moduleCode);
 	}
 	
 	
@@ -62,13 +62,13 @@ public class ModuleConfigurationServiceImpl extends
 			
 			//CacheUtils cacheUtils = CacheUtils.getInstance();
 			modules = (List<IntegrationModule>) cache.getFromCache("INTEGRATION_M)" + module);
-			if(modules==null) {
+			System.out.println("$#3243#"); if(modules==null) {
 				modules = moduleConfigurationRepository.findByModule(module);
 				//set json objects
 				for(IntegrationModule mod : modules) {
 					
 					String regions = mod.getRegions();
-					if(regions!=null) {
+					System.out.println("$#3244#"); if(regions!=null) {
 						Object objRegions=JSONValue.parse(regions); 
 						JSONArray arrayRegions=(JSONArray)objRegions;
 						Iterator i = arrayRegions.iterator();
@@ -79,19 +79,19 @@ public class ModuleConfigurationServiceImpl extends
 					
 					
 					String details = mod.getConfigDetails();
-					if(details!=null) {
+					System.out.println("$#3245#"); if(details!=null) {
 						
 						//Map objects = mapper.readValue(config, Map.class);
 
 						Map<String,String> objDetails= (Map<String, String>) JSONValue.parse(details); 
-						mod.setDetails(objDetails);
+						System.out.println("$#3246#"); mod.setDetails(objDetails);
 
 						
 					}
 					
 					
 					String configs = mod.getConfiguration();
-					if(configs!=null) {
+					System.out.println("$#3247#"); if(configs!=null) {
 						
 						//Map objects = mapper.readValue(config, Map.class);
 
@@ -106,16 +106,16 @@ public class ModuleConfigurationServiceImpl extends
 							Map values = (Map)i.next();
 							String env = (String)values.get("env");
 		            		ModuleConfig config = new ModuleConfig();
-		            		config.setScheme((String)values.get("scheme"));
-		            		config.setHost((String)values.get("host"));
-		            		config.setPort((String)values.get("port"));
-		            		config.setUri((String)values.get("uri"));
-		            		config.setEnv((String)values.get("env"));
-		            		if((String)values.get("config1")!=null) {
-		            			config.setConfig1((String)values.get("config1"));
+																System.out.println("$#3248#"); config.setScheme((String)values.get("scheme"));
+																System.out.println("$#3249#"); config.setHost((String)values.get("host"));
+																System.out.println("$#3250#"); config.setPort((String)values.get("port"));
+																System.out.println("$#3251#"); config.setUri((String)values.get("uri"));
+																System.out.println("$#3252#"); config.setEnv((String)values.get("env"));
+																System.out.println("$#3253#"); if((String)values.get("config1")!=null) {
+																	System.out.println("$#3254#"); config.setConfig1((String)values.get("config1"));
 		            		}
-		            		if((String)values.get("config2")!=null) {
-		            			config.setConfig1((String)values.get("config2"));
+																System.out.println("$#3255#"); if((String)values.get("config2")!=null) {
+																	System.out.println("$#3256#"); config.setConfig1((String)values.get("config2"));
 		            		}
 		            		
 		            		moduleConfigs.put(env, config);
@@ -124,20 +124,20 @@ public class ModuleConfigurationServiceImpl extends
 							
 						}
 						
-						mod.setModuleConfigs(moduleConfigs);
+						System.out.println("$#3257#"); mod.setModuleConfigs(moduleConfigs);
 						
 
 					}
 
 
 				}
-				cache.putInCache(modules, "INTEGRATION_M)" + module);
+				System.out.println("$#3258#"); cache.putInCache(modules, "INTEGRATION_M)" + module);
 			}
 
 		} catch (Exception e) {
 			LOGGER.error("getIntegrationModules()", e);
 		}
-		return modules;
+		System.out.println("$#3259#"); return modules;
 		
 		
 	}
@@ -155,12 +155,12 @@ public class ModuleConfigurationServiceImpl extends
 			
 			IntegrationModule module = integrationModulesLoader.loadModule(object);
 			
-            if(module!=null) {
+												System.out.println("$#3260#"); if(module!=null) {
             	IntegrationModule m = this.getByCode(module.getCode());
-            	if(m!=null) {
-            		this.delete(m);	 	
+													System.out.println("$#3261#"); if(m!=null) {
+														System.out.println("$#3262#"); this.delete(m);
             	}
-            	this.create(module);
+													System.out.println("$#3263#"); this.create(module);
             }
 
 

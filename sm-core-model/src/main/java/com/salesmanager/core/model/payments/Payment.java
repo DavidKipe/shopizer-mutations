@@ -19,7 +19,7 @@ public class Payment {
 	}
 
 	public PaymentType getPaymentType() {
-		return paymentType;
+		System.out.println("$#4416#"); return paymentType;
 	}
 
 	public void setTransactionType(TransactionType transactionType) {
@@ -27,7 +27,7 @@ public class Payment {
 	}
 
 	public TransactionType getTransactionType() {
-		return transactionType;
+		System.out.println("$#4417#"); return transactionType;
 	}
 
 	public void setModuleName(String moduleName) {
@@ -35,11 +35,11 @@ public class Payment {
 	}
 
 	public String getModuleName() {
-		return moduleName;
+		System.out.println("$#4418#"); return moduleName;
 	}
 
 	public Currency getCurrency() {
-		return currency;
+		System.out.println("$#4419#"); return currency;
 	}
 
 	public void setCurrency(Currency currency) {
@@ -47,7 +47,7 @@ public class Payment {
 	}
 
 	public Map<String,String> getPaymentMetaData() {
-		return paymentMetaData;
+		System.out.println("$#4420#"); return paymentMetaData;
 	}
 
 	public void setPaymentMetaData(Map<String,String> paymentMetaData) {
@@ -55,7 +55,7 @@ public class Payment {
 	}
 
 	public BigDecimal getAmount() {
-		return amount;
+		System.out.println("$#4421#"); return amount;
 	}
 
 	public void setAmount(BigDecimal amount) {

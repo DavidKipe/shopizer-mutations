@@ -19,7 +19,7 @@ public class LoginController {
 	public String displayLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		//WEB-INF/views/admin/logon.jsp
-		return "admin/logon";
+		System.out.println("$#7559#"); return "admin/logon";
 		
 		
 	}
@@ -31,19 +31,19 @@ public class LoginController {
 		
 		//logoff the user
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    if (auth != null){    
-	         new SecurityContextLogoutHandler().logout(request, response, auth);
+					System.out.println("$#7560#"); if (auth != null){
+										System.out.println("$#7561#"); new SecurityContextLogoutHandler().logout(request, response, auth);
 	         //new PersistentTokenBasedRememberMeServices().logout(request, response, auth);
 	    }
 		
-		return "admin/logon";
+		System.out.println("$#7562#"); return "admin/logon";
 		
 		
 	}
 	
 	@RequestMapping(value="/admin/unauthorized.html", method=RequestMethod.GET)
 	public String unauthorized(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return "admin/unauthorized";
+		System.out.println("$#7563#"); return "admin/unauthorized";
 	}
 
 }

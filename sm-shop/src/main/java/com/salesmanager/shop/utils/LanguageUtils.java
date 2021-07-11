@@ -31,7 +31,7 @@ public class LanguageUtils {
 
   public Language getServiceLanguage(String lang) {
     Language l = null;
-    if (!StringUtils.isBlank(lang)) {
+				System.out.println("$#15746#"); if (!StringUtils.isBlank(lang)) {
       try {
         l = languageService.getByCode(lang);
       } catch (ServiceException e) {
@@ -39,11 +39,11 @@ public class LanguageUtils {
       }
     }
 
-    if (l == null) {
+				System.out.println("$#15747#"); if (l == null) {
       l = languageService.defaultLanguage();
     }
 
-    return l;
+				System.out.println("$#15748#"); return l;
   }
 
   /**
@@ -62,32 +62,32 @@ public class LanguageUtils {
     
 
 
-    if (language == null) {
+				System.out.println("$#15749#"); if (language == null) {
       try {
 
         locale = LocaleContextHolder.getLocale();// should be browser locale
 
 
 
-        if (store != null) {
+								System.out.println("$#15750#"); if (store != null) {
           language = store.getDefaultLanguage();
-          if (language != null) {
+										System.out.println("$#15751#"); if (language != null) {
             locale = languageService.toLocale(language, store);
-            if (locale != null) {
-              LocaleContextHolder.setLocale(locale);
+												System.out.println("$#15752#"); if (locale != null) {
+														System.out.println("$#15753#"); LocaleContextHolder.setLocale(locale);
             }
-            request.getSession().setAttribute(Constants.LANGUAGE, language);
+												System.out.println("$#15754#"); request.getSession().setAttribute(Constants.LANGUAGE, language);
           }
 
-          if (language == null) {
+										System.out.println("$#15755#"); if (language == null) {
             language = languageService.toLanguage(locale);
-            request.getSession().setAttribute(Constants.LANGUAGE, language);
+												System.out.println("$#15756#"); request.getSession().setAttribute(Constants.LANGUAGE, language);
           }
 
         }
 
       } catch (Exception e) {
-        if (language == null) {
+								System.out.println("$#15757#"); if (language == null) {
           try {
             language = languageService.getByCode(Constants.DEFAULT_LANGUAGE);
           } catch (Exception ignore) {
@@ -98,27 +98,27 @@ public class LanguageUtils {
 
 
       Locale localeFromContext = LocaleContextHolder.getLocale();// should be browser locale
-      if (!language.getCode().equals(localeFromContext.getLanguage())) {
+						System.out.println("$#15758#"); if (!language.getCode().equals(localeFromContext.getLanguage())) {
         // get locale context
         language = languageService.toLanguage(localeFromContext);
       }
 
     }
 
-    if (language != null) {
+				System.out.println("$#15759#"); if (language != null) {
       locale = languageService.toLocale(language, store);
     } else {
       language = languageService.toLanguage(locale);
     }
 
     LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-    if (localeResolver != null) {
-      localeResolver.setLocale(request, response, locale);
+				System.out.println("$#15760#"); if (localeResolver != null) {
+						System.out.println("$#15761#"); localeResolver.setLocale(request, response, locale);
     }
-    response.setLocale(locale);
-    request.getSession().setAttribute(Constants.LANGUAGE, language);
+				System.out.println("$#15762#"); response.setLocale(locale);
+				System.out.println("$#15763#"); request.getSession().setAttribute(Constants.LANGUAGE, language);
 
-    return language;
+				System.out.println("$#15764#"); return language;
   }
 
   /**
@@ -138,20 +138,20 @@ public class LanguageUtils {
 
       String lang = request.getParameter(Constants.LANG);
 
-      if (StringUtils.isBlank(lang)) {
-        if (language == null) {
+						System.out.println("$#15765#"); if (StringUtils.isBlank(lang)) {
+								System.out.println("$#15766#"); if (language == null) {
           language = languageService.defaultLanguage();
         }
       } else {
-        if(!ALL_LANGUALES.equals(lang)) {
+								System.out.println("$#15767#"); if(!ALL_LANGUALES.equals(lang)) {
           language = languageService.getByCode(lang);
-          if (language == null) {
+										System.out.println("$#15768#"); if (language == null) {
             language = languageService.defaultLanguage();
           }
         }
       }
 
-      return language;
+						System.out.println("$#15769#"); return language;
 
     } catch (ServiceException e) {
       throw new ServiceRuntimeException(e);

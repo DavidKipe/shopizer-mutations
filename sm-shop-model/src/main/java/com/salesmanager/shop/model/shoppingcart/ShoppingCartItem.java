@@ -28,22 +28,22 @@ public class ShoppingCartItem extends ShopEntity implements Serializable {
 	private List<ShoppingCartAttribute> shoppingCartAttributes;
 	
 	public String getName() {
-		return name;
+		System.out.println("$#9331#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getPrice() {
-		return price;
+		System.out.println("$#9332#"); return price;
 	}
 	public void setPrice(String price) {
 		this.price = price;
 	}
 	public int getQuantity() {
-		if(quantity <= 0) {
+		System.out.println("$#9334#"); System.out.println("$#9333#"); if(quantity <= 0) {
 			quantity = 1;
 		}
-		return quantity;
+		System.out.println("$#9335#"); return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
@@ -51,13 +51,13 @@ public class ShoppingCartItem extends ShopEntity implements Serializable {
 
 
 	public String getCode() {
-		return code;
+		System.out.println("$#9336#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public List<ShoppingCartAttribute> getShoppingCartAttributes() {
-		return shoppingCartAttributes;
+		System.out.println("$#9337#"); return shoppingCartAttributes;
 	}
 	public void setShoppingCartAttributes(List<ShoppingCartAttribute> shoppingCartAttributes) {
 		this.shoppingCartAttributes = shoppingCartAttributes;
@@ -66,34 +66,34 @@ public class ShoppingCartItem extends ShopEntity implements Serializable {
 		this.productPrice = productPrice;
 	}
 	public BigDecimal getProductPrice() {
-		return productPrice;
+		System.out.println("$#9338#"); return productPrice;
 	}
 	public void setProductId(long productId) {
 		this.productId = productId;
 	}
 	public long getProductId() {
-		return productId;
+		System.out.println("$#9339#"); return productId;
 	}
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
 	}
 	public String getProductCode() {
-		return productCode;
+		System.out.println("$#9340#"); return productCode;
 	}
 	public void setImage(String image) {
 		this.image = image;
 	}
 	public String getImage() {
-		return image;
+		System.out.println("$#9341#"); return image;
 	}
 	public void setSubTotal(String subTotal) {
 		this.subTotal = subTotal;
 	}
 	public String getSubTotal() {
-		return subTotal;
+		System.out.println("$#9342#"); return subTotal;
 	}
 	public boolean isProductVirtual() {
-		return productVirtual;
+		System.out.println("$#9344#"); System.out.println("$#9343#"); return productVirtual;
 	}
 	public void setProductVirtual(boolean productVirtual) {
 		this.productVirtual = productVirtual;

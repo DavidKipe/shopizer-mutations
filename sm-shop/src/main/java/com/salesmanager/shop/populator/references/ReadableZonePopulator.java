@@ -15,24 +15,24 @@ public class ReadableZonePopulator extends AbstractDataPopulator<Zone, ReadableZ
 	@Override
 	public ReadableZone populate(Zone source, ReadableZone target, MerchantStore store, Language language)
 			throws ConversionException {
-		if(target==null) {
+		System.out.println("$#10899#"); if(target==null) {
 			target = new ReadableZone();
 		}
 		
-		target.setId(source.getId());
-		target.setCode(source.getCode());
-		target.setCountryCode(source.getCountry().getIsoCode());
+		System.out.println("$#10900#"); target.setId(source.getId());
+		System.out.println("$#10901#"); target.setCode(source.getCode());
+		System.out.println("$#10902#"); target.setCountryCode(source.getCountry().getIsoCode());
 		
-		if(!CollectionUtils.isEmpty(source.getDescriptions())) {
+		System.out.println("$#10903#"); if(!CollectionUtils.isEmpty(source.getDescriptions())) {
 			for(ZoneDescription d : source.getDescriptions()) {
-				if(d.getLanguage().getId() == language.getId()) {
-					target.setName(d.getName());
+				System.out.println("$#10904#"); if(d.getLanguage().getId() == language.getId()) {
+					System.out.println("$#10905#"); target.setName(d.getName());
 					continue;
 				}
 			}
 		}
 		
-		return target;
+		System.out.println("$#10906#"); return target;
 		
 	}
 

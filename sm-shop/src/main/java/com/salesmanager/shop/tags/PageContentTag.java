@@ -38,7 +38,7 @@ public class PageContentTag extends RequestContextAwareTag  {
 	
 
 	public String getContentCode() {
-		return contentCode;
+		System.out.println("$#15429#"); return contentCode;
 	}
 
 
@@ -49,11 +49,11 @@ public class PageContentTag extends RequestContextAwareTag  {
 
 	@Override
 	protected int doStartTagInternal() throws Exception {
-		if (contentService == null || contentService==null) {
+		System.out.println("$#15430#"); if (contentService == null || contentService==null) {
 			LOGGER.debug("Autowiring contentService");
             WebApplicationContext wac = getRequestContext().getWebApplicationContext();
             AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-            factory.autowireBean(this);
+												System.out.println("$#15432#"); factory.autowireBean(this);
         }
 		
 		HttpServletRequest request = (HttpServletRequest) pageContext
@@ -66,15 +66,15 @@ public class PageContentTag extends RequestContextAwareTag  {
 		Content content = contentService.getByCode(contentCode, store, language);
 		
 		String pageContent = "";
-		if(content!=null) {
+		System.out.println("$#15433#"); if(content!=null) {
 			ContentDescription description = content.getDescription();
-			if(description != null) {
+			System.out.println("$#15434#"); if(description != null) {
 				pageContent = description.getDescription();
 			}
 		}
 		
 		
-		pageContext.getOut().print(pageContent);
+		System.out.println("$#15435#"); pageContext.getOut().print(pageContent);
 		
 		return SKIP_BODY;
 
@@ -82,7 +82,7 @@ public class PageContentTag extends RequestContextAwareTag  {
 
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15436#"); return EVAL_PAGE;
 	}
 
 

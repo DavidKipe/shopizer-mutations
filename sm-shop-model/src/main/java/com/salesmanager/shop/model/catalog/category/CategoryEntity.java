@@ -21,37 +21,37 @@ public class CategoryEntity extends Category implements Serializable {
 	
 
 	public int getSortOrder() {
-		return sortOrder;
+		System.out.println("$#8734#"); return sortOrder;
 	}
 	public void setSortOrder(int sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 	public boolean isVisible() {
-		return visible;
+		System.out.println("$#8736#"); System.out.println("$#8735#"); return visible;
 	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
 	public String getLineage() {
-		return lineage;
+		System.out.println("$#8737#"); return lineage;
 	}
 	public void setLineage(String lineage) {
 		this.lineage = lineage;
 	}
 	public int getDepth() {
-		return depth;
+		System.out.println("$#8738#"); return depth;
 	}
 	public void setDepth(int depth) {
 		this.depth = depth;
 	}
 	public Category getParent() {
-		return parent;
+		System.out.println("$#8739#"); return parent;
 	}
 	public void setParent(Category parent) {
 		this.parent = parent;
 	}
 	public boolean isFeatured() {
-		return featured;
+		System.out.println("$#8741#"); System.out.println("$#8740#"); return featured;
 	}
 	public void setFeatured(boolean featured) {
 		this.featured = featured;

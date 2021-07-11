@@ -60,7 +60,7 @@ public class TaxRatesApi {
 	public Entity create(@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language,
 			@Valid @RequestBody PersistableTaxRate taxRate) {
 
-		return taxFacade.createTaxRate(taxRate, merchantStore, language);
+		System.out.println("$#12146#"); return taxFacade.createTaxRate(taxRate, merchantStore, language);
 
 	}
 
@@ -72,7 +72,7 @@ public class TaxRatesApi {
 			@ApiIgnore Language language) {
 
 		boolean exists = taxFacade.existsTaxRate(code, merchantStore, language);
-		return new ResponseEntity<EntityExists>(new EntityExists(exists), HttpStatus.OK);
+		System.out.println("$#12147#"); return new ResponseEntity<EntityExists>(new EntityExists(exists), HttpStatus.OK);
 
 	}
 
@@ -83,8 +83,8 @@ public class TaxRatesApi {
 	public void update(@ApiIgnore MerchantStore merchantStore, @PathVariable Long id, @ApiIgnore Language language,
 			@Valid @RequestBody PersistableTaxRate taxRate) {
 
-		taxRate.setId(id);
-		taxFacade.updateTaxRate(id, taxRate, merchantStore, language);
+		System.out.println("$#12148#"); taxRate.setId(id);
+		System.out.println("$#12149#"); taxFacade.updateTaxRate(id, taxRate, merchantStore, language);
 
 	}
 
@@ -96,7 +96,7 @@ public class TaxRatesApi {
 			@RequestParam(name = "page", defaultValue = "0") int page, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		return taxFacade.taxRates(merchantStore, language);
+		System.out.println("$#12150#"); return taxFacade.taxRates(merchantStore, language);
 
 	}
 	
@@ -105,7 +105,7 @@ public class TaxRatesApi {
 	@ApiImplicitParams({ @ApiImplicitParam(name = "store", dataType = "string", defaultValue = "DEFAULT") })
 	public ReadableTaxRate get(@ApiIgnore MerchantStore merchantStore, @PathVariable Long id, @ApiIgnore Language language) {
 
-		return taxFacade.taxRate(id, merchantStore, language);
+		System.out.println("$#12151#"); return taxFacade.taxRate(id, merchantStore, language);
 
 	}
 
@@ -115,7 +115,7 @@ public class TaxRatesApi {
 			@ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en") })
 	public void delete(@PathVariable Long id, @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
-		taxFacade.deleteTaxRate(id, merchantStore, language);
+		System.out.println("$#12152#"); taxFacade.deleteTaxRate(id, merchantStore, language);
 
 	}
 

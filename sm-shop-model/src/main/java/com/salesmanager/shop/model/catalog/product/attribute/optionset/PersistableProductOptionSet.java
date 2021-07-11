@@ -14,19 +14,19 @@ public class PersistableProductOptionSet extends ProductOptionSetEntity{
 	private Long option;
 	
 	public List<Long> getOptionValues() {
-		return optionValues;
+		System.out.println("$#8784#"); return optionValues;
 	}
 	public void setOptionValues(List<Long> optionValues) {
 		this.optionValues = optionValues;
 	}
 	public Long getOption() {
-		return option;
+		System.out.println("$#8785#"); return option;
 	}
 	public void setOption(Long option) {
 		this.option = option;
 	}
 	public List<Long> getProductTypes() {
-		return productTypes;
+		System.out.println("$#8786#"); return productTypes;
 	}
 	public void setProductTypes(List<Long> productTypes) {
 		this.productTypes = productTypes;

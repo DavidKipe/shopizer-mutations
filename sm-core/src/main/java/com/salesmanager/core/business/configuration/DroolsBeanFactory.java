@@ -41,11 +41,11 @@ public class DroolsBeanFactory {
         for(String rule:rules){
             kieFileSystem.write(ResourceFactory.newClassPathResource(rule));
         }
-        return kieFileSystem;
+								System.out.println("$#16#"); return kieFileSystem;
     }
 
     public KieContainer getKieContainer() throws IOException {
-        getKieRepository();
+								System.out.println("$#17#"); getKieRepository();
 
         KieBuilder kb = kieServices.newKieBuilder(getKieFileSystem());
         kb.buildAll();
@@ -53,21 +53,21 @@ public class DroolsBeanFactory {
         KieModule kieModule = kb.getKieModule();
         KieContainer kContainer = kieServices.newKieContainer(kieModule.getReleaseId());
 
-        return kContainer;
+								System.out.println("$#18#"); return kContainer;
 
     }
 
     private void getKieRepository() {
         final KieRepository kieRepository = kieServices.getRepository();
-        kieRepository.addKieModule(new KieModule() {
+								System.out.println("$#19#"); kieRepository.addKieModule(new KieModule() {
                         public ReleaseId getReleaseId() {
-                return kieRepository.getDefaultReleaseId();
+																System.out.println("$#25#"); return kieRepository.getDefaultReleaseId();
             }
         });
     }
 
     public KieSession getKieSession(){
-        getKieRepository();
+								System.out.println("$#20#"); getKieRepository();
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
 
         kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_PATH + priceByDistance));
@@ -79,7 +79,7 @@ public class DroolsBeanFactory {
 
         KieContainer kContainer = kieServices.newKieContainer(kieModule.getReleaseId());
 
-        return kContainer.newKieSession();
+								System.out.println("$#21#"); return kContainer.newKieSession();
 
     }
 
@@ -98,7 +98,7 @@ public class DroolsBeanFactory {
 
         KieSession ksession = kieContainer.newKieSession();
 
-        return ksession;
+								System.out.println("$#22#"); return ksession;
     }
 
     /*
@@ -107,7 +107,7 @@ public class DroolsBeanFactory {
      */
     public String getDrlFromExcel(String excelFile) {
         DecisionTableConfiguration configuration = KnowledgeBuilderFactory.newDecisionTableConfiguration();
-        configuration.setInputType(DecisionTableInputType.XLS);
+								System.out.println("$#23#"); configuration.setInputType(DecisionTableInputType.XLS);
 
         Resource dt = ResourceFactory.newClassPathResource(excelFile, getClass());
 
@@ -115,7 +115,7 @@ public class DroolsBeanFactory {
 
         String drl = decisionTableProvider.loadFromResource(dt, null);
 
-        return drl;
+								System.out.println("$#24#"); return drl;
     }
 
 }

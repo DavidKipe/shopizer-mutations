@@ -46,6 +46,6 @@ public class PublicConfigsApi {
       @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
   })
   public Configs getConfig(@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
-    return configurationFacade.getMerchantConfig(merchantStore, language);
+				System.out.println("$#12138#"); return configurationFacade.getMerchantConfig(merchantStore, language);
   }
 }

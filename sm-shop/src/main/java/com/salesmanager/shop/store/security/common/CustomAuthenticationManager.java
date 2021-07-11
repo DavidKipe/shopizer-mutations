@@ -25,7 +25,7 @@ public abstract class CustomAuthenticationManager {
 
 	
 	public String getTokenHeader() {
-		return tokenHeader;
+		System.out.println("$#15267#"); return tokenHeader;
 	}
 
 	public void setTokenHeader(String tokenHeader) {
@@ -43,44 +43,44 @@ public abstract class CustomAuthenticationManager {
 
 		try {
 			authResult = this.attemptAuthentication(request, response);
-			if (authResult == null) {
+			System.out.println("$#15268#"); if (authResult == null) {
 				// return immediately as subclass has indicated that it hasn't completed
 				// authentication
 				return;
 			}
 		} catch (AuthenticationException failed) {
 			// Authentication failed
-			unsuccess(request, response);
+			System.out.println("$#15269#"); unsuccess(request, response);
 			return;
 		}
 
-		this.success(request, response, authResult);
+		System.out.println("$#15270#"); this.success(request, response, authResult);
 
 		
 	}
 	
 	private void success(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws AuthenticationException {
 
-		SecurityContextHolder.getContext().setAuthentication(authentication);
+		System.out.println("$#15271#"); SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("Authentication success");
 			logger.debug("Updated SecurityContextHolder to containAuthentication");
 		}
 		
-		successfullAuthentication(request, response, authentication);
+		System.out.println("$#15272#"); successfullAuthentication(request, response, authentication);
 	}
 	
 	private void unsuccess(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
-		SecurityContextHolder.clearContext();
+		System.out.println("$#15273#"); SecurityContextHolder.clearContext();
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("Authentication request failed");
 			logger.debug("Updated SecurityContextHolder to contain null Authentication");
 		}
 		
-		unSuccessfullAuthentication(request, response);
+		System.out.println("$#15274#"); unSuccessfullAuthentication(request, response);
 	}
 
 	

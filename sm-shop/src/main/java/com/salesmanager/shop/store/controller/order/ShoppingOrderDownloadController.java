@@ -63,26 +63,26 @@ public class ShoppingOrderDownloadController extends AbstractController {
 		
 		//get customer and check order
 		Order order = orderService.getById(orderId);
-		if(order==null) {
+		System.out.println("$#13463#"); if(order==null) {
 			LOGGER.warn("Order is null for id " + orderId);
-			response.sendError(404, "Image not found");
+			System.out.println("$#13464#"); response.sendError(404, "Image not found");
 			return null;
 		}
 		
 
 		//order belongs to customer
 		Customer customer = (Customer)super.getSessionAttribute(Constants.CUSTOMER, request);
-		if(customer==null) {
-			response.sendError(404, "Image not found");
+		System.out.println("$#13465#"); if(customer==null) {
+			System.out.println("$#13466#"); response.sendError(404, "Image not found");
 			return null;
 		}
 
 		
 		String fileName = null;//get it from OrderProductDownlaod
 		OrderProductDownload download = orderProductDownloadService.getById(id);
-		if(download==null) {
+		System.out.println("$#13467#"); if(download==null) {
 			LOGGER.warn("OrderProductDownload is null for id " + id);
-			response.sendError(404, "Image not found");
+			System.out.println("$#13468#"); response.sendError(404, "Image not found");
 			return null;
 		}
 		
@@ -92,12 +92,12 @@ public class ShoppingOrderDownloadController extends AbstractController {
 		OutputContentFile file =contentService.getContentFile(store.getCode(), fileType, fileName);
 		
 		
-		if(file!=null) {
-			response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-			return file.getFile().toByteArray();
+		System.out.println("$#13469#"); if(file!=null) {
+			System.out.println("$#13470#"); response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+			System.out.println("$#13471#"); return file.getFile().toByteArray();
 		} else {
 			LOGGER.warn("Image not found for OrderProductDownload id " + id);
-			response.sendError(404, "Image not found");
+			System.out.println("$#13472#"); response.sendError(404, "Image not found");
 			return null;
 		}
 		

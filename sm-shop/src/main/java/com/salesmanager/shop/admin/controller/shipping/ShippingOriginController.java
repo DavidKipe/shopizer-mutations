@@ -55,7 +55,7 @@ public class ShippingOriginController {
 	@RequestMapping(value="/admin/shipping/origin/get.html", method=RequestMethod.GET)
 	public String displayShippingOrigin(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		this.setMenu(model, request);
+		System.out.println("$#7337#"); this.setMenu(model, request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Language language = (Language)request.getAttribute("LANGUAGE");		
@@ -64,16 +64,16 @@ public class ShippingOriginController {
 		
 		List<Country> countries = countryService.getCountries(language);
 		
-		if(shippingOrigin==null) {
+		System.out.println("$#7338#"); if(shippingOrigin==null) {
 			shippingOrigin = new ShippingOrigin();
-			shippingOrigin.setCountry(store.getCountry());
-			shippingOrigin.setState(store.getStorestateprovince());
-			shippingOrigin.setZone(store.getZone());
+			System.out.println("$#7339#"); shippingOrigin.setCountry(store.getCountry());
+			System.out.println("$#7340#"); shippingOrigin.setState(store.getStorestateprovince());
+			System.out.println("$#7341#"); shippingOrigin.setZone(store.getZone());
 		}
 
 		model.addAttribute("countries", countries);
 		model.addAttribute("origin", shippingOrigin);
-		return "shipping-origin";
+		System.out.println("$#7342#"); return "shipping-origin";
 		
 		
 	}
@@ -82,37 +82,37 @@ public class ShippingOriginController {
 	@RequestMapping(value="/admin/shipping/origin/post.html", method=RequestMethod.POST)
 	public String saveShippingOrigin(@Valid @ModelAttribute("origin") ShippingOrigin origin, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		this.setMenu(model, request);
+		System.out.println("$#7343#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");	
 		List<Country> countries = countryService.getCountries(language);
 		
 		ShippingOrigin shippingOrigin =  shippingOriginService.getByStore(store);
-		if(shippingOrigin!=null) {
-			origin.setId(shippingOrigin.getId());
+		System.out.println("$#7344#"); if(shippingOrigin!=null) {
+			System.out.println("$#7345#"); origin.setId(shippingOrigin.getId());
 		}
 		
-		origin.setMerchantStore(store);
+		System.out.println("$#7346#"); origin.setMerchantStore(store);
 		
 		Country country = countryService.getByCode(origin.getCountry().getIsoCode());
-		origin.setCountry(country);
+		System.out.println("$#7347#"); origin.setCountry(country);
 		
-		if(origin.getZone() !=null) {
+		System.out.println("$#7348#"); if(origin.getZone() !=null) {
 			Zone zone = zoneService.getByCode(origin.getZone().getCode());
-			origin.setZone(zone);
+			System.out.println("$#7349#"); origin.setZone(zone);
 		}
 		
-		if(shippingOrigin!=null) {
-			shippingOriginService.update(origin);
+		System.out.println("$#7350#"); if(shippingOrigin!=null) {
+			System.out.println("$#7351#"); shippingOriginService.update(origin);
 		} else {
-			shippingOriginService.save(origin);
+			System.out.println("$#7352#"); shippingOriginService.save(origin);
 		}
 
 		model.addAttribute("countries", countries);
 		model.addAttribute("origin", origin);
 		model.addAttribute("success","success");
-		return "shipping-origin";
+		System.out.println("$#7353#"); return "shipping-origin";
 		
 	}
 	
@@ -120,7 +120,7 @@ public class ShippingOriginController {
 	@RequestMapping(value="/admin/shipping/origin/delete.html", method=RequestMethod.POST)
 	public String deleteShippingOrigin(@ModelAttribute("origin") ShippingOrigin origin, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		this.setMenu(model, request);
+		System.out.println("$#7354#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		ShippingOrigin shippingOrigin =  shippingOriginService.getByStore(store);
@@ -129,21 +129,21 @@ public class ShippingOriginController {
 		List<Country> countries = countryService.getCountries(language);
 		
 
-		if(shippingOrigin!=null && origin !=null) {
-			if(shippingOrigin.getId().longValue() == origin.getId().longValue()) {
-				shippingOriginService.delete(shippingOrigin);
+		System.out.println("$#7355#"); if(shippingOrigin!=null && origin !=null) {
+			System.out.println("$#7357#"); if(shippingOrigin.getId().longValue() == origin.getId().longValue()) {
+				System.out.println("$#7358#"); shippingOriginService.delete(shippingOrigin);
 				model.addAttribute("success","success");
 			} else {
-				return "redirect:/admin/shipping/origin/get.html";
+				System.out.println("$#7359#"); return "redirect:/admin/shipping/origin/get.html";
 			}
 		} else {
-			return "redirect:/admin/shipping/origin/get.html";
+			System.out.println("$#7360#"); return "redirect:/admin/shipping/origin/get.html";
 		}
 		
 		model.addAttribute("countries", countries);
 		model.addAttribute("origin", null);
 		model.addAttribute("success","success");
-		return "shipping-origin";
+		System.out.println("$#7361#"); return "shipping-origin";
 		
 	}
 		

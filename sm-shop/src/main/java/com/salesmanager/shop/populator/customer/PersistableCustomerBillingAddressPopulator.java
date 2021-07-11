@@ -18,36 +18,36 @@ public class PersistableCustomerBillingAddressPopulator extends AbstractDataPopu
     {
         
        
-           target.getBilling().setFirstName( source.getFirstName() );
-           target.getBilling().setLastName( source.getLastName() );
+											System.out.println("$#10145#"); target.getBilling().setFirstName( source.getFirstName() );
+											System.out.println("$#10146#"); target.getBilling().setLastName( source.getLastName() );
           
             // lets fill optional data now
            
-           if(StringUtils.isNotBlank( source.getAddress())){
-               target.getBilling().setAddress( source.getAddress() ); 
+											System.out.println("$#10147#"); if(StringUtils.isNotBlank( source.getAddress())){
+															System.out.println("$#10148#"); target.getBilling().setAddress( source.getAddress() );
            }
            
-           if(StringUtils.isNotBlank( source.getCity())){
-               target.getBilling().setCity( source.getCity() );
+											System.out.println("$#10149#"); if(StringUtils.isNotBlank( source.getCity())){
+															System.out.println("$#10150#"); target.getBilling().setCity( source.getCity() );
            }
            
-           if(StringUtils.isNotBlank( source.getCompany())){
-               target.getBilling().setCompany( source.getCompany() );
+											System.out.println("$#10151#"); if(StringUtils.isNotBlank( source.getCompany())){
+															System.out.println("$#10152#"); target.getBilling().setCompany( source.getCompany() );
            }
            
-           if(StringUtils.isNotBlank( source.getPhone())){
-               target.getBilling().setTelephone( source.getPhone());
+											System.out.println("$#10153#"); if(StringUtils.isNotBlank( source.getPhone())){
+															System.out.println("$#10154#"); target.getBilling().setTelephone( source.getPhone());
            }
            
-           if(StringUtils.isNotBlank( source.getPostalCode())){
-               target.getBilling().setPostalCode( source.getPostalCode());
+											System.out.println("$#10155#"); if(StringUtils.isNotBlank( source.getPostalCode())){
+															System.out.println("$#10156#"); target.getBilling().setPostalCode( source.getPostalCode());
            }
            
-           if(StringUtils.isNotBlank( source.getStateProvince())){
-               target.getBilling().setState(source.getStateProvince());
+											System.out.println("$#10157#"); if(StringUtils.isNotBlank( source.getStateProvince())){
+															System.out.println("$#10158#"); target.getBilling().setState(source.getStateProvince());
            }
            
-           return target;
+											System.out.println("$#10159#"); return target;
         
     }
 

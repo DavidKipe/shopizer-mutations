@@ -31,7 +31,7 @@ public class AdminErrorController {
 		LOGGER.error("Error page controller",ex);
 
 		ModelAndView model = null;
-		if(ex instanceof AccessDeniedException) {
+		System.out.println("$#12750#"); if(ex instanceof AccessDeniedException) {
 			
 			model = new ModelAndView("error/access_denied");
 			
@@ -43,7 +43,7 @@ public class AdminErrorController {
 			
 		}
 
-		return model;
+		System.out.println("$#12751#"); return model;
  
 	}
 	
@@ -66,7 +66,7 @@ public class AdminErrorController {
 		
 		
  
-		return model;
+		System.out.println("$#12752#"); return model;
  
 	}
 	
@@ -84,7 +84,7 @@ public class AdminErrorController {
 			
 		modelAndView = new ModelAndView("error/generic_error");
  
-		return modelAndView;
+		System.out.println("$#12753#"); return modelAndView;
  
 	}
 

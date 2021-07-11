@@ -26,7 +26,7 @@ public class PersistableOrder extends Order {
 	
 	
 	public Long getShoppingCartId() {
-		return shoppingCartId;
+		System.out.println("$#9237#"); return shoppingCartId;
 	}
 
 	public void setShoppingCartId(Long shoppingCartId) {
@@ -34,7 +34,7 @@ public class PersistableOrder extends Order {
 	}
 
 	public Long getCustomerId() {
-		return customerId;
+		System.out.println("$#9238#"); return customerId;
 	}
 
 	public void setCustomerId(Long customerId) {
@@ -42,7 +42,7 @@ public class PersistableOrder extends Order {
 	}
 
 	public PersistablePayment getPayment() {
-		return payment;
+		System.out.println("$#9239#"); return payment;
 	}
 
 	public void setPayment(PersistablePayment payment) {
@@ -50,7 +50,7 @@ public class PersistableOrder extends Order {
 	}
 
 	public Long getShippingQuote() {
-		return shippingQuote;
+		System.out.println("$#9240#"); return shippingQuote;
 	}
 
 	public void setShippingQuote(Long shippingQuote) {

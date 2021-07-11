@@ -43,31 +43,31 @@ public class SystemConfigurationController {
 	@RequestMapping(value="/admin/configuration/system.html", method=RequestMethod.GET)
 	public String displaySysyemConfgurations(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		setMenu(model, request);
+		System.out.println("$#5078#"); setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		MerchantConfig merchantConfiguration = merchantConfigurationService.getMerchantConfig(store);
 
-		if(merchantConfiguration==null) {
+		System.out.println("$#5079#"); if(merchantConfiguration==null) {
 			merchantConfiguration = new MerchantConfig();
 		}
 		
 		model.addAttribute("store", store);
 		model.addAttribute("configuration",merchantConfiguration);
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Configuration.system;
+		System.out.println("$#5080#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Configuration.system;
 	}
 	
 	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/configuration/saveSystemConfiguration.html", method=RequestMethod.POST)
 	public String saveSystemConfigurations(@ModelAttribute("configuration") MerchantConfig merchantConfiguration, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception
 	{
-		setMenu(model, request);
+		System.out.println("$#5081#"); setMenu(model, request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		merchantConfigurationService.saveMerchantConfig(merchantConfiguration, store);
+		System.out.println("$#5082#"); merchantConfigurationService.saveMerchantConfig(merchantConfiguration, store);
 		model.addAttribute("success","success");
 		model.addAttribute("store", store);
 		model.addAttribute("configuration",merchantConfiguration);
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Configuration.system;
+		System.out.println("$#5083#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Configuration.system;
 		
 	}
 

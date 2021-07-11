@@ -54,7 +54,7 @@ public class CustomerNewsletterApi {
       @Valid @RequestBody PersistableCustomerOptin optin,
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language) {
-		customerFacade.optinCustomer(optin, merchantStore);
+		System.out.println("$#11681#"); customerFacade.optinCustomer(optin, merchantStore);
 	}
 
   @PutMapping("/newsletter/{email}")

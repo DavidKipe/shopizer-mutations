@@ -26,19 +26,19 @@ public class EmailConfig implements JSONAware {
 		data.put("smtpAuth", this.isSmtpAuth());
 		data.put("starttls", this.isStarttls());
 		data.put("password", this.getPassword());
-		return data.toJSONString();
+		System.out.println("$#410#"); return data.toJSONString();
 	}
 	
 	
 
 	public boolean isSmtpAuth() {
-		return smtpAuth;
+		System.out.println("$#412#"); System.out.println("$#411#"); return smtpAuth;
 	}
 	public void setSmtpAuth(boolean smtpAuth) {
 		this.smtpAuth = smtpAuth;
 	}
 	public boolean isStarttls() {
-		return starttls;
+		System.out.println("$#414#"); System.out.println("$#413#"); return starttls;
 	}
 	public void setStarttls(boolean starttls) {
 		this.starttls = starttls;
@@ -47,13 +47,13 @@ public class EmailConfig implements JSONAware {
 		this.emailTemplatesPath = emailTemplatesPath;
 	}
 	public String getEmailTemplatesPath() {
-		return emailTemplatesPath;
+		System.out.println("$#415#"); return emailTemplatesPath;
 	}
 
 
 
 	public String getHost() {
-		return host;
+		System.out.println("$#416#"); return host;
 	}
 
 
@@ -65,7 +65,7 @@ public class EmailConfig implements JSONAware {
 
 
 	public String getPort() {
-		return port;
+		System.out.println("$#417#"); return port;
 	}
 
 
@@ -77,7 +77,7 @@ public class EmailConfig implements JSONAware {
 
 
 	public String getProtocol() {
-		return protocol;
+		System.out.println("$#418#"); return protocol;
 	}
 
 
@@ -89,7 +89,7 @@ public class EmailConfig implements JSONAware {
 
 
 	public String getUsername() {
-		return username;
+		System.out.println("$#419#"); return username;
 	}
 
 
@@ -101,7 +101,7 @@ public class EmailConfig implements JSONAware {
 
 
 	public String getPassword() {
-		return password;
+		System.out.println("$#420#"); return password;
 	}
 
 

@@ -25,7 +25,7 @@ public class ReadableMerchantStore extends MerchantStoreEntity implements Readab
 	private List<Language> supportedLanguages;
 
 	public String getCurrentUserLanguage() {
-		return currentUserLanguage;
+		System.out.println("$#9372#"); return currentUserLanguage;
 	}
 
 	public void setCurrentUserLanguage(String currentUserLanguage) {
@@ -33,7 +33,7 @@ public class ReadableMerchantStore extends MerchantStoreEntity implements Readab
 	}
 
 	public ReadableAddress getAddress() {
-		return address;
+		System.out.println("$#9373#"); return address;
 	}
 
 	public void setAddress(ReadableAddress address) {
@@ -41,7 +41,7 @@ public class ReadableMerchantStore extends MerchantStoreEntity implements Readab
 	}
 
 	public ReadableImage getLogo() {
-		return logo;
+		System.out.println("$#9374#"); return logo;
 	}
 
 	public void setLogo(ReadableImage logo) {
@@ -54,11 +54,11 @@ public class ReadableMerchantStore extends MerchantStoreEntity implements Readab
 	}
 
 	public ReadableAudit getReadableAudit() {
-		return this.audit;
+		System.out.println("$#9375#"); return this.audit;
 	}
 
 	public ReadableMerchantStore getParent() {
-		return parent;
+		System.out.println("$#9376#"); return parent;
 	}
 
 	public void setParent(ReadableMerchantStore parent) {
@@ -66,7 +66,7 @@ public class ReadableMerchantStore extends MerchantStoreEntity implements Readab
 	}
 
 	public List<Language> getSupportedLanguages() {
-		return supportedLanguages;
+		System.out.println("$#9377#"); return supportedLanguages;
 	}
 
 	public void setSupportedLanguages(List<Language> supportedLanguages) {

@@ -48,27 +48,27 @@ public class ProductKeywordsController {
 	@RequestMapping(value={"/admin/products/product/keywords.html"}, method=RequestMethod.GET)
 	public String displayKeywords(@RequestParam("id") long productId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		this.setMenu(model, request);
+		System.out.println("$#6836#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		Product product = productService.getById(productId);
 		
-		if(product==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6837#"); if(product==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6839#"); return "redirect:/admin/products/products.html";
 		}
 		
 		model.addAttribute("store", store);
 		model.addAttribute("product", product);
 		model.addAttribute("productKeyword", new Keyword());
 
-		return ControllerConstants.Tiles.Product.productKeywords;
+		System.out.println("$#6840#"); return ControllerConstants.Tiles.Product.productKeywords;
 		
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/products/product/addKeyword.html", method=RequestMethod.POST)
 	public String addKeyword(@Valid @ModelAttribute("productKeyword") Keyword keyword, final BindingResult bindingResult,final Model model, final HttpServletRequest request, Locale locale) throws Exception{
-		this.setMenu(model, request);
+		System.out.println("$#6841#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		
@@ -78,36 +78,36 @@ public class ProductKeywordsController {
 		model.addAttribute("product", product);
 		model.addAttribute("productKeyword", new Keyword());
 		
-		if(product==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6842#"); if(product==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6844#"); return "redirect:/admin/products/products.html";
 		}
 		
 		Set<ProductDescription> descriptions = product.getDescriptions();
 		ProductDescription productDescription = null;
 		for(ProductDescription description : descriptions) {
 			
-			if(description.getLanguage().getCode().equals(keyword.getLanguageCode())) {
+			System.out.println("$#6845#"); if(description.getLanguage().getCode().equals(keyword.getLanguageCode())) {
 				productDescription = description;
 				break;
 			}
 			
 		}
 		
-		if(productDescription==null) {
+		System.out.println("$#6846#"); if(productDescription==null) {
 			FieldError error = new FieldError("keyword","keyword",messages.getMessage("message.product.language", locale));
-			bindingResult.addError(error);
-			return ControllerConstants.Tiles.Product.productKeywords;
+			System.out.println("$#6847#"); bindingResult.addError(error);
+			System.out.println("$#6848#"); return ControllerConstants.Tiles.Product.productKeywords;
 		}
 		
 		
 		String keywords = productDescription.getMetatagKeywords();
 		List<String> keyWordsList = null;
-		if(!StringUtils.isBlank(keywords)) {
+		System.out.println("$#6849#"); if(!StringUtils.isBlank(keywords)) {
 			String[] splits = keywords.split(",");
 			keyWordsList = new ArrayList(Arrays.asList(splits));
 		}
 		
-		if(keyWordsList==null) {
+		System.out.println("$#6850#"); if(keyWordsList==null) {
 			keyWordsList = new ArrayList<String>();
 		}
 		keyWordsList.add(keyword.getKeyword());
@@ -117,23 +117,23 @@ public class ProductKeywordsController {
 			kwString.append(s).append(",");
 		}
 		
-		productDescription.setMetatagKeywords(kwString.toString());
+		System.out.println("$#6851#"); productDescription.setMetatagKeywords(kwString.toString());
 		Set<ProductDescription> updatedDescriptions = new HashSet<ProductDescription>();
 		for(ProductDescription description : descriptions) {
 			
-			if(!description.getLanguage().getCode().equals(keyword.getLanguageCode())) {
+			System.out.println("$#6852#"); if(!description.getLanguage().getCode().equals(keyword.getLanguageCode())) {
 				updatedDescriptions.add(description);
 			}
 		}
 		
 		updatedDescriptions.add(productDescription);
-		product.setDescriptions(updatedDescriptions);
+		System.out.println("$#6853#"); product.setDescriptions(updatedDescriptions);
 		
-		productService.update(product);
+		System.out.println("$#6854#"); productService.update(product);
 		model.addAttribute("success","success");
 
 		
-        return ControllerConstants.Tiles.Product.productKeywords;
+								System.out.println("$#6855#"); return ControllerConstants.Tiles.Product.productKeywords;
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
@@ -146,7 +146,7 @@ public class ProductKeywordsController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6856#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		
 		try {
@@ -161,18 +161,18 @@ public class ProductKeywordsController {
 			Product product = productService.getById(productId);
 
 			
-			if(product==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#6857#"); if(product==null) {
+				System.out.println("$#6858#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6859#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6860#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#6861#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6862#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6863#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6864#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			Set<ProductDescription> descriptions = product.getDescriptions();
@@ -180,7 +180,7 @@ public class ProductKeywordsController {
 			for(ProductDescription description : descriptions) {
 
 				Language lang = description.getLanguage();
-				if(!lang.getCode().equals(languageCode)){
+				System.out.println("$#6865#"); if(!lang.getCode().equals(languageCode)){
 					editedDescriptions.add(description);
 					continue;
 				}
@@ -189,11 +189,11 @@ public class ProductKeywordsController {
 	
 				
 				String keywords = description.getMetatagKeywords();
-				if(!StringUtils.isBlank(keywords)) {
+				System.out.println("$#6866#"); if(!StringUtils.isBlank(keywords)) {
 					String splitKeywords[] = keywords.split(",");
-					for(int i = 0; i < splitKeywords.length; i++) {
+					System.out.println("$#6868#"); System.out.println("$#6867#"); for(int i = 0; i < splitKeywords.length; i++) {
 						
-						if(i!=index) {
+						System.out.println("$#6869#"); if(i!=index) {
 							keyWordsList.add(splitKeywords[i]);
 						}
 						
@@ -209,23 +209,23 @@ public class ProductKeywordsController {
 					kwString.append(s).append(",");
 				}
 				
-				description.setMetatagKeywords(kwString.toString());
+				System.out.println("$#6870#"); description.setMetatagKeywords(kwString.toString());
 				editedDescriptions.add(description);
 				
 			}
 			
-			product.setDescriptions(editedDescriptions);
-			productService.update(product);
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6871#"); product.setDescriptions(editedDescriptions);
+			System.out.println("$#6872#"); productService.update(product);
+			System.out.println("$#6873#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6874#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6875#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6876#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	
@@ -239,7 +239,7 @@ public class ProductKeywordsController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6877#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		Long productId;
 		Product product = null;
@@ -247,10 +247,10 @@ public class ProductKeywordsController {
 		try {
 			productId = Long.parseLong(sProductId);
 		} catch (Exception e) {
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorString("Product id is not valid");
+			System.out.println("$#6878#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6879#"); resp.setErrorString("Product id is not valid");
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#6880#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 
 		
@@ -259,18 +259,18 @@ public class ProductKeywordsController {
 			product = productService.getById(productId);
 
 			
-			if(product==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#6881#"); if(product==null) {
+				System.out.println("$#6882#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6883#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6884#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#6885#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6886#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6887#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6888#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			
@@ -286,10 +286,10 @@ public class ProductKeywordsController {
 				
 				
 				String keywords = description.getMetatagKeywords();
-				if(!StringUtils.isBlank(keywords)) {
+				System.out.println("$#6889#"); if(!StringUtils.isBlank(keywords)) {
 					
 					String splitKeywords[] = keywords.split(",");
-					for(int i = 0; i < splitKeywords.length; i++) {
+					System.out.println("$#6891#"); System.out.println("$#6890#"); for(int i = 0; i < splitKeywords.length; i++) {
 						Map entry = new HashMap();
 						entry.put("language", lang.getCode());
 						String keyword = splitKeywords[i];
@@ -298,7 +298,7 @@ public class ProductKeywordsController {
 						
 						entry.put("code", code.toString());
 						entry.put("keyword", keyword);
-						resp.addDataEntry(entry);
+						System.out.println("$#6892#"); resp.addDataEntry(entry);
 	
 						
 					}
@@ -309,16 +309,16 @@ public class ProductKeywordsController {
 
 			
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#6893#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6894#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6895#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6896#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 
 	

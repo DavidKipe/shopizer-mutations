@@ -21,31 +21,31 @@ public class ReadableProductAttribute extends ProductAttributeEntity implements 
 	private List<ReadableProductAttributeValue> attributeValues = new ArrayList<ReadableProductAttributeValue>();
 	
 	public String getName() {
-		return name;
+		System.out.println("$#8812#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getLang() {
-		return lang;
+		System.out.println("$#8813#"); return lang;
 	}
 	public void setLang(String lang) {
 		this.lang = lang;
 	}
 	public List<ReadableProductAttributeValue> getAttributeValues() {
-		return attributeValues;
+		System.out.println("$#8814#"); return attributeValues;
 	}
 	public void setAttributeValues(List<ReadableProductAttributeValue> attributeValues) {
 		this.attributeValues = attributeValues;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#8815#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getType() {
-		return type;
+		System.out.println("$#8816#"); return type;
 	}
 	public void setType(String type) {
 		this.type = type;

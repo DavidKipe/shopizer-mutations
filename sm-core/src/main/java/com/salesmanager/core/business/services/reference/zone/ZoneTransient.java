@@ -7,19 +7,19 @@ public class ZoneTransient {
 	private String countryCode;
 	
 	public String getZoneCode() {
-		return zoneCode;
+		System.out.println("$#2830#"); return zoneCode;
 	}
 	public void setZoneCode(String zoneCode) {
 		this.zoneCode = zoneCode;
 	}
 	public String getZoneName() {
-		return zoneName;
+		System.out.println("$#2831#"); return zoneName;
 	}
 	public void setZoneName(String zoneName) {
 		this.zoneName = zoneName;
 	}
 	public String getCountryCode() {
-		return countryCode;
+		System.out.println("$#2832#"); return countryCode;
 	}
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;

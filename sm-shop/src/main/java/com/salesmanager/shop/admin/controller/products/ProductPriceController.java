@@ -59,24 +59,24 @@ public class ProductPriceController {
 	@RequestMapping(value="/admin/products/prices.html", method=RequestMethod.GET)
 	public String getProductPrices(@RequestParam("id") long productId,Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#6897#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		//get the product and validate it belongs to the current merchant
 		Product product = productService.getById(productId);
 		
-		if(product==null) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6898#"); if(product==null) {
+			System.out.println("$#6899#"); return "redirect:/admin/products/products.html";
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6900#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6901#"); return "redirect:/admin/products/products.html";
 		}
 		
 		ProductAvailability productAvailability = null;
 		for(ProductAvailability availability : product.getAvailabilities()) {
-			if(availability.getRegion().equals(com.salesmanager.core.business.constants.Constants.ALL_REGIONS)) {
+			System.out.println("$#6902#"); if(availability.getRegion().equals(com.salesmanager.core.business.constants.Constants.ALL_REGIONS)) {
 				productAvailability = availability;
 			}
 		}
@@ -84,7 +84,7 @@ public class ProductPriceController {
 		model.addAttribute("product",product);
 		model.addAttribute("availability",productAvailability);
 
-		return ControllerConstants.Tiles.Product.productPrices;
+		System.out.println("$#6903#"); return ControllerConstants.Tiles.Product.productPrices;
 		
 	}
 	
@@ -100,7 +100,7 @@ public class ProductPriceController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6904#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		Long productId;
 		Product product = null;
@@ -108,10 +108,10 @@ public class ProductPriceController {
 		try {
 			productId = Long.parseLong(sProductId);
 		} catch (Exception e) {
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorString("Product id is not valid");
+			System.out.println("$#6905#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6906#"); resp.setErrorString("Product id is not valid");
 			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+			System.out.println("$#6907#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		}
 
 		
@@ -120,18 +120,18 @@ public class ProductPriceController {
 			product = productService.getById(productId);
 
 			
-			if(product==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#6908#"); if(product==null) {
+				System.out.println("$#6909#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6910#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6911#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#6912#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#6913#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6914#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6915#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			ProductAvailability defaultAvailability = null;
@@ -140,17 +140,17 @@ public class ProductPriceController {
 
 			//get default availability
 			for(ProductAvailability availability : availabilities) {
-				if(availability.getRegion().equals(com.salesmanager.core.business.constants.Constants.ALL_REGIONS)) {
+				System.out.println("$#6916#"); if(availability.getRegion().equals(com.salesmanager.core.business.constants.Constants.ALL_REGIONS)) {
 					defaultAvailability = availability;
 					break;
 				}
 			}
 			
-			if(defaultAvailability==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#6917#"); if(defaultAvailability==null) {
+				System.out.println("$#6918#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#6919#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6920#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			Set<ProductPrice> prices = defaultAvailability.getPrices();
@@ -163,9 +163,9 @@ public class ProductPriceController {
 				
 				String priceName = "";
 				Set<ProductPriceDescription> descriptions = price.getDescriptions();
-				if(descriptions!=null) {
+				System.out.println("$#6921#"); if(descriptions!=null) {
 					for(ProductPriceDescription description : descriptions) {
-						if(description.getLanguage().getCode().equals(language.getCode())) {
+						System.out.println("$#6922#"); if(description.getLanguage().getCode().equals(language.getCode())) {
 							priceName = description.getName(); 
 						}
 					}
@@ -177,24 +177,24 @@ public class ProductPriceController {
 				entry.put("specialPrice", priceUtil.getAdminFormatedAmountWithCurrency(store,price.getProductPriceSpecialAmount()));
 				
 				String discount = "";
-				if(priceUtil.hasDiscount(price)) {
+				System.out.println("$#6923#"); if(priceUtil.hasDiscount(price)) {
 					discount = priceUtil.getAdminFormatedAmountWithCurrency(store,price.getProductPriceAmount());
 				}
 				entry.put("special", discount);
 				
-				resp.addDataEntry(entry);
+				System.out.println("$#6924#"); resp.addDataEntry(entry);
 			}
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#6925#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6926#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6927#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#6928#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	
@@ -205,17 +205,17 @@ public class ProductPriceController {
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Product product = productService.getById(productId);
 		
-		if(product==null) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6929#"); if(product==null) {
+			System.out.println("$#6930#"); return "redirect:/admin/products/products.html";
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6931#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6932#"); return "redirect:/admin/products/products.html";
 		}
 		
 		
-		setMenu(model,request);
-		return displayProductPrice(product, productPriceId, model, request, response);
+		System.out.println("$#6933#"); setMenu(model,request);
+		System.out.println("$#6934#"); return displayProductPrice(product, productPriceId, model, request, response);
 		
 	}
 	
@@ -225,16 +225,16 @@ public class ProductPriceController {
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Product product = productService.getById(productId);
-		if(product==null) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6935#"); if(product==null) {
+			System.out.println("$#6936#"); return "redirect:/admin/products/products.html";
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6937#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6938#"); return "redirect:/admin/products/products.html";
 		}
 		
-		setMenu(model,request);
-		return displayProductPrice(product, null, model, request, response);
+		System.out.println("$#6939#"); setMenu(model,request);
+		System.out.println("$#6940#"); return displayProductPrice(product, null, model, request, response);
 
 
 		
@@ -250,27 +250,27 @@ public class ProductPriceController {
 		ProductPrice productPrice = null;
 		ProductAvailability productAvailability = null;
 		
-		if(productPriceId!=null) {
+		System.out.println("$#6941#"); if(productPriceId!=null) {
 		
 			Set<ProductAvailability> availabilities = product.getAvailabilities();
 	
 			//get default availability
 			for(ProductAvailability availability : availabilities) {
-				if(availability.getRegion().equals(com.salesmanager.core.business.constants.Constants.ALL_REGIONS)) {//TODO to be updated when multiple regions is implemented
+				System.out.println("$#6942#"); if(availability.getRegion().equals(com.salesmanager.core.business.constants.Constants.ALL_REGIONS)) {//TODO to be updated when multiple regions is implemented
 					productAvailability = availability;
 					Set<ProductPrice> prices = availability.getPrices();
 					for(ProductPrice price : prices) {
-						if(price.getId().longValue()==productPriceId.longValue()) {
+						System.out.println("$#6943#"); if(price.getId().longValue()==productPriceId.longValue()) {
 							productPrice = price;
-							if(price.getProductPriceSpecialStartDate()!=null) {
-								pprice.setProductPriceSpecialStartDate(DateUtil.formatDate(price.getProductPriceSpecialStartDate()));
+							System.out.println("$#6944#"); if(price.getProductPriceSpecialStartDate()!=null) {
+								System.out.println("$#6945#"); pprice.setProductPriceSpecialStartDate(DateUtil.formatDate(price.getProductPriceSpecialStartDate()));
 							}
-							if(price.getProductPriceSpecialEndDate()!=null) {
-								pprice.setProductPriceSpecialEndDate(DateUtil.formatDate(price.getProductPriceSpecialEndDate()));
+							System.out.println("$#6946#"); if(price.getProductPriceSpecialEndDate()!=null) {
+								System.out.println("$#6947#"); pprice.setProductPriceSpecialEndDate(DateUtil.formatDate(price.getProductPriceSpecialEndDate()));
 							}
-							pprice.setPriceText(priceUtil.getAdminFormatedAmount(store, price.getProductPriceAmount()));
-							if(price.getProductPriceSpecialAmount()!=null) {
-								pprice.setSpecialPriceText(priceUtil.getAdminFormatedAmount(store, price.getProductPriceSpecialAmount()));
+							System.out.println("$#6948#"); pprice.setPriceText(priceUtil.getAdminFormatedAmount(store, price.getProductPriceAmount()));
+							System.out.println("$#6949#"); if(price.getProductPriceSpecialAmount()!=null) {
+								System.out.println("$#6950#"); pprice.setSpecialPriceText(priceUtil.getAdminFormatedAmount(store, price.getProductPriceSpecialAmount()));
 							}
 							break;
 						}
@@ -280,9 +280,9 @@ public class ProductPriceController {
 		
 		}	
 		
-		if(productPrice==null) {
+		System.out.println("$#6951#"); if(productPrice==null) {
 			productPrice = new ProductPrice();
-			productPrice.setProductPriceType(ProductPriceType.ONE_TIME);
+			System.out.println("$#6952#"); productPrice.setProductPriceType(ProductPriceType.ONE_TIME);
 		}
 		
 		//descriptions
@@ -294,34 +294,34 @@ public class ProductPriceController {
 			ProductPriceDescription productPriceDesc = null;
 			for(ProductPriceDescription desc : productPriceDescriptions) {
 				Language lang = desc.getLanguage();
-				if(lang.getCode().equals(l.getCode())) {
+				System.out.println("$#6953#"); if(lang.getCode().equals(l.getCode())) {
 					productPriceDesc = desc;
 				}
 			}
 			
-			if(productPriceDesc==null) {
+			System.out.println("$#6954#"); if(productPriceDesc==null) {
 				productPriceDesc = new ProductPriceDescription();
-				productPriceDesc.setLanguage(l);
+				System.out.println("$#6955#"); productPriceDesc.setLanguage(l);
 				productPriceDescriptions.add(productPriceDesc);
 			}	
 			descriptions.add(productPriceDesc);
 		}
 		
 		
-		if(productAvailability==null) {
+		System.out.println("$#6956#"); if(productAvailability==null) {
 			Set<ProductAvailability> availabilities = product.getAvailabilities();
 			for(ProductAvailability availability : availabilities) {
-				if(availability.getRegion().equals(com.salesmanager.core.business.constants.Constants.ALL_REGIONS)) {//TODO to be updated when multiple regions is implemented
+				System.out.println("$#6957#"); if(availability.getRegion().equals(com.salesmanager.core.business.constants.Constants.ALL_REGIONS)) {//TODO to be updated when multiple regions is implemented
 					productAvailability = availability;
 					break;
 				}
 			}
 		}
 		
-		pprice.setDescriptions(descriptions);
-		pprice.setProductAvailability(productAvailability);
-		pprice.setPrice(productPrice);
-		pprice.setProduct(product);
+		System.out.println("$#6958#"); pprice.setDescriptions(descriptions);
+		System.out.println("$#6959#"); pprice.setProductAvailability(productAvailability);
+		System.out.println("$#6960#"); pprice.setPrice(productPrice);
+		System.out.println("$#6961#"); pprice.setProduct(product);
 		
 
 		model.addAttribute("product",product);
@@ -329,7 +329,7 @@ public class ProductPriceController {
 		model.addAttribute("price",pprice);
 		//model.addAttribute("availability",productAvailability);
 		
-		return ControllerConstants.Tiles.Product.productPrice;
+		System.out.println("$#6962#"); return ControllerConstants.Tiles.Product.productPrice;
 	}
 	
 	
@@ -340,14 +340,14 @@ public class ProductPriceController {
 		
 		//dates after save
 		
-		setMenu(model,request);
+		System.out.println("$#6963#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		Product product = price.getProduct();
 		Product dbProduct = productService.getById(product.getId());
-		if(store.getId().intValue()!=dbProduct.getMerchantStore().getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#6964#"); if(store.getId().intValue()!=dbProduct.getMerchantStore().getId().intValue()) {
+			System.out.println("$#6965#"); return "redirect:/admin/products/products.html";
 		}
 		
 		model.addAttribute("product",dbProduct);
@@ -358,51 +358,51 @@ public class ProductPriceController {
 			submitedPrice = priceUtil.getAmount(price.getPriceText());
 		} catch (Exception e) {
 			ObjectError error = new ObjectError("productPrice",messages.getMessage("NotEmpty.product.productPrice", locale));
-			result.addError(error);
+			System.out.println("$#6966#"); result.addError(error);
 		}
 		
 		//validate discount price
 		BigDecimal submitedDiscountPrice = null;
 		
-		if(!StringUtils.isBlank(price.getSpecialPriceText())) {
+		System.out.println("$#6967#"); if(!StringUtils.isBlank(price.getSpecialPriceText())) {
 			try {
 				submitedDiscountPrice = priceUtil.getAmount(price.getSpecialPriceText());
 			} catch (Exception e) {
 				ObjectError error = new ObjectError("productSpecialPrice",messages.getMessage("NotEmpty.product.productPrice", locale));
-				result.addError(error);
+				System.out.println("$#6968#"); result.addError(error);
 			}
 		}
 		
 		//validate start date
-		if(!StringUtils.isBlank(price.getProductPriceSpecialStartDate())) {
+		System.out.println("$#6969#"); if(!StringUtils.isBlank(price.getProductPriceSpecialStartDate())) {
 			try {
 				Date startDate = DateUtil.getDate(price.getProductPriceSpecialStartDate());
-				price.getPrice().setProductPriceSpecialStartDate(startDate);
+				System.out.println("$#6970#"); price.getPrice().setProductPriceSpecialStartDate(startDate);
 			} catch (Exception e) {
 				ObjectError error = new ObjectError("productPriceSpecialStartDate",messages.getMessage("message.invalid.date", locale));
-				result.addError(error);
+				System.out.println("$#6971#"); result.addError(error);
 			}
 		}
 		
-		if(!StringUtils.isBlank(price.getProductPriceSpecialEndDate())) {
+		System.out.println("$#6972#"); if(!StringUtils.isBlank(price.getProductPriceSpecialEndDate())) {
 			try {
 				Date endDate = DateUtil.getDate(price.getProductPriceSpecialEndDate());
-				price.getPrice().setProductPriceSpecialEndDate(endDate);
+				System.out.println("$#6973#"); price.getPrice().setProductPriceSpecialEndDate(endDate);
 			} catch (Exception e) {
 				ObjectError error = new ObjectError("productPriceSpecialEndDate",messages.getMessage("message.invalid.date", locale));
-				result.addError(error);
+				System.out.println("$#6974#"); result.addError(error);
 			}
 		}
 		
 		
-		if (result.hasErrors()) {
-			return ControllerConstants.Tiles.Product.productPrice;
+		System.out.println("$#6975#"); if (result.hasErrors()) {
+			System.out.println("$#6976#"); return ControllerConstants.Tiles.Product.productPrice;
 		}
 		
 
-		price.getPrice().setProductPriceAmount(submitedPrice);
-		if(!StringUtils.isBlank(price.getSpecialPriceText())) {
-			price.getPrice().setProductPriceSpecialAmount(submitedDiscountPrice);
+		System.out.println("$#6977#"); price.getPrice().setProductPriceAmount(submitedPrice);
+		System.out.println("$#6978#"); if(!StringUtils.isBlank(price.getSpecialPriceText())) {
+			System.out.println("$#6979#"); price.getPrice().setProductPriceSpecialAmount(submitedDiscountPrice);
 		}
 		
 		ProductAvailability productAvailability = null;
@@ -410,7 +410,7 @@ public class ProductPriceController {
 		Set<ProductAvailability> availabilities = dbProduct.getAvailabilities();
 		for(ProductAvailability availability : availabilities) {
 			
-			if(availability.getId().longValue()==price.getProductAvailability().getId().longValue()) {
+			System.out.println("$#6980#"); if(availability.getId().longValue()==price.getProductAvailability().getId().longValue()) {
 				productAvailability = availability;
 				break;
 			}
@@ -422,22 +422,22 @@ public class ProductPriceController {
 		
 		
 		Set<ProductPriceDescription> descriptions = new HashSet<ProductPriceDescription>();
-		if(price.getDescriptions()!=null && price.getDescriptions().size()>0) {
+		System.out.println("$#6982#"); System.out.println("$#6981#"); if(price.getDescriptions()!=null && price.getDescriptions().size()>0) {
 			
 			for(ProductPriceDescription description : price.getDescriptions()) {
-				description.setProductPrice(price.getPrice());
+				System.out.println("$#6984#"); description.setProductPrice(price.getPrice());
 				descriptions.add(description);
-				description.setProductPrice(price.getPrice());
+				System.out.println("$#6985#"); description.setProductPrice(price.getPrice());
 			}
 		}
 		
-		price.getPrice().setDescriptions(descriptions);
-		price.getPrice().setProductAvailability(productAvailability);
+		System.out.println("$#6986#"); price.getPrice().setDescriptions(descriptions);
+		System.out.println("$#6987#"); price.getPrice().setProductAvailability(productAvailability);
 		
-		productPriceService.saveOrUpdate(price.getPrice());
+		System.out.println("$#6988#"); productPriceService.saveOrUpdate(price.getPrice());
 		model.addAttribute("success","success");
 		
-		return ControllerConstants.Tiles.Product.productPrice;
+		System.out.println("$#6989#"); return ControllerConstants.Tiles.Product.productPrice;
 		
 	}
 	
@@ -450,7 +450,7 @@ public class ProductPriceController {
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#6990#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		
 		try {
@@ -459,29 +459,29 @@ public class ProductPriceController {
 			ProductPrice price = productPriceService.getById(priceId);
 			
 
-			if(price==null || price.getProductAvailability().getProduct().getMerchantStore().getId().intValue()!=store.getId()) {
+			System.out.println("$#6991#"); if(price==null || price.getProductAvailability().getProduct().getMerchantStore().getId().intValue()!=store.getId()) {
 
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#6993#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#6994#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#6995#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			} 
 			
-			productPriceService.delete(price);
+			System.out.println("$#6996#"); productPriceService.delete(price);
 			
 			
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#6997#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product price", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6998#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6999#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7000#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 		
 	

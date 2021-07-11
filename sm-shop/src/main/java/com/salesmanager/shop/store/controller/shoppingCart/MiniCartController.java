@@ -47,14 +47,14 @@ public class MiniCartController extends AbstractController{
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		    Customer customer = getSessionAttribute(  Constants.CUSTOMER, request );
 			ShoppingCartData cart =  shoppingCartFacade.getShoppingCartData(customer,merchantStore,shoppingCartCode, language);
-			if(cart!=null) {
-				request.getSession().setAttribute(Constants.SHOPPING_CART, cart.getCode());
+			System.out.println("$#13987#"); if(cart!=null) {
+				System.out.println("$#13988#"); request.getSession().setAttribute(Constants.SHOPPING_CART, cart.getCode());
 			}
 			else {
-				request.getSession().removeAttribute(Constants.SHOPPING_CART);//make sure there is no cart here
+				System.out.println("$#13989#"); request.getSession().removeAttribute(Constants.SHOPPING_CART);//make sure there is no cart here
 				cart = new ShoppingCartData();//create an empty cart
 			}
-			return cart;
+			System.out.println("$#13990#"); return cart;
 			
 			
 		} catch(Exception e) {
@@ -72,26 +72,26 @@ public class MiniCartController extends AbstractController{
 		MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		ShoppingCartData cart =  shoppingCartFacade.getShoppingCartData(null, merchantStore, shoppingCartCode, language);
 		
-		if(cart==null) {
+		System.out.println("$#13991#"); if(cart==null) {
 			return null;
 		}
 		
 		ShoppingCartData shoppingCartData=shoppingCartFacade.removeCartItem(lineItemId, cart.getCode(), merchantStore,language);
 		
-	    if(shoppingCartData==null) {
+					System.out.println("$#13992#"); if(shoppingCartData==null) {
             return null;
         }
 		
-		if(CollectionUtils.isEmpty(shoppingCartData.getShoppingCartItems())) {
-			shoppingCartFacade.deleteShoppingCart(shoppingCartData.getId(), merchantStore);
-			request.getSession().removeAttribute(Constants.SHOPPING_CART);
+		System.out.println("$#13993#"); if(CollectionUtils.isEmpty(shoppingCartData.getShoppingCartItems())) {
+			System.out.println("$#13994#"); shoppingCartFacade.deleteShoppingCart(shoppingCartData.getId(), merchantStore);
+			System.out.println("$#13995#"); request.getSession().removeAttribute(Constants.SHOPPING_CART);
 			return null;
 		}
 		
-		request.getSession().setAttribute(Constants.SHOPPING_CART, cart.getCode());
+		System.out.println("$#13996#"); request.getSession().setAttribute(Constants.SHOPPING_CART, cart.getCode());
 		
 		LOG.debug("removed item" + lineItemId + "from cart");
-		return shoppingCartData;
+		System.out.println("$#13997#"); return shoppingCartData;
 	}
 	
 	

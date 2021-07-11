@@ -15,13 +15,13 @@ public class OrderTotalItem implements Serializable {
 		this.itemPrice = itemPrice;
 	}
 	public BigDecimal getItemPrice() {
-		return itemPrice;
+		System.out.println("$#4398#"); return itemPrice;
 	}
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
 	public String getItemCode() {
-		return itemCode;
+		System.out.println("$#4399#"); return itemCode;
 	}
 
 }

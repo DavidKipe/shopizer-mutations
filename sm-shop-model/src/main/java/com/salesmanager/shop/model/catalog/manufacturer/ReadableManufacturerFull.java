@@ -11,7 +11,7 @@ public class ReadableManufacturerFull extends ReadableManufacturer {
   private List<ManufacturerDescription> descriptions;
 
   public List<ManufacturerDescription> getDescriptions() {
-    return descriptions;
+				System.out.println("$#8755#"); return descriptions;
   }
 
   public void setDescriptions(List<ManufacturerDescription> descriptions) {

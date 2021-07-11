@@ -49,10 +49,10 @@ public class OrderStatusHistoryApi {
 			@ApiIgnore Language language) {
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#11802#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_ADMIN_ORDER, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		return orderFacade.getReadableOrderHistory(id, merchantStore, language);
+		System.out.println("$#11803#"); return orderFacade.getReadableOrderHistory(id, merchantStore, language);
 
 	}
 
@@ -64,12 +64,12 @@ public class OrderStatusHistoryApi {
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#11804#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_ADMIN_ORDER, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
 		// TODO validate date format
 
-		orderFacade.createOrderStatus(history, id, merchantStore);
+		System.out.println("$#11805#"); orderFacade.createOrderStatus(history, id, merchantStore);
 
 	}
 

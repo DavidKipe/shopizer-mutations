@@ -97,7 +97,7 @@ public class ProductApi {
       HttpServletResponse response) {
 
       productFacade.saveProduct(merchantStore, product, language);
-      return product;
+						System.out.println("$#11856#"); return product;
 
   }
 
@@ -119,13 +119,13 @@ public class ProductApi {
       HttpServletResponse response) {
 
     try {
-      product.setId(id);
+						System.out.println("$#11857#"); product.setId(id);
       productFacade.saveProduct(merchantStore, product, merchantStore.getDefaultLanguage());
-      return product;
+						System.out.println("$#11858#"); return product;
     } catch (Exception e) {
       LOGGER.error("Error while updating product", e);
       try {
-        response.sendError(503, "Error while updating product " + e.getMessage());
+								System.out.println("$#11859#"); response.sendError(503, "Error while updating product " + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -148,7 +148,7 @@ public class ProductApi {
       @Valid @RequestBody LightPersistableProduct product,
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language) {
-      productFacade.update(id, product, merchantStore, language);
+						System.out.println("$#11860#"); productFacade.update(id, product, merchantStore, language);
       return;
 
   }
@@ -163,7 +163,7 @@ public class ProductApi {
       @PathVariable Long id,
       @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
-	  productFacade.deleteProduct(id, merchantStore);
+			System.out.println("$#11861#"); productFacade.deleteProduct(id, merchantStore);
   }
 
   /**
@@ -396,41 +396,41 @@ public class ProductApi {
       throws Exception {
 
     ProductCriteria criteria = new ProductCriteria();
-    if (lang != null) {
-      criteria.setLanguage(lang);
+				System.out.println("$#11862#"); if (lang != null) {
+						System.out.println("$#11863#"); criteria.setLanguage(lang);
     } else {
-      criteria.setLanguage(language.getCode());
+						System.out.println("$#11864#"); criteria.setLanguage(language.getCode());
     }
-    if (!StringUtils.isBlank(status)) {
-      criteria.setStatus(status);
+				System.out.println("$#11865#"); if (!StringUtils.isBlank(status)) {
+						System.out.println("$#11866#"); criteria.setStatus(status);
     }
-    if (category != null) {
+				System.out.println("$#11867#"); if (category != null) {
       List<Long> categoryIds = new ArrayList<Long>();
       categoryIds.add(category);
-      criteria.setCategoryIds(categoryIds);
+						System.out.println("$#11868#"); criteria.setCategoryIds(categoryIds);
     }
-    if (manufacturer != null) {
-      criteria.setManufacturerId(manufacturer);
-    }
-
-    if (owner != null) {
-      criteria.setOwnerId(owner);
+				System.out.println("$#11869#"); if (manufacturer != null) {
+						System.out.println("$#11870#"); criteria.setManufacturerId(manufacturer);
     }
 
-    if (start != null) {
-      criteria.setStartIndex(start);
+				System.out.println("$#11871#"); if (owner != null) {
+						System.out.println("$#11872#"); criteria.setOwnerId(owner);
     }
 
-    if (count != null) {
-      criteria.setMaxCount(count);
+				System.out.println("$#11873#"); if (start != null) {
+						System.out.println("$#11874#"); criteria.setStartIndex(start);
     }
 
-    if(!StringUtils.isBlank(name)) {
-    	criteria.setProductName(name);
+				System.out.println("$#11875#"); if (count != null) {
+						System.out.println("$#11876#"); criteria.setMaxCount(count);
     }
 
-    if(!StringUtils.isBlank(sku)) {
-    	criteria.setCode(sku);
+				System.out.println("$#11877#"); if(!StringUtils.isBlank(name)) {
+					System.out.println("$#11878#"); criteria.setProductName(name);
+    }
+
+				System.out.println("$#11879#"); if(!StringUtils.isBlank(sku)) {
+					System.out.println("$#11880#"); criteria.setCode(sku);
     }
 
     // TODO
@@ -438,13 +438,13 @@ public class ProductApi {
     // REPOSITORY to use the new filters
 
     try {
-      return productFacade.getProductListsByCriterias(merchantStore, language, criteria);
+						System.out.println("$#11881#"); return productFacade.getProductListsByCriterias(merchantStore, language, criteria);
 
     } catch (Exception e) {
 
       LOGGER.error("Error while filtering products product", e);
       try {
-        response.sendError(503, "Error while filtering products " + e.getMessage());
+								System.out.println("$#11882#"); response.sendError(503, "Error while filtering products " + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -480,12 +480,12 @@ public class ProductApi {
       throws Exception {
     ReadableProduct product = productFacade.getProduct(merchantStore, id, language);
 
-    if (product == null) {
-      response.sendError(404, "Product not fount for id " + id);
+				System.out.println("$#11883#"); if (product == null) {
+						System.out.println("$#11884#"); response.sendError(404, "Product not fount for id " + id);
       return null;
     }
 
-    return product;
+				System.out.println("$#11885#"); return product;
   }
 
   /**
@@ -517,12 +517,12 @@ public class ProductApi {
           throws Exception {
     ReadableProduct product = productFacade.getProductBySeUrl(merchantStore, friendlyUrl, language);
 
-    if (product == null) {
-      response.sendError(404, "Product not fount for id " + friendlyUrl);
+				System.out.println("$#11886#"); if (product == null) {
+						System.out.println("$#11887#"); response.sendError(404, "Product not fount for id " + friendlyUrl);
       return null;
     }
 
-    return product;
+				System.out.println("$#11888#"); return product;
   }
 
   @ResponseStatus(HttpStatus.OK)
@@ -538,7 +538,7 @@ public class ProductApi {
       @ApiIgnore Language language) {
 
     boolean exists = productFacade.exists(code, merchantStore);
-    return new ResponseEntity<EntityExists>(new EntityExists(exists), HttpStatus.OK);
+				System.out.println("$#11889#"); return new ResponseEntity<EntityExists>(new EntityExists(exists), HttpStatus.OK);
 
   }
 
@@ -565,31 +565,31 @@ public class ProductApi {
       // get the product
       Product product = productService.getById(productId);
 
-      if(product == null) {
+						System.out.println("$#11890#"); if(product == null) {
     	  throw new ResourceNotFoundException("Product id [" + productId + "] is not found");
       }
 
-      if(product.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
+						System.out.println("$#11891#"); if(product.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
     	  throw new UnauthorizedException("Product id [" + productId + "] does not belong to store [" + merchantStore.getCode() + "]");
       }
 
       Category category = categoryService.getById(categoryId);
 
-      if(category == null) {
+						System.out.println("$#11892#"); if(category == null) {
     	  throw new ResourceNotFoundException("Category id [" + categoryId + "] is not found");
       }
 
-      if(category.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
+						System.out.println("$#11893#"); if(category.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
     	  throw new UnauthorizedException("Category id [" + categoryId + "] does not belong to store [" + merchantStore.getCode() + "]");
       }
 
 
-      return productFacade.addProductToCategory(category, product, language);
+						System.out.println("$#11894#"); return productFacade.addProductToCategory(category, product, language);
 
     } catch (Exception e) {
       LOGGER.error("Error while adding product to category", e);
       try {
-        response.sendError(503, "Error while adding product to category " + e.getMessage());
+								System.out.println("$#11895#"); response.sendError(503, "Error while adding product to category " + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -618,30 +618,30 @@ public class ProductApi {
     try {
         Product product = productService.getById(productId);
 
-        if(product == null) {
+								System.out.println("$#11896#"); if(product == null) {
       	  throw new ResourceNotFoundException("Product id [" + productId + "] is not found");
         }
 
-        if(product.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
+								System.out.println("$#11897#"); if(product.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
       	  throw new UnauthorizedException("Product id [" + productId + "] does not belong to store [" + merchantStore.getCode() + "]");
         }
 
         Category category = categoryService.getById(categoryId);
 
-        if(category == null) {
+								System.out.println("$#11898#"); if(category == null) {
       	  throw new ResourceNotFoundException("Category id [" + categoryId + "] is not found");
         }
 
-        if(category.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
+								System.out.println("$#11899#"); if(category.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
       	  throw new UnauthorizedException("Category id [" + categoryId + "] does not belong to store [" + merchantStore.getCode() + "]");
         }
 
-      return productFacade.removeProductFromCategory(category, product, language);
+						System.out.println("$#11900#"); return productFacade.removeProductFromCategory(category, product, language);
 
     } catch (Exception e) {
       LOGGER.error("Error while removing product from category", e);
       try {
-        response.sendError(503, "Error while removing product from category " + e.getMessage());
+								System.out.println("$#11901#"); response.sendError(503, "Error while removing product from category " + e.getMessage());
       } catch (Exception ignore) {
       }
 

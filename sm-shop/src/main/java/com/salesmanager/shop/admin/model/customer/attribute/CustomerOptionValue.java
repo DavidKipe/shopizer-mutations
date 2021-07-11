@@ -15,7 +15,7 @@ public class CustomerOptionValue extends ShopEntity implements Serializable {
 	private String name;
 
 	public String getName() {
-		return name;
+		System.out.println("$#7805#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;

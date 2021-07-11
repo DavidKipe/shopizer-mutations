@@ -7,13 +7,13 @@ public class SizeReferences {
 	private List<WeightUnit> weights;
 	private List<MeasureUnit> measures;
 	public List<WeightUnit> getWeights() {
-		return weights;
+		System.out.println("$#9261#"); return weights;
 	}
 	public void setWeights(List<WeightUnit> weights) {
 		this.weights = weights;
 	}
 	public List<MeasureUnit> getMeasures() {
-		return measures;
+		System.out.println("$#9262#"); return measures;
 	}
 	public void setMeasures(List<MeasureUnit> measures) {
 		this.measures = measures;

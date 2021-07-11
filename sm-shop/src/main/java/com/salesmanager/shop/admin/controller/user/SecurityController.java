@@ -25,8 +25,8 @@ public class SecurityController {
 	@RequestMapping(value="/admin/user/permissions.html", method=RequestMethod.GET)
 	public String displayPermissions(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
-		return "admin-user-permissions";
+		System.out.println("$#7569#"); setMenu(model,request);
+		System.out.println("$#7570#"); return "admin-user-permissions";
 		
 		
 	}
@@ -35,12 +35,12 @@ public class SecurityController {
 	@RequestMapping(value="/admin/user/groups.html", method=RequestMethod.GET)
 	public String displayGroups(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#7571#"); setMenu(model,request);
 		List<Group> groups = groupService.listGroup(GroupType.ADMIN);
 		
 		model.addAttribute("groups", groups);
 		
-		return "admin-user-groups";
+		System.out.println("$#7572#"); return "admin-user-groups";
 		
 		
 	}

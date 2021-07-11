@@ -75,25 +75,25 @@ public class DataConfiguration {
     	.build();
     	
     	/** Datasource config **/
-    	dataSource.setIdleTimeout(minPoolSize);
-    	dataSource.setMaximumPoolSize(maxPoolSize);
-    	dataSource.setConnectionTestQuery(testQuery);
+					System.out.println("$#0#"); dataSource.setIdleTimeout(minPoolSize);
+					System.out.println("$#1#"); dataSource.setMaximumPoolSize(maxPoolSize);
+					System.out.println("$#2#"); dataSource.setConnectionTestQuery(testQuery);
     	
-    	return dataSource;
+					System.out.println("$#3#"); return dataSource;
     }
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		vendorAdapter.setGenerateDdl(true);
+		System.out.println("$#4#"); vendorAdapter.setGenerateDdl(true);
 
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		factory.setJpaVendorAdapter(vendorAdapter);
-		factory.setPackagesToScan("com.salesmanager.core.model");
-		factory.setJpaProperties(additionalProperties());
-		factory.setDataSource(dataSource());
-		return factory;
+		System.out.println("$#5#"); factory.setJpaVendorAdapter(vendorAdapter);
+		System.out.println("$#6#"); factory.setPackagesToScan("com.salesmanager.core.model");
+		System.out.println("$#7#"); factory.setJpaProperties(additionalProperties());
+		System.out.println("$#8#"); factory.setDataSource(dataSource());
+		System.out.println("$#9#"); return factory;
 	}
 	
     final Properties additionalProperties() {
@@ -111,15 +111,15 @@ public class DataConfiguration {
         hibernateProperties.setProperty("hibernate.connection.useUnicode", "true");
         hibernateProperties.setProperty("hibernate.id.new_generator_mappings", "false");
         // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
-        return hibernateProperties;
+								System.out.println("$#10#"); return hibernateProperties;
     }
 
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 
 		JpaTransactionManager txManager = new JpaTransactionManager();
-		txManager.setEntityManagerFactory(entityManagerFactory);
-		return txManager;
+		System.out.println("$#11#"); txManager.setEntityManagerFactory(entityManagerFactory);
+		System.out.println("$#12#"); return txManager;
 	}
 
 }

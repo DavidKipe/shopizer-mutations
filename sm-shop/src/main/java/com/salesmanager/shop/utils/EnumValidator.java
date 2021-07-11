@@ -27,11 +27,11 @@ public class EnumValidator implements ConstraintValidator<Enum, String>
          
         Object[] enumValues = this.annotation.enumClass().getEnumConstants();
          
-        if(enumValues != null)
+								System.out.println("$#15699#"); if(enumValues != null)
         {
             for(Object enumValue:enumValues)
             {
-                if(valueForValidation.equals(enumValue.toString()) 
+																System.out.println("$#15700#"); if(valueForValidation.equals(enumValue.toString())
                    || (this.annotation.ignoreCase() && valueForValidation.equalsIgnoreCase(enumValue.toString())))
                 {
                     result = true; 
@@ -40,6 +40,6 @@ public class EnumValidator implements ConstraintValidator<Enum, String>
             }
         }
          
-        return result;
+								System.out.println("$#15704#"); System.out.println("$#15703#"); return result;
     }
 }

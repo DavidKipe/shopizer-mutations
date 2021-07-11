@@ -54,17 +54,17 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 		
 		
 		ProductCriteria productCriteria = new ProductCriteria();
-		productCriteria.setMaxCount(maxCount);
-		productCriteria.setStartIndex(startCount);
+		System.out.println("$#14695#"); productCriteria.setMaxCount(maxCount);
+		System.out.println("$#14696#"); productCriteria.setStartIndex(startCount);
 		
 
-		productCriteria.setManufacturerId(manufacturerId);
+		System.out.println("$#14697#"); productCriteria.setManufacturerId(manufacturerId);
 		com.salesmanager.core.model.catalog.product.ProductList products = productService.listByStore(store, language, productCriteria);
 
 		
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14698#"); populator.setPricingService(pricingService);
+		System.out.println("$#14699#"); populator.setimageUtils(imageUtils);
 		
 		
 		ReadableProductList productList = new ReadableProductList();
@@ -76,33 +76,33 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 			
 		}
 		
-		productList.setTotalPages(products.getTotalCount());
+		System.out.println("$#14700#"); productList.setTotalPages(products.getTotalCount());
 		
 		
-		return productList;
+		System.out.println("$#14701#"); return productList;
 	}
 	
 	@Override
 	public ReadableProductList listItemsByIds(MerchantStore store, Language language, List<Long> ids, int startCount,
 			int maxCount) throws Exception {
 		
-		if(CollectionUtils.isEmpty(ids)) {
-			return new ReadableProductList();
+		System.out.println("$#14702#"); if(CollectionUtils.isEmpty(ids)) {
+			System.out.println("$#14703#"); return new ReadableProductList();
 		}
 		
 		
 		ProductCriteria productCriteria = new ProductCriteria();
-		productCriteria.setMaxCount(maxCount);
-		productCriteria.setStartIndex(startCount);
-		productCriteria.setProductIds(ids);
+		System.out.println("$#14704#"); productCriteria.setMaxCount(maxCount);
+		System.out.println("$#14705#"); productCriteria.setStartIndex(startCount);
+		System.out.println("$#14706#"); productCriteria.setProductIds(ids);
 		
 
 		com.salesmanager.core.model.catalog.product.ProductList products = productService.listByStore(store, language, productCriteria);
 
 		
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#14707#"); populator.setPricingService(pricingService);
+		System.out.println("$#14708#"); populator.setimageUtils(imageUtils);
 		
 		
 		ReadableProductList productList = new ReadableProductList();
@@ -114,10 +114,10 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 			
 		}
 		
-		productList.setNumber(products.getTotalCount());
-		productList.setRecordsTotal(new Long(products.getTotalCount()));
+		System.out.println("$#14709#"); productList.setNumber(products.getTotalCount());
+		System.out.println("$#14710#"); productList.setRecordsTotal(new Long(products.getTotalCount()));
 
-		return productList;
+		System.out.println("$#14711#"); return productList;
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 		//get product group
 		List<ProductRelationship> groups = productRelationshipService.getByGroup(store, group, language);
 
-		if(group!=null) {
+		System.out.println("$#14712#"); if(group!=null) {
 			List<Long> ids = new ArrayList<Long>();
 			for(ProductRelationship relationship : groups) {
 				Product product = relationship.getRelatedProduct();
@@ -136,9 +136,9 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 			
 			ReadableProductList list = listItemsByIds(store, language, ids, 0, 0);
 			List<ReadableProduct> prds = list.getProducts().stream().sorted(Comparator.comparing(ReadableProduct::getSortOrder)).collect(Collectors.toList());
-			list.setProducts(prds);
-			list.setTotalPages(1);//no paging
-			return list;
+			System.out.println("$#14713#"); list.setProducts(prds);
+			System.out.println("$#14714#"); list.setTotalPages(1);//no paging
+			System.out.println("$#14715#"); return list;
 		}
 		
 		return null;
@@ -161,20 +161,20 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 			throw new ServiceRuntimeException("ExceptionWhile getting product group [" + group + "]", e);
 		}
 		
-		if(existList.size()>0) {
+		System.out.println("$#14720#"); System.out.println("$#14719#"); if(existList.size()>0) {
 			throw new OperationNotAllowedException("Product with id [" + product.getId() + "] is already in the group");
 		}
 		
 		
 		ProductRelationship relationship = new ProductRelationship();
-		relationship.setActive(true);
-		relationship.setCode(group);
-		relationship.setStore(store);
-		relationship.setRelatedProduct(product);
+		System.out.println("$#14721#"); relationship.setActive(true);
+		System.out.println("$#14722#"); relationship.setCode(group);
+		System.out.println("$#14723#"); relationship.setStore(store);
+		System.out.println("$#14724#"); relationship.setRelatedProduct(product);
 
 		try {
-			productRelationshipService.saveOrUpdate(relationship);
-			return listItemsByGroup(group,store,language);
+			System.out.println("$#14725#"); productRelationshipService.saveOrUpdate(relationship);
+			System.out.println("$#14726#"); return listItemsByGroup(group,store,language);
 		} catch (Exception e) {
 			throw new ServiceRuntimeException("ExceptionWhile getting product group [" + group + "]", e);
 		}
@@ -192,12 +192,12 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 		List<ProductRelationship> relationships = productRelationshipService.getByType(store, product, group);
 
 		for(ProductRelationship r : relationships) {
-			if(r.getRelatedProduct().getId().longValue()==product.getId().longValue()) {
-				productRelationshipService.delete(relationship);
+			System.out.println("$#14727#"); if(r.getRelatedProduct().getId().longValue()==product.getId().longValue()) {
+				System.out.println("$#14728#"); productRelationshipService.delete(relationship);
 			}
 		}
 
-		return listItemsByGroup(group,store,language);
+		System.out.println("$#14729#"); return listItemsByGroup(group,store,language);
 	}
 
 	@Override
@@ -207,7 +207,7 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 		Validate.notNull(store, "MerchantStore cannot be null");
 		
 		try {
-			productRelationshipService.deleteGroup(store, group);
+			System.out.println("$#14730#"); productRelationshipService.deleteGroup(store, group);
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Cannor delete product group",e);
 		}
@@ -220,25 +220,25 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 		Validate.notNull(group.getCode(),"ProductGroup code cannot be null");
 		Validate.notNull(store,"MerchantStore cannot be null");
 		try {
-			productRelationshipService.addGroup(store, group.getCode());
+			System.out.println("$#14731#"); productRelationshipService.addGroup(store, group.getCode());
 		} catch (ServiceException e) {
 			throw new ServiceRuntimeException("Cannor delete product group",e);
 		}
-		return group;
+		System.out.println("$#14732#"); return group;
 	}
 
 	@Override
 	public void updateProductGroup(String code, ProductGroup group, MerchantStore store) {
 		try {
 			List<ProductRelationship>  items = productRelationshipService.getGroupDefinition(store, code);
-			if(CollectionUtils.isEmpty(items)) {
+			System.out.println("$#14733#"); if(CollectionUtils.isEmpty(items)) {
 				throw new ResourceNotFoundException("ProductGroup [" + code + "] not found");
 			}
 			
-			if(group.isActive()) {
-				productRelationshipService.activateGroup(store, code);
+			System.out.println("$#14734#"); if(group.isActive()) {
+				System.out.println("$#14735#"); productRelationshipService.activateGroup(store, code);
 			} else {
-				productRelationshipService.deactivateGroup(store, code);
+				System.out.println("$#14736#"); productRelationshipService.deactivateGroup(store, code);
 			}
 			
 		} catch (ServiceException e) {
@@ -257,17 +257,17 @@ public class ProductItemsFacadeImpl implements ProductItemsFacade {
 		
 		for(ProductRelationship relationship : relationships) {
 			
-			if(!"FEATURED_ITEM".equals(relationship.getCode())) {//do not add featured items
+			System.out.println("$#14737#"); if(!"FEATURED_ITEM".equals(relationship.getCode())) {//do not add featured items
 				ProductGroup g = new ProductGroup();
-				g.setActive(relationship.isActive());
-				g.setCode(relationship.getCode());
+				System.out.println("$#14738#"); g.setActive(relationship.isActive());
+				System.out.println("$#14739#"); g.setCode(relationship.getCode());
 				groups.add(g);
 			
 			}
 			
 		}
 		
-		return groups;
+		System.out.println("$#14740#"); return groups;
 	}
 
 }

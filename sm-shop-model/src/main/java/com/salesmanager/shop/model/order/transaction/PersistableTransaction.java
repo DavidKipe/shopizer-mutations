@@ -23,7 +23,7 @@ public class PersistableTransaction extends TransactionEntity implements Seriali
 	private String transactionType;
 
 	public String getPaymentType() {
-		return paymentType;
+		System.out.println("$#9205#"); return paymentType;
 	}
 
 	public void setPaymentType(String paymentType) {
@@ -31,7 +31,7 @@ public class PersistableTransaction extends TransactionEntity implements Seriali
 	}
 
 	public String getTransactionType() {
-		return transactionType;
+		System.out.println("$#9206#"); return transactionType;
 	}
 
 	public void setTransactionType(String transactionType) {

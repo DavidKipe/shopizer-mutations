@@ -29,56 +29,56 @@ public class ReadableProductOptionValueMapper implements Mapper<ProductOptionVal
   public ReadableProductOptionValueEntity convert(ProductOptionValue source, ReadableProductOptionValueEntity destination,
 			MerchantStore store, Language language) {
     ReadableProductOptionValueEntity readableProductOptionValue = new ReadableProductOptionValueEntity();
-    if(language == null) {
+				System.out.println("$#8503#"); if(language == null) {
     	readableProductOptionValue = new ReadableProductOptionValueFull();
       List<com.salesmanager.shop.model.catalog.product.attribute.ProductOptionValueDescription> descriptions = new ArrayList<com.salesmanager.shop.model.catalog.product.attribute.ProductOptionValueDescription>();
       for(ProductOptionValueDescription desc : source.getDescriptions()) {
           com.salesmanager.shop.model.catalog.product.attribute.ProductOptionValueDescription d = this.description(desc);
           descriptions.add(d);
       }
-      ((ReadableProductOptionValueFull)readableProductOptionValue).setDescriptions(descriptions);
+						System.out.println("$#8504#"); ((ReadableProductOptionValueFull)readableProductOptionValue).setDescriptions(descriptions);
     } else {
     	readableProductOptionValue = new ReadableProductOptionValueEntity();
-      if(!CollectionUtils.isEmpty(source.getDescriptions())) {
+						System.out.println("$#8505#"); if(!CollectionUtils.isEmpty(source.getDescriptions())) {
         for(ProductOptionValueDescription desc : source.getDescriptions()) {
-          if(desc != null && desc.getLanguage()!= null && desc.getLanguage().getId() == language.getId()) {
+										System.out.println("$#8506#"); if(desc != null && desc.getLanguage()!= null && desc.getLanguage().getId() == language.getId()) {
             com.salesmanager.shop.model.catalog.product.attribute.ProductOptionValueDescription d = this.description(desc);
-            readableProductOptionValue.setDescription(d);
+												System.out.println("$#8509#"); readableProductOptionValue.setDescription(d);
           }
         }
       }
     }
     
-    readableProductOptionValue.setCode(source.getCode());
-    if(source.getId()!=null) {
-    	readableProductOptionValue.setId(source.getId().longValue());
+				System.out.println("$#8510#"); readableProductOptionValue.setCode(source.getCode());
+				System.out.println("$#8511#"); if(source.getId()!=null) {
+					System.out.println("$#8512#"); readableProductOptionValue.setId(source.getId().longValue());
     }
-    if(source.getProductOptionValueSortOrder()!=null) {
-    	readableProductOptionValue.setOrder(source.getProductOptionValueSortOrder().intValue());
+				System.out.println("$#8513#"); if(source.getProductOptionValueSortOrder()!=null) {
+					System.out.println("$#8514#"); readableProductOptionValue.setOrder(source.getProductOptionValueSortOrder().intValue());
     }
-    if(!StringUtils.isBlank(source.getProductOptionValueImage())) {
-    	readableProductOptionValue.setImage(imageUtils.buildProductPropertyImageUtils(store, source.getProductOptionValueImage()));
+				System.out.println("$#8515#"); if(!StringUtils.isBlank(source.getProductOptionValueImage())) {
+					System.out.println("$#8516#"); readableProductOptionValue.setImage(imageUtils.buildProductPropertyImageUtils(store, source.getProductOptionValueImage()));
     }
     
-    return readableProductOptionValue;
+				System.out.println("$#8517#"); return readableProductOptionValue;
   }
 
 
 
   com.salesmanager.shop.model.catalog.product.attribute.ProductOptionValueDescription description(ProductOptionValueDescription description) {
     com.salesmanager.shop.model.catalog.product.attribute.ProductOptionValueDescription desc = new com.salesmanager.shop.model.catalog.product.attribute.ProductOptionValueDescription();
-    desc.setDescription(description.getDescription());
-    desc.setName(description.getName());
-    desc.setId(description.getId());
-    desc.setLanguage(description.getLanguage().getCode());
-    return desc;
+				System.out.println("$#8518#"); desc.setDescription(description.getDescription());
+				System.out.println("$#8519#"); desc.setName(description.getName());
+				System.out.println("$#8520#"); desc.setId(description.getId());
+				System.out.println("$#8521#"); desc.setLanguage(description.getLanguage().getCode());
+				System.out.println("$#8522#"); return desc;
   }
 
 
 @Override
 public ReadableProductOptionValueEntity convert(ProductOptionValue source, MerchantStore store, Language language) {
     ReadableProductOptionValueEntity destination = new ReadableProductOptionValueEntity();
-    return convert(source, destination, store, language);
+				System.out.println("$#8523#"); return convert(source, destination, store, language);
 }
 
 }

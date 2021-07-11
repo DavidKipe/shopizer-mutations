@@ -13,13 +13,13 @@ public class ShopizerPropertiesConfig {
 
   @Bean
   public List<String> templates() {
-    return Arrays.asList("bootstrap", "generic", "exoticamobilia", "december");
+				System.out.println("$#7942#"); return Arrays.asList("bootstrap", "generic", "exoticamobilia", "december");
   }
 
   @Bean(name = "shopizer-properties")
   public PropertiesFactoryBean mapper() {
     PropertiesFactoryBean bean = new PropertiesFactoryBean();
-    bean.setLocation(new ClassPathResource("shopizer-properties.properties"));
-    return bean;
+				System.out.println("$#7943#"); bean.setLocation(new ClassPathResource("shopizer-properties.properties"));
+				System.out.println("$#7944#"); return bean;
   }
 }

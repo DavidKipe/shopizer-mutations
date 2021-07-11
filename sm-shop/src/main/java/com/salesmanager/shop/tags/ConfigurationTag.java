@@ -33,17 +33,17 @@ public class ConfigurationTag extends RequestContextAwareTag {
 	public int doStartTagInternal() throws JspException {
 		try {
 			
-			if (coreConfiguration==null) {
+			System.out.println("$#15401#"); if (coreConfiguration==null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15402#"); factory.autowireBean(this);
 	        }
 
 			HttpServletRequest request = (HttpServletRequest) pageContext
 					.getRequest();
 
 
-			pageContext.getOut().print(coreConfiguration.getProperty(this.getConfigurationCode(), "property " + getConfigurationCode() + " not found"));
+			System.out.println("$#15403#"); pageContext.getOut().print(coreConfiguration.getProperty(this.getConfigurationCode(), "property " + getConfigurationCode() + " not found"));
 
 
 			
@@ -54,11 +54,11 @@ public class ConfigurationTag extends RequestContextAwareTag {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15404#"); return EVAL_PAGE;
 	}
 
 	public String getConfigurationCode() {
-		return configurationCode;
+		System.out.println("$#15405#"); return configurationCode;
 	}
 
 	public void setConfigurationCode(String configurationCode) {

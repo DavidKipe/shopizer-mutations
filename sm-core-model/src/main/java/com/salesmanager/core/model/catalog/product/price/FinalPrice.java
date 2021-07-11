@@ -30,7 +30,7 @@ public class FinalPrice implements Serializable {
 	List<FinalPrice> additionalPrices;
 
 	public List<FinalPrice> getAdditionalPrices() {
-		return additionalPrices;
+		System.out.println("$#3899#"); return additionalPrices;
 	}
 
 	public void setAdditionalPrices(List<FinalPrice> additionalPrices) {
@@ -38,7 +38,7 @@ public class FinalPrice implements Serializable {
 	}
 
 	public BigDecimal getOriginalPrice() {
-		return originalPrice;
+		System.out.println("$#3900#"); return originalPrice;
 	}
 
 	public void setOriginalPrice(BigDecimal originalPrice) {
@@ -48,7 +48,7 @@ public class FinalPrice implements Serializable {
 
 
 	public int getDiscountPercent() {
-		return discountPercent;
+		System.out.println("$#3901#"); return discountPercent;
 	}
 
 	public void setDiscountPercent(int discountPercent) {
@@ -56,7 +56,7 @@ public class FinalPrice implements Serializable {
 	}
 
 	public Date getDiscountEndDate() {
-		return discountEndDate;
+		System.out.println("$#3902#"); return discountEndDate;
 	}
 
 	public void setDiscountEndDate(Date discountEndDate) {
@@ -64,7 +64,7 @@ public class FinalPrice implements Serializable {
 	}
 
 	public boolean isDiscounted() {
-		return discounted;
+		System.out.println("$#3904#"); System.out.println("$#3903#"); return discounted;
 	}
 
 	public void setDiscounted(boolean discounted) {
@@ -76,7 +76,7 @@ public class FinalPrice implements Serializable {
 	}
 
 	public BigDecimal getDiscountedPrice() {
-		return discountedPrice;
+		System.out.println("$#3905#"); return discountedPrice;
 	}
 
 
@@ -85,7 +85,7 @@ public class FinalPrice implements Serializable {
 	}
 
 	public BigDecimal getFinalPrice() {
-		return finalPrice;
+		System.out.println("$#3906#"); return finalPrice;
 	}
 
 	public void setDefaultPrice(boolean defaultPrice) {
@@ -93,7 +93,7 @@ public class FinalPrice implements Serializable {
 	}
 
 	public boolean isDefaultPrice() {
-		return defaultPrice;
+		System.out.println("$#3908#"); System.out.println("$#3907#"); return defaultPrice;
 	}
 
 	public void setProductPrice(ProductPrice productPrice) {
@@ -101,7 +101,7 @@ public class FinalPrice implements Serializable {
 	}
 
 	public ProductPrice getProductPrice() {
-		return productPrice;
+		System.out.println("$#3909#"); return productPrice;
 	}
 
 }

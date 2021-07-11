@@ -21,10 +21,10 @@ public class ReadableCustomer extends CustomerEntity implements Serializable {
 		this.attributes = attributes;
 	}
 	public List<ReadableCustomerAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#9088#"); return attributes;
 	}
 	public List<ReadableGroup> getGroups() {
-		return groups;
+		System.out.println("$#9089#"); return groups;
 	}
 	public void setGroups(List<ReadableGroup> groups) {
 		this.groups = groups;

@@ -31,55 +31,55 @@ public class ShoppingCartData extends ShopEntity implements Serializable {
 	
 	
 	public String getMessage() {
-		return message;
+		System.out.println("$#9322#"); return message;
 	}
 	public void setMessage(String message) {
 		this.message = message;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#9323#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public int getQuantity() {
-		return quantity;
+		System.out.println("$#9324#"); return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	public String getTotal() {
-		return total;
+		System.out.println("$#9325#"); return total;
 	}
 	public void setTotal(String total) {
 		this.total = total;
 	}
 	public List<ShoppingCartItem> getShoppingCartItems() {
-		return shoppingCartItems;
+		System.out.println("$#9326#"); return shoppingCartItems;
 	}
 	public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
 		this.shoppingCartItems = shoppingCartItems;
 	}
 	public String getSubTotal() {
-		return subTotal;
+		System.out.println("$#9327#"); return subTotal;
 	}
 	public void setSubTotal(String subTotal) {
 		this.subTotal = subTotal;
 	}
 	public List<OrderTotal> getTotals() {
-		return totals;
+		System.out.println("$#9328#"); return totals;
 	}
 	public void setTotals(List<OrderTotal> totals) {
 		this.totals = totals;
 	}
 	public List<ShoppingCartItem> getUnavailables() {
-		return unavailables;
+		System.out.println("$#9329#"); return unavailables;
 	}
 	public void setUnavailables(List<ShoppingCartItem> unavailables) {
 		this.unavailables = unavailables;
 	}
 	public Long getOrderId() {
-		return orderId;
+		System.out.println("$#9330#"); return orderId;
 	}
 	public void setOrderId(Long orderId) {
 		this.orderId = orderId;

@@ -25,7 +25,7 @@ public class Criteria {
 	private String search;
 
 	public int getMaxCount() {
-		return maxCount;
+		System.out.println("$#4041#"); return maxCount;
 	}
 
 	public void setMaxCount(int maxCount) {
@@ -33,7 +33,7 @@ public class Criteria {
 	}
 
 	public int getStartIndex() {
-		return startIndex;
+		System.out.println("$#4042#"); return startIndex;
 	}
 
 	public void setStartIndex(int startIndex) {
@@ -41,7 +41,7 @@ public class Criteria {
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4043#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -53,11 +53,11 @@ public class Criteria {
 	}
 
 	public CriteriaOrderBy getOrderBy() {
-		return orderBy;
+		System.out.println("$#4044#"); return orderBy;
 	}
 
 	public String getLanguage() {
-		return language;
+		System.out.println("$#4045#"); return language;
 	}
 
 	public void setLanguage(String language) {
@@ -65,7 +65,7 @@ public class Criteria {
 	}
 
 	public String getUser() {
-		return user;
+		System.out.println("$#4046#"); return user;
 	}
 
 	public void setUser(String user) {
@@ -73,7 +73,7 @@ public class Criteria {
 	}
 
 	public String getName() {
-		return name;
+		System.out.println("$#4047#"); return name;
 	}
 
 	public void setName(String name) {
@@ -81,7 +81,7 @@ public class Criteria {
 	}
 
 	public String getCriteriaOrderByField() {
-		return criteriaOrderByField;
+		System.out.println("$#4048#"); return criteriaOrderByField;
 	}
 
 	public void setCriteriaOrderByField(String criteriaOrderByField) {
@@ -89,7 +89,7 @@ public class Criteria {
 	}
 
 	public String getSearch() {
-		return search;
+		System.out.println("$#4049#"); return search;
 	}
 
 	public void setSearch(String search) {
@@ -97,7 +97,7 @@ public class Criteria {
 	}
 
 	public String getStoreCode() {
-		return storeCode;
+		System.out.println("$#4050#"); return storeCode;
 	}
 
 	public void setStoreCode(String storeCode) {
@@ -105,7 +105,7 @@ public class Criteria {
 	}
 
 	public int getPageSize() {
-		return pageSize;
+		System.out.println("$#4051#"); return pageSize;
 	}
 
 	public void setPageSize(int pageSize) {
@@ -113,7 +113,7 @@ public class Criteria {
 	}
 
 	public int getStartPage() {
-		return startPage;
+		System.out.println("$#4052#"); return startPage;
 	}
 
 	public void setStartPage(int startPage) {
@@ -121,7 +121,7 @@ public class Criteria {
 	}
 
 	public boolean isLegacyPagination() {
-		return legacyPagination;
+		System.out.println("$#4054#"); System.out.println("$#4053#"); return legacyPagination;
 	}
 
 	public void setLegacyPagination(boolean legacyPagination) {
@@ -129,7 +129,7 @@ public class Criteria {
 	}
 
 	public List<Integer> getStoreIds() {
-		return storeIds;
+		System.out.println("$#4055#"); return storeIds;
 	}
 
 	public void setStoreIds(List<Integer> storeIds) {

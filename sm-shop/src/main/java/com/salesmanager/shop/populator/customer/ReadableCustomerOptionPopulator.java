@@ -20,7 +20,7 @@ public class ReadableCustomerOptionPopulator extends
 	private CustomerOptionSet optionSet;
 	
 	public CustomerOptionSet getOptionSet() {
-		return optionSet;
+		System.out.println("$#10327#"); return optionSet;
 	}
 
 	public void setOptionSet(CustomerOptionSet optionSet) {
@@ -35,28 +35,28 @@ public class ReadableCustomerOptionPopulator extends
 		
 		
 		CustomerOption customerOption = target;
-		if(customerOption==null) {
+		System.out.println("$#10328#"); if(customerOption==null) {
 			customerOption = new CustomerOption();
 		} 
 		
-		customerOption.setId(source.getId());
-		customerOption.setType(source.getCustomerOptionType());
-		customerOption.setName(source.getDescriptionsSettoList().get(0).getName());
+		System.out.println("$#10329#"); customerOption.setId(source.getId());
+		System.out.println("$#10330#"); customerOption.setType(source.getCustomerOptionType());
+		System.out.println("$#10331#"); customerOption.setName(source.getDescriptionsSettoList().get(0).getName());
 
 		List<CustomerOptionValue> values = customerOption.getAvailableValues();
-		if(values==null) {
+		System.out.println("$#10332#"); if(values==null) {
 			values = new ArrayList<CustomerOptionValue>();
-			customerOption.setAvailableValues(values);
+			System.out.println("$#10333#"); customerOption.setAvailableValues(values);
 		}
 		
 		com.salesmanager.core.model.customer.attribute.CustomerOptionValue optionValue = optionSet.getCustomerOptionValue();
 		CustomerOptionValue custOptValue = new CustomerOptionValue();
-		custOptValue.setId(optionValue.getId());
-		custOptValue.setLanguage(language.getCode());
-		custOptValue.setName(optionValue.getDescriptionsSettoList().get(0).getName());
+		System.out.println("$#10334#"); custOptValue.setId(optionValue.getId());
+		System.out.println("$#10335#"); custOptValue.setLanguage(language.getCode());
+		System.out.println("$#10336#"); custOptValue.setName(optionValue.getDescriptionsSettoList().get(0).getName());
 		values.add(custOptValue);
 		
-		return customerOption;
+		System.out.println("$#10337#"); return customerOption;
 
 	}
 

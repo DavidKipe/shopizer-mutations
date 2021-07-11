@@ -63,13 +63,13 @@ public class AdminController {
 		//orderCriteria.setMaxCount(10);
 		//orderCriteria.setOrderBy(CriteriaOrderBy.DESC);
 		
-		return ControllerConstants.Tiles.adminDashboard;
+		System.out.println("$#4916#"); return ControllerConstants.Tiles.adminDashboard;
 	}
 	
 	@RequestMapping( value=Constants.ADMIN_URI , method=RequestMethod.GET)
 	public String displayStoreLanding(HttpServletRequest request, HttpServletResponse response) {
 
-		return "redirect:" + Constants.ADMIN_URI + Constants.SLASH;
+		System.out.println("$#4917#"); return "redirect:" + Constants.ADMIN_URI + Constants.SLASH;
 	}
 
 

@@ -21,7 +21,7 @@ public class IntegrationException extends ServiceException {
 	private int errorCode = 0;
 
 	public int getErrorCode() {
-		return errorCode;
+		System.out.println("$#425#"); return errorCode;
 	}
 
 	public void setErrorCode(int errorCode) {
@@ -56,7 +56,7 @@ public class IntegrationException extends ServiceException {
 	}
 
 	public List<String> getErrorFields() {
-		return errorFields;
+		System.out.println("$#426#"); return errorFields;
 	}
 
 }

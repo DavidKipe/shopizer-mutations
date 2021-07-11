@@ -83,12 +83,12 @@ public class IndexOrderProcessor extends IndexEntityProcessor implements OrderPr
 
 		    IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
 		    
-		    if(response.getResult() != DocWriteResponse.Result.CREATED && response.getResult() != DocWriteResponse.Result.UPDATED) {
+						System.out.println("$#1426#"); if(response.getResult() != DocWriteResponse.Result.CREATED && response.getResult() != DocWriteResponse.Result.UPDATED) {
 		    	LOGGER.error(
 		          "An error occured while indexing an order document " + order.getId() + " " + response.getResult().name());
 		    }
 
-			client.close();
+			System.out.println("$#1428#"); client.close();
 		} catch(Exception e) {
 			LOGGER.error("Cannot index order [" + order.getId() + "] ", e);
 		}
@@ -99,13 +99,13 @@ public class IndexOrderProcessor extends IndexEntityProcessor implements OrderPr
 	
 	@Override
 	public void process(String event, Object entity, MerchantStore store) {
-		this.process(event, entity, new Customer(), store);
+		System.out.println("$#1429#"); this.process(event, entity, new Customer(), store);
 		
 	}
 
 	@Override
 	public void process(String event, Object entity, Customer customer, MerchantStore store) {
-		this.process(event, (Order)entity, customer, store);
+		System.out.println("$#1430#"); this.process(event, (Order)entity, customer, store);
 		
 	}
 	

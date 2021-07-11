@@ -22,34 +22,34 @@ public class ReadableCustomerReviewPopulator extends AbstractDataPopulator<Custo
 
 		try {
 			
-			if(target==null) {
+			System.out.println("$#10408#"); if(target==null) {
 				target = new ReadableCustomerReview();
 			}
 			
-			if(source.getReviewDate() != null) {
-				target.setDate(DateUtil.formatDate(source.getReviewDate()));
+			System.out.println("$#10409#"); if(source.getReviewDate() != null) {
+				System.out.println("$#10410#"); target.setDate(DateUtil.formatDate(source.getReviewDate()));
 			}
 			
 
 			ReadableCustomer reviewed = new ReadableCustomer();
-			reviewed.setId(source.getReviewedCustomer().getId());
-			reviewed.setFirstName(source.getReviewedCustomer().getBilling().getFirstName());
-			reviewed.setLastName(source.getReviewedCustomer().getBilling().getLastName());
+			System.out.println("$#10411#"); reviewed.setId(source.getReviewedCustomer().getId());
+			System.out.println("$#10412#"); reviewed.setFirstName(source.getReviewedCustomer().getBilling().getFirstName());
+			System.out.println("$#10413#"); reviewed.setLastName(source.getReviewedCustomer().getBilling().getLastName());
 
 			
-			target.setId(source.getId());
-			target.setCustomerId(source.getCustomer().getId());
-			target.setReviewedCustomer(reviewed);
-			target.setRating(source.getReviewRating());
-			target.setReviewedCustomer(reviewed);
-			target.setCustomerId(source.getCustomer().getId());
+			System.out.println("$#10414#"); target.setId(source.getId());
+			System.out.println("$#10415#"); target.setCustomerId(source.getCustomer().getId());
+			System.out.println("$#10416#"); target.setReviewedCustomer(reviewed);
+			System.out.println("$#10417#"); target.setRating(source.getReviewRating());
+			System.out.println("$#10418#"); target.setReviewedCustomer(reviewed);
+			System.out.println("$#10419#"); target.setCustomerId(source.getCustomer().getId());
 			
 			Set<CustomerReviewDescription> descriptions = source.getDescriptions();
-			if(CollectionUtils.isNotEmpty(descriptions)) {
+			System.out.println("$#10420#"); if(CollectionUtils.isNotEmpty(descriptions)) {
 				CustomerReviewDescription description = null;
-				if(descriptions.size()>1) {
+				System.out.println("$#10422#"); System.out.println("$#10421#"); if(descriptions.size()>1) {
 					for(CustomerReviewDescription desc : descriptions) {
-						if(desc.getLanguage().getCode().equals(language.getCode())) {
+						System.out.println("$#10423#"); if(desc.getLanguage().getCode().equals(language.getCode())) {
 							description = desc;
 							break;
 						}
@@ -58,9 +58,9 @@ public class ReadableCustomerReviewPopulator extends AbstractDataPopulator<Custo
 					description = descriptions.iterator().next();
 				}
 				
-				if(description != null) {
-					target.setDescription(description.getDescription());
-					target.setLanguage(description.getLanguage().getCode());
+				System.out.println("$#10424#"); if(description != null) {
+					System.out.println("$#10425#"); target.setDescription(description.getDescription());
+					System.out.println("$#10426#"); target.setLanguage(description.getLanguage().getCode());
 				}
 
 			}
@@ -73,7 +73,7 @@ public class ReadableCustomerReviewPopulator extends AbstractDataPopulator<Custo
 		}
 		
 		
-		return target;
+		System.out.println("$#10427#"); return target;
 
 	}
 

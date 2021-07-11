@@ -16,7 +16,7 @@ public class PasswordRequest extends AuthenticationRequest {
   private String repeatPassword;
 
   public String getCurrent() {
-    return current;
+				System.out.println("$#15343#"); return current;
   }
 
   public void setCurrent(String current) {
@@ -24,7 +24,7 @@ public class PasswordRequest extends AuthenticationRequest {
   }
 
   public String getRepeatPassword() {
-    return repeatPassword;
+				System.out.println("$#15344#"); return repeatPassword;
   }
 
   public void setRepeatPassword(String repeatPassword) {

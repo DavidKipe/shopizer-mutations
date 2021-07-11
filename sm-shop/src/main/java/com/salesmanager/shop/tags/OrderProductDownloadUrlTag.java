@@ -40,10 +40,10 @@ public class OrderProductDownloadUrlTag extends RequestContextAwareTag {
 	public int doStartTagInternal() throws JspException {
 		try {
 			
-			if (filePathUtils==null) {
+			System.out.println("$#15423#"); if (filePathUtils==null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15424#"); factory.autowireBean(this);
 	        }
 
 
@@ -61,7 +61,7 @@ public class OrderProductDownloadUrlTag extends RequestContextAwareTag {
 
 			
 
-			pageContext.getOut().print(filePath.toString());
+			System.out.println("$#15425#"); pageContext.getOut().print(filePath.toString());
 
 
 			
@@ -72,13 +72,13 @@ public class OrderProductDownloadUrlTag extends RequestContextAwareTag {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15426#"); return EVAL_PAGE;
 	}
 
 
 
 	public Long getOrderId() {
-		return orderId;
+		System.out.println("$#15427#"); return orderId;
 	}
 
 	public void setOrderId(Long orderId) {
@@ -86,7 +86,7 @@ public class OrderProductDownloadUrlTag extends RequestContextAwareTag {
 	}
 
 	public ReadableOrderProductDownload getProductDownload() {
-		return productDownload;
+		System.out.println("$#15428#"); return productDownload;
 	}
 
 	public void setProductDownload(ReadableOrderProductDownload productDownload) {

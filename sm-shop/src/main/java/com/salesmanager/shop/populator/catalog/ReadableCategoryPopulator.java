@@ -19,54 +19,54 @@ public class ReadableCategoryPopulator extends
             final MerchantStore store,
             final Language language) throws ConversionException {
 
-        Validate.notNull(source, "Category must not be null");
+								System.out.println("$#9665#"); Validate.notNull(source, "Category must not be null");
 
-        target.setLineage(source.getLineage());
-        if (source.getDescriptions() != null && source.getDescriptions().size() > 0) {
+								System.out.println("$#9666#"); target.setLineage(source.getLineage());
+								System.out.println("$#9668#"); System.out.println("$#9667#"); if (source.getDescriptions() != null && source.getDescriptions().size() > 0) {
 
             CategoryDescription description = source.getDescription();
-            if (source.getDescriptions().size() > 1) {
+												System.out.println("$#9671#"); System.out.println("$#9670#"); if (source.getDescriptions().size() > 1) {
                 for (final CategoryDescription desc : source.getDescriptions()) {
-                    if (desc.getLanguage().getCode().equals(language.getCode())) {
+																				System.out.println("$#9672#"); if (desc.getLanguage().getCode().equals(language.getCode())) {
                         description = desc;
                         break;
                     }
                 }
             }
 
-            if (description != null) {
+												System.out.println("$#9673#"); if (description != null) {
                 final com.salesmanager.shop.model.catalog.category.CategoryDescription desc = new com.salesmanager.shop.model.catalog.category.CategoryDescription();
-                desc.setFriendlyUrl(description.getSeUrl());
-                desc.setName(description.getName());
-                desc.setId(source.getId());
-                desc.setDescription(description.getDescription());
-                desc.setKeyWords(description.getMetatagKeywords());
-                desc.setHighlights(description.getCategoryHighlight());
-                desc.setTitle(description.getMetatagTitle());
-                desc.setMetaDescription(description.getMetatagDescription());
+																System.out.println("$#9674#"); desc.setFriendlyUrl(description.getSeUrl());
+																System.out.println("$#9675#"); desc.setName(description.getName());
+																System.out.println("$#9676#"); desc.setId(source.getId());
+																System.out.println("$#9677#"); desc.setDescription(description.getDescription());
+																System.out.println("$#9678#"); desc.setKeyWords(description.getMetatagKeywords());
+																System.out.println("$#9679#"); desc.setHighlights(description.getCategoryHighlight());
+																System.out.println("$#9680#"); desc.setTitle(description.getMetatagTitle());
+																System.out.println("$#9681#"); desc.setMetaDescription(description.getMetatagDescription());
 
-                target.setDescription(desc);
+																System.out.println("$#9682#"); target.setDescription(desc);
             }
 
         }
 
-        if (source.getParent() != null) {
+								System.out.println("$#9683#"); if (source.getParent() != null) {
             final com.salesmanager.shop.model.catalog.category.Category parent = new com.salesmanager.shop.model.catalog.category.Category();
-            parent.setCode(source.getParent().getCode());
-            parent.setId(source.getParent().getId());
-            target.setParent(parent);
+												System.out.println("$#9684#"); parent.setCode(source.getParent().getCode());
+												System.out.println("$#9685#"); parent.setId(source.getParent().getId());
+												System.out.println("$#9686#"); target.setParent(parent);
         }
 
-        target.setCode(source.getCode());
-        target.setId(source.getId());
-        if (source.getDepth() != null) {
-            target.setDepth(source.getDepth());
+								System.out.println("$#9687#"); target.setCode(source.getCode());
+								System.out.println("$#9688#"); target.setId(source.getId());
+								System.out.println("$#9689#"); if (source.getDepth() != null) {
+												System.out.println("$#9690#"); target.setDepth(source.getDepth());
         }
-        target.setSortOrder(source.getSortOrder());
-        target.setVisible(source.isVisible());
-        target.setFeatured(source.isFeatured());
+								System.out.println("$#9691#"); target.setSortOrder(source.getSortOrder());
+								System.out.println("$#9692#"); target.setVisible(source.isVisible());
+								System.out.println("$#9693#"); target.setFeatured(source.isFeatured());
 
-        return target;
+								System.out.println("$#9694#"); return target;
 
     }
 

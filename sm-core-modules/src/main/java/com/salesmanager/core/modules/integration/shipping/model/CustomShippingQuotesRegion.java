@@ -16,7 +16,7 @@ public class CustomShippingQuotesRegion implements JSONAware {
 	}
 
 	public List<CustomShippingQuoteWeightItem> getQuoteItems() {
-		return quoteItems;
+		System.out.println("$#4899#"); return quoteItems;
 	}
 
 	public void setCountries(List<String> countries) {
@@ -24,7 +24,7 @@ public class CustomShippingQuotesRegion implements JSONAware {
 	}
 
 	public List<String> getCountries() {
-		return countries;
+		System.out.println("$#4900#"); return countries;
 	}
 
 	public void setCustomRegionName(String customRegionName) {
@@ -32,7 +32,7 @@ public class CustomShippingQuotesRegion implements JSONAware {
 	}
 
 	public String getCustomRegionName() {
-		return customRegionName;
+		System.out.println("$#4901#"); return customRegionName;
 	}
 	
 
@@ -45,15 +45,15 @@ public class CustomShippingQuotesRegion implements JSONAware {
 		
 		
 		
-		if(countries!=null) {
+		System.out.println("$#4902#"); if(countries!=null) {
 			returnString.append(",");
 			StringBuilder coutriesList = new StringBuilder();
 			int countCountry = 0;
 			coutriesList.append("[");
 			for(String country : countries) {
 				coutriesList.append("\"").append(country).append("\"");
-				countCountry ++;
-				if(countCountry<countries.size()) {
+				System.out.println("$#4903#"); countCountry ++;
+				System.out.println("$#4905#"); System.out.println("$#4904#"); if(countCountry<countries.size()) {
 					coutriesList.append(",");
 				}
 			}
@@ -62,15 +62,15 @@ public class CustomShippingQuotesRegion implements JSONAware {
 			returnString.append("\"countries\"").append(":").append(coutriesList.toString());
 		}
 		
-		if(quoteItems!=null) {
+		System.out.println("$#4906#"); if(quoteItems!=null) {
 			returnString.append(",");
 			StringBuilder quotesList = new StringBuilder();
 			int countQuotes = 0;
 			quotesList.append("[");
 			for(CustomShippingQuoteWeightItem quote : quoteItems) {
 				quotesList.append(quote.toJSONString());
-				countQuotes ++;
-				if(countQuotes<quoteItems.size()) {
+				System.out.println("$#4907#"); countQuotes ++;
+				System.out.println("$#4909#"); System.out.println("$#4908#"); if(countQuotes<quoteItems.size()) {
 					quotesList.append(",");
 				}
 			}
@@ -79,7 +79,7 @@ public class CustomShippingQuotesRegion implements JSONAware {
 			returnString.append("\"quoteItems\"").append(":").append(quotesList.toString());
 		}
 		returnString.append("}");
-		return returnString.toString();
+		System.out.println("$#4910#"); return returnString.toString();
 		
 		
 	}

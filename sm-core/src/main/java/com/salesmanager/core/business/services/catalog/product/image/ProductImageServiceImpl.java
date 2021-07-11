@@ -43,7 +43,7 @@ public class ProductImageServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	public ProductImage getById(Long id) {
 		
 		
-		return productImageRepository.findOne(id);
+		System.out.println("$#1887#"); return productImageRepository.findOne(id);
 	}
 	
 	
@@ -53,18 +53,18 @@ public class ProductImageServiceImpl extends SalesManagerEntityServiceImpl<Long,
 		try {
 			for(ProductImage productImage : productImages) {
 				
-				Assert.notNull(productImage.getImage());
+				System.out.println("$#1888#"); Assert.notNull(productImage.getImage());
 				
 		        InputStream inputStream = productImage.getImage();
 		        ImageContentFile cmsContentImage = new ImageContentFile();
-		        cmsContentImage.setFileName( productImage.getProductImage() );
-		        cmsContentImage.setFile( inputStream );
-		        cmsContentImage.setFileContentType(FileContentType.PRODUCT);
+										System.out.println("$#1889#"); cmsContentImage.setFileName( productImage.getProductImage() );
+										System.out.println("$#1890#"); cmsContentImage.setFile( inputStream );
+										System.out.println("$#1891#"); cmsContentImage.setFileContentType(FileContentType.PRODUCT);
 		        
 
 		        
 	
-				addProductImage(product,productImage,cmsContentImage);			
+				System.out.println("$#1892#"); addProductImage(product,productImage,cmsContentImage);
 			}
 		
 		} catch (Exception e) {
@@ -80,18 +80,18 @@ public class ProductImageServiceImpl extends SalesManagerEntityServiceImpl<Long,
 		
 		
 		
-		productImage.setProduct(product);
+		System.out.println("$#1893#"); productImage.setProduct(product);
 
 		try {
 			
-			Assert.notNull(inputImage.getFile(),"ImageContentFile.file cannot be null");
+			System.out.println("$#1894#"); Assert.notNull(inputImage.getFile(),"ImageContentFile.file cannot be null");
 
 
 			
-			productFileManager.addProductImage(productImage, inputImage);
+			System.out.println("$#1895#"); productFileManager.addProductImage(productImage, inputImage);
 	
 			//insert ProductImage
-			this.saveOrUpdate(productImage);
+			System.out.println("$#1896#"); this.saveOrUpdate(productImage);
 			
 
 		
@@ -100,8 +100,8 @@ public class ProductImageServiceImpl extends SalesManagerEntityServiceImpl<Long,
 		} finally {
 			try {
 
-				if(inputImage.getFile()!=null) {
-					inputImage.getFile().close();
+				System.out.println("$#1897#"); if(inputImage.getFile()!=null) {
+					System.out.println("$#1898#"); inputImage.getFile().close();
 				}
 
 			} catch(Exception ignore) {
@@ -116,7 +116,7 @@ public class ProductImageServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	public void saveOrUpdate(ProductImage productImage) throws ServiceException {
 		
 				
-		super.save(productImage);
+		System.out.println("$#1899#"); super.save(productImage);
 		
 	}
 	
@@ -124,13 +124,13 @@ public class ProductImageServiceImpl extends SalesManagerEntityServiceImpl<Long,
 	throws ServiceException {
 
 		
-			if(productImage.getDescriptions()==null) {
-				productImage.setDescriptions(new ArrayList<ProductImageDescription>());
+			System.out.println("$#1900#"); if(productImage.getDescriptions()==null) {
+				System.out.println("$#1901#"); productImage.setDescriptions(new ArrayList<ProductImageDescription>());
 			}
 			
 			productImage.getDescriptions().add(description);
-			description.setProductImage(productImage);
-			update(productImage);
+			System.out.println("$#1902#"); description.setProductImage(productImage);
+			System.out.println("$#1903#"); update(productImage);
 
 
 	}
@@ -144,46 +144,46 @@ public class ProductImageServiceImpl extends SalesManagerEntityServiceImpl<Long,
 		
 		ProductImage pi = new ProductImage();
 		String imageName = productImage.getProductImage();
-		if(size == ProductImageSize.LARGE) {
+		System.out.println("$#1904#"); if(size == ProductImageSize.LARGE) {
 			imageName = "L-" + imageName;
 		}
 		
-		if(size == ProductImageSize.SMALL) {
+		System.out.println("$#1905#"); if(size == ProductImageSize.SMALL) {
 			imageName = "S-" + imageName;
 		}
 		
-		pi.setProductImage(imageName);
-		pi.setProduct(productImage.getProduct());
+		System.out.println("$#1906#"); pi.setProductImage(imageName);
+		System.out.println("$#1907#"); pi.setProduct(productImage.getProduct());
 		
 		OutputContentFile outputImage = productFileManager.getProductImage(pi);
 		
-		return outputImage;
+		System.out.println("$#1908#"); return outputImage;
 		
 	}
 	
 	@Override
 	public OutputContentFile getProductImage(final String storeCode, final String productCode, final String fileName, final ProductImageSize size) throws ServiceException {
 		OutputContentFile outputImage = productFileManager.getProductImage(storeCode, productCode, fileName, size);
-		return outputImage;
+		System.out.println("$#1909#"); return outputImage;
 		
 	}
 	
 	@Override
 	public List<OutputContentFile> getProductImages(Product product) throws ServiceException {
-		return productFileManager.getImages(product);
+		System.out.println("$#1910#"); return productFileManager.getImages(product);
 	}
 	
 	@Override
 	public void removeProductImage(ProductImage productImage) throws ServiceException {
 
-		if(!StringUtils.isBlank(productImage.getProductImage())) {
-			productFileManager.removeProductImage(productImage);//managed internally
+		System.out.println("$#1911#"); if(!StringUtils.isBlank(productImage.getProductImage())) {
+			System.out.println("$#1912#"); productFileManager.removeProductImage(productImage);//managed internally
 		}
 		
 		ProductImage p = this.getById(productImage.getId());
 		
 		
-		this.delete(p);
+		System.out.println("$#1913#"); this.delete(p);
 		
 	}
 }

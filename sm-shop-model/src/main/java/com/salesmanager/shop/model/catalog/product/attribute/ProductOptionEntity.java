@@ -15,14 +15,14 @@ public class ProductOptionEntity extends ProductOption implements Serializable {
 		this.order = order;
 	}
 	public int getOrder() {
-		return order;
+		System.out.println("$#8805#"); return order;
 	}
 
 	public void setType(String type) {
 		this.type = type;
 	}
 	public String getType() {
-		return type;
+		System.out.println("$#8806#"); return type;
 	}
 
 }

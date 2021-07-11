@@ -22,25 +22,25 @@ public class ReadableShopOrder extends ReadableOrder implements Serializable {
 	
 
 	public String getErrorMessage() {
-		return errorMessage;
+		System.out.println("$#9159#"); return errorMessage;
 	}
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 	public String getGrandTotal() {
-		return grandTotal;
+		System.out.println("$#9160#"); return grandTotal;
 	}
 	public void setGrandTotal(String grandTotal) {
 		this.grandTotal = grandTotal;
 	}
 	public List<ReadableOrderTotal> getSubTotals() {
-		return subTotals;
+		System.out.println("$#9161#"); return subTotals;
 	}
 	public void setSubTotals(List<ReadableOrderTotal> subTotals) {
 		this.subTotals = subTotals;
 	}
 	public ReadableShippingSummary getShippingSummary() {
-		return shippingSummary;
+		System.out.println("$#9162#"); return shippingSummary;
 	}
 	public void setShippingSummary(ReadableShippingSummary shippingSummary) {
 		this.shippingSummary = shippingSummary;

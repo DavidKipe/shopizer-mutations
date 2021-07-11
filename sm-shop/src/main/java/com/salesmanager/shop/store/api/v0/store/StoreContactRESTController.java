@@ -69,19 +69,19 @@ public class StoreContactRESTController {
 			/** default routine **/
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11477#"); if(merchantStore!=null) {
+				System.out.println("$#11478#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11479#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11480#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11481#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 			
@@ -96,7 +96,7 @@ public class StoreContactRESTController {
 		} catch (Exception e) {
 			LOGGER.error("Error while saving category",e);
 			try {
-				response.sendError(503, "Error while saving category " + e.getMessage());
+				System.out.println("$#11482#"); response.sendError(503, "Error while saving category " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			return null;
@@ -115,19 +115,19 @@ public class StoreContactRESTController {
 			/** default routine **/
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#11483#"); if(merchantStore!=null) {
+				System.out.println("$#11484#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null;
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#11485#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#11486#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);
+				System.out.println("$#11487#"); response.sendError(503, "Merchant store is null for code " + store);
 				return null;
 			}
 			
@@ -136,14 +136,14 @@ public class StoreContactRESTController {
 			Map<String,Language> langs = languageService.getLanguagesMap();
 
 			
-			if(!StringUtils.isBlank(request.getParameter(Constants.LANG))) {
+			System.out.println("$#11488#"); if(!StringUtils.isBlank(request.getParameter(Constants.LANG))) {
 				String lang = request.getParameter(Constants.LANG);
-				if(lang!=null) {
+				System.out.println("$#11489#"); if(lang!=null) {
 					language = langs.get(language);
 				}
 			}
 			
-			if(language==null) {
+			System.out.println("$#11490#"); if(language==null) {
 				language = merchantStore.getDefaultLanguage();
 			}
 			
@@ -153,17 +153,17 @@ public class StoreContactRESTController {
 			/** end default routine **/
 
 			
-	        emailTemplatesUtils.sendContactEmail(contact, merchantStore, l, request.getContextPath());
+									System.out.println("$#11491#"); emailTemplatesUtils.sendContactEmail(contact, merchantStore, l, request.getContextPath());
 			
-			ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#11492#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 			
-			return ajaxResponse;
+			System.out.println("$#11493#"); return ajaxResponse;
 
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while saving category",e);
 			try {
-				response.sendError(503, "Error while saving category " + e.getMessage());
+				System.out.println("$#11494#"); response.sendError(503, "Error while saving category " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			return null;

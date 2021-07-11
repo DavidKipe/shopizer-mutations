@@ -24,11 +24,11 @@ public class PersistableTransactionPopulator extends AbstractDataPopulator<Persi
 	public Transaction populate(PersistableTransaction source, Transaction target, MerchantStore store,
 			Language language) throws ConversionException {
 		
-		Validate.notNull(source,"PersistableTransaction must not be null");
-		Validate.notNull(orderService,"OrderService must not be null");
-		Validate.notNull(pricingService,"OrderService must not be null");
+		System.out.println("$#10847#"); Validate.notNull(source,"PersistableTransaction must not be null");
+		System.out.println("$#10848#"); Validate.notNull(orderService,"OrderService must not be null");
+		System.out.println("$#10849#"); Validate.notNull(pricingService,"OrderService must not be null");
 		
-		if(target == null) {
+		System.out.println("$#10850#"); if(target == null) {
 			target = new Transaction();
 		}
 		
@@ -36,25 +36,25 @@ public class PersistableTransactionPopulator extends AbstractDataPopulator<Persi
 		try {
 			
 
-			target.setAmount(pricingService.getAmount(source.getAmount()));
-			target.setDetails(source.getDetails());
-			target.setPaymentType(PaymentType.valueOf(source.getPaymentType()));
-			target.setTransactionType(TransactionType.valueOf(source.getTransactionType()));
-			target.setTransactionDate(DateUtil.formatDate(source.getTransactionDate()));
+			System.out.println("$#10851#"); target.setAmount(pricingService.getAmount(source.getAmount()));
+			System.out.println("$#10852#"); target.setDetails(source.getDetails());
+			System.out.println("$#10853#"); target.setPaymentType(PaymentType.valueOf(source.getPaymentType()));
+			System.out.println("$#10854#"); target.setTransactionType(TransactionType.valueOf(source.getTransactionType()));
+			System.out.println("$#10855#"); target.setTransactionDate(DateUtil.formatDate(source.getTransactionDate()));
 			
-			if(source.getOrderId()!=null && source.getOrderId().longValue() > 0) {
+			System.out.println("$#10857#"); System.out.println("$#10856#"); if(source.getOrderId()!=null && source.getOrderId().longValue() > 0) {
 				Order order = orderService.getById(source.getOrderId());
 /*				if(source.getCustomerId() == null) {
 					throw new ConversionException("Cannot add a transaction for an Order without specyfing the customer");
 				}*/
 				
-				if(order == null) {
+				System.out.println("$#10859#"); if(order == null) {
 					throw new ConversionException("Order with id " + source.getOrderId() + "does not exist");
 				}
-				target.setOrder(order);
+				System.out.println("$#10860#"); target.setOrder(order);
 			}
 			
-			return target;
+			System.out.println("$#10861#"); return target;
 			
 			
 		
@@ -71,7 +71,7 @@ public class PersistableTransactionPopulator extends AbstractDataPopulator<Persi
 	}
 	
 	public OrderService getOrderService() {
-		return orderService;
+		System.out.println("$#10862#"); return orderService;
 	}
 
 	public void setOrderService(OrderService orderService) {
@@ -79,7 +79,7 @@ public class PersistableTransactionPopulator extends AbstractDataPopulator<Persi
 	}
 
 	public PricingService getPricingService() {
-		return pricingService;
+		System.out.println("$#10863#"); return pricingService;
 	}
 
 	public void setPricingService(PricingService pricingService) {

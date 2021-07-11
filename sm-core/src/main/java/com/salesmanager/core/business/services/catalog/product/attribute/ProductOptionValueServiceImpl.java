@@ -44,20 +44,20 @@ public class ProductOptionValueServiceImpl extends
 	@Override
 	public List<ProductOptionValue> listByStore(MerchantStore store, Language language) throws ServiceException {
 		
-		return productOptionValueRepository.findByStoreId(store.getId(), language.getId());
+		System.out.println("$#1838#"); return productOptionValueRepository.findByStoreId(store.getId(), language.getId());
 	}
 	
 	@Override
 	public List<ProductOptionValue> listByStoreNoReadOnly(MerchantStore store, Language language) throws ServiceException {
 		
-		return productOptionValueRepository.findByReadOnly(store.getId(), language.getId(), false);
+		System.out.println("$#1839#"); return productOptionValueRepository.findByReadOnly(store.getId(), language.getId(), false);
 	}
 
 	@Override
 	public List<ProductOptionValue> getByName(MerchantStore store, String name, Language language) throws ServiceException {
 		
 		try {
-			return productOptionValueRepository.findByName(store.getId(), name, language.getId());
+			System.out.println("$#1840#"); return productOptionValueRepository.findByName(store.getId(), name, language.getId());
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
@@ -70,13 +70,13 @@ public class ProductOptionValueServiceImpl extends
 		
 		
 		//save or update (persist and attach entities
-		if(entity.getId()!=null && entity.getId()>0) {
+		System.out.println("$#1842#"); System.out.println("$#1841#"); if(entity.getId()!=null && entity.getId()>0) {
 
-			super.update(entity);
+			System.out.println("$#1844#"); super.update(entity);
 			
 		} else {
 			
-			super.save(entity);
+			System.out.println("$#1845#"); super.save(entity);
 			
 		}
 		
@@ -89,25 +89,25 @@ public class ProductOptionValueServiceImpl extends
 		List<ProductAttribute> attributes = productAttributeService.getByOptionValueId(entity.getMerchantStore(), entity.getId());
 		
 		for(ProductAttribute attribute : attributes) {
-			productAttributeService.delete(attribute);
+			System.out.println("$#1846#"); productAttributeService.delete(attribute);
 		}
 		
 		ProductOptionValue option = getById(entity.getId());
 		
 		//remove option
-		super.delete(option);
+		System.out.println("$#1847#"); super.delete(option);
 		
 	}
 	
 	@Override
 	public ProductOptionValue getByCode(MerchantStore store, String optionValueCode) {
-		return productOptionValueRepository.findByCode(store.getId(), optionValueCode);
+		System.out.println("$#1848#"); return productOptionValueRepository.findByCode(store.getId(), optionValueCode);
 	}
 
 
 	@Override
 	public ProductOptionValue getById(MerchantStore store, Long optionValueId) {
-		return productOptionValueRepository.findOne(store.getId(), optionValueId);
+		System.out.println("$#1849#"); return productOptionValueRepository.findOne(store.getId(), optionValueId);
 	}
 
 
@@ -116,7 +116,7 @@ public class ProductOptionValueServiceImpl extends
 			int count) {
 	    Validate.notNull(store, "MerchantStore cannot be null");
 	    Pageable p = PageRequest.of(page, count);
-	    return pageableProductOptionValueRepository.listOptionValues(store.getId(), name, p);
+					System.out.println("$#1850#"); return pageableProductOptionValueRepository.listOptionValues(store.getId(), name, p);
 	}
 
 

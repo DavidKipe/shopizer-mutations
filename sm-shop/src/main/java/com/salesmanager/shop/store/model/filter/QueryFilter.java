@@ -18,19 +18,19 @@ public class QueryFilter {
 	private Long filterId;
 	private QueryFilterType filterType;
 	public String getFilterCode() {
-		return filterCode;
+		System.out.println("$#15184#"); return filterCode;
 	}
 	public void setFilterCode(String filterCode) {
 		this.filterCode = filterCode;
 	}
 	public Long getFilterId() {
-		return filterId;
+		System.out.println("$#15185#"); return filterId;
 	}
 	public void setFilterId(Long filterId) {
 		this.filterId = filterId;
 	}
 	public QueryFilterType getFilterType() {
-		return filterType;
+		System.out.println("$#15186#"); return filterType;
 	}
 	public void setFilterType(QueryFilterType filterType) {
 		this.filterType = filterType;

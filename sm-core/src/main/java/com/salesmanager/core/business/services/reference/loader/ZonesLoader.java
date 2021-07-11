@@ -77,37 +77,37 @@ public class ZonesLoader {
 			// load files individually
 			for (Resource resource : files) {
 				InputStream in = resource.getInputStream();
-				if(in == null) {
+				System.out.println("$#2781#"); if(in == null) {
 					continue;
 				}
 				Map<String, Object> data = mapper.readValue(in, Map.class);
 				
-				if(resource.getFilename().contains("_")) {
+				System.out.println("$#2782#"); if(resource.getFilename().contains("_")) {
 					for (Language l : languages) {
-						if (resource.getFilename().contains("_" + l.getCode())) {// lead for this
+						System.out.println("$#2783#"); if (resource.getFilename().contains("_" + l.getCode())) {// lead for this
 							// language
 							List langList = (List) data.get(l.getCode());
-							if (langList != null) {
+							System.out.println("$#2784#"); if (langList != null) {
 								/**
 								 * submethod
 								 */
 								for (Object z : langList) {
 									Map<String, String> e = (Map<String, String>) z;
-									mapZone(l, zonesDescriptionsMap, countriesMap, zonesMap, zonesMark, e);
+									System.out.println("$#2785#"); mapZone(l, zonesDescriptionsMap, countriesMap, zonesMap, zonesMark, e);
 								}
 							}
 						}
 					}
 				} else {
 					List langList = (List) data.get(ALL_REGIONS);
-					if (langList != null) {
+					System.out.println("$#2786#"); if (langList != null) {
 						/**
 						 * submethod
 						 */
 						for (Language l : languages) {
 							for (Object z : langList) {
 								Map<String, String> e = (Map<String, String>) z;
-								mapZone(l, zonesDescriptionsMap, countriesMap, zonesMap, zonesMark, e);
+								System.out.println("$#2787#"); mapZone(l, zonesDescriptionsMap, countriesMap, zonesMap, zonesMark, e);
 							}
 						}
 					}
@@ -119,14 +119,14 @@ public class ZonesLoader {
 
 					// get descriptions
 					List<ZoneDescription> descriptions = zonesDescriptionsMap.get(key);
-					if (descriptions != null) {
-						value.setDescriptons(descriptions);
+					System.out.println("$#2788#"); if (descriptions != null) {
+						System.out.println("$#2789#"); value.setDescriptons(descriptions);
 					}
 				}
 
 				loadedZones.add(zonesMap);
 			}
-			return loadedZones;
+			System.out.println("$#2790#"); return loadedZones;
 
 		} catch (Exception e) {
 			throw new ServiceException(e);
@@ -137,7 +137,7 @@ public class ZonesLoader {
 
 	private InputStream loadFileContent(String fileName) throws Exception {
 		InputStream in = this.getClass().getClassLoader().getResourceAsStream("classpath:/reference/zones/" + fileName);
-		return in;
+		System.out.println("$#2791#"); return in;
 	}
 
 	public Map<String, Zone> loadZones(String jsonFilePath) throws Exception {
@@ -168,14 +168,14 @@ public class ZonesLoader {
 			for (Language l : languages) {
 				@SuppressWarnings("rawtypes")
 				List langList = (List) data.get(l.getCode());
-				if (langList != null) {
+				System.out.println("$#2792#"); if (langList != null) {
 					/**
 					 * submethod
 					 */
 					for (Object z : langList) {
 						@SuppressWarnings("unchecked")
 						Map<String, String> e = (Map<String, String>) z;
-						this.mapZone(l, zonesDescriptionsMap, countriesMap, zonesMap, zonesMark, e);
+						System.out.println("$#2793#"); this.mapZone(l, zonesDescriptionsMap, countriesMap, zonesMap, zonesMark, e);
 
 						/**
 						 * String zoneCode = e.get("zoneCode"); ZoneDescription
@@ -222,12 +222,12 @@ public class ZonesLoader {
 
 				// get descriptions
 				List<ZoneDescription> descriptions = zonesDescriptionsMap.get(key);
-				if (descriptions != null) {
-					value.setDescriptons(descriptions);
+				System.out.println("$#2794#"); if (descriptions != null) {
+					System.out.println("$#2795#"); value.setDescriptons(descriptions);
 				}
 			}
 
-			return zonesMap;
+			System.out.println("$#2796#"); return zonesMap;
 
 		} catch (Exception e) {
 			throw new ServiceException(e);
@@ -243,32 +243,32 @@ public class ZonesLoader {
 		Map<String, String> e = list;
 		String zoneCode = e.get("zoneCode");
 		ZoneDescription zoneDescription = new ZoneDescription();
-		zoneDescription.setLanguage(l);
-		zoneDescription.setName(e.get("zoneName"));
+		System.out.println("$#2797#"); zoneDescription.setLanguage(l);
+		System.out.println("$#2798#"); zoneDescription.setName(e.get("zoneName"));
 		Zone zone = null;
 		List<ZoneDescription> descriptions = null;
-		if (!zonesMap.containsKey(zoneCode)) {
+		System.out.println("$#2799#"); if (!zonesMap.containsKey(zoneCode)) {
 			zone = new Zone();
 			Country country = countriesMap.get(e.get("countryCode"));
-			if (country == null) {
+			System.out.println("$#2800#"); if (country == null) {
 				LOGGER.warn("Country is null for " + zoneCode + " and country code " + e.get("countryCode"));
 				return;
 			}
-			zone.setCountry(country);
-			zone.setCode(zoneCode);
+			System.out.println("$#2801#"); zone.setCountry(country);
+			System.out.println("$#2802#"); zone.setCode(zoneCode);
 			zonesMap.put(zoneCode, zone);
 			
 
 		}
 
-		if (zonesMark.containsKey(l.getCode() + "_" + zoneCode)) {
+		System.out.println("$#2803#"); if (zonesMark.containsKey(l.getCode() + "_" + zoneCode)) {
 			LOGGER.warn("This zone seems to be a duplicate !  " + zoneCode + " and language code " + l.getCode());
 			return;
 		}
 
 		zonesMark.put(l.getCode() + "_" + zoneCode, l.getCode() + "_" + zoneCode);
 
-		if (zonesDescriptionsMap.containsKey(zoneCode)) {
+		System.out.println("$#2804#"); if (zonesDescriptionsMap.containsKey(zoneCode)) {
 			descriptions = zonesDescriptionsMap.get(zoneCode);
 		} else {
 			descriptions = new ArrayList<ZoneDescription>();
@@ -284,11 +284,11 @@ public class ZonesLoader {
 		List<Resource> files = new ArrayList<Resource>();
 		Resource[] resources =resourceResolver.getResources(PATH);
 		
-		for(int i = 0; i< resources.length; i++) {
+		System.out.println("$#2806#"); System.out.println("$#2805#"); for(int i = 0; i< resources.length; i++) {
 			files.add(resources[i]);
 		}
 		
-		return files;
+		System.out.println("$#2807#"); return files;
 
 	}
 

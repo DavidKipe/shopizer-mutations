@@ -18,13 +18,13 @@ public class Attribute extends ShopEntity implements Serializable {
 	private List<AttributeValue> values = null;
 	private AttributeValue readOnlyValue = null;
 	public String getName() {
-		return name;
+		System.out.println("$#15172#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getType() {
-		return type;
+		System.out.println("$#15173#"); return type;
 	}
 	public void setType(String type) {
 		this.type = type;
@@ -36,19 +36,19 @@ public class Attribute extends ShopEntity implements Serializable {
 		this.values = values;
 	}
 	public List<AttributeValue> getValues() {
-		return values;
+		System.out.println("$#15174#"); return values;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#15175#"); return code;
 	}
 	public void setReadOnlyValue(AttributeValue readOnlyValue) {
 		this.readOnlyValue = readOnlyValue;
 	}
 	public AttributeValue getReadOnlyValue() {
-		return readOnlyValue;
+		System.out.println("$#15176#"); return readOnlyValue;
 	}
 
 

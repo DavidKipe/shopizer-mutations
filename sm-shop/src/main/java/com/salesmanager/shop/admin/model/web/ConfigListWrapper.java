@@ -12,7 +12,7 @@ public class ConfigListWrapper
 
 	public List<MerchantConfiguration> getMerchantConfigs()
 	{
-		return merchantConfigs;
+		System.out.println("$#7854#"); return merchantConfigs;
 	}
 
 	public void setMerchantConfigs(List<MerchantConfiguration> merchantConfigs)

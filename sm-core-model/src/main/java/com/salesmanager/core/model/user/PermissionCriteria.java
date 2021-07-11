@@ -19,7 +19,7 @@ public class PermissionCriteria extends Criteria {
 
 
 	public List<String> getAvailabilities() {
-		return availabilities;
+		System.out.println("$#4853#"); return availabilities;
 	}
 
 	public void setAvailabilities(List<String> availabilities) {
@@ -27,7 +27,7 @@ public class PermissionCriteria extends Criteria {
 	}
 
 	public Boolean getAvailable() {
-		return available;
+		System.out.println("$#4855#"); System.out.println("$#4854#"); return available;
 	}
 
 	public void setAvailable(Boolean available) {
@@ -35,7 +35,7 @@ public class PermissionCriteria extends Criteria {
 	}
 
 	public String getPermissionName() {
-		return permissionName;
+		System.out.println("$#4856#"); return permissionName;
 	}
 
 	public void setPermissionName(String permissionName) {
@@ -43,7 +43,7 @@ public class PermissionCriteria extends Criteria {
 	}
 
 	public Set<Integer> getGroupIds() {
-		return groupIds;
+		System.out.println("$#4857#"); return groupIds;
 	}
 
 	public void setGroupIds(Set<Integer> groupIds) {

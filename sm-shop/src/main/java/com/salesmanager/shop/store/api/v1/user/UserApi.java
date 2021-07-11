@@ -87,13 +87,13 @@ public class UserApi {
 			HttpServletRequest request) {
 
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12165#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 		// only admin and superadmin allowed
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#12166#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 
-		return userFacade.findById(id, merchantStore, language);
+		System.out.println("$#12167#"); return userFacade.findById(id, merchantStore, language);
 	}
 
 	/**
@@ -114,21 +114,21 @@ public class UserApi {
 			@Valid @RequestBody PersistableUser user, HttpServletRequest request) {
 		/** Must be superadmin or admin */
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12168#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 		// only admin and superadmin allowed
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#12169#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 
 		/** if user is admin, user must be in that store */
-		if (!userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
-			if (!userFacade.authorizedStore(authenticatedUser, merchantStore.getCode())) {
+		System.out.println("$#12170#"); if (!userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
+			System.out.println("$#12171#"); if (!userFacade.authorizedStore(authenticatedUser, merchantStore.getCode())) {
 				throw new UnauthorizedException("Operation unauthorized for user [" + authenticatedUser
 						+ "] and store [" + merchantStore.getCode() + "]");
 			}
 		}
 
-		return userFacade.create(user, merchantStore);
+		System.out.println("$#12172#"); return userFacade.create(user, merchantStore);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -146,9 +146,9 @@ public class UserApi {
 																	// doing
 																	// action
 
-		userFacade.authorizedGroups(authenticatedUser, user);
+		System.out.println("$#12173#"); userFacade.authorizedGroups(authenticatedUser, user);
 
-		return userFacade.update(id, authenticatedUser, merchantStore, user);
+		System.out.println("$#12174#"); return userFacade.update(id, authenticatedUser, merchantStore, user);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -157,10 +157,10 @@ public class UserApi {
 	public void password(@Valid @RequestBody UserPassword password, @PathVariable Long id) {
 
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12175#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
-		userFacade.changePassword(id, authenticatedUser, password);
+		System.out.println("$#12176#"); userFacade.changePassword(id, authenticatedUser, password);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -177,26 +177,26 @@ public class UserApi {
 			@RequestParam(value = "emailAddress", required = false) String emailAddress) {
 
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12177#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
 		UserCriteria criteria = new UserCriteria();
-		if(!StringUtils.isBlank(emailAddress)) {
-			criteria.setAdminEmail(emailAddress);
+		System.out.println("$#12178#"); if(!StringUtils.isBlank(emailAddress)) {
+			System.out.println("$#12179#"); criteria.setAdminEmail(emailAddress);
 		}
 		
-		criteria.setStoreCode(merchantStore.getCode());
+		System.out.println("$#12180#"); criteria.setStoreCode(merchantStore.getCode());
 
-		if (!userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
-			if (!userFacade.authorizedStore(authenticatedUser, merchantStore.getCode())) {
+		System.out.println("$#12181#"); if (!userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
+			System.out.println("$#12182#"); if (!userFacade.authorizedStore(authenticatedUser, merchantStore.getCode())) {
 				throw new UnauthorizedException("Operation unauthorized for user [" + authenticatedUser
 						+ "] and store [" + merchantStore + "]");
 			}
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
-		return userFacade.listByCriteria(criteria, page, count, language);
+		System.out.println("$#12183#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#12184#"); return userFacade.listByCriteria(criteria, page, count, language);
 	}
 	
 	@PatchMapping(value = "/private/user/{id}/enabled", produces = { APPLICATION_JSON_VALUE })
@@ -209,14 +209,14 @@ public class UserApi {
 		
 		// superadmin, admin and retail_admin
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12185#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#12186#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 
-		user.setId(id);
-		userFacade.updateEnabled(merchantStore, user);
+		System.out.println("$#12187#"); user.setId(id);
+		System.out.println("$#12188#"); userFacade.updateEnabled(merchantStore, user);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -229,17 +229,17 @@ public class UserApi {
 
 		/** Must be superadmin or admin */
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#12189#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
 
-		if (!userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
+		System.out.println("$#12190#"); if (!userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
 			userFacade.authorizedStore(authenticatedUser, merchantStore.getCode());
 		}
 
-		userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
+		System.out.println("$#12191#"); userFacade.authorizedGroup(authenticatedUser, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()));
 
-		userFacade.delete(id, merchantStore.getCode());
+		System.out.println("$#12192#"); userFacade.delete(id, merchantStore.getCode());
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -256,7 +256,7 @@ public class UserApi {
 		} catch (ResourceNotFoundException e) {
 			isUserExist = false;
 		}
-		return new ResponseEntity<EntityExists>(new EntityExists(isUserExist), HttpStatus.OK);
+		System.out.println("$#12193#"); return new ResponseEntity<EntityExists>(new EntityExists(isUserExist), HttpStatus.OK);
 	}
 
 	/**
@@ -274,11 +274,11 @@ public class UserApi {
 		String userName = principal.getName();
 		ReadableUser user = userFacade.findByUserName(userName, null, language);
 
-		if (!user.isActive()) {
+		System.out.println("$#12194#"); if (!user.isActive()) {
 			throw new UnauthorizedException("User " + userName + " not not active");
 		}
 
-		return user;
+		System.out.println("$#12195#"); return user;
 
 	}
 }

@@ -7,11 +7,11 @@ import com.salesmanager.shop.store.controller.ControllerConstants;
 public class PageBuilderUtils {
 	
 	public static String build404(MerchantStore store) {
-		return new StringBuilder().append(ControllerConstants.Tiles.Pages.notFound).append(".").append(store.getStoreTemplate()).toString();
+		System.out.println("$#15789#"); return new StringBuilder().append(ControllerConstants.Tiles.Pages.notFound).append(".").append(store.getStoreTemplate()).toString();
 	}
 	
 	public static String buildHomePage(MerchantStore store) {
-		return "redirect:" + Constants.SHOP_URI;
+		System.out.println("$#15790#"); return "redirect:" + Constants.SHOP_URI;
 	}
 
 }

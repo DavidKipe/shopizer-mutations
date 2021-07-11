@@ -27,16 +27,16 @@ public class AuthorizationUtils {
 	
 	public String authenticatedUser() {
 		String authenticatedUser = userFacade.authenticatedUser();
-		if (authenticatedUser == null) {
+		System.out.println("$#15531#"); if (authenticatedUser == null) {
 			throw new UnauthorizedException();
 		}
-		return authenticatedUser;
+		System.out.println("$#15532#"); return authenticatedUser;
 	}
 	
 	public void authorizeUser(String authenticatedUser, List<String> roles, MerchantStore store) {
-		userFacade.authorizedGroup(authenticatedUser, roles);
-		if (!userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
-			if (!userFacade.authorizedStore(authenticatedUser, store.getCode())) {
+		System.out.println("$#15533#"); userFacade.authorizedGroup(authenticatedUser, roles);
+		System.out.println("$#15534#"); if (!userFacade.userInRoles(authenticatedUser, Arrays.asList(Constants.GROUP_SUPERADMIN))) {
+			System.out.println("$#15535#"); if (!userFacade.authorizedStore(authenticatedUser, store.getCode())) {
 				throw new UnauthorizedException("Operation unauthorized for user [" + authenticatedUser
 						+ "] and store [" + store.getCode() + "]");
 			}

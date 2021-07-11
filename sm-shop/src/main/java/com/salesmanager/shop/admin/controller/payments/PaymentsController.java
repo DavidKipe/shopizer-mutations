@@ -40,7 +40,7 @@ public class PaymentsController {
 
 		
 		//set menu
-		setMenu(model,request);
+		System.out.println("$#5956#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -55,7 +55,7 @@ public class PaymentsController {
 		model.addAttribute("modules", modules);
 		model.addAttribute("configuredModules", configuredModules);
 		
-		return ControllerConstants.Tiles.Payment.paymentMethods;
+		System.out.println("$#5957#"); return ControllerConstants.Tiles.Payment.paymentMethods;
 
 	}
 	
@@ -64,24 +64,24 @@ public class PaymentsController {
 	public String displayPaymentMethod(@RequestParam("code") String code, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#5958#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 
 		//get configured shipping modules
 		IntegrationConfiguration configuration = paymentService.getPaymentConfiguration(code, store);
-		if(configuration==null) {
+		System.out.println("$#5959#"); if(configuration==null) {
 			configuration = new IntegrationConfiguration();
-			configuration.setEnvironment(com.salesmanager.core.business.constants.Constants.PRODUCTION_ENVIRONMENT);
+			System.out.println("$#5960#"); configuration.setEnvironment(com.salesmanager.core.business.constants.Constants.PRODUCTION_ENVIRONMENT);
 			
 			Map<String,String> keys = new HashMap<String,String>();
 			keys.put("transaction", TransactionType.AUTHORIZECAPTURE.name());
 			
-			configuration.setIntegrationKeys(keys);
+			System.out.println("$#5961#"); configuration.setIntegrationKeys(keys);
 			
 		}
 		
-		configuration.setModuleCode(code);
+		System.out.println("$#5962#"); configuration.setModuleCode(code);
 		
 		List<String> environments = new ArrayList<String>();
 		environments.add(com.salesmanager.core.business.constants.Constants.TEST_ENVIRONMENT);
@@ -89,7 +89,7 @@ public class PaymentsController {
 		
 		model.addAttribute("configuration", configuration);
 		model.addAttribute("environments", environments);
-		return ControllerConstants.Tiles.Payment.paymentMethod;
+		System.out.println("$#5963#"); return ControllerConstants.Tiles.Payment.paymentMethod;
 		
 		
 	}
@@ -99,7 +99,7 @@ public class PaymentsController {
 	public String savePaymentMethod(@ModelAttribute("configuration") IntegrationConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#5964#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 
@@ -112,17 +112,17 @@ public class PaymentsController {
 		model.addAttribute("configuration", configuration);
 
 		try {
-			paymentService.savePaymentModuleConfiguration(configuration, store);
+			System.out.println("$#5965#"); paymentService.savePaymentModuleConfiguration(configuration, store);
 		} catch (Exception e) {
-			if(e instanceof com.salesmanager.core.business.modules.integration.IntegrationException) {
-				if(((IntegrationException)e).getErrorCode()==IntegrationException.ERROR_VALIDATION_SAVE) {
+			System.out.println("$#5966#"); if(e instanceof com.salesmanager.core.business.modules.integration.IntegrationException) {
+				System.out.println("$#5967#"); if(((IntegrationException)e).getErrorCode()==IntegrationException.ERROR_VALIDATION_SAVE) {
 					
 					List<String> errorCodes = ((IntegrationException)e).getErrorFields();
 					for(String errorCode : errorCodes) {
 						model.addAttribute(errorCode,messages.getMessage("message.fielderror", locale));
 					}
 					model.addAttribute("validationError","validationError");
-					return ControllerConstants.Tiles.Payment.paymentMethod;
+					System.out.println("$#5968#"); return ControllerConstants.Tiles.Payment.paymentMethod;
 				}
 			} else {
 				throw new Exception(e);
@@ -132,7 +132,7 @@ public class PaymentsController {
 		
 		
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Payment.paymentMethod;
+		System.out.println("$#5969#"); return ControllerConstants.Tiles.Payment.paymentMethod;
 		
 		
 	}
@@ -140,11 +140,11 @@ public class PaymentsController {
 	@RequestMapping(value="/admin/payments/deletePaymentMethod.html", method=RequestMethod.POST)
 	public String deletePaymentMethod(@RequestParam("code") String code, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		this.setMenu(model, request);
+		System.out.println("$#5970#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		paymentService.removePaymentModuleConfiguration(code, store);
+		System.out.println("$#5971#"); paymentService.removePaymentModuleConfiguration(code, store);
 		
-		return "redirect:/admin/payments/paymentMethods.html";
+		System.out.println("$#5972#"); return "redirect:/admin/payments/paymentMethods.html";
 		
 	}
 	

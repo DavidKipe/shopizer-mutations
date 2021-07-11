@@ -31,10 +31,10 @@ public final class EncryptionImpl implements Encryption {
 		SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), KEY_SPEC);
 		IvParameterSpec ivSpec = new IvParameterSpec(IV_P
 				.getBytes());
-		cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
+		System.out.println("$#1471#"); cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
 		byte[] inpbytes = value.getBytes();
 		byte[] encrypted = cipher.doFinal(inpbytes);
-		return new String(bytesToHex(encrypted));
+		System.out.println("$#1472#"); return new String(bytesToHex(encrypted));
 		
 		
 	}
@@ -43,7 +43,7 @@ public final class EncryptionImpl implements Encryption {
 	public String decrypt(String value) throws Exception {
 
 		
-		if (StringUtils.isBlank(value))
+		System.out.println("$#1473#"); if (StringUtils.isBlank(value))
 			throw new Exception("Nothing to encrypt");
 
 		// NEED TO UNDERSTAND WHY PKCS5Padding DOES NOT WORK
@@ -52,52 +52,52 @@ public final class EncryptionImpl implements Encryption {
 		SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), KEY_SPEC);
 		IvParameterSpec ivSpec = new IvParameterSpec(IV_P
 				.getBytes());
-		cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
+		System.out.println("$#1474#"); cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
 		byte[] outText;
 		outText = cipher.doFinal(hexToBytes(value));
-		return new String(outText);
+		System.out.println("$#1475#"); return new String(outText);
 		
 		
 	}
 	
 	
 	private String bytesToHex(byte[] data) {
-		if (data == null) {
-			return null;
+		System.out.println("$#1476#"); if (data == null) {
+			System.out.println("$#1477#"); return null;
 		} else {
 			int len = data.length;
 			String str = "";
-			for (int i = 0; i < len; i++) {
-				if ((data[i] & 0xFF) < 16) {
+			System.out.println("$#1480#"); System.out.println("$#1479#"); System.out.println("$#1478#"); for (int i = 0; i < len; i++) {
+				System.out.println("$#1483#"); System.out.println("$#1482#"); System.out.println("$#1481#"); if ((data[i] & 0xFF) < 16) {
 					str = str + "0"
 							+ java.lang.Integer.toHexString(data[i] & 0xFF);
 				} else {
-					str = str + java.lang.Integer.toHexString(data[i] & 0xFF);
+					System.out.println("$#1485#"); str = str + java.lang.Integer.toHexString(data[i] & 0xFF);
 				}
 
 			}
-			return str;
+			System.out.println("$#1486#"); return str;
 		}
 	}
 
 	private static byte[] hexToBytes(String str) {
-		if (str == null) {
+		System.out.println("$#1487#"); if (str == null) {
 			return null;
-		} else if (str.length() < 2) {
+		} else if (str.length() < 2) { System.out.println("$#1488#"); System.out.println("$#1489#");
 			return null;
 		} else {
-			int len = str.length() / 2;
+			System.out.println("$#1490#"); int len = str.length() / 2;
 			byte[] buffer = new byte[len];
-			for (int i = 0; i < len; i++) {
-				buffer[i] = (byte) Integer.parseInt(str.substring(i * 2,
+			System.out.println("$#1493#"); System.out.println("$#1492#"); System.out.println("$#1491#"); for (int i = 0; i < len; i++) {
+				System.out.println("$#1495#"); buffer[i] = (byte) Integer.parseInt(str.substring(i * 2,
 						i * 2 + 2), 16);
 			}
-			return buffer;
+			System.out.println("$#1497#"); return buffer;
 		}
 	}
 	
 	public String getSecretKey() {
-		return secretKey;
+		System.out.println("$#1498#"); return secretKey;
 	}
 
 	public void setSecretKey(String secretKey) {

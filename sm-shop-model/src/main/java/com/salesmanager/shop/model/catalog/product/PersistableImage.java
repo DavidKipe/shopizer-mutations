@@ -30,7 +30,7 @@ public class PersistableImage extends Entity {
 
 
 	public byte[] getBytes() {
-		return bytes;
+		System.out.println("$#8856#"); return bytes;
 	}
 
 
@@ -40,12 +40,12 @@ public class PersistableImage extends Entity {
 
 
 	public String getContentType() {
-		return contentType;
+		System.out.println("$#8857#"); return contentType;
 	}
 
 
 	public String getImageUrl() {
-		return imageUrl;
+		System.out.println("$#8858#"); return imageUrl;
 	}
 
 
@@ -55,7 +55,7 @@ public class PersistableImage extends Entity {
 
 
 	public int getImageType() {
-		return imageType;
+		System.out.println("$#8859#"); return imageType;
 	}
 
 
@@ -65,7 +65,7 @@ public class PersistableImage extends Entity {
 
 
 	public boolean isDefaultImage() {
-		return defaultImage;
+		System.out.println("$#8861#"); System.out.println("$#8860#"); return defaultImage;
 	}
 
 
@@ -75,7 +75,7 @@ public class PersistableImage extends Entity {
 
 
 	public String getName() {
-		return name;
+		System.out.println("$#8862#"); return name;
 	}
 
 
@@ -85,7 +85,7 @@ public class PersistableImage extends Entity {
 
 
 	public String getPath() {
-		return path;
+		System.out.println("$#8863#"); return path;
 	}
 
 
@@ -95,7 +95,7 @@ public class PersistableImage extends Entity {
 
 
   public MultipartFile[] getFiles() {
-    return files;
+				System.out.println("$#8864#"); return files;
   }
 
 

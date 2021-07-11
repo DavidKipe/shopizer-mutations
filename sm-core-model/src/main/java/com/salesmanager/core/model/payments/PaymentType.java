@@ -14,11 +14,11 @@ public enum PaymentType {
 	}
 	
     public static PaymentType fromString(String text) {
-		    if (text != null) {
+						System.out.println("$#4428#"); if (text != null) {
 		      for (PaymentType b : PaymentType.values()) {
 		    	String payemntType = text.toUpperCase(); 
-		        if (payemntType.equalsIgnoreCase(b.name())) {
-		          return b;
+										System.out.println("$#4429#"); if (payemntType.equalsIgnoreCase(b.name())) {
+												System.out.println("$#4430#"); return b;
 		        }
 		      }
 		    }

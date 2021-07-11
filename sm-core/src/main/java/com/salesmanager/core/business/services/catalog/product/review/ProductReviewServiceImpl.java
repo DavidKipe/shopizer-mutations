@@ -34,30 +34,30 @@ public class ProductReviewServiceImpl extends
 
 	@Override
 	public List<ProductReview> getByCustomer(Customer customer) {
-		return productReviewRepository.findByCustomer(customer.getId());
+		System.out.println("$#2047#"); return productReviewRepository.findByCustomer(customer.getId());
 	}
 
 	@Override
 	public List<ProductReview> getByProduct(Product product) {
-		return productReviewRepository.findByProduct(product.getId());
+		System.out.println("$#2048#"); return productReviewRepository.findByProduct(product.getId());
 	}
 	
 	@Override
 	public ProductReview getByProductAndCustomer(Long productId, Long customerId) {
-		return productReviewRepository.findByProductAndCustomer(productId, customerId);
+		System.out.println("$#2049#"); return productReviewRepository.findByProductAndCustomer(productId, customerId);
 	}
 	
 	@Override
 	public List<ProductReview> getByProduct(Product product, Language language) {
-		return productReviewRepository.findByProduct(product.getId(), language.getId());
+		System.out.println("$#2050#"); return productReviewRepository.findByProduct(product.getId(), language.getId());
 	}
 	
 	private void saveOrUpdate(ProductReview review) throws ServiceException {
 		
 
-		Validate.notNull(review,"ProductReview cannot be null");
-		Validate.notNull(review.getProduct(),"ProductReview.product cannot be null");
-		Validate.notNull(review.getCustomer(),"ProductReview.customer cannot be null");
+		System.out.println("$#2051#"); Validate.notNull(review,"ProductReview cannot be null");
+		System.out.println("$#2052#"); Validate.notNull(review.getProduct(),"ProductReview.product cannot be null");
+		System.out.println("$#2053#"); Validate.notNull(review.getCustomer(),"ProductReview.customer cannot be null");
 		
 		
 		//refresh product
@@ -65,7 +65,7 @@ public class ProductReviewServiceImpl extends
 		
 		//ajust product rating
 		Integer count = 0;
-		if(product.getProductReviewCount()!=null) {
+		System.out.println("$#2054#"); if(product.getProductReviewCount()!=null) {
 			count = product.getProductReviewCount();
 		}
 				
@@ -73,7 +73,7 @@ public class ProductReviewServiceImpl extends
 		
 
 		BigDecimal averageRating = product.getProductReviewAvg();
-		if(averageRating==null) {
+		System.out.println("$#2055#"); if(averageRating==null) {
 			averageRating = new BigDecimal(0);
 		}
 		//get reviews
@@ -82,25 +82,25 @@ public class ProductReviewServiceImpl extends
 		BigDecimal totalRating = averageRating.multiply(new BigDecimal(count));
 		totalRating = totalRating.add(new BigDecimal(review.getReviewRating()));
 		
-		count = count + 1;
-		double avg = totalRating.doubleValue() / count.intValue();
+		System.out.println("$#2056#"); count = count + 1;
+		System.out.println("$#2057#"); double avg = totalRating.doubleValue() / count.intValue();
 		
-		product.setProductReviewAvg(new BigDecimal(avg));
-		product.setProductReviewCount(count);
-		super.save(review);
+		System.out.println("$#2058#"); product.setProductReviewAvg(new BigDecimal(avg));
+		System.out.println("$#2059#"); product.setProductReviewCount(count);
+		System.out.println("$#2060#"); super.save(review);
 		
-		productService.update(product);
+		System.out.println("$#2061#"); productService.update(product);
 		
-		review.setProduct(product);
+		System.out.println("$#2062#"); review.setProduct(product);
 		
 	}
 	
 	public void update(ProductReview review) throws ServiceException {
-		this.saveOrUpdate(review);
+		System.out.println("$#2063#"); this.saveOrUpdate(review);
 	}
 	
 	public void create(ProductReview review) throws ServiceException {
-		this.saveOrUpdate(review);
+		System.out.println("$#2064#"); this.saveOrUpdate(review);
 	}
 
 	/* (non-Javadoc)
@@ -108,7 +108,7 @@ public class ProductReviewServiceImpl extends
 	 */
 	@Override
 	public List<ProductReview> getByProductNoCustomers(Product product) {
-		return productReviewRepository.findByProductNoCustomers(product.getId());
+		System.out.println("$#2065#"); return productReviewRepository.findByProductNoCustomers(product.getId());
 	}
 
 

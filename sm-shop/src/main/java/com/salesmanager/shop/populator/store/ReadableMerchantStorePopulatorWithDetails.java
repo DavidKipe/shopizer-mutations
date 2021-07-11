@@ -27,11 +27,11 @@ public class ReadableMerchantStorePopulatorWithDetails extends
 
 		target = super.populate(source, target, store, language);
 
-		target.setTemplate(source.getStoreTemplate());
+		System.out.println("$#11154#"); target.setTemplate(source.getStoreTemplate());
 
 		// TODO Add more as needed
 
-		return target;
+		System.out.println("$#11155#"); return target;
 	}
 
 	@Override

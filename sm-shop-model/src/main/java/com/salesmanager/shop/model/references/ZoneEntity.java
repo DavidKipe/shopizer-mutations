@@ -11,13 +11,13 @@ public class ZoneEntity extends Entity {
 	private String countryCode;
 	private String code;
 	public String getCountryCode() {
-		return countryCode;
+		System.out.println("$#9263#"); return countryCode;
 	}
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#9264#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;

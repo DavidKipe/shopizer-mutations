@@ -77,7 +77,7 @@ public class TaxClass extends SalesManagerEntity<Long, TaxClass> {
 	
 	@Override
 	public Long getId() {
-		return this.id;
+		System.out.println("$#4814#"); return this.id;
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class TaxClass extends SalesManagerEntity<Long, TaxClass> {
 
 
 	public String getTitle() {
-		return title;
+		System.out.println("$#4815#"); return title;
 	}
 
 	public void setTitle(String title) {
@@ -95,7 +95,7 @@ public class TaxClass extends SalesManagerEntity<Long, TaxClass> {
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4816#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -103,7 +103,7 @@ public class TaxClass extends SalesManagerEntity<Long, TaxClass> {
 	}
 
 	public List<TaxRate> getTaxRates() {
-		return taxRates;
+		System.out.println("$#4817#"); return taxRates;
 	}
 
 	public void setTaxRates(List<TaxRate> taxRates) {
@@ -112,7 +112,7 @@ public class TaxClass extends SalesManagerEntity<Long, TaxClass> {
 
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4818#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {

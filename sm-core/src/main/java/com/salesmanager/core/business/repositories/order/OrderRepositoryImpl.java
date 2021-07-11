@@ -35,8 +35,8 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 		
 		String orderByCriteria = " order by o.id desc";
 		
-		if(criteria.getOrderBy()!=null) {
-			if(CriteriaOrderBy.ASC.name().equals(criteria.getOrderBy().name())) {
+		System.out.println("$#1659#"); if(criteria.getOrderBy()!=null) {
+			System.out.println("$#1660#"); if(CriteriaOrderBy.ASC.name().equals(criteria.getOrderBy().name())) {
 				orderByCriteria = " order by o.id asc";
 			}
 		}
@@ -55,19 +55,19 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 		objectBuilderWhere.append(whereQuery);
 		
 
-		if(!StringUtils.isBlank(criteria.getCustomerName())) {
+		System.out.println("$#1661#"); if(!StringUtils.isBlank(criteria.getCustomerName())) {
 			String nameQuery =" and o.billing.firstName like:nm or o.billing.lastName like:nm";
 			countBuilderWhere.append(nameQuery);
 			objectBuilderWhere.append(nameQuery);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getPaymentMethod())) {
+		System.out.println("$#1662#"); if(!StringUtils.isBlank(criteria.getPaymentMethod())) {
 			String paymentQuery =" and o.paymentModuleCode like:pm";
 			countBuilderWhere.append(paymentQuery);
 			objectBuilderWhere.append(paymentQuery);
 		}
 		
-		if(criteria.getCustomerId()!=null) {
+		System.out.println("$#1663#"); if(criteria.getCustomerId()!=null) {
 			String customerQuery =" and o.customerId =:cid";
 			countBuilderWhere.append(customerQuery);
 			objectBuilderWhere.append(customerQuery);
@@ -88,19 +88,19 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 		objectQ.setParameter("mId", store.getId());
 		
 
-		if(!StringUtils.isBlank(criteria.getCustomerName())) {
+		System.out.println("$#1664#"); if(!StringUtils.isBlank(criteria.getCustomerName())) {
 			String nameParam = new StringBuilder().append("%").append(criteria.getCustomerName()).append("%").toString();
 			countQ.setParameter("nm",nameParam);
 			objectQ.setParameter("nm",nameParam);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getPaymentMethod())) {
+		System.out.println("$#1665#"); if(!StringUtils.isBlank(criteria.getPaymentMethod())) {
 			String payementParam = new StringBuilder().append("%").append(criteria.getPaymentMethod()).append("%").toString();
 			countQ.setParameter("pm",payementParam);
 			objectQ.setParameter("pm",payementParam);
 		}
 		
-		if(criteria.getCustomerId()!=null) {
+		System.out.println("$#1666#"); if(criteria.getCustomerId()!=null) {
 			countQ.setParameter("cid", criteria.getCustomerId());
 			objectQ.setParameter("cid",criteria.getCustomerId());
 		}
@@ -108,10 +108,12 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 
 		Number count = (Number) countQ.getSingleResult();
 
-		orderList.setTotalCount(count.intValue());
+		System.out.println("$#1667#"); orderList.setTotalCount(count.intValue());
 		
-        if(count.intValue()==0)
-        	return orderList;
+		System.out.println("$#1668#"); if(count.intValue()==0) {
+			System.out.println("$#1669#");
+			return orderList;
+		}
         
 		//TO BE USED
         int max = criteria.getMaxCount();
@@ -121,19 +123,19 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
         
         
         
-    	if(max>0) {
-    			int maxCount = first + max;
+					System.out.println("$#1671#"); System.out.println("$#1670#"); if(max>0) {
+							System.out.println("$#1672#"); int maxCount = first + max;
 
-    			if(maxCount < count.intValue()) {
+							System.out.println("$#1674#"); System.out.println("$#1673#"); if(maxCount < count.intValue()) {
     				objectQ.setMaxResults(maxCount);
     			} else {
     				objectQ.setMaxResults(count.intValue());
     			}
     	}
 		
-    	orderList.setOrders(objectQ.getResultList());
+					System.out.println("$#1675#"); orderList.setOrders(objectQ.getResultList());
 
-		return orderList;
+		System.out.println("$#1676#"); return orderList;
 		
 		
 	}
@@ -146,8 +148,8 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 
 		String orderByCriteria = " order by o.id desc";
 
-		if(criteria.getOrderBy()!=null) {
-			if(CriteriaOrderBy.ASC.name().equals(criteria.getOrderBy().name())) {
+		System.out.println("$#1677#"); if(criteria.getOrderBy()!=null) {
+			System.out.println("$#1678#"); if(CriteriaOrderBy.ASC.name().equals(criteria.getOrderBy().name())) {
 				orderByCriteria = " order by o.id asc";
 			}
 		}
@@ -165,34 +167,34 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 		objectBuilderWhere.append(storeQuery);
 		countBuilderSelect.append(storeQuery);
 		
-		if(!StringUtils.isEmpty(criteria.getCustomerName())) {
+		System.out.println("$#1679#"); if(!StringUtils.isEmpty(criteria.getCustomerName())) {
 			String nameQuery =  " and o.billing.firstName like:name or o.billing.lastName like:name";
 			objectBuilderWhere.append(nameQuery);
 			countBuilderSelect.append(nameQuery);
 		}
 		
-		if(!StringUtils.isEmpty(criteria.getEmail())) {
+		System.out.println("$#1680#"); if(!StringUtils.isEmpty(criteria.getEmail())) {
 			String nameQuery =  " and o.customerEmailAddress like:email";
 			objectBuilderWhere.append(nameQuery);
 			countBuilderSelect.append(nameQuery);
 		}
 		
 		//id
-		if(criteria.getId() != null) {
+		System.out.println("$#1681#"); if(criteria.getId() != null) {
 			String nameQuery =  " and str(o.id) like:id";
 			objectBuilderWhere.append(nameQuery);
 			countBuilderSelect.append(nameQuery);
 		}
 		
 		//phone
-		if(!StringUtils.isEmpty(criteria.getCustomerPhone())) {
+		System.out.println("$#1682#"); if(!StringUtils.isEmpty(criteria.getCustomerPhone())) {
 			String nameQuery =  " and o.billing.telephone like:phone or o.delivery.telephone like:phone";
 			objectBuilderWhere.append(nameQuery);
 			countBuilderSelect.append(nameQuery);
 		}
 		
 		//status
-		if(!StringUtils.isEmpty(criteria.getStatus())) {
+		System.out.println("$#1683#"); if(!StringUtils.isEmpty(criteria.getStatus())) {
 			String nameQuery =  " and o.status =:status";
 			objectBuilderWhere.append(nameQuery);
 			countBuilderSelect.append(nameQuery);
@@ -209,31 +211,31 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 				objectBuilderSelect.toString() + objectBuilderWhere.toString());
 		
 		//customer name
-		if(!StringUtils.isEmpty(criteria.getCustomerName())) {
+		System.out.println("$#1684#"); if(!StringUtils.isEmpty(criteria.getCustomerName())) {
 			countQ.setParameter("name", like(criteria.getCustomerName()));
 			objectQ.setParameter("name", like(criteria.getCustomerName()));
 		}
 		
 		//email
-		if(!StringUtils.isEmpty(criteria.getEmail())) {
+		System.out.println("$#1685#"); if(!StringUtils.isEmpty(criteria.getEmail())) {
 			countQ.setParameter("email", like(criteria.getEmail()));
 			objectQ.setParameter("email", like(criteria.getEmail()));			
 		}
 		
 		//id
-		if(criteria.getId() != null) {
+		System.out.println("$#1686#"); if(criteria.getId() != null) {
 			countQ.setParameter("id", like(String.valueOf(criteria.getId())));
 			objectQ.setParameter("id", like(String.valueOf(criteria.getId())));
 		}
 		
 		//phone
-		if(!StringUtils.isEmpty(criteria.getCustomerPhone())) {
+		System.out.println("$#1687#"); if(!StringUtils.isEmpty(criteria.getCustomerPhone())) {
 			countQ.setParameter("phone", like(criteria.getCustomerPhone()));
 			objectQ.setParameter("phone", like(criteria.getCustomerPhone()));
 		}
 		
 		//status
-		if(!StringUtils.isEmpty(criteria.getStatus())) {
+		System.out.println("$#1688#"); if(!StringUtils.isEmpty(criteria.getStatus())) {
 			countQ.setParameter("status", OrderStatus.valueOf(criteria.getStatus().toUpperCase()));
 			objectQ.setParameter("status", OrderStatus.valueOf(criteria.getStatus().toUpperCase()));
 		}
@@ -245,27 +247,29 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 
 		Number count = (Number) countQ.getSingleResult();
 
-		if(count.intValue()==0)
+		System.out.println("$#1689#"); if(count.intValue()==0) {
+			System.out.println("$#1690#");
 			return orderList;
+		}
 
 	    @SuppressWarnings("rawtypes")
 		GenericEntityList entityList = new GenericEntityList();
-	    entityList.setTotalCount(count.intValue());
+					System.out.println("$#1691#"); entityList.setTotalCount(count.intValue());
 		
 		objectQ = RepositoryHelper.paginateQuery(objectQ, count, entityList, criteria);
 		
 		//TODO use GenericEntityList
 
-		orderList.setTotalCount(entityList.getTotalCount());
-		orderList.setTotalPages(entityList.getTotalPages());
+		System.out.println("$#1692#"); orderList.setTotalCount(entityList.getTotalCount());
+		System.out.println("$#1693#"); orderList.setTotalPages(entityList.getTotalPages());
 
-		orderList.setOrders(objectQ.getResultList());
+		System.out.println("$#1694#"); orderList.setOrders(objectQ.getResultList());
 
-		return orderList;
+		System.out.println("$#1695#"); return orderList;
 	}
 	
 	private String like(String q) {
-		return '%' + q + '%';
+		System.out.println("$#1696#"); return '%' + q + '%';
 	}
 
 

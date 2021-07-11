@@ -11,13 +11,13 @@ public class Refund implements Serializable {
 	private Long orderId;
 	private String amount;
 	public Long getOrderId() {
-		return orderId;
+		System.out.println("$#7822#"); return orderId;
 	}
 	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 	public String getAmount() {
-		return amount;
+		System.out.println("$#7823#"); return amount;
 	}
 	public void setAmount(String amount) {
 		this.amount = amount;

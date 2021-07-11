@@ -80,7 +80,7 @@ public class MerchantConfiguration extends SalesManagerEntity<Long, MerchantConf
   }
 
   public String getKey() {
-    return key;
+				System.out.println("$#4768#"); return key;
   }
 
   public void setValue(String value) {
@@ -88,11 +88,11 @@ public class MerchantConfiguration extends SalesManagerEntity<Long, MerchantConf
   }
 
   public String getValue() {
-    return value;
+				System.out.println("$#4769#"); return value;
   }
 
   public AuditSection getAuditSection() {
-    return auditSection;
+				System.out.println("$#4770#"); return auditSection;
   }
 
   public void setAuditSection(AuditSection auditSection) {
@@ -101,7 +101,7 @@ public class MerchantConfiguration extends SalesManagerEntity<Long, MerchantConf
 
   @Override
   public Long getId() {
-    return id;
+				System.out.println("$#4771#"); return id;
   }
 
   @Override
@@ -112,7 +112,7 @@ public class MerchantConfiguration extends SalesManagerEntity<Long, MerchantConf
 
 
   public MerchantStore getMerchantStore() {
-    return merchantStore;
+				System.out.println("$#4772#"); return merchantStore;
   }
 
   public void setMerchantStore(MerchantStore merchantStore) {
@@ -124,11 +124,11 @@ public class MerchantConfiguration extends SalesManagerEntity<Long, MerchantConf
   }
 
   public MerchantConfigurationType getMerchantConfigurationType() {
-    return merchantConfigurationType;
+				System.out.println("$#4773#"); return merchantConfigurationType;
   }
 
   public Boolean getActive() {
-    return active;
+				System.out.println("$#4775#"); System.out.println("$#4774#"); return active;
   }
 
   public void setActive(Boolean active) {

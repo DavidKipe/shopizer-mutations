@@ -22,7 +22,7 @@ public class CurrencyServiceImpl extends SalesManagerEntityServiceImpl<Long, Cur
 
 	@Override
 	public Currency getByCode(String code) {
-		return currencyRepository.getByCode(code);
+		System.out.println("$#2636#"); return currencyRepository.getByCode(code);
 	}
 
 }

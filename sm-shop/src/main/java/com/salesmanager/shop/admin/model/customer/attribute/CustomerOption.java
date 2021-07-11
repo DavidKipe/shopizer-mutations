@@ -24,7 +24,7 @@ public class CustomerOption extends ShopEntity implements Serializable {
 
 
 	public String getType() {
-		return type;
+		System.out.println("$#7801#"); return type;
 	}
 
 	public void setType(String type) {
@@ -32,7 +32,7 @@ public class CustomerOption extends ShopEntity implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		System.out.println("$#7802#"); return name;
 	}
 
 	public void setName(String name) {
@@ -40,7 +40,7 @@ public class CustomerOption extends ShopEntity implements Serializable {
 	}
 
 	public CustomerOptionValue getDefaultValue() {
-		return defaultValue;
+		System.out.println("$#7803#"); return defaultValue;
 	}
 
 	public void setDefaultValue(CustomerOptionValue defaultValue) {
@@ -48,7 +48,7 @@ public class CustomerOption extends ShopEntity implements Serializable {
 	}
 
 	public List<CustomerOptionValue> getAvailableValues() {
-		return availableValues;
+		System.out.println("$#7804#"); return availableValues;
 	}
 
 	public void setAvailableValues(List<CustomerOptionValue> availableValues) {

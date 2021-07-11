@@ -82,21 +82,21 @@ public class PermissionController {
 				Map entry = new HashMap();
 				entry.put("permissionId", permission.getId());
 				entry.put("name", permission.getPermissionName());
-				resp.addDataEntry(entry);
+				System.out.println("$#7564#"); resp.addDataEntry(entry);
 
 			}
 
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7565#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while paging permissions", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7566#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7567#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#7568#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 
 	@SuppressWarnings("unused")

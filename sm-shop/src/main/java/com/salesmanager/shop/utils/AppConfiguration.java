@@ -13,7 +13,7 @@ public class AppConfiguration {
 	public Properties properties;
 	
 	public Properties getProperties() {
-		return properties;
+		System.out.println("$#15527#"); return properties;
 	}
 
 	public void setProperties(Properties properties) {
@@ -24,11 +24,11 @@ public class AppConfiguration {
 	
 	public String getProperty(String propertyKey) {
 		
-		if(properties!=null) {
-			return properties.getProperty(propertyKey);
+		System.out.println("$#15528#"); if(properties!=null) {
+			System.out.println("$#15529#"); return properties.getProperty(propertyKey);
 		} else {
 			LOGGER.warn("Application properties are not loaded");
-			return null;
+			System.out.println("$#15530#"); return null;
 		}
 		
 		

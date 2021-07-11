@@ -33,7 +33,7 @@ public class GeoZoneDescription extends Description {
 	}
 
 	public GeoZone getGeoZone() {
-		return geoZone;
+		System.out.println("$#4475#"); return geoZone;
 	}
 
 	public void setGeoZone(GeoZone geoZone) {

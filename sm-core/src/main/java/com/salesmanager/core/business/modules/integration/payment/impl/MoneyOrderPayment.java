@@ -34,14 +34,14 @@ public class MoneyOrderPayment implements PaymentModule {
 		Map<String,String> keys = integrationConfiguration.getIntegrationKeys();
 		
 		//validate integrationKeys['address']
-		if(keys==null || StringUtils.isBlank(keys.get("address"))) {
+		System.out.println("$#609#"); if(keys==null || StringUtils.isBlank(keys.get("address"))) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("address");
 		}
 		
-		if(errorFields!=null) {
+		System.out.println("$#611#"); if(errorFields!=null) {
 			IntegrationException ex = new IntegrationException(IntegrationException.ERROR_VALIDATION_SAVE);
-			ex.setErrorFields(errorFields);
+			System.out.println("$#612#"); ex.setErrorFields(errorFields);
 			throw ex;
 			
 		}
@@ -87,13 +87,13 @@ public class MoneyOrderPayment implements PaymentModule {
 		
 		
 		Transaction transaction = new Transaction();
-		transaction.setAmount(amount);
-		transaction.setTransactionDate(new Date());
-		transaction.setTransactionType(TransactionType.AUTHORIZECAPTURE);
-		transaction.setPaymentType(PaymentType.MONEYORDER);
+		System.out.println("$#613#"); transaction.setAmount(amount);
+		System.out.println("$#614#"); transaction.setTransactionDate(new Date());
+		System.out.println("$#615#"); transaction.setTransactionType(TransactionType.AUTHORIZECAPTURE);
+		System.out.println("$#616#"); transaction.setPaymentType(PaymentType.MONEYORDER);
 
 		
-		return transaction;
+		System.out.println("$#617#"); return transaction;
 		
 		
 		

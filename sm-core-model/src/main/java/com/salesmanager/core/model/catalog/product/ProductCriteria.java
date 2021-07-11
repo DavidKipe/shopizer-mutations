@@ -25,7 +25,7 @@ public class ProductCriteria extends Criteria {
 	private Long ownerId = null;
 
 	public String getProductName() {
-		return productName;
+		System.out.println("$#3972#"); return productName;
 	}
 
 	public void setProductName(String productName) {
@@ -34,7 +34,7 @@ public class ProductCriteria extends Criteria {
 
 
 	public List<Long> getCategoryIds() {
-		return categoryIds;
+		System.out.println("$#3973#"); return categoryIds;
 	}
 
 	public void setCategoryIds(List<Long> categoryIds) {
@@ -42,7 +42,7 @@ public class ProductCriteria extends Criteria {
 	}
 
 	public List<String> getAvailabilities() {
-		return availabilities;
+		System.out.println("$#3974#"); return availabilities;
 	}
 
 	public void setAvailabilities(List<String> availabilities) {
@@ -50,7 +50,7 @@ public class ProductCriteria extends Criteria {
 	}
 
 	public Boolean getAvailable() {
-		return available;
+		System.out.println("$#3976#"); System.out.println("$#3975#"); return available;
 	}
 
 	public void setAvailable(Boolean available) {
@@ -62,7 +62,7 @@ public class ProductCriteria extends Criteria {
 	}
 
 	public List<AttributeCriteria> getAttributeCriteria() {
-		return attributeCriteria;
+		System.out.println("$#3977#"); return attributeCriteria;
 	}
 
 	public void setProductIds(List<Long> productIds) {
@@ -70,7 +70,7 @@ public class ProductCriteria extends Criteria {
 	}
 
 	public List<Long> getProductIds() {
-		return productIds;
+		System.out.println("$#3978#"); return productIds;
 	}
 
 	public void setManufacturerId(Long manufacturerId) {
@@ -78,11 +78,11 @@ public class ProductCriteria extends Criteria {
 	}
 
 	public Long getManufacturerId() {
-		return manufacturerId;
+		System.out.println("$#3979#"); return manufacturerId;
 	}
 
 	public String getStatus() {
-		return status;
+		System.out.println("$#3980#"); return status;
 	}
 
 	public void setStatus(String status) {
@@ -90,7 +90,7 @@ public class ProductCriteria extends Criteria {
 	}
 
 	public Long getOwnerId() {
-		return ownerId;
+		System.out.println("$#3981#"); return ownerId;
 	}
 
 	public void setOwnerId(Long ownerId) {

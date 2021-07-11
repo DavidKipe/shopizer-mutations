@@ -9,13 +9,13 @@ public class PersistableCatalogCategoryEntry extends CatalogEntryEntity {
 	private String productCode;
 	private String categoryCode;
 	public String getProductCode() {
-		return productCode;
+		System.out.println("$#8724#"); return productCode;
 	}
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
 	}
 	public String getCategoryCode() {
-		return categoryCode;
+		System.out.println("$#8725#"); return categoryCode;
 	}
 	public void setCategoryCode(String categoryCode) {
 		this.categoryCode = categoryCode;

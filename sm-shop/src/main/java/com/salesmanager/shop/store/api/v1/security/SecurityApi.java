@@ -59,7 +59,7 @@ public class SecurityApi {
 		Group g = null;
 		try {
 			g = groupService.findByName(group);
-			if(g == null) {
+			System.out.println("$#12030#"); if(g == null) {
 				throw new ResourceNotFoundException("Group [" + group + "] does not exist");
 			}
 		} catch (Exception e) {
@@ -70,11 +70,11 @@ public class SecurityApi {
 		List<ReadablePermission> readablePermissions = new ArrayList<ReadablePermission>();
 		for (Permission permission : permissions) {
 			ReadablePermission readablePermission = new ReadablePermission();
-			readablePermission.setName(permission.getPermissionName());
-			readablePermission.setId(permission.getId());
+			System.out.println("$#12031#"); readablePermission.setName(permission.getPermissionName());
+			System.out.println("$#12032#"); readablePermission.setId(permission.getId());
 			readablePermissions.add(readablePermission);
 		}
-		return readablePermissions;
+		System.out.println("$#12033#"); return readablePermissions;
 
 		
 	}
@@ -90,11 +90,11 @@ public class SecurityApi {
 		List<ReadablePermission> readablePermissions = new ArrayList<ReadablePermission>();
 		for (Permission permission : permissions) {
 			ReadablePermission readablePermission = new ReadablePermission();
-			readablePermission.setName(permission.getPermissionName());
-			readablePermission.setId(permission.getId());
+			System.out.println("$#12034#"); readablePermission.setName(permission.getPermissionName());
+			System.out.println("$#12035#"); readablePermission.setId(permission.getId());
 			readablePermissions.add(readablePermission);
 		}
-		return readablePermissions;
+		System.out.println("$#12036#"); return readablePermissions;
 	}
 
 	/**
@@ -108,12 +108,12 @@ public class SecurityApi {
 		List<ReadableGroup> readableGroups = new ArrayList<ReadableGroup>();
 		for (Group group : groups) {
 			ReadableGroup readableGroup = new ReadableGroup();
-			readableGroup.setName(group.getGroupName());
-			readableGroup.setId(group.getId().longValue());
-			readableGroup.setType(group.getGroupType().name());
+			System.out.println("$#12037#"); readableGroup.setName(group.getGroupName());
+			System.out.println("$#12038#"); readableGroup.setId(group.getId().longValue());
+			System.out.println("$#12039#"); readableGroup.setType(group.getGroupType().name());
 			readableGroups.add(readableGroup);
 		}
-		return readableGroups;
+		System.out.println("$#12040#"); return readableGroups;
 	}
 
 }

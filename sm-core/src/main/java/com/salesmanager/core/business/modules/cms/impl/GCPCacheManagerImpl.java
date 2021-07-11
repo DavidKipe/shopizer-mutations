@@ -23,18 +23,18 @@ public class GCPCacheManagerImpl implements CMSManager {
 
   @Override
   public String getRootName() {
-    return bucketName;
+				System.out.println("$#178#"); return bucketName;
   }
 
   public String getBucketName() {
-    return bucketName;
+				System.out.println("$#179#"); return bucketName;
   }
 
 
   @Override
   public String getLocation() {
     // TODO Auto-generated method stub
-    return null;
+				System.out.println("$#180#"); return null;
   }
   
   public void setBucketName(String bucketName) {

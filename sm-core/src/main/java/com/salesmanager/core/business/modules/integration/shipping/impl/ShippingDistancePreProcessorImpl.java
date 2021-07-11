@@ -75,7 +75,7 @@ public class ShippingDistancePreProcessorImpl implements ShippingQuotePrePostPro
 
 
 	public List<String> getAllowedZonesCodes() {
-		return allowedZonesCodes;
+		System.out.println("$#1228#"); return allowedZonesCodes;
 	}
 
 
@@ -102,29 +102,29 @@ public class ShippingDistancePreProcessorImpl implements ShippingQuotePrePostPro
 		
 		/** which destinations are supported by this module **/
 		
-		if(delivery.getZone()==null) {
+		System.out.println("$#1229#"); if(delivery.getZone()==null) {
 			return;
 		}
 		
 		boolean zoneAllowed = false;
-		if(allowedZonesCodes!=null) {
+		System.out.println("$#1230#"); if(allowedZonesCodes!=null) {
 			for(String zoneCode : allowedZonesCodes) {
-				if(zoneCode.equals(delivery.getZone().getCode())) {
+				System.out.println("$#1231#"); if(zoneCode.equals(delivery.getZone().getCode())) {
 					zoneAllowed = true;
 					break;
 				}
 			}
 		}
 		
-		if(!zoneAllowed) {
+		System.out.println("$#1232#"); if(!zoneAllowed) {
 			return;
 		}
 		
-		if(StringUtils.isBlank(delivery.getPostalCode())) {
+		System.out.println("$#1233#"); if(StringUtils.isBlank(delivery.getPostalCode())) {
 			return;
 		}
 		
-		Validate.notNull(apiKey, "Requires the configuration of google apiKey");
+		System.out.println("$#1234#"); Validate.notNull(apiKey, "Requires the configuration of google apiKey");
 		
 		GeoApiContext context = new GeoApiContext().setApiKey(apiKey);
 		
@@ -135,10 +135,10 @@ public class ShippingDistancePreProcessorImpl implements ShippingQuotePrePostPro
 		.append(origin.getCity()).append(BLANK)
 		.append(origin.getPostalCode()).append(BLANK);
 		
-		if(!StringUtils.isBlank(origin.getState())) {
+		System.out.println("$#1235#"); if(!StringUtils.isBlank(origin.getState())) {
 			originAddress.append(origin.getState()).append(" ");
 		}
-		if(origin.getZone()!=null) {
+		System.out.println("$#1236#"); if(origin.getZone()!=null) {
 			originAddress.append(origin.getZone().getCode()).append(" ");
 		}
 		originAddress.append(origin.getCountry().getIsoCode());
@@ -148,15 +148,15 @@ public class ShippingDistancePreProcessorImpl implements ShippingQuotePrePostPro
 		StringBuilder destinationAddress = new StringBuilder();
 		
 		destinationAddress.append(delivery.getAddress()).append(BLANK);
-		if(!StringUtils.isBlank(delivery.getCity())) {
+		System.out.println("$#1237#"); if(!StringUtils.isBlank(delivery.getCity())) {
 			destinationAddress.append(delivery.getCity()).append(BLANK);
 		}
 		destinationAddress.append(delivery.getPostalCode()).append(BLANK);
 		
-		if(!StringUtils.isBlank(delivery.getState())) {
+		System.out.println("$#1238#"); if(!StringUtils.isBlank(delivery.getState())) {
 			destinationAddress.append(delivery.getState()).append(" ");
 		}
-		if(delivery.getZone()!=null) {
+		System.out.println("$#1239#"); if(delivery.getZone()!=null) {
 			destinationAddress.append(delivery.getZone().getCode()).append(" ");
 		}
 		destinationAddress.append(delivery.getCountry().getIsoCode());
@@ -169,12 +169,12 @@ public class ShippingDistancePreProcessorImpl implements ShippingQuotePrePostPro
 			GeocodingResult[] destinationAdressResult =  GeocodingApi.geocode(context,
 					destinationAddress.toString()).await();
 
-			if(originAdressResult.length>0 && destinationAdressResult.length>0) {
+			System.out.println("$#1242#"); System.out.println("$#1240#"); if(originAdressResult.length>0 && destinationAdressResult.length>0) {
 				LatLng originLatLng = originAdressResult[0].geometry.location;
 				LatLng destinationLatLng = destinationAdressResult[0].geometry.location;
 				
-				delivery.setLatitude(String.valueOf(destinationLatLng.lat));
-				delivery.setLongitude(String.valueOf(destinationLatLng.lng));
+				System.out.println("$#1244#"); delivery.setLatitude(String.valueOf(destinationLatLng.lat));
+				System.out.println("$#1245#"); delivery.setLongitude(String.valueOf(destinationLatLng.lng));
 				
 				//keep latlng for further usage in order to display the map
 	
@@ -186,10 +186,10 @@ public class ShippingDistancePreProcessorImpl implements ShippingQuotePrePostPro
 		 				.awaitIgnoreError();
 				
 				
-				if(distanceRequest!=null) {
+				System.out.println("$#1246#"); if(distanceRequest!=null) {
 					DistanceMatrixRow distanceMax = distanceRequest.rows[0];
 					Distance distance = distanceMax.elements[0].distance;
-					quote.getQuoteInformations().put(Constants.DISTANCE_KEY, 0.001 * distance.inMeters);
+					System.out.println("$#1247#"); quote.getQuoteInformations().put(Constants.DISTANCE_KEY, 0.001 * distance.inMeters);
 				} else {
 				  LOGGER.error("Expected distance inner google api to return DistanceMatrix, it returned null. API key might not be working for this request");
 				}
@@ -207,7 +207,7 @@ public class ShippingDistancePreProcessorImpl implements ShippingQuotePrePostPro
 
 	
 	public String getModuleCode() {
-		return MODULE_CODE;
+		System.out.println("$#1248#"); return MODULE_CODE;
 	}
 
 

@@ -31,13 +31,13 @@ public class CatalogDescription extends Description {
 	}
 	
 	public CatalogDescription(String name, Language language) {
-		this.setName(name);
-		this.setLanguage(language);
-		super.setId(0L);
+		System.out.println("$#3772#"); this.setName(name);
+		System.out.println("$#3773#"); this.setLanguage(language);
+		System.out.println("$#3774#"); super.setId(0L);
 	}
 
 	public Catalog getCatalog() {
-		return catalog;
+		System.out.println("$#3775#"); return catalog;
 	}
 
 	public void setCatalog(Catalog catalog) {

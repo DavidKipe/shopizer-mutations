@@ -22,22 +22,22 @@ public class ProductList implements Serializable {
 		this.products = products;
 	}
 	public List<ReadableProduct> getProducts() {
-		return products;
+		System.out.println("$#8970#"); return products;
 	}
 	public int getProductCount() {
-		return productCount;
+		System.out.println("$#8971#"); return productCount;
 	}
 	public void setProductCount(int productCount) {
 		this.productCount = productCount;
 	}
 	public BigDecimal getMinPrice() {
-		return minPrice;
+		System.out.println("$#8972#"); return minPrice;
 	}
 	public void setMinPrice(BigDecimal minPrice) {
 		this.minPrice = minPrice;
 	}
 	public BigDecimal getMaxPrice() {
-		return maxPrice;
+		System.out.println("$#8973#"); return maxPrice;
 	}
 	public void setMaxPrice(BigDecimal maxPrice) {
 		this.maxPrice = maxPrice;

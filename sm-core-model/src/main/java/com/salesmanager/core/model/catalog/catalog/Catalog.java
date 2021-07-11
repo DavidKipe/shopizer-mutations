@@ -90,7 +90,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
     private Integer sortOrder = 0;
 
     public String getCode() {
-        return code;
+								System.out.println("$#3721#"); return code;
     }
 
     public void setCode(String code) {
@@ -107,7 +107,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
     
     @Override
     public Long getId() {
-        return this.id;
+								System.out.println("$#3722#"); return this.id;
     }
 
     @Override
@@ -117,7 +117,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
     
     @Override
     public AuditSection getAuditSection() {
-        return auditSection;
+								System.out.println("$#3723#"); return auditSection;
     }
     
     @Override
@@ -127,7 +127,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
 
 
     public Integer getSortOrder() {
-        return sortOrder;
+								System.out.println("$#3724#"); return sortOrder;
     }
 
     public void setSortOrder(Integer sortOrder) {
@@ -135,7 +135,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
     }
 
     public boolean isVisible() {
-        return visible;
+								System.out.println("$#3726#"); System.out.println("$#3725#"); return visible;
     }
 
     public void setVisible(boolean visible) {
@@ -143,7 +143,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
     }
 
     public MerchantStore getMerchantStore() {
-        return merchantStore;
+								System.out.println("$#3727#"); return merchantStore;
     }
 
     public void setMerchantStore(MerchantStore merchantStore) {
@@ -151,7 +151,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
     }
 
 	public Set<CatalogCategoryEntry> getEntry() {
-		return entry;
+		System.out.println("$#3728#"); return entry;
 	}
 
 	public void setEntry(Set<CatalogCategoryEntry> entry) {
@@ -159,7 +159,7 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
 	}
 
 	public boolean isDefaultCatalog() {
-		return defaultCatalog;
+		System.out.println("$#3730#"); System.out.println("$#3729#"); return defaultCatalog;
 	}
 
 	public void setDefaultCatalog(boolean defaultCatalog) {

@@ -13,7 +13,7 @@ public class ReadableCatalogCategoryEntryList extends ReadableList {
 	private static final long serialVersionUID = 1L;
 	private List<ReadableCatalogCategoryEntry> catalogEntry = new ArrayList<ReadableCatalogCategoryEntry>();
 	public List<ReadableCatalogCategoryEntry> getCatalogEntry() {
-		return catalogEntry;
+		System.out.println("$#8730#"); return catalogEntry;
 	}
 	public void setCatalogEntry(List<ReadableCatalogCategoryEntry> catalogEntry) {
 		this.catalogEntry = catalogEntry;

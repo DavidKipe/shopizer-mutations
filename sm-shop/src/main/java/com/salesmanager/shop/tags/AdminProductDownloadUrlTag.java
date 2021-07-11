@@ -39,7 +39,7 @@ public class AdminProductDownloadUrlTag extends RequestContextAwareTag {
 
 
 	public DigitalProduct getDigitalProduct() {
-		return digitalProduct;
+		System.out.println("$#15395#"); return digitalProduct;
 	}
 
 	public void setDigitalProduct(DigitalProduct digitalProduct) {
@@ -49,10 +49,10 @@ public class AdminProductDownloadUrlTag extends RequestContextAwareTag {
 	public int doStartTagInternal() throws JspException {
 		try {
 			
-			if (filePathUtils==null) {
+			System.out.println("$#15396#"); if (filePathUtils==null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15397#"); factory.autowireBean(this);
 	        }
 
 
@@ -73,7 +73,7 @@ public class AdminProductDownloadUrlTag extends RequestContextAwareTag {
 			@SuppressWarnings("unchecked")
 			Map<String,String> configurations = (Map<String, String>)session.getAttribute(Constants.STORE_CONFIGURATION);
 			String scheme = Constants.HTTP_SCHEME;
-			if(configurations!=null) {
+			System.out.println("$#15398#"); if(configurations!=null) {
 				scheme = (String)configurations.get("scheme");
 			}
 			
@@ -89,7 +89,7 @@ public class AdminProductDownloadUrlTag extends RequestContextAwareTag {
 
 			
 
-			pageContext.getOut().print(filePath.toString());
+			System.out.println("$#15399#"); pageContext.getOut().print(filePath.toString());
 
 
 			
@@ -100,7 +100,7 @@ public class AdminProductDownloadUrlTag extends RequestContextAwareTag {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15400#"); return EVAL_PAGE;
 	}
 
 

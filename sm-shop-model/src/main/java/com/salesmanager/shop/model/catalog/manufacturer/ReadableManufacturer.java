@@ -14,7 +14,7 @@ public class ReadableManufacturer extends ManufacturerEntity implements
 		this.description = description;
 	}
 	public ManufacturerDescription getDescription() {
-		return description;
+		System.out.println("$#8754#"); return description;
 	}
 
 }

@@ -13,13 +13,13 @@ public class EntityList implements Serializable {
 	private int totalPages;
 	
 	public int getTotalCount() {
-		return totalCount;
+		System.out.println("$#4076#"); return totalCount;
 	}
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
 	public int getTotalPages() {
-		return totalPages == 0 ? totalPages+1:totalPages;
+		System.out.println("$#4079#"); System.out.println("$#4078#"); System.out.println("$#4077#"); return totalPages == 0 ? totalPages+1:totalPages;
 	}
 	public void setTotalPages(int totalPage) {
 		this.totalPages = totalPage;

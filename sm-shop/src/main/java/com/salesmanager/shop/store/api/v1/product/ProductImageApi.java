@@ -70,21 +70,21 @@ public class ProductImageApi {
 
       // get the product
       Product product = productService.getById(id);
-      if (product == null) {
+						System.out.println("$#11918#"); if (product == null) {
         throw new ResourceNotFoundException("Product not found");
       }
       
       //security validation
       //product belongs to merchant store
-      if(product.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
+						System.out.println("$#11919#"); if(product.getMerchantStore().getId().intValue() != merchantStore.getId().intValue()) {
         throw new UnauthorizedException("Resource not authorized for this merchant");
       }
 
       boolean hasDefaultImage = false;
       Set<ProductImage> images = product.getImages();
-      if (!CollectionUtils.isEmpty(images)) {
+						System.out.println("$#11920#"); if (!CollectionUtils.isEmpty(images)) {
         for (ProductImage image : images) {
-          if (image.isDefaultImage()) {
+										System.out.println("$#11921#"); if (image.isDefaultImage()) {
             hasDefaultImage = true;
             break;
           }
@@ -94,14 +94,14 @@ public class ProductImageApi {
       List<ProductImage> contentImagesList = new ArrayList<ProductImage>();
 
       for (MultipartFile multipartFile : files) {
-        if (!multipartFile.isEmpty()) {
+								System.out.println("$#11922#"); if (!multipartFile.isEmpty()) {
           ProductImage productImage = new ProductImage();
-          productImage.setImage(multipartFile.getInputStream());
-          productImage.setProductImage(multipartFile.getOriginalFilename());
-          productImage.setProduct(product);
+										System.out.println("$#11923#"); productImage.setImage(multipartFile.getInputStream());
+										System.out.println("$#11924#"); productImage.setProductImage(multipartFile.getOriginalFilename());
+										System.out.println("$#11925#"); productImage.setProduct(product);
 
-          if (!hasDefaultImage) {
-            productImage.setDefaultImage(true);
+										System.out.println("$#11926#"); if (!hasDefaultImage) {
+												System.out.println("$#11927#"); productImage.setDefaultImage(true);
             hasDefaultImage = true;
           }
 
@@ -109,8 +109,8 @@ public class ProductImageApi {
         }
       }
 
-      if (CollectionUtils.isNotEmpty(contentImagesList)) {
-        productImageService.addProductImages(product, contentImagesList);
+						System.out.println("$#11928#"); if (CollectionUtils.isNotEmpty(contentImagesList)) {
+								System.out.println("$#11929#"); productImageService.addProductImages(product, contentImagesList);
       }
 
     } catch (Exception e) {
@@ -131,16 +131,16 @@ public class ProductImageApi {
     try {
       ProductImage productImage = productImageService.getById(id);
 
-      if (productImage != null) {
-        productImageService.delete(productImage);
+						System.out.println("$#11930#"); if (productImage != null) {
+								System.out.println("$#11931#"); productImageService.delete(productImage);
       } else {
-        response.sendError(404, "No ProductImage found for ID : " + id);
+								System.out.println("$#11932#"); response.sendError(404, "No ProductImage found for ID : " + id);
       }
 
     } catch (Exception e) {
       LOGGER.error("Error while deleting ProductImage", e);
       try {
-        response.sendError(503, "Error while deleting ProductImage " + e.getMessage());
+								System.out.println("$#11933#"); response.sendError(503, "Error while deleting ProductImage " + e.getMessage());
       } catch (Exception ignore) {
       }
     }

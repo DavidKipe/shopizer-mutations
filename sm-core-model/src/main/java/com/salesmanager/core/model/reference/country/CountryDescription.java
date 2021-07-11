@@ -35,12 +35,12 @@ public class CountryDescription extends Description {
 	}
 	
 	public CountryDescription(Language language, String name) {
-		this.setLanguage(language);
-		this.setName(name);
+		System.out.println("$#4458#"); this.setLanguage(language);
+		System.out.println("$#4459#"); this.setName(name);
 	}
 	
 	public Country getCountry() {
-		return country;
+		System.out.println("$#4460#"); return country;
 	}
 
 	public void setCountry(Country country) {

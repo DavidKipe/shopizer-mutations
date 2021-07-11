@@ -50,7 +50,7 @@ public class GeoZone extends SalesManagerEntity<Long, GeoZone> {
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4470#"); return id;
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class GeoZone extends SalesManagerEntity<Long, GeoZone> {
 
 
 	public String getName() {
-		return name;
+		System.out.println("$#4471#"); return name;
 	}
 
 	public void setName(String name) {
@@ -68,7 +68,7 @@ public class GeoZone extends SalesManagerEntity<Long, GeoZone> {
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4472#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -76,7 +76,7 @@ public class GeoZone extends SalesManagerEntity<Long, GeoZone> {
 	}
 
 	public List<Country> getCountries() {
-		return countries;
+		System.out.println("$#4473#"); return countries;
 	}
 
 	public void setCountries(List<Country> countries) {
@@ -84,7 +84,7 @@ public class GeoZone extends SalesManagerEntity<Long, GeoZone> {
 	}
 
 	public List<GeoZoneDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#4474#"); return descriptions;
 	}
 
 	public void setDescriptions(List<GeoZoneDescription> descriptions) {

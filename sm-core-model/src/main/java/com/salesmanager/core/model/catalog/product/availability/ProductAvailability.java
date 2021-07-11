@@ -103,11 +103,11 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	public ProductPrice defaultPrice() {
 
 		for (ProductPrice price : prices) {
-			if (price.isDefaultPrice()) {
-				return price;
+			System.out.println("$#3843#"); if (price.isDefaultPrice()) {
+				System.out.println("$#3844#"); return price;
 			}
 		}
-		return new ProductPrice();
+		System.out.println("$#3845#"); return new ProductPrice();
 	}
 
 	public ProductAvailability() {
@@ -119,7 +119,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public Integer getProductQuantity() {
-		return productQuantity;
+		System.out.println("$#3846#"); return productQuantity;
 	}
 
 	public void setProductQuantity(Integer productQuantity) {
@@ -127,7 +127,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public Date getProductDateAvailable() {
-		return CloneUtils.clone(productDateAvailable);
+		System.out.println("$#3847#"); return CloneUtils.clone(productDateAvailable);
 	}
 
 	public void setProductDateAvailable(Date productDateAvailable) {
@@ -135,7 +135,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public String getRegion() {
-		return region;
+		System.out.println("$#3848#"); return region;
 	}
 
 	public void setRegion(String region) {
@@ -143,7 +143,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public String getRegionVariant() {
-		return regionVariant;
+		System.out.println("$#3849#"); return regionVariant;
 	}
 
 	public void setRegionVariant(String regionVariant) {
@@ -151,7 +151,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public boolean getProductStatus() {
-		return productStatus;
+		System.out.println("$#3851#"); System.out.println("$#3850#"); return productStatus;
 	}
 
 	public void setProductStatus(boolean productStatus) {
@@ -159,7 +159,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public boolean getProductIsAlwaysFreeShipping() {
-		return productIsAlwaysFreeShipping;
+		System.out.println("$#3853#"); System.out.println("$#3852#"); return productIsAlwaysFreeShipping;
 	}
 
 	public void setProductIsAlwaysFreeShipping(boolean productIsAlwaysFreeShipping) {
@@ -167,7 +167,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public Integer getProductQuantityOrderMin() {
-		return productQuantityOrderMin;
+		System.out.println("$#3854#"); return productQuantityOrderMin;
 	}
 
 	public void setProductQuantityOrderMin(Integer productQuantityOrderMin) {
@@ -175,7 +175,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public Integer getProductQuantityOrderMax() {
-		return productQuantityOrderMax;
+		System.out.println("$#3855#"); return productQuantityOrderMax;
 	}
 
 	public void setProductQuantityOrderMax(Integer productQuantityOrderMax) {
@@ -184,7 +184,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#3856#"); return id;
 	}
 
 	@Override
@@ -193,7 +193,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#3857#"); return product;
 	}
 
 	public void setProduct(Product product) {
@@ -201,7 +201,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public Set<ProductPrice> getPrices() {
-		return prices;
+		System.out.println("$#3858#"); return prices;
 	}
 
 	public void setPrices(Set<ProductPrice> prices) {
@@ -209,7 +209,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#3859#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -217,7 +217,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public String getOwner() {
-		return owner;
+		System.out.println("$#3860#"); return owner;
 	}
 
 	public void setOwner(String owner) {
@@ -226,7 +226,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#3861#"); return auditSection;
 	}
 
 	@Override
@@ -236,7 +236,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 
 	public Set<ProductVariant> getVariants() {
-		return variants;
+		System.out.println("$#3862#"); return variants;
 	}
 
 	public void setVariants(Set<ProductVariant> variants) {
@@ -244,7 +244,7 @@ public class ProductAvailability extends SalesManagerEntity<Long, ProductAvailab
 	}
 	
 	public Boolean getAvailable() {
-		return available;
+		System.out.println("$#3864#"); System.out.println("$#3863#"); return available;
 	}
 
 	public void setAvailable(Boolean available) {

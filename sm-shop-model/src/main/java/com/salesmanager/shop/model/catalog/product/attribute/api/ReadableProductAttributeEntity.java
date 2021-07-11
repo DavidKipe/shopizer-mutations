@@ -13,25 +13,25 @@ public class ReadableProductAttributeEntity extends ProductAttributeEntity {
 	private ReadableProductOptionEntity option;
 	private ReadableProductOptionValueEntity optionValue;
 	public String getProductAttributeWeight() {
-		return productAttributeWeight;
+		System.out.println("$#8772#"); return productAttributeWeight;
 	}
 	public void setProductAttributeWeight(String productAttributeWeight) {
 		this.productAttributeWeight = productAttributeWeight;
 	}
 	public String getProductAttributePrice() {
-		return productAttributePrice;
+		System.out.println("$#8773#"); return productAttributePrice;
 	}
 	public void setProductAttributePrice(String productAttributePrice) {
 		this.productAttributePrice = productAttributePrice;
 	}
 	public ReadableProductOptionEntity getOption() {
-		return option;
+		System.out.println("$#8774#"); return option;
 	}
 	public void setOption(ReadableProductOptionEntity option) {
 		this.option = option;
 	}
 	public ReadableProductOptionValueEntity getOptionValue() {
-		return optionValue;
+		System.out.println("$#8775#"); return optionValue;
 	}
 	public void setOptionValue(ReadableProductOptionValueEntity optionValue) {
 		this.optionValue = optionValue;

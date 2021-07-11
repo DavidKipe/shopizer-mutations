@@ -52,7 +52,7 @@ public class CustomerEntity extends Customer implements Serializable {
 	}
 
 	public String getUserName() {
-		return userName;
+		System.out.println("$#9060#"); return userName;
 	}
 
 
@@ -62,7 +62,7 @@ public class CustomerEntity extends Customer implements Serializable {
 
 
 	public String getStoreCode() {
-		return storeCode;
+		System.out.println("$#9061#"); return storeCode;
 	}
 
 
@@ -72,7 +72,7 @@ public class CustomerEntity extends Customer implements Serializable {
 	
 
 	public String getEmailAddress() {
-		return emailAddress;
+		System.out.println("$#9062#"); return emailAddress;
 	}
 
 
@@ -80,18 +80,18 @@ public class CustomerEntity extends Customer implements Serializable {
 		this.language = StringEscapeUtils.escapeHtml4(language);
 	}
 	public String getLanguage() {
-		return language;
+		System.out.println("$#9063#"); return language;
 	}
 	
 
 	public Address getBilling() {
-		return billing;
+		System.out.println("$#9064#"); return billing;
 	}
 	public void setBilling(final Address billing) {
 		this.billing = billing;
 	}
 	public Address getDelivery() {
-		return delivery;
+		System.out.println("$#9065#"); return delivery;
 	}
 	public void setDelivery(final Address delivery) {
 		this.delivery = delivery;
@@ -100,12 +100,12 @@ public class CustomerEntity extends Customer implements Serializable {
 		this.gender = StringEscapeUtils.escapeHtml4(gender);
 	}
 	public String getGender() {
-		return gender;
+		System.out.println("$#9066#"); return gender;
 	}
 
 
 	public String getFirstName() {
-		return firstName;
+		System.out.println("$#9067#"); return firstName;
 	}
 
 
@@ -115,7 +115,7 @@ public class CustomerEntity extends Customer implements Serializable {
 
 
 	public String getLastName() {
-		return lastName;
+		System.out.println("$#9068#"); return lastName;
 	}
 
 
@@ -125,7 +125,7 @@ public class CustomerEntity extends Customer implements Serializable {
 
 
 	public int getRatingCount() {
-		return ratingCount;
+		System.out.println("$#9069#"); return ratingCount;
 	}
 
 	public void setRatingCount(int ratingCount) {
@@ -133,7 +133,7 @@ public class CustomerEntity extends Customer implements Serializable {
 	}
 
 	public Double getRating() {
-		return rating;
+		System.out.println("$#9070#"); return rating;
 	}
 
 	public void setRating(Double rating) {
@@ -141,7 +141,7 @@ public class CustomerEntity extends Customer implements Serializable {
 	}
 
 	public String getProvider() {
-		return provider;
+		System.out.println("$#9071#"); return provider;
 	}
 
 	public void setProvider(String provider) {

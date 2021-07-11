@@ -71,7 +71,7 @@ public class SystemNotification extends SalesManagerEntity<Long, SystemNotificat
 	private AuditSection auditSection = new AuditSection();
 
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4806#"); return auditSection;
 	}
 
 	public void setAuditSection(AuditSection auditSection) {
@@ -80,7 +80,7 @@ public class SystemNotification extends SalesManagerEntity<Long, SystemNotificat
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4807#"); return id;
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class SystemNotification extends SalesManagerEntity<Long, SystemNotificat
 	}
 
 	public String getKey() {
-		return key;
+		System.out.println("$#4808#"); return key;
 	}
 
 	public void setKey(String key) {
@@ -97,7 +97,7 @@ public class SystemNotification extends SalesManagerEntity<Long, SystemNotificat
 	}
 
 	public String getValue() {
-		return value;
+		System.out.println("$#4809#"); return value;
 	}
 
 	public void setValue(String value) {
@@ -109,7 +109,7 @@ public class SystemNotification extends SalesManagerEntity<Long, SystemNotificat
 	}
 
 	public Date getStartDate() {
-		return startDate;
+		System.out.println("$#4810#"); return startDate;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -117,7 +117,7 @@ public class SystemNotification extends SalesManagerEntity<Long, SystemNotificat
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4811#"); return merchantStore;
 	}
 
 	public void setEndDate(Date endDate) {
@@ -125,7 +125,7 @@ public class SystemNotification extends SalesManagerEntity<Long, SystemNotificat
 	}
 
 	public Date getEndDate() {
-		return endDate;
+		System.out.println("$#4812#"); return endDate;
 	}
 
 	public void setUser(User user) {
@@ -133,6 +133,6 @@ public class SystemNotification extends SalesManagerEntity<Long, SystemNotificat
 	}
 
 	public User getUser() {
-		return user;
+		System.out.println("$#4813#"); return user;
 	}
 }

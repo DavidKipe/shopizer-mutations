@@ -20,7 +20,7 @@ public class Email implements Serializable {
 	private Map<String,String> templateTokens = new HashMap<String,String>();
 
 	public String getFrom() {
-		return from;
+		System.out.println("$#400#"); return from;
 	}
 
 	public void setFrom(String from) {
@@ -28,7 +28,7 @@ public class Email implements Serializable {
 	}
 
 	public String getTo() {
-		return to;
+		System.out.println("$#401#"); return to;
 	}
 
 	public void setTo(String to) {
@@ -36,7 +36,7 @@ public class Email implements Serializable {
 	}
 
 	public String getSubject() {
-		return subject;
+		System.out.println("$#402#"); return subject;
 	}
 
 	public void setSubject(String subject) {
@@ -44,7 +44,7 @@ public class Email implements Serializable {
 	}
 
 	public String getTemplateName() {
-		return templateName;
+		System.out.println("$#403#"); return templateName;
 	}
 
 	public void setTemplateName(String templateName) {
@@ -52,7 +52,7 @@ public class Email implements Serializable {
 	}
 
 	public Map<String, String> getTemplateTokens() {
-		return templateTokens;
+		System.out.println("$#404#"); return templateTokens;
 	}
 
 	public void setTemplateTokens(Map<String, String> templateTokens) {
@@ -64,7 +64,7 @@ public class Email implements Serializable {
 	}
 
 	public String getFromEmail() {
-		return fromEmail;
+		System.out.println("$#405#"); return fromEmail;
 	}
 
 }

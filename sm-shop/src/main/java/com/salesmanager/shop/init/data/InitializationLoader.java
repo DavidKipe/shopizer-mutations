@@ -68,27 +68,27 @@ public class InitializationLoader {
 		try {
 			
 			//Check flag to populate or not the database
-			if(!this.initDefaultData) {
+			System.out.println("$#8220#"); if(!this.initDefaultData) {
 				return;
 			}
 			
-			if (initializationDatabase.isEmpty()) {
+			System.out.println("$#8221#"); if (initializationDatabase.isEmpty()) {
 				
 
 				//All default data to be created
 				
 				LOGGER.info(String.format("%s : Shopizer database is empty, populate it....", "sm-shop"));
 		
-				 initializationDatabase.populate("sm-shop");
+					System.out.println("$#8222#"); initializationDatabase.populate("sm-shop");
 				
 				 MerchantStore store = merchantService.getByCode(MerchantStore.DEFAULT_STORE);
 
-                  userDetailsService.createDefaultAdmin();
+																		System.out.println("$#8223#"); userDetailsService.createDefaultAdmin();
                   MerchantConfig config = new MerchantConfig();
-				  config.setAllowPurchaseItems(true);
-				  config.setDisplayAddToCartOnFeaturedItems(true);
+						System.out.println("$#8224#"); config.setAllowPurchaseItems(true);
+						System.out.println("$#8225#"); config.setDisplayAddToCartOnFeaturedItems(true);
 				  
-				  merchantConfigurationService.saveMerchantConfig(config, store);
+						System.out.println("$#8226#"); merchantConfigurationService.saveMerchantConfig(config, store);
 
 
 			}

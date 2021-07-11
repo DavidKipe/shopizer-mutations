@@ -14,29 +14,29 @@ public class PersistableTaxClassMapper implements Mapper<PersistableTaxClass, Ta
 
 	@Override
 	public TaxClass convert(PersistableTaxClass source, MerchantStore store, Language language) {
-		Validate.notNull(source, "PersistableTaxClass cannot be null");
-		Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#8632#"); Validate.notNull(source, "PersistableTaxClass cannot be null");
+		System.out.println("$#8633#"); Validate.notNull(store, "MerchantStore cannot be null");
 		TaxClass taxClass = new TaxClass();
-		taxClass.setMerchantStore(store);
-		taxClass.setTitle(source.getName());
-		taxClass.setId(source.getId());
-		return this.convert(source, taxClass, store, language);
+		System.out.println("$#8634#"); taxClass.setMerchantStore(store);
+		System.out.println("$#8635#"); taxClass.setTitle(source.getName());
+		System.out.println("$#8636#"); taxClass.setId(source.getId());
+		System.out.println("$#8637#"); return this.convert(source, taxClass, store, language);
 	}
 
 	@Override
 	public TaxClass convert(PersistableTaxClass source, TaxClass destination, MerchantStore store, Language language) {
-		Validate.notNull(source, "PersistableTaxClass cannot be null");
-		Validate.notNull(destination, "TaxClass cannot be null");
-		Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#8638#"); Validate.notNull(source, "PersistableTaxClass cannot be null");
+		System.out.println("$#8639#"); Validate.notNull(destination, "TaxClass cannot be null");
+		System.out.println("$#8640#"); Validate.notNull(store, "MerchantStore cannot be null");
 		
-		destination.setCode(source.getCode());
-		if(source.getId()!=null && source.getId().longValue() > 0) {
-			destination.setId(source.getId());
+		System.out.println("$#8641#"); destination.setCode(source.getCode());
+		System.out.println("$#8643#"); System.out.println("$#8642#"); if(source.getId()!=null && source.getId().longValue() > 0) {
+			System.out.println("$#8645#"); destination.setId(source.getId());
 		}
-		destination.setMerchantStore(store);
-		destination.setTitle(source.getName());
+		System.out.println("$#8646#"); destination.setMerchantStore(store);
+		System.out.println("$#8647#"); destination.setTitle(source.getName());
 		
-		return destination;
+		System.out.println("$#8648#"); return destination;
 	}
 
 }

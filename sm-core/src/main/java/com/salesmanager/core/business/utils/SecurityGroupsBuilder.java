@@ -21,41 +21,41 @@ public class SecurityGroupsBuilder {
 	public SecurityGroupsBuilder addGroup(String name, GroupType type) {
 		
 		Group g = new Group();
-		g.setGroupName(name);
-		g.setGroupType(type);
+		System.out.println("$#3706#"); g.setGroupName(name);
+		System.out.println("$#3707#"); g.setGroupType(type);
 		groups.add(g);
 		this.lastGroup = g;
 		
-		return this;
+		System.out.println("$#3708#"); return this;
 	}
 	
 	public SecurityGroupsBuilder addPermission(String name) {
-		if(this.lastGroup == null) {
+		System.out.println("$#3709#"); if(this.lastGroup == null) {
 			Group g = this.groups.get(0);
-			if(g == null) {
+			System.out.println("$#3710#"); if(g == null) {
 				g = new Group();
-				g.setGroupName("UNDEFINED");
-				g.setGroupType(GroupType.ADMIN);
+				System.out.println("$#3711#"); g.setGroupName("UNDEFINED");
+				System.out.println("$#3712#"); g.setGroupType(GroupType.ADMIN);
 				groups.add(g);
 				this.lastGroup = g;
 			}
 		}
 		
 		Permission permission = new Permission();
-		permission.setPermissionName(name);
+		System.out.println("$#3713#"); permission.setPermissionName(name);
 		lastGroup.getPermissions().add(permission);
 		
-		return this;
+		System.out.println("$#3714#"); return this;
 	}
 	
 	public SecurityGroupsBuilder addPermission(Permission permission) {
 		
-		if(this.lastGroup == null) {
+		System.out.println("$#3715#"); if(this.lastGroup == null) {
 			Group g = this.groups.get(0);
-			if(g == null) {
+			System.out.println("$#3716#"); if(g == null) {
 				g = new Group();
-				g.setGroupName("UNDEFINED");
-				g.setGroupType(GroupType.ADMIN);
+				System.out.println("$#3717#"); g.setGroupName("UNDEFINED");
+				System.out.println("$#3718#"); g.setGroupType(GroupType.ADMIN);
 				groups.add(g);
 				this.lastGroup = g;
 			}
@@ -64,11 +64,11 @@ public class SecurityGroupsBuilder {
 
 		lastGroup.getPermissions().add(permission);
 		
-		return this;
+		System.out.println("$#3719#"); return this;
 	}
 	
 	public List<Group> build() {
-		return groups;
+		System.out.println("$#3720#"); return groups;
 	}
 
 }

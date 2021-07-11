@@ -14,20 +14,20 @@ public class DownloadCacheManagerImpl extends CacheManagerImpl {
 
 
   public DownloadCacheManagerImpl(String location, String root) {
-    super.init(NAMED_CACHE, location);
+				System.out.println("$#175#"); super.init(NAMED_CACHE, location);
     this.root = root;
   }
 
 
   @Override
   public String getRootName() {
-    return root;
+				System.out.println("$#176#"); return root;
   }
 
 
   @Override
   public String getLocation() {
-    return location;
+				System.out.println("$#177#"); return location;
   }
 
 

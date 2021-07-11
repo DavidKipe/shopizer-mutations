@@ -29,13 +29,13 @@ public class OptinFacadeImpl implements OptinFacade {
       PersistableOptin persistableOptin, MerchantStore merchantStore, Language language) {
     Optin optinEntity = persistableOptinConverter.convert(persistableOptin, merchantStore, language);
     Optin savedOptinEntity = createOptin(optinEntity);
-    return readableOptinConverter.convert(savedOptinEntity, merchantStore, language);
+				System.out.println("$#12799#"); return readableOptinConverter.convert(savedOptinEntity, merchantStore, language);
   }
 
   private Optin createOptin(Optin optinEntity) {
     try{
-      optinService.create(optinEntity);
-      return optinEntity;
+						System.out.println("$#12800#"); optinService.create(optinEntity);
+						System.out.println("$#12801#"); return optinEntity;
     } catch (ServiceException e){
       throw new ServiceRuntimeException(e);
     }

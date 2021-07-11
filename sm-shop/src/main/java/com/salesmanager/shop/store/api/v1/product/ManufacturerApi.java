@@ -75,14 +75,14 @@ public class ManufacturerApi {
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language, HttpServletResponse response) {
 
 		try {
-			manufacturerFacade.saveOrUpdateManufacturer(manufacturer, merchantStore, language);
+			System.out.println("$#11836#"); manufacturerFacade.saveOrUpdateManufacturer(manufacturer, merchantStore, language);
 
-			return manufacturer;
+			System.out.println("$#11837#"); return manufacturer;
 
 		} catch (Exception e) {
 			LOGGER.error("Error while creating manufacturer", e);
 			try {
-				response.sendError(503, "Error while creating manufacturer " + e.getMessage());
+				System.out.println("$#11838#"); response.sendError(503, "Error while creating manufacturer " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 
@@ -101,16 +101,16 @@ public class ManufacturerApi {
 		try {
 			ReadableManufacturer manufacturer = manufacturerFacade.getManufacturer(id, merchantStore, language);
 
-			if (manufacturer == null) {
-				response.sendError(404, "No Manufacturer found for ID : " + id);
+			System.out.println("$#11839#"); if (manufacturer == null) {
+				System.out.println("$#11840#"); response.sendError(404, "No Manufacturer found for ID : " + id);
 			}
 
-			return manufacturer;
+			System.out.println("$#11841#"); return manufacturer;
 
 		} catch (Exception e) {
 			LOGGER.error("Error while getting manufacturer", e);
 			try {
-				response.sendError(503, "Error while getting manufacturer " + e.getMessage());
+				System.out.println("$#11842#"); response.sendError(503, "Error while getting manufacturer " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 		}
@@ -133,8 +133,8 @@ public class ManufacturerApi {
 			@RequestParam(value = "count", required = false, defaultValue = "10") Integer count) {
 
 		ListCriteria listCriteria = new ListCriteria();
-		listCriteria.setName(name);
-		return manufacturerFacade.listByStore(merchantStore, language, listCriteria, page, count);
+		System.out.println("$#11843#"); listCriteria.setName(name);
+		System.out.println("$#11844#"); return manufacturerFacade.listByStore(merchantStore, language, listCriteria, page, count);
 	}
 	
 	
@@ -150,8 +150,8 @@ public class ManufacturerApi {
 			@RequestParam(value = "count", required = false, defaultValue = "10") Integer count) {
 
 		ListCriteria listCriteria = new ListCriteria();
-		listCriteria.setName(name);
-		return manufacturerFacade.getAllManufacturers(merchantStore, language, listCriteria, page, count);
+		System.out.println("$#11845#"); listCriteria.setName(name);
+		System.out.println("$#11846#"); return manufacturerFacade.getAllManufacturers(merchantStore, language, listCriteria, page, count);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -162,7 +162,7 @@ public class ManufacturerApi {
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
 		boolean exists = manufacturerFacade.manufacturerExist(merchantStore, code);
-		return new ResponseEntity<EntityExists>(new EntityExists(exists), HttpStatus.OK);
+		System.out.println("$#11847#"); return new ResponseEntity<EntityExists>(new EntityExists(exists), HttpStatus.OK);
 
 	}
 
@@ -176,12 +176,12 @@ public class ManufacturerApi {
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
 		try {
-			manufacturer.setId(id);
-			manufacturerFacade.saveOrUpdateManufacturer(manufacturer, merchantStore, language);
+			System.out.println("$#11848#"); manufacturer.setId(id);
+			System.out.println("$#11849#"); manufacturerFacade.saveOrUpdateManufacturer(manufacturer, merchantStore, language);
 		} catch (Exception e) {
 			LOGGER.error("Error while creating manufacturer", e);
 			try {
-				response.sendError(503, "Error while creating manufacturer " + e.getMessage());
+				System.out.println("$#11850#"); response.sendError(503, "Error while creating manufacturer " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 		}
@@ -198,16 +198,16 @@ public class ManufacturerApi {
 		try {
 			Manufacturer manufacturer = manufacturerService.getById(id);
 
-			if (manufacturer != null) {
-				manufacturerFacade.deleteManufacturer(manufacturer, merchantStore, language);
+			System.out.println("$#11851#"); if (manufacturer != null) {
+				System.out.println("$#11852#"); manufacturerFacade.deleteManufacturer(manufacturer, merchantStore, language);
 			} else {
-				response.sendError(404, "No Manufacturer found for ID : " + id);
+				System.out.println("$#11853#"); response.sendError(404, "No Manufacturer found for ID : " + id);
 			}
 
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting manufacturer id " + id, e);
 			try {
-				response.sendError(503, "Error while deleting manufacturer id " + id + " - " + e.getMessage());
+				System.out.println("$#11854#"); response.sendError(503, "Error while deleting manufacturer id " + id + " - " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 		}
@@ -224,7 +224,7 @@ public class ManufacturerApi {
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language, HttpServletResponse response)
 			throws Exception {
 
-		return manufacturerFacade.getByProductInCategory(merchantStore, language, id);
+		System.out.println("$#11855#"); return manufacturerFacade.getByProductInCategory(merchantStore, language, id);
 
 	}
 

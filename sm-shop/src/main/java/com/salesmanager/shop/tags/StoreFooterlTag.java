@@ -40,13 +40,13 @@ public class StoreFooterlTag extends TagSupport {
 			int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
 
-			if(merchantStore!=null) {
+			System.out.println("$#15498#"); if(merchantStore!=null) {
 				Date dateBusiness=merchantStore.getInBusinessSince();
-				if(dateBusiness!=null) {
+				System.out.println("$#15499#"); if(dateBusiness!=null) {
 					Calendar c = Calendar.getInstance();
-					c.setTime(dateBusiness);
+					System.out.println("$#15500#"); c.setTime(dateBusiness);
 					int startBusiness = c.get(Calendar.YEAR);
-					if(startBusiness<currentYear) {
+					System.out.println("$#15502#"); System.out.println("$#15501#"); if(startBusiness<currentYear) {
 						y.append(startBusiness).append("-");
 					}
 				}
@@ -57,7 +57,7 @@ public class StoreFooterlTag extends TagSupport {
 			StringBuilder copy = new StringBuilder();
 			copy.append(COPY).append(" ").append(merchantStore.getStorename()).append(" ").append(y.toString());
 
-			pageContext.getOut().print(copy.toString());
+			System.out.println("$#15503#"); pageContext.getOut().print(copy.toString());
 
 
 			
@@ -68,7 +68,7 @@ public class StoreFooterlTag extends TagSupport {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15504#"); return EVAL_PAGE;
 	}
 
 

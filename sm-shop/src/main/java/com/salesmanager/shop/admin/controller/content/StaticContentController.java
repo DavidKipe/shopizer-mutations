@@ -61,8 +61,8 @@ public class StaticContentController {
 	@RequestMapping(value={"/admin/content/static/contentFiles.html","/admin/content/static/contentManagement.html"}, method=RequestMethod.GET)
 	public String getContentImages(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		this.setMenu(model, request);
-		return ControllerConstants.Tiles.ContentFiles.contentFiles;
+		System.out.println("$#5209#"); this.setMenu(model, request);
+		System.out.println("$#5210#"); return ControllerConstants.Tiles.ContentFiles.contentFiles;
 		
 	}
 
@@ -80,7 +80,7 @@ public class StaticContentController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#5211#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		try {
 			
@@ -102,7 +102,7 @@ public class StaticContentController {
 			.append(request.getContextPath());
 */			
 
-			if(fileNames!=null) {
+			System.out.println("$#5212#"); if(fileNames!=null) {
 
 				for(String name : fileNames) {
 					
@@ -122,21 +122,21 @@ public class StaticContentController {
 					entry.put("name", name);
 					entry.put("path", filePath.toString());
 					entry.put("mimeType", mimeType);
-					resp.addDataEntry(entry);
+					System.out.println("$#5213#"); resp.addDataEntry(entry);
 
 				}
 			
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5214#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while paging content images", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5215#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#5216#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 
@@ -162,36 +162,36 @@ public class StaticContentController {
 	@RequestMapping(value="/admin/content/static/saveFiles.html", method=RequestMethod.POST)
 	public String saveFiles(@ModelAttribute(value="contentFiles") @Valid final ContentFiles contentFiles, final BindingResult bindingResult,final Model model, final HttpServletRequest request) throws Exception{
 	    
-		this.setMenu(model, request);
-	    if (bindingResult.hasErrors()) {
+		System.out.println("$#5217#"); this.setMenu(model, request);
+					System.out.println("$#5218#"); if (bindingResult.hasErrors()) {
 	        LOGGER.info( "Found {} Validation errors", bindingResult.getErrorCount());
-	        return ControllerConstants.Tiles.ContentFiles.contentFiles;
+									System.out.println("$#5219#"); return ControllerConstants.Tiles.ContentFiles.contentFiles;
 	       
         }
 	    final List<InputContentFile> contentFilesList=new ArrayList<InputContentFile>();
         final MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-        if(CollectionUtils.isNotEmpty( contentFiles.getFile() )){
+								System.out.println("$#5220#"); if(CollectionUtils.isNotEmpty( contentFiles.getFile() )){
             LOGGER.info("Saving {} content files for merchant {}",contentFiles.getFile().size(),store.getId());
             for(final MultipartFile multipartFile:contentFiles.getFile()){
-                if(!multipartFile.isEmpty()){
+																System.out.println("$#5221#"); if(!multipartFile.isEmpty()){
                     ByteArrayInputStream inputStream = new ByteArrayInputStream( multipartFile.getBytes() );
                     InputContentFile cmsContentImage = new InputContentFile();
-                    cmsContentImage.setFileName(multipartFile.getOriginalFilename() );
-                    cmsContentImage.setFileContentType( FileContentType.STATIC_FILE );
-                    cmsContentImage.setFile( inputStream );
+																				System.out.println("$#5222#"); cmsContentImage.setFileName(multipartFile.getOriginalFilename() );
+																				System.out.println("$#5223#"); cmsContentImage.setFileContentType( FileContentType.STATIC_FILE );
+																				System.out.println("$#5224#"); cmsContentImage.setFile( inputStream );
                     contentFilesList.add( cmsContentImage);
                 }
             }
             
-            if(CollectionUtils.isNotEmpty( contentFilesList )){
-            	contentService.addContentFiles( store.getCode(), contentFilesList );
+												System.out.println("$#5225#"); if(CollectionUtils.isNotEmpty( contentFilesList )){
+													System.out.println("$#5226#"); contentService.addContentFiles( store.getCode(), contentFilesList );
             }
             else{
                 // show error message on UI
             }
         }
         
-        return ControllerConstants.Tiles.ContentFiles.contentFiles;
+								System.out.println("$#5227#"); return ControllerConstants.Tiles.ContentFiles.contentFiles;
 	}
 	
 	
@@ -216,20 +216,20 @@ public class StaticContentController {
 			
 
 			
-			contentService.removeFile(store.getCode(), FileContentType.STATIC_FILE, fileName);
+			System.out.println("$#5228#"); contentService.removeFile(store.getCode(), FileContentType.STATIC_FILE, fileName);
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#5229#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5230#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5231#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5232#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5233#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

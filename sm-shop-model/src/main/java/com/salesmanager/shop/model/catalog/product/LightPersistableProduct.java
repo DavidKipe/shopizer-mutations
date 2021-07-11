@@ -17,20 +17,20 @@ public class LightPersistableProduct implements Serializable {
   private boolean available;
   private int quantity;
   public String getPrice() {
-    return price;
+				System.out.println("$#8852#"); return price;
   }
   public void setPrice(String price) {
     this.price = price;
   }
 
   public int getQuantity() {
-    return quantity;
+				System.out.println("$#8853#"); return quantity;
   }
   public void setQuantity(int quantity) {
     this.quantity = quantity;
   }
   public boolean isAvailable() {
-    return available;
+				System.out.println("$#8855#"); System.out.println("$#8854#"); return available;
   }
   public void setAvailable(boolean available) {
     this.available = available;

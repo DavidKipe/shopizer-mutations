@@ -24,43 +24,43 @@ public class ConfigurationEntity extends Entity {
 	
 	
 	public String getKey() {
-		return key;
+		System.out.println("$#8978#"); return key;
 	}
 	public void setKey(String key) {
 		this.key = key;
 	}
 	public boolean isActive() {
-		return active;
+		System.out.println("$#8980#"); System.out.println("$#8979#"); return active;
 	}
 	public void setActive(boolean active) {
 		this.active = active;
 	}
 	public String getValue() {
-		return value;
+		System.out.println("$#8981#"); return value;
 	}
 	public void setValue(String value) {
 		this.value = value;
 	}
 	public String getType() {
-		return type;
+		System.out.println("$#8982#"); return type;
 	}
 	public void setType(String type) {
 		this.type = type;
 	}
 	public Map<String, String> getKeys() {
-		return keys;
+		System.out.println("$#8983#"); return keys;
 	}
 	public void setKeys(Map<String, String> keys) {
 		this.keys = keys;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#8984#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public Map<String, List<String>> getIntegrationOptions() {
-		return integrationOptions;
+		System.out.println("$#8985#"); return integrationOptions;
 	}
 	public void setIntegrationOptions(Map<String, List<String>> integrationOptions) {
 		this.integrationOptions = integrationOptions;

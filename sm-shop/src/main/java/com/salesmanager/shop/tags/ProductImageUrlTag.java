@@ -43,10 +43,10 @@ public class ProductImageUrlTag extends RequestContextAwareTag {
 		try {
 
 
-			if (filePathUtils==null || imageUtils==null) {
+			System.out.println("$#15444#"); if (filePathUtils==null || imageUtils==null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15446#"); factory.autowireBean(this);
 	        }
 
 			HttpServletRequest request = (HttpServletRequest) pageContext
@@ -63,9 +63,9 @@ public class ProductImageUrlTag extends RequestContextAwareTag {
 
 				.append(imageUtils.buildProductImageUtils(merchantStore, product, this.getImageName())).toString();
 
-			System.out.println("Printing image " + imagePath.toString());
+			System.out.println("$#15447#"); System.out.println("Printing image " + imagePath.toString());
 
-			pageContext.getOut().print(imagePath.toString());
+			System.out.println("$#15448#"); pageContext.getOut().print(imagePath.toString());
 
 
 			
@@ -76,7 +76,7 @@ public class ProductImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15449#"); return EVAL_PAGE;
 	}
 
 
@@ -85,7 +85,7 @@ public class ProductImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public String getImageName() {
-		return imageName;
+		System.out.println("$#15450#"); return imageName;
 	}
 
 	public void setImageType(String imageType) {
@@ -93,7 +93,7 @@ public class ProductImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public String getImageType() {
-		return imageType;
+		System.out.println("$#15451#"); return imageType;
 	}
 
 	public void setProduct(Product product) {
@@ -101,7 +101,7 @@ public class ProductImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#15452#"); return product;
 	}
 
 

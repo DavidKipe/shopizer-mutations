@@ -14,7 +14,7 @@ public class ReadableCountry extends CountryEntity {
 	private List<ReadableZone> zones = new ArrayList<ReadableZone>();
 
 	public String getName() {
-		return name;
+		System.out.println("$#9258#"); return name;
 	}
 
 	public void setName(String name) {
@@ -22,7 +22,7 @@ public class ReadableCountry extends CountryEntity {
 	}
 
 	public List<ReadableZone> getZones() {
-		return zones;
+		System.out.println("$#9259#"); return zones;
 	}
 
 	public void setZones(List<ReadableZone> zones) {

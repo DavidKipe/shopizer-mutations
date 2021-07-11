@@ -60,7 +60,7 @@ public class ProductEntity extends Product implements Serializable {
 	 */
 
 	public BigDecimal getPrice() {
-		return price;
+		System.out.println("$#8875#"); return price;
 	}
 
 	public void setPrice(BigDecimal price) {
@@ -68,7 +68,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public int getQuantity() {
-		return quantity;
+		System.out.println("$#8876#"); return quantity;
 	}
 
 	public void setQuantity(int quantity) {
@@ -76,7 +76,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public String getSku() {
-		return sku;
+		System.out.println("$#8877#"); return sku;
 	}
 
 	public void setSku(String sku) {
@@ -84,7 +84,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public boolean isProductShipeable() {
-		return productShipeable;
+		System.out.println("$#8879#"); System.out.println("$#8878#"); return productShipeable;
 	}
 
 	public void setProductShipeable(boolean productShipeable) {
@@ -92,7 +92,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public boolean isProductIsFree() {
-		return productIsFree;
+		System.out.println("$#8881#"); System.out.println("$#8880#"); return productIsFree;
 	}
 
 	public void setProductIsFree(boolean productIsFree) {
@@ -100,7 +100,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public int getSortOrder() {
-		return sortOrder;
+		System.out.println("$#8882#"); return sortOrder;
 	}
 
 	public void setSortOrder(int sortOrder) {
@@ -112,7 +112,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public int getQuantityOrderMaximum() {
-		return quantityOrderMaximum;
+		System.out.println("$#8883#"); return quantityOrderMaximum;
 	}
 
 	public void setProductVirtual(boolean productVirtual) {
@@ -120,7 +120,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public boolean isProductVirtual() {
-		return productVirtual;
+		System.out.println("$#8885#"); System.out.println("$#8884#"); return productVirtual;
 	}
 
 	public void setAvailable(boolean available) {
@@ -128,7 +128,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public boolean isAvailable() {
-		return available;
+		System.out.println("$#8887#"); System.out.println("$#8886#"); return available;
 	}
 
 	public void setDateAvailable(String dateAvailable) {
@@ -136,11 +136,11 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public String getDateAvailable() {
-		return dateAvailable;
+		System.out.println("$#8888#"); return dateAvailable;
 	}
 
 	public int getQuantityOrderMinimum() {
-		return quantityOrderMinimum;
+		System.out.println("$#8889#"); return quantityOrderMinimum;
 	}
 
 	public void setQuantityOrderMinimum(int quantityOrderMinimum) {
@@ -148,7 +148,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public int getRatingCount() {
-		return ratingCount;
+		System.out.println("$#8890#"); return ratingCount;
 	}
 
 	public void setRatingCount(int ratingCount) {
@@ -156,7 +156,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public Double getRating() {
-		return rating;
+		System.out.println("$#8891#"); return rating;
 	}
 
 	public void setRating(Double rating) {
@@ -164,7 +164,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public boolean isPreOrder() {
-		return preOrder;
+		System.out.println("$#8893#"); System.out.println("$#8892#"); return preOrder;
 	}
 
 	public void setPreOrder(boolean preOrder) {
@@ -172,7 +172,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public String getRefSku() {
-		return refSku;
+		System.out.println("$#8894#"); return refSku;
 	}
 
 	public void setRefSku(String refSku) {
@@ -180,7 +180,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public boolean isVisible() {
-		return visible;
+		System.out.println("$#8896#"); System.out.println("$#8895#"); return visible;
 	}
 
 	public void setVisible(boolean visible) {
@@ -188,7 +188,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public ProductCondition getCondition() {
-		return condition;
+		System.out.println("$#8897#"); return condition;
 	}
 
 	public void setCondition(ProductCondition condition) {
@@ -196,7 +196,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public int getRentalDuration() {
-		return rentalDuration;
+		System.out.println("$#8898#"); return rentalDuration;
 	}
 
 	public void setRentalDuration(int rentalDuration) {
@@ -204,7 +204,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public RentalStatus getRentalStatus() {
-		return rentalStatus;
+		System.out.println("$#8899#"); return rentalStatus;
 	}
 
 	public void setRentalStatus(RentalStatus rentalStatus) {
@@ -212,7 +212,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public int getRentalPeriod() {
-		return rentalPeriod;
+		System.out.println("$#8900#"); return rentalPeriod;
 	}
 
 	public void setRentalPeriod(int rentalPeriod) {
@@ -220,7 +220,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public ProductSpecification getProductSpecifications() {
-		return productSpecifications;
+		System.out.println("$#8901#"); return productSpecifications;
 	}
 
 	public void setProductSpecifications(ProductSpecification productSpecifications) {
@@ -228,7 +228,7 @@ public class ProductEntity extends Product implements Serializable {
 	}
 
 	public String getCreationDate() {
-		return creationDate;
+		System.out.println("$#8902#"); return creationDate;
 	}
 
 	public void setCreationDate(String creationDate) {

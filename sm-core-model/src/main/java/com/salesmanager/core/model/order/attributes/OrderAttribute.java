@@ -45,7 +45,7 @@ public class OrderAttribute extends SalesManagerEntity<Long, OrderAttribute> {
 	private Order order;
 
 	public Order getOrder() {
-		return order;
+		System.out.println("$#4276#"); return order;
 	}
 
 	public void setOrder(Order order) {
@@ -54,7 +54,7 @@ public class OrderAttribute extends SalesManagerEntity<Long, OrderAttribute> {
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4277#"); return id;
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class OrderAttribute extends SalesManagerEntity<Long, OrderAttribute> {
 	}
 
 	public String getValue() {
-		return value;
+		System.out.println("$#4278#"); return value;
 	}
 
 	public void setValue(String value) {
@@ -71,7 +71,7 @@ public class OrderAttribute extends SalesManagerEntity<Long, OrderAttribute> {
 	}
 
 	public String getKey() {
-		return key;
+		System.out.println("$#4279#"); return key;
 	}
 
 	public void setKey(String key) {

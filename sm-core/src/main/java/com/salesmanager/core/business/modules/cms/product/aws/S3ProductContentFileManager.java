@@ -67,11 +67,11 @@ public class S3ProductContentFileManager
 
   public static S3ProductContentFileManager getInstance() {
 
-    if (fileManager == null) {
+				System.out.println("$#195#"); if (fileManager == null) {
       fileManager = new S3ProductContentFileManager();
     }
 
-    return fileManager;
+				System.out.println("$#196#"); return fileManager;
 
   }
 
@@ -92,22 +92,22 @@ public class S3ProductContentFileManager
       ListObjectsV2Result results = s3.listObjectsV2(listObjectsRequest);
       List<S3ObjectSummary> objects = results.getObjectSummaries();
       for (S3ObjectSummary os : objects) {
-        if (files == null) {
+								System.out.println("$#197#"); if (files == null) {
           files = new ArrayList<OutputContentFile>();
         }
         String mimetype = URLConnection.guessContentTypeFromName(os.getKey());
-        if (!StringUtils.isBlank(mimetype)) {
+								System.out.println("$#198#"); if (!StringUtils.isBlank(mimetype)) {
           S3Object o = s3.getObject(bucketName, os.getKey());
           byte[] byteArray = IOUtils.toByteArray(o.getObjectContent());
           ByteArrayOutputStream baos = new ByteArrayOutputStream(byteArray.length);
-          baos.write(byteArray, 0, byteArray.length);
+										System.out.println("$#199#"); baos.write(byteArray, 0, byteArray.length);
           OutputContentFile ct = new OutputContentFile();
-          ct.setFile(baos);
+										System.out.println("$#200#"); ct.setFile(baos);
           files.add(ct);
         }
       }
 
-      return files;
+						System.out.println("$#201#"); return files;
     } catch (final Exception e) {
       LOGGER.error("Error while getting files", e);
       throw new ServiceException(e);
@@ -122,7 +122,7 @@ public class S3ProductContentFileManager
       String bucketName = bucketName();
 
       final AmazonS3 s3 = s3Client();
-      s3.deleteObject(bucketName, nodePath(merchantStoreCode));
+						System.out.println("$#202#"); s3.deleteObject(bucketName, nodePath(merchantStoreCode));
 
       LOGGER.info("Remove folder");
     } catch (final Exception e) {
@@ -140,7 +140,7 @@ public class S3ProductContentFileManager
       String bucketName = bucketName();
 
       final AmazonS3 s3 = s3Client();
-      s3.deleteObject(bucketName, nodePath(productImage.getProduct().getMerchantStore().getCode(),
+						System.out.println("$#203#"); s3.deleteObject(bucketName, nodePath(productImage.getProduct().getMerchantStore().getCode(),
           productImage.getProduct().getSku()) + productImage.getProductImage());
 
       LOGGER.info("Remove file");
@@ -159,7 +159,7 @@ public class S3ProductContentFileManager
       String bucketName = bucketName();
 
       final AmazonS3 s3 = s3Client();
-      s3.deleteObject(bucketName, nodePath(product.getMerchantStore().getCode(), product.getSku()));
+						System.out.println("$#204#"); s3.deleteObject(bucketName, nodePath(product.getMerchantStore().getCode(), product.getSku()));
 
       LOGGER.info("Remove file");
     } catch (final Exception e) {
@@ -192,7 +192,7 @@ public class S3ProductContentFileManager
 
   @Override
   public List<OutputContentFile> getImages(Product product) throws ServiceException {
-    return null;
+				System.out.println("$#205#"); return null;
   }
 
   @Override
@@ -210,11 +210,11 @@ public class S3ProductContentFileManager
 
 
       ObjectMetadata metadata = new ObjectMetadata();
-      metadata.setContentType(contentImage.getMimeType());
+						System.out.println("$#206#"); metadata.setContentType(contentImage.getMimeType());
 
       PutObjectRequest request = new PutObjectRequest(bucketName,
           nodePath + productImage.getProductImage(), contentImage.getFile(), metadata);
-      request.setCannedAcl(CannedAccessControlList.PublicRead);
+						System.out.println("$#207#"); request.setCannedAcl(CannedAccessControlList.PublicRead);
 
 
       s3.putObject(request);
@@ -237,32 +237,32 @@ public class S3ProductContentFileManager
     Bucket named_bucket = null;
     List<Bucket> buckets = s3.listBuckets();
     for (Bucket b : buckets) {
-      if (b.getName().equals(bucket_name)) {
+						System.out.println("$#208#"); if (b.getName().equals(bucket_name)) {
         named_bucket = b;
       }
     }
 
-    if (named_bucket == null) {
+				System.out.println("$#209#"); if (named_bucket == null) {
       named_bucket = createBucket(bucket_name);
     }
 
-    return named_bucket;
+				System.out.println("$#210#"); return named_bucket;
   }
 
   private Bucket createBucket(String bucket_name) {
     final AmazonS3 s3 = s3Client();
     Bucket b = null;
-    if (s3.doesBucketExistV2(bucket_name)) {
+				System.out.println("$#211#"); if (s3.doesBucketExistV2(bucket_name)) {
       System.out.format("Bucket %s already exists.\n", bucket_name);
       b = getBucket(bucket_name);
     } else {
       try {
         b = s3.createBucket(bucket_name);
       } catch (AmazonS3Exception e) {
-        System.err.println(e.getErrorMessage());
+								System.out.println("$#212#"); System.err.println(e.getErrorMessage());
       }
     }
-    return b;
+				System.out.println("$#213#"); return b;
   }
 
   /**
@@ -277,27 +277,27 @@ public class S3ProductContentFileManager
                                                                             // against
         .build();
 
-    return s3;
+				System.out.println("$#214#"); return s3;
   }
 
   private String bucketName() {
     String bucketName = getCmsManager().getRootName();
-    if (StringUtils.isBlank(bucketName)) {
+				System.out.println("$#215#"); if (StringUtils.isBlank(bucketName)) {
       bucketName = DEFAULT_BUCKET_NAME;
     }
-    return bucketName;
+				System.out.println("$#216#"); return bucketName;
   }
 
   private String regionName() {
     String regionName = getCmsManager().getLocation();
-    if (StringUtils.isBlank(regionName)) {
+				System.out.println("$#217#"); if (StringUtils.isBlank(regionName)) {
       regionName = DEFAULT_REGION_NAME;
     }
-    return regionName;
+				System.out.println("$#218#"); return regionName;
   }
 
   private String nodePath(String store) {
-    return new StringBuilder().append(ROOT_NAME).append(Constants.SLASH).append(store)
+				System.out.println("$#219#"); return new StringBuilder().append(ROOT_NAME).append(Constants.SLASH).append(store)
         .append(Constants.SLASH).toString();
   }
 
@@ -310,7 +310,7 @@ public class S3ProductContentFileManager
 
     // product path
     sb.append(product).append(Constants.SLASH);
-    return sb.toString();
+				System.out.println("$#220#"); return sb.toString();
 
   }
 
@@ -322,38 +322,38 @@ public class S3ProductContentFileManager
     sb.append(nodePath);
 
     // small large
-    if (contentImage.getFileContentType().name().equals(FileContentType.PRODUCT.name())) {
+				System.out.println("$#221#"); if (contentImage.getFileContentType().name().equals(FileContentType.PRODUCT.name())) {
       sb.append(SMALL);
-    } else if (contentImage.getFileContentType().name().equals(FileContentType.PRODUCTLG.name())) {
+				} else if (contentImage.getFileContentType().name().equals(FileContentType.PRODUCTLG.name())) { System.out.println("$#222#");
       sb.append(LARGE);
     }
 
-    return sb.append(Constants.SLASH).toString();
+				System.out.println("$#223#"); return sb.append(Constants.SLASH).toString();
 
 
   }
 
   public static String getName(String filename) {
-    if (filename == null) {
-      return null;
+				System.out.println("$#224#"); if (filename == null) {
+						System.out.println("$#225#"); return null;
     }
     int index = indexOfLastSeparator(filename);
-    return filename.substring(index + 1);
+				System.out.println("$#227#"); System.out.println("$#226#"); return filename.substring(index + 1);
   }
 
   public static int indexOfLastSeparator(String filename) {
-    if (filename == null) {
-      return -1;
+				System.out.println("$#228#"); if (filename == null) {
+						System.out.println("$#229#"); return -1;
     }
     int lastUnixPos = filename.lastIndexOf(UNIX_SEPARATOR);
     int lastWindowsPos = filename.lastIndexOf(WINDOWS_SEPARATOR);
-    return Math.max(lastUnixPos, lastWindowsPos);
+				System.out.println("$#230#"); return Math.max(lastUnixPos, lastWindowsPos);
   }
 
 
 
   public CMSManager getCmsManager() {
-    return cmsManager;
+				System.out.println("$#231#"); return cmsManager;
   }
 
   public void setCmsManager(CMSManager cmsManager) {

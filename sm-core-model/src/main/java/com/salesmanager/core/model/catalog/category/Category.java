@@ -88,7 +88,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     private String code;
 
     public String getCode() {
-        return code;
+								System.out.println("$#3737#"); return code;
     }
 
     public void setCode(String code) {
@@ -105,7 +105,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     
     @Override
     public Long getId() {
-        return this.id;
+								System.out.println("$#3738#"); return this.id;
     }
 
     @Override
@@ -115,7 +115,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     
     @Override
     public AuditSection getAuditSection() {
-        return auditSection;
+								System.out.println("$#3739#"); return auditSection;
     }
     
     @Override
@@ -125,7 +125,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 
 
     public String getCategoryImage() {
-        return categoryImage;
+								System.out.println("$#3740#"); return categoryImage;
     }
 
     public void setCategoryImage(String categoryImage) {
@@ -133,7 +133,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public Integer getSortOrder() {
-        return sortOrder;
+								System.out.println("$#3741#"); return sortOrder;
     }
 
     public void setSortOrder(Integer sortOrder) {
@@ -141,7 +141,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public boolean isCategoryStatus() {
-        return categoryStatus;
+								System.out.println("$#3743#"); System.out.println("$#3742#"); return categoryStatus;
     }
 
     public void setCategoryStatus(boolean categoryStatus) {
@@ -149,7 +149,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public boolean isVisible() {
-        return visible;
+								System.out.println("$#3745#"); System.out.println("$#3744#"); return visible;
     }
 
     public void setVisible(boolean visible) {
@@ -157,7 +157,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public Integer getDepth() {
-        return depth;
+								System.out.println("$#3746#"); return depth;
     }
 
     public void setDepth(Integer depth) {
@@ -165,7 +165,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public String getLineage() {
-        return lineage;
+								System.out.println("$#3747#"); return lineage;
     }
 
     public void setLineage(String lineage) {
@@ -173,7 +173,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public Category getParent() {
-        return parent;
+								System.out.println("$#3748#"); return parent;
     }
 
     public void setParent(Category parent) {
@@ -184,7 +184,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 
 
     public MerchantStore getMerchantStore() {
-        return merchantStore;
+								System.out.println("$#3749#"); return merchantStore;
     }
 
     public void setMerchantStore(MerchantStore merchantStore) {
@@ -192,7 +192,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public List<Category> getCategories() {
-        return categories;
+								System.out.println("$#3750#"); return categories;
     }
 
     public void setCategories(List<Category> categories) {
@@ -200,15 +200,15 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
     
     public CategoryDescription getDescription() {
-        if(descriptions!=null && descriptions.size()>0) {
-            return descriptions.iterator().next();
+								System.out.println("$#3752#"); System.out.println("$#3751#"); if(descriptions!=null && descriptions.size()>0) {
+												System.out.println("$#3754#"); return descriptions.iterator().next();
         }
         
         return null;
     }
 
     public boolean isFeatured() {
-        return featured;
+								System.out.println("$#3756#"); System.out.println("$#3755#"); return featured;
     }
 
     public void setFeatured(boolean featured) {
@@ -216,7 +216,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
     }
 
     public Set<CategoryDescription> getDescriptions() {
-      return descriptions;
+						System.out.println("$#3757#"); return descriptions;
     }
 
     public void setDescriptions(Set<CategoryDescription> descriptions) {

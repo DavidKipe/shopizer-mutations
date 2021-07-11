@@ -16,16 +16,16 @@ public class CustomerOptionEntity extends CustomerOption implements
 		this.order = order;
 	}
 	public int getOrder() {
-		return order;
+		System.out.println("$#9044#"); return order;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#9045#"); return code;
 	}
 	public String getType() {
-		return type;
+		System.out.println("$#9046#"); return type;
 	}
 	public void setType(String type) {
 		this.type = type;

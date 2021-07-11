@@ -183,7 +183,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public boolean isUseCache() {
-		return useCache;
+		System.out.println("$#4241#"); System.out.println("$#4240#"); return useCache;
 	}
 
 	public void setUseCache(boolean useCache) {
@@ -197,11 +197,11 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 
 	@Override
 	public Integer getId() {
-		return this.id;
+		System.out.println("$#4242#"); return this.id;
 	}
 
 	public String getStorename() {
-		return storename;
+		System.out.println("$#4243#"); return storename;
 	}
 
 	public void setStorename(String storename) {
@@ -209,7 +209,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getStorephone() {
-		return storephone;
+		System.out.println("$#4244#"); return storephone;
 	}
 
 	public void setStorephone(String storephone) {
@@ -217,7 +217,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getStoreaddress() {
-		return storeaddress;
+		System.out.println("$#4245#"); return storeaddress;
 	}
 
 	public void setStoreaddress(String storeaddress) {
@@ -225,7 +225,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getStorecity() {
-		return storecity;
+		System.out.println("$#4246#"); return storecity;
 	}
 
 	public void setStorecity(String storecity) {
@@ -233,7 +233,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getStorepostalcode() {
-		return storepostalcode;
+		System.out.println("$#4247#"); return storepostalcode;
 	}
 
 	public void setStorepostalcode(String storepostalcode) {
@@ -241,7 +241,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public Country getCountry() {
-		return country;
+		System.out.println("$#4248#"); return country;
 	}
 
 	public void setCountry(Country country) {
@@ -249,7 +249,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public Zone getZone() {
-		return zone;
+		System.out.println("$#4249#"); return zone;
 	}
 
 	public void setZone(Zone zone) {
@@ -257,7 +257,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getStorestateprovince() {
-		return storestateprovince;
+		System.out.println("$#4250#"); return storestateprovince;
 	}
 
 	public void setStorestateprovince(String storestateprovince) {
@@ -265,7 +265,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public Currency getCurrency() {
-		return currency;
+		System.out.println("$#4251#"); return currency;
 	}
 
 	public void setCurrency(Currency currency) {
@@ -273,7 +273,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getWeightunitcode() {
-		return weightunitcode;
+		System.out.println("$#4252#"); return weightunitcode;
 	}
 
 	public void setWeightunitcode(String weightunitcode) {
@@ -281,7 +281,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getSeizeunitcode() {
-		return seizeunitcode;
+		System.out.println("$#4253#"); return seizeunitcode;
 	}
 
 	public void setSeizeunitcode(String seizeunitcode) {
@@ -289,7 +289,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public Date getInBusinessSince() {
-		return CloneUtils.clone(inBusinessSince);
+		System.out.println("$#4254#"); return CloneUtils.clone(inBusinessSince);
 	}
 
 	public void setInBusinessSince(Date inBusinessSince) {
@@ -297,7 +297,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public Language getDefaultLanguage() {
-		return defaultLanguage;
+		System.out.println("$#4255#"); return defaultLanguage;
 	}
 
 	public void setDefaultLanguage(Language defaultLanguage) {
@@ -305,7 +305,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public List<Language> getLanguages() {
-		return languages;
+		System.out.println("$#4256#"); return languages;
 	}
 
 	public void setLanguages(List<Language> languages) {
@@ -313,7 +313,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getStoreLogo() {
-		return storeLogo;
+		System.out.println("$#4257#"); return storeLogo;
 	}
 
 	public void setStoreLogo(String storeLogo) {
@@ -321,7 +321,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getStoreTemplate() {
-		return storeTemplate;
+		System.out.println("$#4258#"); return storeTemplate;
 	}
 
 	public void setStoreTemplate(String storeTemplate) {
@@ -329,7 +329,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getInvoiceTemplate() {
-		return invoiceTemplate;
+		System.out.println("$#4259#"); return invoiceTemplate;
 	}
 
 	public void setInvoiceTemplate(String invoiceTemplate) {
@@ -337,7 +337,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getDomainName() {
-		return domainName;
+		System.out.println("$#4260#"); return domainName;
 	}
 
 	public void setDomainName(String domainName) {
@@ -345,7 +345,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getContinueshoppingurl() {
-		return continueshoppingurl;
+		System.out.println("$#4261#"); return continueshoppingurl;
 	}
 
 	public void setContinueshoppingurl(String continueshoppingurl) {
@@ -353,7 +353,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getStoreEmailAddress() {
-		return storeEmailAddress;
+		System.out.println("$#4262#"); return storeEmailAddress;
 	}
 
 	public void setStoreEmailAddress(String storeEmailAddress) {
@@ -361,7 +361,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4263#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -373,7 +373,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public String getDateBusinessSince() {
-		return dateBusinessSince;
+		System.out.println("$#4264#"); return dateBusinessSince;
 	}
 
 	public void setCurrencyFormatNational(boolean currencyFormatNational) {
@@ -381,12 +381,12 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public boolean isCurrencyFormatNational() {
-		return currencyFormatNational;
+		System.out.println("$#4266#"); System.out.println("$#4265#"); return currencyFormatNational;
 	}
 
 	@Override
 	public AuditSection getAuditSection() {
-		return this.auditSection;
+		System.out.println("$#4267#"); return this.auditSection;
 	}
 
 	@Override
@@ -396,7 +396,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public MerchantStore getParent() {
-		return parent;
+		System.out.println("$#4268#"); return parent;
 	}
 
 	public void setParent(MerchantStore parent) {
@@ -404,7 +404,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public Set<MerchantStore> getStores() {
-		return stores;
+		System.out.println("$#4269#"); return stores;
 	}
 
 	public void setStores(Set<MerchantStore> stores) {
@@ -412,7 +412,7 @@ public class MerchantStore extends SalesManagerEntity<Integer, MerchantStore> im
 	}
 
 	public Boolean isRetailer() {
-		return retailer;
+		System.out.println("$#4271#"); System.out.println("$#4270#"); return retailer;
 	}
 
 

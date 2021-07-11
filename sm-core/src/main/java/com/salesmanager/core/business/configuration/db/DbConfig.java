@@ -14,9 +14,9 @@ public class DbConfig {
     @Bean
     public DbCredentials dbCredentials() {
     	DbCredentials dbCredentials = new DbCredentials();
-    	dbCredentials.setUserName(env.getProperty("user"));
-    	dbCredentials.setPassword(env.getProperty("password"));
-        return dbCredentials;
+					System.out.println("$#13#"); dbCredentials.setUserName(env.getProperty("user"));
+					System.out.println("$#14#"); dbCredentials.setPassword(env.getProperty("password"));
+								System.out.println("$#15#"); return dbCredentials;
     }
 
 }

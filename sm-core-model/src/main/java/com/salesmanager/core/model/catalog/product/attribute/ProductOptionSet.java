@@ -80,46 +80,46 @@ public class ProductOptionSet extends SalesManagerEntity<Long, ProductOptionSet>
 	
 	
 	public ProductOption getOption() {
-		return option;
+		System.out.println("$#3816#"); return option;
 	}
 	public void setOption(ProductOption option) {
 		this.option = option;
 	}
 	public List<ProductOptionValue> getValues() {
-		return values;
+		System.out.println("$#3817#"); return values;
 	}
 	public void setValues(List<ProductOptionValue> values) {
 		this.values = values;
 	}
 	public MerchantStore getStore() {
-		return store;
+		System.out.println("$#3818#"); return store;
 	}
 	public void setStore(MerchantStore store) {
 		this.store = store;
 	}
 	@Override
 	public Long getId() {
-		return this.id;
+		System.out.println("$#3819#"); return this.id;
 	}
 	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#3820#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public boolean isOptionDisplayOnly() {
-		return optionDisplayOnly;
+		System.out.println("$#3822#"); System.out.println("$#3821#"); return optionDisplayOnly;
 	}
 	public void setOptionDisplayOnly(boolean optionDisplayOnly) {
 		this.optionDisplayOnly = optionDisplayOnly;
 	}
 	
 	public Set<ProductType> getProductTypes() {
-		return productTypes;
+		System.out.println("$#3823#"); return productTypes;
 	}
 	public void setProductTypes(Set<ProductType> productTypes) {
 		this.productTypes = productTypes;

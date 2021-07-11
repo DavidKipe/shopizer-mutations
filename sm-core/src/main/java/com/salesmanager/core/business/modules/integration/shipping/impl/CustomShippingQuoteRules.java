@@ -71,16 +71,16 @@ public class CustomShippingQuoteRules implements ShippingQuoteModule {
 		Validate.notEmpty(packages, "packages cannot be empty");
 		
 		//requires the postal code
-		if(StringUtils.isBlank(delivery.getPostalCode())) {
-			return null;
+		System.out.println("$#1002#"); if(StringUtils.isBlank(delivery.getPostalCode())) {
+			System.out.println("$#1003#"); return null;
 		}
 
 		Double distance = null;
 		
-		if(quote!=null) {
+		System.out.println("$#1004#"); if(quote!=null) {
 			//look if distance has been calculated
-			if(quote.getQuoteInformations()!=null) {
-				if(quote.getQuoteInformations().containsKey(Constants.DISTANCE_KEY)) {
+			System.out.println("$#1005#"); if(quote.getQuoteInformations()!=null) {
+				System.out.println("$#1006#"); if(quote.getQuoteInformations().containsKey(Constants.DISTANCE_KEY)) {
 					distance = (Double)quote.getQuoteInformations().get(Constants.DISTANCE_KEY);
 				}
 			}
@@ -92,9 +92,9 @@ public class CustomShippingQuoteRules implements ShippingQuoteModule {
 		Double size = null;
 		//calculate weight
 		for(PackageDetails pack : packages) {
-			weight = weight + pack.getShippingWeight();
-			Double tmpVolume = pack.getShippingHeight() * pack.getShippingLength() * pack.getShippingWidth();
-			if(volume == null || tmpVolume.doubleValue() > volume.doubleValue()) { //take the largest volume
+			System.out.println("$#1007#"); weight = weight + pack.getShippingWeight();
+			System.out.println("$#1008#"); Double tmpVolume = pack.getShippingHeight() * pack.getShippingLength() * pack.getShippingWidth();
+			System.out.println("$#1011#"); System.out.println("$#1010#"); if(volume == null || tmpVolume.doubleValue() > volume.doubleValue()) { //take the largest volume
 				volume = tmpVolume;
 			} 
 			//largest size
@@ -103,7 +103,7 @@ public class CustomShippingQuoteRules implements ShippingQuoteModule {
 			sizeList.add(pack.getShippingWeight());
 			sizeList.add(pack.getShippingLength());
 			Double maxSize = (Double)Collections.max(sizeList);
-			if(size==null || maxSize.doubleValue() > size.doubleValue()) {
+			System.out.println("$#1014#"); System.out.println("$#1013#"); if(size==null || maxSize.doubleValue() > size.doubleValue()) {
 				size = maxSize.doubleValue();
 			}
 		}
@@ -111,30 +111,30 @@ public class CustomShippingQuoteRules implements ShippingQuoteModule {
 		//Build a ShippingInputParameters
 		ShippingInputParameters inputParameters = new ShippingInputParameters();
 		
-		inputParameters.setWeight((long)weight.doubleValue());
-		inputParameters.setCountry(delivery.getCountry().getIsoCode());
-		inputParameters.setProvince("*");
-		inputParameters.setModuleName(module.getCode());
+		System.out.println("$#1016#"); inputParameters.setWeight((long)weight.doubleValue());
+		System.out.println("$#1017#"); inputParameters.setCountry(delivery.getCountry().getIsoCode());
+		System.out.println("$#1018#"); inputParameters.setProvince("*");
+		System.out.println("$#1019#"); inputParameters.setModuleName(module.getCode());
 		
-		if(delivery.getZone().getCode()!=null) {
-			inputParameters.setProvince(delivery.getZone().getCode());
+		System.out.println("$#1020#"); if(delivery.getZone().getCode()!=null) {
+			System.out.println("$#1021#"); inputParameters.setProvince(delivery.getZone().getCode());
 		}
 		
-		if(distance!=null) {
+		System.out.println("$#1022#"); if(distance!=null) {
 			double ddistance = distance.doubleValue();
 			long ldistance = (long)ddistance;
-			inputParameters.setDistance(ldistance);
+			System.out.println("$#1023#"); inputParameters.setDistance(ldistance);
 		}
 		
-		if(volume!=null) {
-			inputParameters.setVolume((long)volume.doubleValue());
+		System.out.println("$#1024#"); if(volume!=null) {
+			System.out.println("$#1025#"); inputParameters.setVolume((long)volume.doubleValue());
 		}
 		
 		List<ShippingOption> options = quote.getShippingOptions();
 		
-		if(options == null) {
+		System.out.println("$#1026#"); if(options == null) {
 			options = new ArrayList<ShippingOption>();
-			quote.setShippingOptions(options);
+			System.out.println("$#1027#"); quote.setShippingOptions(options);
 		}
 		
 		
@@ -147,25 +147,25 @@ public class CustomShippingQuoteRules implements ShippingQuoteModule {
 		DecisionResponse resp = new DecisionResponse();
 		
         kieSession.insert(inputParameters);
-        kieSession.setGlobal("decision",resp);
+								System.out.println("$#1028#"); kieSession.setGlobal("decision",resp);
         kieSession.fireAllRules();
         //System.out.println(resp.getCustomPrice());
 
-		if(resp.getCustomPrice() != null) {
+		System.out.println("$#1029#"); if(resp.getCustomPrice() != null) {
 
 			ShippingOption shippingOption = new ShippingOption();
 			
 			
-			shippingOption.setOptionPrice(new BigDecimal(resp.getCustomPrice()));
-			shippingOption.setShippingModuleCode(MODULE_CODE);
-			shippingOption.setOptionCode(MODULE_CODE);
-			shippingOption.setOptionId(MODULE_CODE);
+			System.out.println("$#1030#"); shippingOption.setOptionPrice(new BigDecimal(resp.getCustomPrice()));
+			System.out.println("$#1031#"); shippingOption.setShippingModuleCode(MODULE_CODE);
+			System.out.println("$#1032#"); shippingOption.setOptionCode(MODULE_CODE);
+			System.out.println("$#1033#"); shippingOption.setOptionId(MODULE_CODE);
 
 			options.add(shippingOption);
 		}
 
 		
-		return options;
+		System.out.println("$#1034#"); return options;
 		
 		
 	}

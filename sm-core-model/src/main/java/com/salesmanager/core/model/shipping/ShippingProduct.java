@@ -21,16 +21,16 @@ public class ShippingProduct {
 		this.quantity = quantity;
 	}
 	public int getQuantity() {
-		return quantity;
+		System.out.println("$#4638#"); return quantity;
 	}
 	public void setProduct(Product product) {
 		this.product = product;
 	}
 	public Product getProduct() {
-		return product;
+		System.out.println("$#4639#"); return product;
 	}
 	public FinalPrice getFinalPrice() {
-		return finalPrice;
+		System.out.println("$#4640#"); return finalPrice;
 	}
 	public void setFinalPrice(FinalPrice finalPrice) {
 		this.finalPrice = finalPrice;

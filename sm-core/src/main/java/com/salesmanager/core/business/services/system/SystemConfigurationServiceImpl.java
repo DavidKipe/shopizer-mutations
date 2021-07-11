@@ -25,7 +25,7 @@ public class SystemConfigurationServiceImpl extends
 	}
 	
 	public SystemConfiguration getByKey(String key) throws ServiceException {
-		return systemConfigurationReposotory.findByKey(key);
+		System.out.println("$#3266#"); return systemConfigurationReposotory.findByKey(key);
 	}
 	
 

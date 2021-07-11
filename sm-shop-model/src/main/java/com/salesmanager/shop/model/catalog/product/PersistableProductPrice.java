@@ -12,7 +12,7 @@ public class PersistableProductPrice extends ProductPriceEntity {
   private List<ProductPriceDescription> descriptions = new ArrayList<ProductPriceDescription>();
 
   public List<ProductPriceDescription> getDescriptions() {
-    return descriptions;
+				System.out.println("$#8873#"); return descriptions;
   }
 
   public void setDescriptions(List<ProductPriceDescription> descriptions) {

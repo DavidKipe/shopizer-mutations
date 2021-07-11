@@ -20,10 +20,10 @@ public class OrderProductEntity extends OrderProduct implements Serializable {
 		this.orderedQuantity = orderedQuantity;
 	}
 	public int getOrderedQuantity() {
-		return orderedQuantity;
+		System.out.println("$#9136#"); return orderedQuantity;
 	}
 	public ReadableProduct getProduct() {
-		return product;
+		System.out.println("$#9137#"); return product;
 	}
 	public void setProduct(ReadableProduct product) {
 		this.product = product;

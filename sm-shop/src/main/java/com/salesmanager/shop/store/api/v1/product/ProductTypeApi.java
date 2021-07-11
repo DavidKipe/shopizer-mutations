@@ -56,7 +56,7 @@ public class ProductTypeApi {
 			@RequestParam(name = "page", defaultValue = "0") int page, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		return productTypeFacade.getByMerchant(merchantStore, language, count, page);
+		System.out.println("$#12006#"); return productTypeFacade.getByMerchant(merchantStore, language, count, page);
 
 	}
 
@@ -67,7 +67,7 @@ public class ProductTypeApi {
 	public ReadableProductType get(@PathVariable Long id, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		return productTypeFacade.get(merchantStore, id, language);
+		System.out.println("$#12007#"); return productTypeFacade.get(merchantStore, id, language);
 
 	}
 
@@ -79,7 +79,7 @@ public class ProductTypeApi {
 			@ApiIgnore Language language) {
 
 		boolean exists = productTypeFacade.exists(code, merchantStore, language);
-		return new ResponseEntity<EntityExists>(new EntityExists(exists), HttpStatus.OK);
+		System.out.println("$#12008#"); return new ResponseEntity<EntityExists>(new EntityExists(exists), HttpStatus.OK);
 
 	}
 
@@ -92,8 +92,8 @@ public class ProductTypeApi {
 
 		Long id = productTypeFacade.save(type, merchantStore, language);
 		Entity entity = new Entity();
-		entity.setId(id);
-		return entity;
+		System.out.println("$#12009#"); entity.setId(id);
+		System.out.println("$#12010#"); return entity;
 
 	}
 
@@ -104,7 +104,7 @@ public class ProductTypeApi {
 	public void put(@RequestBody PersistableProductType type, @PathVariable Long id,
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
-		productTypeFacade.update(type, id, merchantStore, language);
+		System.out.println("$#12011#"); productTypeFacade.update(type, id, merchantStore, language);
 
 	}
 
@@ -114,7 +114,7 @@ public class ProductTypeApi {
 			@ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en") })
 	public void delete(@PathVariable Long id, @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
-		productTypeFacade.delete(id, merchantStore, language);
+		System.out.println("$#12012#"); productTypeFacade.delete(id, merchantStore, language);
 
 	}
 

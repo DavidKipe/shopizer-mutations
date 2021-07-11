@@ -54,20 +54,20 @@ public class ShippingPackagingController {
 	public String displayShippingPackaging(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#7362#"); this.setMenu(model, request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		ShippingConfiguration shippingConfiguration =  shippingService.getShippingConfiguration(store);
 		
-		if(shippingConfiguration==null) {
+		System.out.println("$#7363#"); if(shippingConfiguration==null) {
 			shippingConfiguration = new ShippingConfiguration();
-			shippingConfiguration.setShippingType(ShippingType.INTERNATIONAL);
+			System.out.println("$#7364#"); shippingConfiguration.setShippingType(ShippingType.INTERNATIONAL);
 		}
 
 		model.addAttribute("configuration", shippingConfiguration);
 		model.addAttribute("store",store);
-		return ControllerConstants.Tiles.Shipping.shippingPackaging;
+		System.out.println("$#7365#"); return ControllerConstants.Tiles.Shipping.shippingPackaging;
 		
 		
 	}
@@ -88,13 +88,13 @@ public class ShippingPackagingController {
 	public String saveShippingPackaging(@ModelAttribute("configuration") ShippingConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#7366#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		//get original configuration
 		ShippingConfiguration shippingConfiguration =  shippingService.getShippingConfiguration(store);
 		
-		if(shippingConfiguration==null) {
+		System.out.println("$#7367#"); if(shippingConfiguration==null) {
 			shippingConfiguration = new ShippingConfiguration();
 		}
 		
@@ -102,19 +102,19 @@ public class ShippingPackagingController {
 		String sweight = df.format(configuration.getBoxWeight());
 		double weight = Double.parseDouble(sweight);
 		
-		shippingConfiguration.setBoxHeight(configuration.getBoxHeight());
-		shippingConfiguration.setBoxLength(configuration.getBoxLength());
-		shippingConfiguration.setBoxWeight(weight);
-		shippingConfiguration.setBoxWidth(configuration.getBoxWidth());
+		System.out.println("$#7368#"); shippingConfiguration.setBoxHeight(configuration.getBoxHeight());
+		System.out.println("$#7369#"); shippingConfiguration.setBoxLength(configuration.getBoxLength());
+		System.out.println("$#7370#"); shippingConfiguration.setBoxWeight(weight);
+		System.out.println("$#7371#"); shippingConfiguration.setBoxWidth(configuration.getBoxWidth());
 		
-		shippingConfiguration.setShipPackageType(configuration.getShipPackageType());
+		System.out.println("$#7372#"); shippingConfiguration.setShipPackageType(configuration.getShipPackageType());
 		
 
-		shippingService.saveShippingConfiguration(shippingConfiguration, store);
+		System.out.println("$#7373#"); shippingService.saveShippingConfiguration(shippingConfiguration, store);
 		
 		model.addAttribute("configuration", configuration);
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Shipping.shippingPackaging;
+		System.out.println("$#7374#"); return ControllerConstants.Tiles.Shipping.shippingPackaging;
 		
 		
 	}

@@ -9,13 +9,13 @@ public abstract class ContentFile {
 		this.mimeType = mimeType;
 	}
 	public String getMimeType() {
-		return mimeType;
+		System.out.println("$#4111#"); return mimeType;
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
 	public String getFileName() {
-		return fileName;
+		System.out.println("$#4112#"); return fileName;
 	}
 
 

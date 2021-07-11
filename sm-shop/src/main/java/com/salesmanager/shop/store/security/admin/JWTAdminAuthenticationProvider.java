@@ -27,7 +27,7 @@ public class JWTAdminAuthenticationProvider extends DaoAuthenticationProvider {
     private PasswordEncoder passwordEncoder;
 
 	public UserDetailsService getJwtAdminDetailsService() {
-		return jwtAdminDetailsService;
+		System.out.println("$#15229#"); return jwtAdminDetailsService;
 	}
 	public void setJwtAdminDetailsService(UserDetailsService jwtAdminDetailsService) {
 		this.jwtAdminDetailsService = jwtAdminDetailsService;
@@ -38,14 +38,14 @@ public class JWTAdminAuthenticationProvider extends DaoAuthenticationProvider {
         String name = auth.getName();
         Object credentials = auth.getCredentials();
         UserDetails user = jwtAdminDetailsService.loadUserByUsername(name);
-        if (user == null) {
+								System.out.println("$#15230#"); if (user == null) {
             throw new BadCredentialsException("Username/Password does not match for " + auth.getPrincipal());
         }
         
         String pass = credentials.toString();
         String usr = name;
         
-        if(!passwordMatch(pass, usr)) {
+								System.out.println("$#15231#"); if(!passwordMatch(pass, usr)) {
         	throw new BadCredentialsException("Username/Password does not match for " + auth.getPrincipal());
         }
         
@@ -55,17 +55,17 @@ public class JWTAdminAuthenticationProvider extends DaoAuthenticationProvider {
          */
 
         
-        return new UsernamePasswordAuthenticationToken(user, credentials, user.getAuthorities());
+								System.out.println("$#15232#"); return new UsernamePasswordAuthenticationToken(user, credentials, user.getAuthorities());
     }
 	
 	
     private boolean passwordMatch(String rawPassword, String user) {
-		    return passwordEncoder.matches(rawPassword, user);
+						System.out.println("$#15234#"); System.out.println("$#15233#"); return passwordEncoder.matches(rawPassword, user);
 	}
 	
     @Override
     public boolean supports(Class<?> authentication) {
-        return true;
+								System.out.println("$#15235#"); return true;
     }
 
 }

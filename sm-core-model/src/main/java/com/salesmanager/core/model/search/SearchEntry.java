@@ -10,13 +10,13 @@ public class SearchEntry {
 		this.highlights = highlights;
 	}
 	public List<String> getHighlights() {
-		return highlights;
+		System.out.println("$#4514#"); return highlights;
 	}
 	public void setIndexProduct(IndexProduct indexProduct) {
 		this.indexProduct = indexProduct;
 	}
 	public IndexProduct getIndexProduct() {
-		return indexProduct;
+		System.out.println("$#4515#"); return indexProduct;
 	}
 
 }

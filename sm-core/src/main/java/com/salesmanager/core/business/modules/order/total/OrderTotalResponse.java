@@ -6,7 +6,7 @@ public class OrderTotalResponse {
 	private String expiration;
 
 	public Double getDiscount() {
-		return discount;
+		System.out.println("$#1453#"); return discount;
 	}
 
 	public void setDiscount(Double discount) {
@@ -14,7 +14,7 @@ public class OrderTotalResponse {
 	}
 
 	public String getExpiration() {
-		return expiration;
+		System.out.println("$#1454#"); return expiration;
 	}
 
 	public void setExpiration(String expiration) {

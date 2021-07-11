@@ -13,19 +13,19 @@ public class PageInformation implements Serializable {
 	private String pageKeywords;
 	private String pageUrl;
 	public String getPageTitle() {
-		return pageTitle;
+		System.out.println("$#9291#"); return pageTitle;
 	}
 	public void setPageTitle(String pageTitle) {
 		this.pageTitle = pageTitle;
 	}
 	public String getPageDescription() {
-		return pageDescription;
+		System.out.println("$#9292#"); return pageDescription;
 	}
 	public void setPageDescription(String pageDescription) {
 		this.pageDescription = pageDescription;
 	}
 	public String getPageKeywords() {
-		return pageKeywords;
+		System.out.println("$#9293#"); return pageKeywords;
 	}
 	public void setPageKeywords(String pageKeywords) {
 		this.pageKeywords = pageKeywords;
@@ -34,7 +34,7 @@ public class PageInformation implements Serializable {
 		this.pageUrl = pageUrl;
 	}
 	public String getPageUrl() {
-		return pageUrl;
+		System.out.println("$#9294#"); return pageUrl;
 	}
 
 }

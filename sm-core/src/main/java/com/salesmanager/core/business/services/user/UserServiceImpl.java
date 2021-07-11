@@ -40,20 +40,20 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> i
 
 	@Override
 	public User getByUserName(String userName) throws ServiceException {
-		return userRepository.findByUserName(userName);
+		System.out.println("$#3365#"); return userRepository.findByUserName(userName);
 	}
 
 	@Override
 	public void delete(User user) throws ServiceException {
 		User u = this.getById(user.getId());
-		super.delete(u);
+		System.out.println("$#3366#"); super.delete(u);
 
 	}
 
 	@Override
 	public List<User> listUser() throws ServiceException {
 		try {
-			return userRepository.findAll();
+			System.out.println("$#3367#"); return userRepository.findAll();
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
@@ -62,7 +62,7 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> i
 	@Override
 	public List<User> listByStore(MerchantStore store) throws ServiceException {
 		try {
-			return userRepository.findByStore(store.getId());
+			System.out.println("$#3368#"); return userRepository.findByStore(store.getId());
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
@@ -81,8 +81,10 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> i
 		// store must be in lineage
 		boolean isFound = merchantStoreService.isStoreInGroup(storeCode);
 
-		if (isFound)
+		System.out.println("$#3369#"); if (isFound) {
+			System.out.println("$#3370#");
 			return user;
+		}
 
 		return null;
 
@@ -90,12 +92,12 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> i
 
 	@Override
 	public GenericEntityList<User> listByCriteria(Criteria criteria) throws ServiceException {
-		return userRepository.listByCriteria(criteria);
+		System.out.println("$#3371#"); return userRepository.listByCriteria(criteria);
 	}
 
 	@Override
 	public User getByUserName(String userName, String storeCode) throws ServiceException {
-		return userRepository.findByUserName(userName, storeCode);
+		System.out.println("$#3372#"); return userRepository.findByUserName(userName, storeCode);
 	}
 
 	@Override
@@ -103,7 +105,7 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> i
 
 		Pageable pageRequest = PageRequest.of(page, count);
 		Page<User> users = null;
-		if (criteria.getStoreIds() != null) {// search within a predefined list
+		System.out.println("$#3373#"); if (criteria.getStoreIds() != null) {// search within a predefined list
 												// of stores
 			users = pageableUserRepository.listByStoreIds(criteria.getStoreIds(), criteria.getAdminEmail(),
 					pageRequest);
@@ -111,25 +113,29 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User> i
 																	// a
 																	// specific
 																	// store
+			System.out.println("$#3374#");
 			users = pageableUserRepository.listAll(criteria.getAdminEmail(), pageRequest);
 		} else if (criteria.getStoreIds() != null) {// full search
+			System.out.println("$#3375#");
 			users = pageableUserRepository.listByStore(criteria.getStoreCode(), criteria.getAdminEmail(), pageRequest);
 		}
+		System.out.println("$#3374#"); // else-if
+		System.out.println("$#3375#"); // else-if
 
-		return users;
+		System.out.println("$#3376#"); return users;
 	}
 
 	@Override
 	public User getById(Long id, MerchantStore store) {
-		Validate.notNull(store, "MerchantStore cannot be null");
-		return userRepository.findByUserId(id, store.getCode());
+		System.out.println("$#3377#"); Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#3378#"); return userRepository.findByUserId(id, store.getCode());
 	}
 
 	@Override
 	public User findByResetPasswordToken(String userName, String token, MerchantStore store) throws ServiceException {
-		Validate.notNull(userName, "User name cannot be null");
-		Validate.notNull(token, "Token cannot be null");
-		Validate.notNull(store, "MerchantStore cannot be null");
+		System.out.println("$#3379#"); Validate.notNull(userName, "User name cannot be null");
+		System.out.println("$#3380#"); Validate.notNull(token, "Token cannot be null");
+		System.out.println("$#3381#"); Validate.notNull(store, "MerchantStore cannot be null");
 		return null;
 	}
 

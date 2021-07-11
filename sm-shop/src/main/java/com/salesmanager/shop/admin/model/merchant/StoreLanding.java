@@ -14,7 +14,7 @@ public class StoreLanding {
 	}
 
 	public List<StoreLandingDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#7809#"); return descriptions;
 	}
 
 }

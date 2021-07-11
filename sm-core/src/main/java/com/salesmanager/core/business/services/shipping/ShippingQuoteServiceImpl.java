@@ -37,32 +37,32 @@ public class ShippingQuoteServiceImpl extends SalesManagerEntityServiceImpl<Long
 
 	@Override
 	public List<Quote> findByOrder(Order order) throws ServiceException {
-		Validate.notNull(order,"Order cannot be null");
-		return this.shippingQuoteRepository.findByOrder(order.getId());
+		System.out.println("$#2891#"); Validate.notNull(order,"Order cannot be null");
+		System.out.println("$#2892#"); return this.shippingQuoteRepository.findByOrder(order.getId());
 	}
 
 	@Override
 	public ShippingSummary getShippingSummary(Long quoteId, MerchantStore store) throws ServiceException {
 		
-		Validate.notNull(quoteId,"quoteId must not be null");
+		System.out.println("$#2893#"); Validate.notNull(quoteId,"quoteId must not be null");
 		
 		Quote q = shippingQuoteRepository.getOne(quoteId);
 
 		
 		ShippingSummary quote = null;
 		
-		if(q != null) {
+		System.out.println("$#2894#"); if(q != null) {
 			
 			quote = new ShippingSummary();
-			quote.setDeliveryAddress(q.getDelivery());
-			quote.setShipping(q.getPrice());
-			quote.setShippingModule(q.getModule());
-			quote.setShippingOption(q.getOptionName());
-			quote.setShippingOptionCode(q.getOptionCode());
-			quote.setHandling(q.getHandling());
+			System.out.println("$#2895#"); quote.setDeliveryAddress(q.getDelivery());
+			System.out.println("$#2896#"); quote.setShipping(q.getPrice());
+			System.out.println("$#2897#"); quote.setShippingModule(q.getModule());
+			System.out.println("$#2898#"); quote.setShippingOption(q.getOptionName());
+			System.out.println("$#2899#"); quote.setShippingOptionCode(q.getOptionCode());
+			System.out.println("$#2900#"); quote.setHandling(q.getHandling());
 			
-			if(shippingService.hasTaxOnShipping(store)) {
-				quote.setTaxOnShipping(true);
+			System.out.println("$#2901#"); if(shippingService.hasTaxOnShipping(store)) {
+				System.out.println("$#2902#"); quote.setTaxOnShipping(true);
 			}
 			
 			
@@ -70,7 +70,7 @@ public class ShippingQuoteServiceImpl extends SalesManagerEntityServiceImpl<Long
 		}
 		
 		
-		return quote;
+		System.out.println("$#2903#"); return quote;
 		
 	}
 

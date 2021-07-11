@@ -37,27 +37,27 @@ public class PersistableTaxRateMapper implements Mapper<PersistableTaxRate, TaxR
 	@Override
 	public TaxRate convert(PersistableTaxRate source, MerchantStore store, Language language) {
 		TaxRate rate = new TaxRate();
-		return this.convert(source, rate, store, language);
+		System.out.println("$#8649#"); return this.convert(source, rate, store, language);
 	}
 
 	@Override
 	public TaxRate convert(PersistableTaxRate source, TaxRate destination, MerchantStore store, Language language) {
-		Validate.notNull(destination, "destination TaxRate cannot be null");
-		Validate.notNull(source, "source TaxRate cannot be null");
+		System.out.println("$#8650#"); Validate.notNull(destination, "destination TaxRate cannot be null");
+		System.out.println("$#8651#"); Validate.notNull(source, "source TaxRate cannot be null");
 		try {
-			destination.setId(source.getId());
-			destination.setCode(source.getCode());
-			destination.setTaxPriority(source.getPriority());
+			System.out.println("$#8652#"); destination.setId(source.getId());
+			System.out.println("$#8653#"); destination.setCode(source.getCode());
+			System.out.println("$#8654#"); destination.setTaxPriority(source.getPriority());
 			
-			destination.setCountry(countryService.getByCode(source.getCountry()));
-			destination.setZone(zoneService.getByCode(source.getZone()));
-			destination.setStateProvince(source.getZone());
-			destination.setMerchantStore(store);
-			destination.setTaxClass(taxClassService.getByCode(source.getTaxClass(), store));
-			destination.setTaxRate(source.getRate());
+			System.out.println("$#8655#"); destination.setCountry(countryService.getByCode(source.getCountry()));
+			System.out.println("$#8656#"); destination.setZone(zoneService.getByCode(source.getZone()));
+			System.out.println("$#8657#"); destination.setStateProvince(source.getZone());
+			System.out.println("$#8658#"); destination.setMerchantStore(store);
+			System.out.println("$#8659#"); destination.setTaxClass(taxClassService.getByCode(source.getTaxClass(), store));
+			System.out.println("$#8660#"); destination.setTaxRate(source.getRate());
 			this.taxRate(destination, source);
 			
-			return destination;
+			System.out.println("$#8661#"); return destination;
 		
 		} catch (Exception e) {
 			throw new ServiceRuntimeException("An error occured withe creating tax rate",e);
@@ -71,46 +71,46 @@ public class PersistableTaxRateMapper implements Mapper<PersistableTaxRate, TaxR
 	private com.salesmanager.core.model.tax.taxrate.TaxRate taxRate(com.salesmanager.core.model.tax.taxrate.TaxRate destination, PersistableTaxRate source) throws Exception {
 		//List<com.salesmanager.core.model.tax.taxrate.TaxRateDescription> descriptions = new ArrayList<com.salesmanager.core.model.tax.taxrate.TaxRateDescription>();
 		
-	      if(!CollectionUtils.isEmpty(source.getDescriptions())) {
+							System.out.println("$#8662#"); if(!CollectionUtils.isEmpty(source.getDescriptions())) {
 	          for(TaxRateDescription desc : source.getDescriptions()) {
 	        	com.salesmanager.core.model.tax.taxrate.TaxRateDescription description = null;
-	            if(!CollectionUtils.isEmpty(destination.getDescriptions())) {
+													System.out.println("$#8663#"); if(!CollectionUtils.isEmpty(destination.getDescriptions())) {
 	              for(com.salesmanager.core.model.tax.taxrate.TaxRateDescription d : destination.getDescriptions()) {
-	                if(!StringUtils.isBlank(desc.getLanguage()) && desc.getLanguage().equals(d.getLanguage().getCode())) {
-	              	  d.setDescription(desc.getDescription());
-	              	  d.setName(desc.getName());
-	              	  d.setTitle(desc.getTitle());
+																	System.out.println("$#8664#"); if(!StringUtils.isBlank(desc.getLanguage()) && desc.getLanguage().equals(d.getLanguage().getCode())) {
+																		System.out.println("$#8666#"); d.setDescription(desc.getDescription());
+																		System.out.println("$#8667#"); d.setName(desc.getName());
+																		System.out.println("$#8668#"); d.setTitle(desc.getTitle());
 	              	  description = d;
 	              	  break;
 	                } 
 	              }
 	            } 
-	            if(description == null) {
+													System.out.println("$#8669#"); if(description == null) {
 	  	          description = description(desc);
-	  	          description.setTaxRate(destination);
+														System.out.println("$#8670#"); description.setTaxRate(destination);
 	  	          destination.getDescriptions().add(description);
 	            }
 	          }
 	        }
 
-	        return destination;
+									System.out.println("$#8671#"); return destination;
 
 	}
 	
 	private com.salesmanager.core.model.tax.taxrate.TaxRateDescription description(TaxRateDescription source) throws Exception {
 		
 		
-	    Validate.notNull(source.getLanguage(),"description.language should not be null");
+					System.out.println("$#8672#"); Validate.notNull(source.getLanguage(),"description.language should not be null");
 	    com.salesmanager.core.model.tax.taxrate.TaxRateDescription desc = new com.salesmanager.core.model.tax.taxrate.TaxRateDescription();
-	    desc.setId(null);
-	    desc.setDescription(source.getDescription());
-	    desc.setName(source.getName());
-	    if(source.getId() != null && source.getId().longValue()>0) {
-	      desc.setId(source.getId());
+					System.out.println("$#8673#"); desc.setId(null);
+					System.out.println("$#8674#"); desc.setDescription(source.getDescription());
+					System.out.println("$#8675#"); desc.setName(source.getName());
+					System.out.println("$#8677#"); System.out.println("$#8676#"); if(source.getId() != null && source.getId().longValue()>0) {
+							System.out.println("$#8679#"); desc.setId(source.getId());
 	    }
 	    Language lang = languageService.getByCode(source.getLanguage());
-	    desc.setLanguage(lang);
-	    return desc;
+					System.out.println("$#8680#"); desc.setLanguage(lang);
+					System.out.println("$#8681#"); return desc;
 		
 
 		

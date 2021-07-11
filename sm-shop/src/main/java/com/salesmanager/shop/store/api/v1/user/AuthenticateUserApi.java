@@ -82,18 +82,18 @@ public class AuthenticateUserApi {
 
     		
     	} catch(Exception e) {
-    		if(e instanceof BadCredentialsException) {
-    			return new ResponseEntity<>("{\"message\":\"Bad credentials\"}",HttpStatus.UNAUTHORIZED);
+						System.out.println("$#12153#"); if(e instanceof BadCredentialsException) {
+							System.out.println("$#12154#"); return new ResponseEntity<>("{\"message\":\"Bad credentials\"}",HttpStatus.UNAUTHORIZED);
     		}
     		LOGGER.error("Error during authentication " + e.getMessage());
-    		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+						System.out.println("$#12155#"); return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     	}
     	
-    	if(authentication == null) {
-    		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+					System.out.println("$#12156#"); if(authentication == null) {
+						System.out.println("$#12157#"); return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     	}
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+								System.out.println("$#12158#"); SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // Reload password post-security so we can generate token
         final JWTUser userDetails = (JWTUser)jwtAdminDetailsService.loadUserByUsername(authenticationRequest.getUsername());
@@ -101,7 +101,7 @@ public class AuthenticateUserApi {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         // Return the token
-        return ResponseEntity.ok(new AuthenticationResponse(userDetails.getId(),token));
+								System.out.println("$#12159#"); return ResponseEntity.ok(new AuthenticationResponse(userDetails.getId(),token));
 
     }
 
@@ -109,18 +109,18 @@ public class AuthenticateUserApi {
     public ResponseEntity<AuthenticationResponse> refreshAndGetAuthenticationToken(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
 
-        if(token != null && token.contains("Bearer")) {
+								System.out.println("$#12160#"); if(token != null && token.contains("Bearer")) {
           token = token.substring("Bearer ".length(),token.length());
         }
         
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JWTUser user = (JWTUser) jwtAdminDetailsService.loadUserByUsername(username);
 
-        if (jwtTokenUtil.canTokenBeRefreshedWithGrace(token, user.getLastPasswordResetDate())) {
+								System.out.println("$#12162#"); if (jwtTokenUtil.canTokenBeRefreshedWithGrace(token, user.getLastPasswordResetDate())) {
             String refreshedToken = jwtTokenUtil.refreshToken(token);
-            return ResponseEntity.ok(new AuthenticationResponse(user.getId(),refreshedToken));
+												System.out.println("$#12163#"); return ResponseEntity.ok(new AuthenticationResponse(user.getId(),refreshedToken));
         } else {
-            return ResponseEntity.badRequest().body(null);
+												System.out.println("$#12164#"); return ResponseEntity.badRequest().body(null);
         }
     }
     

@@ -51,32 +51,32 @@ public class SecurityFacadeImpl implements SecurityFacade {
       }
 
       PermissionCriteria criteria = new PermissionCriteria();
-      criteria.setGroupIds(new HashSet(ids));
+						System.out.println("$#13628#"); criteria.setGroupIds(new HashSet(ids));
 
       PermissionList permissions = permissionService.listByCriteria(criteria);
       throw new ServiceRuntimeException("Not implemented");
     } catch (ServiceException e) {
-      e.printStackTrace();
+						System.out.println("$#13629#"); e.printStackTrace();
     }
 
-    return null;
+				System.out.println("$#13630#"); return null;
   }
 
   @Override
   public boolean validateUserPassword(String password) {
 
     Matcher matcher = userPasswordPattern.matcher(password);
-    return matcher.matches();
+				System.out.println("$#13632#"); System.out.println("$#13631#"); return matcher.matches();
   }
 
   @Override
   public String encodePassword(String password) {
-    return passwordEncoder.encode(password);
+				System.out.println("$#13633#"); return passwordEncoder.encode(password);
   }
 
   @Override
   public boolean matchPassword(String modelPassword, String newPassword) {
-    return passwordEncoder.matches(newPassword, modelPassword);
+				System.out.println("$#13635#"); System.out.println("$#13634#"); return passwordEncoder.matches(newPassword, modelPassword);
   }
   
   

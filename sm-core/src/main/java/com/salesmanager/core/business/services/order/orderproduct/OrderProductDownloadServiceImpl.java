@@ -31,7 +31,7 @@ public class OrderProductDownloadServiceImpl  extends SalesManagerEntityServiceI
     
     @Override
     public List<OrderProductDownload> getByOrderId(Long orderId) {
-    	return orderProductDownloadRepository.findByOrderId(orderId);
+					System.out.println("$#2280#"); return orderProductDownloadRepository.findByOrderId(orderId);
     }
 
 

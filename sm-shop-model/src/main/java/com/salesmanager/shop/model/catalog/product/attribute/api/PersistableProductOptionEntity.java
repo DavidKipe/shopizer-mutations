@@ -14,7 +14,7 @@ public class PersistableProductOptionEntity extends ProductOptionEntity {
   private static final long serialVersionUID = 1L;
   private List<ProductOptionDescription> descriptions = new ArrayList<ProductOptionDescription>();
   public List<ProductOptionDescription> getDescriptions() {
-    return descriptions;
+				System.out.println("$#8764#"); return descriptions;
   }
   public void setDescriptions(List<ProductOptionDescription> descriptions) {
     this.descriptions = descriptions;

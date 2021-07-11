@@ -15,7 +15,7 @@ public class UniqueEntity implements Serializable {
   private String merchant;
 
   public String getUnique() {
-    return unique;
+				System.out.println("$#9110#"); return unique;
   }
 
   public void setUnique(String unique) {
@@ -23,7 +23,7 @@ public class UniqueEntity implements Serializable {
   }
 
   public String getMerchant() {
-    return merchant;
+				System.out.println("$#9111#"); return merchant;
   }
 
   public void setMerchant(String merchant) {

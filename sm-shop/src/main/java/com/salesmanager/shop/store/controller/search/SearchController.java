@@ -72,35 +72,35 @@ public class SearchController {
 
 		MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 
-		if(merchantStore!=null) {
-			if(!merchantStore.getCode().equals(store)) {
+		System.out.println("$#13618#"); if(merchantStore!=null) {
+			System.out.println("$#13619#"); if(!merchantStore.getCode().equals(store)) {
 				merchantStore = null; //reset for the current request
 			}
 		}
 		
 		try {
 		
-			if(merchantStore== null) {
+			System.out.println("$#13620#"); if(merchantStore== null) {
 					merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#13621#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
-				return null;
+				System.out.println("$#13622#"); response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
+				System.out.println("$#13623#"); return null;
 			}
 			
 			AutoCompleteRequest req = new AutoCompleteRequest(store,language);
 			/** formatted toJSONString because of te specific field names required in the UI **/
 			SearchKeywords keywords = searchService.searchForKeywords(req.getCollectionName(), query, AUTOCOMPLETE_ENTRIES_COUNT);
-			return keywords.toJSONString();
+			System.out.println("$#13624#"); return keywords.toJSONString();
 
 			
 		} catch (Exception e) {
 			LOGGER.error("Exception while autocomplete " + e);
 		}
 		
-		return null;
+		System.out.println("$#13625#"); return null;
 		
 	}
 
@@ -121,7 +121,7 @@ public class SearchController {
 	    Language language, 
 	    MerchantStore store) {
 
-		return searchFacade.search(store, language, searchRequest);
+		System.out.println("$#13626#"); return searchFacade.search(store, language, searchRequest);
 
 		
 	}
@@ -147,7 +147,7 @@ public class SearchController {
 		
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Search.search).append(".").append(store.getStoreTemplate());
-		return template.toString();
+		System.out.println("$#13627#"); return template.toString();
 	}
 	
 	

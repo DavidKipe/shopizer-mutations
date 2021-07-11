@@ -60,11 +60,11 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 
 	public static CmsStaticContentFileManagerImpl getInstance() {
 
-		if (fileManager == null) {
+		System.out.println("$#129#"); if (fileManager == null) {
 			fileManager = new CmsStaticContentFileManagerImpl();
 		}
 
-		return fileManager;
+		System.out.println("$#130#"); return fileManager;
 
 	}
 
@@ -108,19 +108,19 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 			// base path
 			String rootPath = this.buildRootPath();
 			Path confDir = Paths.get(rootPath);
-			this.createDirectoryIfNorExist(confDir);
+			System.out.println("$#131#"); this.createDirectoryIfNorExist(confDir);
 
 			// node path
 			StringBuilder nodePath = new StringBuilder();
 			nodePath.append(rootPath).append(merchantStoreCode);
 			Path merchantPath = Paths.get(nodePath.toString());
-			this.createDirectoryIfNorExist(merchantPath);
+			System.out.println("$#132#"); this.createDirectoryIfNorExist(merchantPath);
 
 			// file path
 			nodePath.append(Constants.SLASH).append(inputStaticContentData.getFileContentType())
 					.append(Constants.SLASH);
 			Path dirPath = Paths.get(nodePath.toString());
-			this.createDirectoryIfNorExist(dirPath);
+			System.out.println("$#133#"); this.createDirectoryIfNorExist(dirPath);
 
 			// folder path
 
@@ -191,13 +191,13 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 			// base path
 			String rootPath = this.buildRootPath();
 			Path confDir = Paths.get(rootPath);
-			this.createDirectoryIfNorExist(confDir);
+			System.out.println("$#134#"); this.createDirectoryIfNorExist(confDir);
 
 			// node path
 			StringBuilder nodePath = new StringBuilder();
 			nodePath.append(rootPath).append(merchantStoreCode);
 			Path merchantPath = Paths.get(nodePath.toString());
-			this.createDirectoryIfNorExist(merchantPath);
+			System.out.println("$#135#"); this.createDirectoryIfNorExist(merchantPath);
 
 			for (final InputContentFile inputStaticContentData : inputStaticContentDataList) {
 
@@ -205,7 +205,7 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 				nodePath.append(Constants.SLASH).append(inputStaticContentData.getFileContentType())
 						.append(Constants.SLASH);
 				Path dirPath = Paths.get(nodePath.toString());
-				this.createDirectoryIfNorExist(dirPath);
+				System.out.println("$#136#"); this.createDirectoryIfNorExist(dirPath);
 
 				// file creation
 				nodePath.append(Constants.SLASH).append(inputStaticContentData.getFileName());
@@ -330,7 +330,7 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 
 			List<String> fileNames = null;
 
-			if (Files.exists(path)) {
+			System.out.println("$#137#"); if (Files.exists(path)) {
 
 				fileNames = new ArrayList<String>();
 				try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path)) {
@@ -338,14 +338,14 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 
 						String fileName = dirPath.getFileName().toString();
 
-						if (staticContentType.name().equals(FileContentType.IMAGE.name())) {
+						System.out.println("$#138#"); if (staticContentType.name().equals(FileContentType.IMAGE.name())) {
 							// File f = new File(fileName);
 							String mimetype = URLConnection.guessContentTypeFromName(fileName);
 							// String mimetype= new
 							// MimetypesFileTypeMap().getContentType(f);
-							if (!StringUtils.isBlank(mimetype)) {
+							System.out.println("$#139#"); if (!StringUtils.isBlank(mimetype)) {
 								String type = mimetype.split("/")[0];
-								if (type.equals("image")) {
+								System.out.println("$#140#"); if (type.equals("image")) {
 									fileNames.add(fileName);
 								}
 							}
@@ -358,13 +358,13 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 					}
 				}
 
-				return fileNames;
+				System.out.println("$#141#"); return fileNames;
 			}
 		} catch (final Exception e) {
 			LOGGER.error("Error while fetching file for {} merchant ", merchantStoreCode);
 			throw new ServiceException(e);
 		}
-		return new ArrayList<>();
+		System.out.println("$#142#"); return new ArrayList<>();
 	}
 
 	public void setRootName(String rootName) {
@@ -372,24 +372,24 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 	}
 
 	public String getRootName() {
-		return rootName;
+		System.out.println("$#143#"); return rootName;
 	}
 
 	private String buildRootPath() {
-		return new StringBuilder().append(getRootName()).append(Constants.SLASH).append(ROOT_CONTAINER)
+		System.out.println("$#144#"); return new StringBuilder().append(getRootName()).append(Constants.SLASH).append(ROOT_CONTAINER)
 				.append(Constants.SLASH).toString();
 
 	}
 
 	private void createDirectoryIfNorExist(Path path) throws IOException {
 
-		if (Files.notExists(path)) {
+		System.out.println("$#145#"); if (Files.notExists(path)) {
 			Files.createDirectory(path);
 		}
 	}
 
 	public LocalCacheManagerImpl getCacheManager() {
-		return cacheManager;
+		System.out.println("$#146#"); return cacheManager;
 	}
 
 	public void setCacheManager(LocalCacheManagerImpl cacheManager) {
@@ -406,7 +406,7 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 			Path merchantPath = this.buildMerchantPath(merchantStoreCode);
 			
 			StringBuilder nodePath = new StringBuilder();
-			if(folderPath.isPresent()) {
+			System.out.println("$#147#"); if(folderPath.isPresent()) {
 				nodePath
 				.append(merchantPath.toString())
 				.append(Constants.SLASH).append(folderPath.get()).append(Constants.SLASH);
@@ -415,7 +415,7 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 			nodePath.append(folderName);
 			
 			Path dirPath = Paths.get(nodePath.toString());
-			this.createDirectoryIfNorExist(dirPath);
+			System.out.println("$#148#"); this.createDirectoryIfNorExist(dirPath);
 
 		} catch (IOException e) {
 			LOGGER.error("Error while creating fiolder for {} merchant ", merchantStoreCode);
@@ -435,9 +435,9 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 		.append(confDir.toString())
 		.append(rootPath).append(merchantCode);
 		Path merchantPath = Paths.get(nodePath.toString());
-		this.createDirectoryIfNorExist(merchantPath);
+		System.out.println("$#149#"); this.createDirectoryIfNorExist(merchantPath);
 		
-		return merchantPath;
+		System.out.println("$#150#"); return merchantPath;
 		
 	}
 
@@ -451,7 +451,7 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 			Path merchantPath = this.buildMerchantPath(merchantStoreCode);
 			StringBuilder nodePath = new StringBuilder();
 			nodePath.append(merchantPath.toString()).append(Constants.SLASH);
-			if(folderPath.isPresent()) {
+			System.out.println("$#151#"); if(folderPath.isPresent()) {
 				nodePath.append(folderPath.get()).append(Constants.SLASH);
 			}
 			
@@ -459,8 +459,8 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 			
 			Path longPath = Paths.get(nodePath.toString());
 			
-			if (Files.exists(longPath)) {
-				Files.delete(longPath);
+			System.out.println("$#152#"); if (Files.exists(longPath)) {
+				System.out.println("$#153#"); Files.delete(longPath);
 			}
 			
 		} catch (IOException e) {
@@ -473,7 +473,7 @@ public class CmsStaticContentFileManagerImpl implements ContentAssetsManager {
 	@Override
 	public List<String> listFolders(String merchantStoreCode, Optional<String> folderPath) throws ServiceException {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("$#154#"); return null;
 	}
 
 	@Override

@@ -52,7 +52,7 @@ public class AdminFilter extends HandlerInterceptorAdapter {
             HttpServletResponse response,
             Object handler) throws Exception {
 		
-		request.setCharacterEncoding("UTF-8");
+		System.out.println("$#8012#"); request.setCharacterEncoding("UTF-8");
 		@SuppressWarnings("unchecked")
 		Map<String,Menu> menus = (Map<String,Menu>) cache.getFromCache("MENUMAP");
 		
@@ -65,14 +65,14 @@ public class AdminFilter extends HandlerInterceptorAdapter {
 		
 		String userName = request.getRemoteUser();
 		
-		if(userName==null) {//** IMPORTANT FOR SPRING SECURITY **//
+		System.out.println("$#8013#"); if(userName==null) {//** IMPORTANT FOR SPRING SECURITY **//
 			//response.sendRedirect(new StringBuilder().append(request.getContextPath()).append("/").append("/admin").toString());
 		} else {
 		
-			if(user==null) {
+			System.out.println("$#8014#"); if(user==null) {
 				user = userService.getByUserName(userName);
-				request.getSession().setAttribute(Constants.ADMIN_USER, user);
-				if(user!=null) {
+				System.out.println("$#8015#"); request.getSession().setAttribute(Constants.ADMIN_USER, user);
+				System.out.println("$#8016#"); if(user!=null) {
 					storeCode = user.getMerchantStore().getCode();
 				} else {
 					LOGGER.warn("User name not found " + userName);
@@ -80,14 +80,14 @@ public class AdminFilter extends HandlerInterceptorAdapter {
 				store=null;
 			}
 			
-			if(user==null) {
-				response.sendRedirect(request.getContextPath() + "/admin/unauthorized.html");
-				return true;
+			System.out.println("$#8017#"); if(user==null) {
+				System.out.println("$#8018#"); response.sendRedirect(request.getContextPath() + "/admin/unauthorized.html");
+				System.out.println("$#8019#"); return true;
 			}
 			
-			if(!user.getAdminName().equals(userName)) {
+			System.out.println("$#8020#"); if(!user.getAdminName().equals(userName)) {
 				user = userService.getByUserName(userName);
-				if(user!=null) {
+				System.out.println("$#8021#"); if(user!=null) {
 					storeCode = user.getMerchantStore().getCode();
 				} else {
 					LOGGER.warn("User name not found " + userName);
@@ -97,40 +97,40 @@ public class AdminFilter extends HandlerInterceptorAdapter {
 		
 		}
 		
-		if(store==null) {
+		System.out.println("$#8022#"); if(store==null) {
 				store = merchantService.getByCode(storeCode);
-				request.getSession().setAttribute(Constants.ADMIN_STORE, store);
+				System.out.println("$#8023#"); request.getSession().setAttribute(Constants.ADMIN_STORE, store);
 		}
-		request.setAttribute(Constants.ADMIN_STORE, store);
+		System.out.println("$#8024#"); request.setAttribute(Constants.ADMIN_STORE, store);
 		
 		
 		Language language = languageUtils.getRequestLanguage(request, response);
 		
 		//Language language = (Language) request.getSession().getAttribute("LANGUAGE");
 
-		if(language==null) {
+		System.out.println("$#8025#"); if(language==null) {
 			
 			//TODO get the Locale from Spring API, is it simply request.getLocale() ???
 			//if so then based on the Locale language locale.getLanguage() get the appropriate Language
 			//object as represented below
-			if(user!=null) {
+			System.out.println("$#8026#"); if(user!=null) {
 				language = user.getDefaultLanguage();
-				if(language==null) {
+				System.out.println("$#8027#"); if(language==null) {
 					language = store.getDefaultLanguage();
 				}
 			} else {
 				language = store.getDefaultLanguage();
 			}
 
-			request.getSession().setAttribute("LANGUAGE", language);
+			System.out.println("$#8028#"); request.getSession().setAttribute("LANGUAGE", language);
 
 		}
 		
 
-		request.setAttribute(Constants.LANGUAGE, language);
+		System.out.println("$#8029#"); request.setAttribute(Constants.LANGUAGE, language);
 		
 
-		if(menus==null) {
+		System.out.println("$#8030#"); if(menus==null) {
 			InputStream in = null;
 			ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 			try {
@@ -148,7 +148,7 @@ public class AdminFilter extends HandlerInterceptorAdapter {
 					menus.put(m.getCode(),m);
 				}
 
-				cache.putInCache(menus,"MENUMAP");
+				System.out.println("$#8031#"); cache.putInCache(menus,"MENUMAP");
 
 			} catch (JsonParseException e) {
 				LOGGER.error("Error while creating menu", e);
@@ -157,9 +157,9 @@ public class AdminFilter extends HandlerInterceptorAdapter {
 			} catch (IOException e) {
 				LOGGER.error("Error while creating menu", e);
 			} finally {
-				if(in !=null) {
+				System.out.println("$#8032#"); if(in !=null) {
 					try {
-						in.close();
+						System.out.println("$#8033#"); in.close();
 					} catch (Exception ignore) {
 						// TODO: handle exception
 					}
@@ -171,14 +171,14 @@ public class AdminFilter extends HandlerInterceptorAdapter {
 		
 		List<Menu> list = new ArrayList<Menu>(menus.values());
 
-		request.setAttribute("MENULIST", list);
+		System.out.println("$#8034#"); request.setAttribute("MENULIST", list);
 
 		
 		
-		request.setAttribute("MENUMAP", menus);
-		response.setCharacterEncoding("UTF-8");
+		System.out.println("$#8035#"); request.setAttribute("MENUMAP", menus);
+		System.out.println("$#8036#"); response.setCharacterEncoding("UTF-8");
 		
-		return true;
+		System.out.println("$#8037#"); return true;
 	}
 	
 	
@@ -188,15 +188,15 @@ public class AdminFilter extends HandlerInterceptorAdapter {
 		Map menu = (Map)o.get("menu");
 		
 		Menu m = new Menu();
-		m.setCode((String)menu.get("code"));
+		System.out.println("$#8038#"); m.setCode((String)menu.get("code"));
 		
 		
-		m.setUrl((String)menu.get("url"));
-		m.setIcon((String)menu.get("icon"));
-		m.setRole((String)menu.get("role"));
+		System.out.println("$#8039#"); m.setUrl((String)menu.get("url"));
+		System.out.println("$#8040#"); m.setIcon((String)menu.get("icon"));
+		System.out.println("$#8041#"); m.setRole((String)menu.get("role"));
 		
 		List menus = (List)menu.get("menus");
-		if(menus!=null) {
+		System.out.println("$#8042#"); if(menus!=null) {
 			for(Object oo : menus) {
 				
 				Menu mm = getMenu(oo);
@@ -205,7 +205,7 @@ public class AdminFilter extends HandlerInterceptorAdapter {
 			
 		}
 		
-		return m;
+		System.out.println("$#8043#"); return m;
 		
 	}
 

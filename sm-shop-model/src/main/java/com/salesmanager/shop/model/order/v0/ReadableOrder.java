@@ -34,57 +34,57 @@ public class ReadableOrder extends OrderEntity implements Serializable {
 		this.customer = customer;
 	}
 	public ReadableCustomer getCustomer() {
-		return customer;
+		System.out.println("$#9221#"); return customer;
 	}
 	public OrderTotal getTotal() {
-		return total;
+		System.out.println("$#9222#"); return total;
 	}
 	public void setTotal(OrderTotal total) {
 		this.total = total;
 	}
 	public OrderTotal getTax() {
-		return tax;
+		System.out.println("$#9223#"); return tax;
 	}
 	public void setTax(OrderTotal tax) {
 		this.tax = tax;
 	}
 	public OrderTotal getShipping() {
-		return shipping;
+		System.out.println("$#9224#"); return shipping;
 	}
 	public void setShipping(OrderTotal shipping) {
 		this.shipping = shipping;
 	}
 
 	public List<ReadableOrderProduct> getProducts() {
-		return products;
+		System.out.println("$#9225#"); return products;
 	}
 	public void setProducts(List<ReadableOrderProduct> products) {
 		this.products = products;
 	}
 
 	public Currency getCurrencyModel() {
-		return currencyModel;
+		System.out.println("$#9226#"); return currencyModel;
 	}
 	public void setCurrencyModel(Currency currencyModel) {
 		this.currencyModel = currencyModel;
 	}
 
 	public ReadableBilling getBilling() {
-		return billing;
+		System.out.println("$#9227#"); return billing;
 	}
 	public void setBilling(ReadableBilling billing) {
 		this.billing = billing;
 	}
 
 	public Address getDelivery() {
-		return delivery;
+		System.out.println("$#9228#"); return delivery;
 	}
 	public void setDelivery(ReadableDelivery delivery) {
 		this.delivery = delivery;
 	}
 
 	public ReadableMerchantStore getStore() {
-		return store;
+		System.out.println("$#9229#"); return store;
 	}
 	public void setStore(ReadableMerchantStore store) {
 		this.store = store;

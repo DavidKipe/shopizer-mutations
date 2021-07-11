@@ -30,22 +30,22 @@ public class OrderSummary implements Serializable {
 		this.products = products;
 	}
 	public List<ShoppingCartItem> getProducts() {
-		return products;
+		System.out.println("$#4384#"); return products;
 	}
 	public void setShippingSummary(ShippingSummary shippingSummary) {
 		this.shippingSummary = shippingSummary;
 	}
 	public ShippingSummary getShippingSummary() {
-		return shippingSummary;
+		System.out.println("$#4385#"); return shippingSummary;
 	}
 	public OrderSummaryType getOrderSummaryType() {
-		return orderSummaryType;
+		System.out.println("$#4386#"); return orderSummaryType;
 	}
 	public void setOrderSummaryType(OrderSummaryType orderSummaryType) {
 		this.orderSummaryType = orderSummaryType;
 	}
 	public String getPromoCode() {
-		return promoCode;
+		System.out.println("$#4387#"); return promoCode;
 	}
 	public void setPromoCode(String promoCode) {
 		this.promoCode = promoCode;

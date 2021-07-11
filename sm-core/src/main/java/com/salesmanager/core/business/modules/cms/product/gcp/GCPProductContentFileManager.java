@@ -79,7 +79,7 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
       
       String bucketName = bucketName();
       
-      if(!this.bucketExists(storage, bucketName)) {
+						System.out.println("$#232#"); if(!this.bucketExists(storage, bucketName)) {
         return null;
       }
 
@@ -91,20 +91,20 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
       ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
       IOUtils.copy(inputStream, outputStream);
       OutputContentFile ct = new OutputContentFile();
-      ct.setFile(outputStream);
-      ct.setFileName(blob.getName());
+						System.out.println("$#234#"); ct.setFile(outputStream);
+						System.out.println("$#235#"); ct.setFileName(blob.getName());
 
       
 
-      return ct;
+						System.out.println("$#236#"); return ct;
     } catch (final Exception e) {
       LOGGER.error("Error while getting files", e);
       throw new ServiceException(e);
   
     } finally {
-      if(inputStream!=null) {
+						System.out.println("$#237#"); if(inputStream!=null) {
         try {
-          inputStream.close();
+										System.out.println("$#238#"); inputStream.close();
         } catch(Exception ignore) {}
       }
       
@@ -122,7 +122,7 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
   @Override
   public List<OutputContentFile> getImages(Product product) throws ServiceException {
     // TODO Auto-generated method stub
-    return null;
+				System.out.println("$#239#"); return null;
   }
 
   /**
@@ -138,8 +138,8 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
       
       String bucketName = bucketName();
       
-      if(!this.bucketExists(storage, bucketName)) {
-        return null;
+						System.out.println("$#240#"); if(!this.bucketExists(storage, bucketName)) {
+								System.out.println("$#241#"); return null;
       }
       
       Page<Blob> blobs =
@@ -154,19 +154,19 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         IOUtils.copy(inputStream, outputStream);
         OutputContentFile ct = new OutputContentFile();
-        ct.setFile(outputStream);
+								System.out.println("$#242#"); ct.setFile(outputStream);
         files.add(ct);
       }
 
-      return files;
+						System.out.println("$#243#"); return files;
     } catch (final Exception e) {
       LOGGER.error("Error while getting files", e);
       throw new ServiceException(e);
   
     } finally {
-      if(inputStream!=null) {
+						System.out.println("$#244#"); if(inputStream!=null) {
         try {
-          inputStream.close();
+										System.out.println("$#245#"); inputStream.close();
         } catch(Exception ignore) {}
       }
       
@@ -181,7 +181,7 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
     
     String bucketName = bucketName();
 
-    if(!this.bucketExists(storage, bucketName)) {
+				System.out.println("$#246#"); if(!this.bucketExists(storage, bucketName)) {
       createBucket(storage, bucketName);
     }
     
@@ -214,13 +214,13 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
     for(String size : sizes) {
       String filePath = filePath(productImage.getProduct().getMerchantStore().getCode(), productImage.getProduct().getSku(), size, productImage.getProductImage());
       BlobId blobId = BlobId.of(bucketName(), filePath);
-      if(blobId==null) {
+						System.out.println("$#247#"); if(blobId==null) {
         LOGGER.info("Image path " + filePath + " does not exist");
         return;
         //throw new ServiceException("Image not found " + productImage.getProductImage());
       }
       boolean deleted = storage.delete(blobId);
-      if (!deleted) {
+						System.out.println("$#248#"); if (!deleted) {
         LOGGER.error("Cannot delete image [" + productImage.getProductImage() + "]");
       }
     }
@@ -268,22 +268,22 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
   
   private String bucketName() {
     String bucketName = gcpAssetsManager.getRootName();
-    if (StringUtils.isBlank(bucketName)) {
+				System.out.println("$#249#"); if (StringUtils.isBlank(bucketName)) {
       bucketName = DEFAULT_BUCKET_NAME;
     }
-    return bucketName;
+				System.out.println("$#250#"); return bucketName;
   }
   
   private boolean bucketExists(Storage storage, String bucketName) {
     Bucket bucket = storage.get(bucketName, BucketGetOption.fields(BucketField.NAME));
-    if (bucket == null || !bucket.exists()) {
-      return false;
+				System.out.println("$#251#"); if (bucket == null || !bucket.exists()) {
+						System.out.println("$#253#"); return false;
     }
-    return true;
+				System.out.println("$#254#"); return true;
   }
   
   private Bucket createBucket(Storage storage, String bucketName) {
-    return storage.create(BucketInfo.of(bucketName));
+				System.out.println("$#255#"); return storage.create(BucketInfo.of(bucketName));
   }
   
   private String filePath(String merchant, String sku, FileContentType contentImage) {
@@ -293,13 +293,13 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
       .append(Constants.SLASH).append(sku).append(Constants.SLASH);
 
       // small large
-      if (contentImage.name().equals(FileContentType.PRODUCT.name())) {
+						System.out.println("$#256#"); if (contentImage.name().equals(FileContentType.PRODUCT.name())) {
         sb.append(SMALL);
-      } else if (contentImage.name().equals(FileContentType.PRODUCTLG.name())) {
+						} else if (contentImage.name().equals(FileContentType.PRODUCTLG.name())) { System.out.println("$#257#");
         sb.append(LARGE);
       }
 
-      return sb.append(Constants.SLASH).toString();
+						System.out.println("$#258#"); return sb.append(Constants.SLASH).toString();
     
   }
   
@@ -312,7 +312,7 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
     sb.append(size);
     sb.append(Constants.SLASH).append(fileName);
 
-    return sb.toString();
+				System.out.println("$#259#"); return sb.toString();
   
   }
 

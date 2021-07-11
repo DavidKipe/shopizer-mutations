@@ -37,31 +37,31 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
 		countBuilderWhere.append(whereQuery);
 		objectBuilderWhere.append(whereQuery);
 
-		if(!StringUtils.isBlank(criteria.getName())) {
+		System.out.println("$#1629#"); if(!StringUtils.isBlank(criteria.getName())) {
 			String nameQuery =" and c.billing.firstName like:nm or c.billing.lastName like:nm";
 			countBuilderWhere.append(nameQuery);
 			objectBuilderWhere.append(nameQuery);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getFirstName())) {
+		System.out.println("$#1630#"); if(!StringUtils.isBlank(criteria.getFirstName())) {
 			String nameQuery =" and c..billing.firstName like:fn";
 			countBuilderWhere.append(nameQuery);
 			objectBuilderWhere.append(nameQuery);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getLastName())) {
+		System.out.println("$#1631#"); if(!StringUtils.isBlank(criteria.getLastName())) {
 			String nameQuery =" and c.billing.lastName like:ln";
 			countBuilderWhere.append(nameQuery);
 			objectBuilderWhere.append(nameQuery);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getEmail())) {
+		System.out.println("$#1632#"); if(!StringUtils.isBlank(criteria.getEmail())) {
 			String mailQuery =" and c.emailAddress like:email";
 			countBuilderWhere.append(mailQuery);
 			objectBuilderWhere.append(mailQuery);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getCountry())) {
+		System.out.println("$#1633#"); if(!StringUtils.isBlank(criteria.getCountry())) {
 			String countryQuery =" and c.billing.country.isoCode like:country";
 			countBuilderWhere.append(countryQuery);
 			objectBuilderWhere.append(countryQuery);
@@ -81,31 +81,31 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
 		objectQ.setParameter("mId", store.getId());
 		
 
-		if(!StringUtils.isBlank(criteria.getName())) {
+		System.out.println("$#1634#"); if(!StringUtils.isBlank(criteria.getName())) {
 			String nameParam = new StringBuilder().append("%").append(criteria.getName()).append("%").toString();
 			countQ.setParameter("nm",nameParam);
 			objectQ.setParameter("nm",nameParam);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getFirstName())) {
+		System.out.println("$#1635#"); if(!StringUtils.isBlank(criteria.getFirstName())) {
 			String nameParam = new StringBuilder().append("%").append(criteria.getFirstName()).append("%").toString();
 			countQ.setParameter("fn",nameParam);
 			objectQ.setParameter("fn",nameParam);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getLastName())) {
+		System.out.println("$#1636#"); if(!StringUtils.isBlank(criteria.getLastName())) {
 			String nameParam = new StringBuilder().append("%").append(criteria.getLastName()).append("%").toString();
 			countQ.setParameter("ln",nameParam);
 			objectQ.setParameter("ln",nameParam);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getEmail())) {
+		System.out.println("$#1637#"); if(!StringUtils.isBlank(criteria.getEmail())) {
 			String email = new StringBuilder().append("%").append(criteria.getEmail()).append("%").toString();
 			countQ.setParameter("email",email);
 			objectQ.setParameter("email",email);
 		}
 		
-		if(!StringUtils.isBlank(criteria.getCountry())) {
+		System.out.println("$#1638#"); if(!StringUtils.isBlank(criteria.getCountry())) {
 			String country = new StringBuilder().append("%").append(criteria.getCountry()).append("%").toString();
 			countQ.setParameter("country",country);
 			objectQ.setParameter("country",country);
@@ -116,10 +116,12 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
 
 		Number count = (Number) countQ.getSingleResult();
 
-		customerList.setTotalCount(count.intValue());
+		System.out.println("$#1639#"); customerList.setTotalCount(count.intValue());
 		
-        if(count.intValue()==0)
-        	return customerList;
+		System.out.println("$#1640#"); if(count.intValue()==0) {
+			System.out.println("$#1641#");
+			return customerList;
+		}
         
 		//TO BE USED
         int max = criteria.getMaxCount();
@@ -129,19 +131,19 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
         
         
         
-    	if(max>0) {
-    			int maxCount = first + max;
+					System.out.println("$#1643#"); System.out.println("$#1642#"); if(max>0) {
+							System.out.println("$#1644#"); int maxCount = first + max;
 
-    			if(maxCount < count.intValue()) {
+							System.out.println("$#1646#"); System.out.println("$#1645#"); if(maxCount < count.intValue()) {
     				objectQ.setMaxResults(maxCount);
     			} else {
     				objectQ.setMaxResults(count.intValue());
     			}
     	}
 		
-		customerList.setCustomers(objectQ.getResultList());
+		System.out.println("$#1647#"); customerList.setCustomers(objectQ.getResultList());
 
-		return customerList;
+		System.out.println("$#1648#"); return customerList;
 		
 		
 	}

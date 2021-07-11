@@ -15,7 +15,7 @@ public class ReadableCustomerList extends ReadableList {
 	private List<ReadableCustomer> customers = new ArrayList<ReadableCustomer>();
 
 	public List<ReadableCustomer> getCustomers() {
-		return customers;
+		System.out.println("$#10326#"); return customers;
 	}
 
 	public void setCustomers(List<ReadableCustomer> customers) {

@@ -70,41 +70,41 @@ public class PriceByDistanceShippingQuoteRules implements ShippingQuoteModule {
 		Validate.notEmpty(packages, "packages cannot be empty");
 		
 		//requires the postal code
-		if(StringUtils.isBlank(delivery.getPostalCode())) {
-			return null;
+		System.out.println("$#1178#"); if(StringUtils.isBlank(delivery.getPostalCode())) {
+			System.out.println("$#1179#"); return null;
 		}
 
 		Double distance = null;
 		
-		if(quote!=null) {
+		System.out.println("$#1180#"); if(quote!=null) {
 			//look if distance has been calculated
-			if(quote.getQuoteInformations()!=null) {
-				if(quote.getQuoteInformations().containsKey(Constants.DISTANCE_KEY)) {
+			System.out.println("$#1181#"); if(quote.getQuoteInformations()!=null) {
+				System.out.println("$#1182#"); if(quote.getQuoteInformations().containsKey(Constants.DISTANCE_KEY)) {
 					distance = (Double)quote.getQuoteInformations().get(Constants.DISTANCE_KEY);
 				}
 			}
 		}
 		
-		if(distance==null) {
-			return null;
+		System.out.println("$#1183#"); if(distance==null) {
+			System.out.println("$#1184#"); return null;
 		}
 		
 		//maximum distance TODO configure from admin
-		if(distance > 150D) {
-			return null;
+		System.out.println("$#1186#"); System.out.println("$#1185#"); if(distance > 150D) {
+			System.out.println("$#1187#"); return null;
 		}
 		
 		List<ShippingOption> options = quote.getShippingOptions();
 		
-		if(options == null) {
+		System.out.println("$#1188#"); if(options == null) {
 			options = new ArrayList<ShippingOption>();
-			quote.setShippingOptions(options);
+			System.out.println("$#1189#"); quote.setShippingOptions(options);
 		}
 		
 		BigDecimal price = null;
 		BigDecimal total = null;
 		
-		if(distance<=20) {
+		System.out.println("$#1191#"); System.out.println("$#1190#"); if(distance<=20) {
 			price = new BigDecimal(69);//TODO from the admin
 			total = new BigDecimal(distance).multiply(price);
 		} else {
@@ -118,15 +118,15 @@ public class PriceByDistanceShippingQuoteRules implements ShippingQuoteModule {
 		ShippingOption shippingOption = new ShippingOption();
 			
 			
-		shippingOption.setOptionPrice(total);
-		shippingOption.setShippingModuleCode(MODULE_CODE);
-		shippingOption.setOptionCode(MODULE_CODE);
-		shippingOption.setOptionId(MODULE_CODE);
+		System.out.println("$#1192#"); shippingOption.setOptionPrice(total);
+		System.out.println("$#1193#"); shippingOption.setShippingModuleCode(MODULE_CODE);
+		System.out.println("$#1194#"); shippingOption.setOptionCode(MODULE_CODE);
+		System.out.println("$#1195#"); shippingOption.setOptionId(MODULE_CODE);
 
 		options.add(shippingOption);
 
 		
-		return options;
+		System.out.println("$#1196#"); return options;
 		
 		
 	}

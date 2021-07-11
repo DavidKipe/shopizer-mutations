@@ -14,7 +14,7 @@ public class CoreConfiguration {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CoreConfiguration.class);
 	
 	public Properties getProperties() {
-		return properties;
+		System.out.println("$#3459#"); return properties;
 	}
 
 	public void setProperties(Properties properties) {
@@ -25,7 +25,7 @@ public class CoreConfiguration {
 	
 	public String getProperty(String propertyKey) {
 		
-		return properties.getProperty(propertyKey);
+		System.out.println("$#3460#"); return properties.getProperty(propertyKey);
 		
 		
 	}
@@ -38,7 +38,7 @@ public class CoreConfiguration {
 		} catch(Exception e) {
 			LOGGER.warn("Cannot find property " + propertyKey);
 		}
-		return prop;
+		System.out.println("$#3461#"); return prop;
 		
 		
 	}

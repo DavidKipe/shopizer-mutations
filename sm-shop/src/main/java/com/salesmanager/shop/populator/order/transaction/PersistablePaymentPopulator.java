@@ -28,22 +28,22 @@ public class PersistablePaymentPopulator extends AbstractDataPopulator<Persistab
 		
 		Validate.notNull(source,"PersistablePayment cannot be null");
 		Validate.notNull(pricingService,"pricingService must be set");
-		if(target == null) {
+		System.out.println("$#10839#"); if(target == null) {
 			target = new Payment();
 		}
 		
 		try {
 		
-			target.setAmount(pricingService.getAmount(source.getAmount()));
-			target.setModuleName(source.getPaymentModule());
-			target.setPaymentType(PaymentType.valueOf(source.getPaymentType()));
-			target.setTransactionType(TransactionType.valueOf(source.getTransactionType()));
+			System.out.println("$#10840#"); target.setAmount(pricingService.getAmount(source.getAmount()));
+			System.out.println("$#10841#"); target.setModuleName(source.getPaymentModule());
+			System.out.println("$#10842#"); target.setPaymentType(PaymentType.valueOf(source.getPaymentType()));
+			System.out.println("$#10843#"); target.setTransactionType(TransactionType.valueOf(source.getTransactionType()));
 			
 			Map<String,String> metadata = new HashMap<String,String>();
 			metadata.put("paymentToken", source.getPaymentToken());
-			target.setPaymentMetaData(metadata);
+			System.out.println("$#10844#"); target.setPaymentMetaData(metadata);
 			
-			return target;
+			System.out.println("$#10845#"); return target;
 		
 		} catch(Exception e) {
 			throw new ConversionException(e);
@@ -57,7 +57,7 @@ public class PersistablePaymentPopulator extends AbstractDataPopulator<Persistab
 	}
 	
 	public PricingService getPricingService() {
-		return pricingService;
+		System.out.println("$#10846#"); return pricingService;
 	}
 
 	public void setPricingService(PricingService pricingService) {

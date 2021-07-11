@@ -79,46 +79,46 @@ public class LandingController {
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 
-		request.setAttribute(Constants.LINK_CODE, HOME_LINK_CODE);
+		System.out.println("$#12765#"); request.setAttribute(Constants.LINK_CODE, HOME_LINK_CODE);
 		
 		Content content = contentService.getByCode(LANDING_PAGE, store, language);
 		
 		/** Rebuild breadcrumb **/
 		BreadcrumbItem item = new BreadcrumbItem();
-		item.setItemType(BreadcrumbItemType.HOME);
-		item.setLabel(messages.getMessage(Constants.HOME_MENU_KEY, locale));
-		item.setUrl(Constants.HOME_URL);
+		System.out.println("$#12766#"); item.setItemType(BreadcrumbItemType.HOME);
+		System.out.println("$#12767#"); item.setLabel(messages.getMessage(Constants.HOME_MENU_KEY, locale));
+		System.out.println("$#12768#"); item.setUrl(Constants.HOME_URL);
 
 		
 		Breadcrumb breadCrumb = new Breadcrumb();
-		breadCrumb.setLanguage(language);
+		System.out.println("$#12769#"); breadCrumb.setLanguage(language);
 		
 		List<BreadcrumbItem> items = new ArrayList<BreadcrumbItem>();
 		items.add(item);
 		
-		breadCrumb.setBreadCrumbs(items);
-		request.getSession().setAttribute(Constants.BREADCRUMB, breadCrumb);
-		request.setAttribute(Constants.BREADCRUMB, breadCrumb);
+		System.out.println("$#12770#"); breadCrumb.setBreadCrumbs(items);
+		System.out.println("$#12771#"); request.getSession().setAttribute(Constants.BREADCRUMB, breadCrumb);
+		System.out.println("$#12772#"); request.setAttribute(Constants.BREADCRUMB, breadCrumb);
 		/** **/
 		
-		if(content!=null) {
+		System.out.println("$#12773#"); if(content!=null) {
 			
 			ContentDescription description = content.getDescription();
 
 			model.addAttribute("page",description);
 			
 			PageInformation pageInformation = new PageInformation();
-			pageInformation.setPageTitle(description.getName());
-			pageInformation.setPageDescription(description.getMetatagDescription());
-			pageInformation.setPageKeywords(description.getMetatagKeywords());
+			System.out.println("$#12774#"); pageInformation.setPageTitle(description.getName());
+			System.out.println("$#12775#"); pageInformation.setPageDescription(description.getMetatagDescription());
+			System.out.println("$#12776#"); pageInformation.setPageKeywords(description.getMetatagKeywords());
 			
-			request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
+			System.out.println("$#12777#"); request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
 			
 		}
 		
 		ReadableProductPopulator populator = new ReadableProductPopulator();
-		populator.setPricingService(pricingService);
-		populator.setimageUtils(imageUtils);
+		System.out.println("$#12778#"); populator.setPricingService(pricingService);
+		System.out.println("$#12779#"); populator.setimageUtils(imageUtils);
 
 		
 		//featured items
@@ -127,14 +127,14 @@ public class LandingController {
 		Date today = new Date();
 		for(ProductRelationship relationship : relationships) {
 			Product product = relationship.getRelatedProduct();
-			if(product.isAvailable() && DateUtil.dateBeforeEqualsDate(product.getDateAvailable(), today)) {
+			System.out.println("$#12780#"); if(product.isAvailable() && DateUtil.dateBeforeEqualsDate(product.getDateAvailable(), today)) {
 				ReadableProduct proxyProduct = populator.populate(product, new ReadableProduct(), store, language);
 			    featuredItems.add(proxyProduct);
 			}
 		}
 		
 		String tmpl = store.getStoreTemplate();
-		if(StringUtils.isBlank(tmpl)) {
+		System.out.println("$#12782#"); if(StringUtils.isBlank(tmpl)) {
 		    tmpl = "generic";
 		}
 
@@ -143,12 +143,12 @@ public class LandingController {
 		
 		/** template **/
 		StringBuilder template = new StringBuilder().append("landing.").append(tmpl);
-		return template.toString();
+		System.out.println("$#12783#"); return template.toString();
 	}
 	
 	@RequestMapping(value={Constants.SHOP_URI + "/stub.html"}, method=RequestMethod.GET)
 	public String displayHomeStub(Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		return "index";
+		System.out.println("$#12784#"); return "index";
 	}
 	
 	@RequestMapping( value=Constants.SHOP_URI + "/{store}", method=RequestMethod.GET)
@@ -156,12 +156,12 @@ public class LandingController {
 		
 		try {
 			
-			request.getSession().invalidate();
-			request.getSession().removeAttribute(Constants.MERCHANT_STORE);
+			System.out.println("$#12785#"); request.getSession().invalidate();
+			System.out.println("$#12786#"); request.getSession().removeAttribute(Constants.MERCHANT_STORE);
 			
 			MerchantStore merchantStore = merchantService.getByCode(store);
-			if(merchantStore!=null) {
-				request.getSession().setAttribute(Constants.MERCHANT_STORE, merchantStore);
+			System.out.println("$#12787#"); if(merchantStore!=null) {
+				System.out.println("$#12788#"); request.getSession().setAttribute(Constants.MERCHANT_STORE, merchantStore);
 			} else {
 				LOGGER.error("MerchantStore does not exist for store code " + store);
 			}
@@ -172,7 +172,7 @@ public class LandingController {
 		
 
 		
-		return "redirect:" + Constants.SHOP_URI;
+		System.out.println("$#12789#"); return "redirect:" + Constants.SHOP_URI;
 	}
 		
 

@@ -15,19 +15,19 @@ public class CatalogEntity extends Entity implements Serializable {
 	private boolean defaultCatalog;
 	private String code;
 	public boolean isVisible() {
-		return visible;
+		System.out.println("$#8717#"); System.out.println("$#8716#"); return visible;
 	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
 	public boolean isDefaultCatalog() {
-		return defaultCatalog;
+		System.out.println("$#8719#"); System.out.println("$#8718#"); return defaultCatalog;
 	}
 	public void setDefaultCatalog(boolean defaultCatalog) {
 		this.defaultCatalog = defaultCatalog;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#8720#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;

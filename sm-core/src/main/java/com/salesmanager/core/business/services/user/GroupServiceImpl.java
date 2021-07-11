@@ -30,7 +30,7 @@ public class GroupServiceImpl extends SalesManagerEntityServiceImpl<Integer, Gro
   @Override
   public List<Group> listGroup(GroupType groupType) throws ServiceException {
     try {
-      return groupRepository.findByType(groupType);
+						System.out.println("$#3353#"); return groupRepository.findByType(groupType);
     } catch (Exception e) {
       throw new ServiceException(e);
     }
@@ -39,7 +39,7 @@ public class GroupServiceImpl extends SalesManagerEntityServiceImpl<Integer, Gro
   public List<Group> listGroupByIds(Set<Integer> ids) throws ServiceException {
 
       try {
-        return ids.isEmpty() ? new ArrayList<Group>() : groupRepository.findByIds(ids);
+								System.out.println("$#3355#"); System.out.println("$#3354#"); return ids.isEmpty() ? new ArrayList<Group>() : groupRepository.findByIds(ids);
       } catch (Exception e) {
         throw new ServiceException(e);
       }
@@ -49,13 +49,13 @@ public class GroupServiceImpl extends SalesManagerEntityServiceImpl<Integer, Gro
 
   @Override
   public Group findByName(String groupName) throws ServiceException {
-    return groupRepository.findByGroupName(groupName);
+				System.out.println("$#3356#"); return groupRepository.findByGroupName(groupName);
   }
 
 
   @Override
   public List<Group> listGroupByNames(List<String> names) throws ServiceException {
-    return groupRepository.findByNames(names);
+				System.out.println("$#3357#"); return groupRepository.findByNames(names);
   }
 
 

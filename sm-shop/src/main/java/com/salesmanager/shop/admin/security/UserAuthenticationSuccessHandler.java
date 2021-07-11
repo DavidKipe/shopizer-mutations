@@ -19,12 +19,12 @@ public class UserAuthenticationSuccessHandler extends AbstractAuthenticatinSucce
 	        this.redirectStrategy = redirectStrategy;
 	    }
 	    protected RedirectStrategy getRedirectStrategy() {
-	        return redirectStrategy;
+									System.out.println("$#7869#"); return redirectStrategy;
 	    }
 
 		@Override
 		protected void redirectAfterSuccess(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			redirectStrategy.sendRedirect(request, response, "/admin/home.html");
+			System.out.println("$#7870#"); redirectStrategy.sendRedirect(request, response, "/admin/home.html");
 			
 		}
 

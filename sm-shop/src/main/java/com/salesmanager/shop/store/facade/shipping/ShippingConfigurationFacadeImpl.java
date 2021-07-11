@@ -15,7 +15,7 @@ public class ShippingConfigurationFacadeImpl implements ConfigurationsFacade {
 	@Override
 	public List<ReadableConfiguration> configurations(MerchantStore store) {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("$#15096#"); return null;
 	}
 
 	@Override

@@ -22,18 +22,18 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint, I
 			AuthenticationException authException) throws IOException, ServletException {
 		
 		
-		response.sendError( HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized" );
+		System.out.println("$#15347#"); response.sendError( HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized" );
 
 	}
 
 	@Override
 	public int getOrder() {
-		return 1;
+		System.out.println("$#15348#"); return 1;
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		if ((realmName == null) || "".equals(realmName)) {
+		System.out.println("$#15349#"); if ((realmName == null) || "".equals(realmName)) {
 			throw new IllegalArgumentException("realmName must be specified");
 		}
 	}

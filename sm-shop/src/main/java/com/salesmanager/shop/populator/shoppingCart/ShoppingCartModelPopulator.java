@@ -44,7 +44,7 @@ public class ShoppingCartModelPopulator
     private Customer customer;
 
     public ShoppingCartService getShoppingCartService() {
-		return shoppingCartService;
+		System.out.println("$#11011#"); return shoppingCartService;
 	}
 
 
@@ -57,7 +57,7 @@ public class ShoppingCartModelPopulator
 
 
     public ProductService getProductService() {
-		return productService;
+		System.out.println("$#11012#"); return productService;
 	}
 
 
@@ -70,7 +70,7 @@ public class ShoppingCartModelPopulator
     
    
     public ProductAttributeService getProductAttributeService() {
-		return productAttributeService;
+		System.out.println("$#11013#"); return productAttributeService;
 	}
 
 
@@ -87,72 +87,72 @@ public class ShoppingCartModelPopulator
 
         // if id >0 get the original from the database, override products
        try{
-        if ( shoppingCart.getId() > 0  && StringUtils.isNotBlank( shoppingCart.getCode()))
+								System.out.println("$#11015#"); System.out.println("$#11014#"); if ( shoppingCart.getId() > 0  && StringUtils.isNotBlank( shoppingCart.getCode()))
         {
             cartMdel = shoppingCartService.getByCode( shoppingCart.getCode(), store );
-            if(cartMdel==null){
+												System.out.println("$#11017#"); if(cartMdel==null){
                 cartMdel=new ShoppingCart();
-                cartMdel.setShoppingCartCode( shoppingCart.getCode() );
-                cartMdel.setMerchantStore( store );
-                if ( customer != null )
+																System.out.println("$#11018#"); cartMdel.setShoppingCartCode( shoppingCart.getCode() );
+																System.out.println("$#11019#"); cartMdel.setMerchantStore( store );
+																System.out.println("$#11020#"); if ( customer != null )
                 {
-                    cartMdel.setCustomerId( customer.getId() );
+																				System.out.println("$#11021#"); cartMdel.setCustomerId( customer.getId() );
                 }
-                shoppingCartService.create( cartMdel );
+																System.out.println("$#11022#"); shoppingCartService.create( cartMdel );
             }
         }
         else
         {
-            cartMdel.setShoppingCartCode( shoppingCart.getCode() );
-            cartMdel.setMerchantStore( store );
-            if ( customer != null )
+												System.out.println("$#11023#"); cartMdel.setShoppingCartCode( shoppingCart.getCode() );
+												System.out.println("$#11024#"); cartMdel.setMerchantStore( store );
+												System.out.println("$#11025#"); if ( customer != null )
             {
-                cartMdel.setCustomerId( customer.getId() );
+																System.out.println("$#11026#"); cartMdel.setCustomerId( customer.getId() );
             }
-            shoppingCartService.create( cartMdel );
+												System.out.println("$#11027#"); shoppingCartService.create( cartMdel );
         }
 
         List<ShoppingCartItem> items = shoppingCart.getShoppingCartItems();
         Set<com.salesmanager.core.model.shoppingcart.ShoppingCartItem> newItems =
             new HashSet<com.salesmanager.core.model.shoppingcart.ShoppingCartItem>();
-        if ( items != null && items.size() > 0 )
+								System.out.println("$#11029#"); System.out.println("$#11028#"); if ( items != null && items.size() > 0 )
         {
             for ( ShoppingCartItem item : items )
             {
 
                 Set<com.salesmanager.core.model.shoppingcart.ShoppingCartItem> cartItems = cartMdel.getLineItems();
-                if ( cartItems != null && cartItems.size() > 0 )
+																System.out.println("$#11032#"); System.out.println("$#11031#"); if ( cartItems != null && cartItems.size() > 0 )
                 {
 
                     for ( com.salesmanager.core.model.shoppingcart.ShoppingCartItem dbItem : cartItems )
                     {
-                        if ( dbItem.getId().longValue() == item.getId() )
+																								System.out.println("$#11034#"); if ( dbItem.getId().longValue() == item.getId() )
                         {
-                            dbItem.setQuantity( item.getQuantity() );
+																												System.out.println("$#11035#"); dbItem.setQuantity( item.getQuantity() );
                             // compare attributes
                             Set<com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem> attributes =
                                 dbItem.getAttributes();
                             Set<com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem> newAttributes =
                                 new HashSet<com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem>();
                             List<ShoppingCartAttribute> cartAttributes = item.getShoppingCartAttributes();
-                            if ( !CollectionUtils.isEmpty( cartAttributes ) )
+																												System.out.println("$#11036#"); if ( !CollectionUtils.isEmpty( cartAttributes ) )
                             {
                                 for ( ShoppingCartAttribute attribute : cartAttributes )
                                 {
                                     for ( com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem dbAttribute : attributes )
                                     {
-                                        if ( dbAttribute.getId().longValue() == attribute.getId() )
+																																								System.out.println("$#11037#"); if ( dbAttribute.getId().longValue() == attribute.getId() )
                                         {
                                             newAttributes.add( dbAttribute );
                                         }
                                     }
                                 }
                                 
-                                dbItem.setAttributes( newAttributes );
+																																System.out.println("$#11038#"); dbItem.setAttributes( newAttributes );
                             }
                             else
                             {
-                                dbItem.removeAllAttributes();
+																																System.out.println("$#11039#"); dbItem.removeAllAttributes();
                             }
                             newItems.add( dbItem );
                         }
@@ -164,13 +164,13 @@ public class ShoppingCartModelPopulator
                         createCartItem( cartMdel, item, store );
                     Set<com.salesmanager.core.model.shoppingcart.ShoppingCartItem> lineItems =
                         cartMdel.getLineItems();
-                    if ( lineItems == null )
+																				System.out.println("$#11040#"); if ( lineItems == null )
                     {
                         lineItems = new HashSet<com.salesmanager.core.model.shoppingcart.ShoppingCartItem>();
-                        cartMdel.setLineItems( lineItems );
+																								System.out.println("$#11041#"); cartMdel.setLineItems( lineItems );
                     }
                     lineItems.add( cartItem );
-                    shoppingCartService.update( cartMdel );
+																				System.out.println("$#11042#"); shoppingCartService.update( cartMdel );
                 }
             }// end for
         }// end if
@@ -183,7 +183,7 @@ public class ShoppingCartModelPopulator
            throw new ConversionException( "Unable to create cart model", ex );  
        }
 
-        return cartMdel;
+								System.out.println("$#11043#"); return cartMdel;
     }
 
    
@@ -195,12 +195,12 @@ public class ShoppingCartModelPopulator
 
         Product product = productService.getById( shoppingCartItem.getProductId() );
 
-        if ( product == null )
+								System.out.println("$#11044#"); if ( product == null )
         {
             throw new Exception( "Item with id " + shoppingCartItem.getProductId() + " does not exist" );
         }
 
-        if ( product.getMerchantStore().getId().intValue() != store.getId().intValue() )
+								System.out.println("$#11045#"); if ( product.getMerchantStore().getId().intValue() != store.getId().intValue() )
         {
             throw new Exception( "Item with id " + shoppingCartItem.getProductId() + " does not belong to merchant "
                 + store.getId() );
@@ -208,13 +208,13 @@ public class ShoppingCartModelPopulator
 
         com.salesmanager.core.model.shoppingcart.ShoppingCartItem item =
             new com.salesmanager.core.model.shoppingcart.ShoppingCartItem( cart, product );
-        item.setQuantity( shoppingCartItem.getQuantity() );
-        item.setItemPrice( shoppingCartItem.getProductPrice() );
-        item.setShoppingCart( cart );
+								System.out.println("$#11046#"); item.setQuantity( shoppingCartItem.getQuantity() );
+								System.out.println("$#11047#"); item.setItemPrice( shoppingCartItem.getProductPrice() );
+								System.out.println("$#11048#"); item.setShoppingCart( cart );
 
         // attributes
         List<ShoppingCartAttribute> cartAttributes = shoppingCartItem.getShoppingCartAttributes();
-        if ( !CollectionUtils.isEmpty( cartAttributes ) )
+								System.out.println("$#11049#"); if ( !CollectionUtils.isEmpty( cartAttributes ) )
         {
             Set<com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem> newAttributes =
                 new HashSet<com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem>();
@@ -227,11 +227,11 @@ public class ShoppingCartModelPopulator
                     com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem attributeItem =
                         new com.salesmanager.core.model.shoppingcart.ShoppingCartAttributeItem( item,
                                                                                                          productAttribute );
-                    if ( attribute.getAttributeId() > 0 )
+																				System.out.println("$#11053#"); System.out.println("$#11052#"); if ( attribute.getAttributeId() > 0 )
                     {
-                        attributeItem.setId( attribute.getId() );
+																								System.out.println("$#11054#"); attributeItem.setId( attribute.getId() );
                     }
-                    item.addAttributes( attributeItem );
+																				System.out.println("$#11055#"); item.addAttributes( attributeItem );
                     //newAttributes.add( attributeItem );
                 }
 
@@ -240,7 +240,7 @@ public class ShoppingCartModelPopulator
             //item.setAttributes( newAttributes );
         }
 
-        return item;
+								System.out.println("$#11056#"); return item;
 
     }
 
@@ -251,12 +251,12 @@ public class ShoppingCartModelPopulator
     protected ShoppingCart createTarget()
     {
       
-        return new ShoppingCart();
+								System.out.println("$#11057#"); return new ShoppingCart();
     }
 
 
 	public Customer getCustomer() {
-		return customer;
+		System.out.println("$#11058#"); return customer;
 	}
 
 

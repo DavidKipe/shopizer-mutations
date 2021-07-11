@@ -13,7 +13,7 @@ public class ReadableProductOptionValueFull extends ReadableProductOptionValueEn
   private static final long serialVersionUID = 1L;
   private List<ProductOptionValueDescription> descriptions = new ArrayList<ProductOptionValueDescription>();
   public List<ProductOptionValueDescription> getDescriptions() {
-    return descriptions;
+				System.out.println("$#8782#"); return descriptions;
   }
   public void setDescriptions(List<ProductOptionValueDescription> descriptions) {
     this.descriptions = descriptions;

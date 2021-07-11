@@ -70,32 +70,32 @@ public class GroupsController {
 			Locale locale, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// display menu
-		setMenu(model, request);
+		System.out.println("$#7510#"); setMenu(model, request);
 		
 		GroupType[] groupTypes = GroupType.values();
 		List<String> groups = new ArrayList<String>();
 
 		for(GroupType t : groupTypes) {
-			if(GroupType.ADMIN.name() != t.name()) {
+			System.out.println("$#7511#"); if(GroupType.ADMIN.name() != t.name()) {
 				groups.add(t.name());
 			}
 		}
 
 		Group group = groupService.getById(groupId);
 		
-		if(group == null) {
-			return "redirect://admin/groups/groups.html";
+		System.out.println("$#7512#"); if(group == null) {
+			System.out.println("$#7513#"); return "redirect://admin/groups/groups.html";
 			 
 		} 
 
 		GroupDetails groupDetails = new GroupDetails();
-		groupDetails.setGroup(group);
-		groupDetails.setTypes(groups);
+		System.out.println("$#7514#"); groupDetails.setGroup(group);
+		System.out.println("$#7515#"); groupDetails.setTypes(groups);
 		
 
 		model.addAttribute("group", groupDetails);
 
-		return "admin-user-group";
+		System.out.println("$#7516#"); return "admin-user-group";
 	}
 	
 	@PreAuthorize("hasRole('ADMIN')")
@@ -109,7 +109,7 @@ public class GroupsController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7517#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 
 		try {
@@ -118,41 +118,41 @@ public class GroupsController {
 			Group group = groupService.getById(groupId);
 
 
-			if(group==null){
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7518#"); if(group==null){
+				System.out.println("$#7519#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7520#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7521#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(!request.isUserInRole(Constants.GROUP_ADMIN)) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7522#"); if(!request.isUserInRole(Constants.GROUP_ADMIN)) {
+				System.out.println("$#7523#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7524#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7525#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(GroupType.ADMIN.name().equals(group.getGroupType().name())) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7526#"); if(GroupType.ADMIN.name().equals(group.getGroupType().name())) {
+				System.out.println("$#7527#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7528#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7529#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
-			groupService.delete(group);
+			System.out.println("$#7530#"); groupService.delete(group);
 			
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#7531#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting group", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7532#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7533#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7534#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 		
 	}
@@ -163,45 +163,45 @@ public class GroupsController {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// display menu
-		setMenu(model, request);
+		System.out.println("$#7535#"); setMenu(model, request);
 		
 		GroupType[] groupTypes = GroupType.values();
 		List<String> groups = new ArrayList<String>();
 
 		for(GroupType t : groupTypes) {
-			if(GroupType.ADMIN.name() != t.name()) {
+			System.out.println("$#7536#"); if(GroupType.ADMIN.name() != t.name()) {
 				groups.add(t.name());
 			}
 		}
 
 		//check if already exists
 		Group g = null;
-		if(group.getGroup().getId()!=null) {
+		System.out.println("$#7537#"); if(group.getGroup().getId()!=null) {
 			Group gid = groupService.getById(group.getGroup().getId());
-			if(gid != null && !gid.getGroupName().equals(group.getGroup().getGroupName())) {
+			System.out.println("$#7538#"); if(gid != null && !gid.getGroupName().equals(group.getGroup().getGroupName())) {
 				g = groupService.findByName(group.getGroup().getGroupName());
 			}
 		} else {
 			 g = groupService.findByName(group.getGroup().getGroupName());
 		}
 		
-		if(g != null) {
+		System.out.println("$#7540#"); if(g != null) {
 			 ObjectError error = new ObjectError("group.groupName", messages.getMessage("message.name.exist", locale));
-			 result.addError(error);
+				System.out.println("$#7541#"); result.addError(error);
 			 model.addAttribute("error","error");
 		} else {
-			groupService.save(group.getGroup());
+			System.out.println("$#7542#"); groupService.save(group.getGroup());
 			model.addAttribute("success","success");
 		}
 		
 		GroupDetails groupDetails = new GroupDetails();
-		groupDetails.setGroup(group.getGroup());
-		groupDetails.setTypes(groups);
+		System.out.println("$#7543#"); groupDetails.setGroup(group.getGroup());
+		System.out.println("$#7544#"); groupDetails.setTypes(groups);
 		
 
 		model.addAttribute("group", groupDetails);
 		
-		return "admin-user-group";
+		System.out.println("$#7545#"); return "admin-user-group";
 	}
 	
 	@PreAuthorize("hasRole('ADMIN')")
@@ -210,24 +210,24 @@ public class GroupsController {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// display menu
-		setMenu(model, request);
+		System.out.println("$#7546#"); setMenu(model, request);
 		
 		GroupType[] groupTypes = GroupType.values();
 		List<String> groups = new ArrayList<String>();
 
 		for(GroupType t : groupTypes) {
-			if(GroupType.ADMIN.name() != t.name()) {
+			System.out.println("$#7547#"); if(GroupType.ADMIN.name() != t.name()) {
 				groups.add(t.name());
 			}
 		}
 		GroupDetails group = new GroupDetails();
 		Group g = new Group();
-		group.setGroup(g);
-		group.setTypes(groups);
+		System.out.println("$#7548#"); group.setGroup(g);
+		System.out.println("$#7549#"); group.setTypes(groups);
 		model.addAttribute("group", group);
 		
 
-		return "admin-user-group";
+		System.out.println("$#7550#"); return "admin-user-group";
 	}
 
 
@@ -237,11 +237,11 @@ public class GroupsController {
 	public String displayGroups(Model model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		setMenu(model, request);
+		System.out.println("$#7551#"); setMenu(model, request);
 		List<Group> groups = groupService.listGroup(GroupType.ADMIN);
 		model.addAttribute("groups", groups);
 
-		return "admin-user-groups";
+		System.out.println("$#7552#"); return "admin-user-groups";
 	}
 
 	
@@ -275,21 +275,21 @@ public class GroupsController {
 					
 					
 
-					resp.addDataEntry(entry);
+					System.out.println("$#7553#"); resp.addDataEntry(entry);
 				}
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7554#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging permissions", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7555#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7556#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7557#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#7558#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 

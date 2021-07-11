@@ -47,7 +47,7 @@ public class ProductRelationship extends SalesManagerEntity<Long, ProductRelatio
 	private boolean active = true;
 	
 	public Product getProduct() {
-		return product;
+		System.out.println("$#3983#"); return product;
 	}
 
 
@@ -59,7 +59,7 @@ public class ProductRelationship extends SalesManagerEntity<Long, ProductRelatio
 
 
 	public Product getRelatedProduct() {
-		return relatedProduct;
+		System.out.println("$#3984#"); return relatedProduct;
 	}
 
 
@@ -71,7 +71,7 @@ public class ProductRelationship extends SalesManagerEntity<Long, ProductRelatio
 
 
 	public String getCode() {
-		return code;
+		System.out.println("$#3985#"); return code;
 	}
 
 
@@ -83,7 +83,7 @@ public class ProductRelationship extends SalesManagerEntity<Long, ProductRelatio
 
 
 	public boolean isActive() {
-		return active;
+		System.out.println("$#3987#"); System.out.println("$#3986#"); return active;
 	}
 
 
@@ -100,7 +100,7 @@ public class ProductRelationship extends SalesManagerEntity<Long, ProductRelatio
 
 
 	public MerchantStore getStore() {
-		return store;
+		System.out.println("$#3988#"); return store;
 	}
 
 	public void setStore(MerchantStore store) {
@@ -108,7 +108,7 @@ public class ProductRelationship extends SalesManagerEntity<Long, ProductRelatio
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#3989#"); return id;
 	}
 
 	public void setId(Long id) {

@@ -66,7 +66,7 @@ public class CustomerOptionsSetController {
 		Language language = languageService.toLanguage(locale);
 		
 		
-		this.setMenu(model, request);
+		System.out.println("$#5448#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		
@@ -83,7 +83,7 @@ public class CustomerOptionsSetController {
 		model.addAttribute("optionSet", optionSet);
 		model.addAttribute("options", options);
 		model.addAttribute("optionsValues", optionsValues);
-		return ControllerConstants.Tiles.Customer.optionsSet;
+		System.out.println("$#5449#"); return ControllerConstants.Tiles.Customer.optionsSet;
 		
 
 	}
@@ -95,7 +95,7 @@ public class CustomerOptionsSetController {
 		
 
 		//display menu
-		setMenu(model,request);
+		System.out.println("$#5450#"); setMenu(model,request);
 		
 		Language language = languageService.toLanguage(locale);
 		
@@ -115,11 +115,11 @@ public class CustomerOptionsSetController {
 		model.addAttribute("options", options);
 		model.addAttribute("optionsValues", optionsValues);
 
-		if(optionSet.getCustomerOption()==null || optionSet.getCustomerOptionValue()==null) {
+		System.out.println("$#5451#"); if(optionSet.getCustomerOption()==null || optionSet.getCustomerOptionValue()==null) {
 			model.addAttribute("errorMessageAssociation",messages.getMessage("message.optionset.noassociation", locale));
 			ObjectError error = new ObjectError("customerOptionValue.id",messages.getMessage("message.optionset.noassociation", locale));
-			result.addError(error);
-			return ControllerConstants.Tiles.Customer.optionsSet;
+			System.out.println("$#5453#"); result.addError(error);
+			System.out.println("$#5454#"); return ControllerConstants.Tiles.Customer.optionsSet;
 		}
 		
 		//see if association already exist
@@ -129,21 +129,21 @@ public class CustomerOptionsSetController {
 		//option = customerOptionService.getById(optionSet.getPk().getCustomerOption().getId());
 		option = customerOptionService.getById(optionSet.getCustomerOption().getId());
 			
-		if(option==null) {
-				return "redirect:/admin/customers/optionsset/list.html";
+		System.out.println("$#5455#"); if(option==null) {
+				System.out.println("$#5456#"); return "redirect:/admin/customers/optionsset/list.html";
 		}
 
 		//CustomerOptionValue optionValue = customerOptionValueService.getById(optionSet.getPk().getCustomerOptionValue().getId());
 		CustomerOptionValue optionValue = customerOptionValueService.getById(optionSet.getCustomerOptionValue().getId());
 			
-		if(optionValue==null) {
-			return "redirect:/admin/customers/optionsset/list.html";
+		System.out.println("$#5457#"); if(optionValue==null) {
+			System.out.println("$#5458#"); return "redirect:/admin/customers/optionsset/list.html";
 		}
 		
 		
 		List<CustomerOptionSet> optionsSet = customerOptionSetService.listByStore(store, language);
 		
-		if(optionsSet!=null && optionsSet.size()>0) {
+		System.out.println("$#5460#"); System.out.println("$#5459#"); if(optionsSet!=null && optionsSet.size()>0) {
 			
 			for(CustomerOptionSet optSet : optionsSet) {
 				
@@ -153,33 +153,33 @@ public class CustomerOptionsSetController {
 				CustomerOptionValue optValue = optSet.getCustomerOptionValue();
 				
 				//if(opt.getId().longValue()==optionSet.getPk().getCustomerOption().getId().longValue() 
-				if(opt.getId().longValue()==optionSet.getCustomerOption().getId().longValue()
+				System.out.println("$#5462#"); if(opt.getId().longValue()==optionSet.getCustomerOption().getId().longValue()
 						//&& optValue.getId().longValue() == optionSet.getPk().getCustomerOptionValue().getId().longValue()) {
 						&& optValue.getId().longValue() == optionSet.getCustomerOptionValue().getId().longValue()) {
 						model.addAttribute("errorMessageAssociation",messages.getMessage("message.optionset.optionassociationexists", locale));
 						ObjectError error = new ObjectError("customerOptionValue.id",messages.getMessage("message.optionset.optionassociationexists", locale));
-						result.addError(error);
+						System.out.println("$#5464#"); result.addError(error);
 						break;
 				}
 			}
 		}
 		
-		if (result.hasErrors()) {
-			return ControllerConstants.Tiles.Customer.optionsSet;
+		System.out.println("$#5465#"); if (result.hasErrors()) {
+			System.out.println("$#5466#"); return ControllerConstants.Tiles.Customer.optionsSet;
 		}
 		
 		
 		//optionSet.getPk().setCustomerOption(option);
-		optionSet.setCustomerOption(option);
+		System.out.println("$#5467#"); optionSet.setCustomerOption(option);
 		//optionSet.getPk().setCustomerOptionValue(optionValue);
-		optionSet.setCustomerOptionValue(optionValue);
-		customerOptionSetService.create(optionSet);
+		System.out.println("$#5468#"); optionSet.setCustomerOptionValue(optionValue);
+		System.out.println("$#5469#"); customerOptionSetService.create(optionSet);
 
 		
 
 
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Customer.optionsSet;
+		System.out.println("$#5470#"); return ControllerConstants.Tiles.Customer.optionsSet;
 	}
 
 	
@@ -205,7 +205,7 @@ public class CustomerOptionsSetController {
 				
 				//Set<CustomerOptionSet> optionSet = option.getCustomerOptions();
 				
-				if(optionSet!=null && optionSet.size()>0) {
+				System.out.println("$#5472#"); System.out.println("$#5471#"); if(optionSet!=null && optionSet.size()>0) {
 					
 					for(CustomerOptionSet optSet : optionSet) {
 						
@@ -228,7 +228,7 @@ public class CustomerOptionsSetController {
 						entry.put("optionValueCode", customerOptionValue.getCode());
 						entry.put("optionValueName", valueDescription.getName());
 						entry.put("order", customerOptionValue.getSortOrder());
-						resp.addDataEntry(entry);
+						System.out.println("$#5474#"); resp.addDataEntry(entry);
 					
 					}
 				
@@ -237,19 +237,19 @@ public class CustomerOptionsSetController {
 				
 			//}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5475#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 			
 
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging options", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5476#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5477#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5478#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 		
 	}
@@ -292,29 +292,29 @@ public class CustomerOptionsSetController {
 			
 			CustomerOptionSet entity = customerOptionSetService.getById(optionSetId);
 			//if(entity==null || entity.getPk().getCustomerOption().getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			if(entity==null || entity.getCustomerOption().getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#5479#"); if(entity==null || entity.getCustomerOption().getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#5481#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#5482#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				
 			} else {
 				
-				customerOptionSetService.delete(entity);
-				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+				System.out.println("$#5483#"); customerOptionSetService.delete(entity);
+				System.out.println("$#5484#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 				
 			}
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting option", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5485#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5486#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5487#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5488#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	
@@ -343,24 +343,24 @@ public class CustomerOptionsSetController {
 			CustomerOptionSet entity = customerOptionSetService.getById(optionId);
 			
 			
-			if(entity!=null) {
+			System.out.println("$#5489#"); if(entity!=null) {
 				
-				entity.setSortOrder(Integer.parseInt(order));
-				customerOptionSetService.update(entity);
-				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+				System.out.println("$#5490#"); entity.setSortOrder(Integer.parseInt(order));
+				System.out.println("$#5491#"); customerOptionSetService.update(entity);
+				System.out.println("$#5492#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 				
 			}
 
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging shipping countries", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5493#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5494#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5495#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

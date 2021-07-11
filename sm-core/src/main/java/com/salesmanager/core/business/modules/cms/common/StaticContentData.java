@@ -23,7 +23,7 @@ public abstract class StaticContentData implements Serializable {
   private String fileContentType;
 
   public String getFileName() {
-    return fileName;
+				System.out.println("$#36#"); return fileName;
   }
 
   public void setFileName(String fileName) {
@@ -31,7 +31,7 @@ public abstract class StaticContentData implements Serializable {
   }
 
   public String getFileContentType() {
-    return fileContentType;
+				System.out.println("$#37#"); return fileContentType;
   }
 
   public void setFileContentType(String fileContentType) {
@@ -43,7 +43,7 @@ public abstract class StaticContentData implements Serializable {
   }
 
   public FileContentType getContentType() {
-    return contentType;
+				System.out.println("$#38#"); return contentType;
   }
 
 

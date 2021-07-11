@@ -6,13 +6,13 @@ public abstract class ServiceEntity {
 	private String message = null;
 	
 	public int getStatus() {
-		return status;
+		System.out.println("$#9107#"); return status;
 	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
 	public String getMessage() {
-		return message;
+		System.out.println("$#9108#"); return message;
 	}
 	public void setMessage(String message) {
 		this.message = message;

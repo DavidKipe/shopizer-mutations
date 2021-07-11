@@ -28,7 +28,7 @@ public class CustomerOptionPopulator extends
 	private CustomerOptionSet optionSet;
 	
 	public CustomerOptionSet getOptionSet() {
-		return optionSet;
+		System.out.println("$#10049#"); return optionSet;
 	}
 
 	public void setOptionSet(CustomerOptionSet optionSet) {
@@ -42,28 +42,28 @@ public class CustomerOptionPopulator extends
 		
 		
 		CustomerOption customerOption = target;
-		if(customerOption==null) {
+		System.out.println("$#10050#"); if(customerOption==null) {
 			customerOption = new CustomerOption();
 		} 
 		
-		customerOption.setId(source.getId());
-		customerOption.setType(source.getCustomerOptionType());
-		customerOption.setName(source.getDescriptionsSettoList().get(0).getName());
+		System.out.println("$#10051#"); customerOption.setId(source.getId());
+		System.out.println("$#10052#"); customerOption.setType(source.getCustomerOptionType());
+		System.out.println("$#10053#"); customerOption.setName(source.getDescriptionsSettoList().get(0).getName());
 
 		List<CustomerOptionValue> values = customerOption.getAvailableValues();
-		if(values==null) {
+		System.out.println("$#10054#"); if(values==null) {
 			values = new ArrayList<CustomerOptionValue>();
-			customerOption.setAvailableValues(values);
+			System.out.println("$#10055#"); customerOption.setAvailableValues(values);
 		}
 		
 		com.salesmanager.core.model.customer.attribute.CustomerOptionValue optionValue = optionSet.getCustomerOptionValue();
 		CustomerOptionValue custOptValue = new CustomerOptionValue();
-		custOptValue.setId(optionValue.getId());
-		custOptValue.setLanguage(language.getCode());
-		custOptValue.setName(optionValue.getDescriptionsSettoList().get(0).getName());
+		System.out.println("$#10056#"); custOptValue.setId(optionValue.getId());
+		System.out.println("$#10057#"); custOptValue.setLanguage(language.getCode());
+		System.out.println("$#10058#"); custOptValue.setName(optionValue.getDescriptionsSettoList().get(0).getName());
 		values.add(custOptValue);
 		
-		return customerOption;
+		System.out.println("$#10059#"); return customerOption;
 
 	}
 

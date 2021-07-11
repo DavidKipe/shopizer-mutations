@@ -16,7 +16,7 @@ public class UserEntity extends UserNameEntity {
 
 
   public String getFirstName() {
-    return firstName;
+				System.out.println("$#9436#"); return firstName;
   }
 
   public void setFirstName(String firstName) {
@@ -24,7 +24,7 @@ public class UserEntity extends UserNameEntity {
   }
 
   public String getLastName() {
-    return lastName;
+				System.out.println("$#9437#"); return lastName;
   }
 
   public void setLastName(String lastName) {
@@ -32,7 +32,7 @@ public class UserEntity extends UserNameEntity {
   }
 
   public String getEmailAddress() {
-    return emailAddress;
+				System.out.println("$#9438#"); return emailAddress;
   }
 
   public void setEmailAddress(String emailAddress) {
@@ -41,7 +41,7 @@ public class UserEntity extends UserNameEntity {
 
 
   public String getDefaultLanguage() {
-    return defaultLanguage;
+				System.out.println("$#9439#"); return defaultLanguage;
   }
 
   public void setDefaultLanguage(String defaultLanguage) {
@@ -49,7 +49,7 @@ public class UserEntity extends UserNameEntity {
   }
 
   public boolean isActive() {
-    return active;
+				System.out.println("$#9441#"); System.out.println("$#9440#"); return active;
   }
 
   public void setActive(boolean active) {

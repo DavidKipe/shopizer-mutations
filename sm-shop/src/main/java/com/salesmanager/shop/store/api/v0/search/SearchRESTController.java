@@ -46,25 +46,25 @@ public class SearchRESTController {
 		try {
 			
 			MerchantStore merchantStore = merchantStoreService.getByCode(store);
-			if(merchantStore==null) {
+			System.out.println("$#11466#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				resp.setStatus(500);
-				resp.setErrorString("Merchant store is null for code " + store);
-				return resp;
+				System.out.println("$#11467#"); resp.setStatus(500);
+				System.out.println("$#11468#"); resp.setErrorString("Merchant store is null for code " + store);
+				System.out.println("$#11469#"); return resp;
 			}
 
 			LOGGER.debug("Index all data : " + store);
-			searchFacade.indexAllData(merchantStore);
-			response.setStatus(200);
-			resp.setStatus(200);
+			System.out.println("$#11470#"); searchFacade.indexAllData(merchantStore);
+			System.out.println("$#11471#"); response.setStatus(200);
+			System.out.println("$#11472#"); resp.setStatus(200);
 			
 		} catch(Exception e) {
-			resp.setStatus(500);
-			resp.setErrorMessage(e);
-			response.sendError(503, "Exception while indexing all data for store " + store + " " + e.getMessage());
+			System.out.println("$#11473#"); resp.setStatus(500);
+			System.out.println("$#11474#"); resp.setErrorMessage(e);
+			System.out.println("$#11475#"); response.sendError(503, "Exception while indexing all data for store " + store + " " + e.getMessage());
 		}
 
-		return resp;
+		System.out.println("$#11476#"); return resp;
 		
 	}
 

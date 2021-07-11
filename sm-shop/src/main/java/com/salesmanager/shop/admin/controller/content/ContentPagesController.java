@@ -53,9 +53,9 @@ public class ContentPagesController {
 	@RequestMapping(value="/admin/content/pages/list.html", method=RequestMethod.GET)
 	public String listContentPages(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5138#"); setMenu(model,request);
 
-		return ControllerConstants.Tiles.Content.contentPages;
+		System.out.println("$#5139#"); return ControllerConstants.Tiles.Content.contentPages;
 		
 		
 	}
@@ -64,11 +64,11 @@ public class ContentPagesController {
 	@RequestMapping(value="/admin/content/pages/create.html", method=RequestMethod.GET)
 	public String createPage(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5140#"); setMenu(model,request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Content content = new Content();
-		content.setMerchantStore(store);
-		content.setContentType(ContentType.PAGE);
+		System.out.println("$#5141#"); content.setMerchantStore(store);
+		System.out.println("$#5142#"); content.setContentType(ContentType.PAGE);
 		
 		
 		List<Language> languages = store.getLanguages();
@@ -77,12 +77,12 @@ public class ContentPagesController {
 		for(Language l : languages) {
 			
 			ContentDescription description = new ContentDescription();
-			description.setLanguage(l);
+			System.out.println("$#5143#"); description.setLanguage(l);
 			content.getDescriptions().add(description);
 		}
 		
 		List<ProductRelationship> relationships = productRelationshipService.getGroups(store);
-		if(!CollectionUtils.isEmpty(relationships)) {
+		System.out.println("$#5144#"); if(!CollectionUtils.isEmpty(relationships)) {
 			model.addAttribute("productGroups", relationships);
 		}
 		
@@ -91,7 +91,7 @@ public class ContentPagesController {
 		model.addAttribute("content",content);
 		
 
-		return ControllerConstants.Tiles.Content.contentPagesDetails;
+		System.out.println("$#5145#"); return ControllerConstants.Tiles.Content.contentPagesDetails;
 		
 		
 	}
@@ -100,25 +100,25 @@ public class ContentPagesController {
 	@RequestMapping(value="/admin/content/pages/details.html", method=RequestMethod.GET)
 	public String getContentDetails(@RequestParam("id") Long id, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5146#"); setMenu(model,request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Content content = contentService.getById(id);
 		
 
 		
-		if(content==null) {
+		System.out.println("$#5147#"); if(content==null) {
 			LOGGER.error("Content entity null for id " + id);
-			return "redirect:/admin/content/pages/listContent.html";
+			System.out.println("$#5148#"); return "redirect:/admin/content/pages/listContent.html";
 		}
 		
-		if(content.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#5149#"); if(content.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 			LOGGER.error("Content id " + id + " does not belong to merchant " + store.getId());
-			return "redirect:/admin/content/pages/listContent.html";
+			System.out.println("$#5150#"); return "redirect:/admin/content/pages/listContent.html";
 		}
 		
-		if(!content.getContentType().name().equals(ContentType.PAGE.name())) {
+		System.out.println("$#5151#"); if(!content.getContentType().name().equals(ContentType.PAGE.name())) {
 			LOGGER.error("This controller does not handle content type " + content.getContentType().name());
-			return "redirect:/admin/content/pages/listContent.html";
+			System.out.println("$#5152#"); return "redirect:/admin/content/pages/listContent.html";
 		}
 		
 		List<Language> languages = store.getLanguages();
@@ -126,20 +126,20 @@ public class ContentPagesController {
 		List<ContentDescription> descriptions = new ArrayList<ContentDescription>();
 		for(Language l : languages) {
 			for(ContentDescription description : content.getDescriptions()) {
-				if(description.getLanguage().getCode().equals(l.getCode())) {
+				System.out.println("$#5153#"); if(description.getLanguage().getCode().equals(l.getCode())) {
 					descriptions.add(description);
 				}
 			}
 		}
-		content.setDescriptions(descriptions);
+		System.out.println("$#5154#"); content.setDescriptions(descriptions);
 		model.addAttribute("content",content);
 		
 		List<ProductRelationship> relationships = productRelationshipService.getGroups(store);
-		if(!CollectionUtils.isEmpty(relationships)) {
+		System.out.println("$#5155#"); if(!CollectionUtils.isEmpty(relationships)) {
 			model.addAttribute("productGroups", relationships);
 		}
 		
-		return ControllerConstants.Tiles.Content.contentPagesDetails;
+		System.out.println("$#5156#"); return ControllerConstants.Tiles.Content.contentPagesDetails;
 		
 		
 	}
@@ -155,7 +155,7 @@ public class ContentPagesController {
 		
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#5157#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		
 		try {
@@ -165,31 +165,31 @@ public class ContentPagesController {
 			
 			Content dbContent = contentService.getById(lid);
 			
-			if(dbContent==null) {
+			System.out.println("$#5158#"); if(dbContent==null) {
 				LOGGER.error("Invalid content id ", id);
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#5159#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5160#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(dbContent!=null && dbContent.getMerchantStore().getId().intValue()!= store.getId().intValue()) {
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5161#"); if(dbContent!=null && dbContent.getMerchantStore().getId().intValue()!= store.getId().intValue()) {
+				System.out.println("$#5163#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5164#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			contentService.delete(dbContent);
+			System.out.println("$#5165#"); contentService.delete(dbContent);
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#5166#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5167#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5168#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#5169#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	
@@ -210,19 +210,19 @@ public class ContentPagesController {
 
 			
 			ContentType cType = ContentType.PAGE;
-			if(ContentType.BOX.name().equals(contentType)) {
+			System.out.println("$#5170#"); if(ContentType.BOX.name().equals(contentType)) {
 				cType = ContentType.BOX;
 			} 
 			List<Content> contentList = contentService.listByType(cType, store, language);
 			
-			if(contentList!=null) {
+			System.out.println("$#5171#"); if(contentList!=null) {
 
 				for(Content content : contentList) {
 					
 					List<ContentDescription> descriptions = content.getDescriptions();
 					ContentDescription description = descriptions.get(0);
 					for(ContentDescription desc : descriptions) {
-						if(desc.getLanguage().getCode().equals(language.getCode())) {
+						System.out.println("$#5172#"); if(desc.getLanguage().getCode().equals(language.getCode())) {
 							description = desc;
 							break;
 						}
@@ -234,23 +234,23 @@ public class ContentPagesController {
 					entry.put("id", content.getId());
 					entry.put("code", content.getCode());
 					entry.put("name", description.getName());
-					resp.addDataEntry(entry);
+					System.out.println("$#5173#"); resp.addDataEntry(entry);
 
 				}
 			
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5174#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while paging content", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5175#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5176#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5177#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	
@@ -258,12 +258,12 @@ public class ContentPagesController {
 	@RequestMapping(value="/admin/content/pages/save.html", method=RequestMethod.POST)
 	public String saveContent(@Valid @ModelAttribute Content content, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5178#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
-		if (result.hasErrors()) {
-			return ControllerConstants.Tiles.Content.contentPagesDetails;
+		System.out.println("$#5179#"); if (result.hasErrors()) {
+			System.out.println("$#5180#"); return ControllerConstants.Tiles.Content.contentPagesDetails;
 		}
 		
 		Map<String,Language> langs = languageService.getLanguagesMap();
@@ -271,28 +271,28 @@ public class ContentPagesController {
 		List<ContentDescription> descriptions = content.getDescriptions();
 		for(ContentDescription description : descriptions) {
 			Language l = langs.get(description.getLanguage().getCode());
-			description.setLanguage(l);
-			description.setContent(content);
+			System.out.println("$#5181#"); description.setLanguage(l);
+			System.out.println("$#5182#"); description.setContent(content);
 		}
 		
-		if(content.getSortOrder()==null) {
-			content.setSortOrder(0);
+		System.out.println("$#5183#"); if(content.getSortOrder()==null) {
+			System.out.println("$#5184#"); content.setSortOrder(0);
 		}
 
-		content.setContentType(ContentType.PAGE);
-		content.setMerchantStore(store);
+		System.out.println("$#5185#"); content.setContentType(ContentType.PAGE);
+		System.out.println("$#5186#"); content.setMerchantStore(store);
 
-		contentService.saveOrUpdate(content);
+		System.out.println("$#5187#"); contentService.saveOrUpdate(content);
 		
 		List<ProductRelationship> relationships = productRelationshipService.getGroups(store);
-		if(!CollectionUtils.isEmpty(relationships)) {
+		System.out.println("$#5188#"); if(!CollectionUtils.isEmpty(relationships)) {
 			model.addAttribute("productGroups", relationships);
 		}
 		
 		
 		model.addAttribute("content",content);
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Content.contentPagesDetails;
+		System.out.println("$#5189#"); return ControllerConstants.Tiles.Content.contentPagesDetails;
 		
 		
 	}
@@ -316,12 +316,12 @@ public class ContentPagesController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#5190#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
-		   if(StringUtils.isBlank(code)) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+					System.out.println("$#5191#"); if(StringUtils.isBlank(code)) {
+				System.out.println("$#5192#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5193#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		   }
 		
 		try {
@@ -329,41 +329,41 @@ public class ContentPagesController {
 		Content content = contentService.getByCode(code, store);
 		
 		
-		if(!StringUtils.isBlank(id)) {
+		System.out.println("$#5194#"); if(!StringUtils.isBlank(id)) {
 			try {
 				Long lid = Long.parseLong(id);
 				
-				if(content!=null && content.getCode().equals(code) && content.getId().longValue()==lid) {
-					resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+				System.out.println("$#5195#"); if(content!=null && content.getCode().equals(code) && content.getId().longValue()==lid) {
+					System.out.println("$#5198#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 					String returnString = resp.toJSONString();
-					return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5199#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 				}
 			} catch (Exception e) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+				System.out.println("$#5200#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5201#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
 		} else {
-			if(content!=null) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+			System.out.println("$#5202#"); if(content!=null) {
+				System.out.println("$#5203#"); resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#5204#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 		}
 
 			
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#5205#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while getting content", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5206#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5207#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#5208#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

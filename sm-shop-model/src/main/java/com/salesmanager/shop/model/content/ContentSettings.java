@@ -18,7 +18,7 @@ public class ContentSettings implements Serializable {
 	private String httpBasePath;
 
 	public String getHttpBasePath() {
-		return httpBasePath;
+		System.out.println("$#8999#"); return httpBasePath;
 	}
 
 	public void setHttpBasePath(String httpBasePath) {

@@ -50,7 +50,7 @@ public class ShippingMethodsController {
 	public String displayShippingMethods(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#7297#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		//get shipping methods
@@ -65,7 +65,7 @@ public class ShippingMethodsController {
 		model.addAttribute("configuredModules", configuredModules);
 	
 		
-		return ControllerConstants.Tiles.Shipping.shippingMethods;
+		System.out.println("$#7298#"); return ControllerConstants.Tiles.Shipping.shippingMethods;
 		
 		
 	}
@@ -74,17 +74,17 @@ public class ShippingMethodsController {
 	public String displayShippingMethod(@RequestParam("code") String code, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#7299#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 
 		//get configured shipping modules
 		IntegrationConfiguration configuration = shippingService.getShippingConfiguration(code, store);
-		if(configuration==null) {
+		System.out.println("$#7300#"); if(configuration==null) {
 			configuration = new IntegrationConfiguration();
 		}
 		
-		configuration.setModuleCode(code);
+		System.out.println("$#7301#"); configuration.setModuleCode(code);
 		
 		List<String> environments = new ArrayList<String>();
 		environments.add(com.salesmanager.core.business.constants.Constants.TEST_ENVIRONMENT);
@@ -92,7 +92,7 @@ public class ShippingMethodsController {
 		
 		model.addAttribute("configuration", configuration);
 		model.addAttribute("environments", environments);
-		return ControllerConstants.Tiles.Shipping.shippingMethod;
+		System.out.println("$#7302#"); return ControllerConstants.Tiles.Shipping.shippingMethod;
 		
 		
 	}
@@ -101,7 +101,7 @@ public class ShippingMethodsController {
 	public String saveShippingMethod(@ModelAttribute("configuration") IntegrationConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#7303#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		String moduleCode = configuration.getModuleCode();
@@ -115,17 +115,17 @@ public class ShippingMethodsController {
 		model.addAttribute("configuration", configuration);
 
 		try {
-			shippingService.saveShippingQuoteModuleConfiguration(configuration, store);
+			System.out.println("$#7304#"); shippingService.saveShippingQuoteModuleConfiguration(configuration, store);
 		} catch (Exception e) {
-			if(e instanceof IntegrationException) {
-				if(((IntegrationException)e).getErrorCode()==IntegrationException.ERROR_VALIDATION_SAVE) {
+			System.out.println("$#7305#"); if(e instanceof IntegrationException) {
+				System.out.println("$#7306#"); if(((IntegrationException)e).getErrorCode()==IntegrationException.ERROR_VALIDATION_SAVE) {
 					
 					List<String> errorCodes = ((IntegrationException)e).getErrorFields();
 					for(String errorCode : errorCodes) {
 						model.addAttribute(errorCode,messages.getMessage("message.fielderror", locale));
 					}
 					model.addAttribute("validationError","validationError");
-					return ControllerConstants.Tiles.Shipping.shippingMethod;
+					System.out.println("$#7307#"); return ControllerConstants.Tiles.Shipping.shippingMethod;
 				}
 			} else {
 				throw new Exception(e);
@@ -135,7 +135,7 @@ public class ShippingMethodsController {
 		
 		
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Shipping.shippingMethod;
+		System.out.println("$#7308#"); return ControllerConstants.Tiles.Shipping.shippingMethod;
 		
 		
 	}
@@ -145,18 +145,18 @@ public class ShippingMethodsController {
 	public String saveCustomWeightBasedShippingMethod(@ModelAttribute("configuration") CustomShippingQuotesConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Shipping.shippingMethod;
+		System.out.println("$#7309#"); return ControllerConstants.Tiles.Shipping.shippingMethod;
 
 	}
 	
 	@RequestMapping(value="/admin/shipping/deleteShippingMethod.html", method=RequestMethod.POST)
 	public String deleteShippingMethod(@RequestParam("code") String code, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		this.setMenu(model, request);
+		System.out.println("$#7310#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		shippingService.removeShippingQuoteModuleConfiguration(code, store);
+		System.out.println("$#7311#"); shippingService.removeShippingQuoteModuleConfiguration(code, store);
 		
-		return "redirect:/admin/shipping/shippingMethods.html";
+		System.out.println("$#7312#"); return "redirect:/admin/shipping/shippingMethods.html";
 		
 	}
 

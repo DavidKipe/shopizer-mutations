@@ -47,7 +47,7 @@ public class ManufacturerShippingCodeOrderTotalModuleImpl implements OrderTotalP
 
 	
 	public PricingService getPricingService() {
-		return pricingService;
+		System.out.println("$#1431#"); return pricingService;
 	}
 
 	public void setPricingService(PricingService pricingService) {
@@ -59,19 +59,19 @@ public class ManufacturerShippingCodeOrderTotalModuleImpl implements OrderTotalP
 			throws Exception {
 
 		
-	    Validate.notNull(product,"product must not be null");
-		Validate.notNull(product.getManufacturer(),"product manufacturer must not be null");
+					System.out.println("$#1432#"); Validate.notNull(product,"product must not be null");
+		System.out.println("$#1433#"); Validate.notNull(product.getManufacturer(),"product manufacturer must not be null");
 		
 		//requires shipping summary, otherwise return null
-		if(summary.getShippingSummary()==null) {
+		System.out.println("$#1434#"); if(summary.getShippingSummary()==null) {
 			return null;
 		}
 
 		OrderTotalInputParameters inputParameters = new OrderTotalInputParameters();
-		inputParameters.setItemManufacturerCode(product.getManufacturer().getCode());
+		System.out.println("$#1435#"); inputParameters.setItemManufacturerCode(product.getManufacturer().getCode());
 		
 		
-		inputParameters.setShippingMethod(summary.getShippingSummary().getShippingOptionCode());
+		System.out.println("$#1436#"); inputParameters.setShippingMethod(summary.getShippingSummary().getShippingOptionCode());
 		
 		LOGGER.debug("Setting input parameters " + inputParameters.toString());
 		
@@ -86,11 +86,11 @@ public class ManufacturerShippingCodeOrderTotalModuleImpl implements OrderTotalP
 		LOGGER.debug("Applied discount " + inputParameters.getDiscount());
 		
 		OrderTotal orderTotal = null;
-		if(inputParameters.getDiscount() != null) {
+		System.out.println("$#1437#"); if(inputParameters.getDiscount() != null) {
 				orderTotal = new OrderTotal();
-				orderTotal.setOrderTotalCode(Constants.OT_DISCOUNT_TITLE);
-				orderTotal.setOrderTotalType(OrderTotalType.SUBTOTAL);
-				orderTotal.setTitle(Constants.OT_SUBTOTAL_MODULE_CODE);
+				System.out.println("$#1438#"); orderTotal.setOrderTotalCode(Constants.OT_DISCOUNT_TITLE);
+				System.out.println("$#1439#"); orderTotal.setOrderTotalType(OrderTotalType.SUBTOTAL);
+				System.out.println("$#1440#"); orderTotal.setTitle(Constants.OT_SUBTOTAL_MODULE_CODE);
 				
 				//calculate discount that will be added as a negative value
 				FinalPrice productPrice = pricingService.calculateProductPrice(product);
@@ -99,12 +99,12 @@ public class ManufacturerShippingCodeOrderTotalModuleImpl implements OrderTotalP
 				BigDecimal reduction = productPrice.getFinalPrice().multiply(new BigDecimal(discount));
 				reduction = reduction.multiply(new BigDecimal(shoppingCartItem.getQuantity()));
 				
-				orderTotal.setValue(reduction);
+				System.out.println("$#1441#"); orderTotal.setValue(reduction);
 		}
 			
 		
 		
-		return orderTotal;
+		System.out.println("$#1442#"); return orderTotal;
 
 
 	}
@@ -128,7 +128,7 @@ public class ManufacturerShippingCodeOrderTotalModuleImpl implements OrderTotalP
 
 	@Override
 	public String getName() {
-		return name;
+		System.out.println("$#1443#"); return name;
 	}
 
 	@Override
@@ -138,7 +138,7 @@ public class ManufacturerShippingCodeOrderTotalModuleImpl implements OrderTotalP
 
 	@Override
 	public String getCode() {
-		return code;
+		System.out.println("$#1444#"); return code;
 	}
 
 	@Override

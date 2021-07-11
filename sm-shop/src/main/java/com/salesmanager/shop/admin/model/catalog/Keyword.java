@@ -23,19 +23,19 @@ public class Keyword implements Serializable {
 		this.productId = productId;
 	}
 	public long getProductId() {
-		return productId;
+		System.out.println("$#7771#"); return productId;
 	}
 	public void setLanguageCode(String languageCode) {
 		this.languageCode = languageCode;
 	}
 	public String getLanguageCode() {
-		return languageCode;
+		System.out.println("$#7772#"); return languageCode;
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
 	public String getKeyword() {
-		return keyword;
+		System.out.println("$#7773#"); return keyword;
 	}
 
 }

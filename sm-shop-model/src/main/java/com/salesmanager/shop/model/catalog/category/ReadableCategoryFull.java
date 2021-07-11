@@ -13,7 +13,7 @@ public class ReadableCategoryFull extends ReadableCategory {
   private List<CategoryDescription> descriptions = new ArrayList<CategoryDescription>();
 
   public List<CategoryDescription> getDescriptions() {
-    return descriptions;
+				System.out.println("$#8748#"); return descriptions;
   }
 
   public void setDescriptions(List<CategoryDescription> descriptions) {

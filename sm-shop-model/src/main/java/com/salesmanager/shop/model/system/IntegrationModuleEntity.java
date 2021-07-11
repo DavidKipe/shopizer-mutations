@@ -8,19 +8,19 @@ public class IntegrationModuleEntity {
 	private String image;
 
 	public String getCode() {
-		return code;
+		System.out.println("$#9399#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public boolean isActive() {
-		return active;
+		System.out.println("$#9401#"); System.out.println("$#9400#"); return active;
 	}
 	public void setActive(boolean active) {
 		this.active = active;
 	}
 	public String getImage() {
-		return image;
+		System.out.println("$#9402#"); return image;
 	}
 	public void setImage(String image) {
 		this.image = image;

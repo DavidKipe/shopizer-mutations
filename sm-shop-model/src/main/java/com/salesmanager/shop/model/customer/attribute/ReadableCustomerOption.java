@@ -14,7 +14,7 @@ public class ReadableCustomerOption extends CustomerOptionEntity
 		this.description = description;
 	}
 	public CustomerOptionDescription getDescription() {
-		return description;
+		System.out.println("$#9055#"); return description;
 	}
 
 

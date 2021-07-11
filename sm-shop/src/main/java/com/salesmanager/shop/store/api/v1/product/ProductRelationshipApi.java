@@ -121,24 +121,24 @@ public class ProductRelationshipApi {
       // product exist
       Product product = productService.getById(id);
 
-      if (product == null) {
-        response.sendError(404, "Product id " + id + " does not exists");
-        return null;
+						System.out.println("$#11968#"); if (product == null) {
+								System.out.println("$#11969#"); response.sendError(404, "Product id " + id + " does not exists");
+								System.out.println("$#11970#"); return null;
       }
 
       List<ReadableProduct> relatedItems =
           productFacade.relatedItems(merchantStore, product, language);
 
-      return relatedItems;
+						System.out.println("$#11971#"); return relatedItems;
 
     } catch (Exception e) {
       LOGGER.error("Error while getting product reviews", e);
       try {
-        response.sendError(503, "Error while getting product reviews" + e.getMessage());
+								System.out.println("$#11972#"); response.sendError(503, "Error while getting product reviews" + e.getMessage());
       } catch (Exception ignore) {
       }
 
-      return null;
+						System.out.println("$#11973#"); return null;
     }
   }
 

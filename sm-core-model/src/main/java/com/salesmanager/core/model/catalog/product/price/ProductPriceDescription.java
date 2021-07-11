@@ -42,7 +42,7 @@ public class ProductPriceDescription extends Description {;
 	private String priceAppender;
 
 	public String getPriceAppender() {
-		return priceAppender;
+		System.out.println("$#3921#"); return priceAppender;
 	}
 
 	public void setPriceAppender(String priceAppender) {
@@ -53,7 +53,7 @@ public class ProductPriceDescription extends Description {;
 	}
 
 	public ProductPrice getProductPrice() {
-		return productPrice;
+		System.out.println("$#3922#"); return productPrice;
 	}
 
 	public void setProductPrice(ProductPrice productPrice) {

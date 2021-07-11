@@ -16,7 +16,7 @@ public class LocaleUtils {
 	
 	public static Locale getLocale(Language language) {
 		
-		return new Locale(language.getCode());
+		System.out.println("$#15770#"); return new Locale(language.getCode());
 		
 	}
 	
@@ -30,10 +30,10 @@ public class LocaleUtils {
 		
 		Locale defaultLocale = Constants.DEFAULT_LOCALE;
 		Locale[] locales = Locale.getAvailableLocales();
-		for(int i = 0; i< locales.length; i++) {
+		System.out.println("$#15772#"); System.out.println("$#15771#"); for(int i = 0; i< locales.length; i++) {
 			Locale l = locales[i];
 			try {
-				if(l.getISO3Country().equals(store.getCurrency().getCode())) {
+				System.out.println("$#15773#"); if(l.getISO3Country().equals(store.getCurrency().getCode())) {
 					defaultLocale = l;
 					break;
 				}
@@ -42,7 +42,7 @@ public class LocaleUtils {
 			}
 		}
 		
-		return defaultLocale;
+		System.out.println("$#15774#"); return defaultLocale;
 		
 	}
 	

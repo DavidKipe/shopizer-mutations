@@ -18,11 +18,11 @@ public class SocialCustomerServicesImpl implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//delegates to Customer fetch service
 		UserDetails userDetails =  customerDetailsService.loadUserByUsername(username);
-        if (userDetails == null) {
+								System.out.println("$#15362#"); if (userDetails == null) {
         	return null;
         }
         
-        return userDetails;
+								System.out.println("$#15363#"); return userDetails;
 	}
 
 }

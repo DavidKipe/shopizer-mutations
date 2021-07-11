@@ -20,35 +20,35 @@ public class ReadableTaxRateMapper implements Mapper<TaxRate, ReadableTaxRate> {
 	@Override
 	public ReadableTaxRate convert(TaxRate source, MerchantStore store, Language language) {
 		ReadableTaxRate taxRate = new ReadableTaxRate();
-		return this.convert(source, taxRate, store, language);
+		System.out.println("$#8692#"); return this.convert(source, taxRate, store, language);
 
 	}
 
 	@Override
 	public ReadableTaxRate convert(TaxRate source, ReadableTaxRate destination, MerchantStore store,
 			Language language) {
-		Validate.notNull(destination, "destination TaxRate cannot be null");
-		Validate.notNull(source, "source TaxRate cannot be null");
-		destination.setId(source.getId());
-		destination.setCountry(source.getCountry().getIsoCode());
-		destination.setZone(source.getZone().getCode());
-		destination.setRate(source.getTaxRate().toString());
-		destination.setCode(source.getCode());
-		destination.setPriority(source.getTaxPriority());
+		System.out.println("$#8693#"); Validate.notNull(destination, "destination TaxRate cannot be null");
+		System.out.println("$#8694#"); Validate.notNull(source, "source TaxRate cannot be null");
+		System.out.println("$#8695#"); destination.setId(source.getId());
+		System.out.println("$#8696#"); destination.setCountry(source.getCountry().getIsoCode());
+		System.out.println("$#8697#"); destination.setZone(source.getZone().getCode());
+		System.out.println("$#8698#"); destination.setRate(source.getTaxRate().toString());
+		System.out.println("$#8699#"); destination.setCode(source.getCode());
+		System.out.println("$#8700#"); destination.setPriority(source.getTaxPriority());
 		Optional<ReadableTaxRateDescription> description = this.convertDescription(source.getDescriptions(), language);
-		if(description.isPresent()) {
-			destination.setDescription(description.get());
+		System.out.println("$#8701#"); if(description.isPresent()) {
+			System.out.println("$#8702#"); destination.setDescription(description.get());
 		}
-		return destination;
+		System.out.println("$#8703#"); return destination;
 	}
 	
 	private Optional<ReadableTaxRateDescription> convertDescription(List<TaxRateDescription> descriptions, Language language) {
-		Validate.notEmpty(descriptions,"List of TaxRateDescriptions should not be empty");
+		System.out.println("$#8704#"); Validate.notEmpty(descriptions,"List of TaxRateDescriptions should not be empty");
 		
 	    Optional<TaxRateDescription> description = descriptions.stream()
 	            .filter(desc -> desc.getLanguage().getCode().equals(language.getCode())).findAny();
-	        if (description.isPresent()) {
-	          return Optional.of(convertDescription(description.get()));
+									System.out.println("$#8707#"); if (description.isPresent()) {
+											System.out.println("$#8708#"); return Optional.of(convertDescription(description.get()));
 	        } else {
 	          return Optional.empty();
 	        }
@@ -58,13 +58,13 @@ public class ReadableTaxRateMapper implements Mapper<TaxRate, ReadableTaxRate> {
 	
 	private ReadableTaxRateDescription convertDescription(TaxRateDescription desc) {
 		ReadableTaxRateDescription d = new ReadableTaxRateDescription();
-		d.setDescription(desc.getDescription());
-		d.setName(desc.getName());
-		d.setLanguage(desc.getLanguage().getCode());
-		d.setDescription(desc.getDescription());
-		d.setId(desc.getId());
-		d.setTitle(desc.getTitle());
-		return d;
+		System.out.println("$#8709#"); d.setDescription(desc.getDescription());
+		System.out.println("$#8710#"); d.setName(desc.getName());
+		System.out.println("$#8711#"); d.setLanguage(desc.getLanguage().getCode());
+		System.out.println("$#8712#"); d.setDescription(desc.getDescription());
+		System.out.println("$#8713#"); d.setId(desc.getId());
+		System.out.println("$#8714#"); d.setTitle(desc.getTitle());
+		System.out.println("$#8715#"); return d;
 	}
 
 

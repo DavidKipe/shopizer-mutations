@@ -27,7 +27,7 @@ public class SecuredCustomer extends PersistableCustomer implements Serializable
 
 
 	public String getPassword() {
-		return password;
+		System.out.println("$#9091#"); return password;
 	}
 
 	public void setPassword(String password) {
@@ -36,7 +36,7 @@ public class SecuredCustomer extends PersistableCustomer implements Serializable
 
     public String getCheckPassword()
     {
-        return checkPassword;
+								System.out.println("$#9092#"); return checkPassword;
     }
 
     public void setCheckPassword( String checkPassword )

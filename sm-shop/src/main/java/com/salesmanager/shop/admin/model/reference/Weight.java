@@ -11,13 +11,13 @@ public class Weight implements Serializable {
 	private String code;
 	private String name;
 	public String getName() {
-		return name;
+		System.out.println("$#7835#"); return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#7836#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;

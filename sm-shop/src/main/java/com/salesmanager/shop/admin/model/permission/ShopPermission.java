@@ -30,7 +30,7 @@ public class ShopPermission implements Serializable
 
     @JsonProperty("type")
     public String getType() {
-        return type;
+								System.out.println("$#7830#"); return type;
     }
 
     @JsonProperty("type")
@@ -40,7 +40,7 @@ public class ShopPermission implements Serializable
 
     @JsonProperty("group")
     public ShopGroup getShopGroup() {
-        return shopGroup;
+								System.out.println("$#7831#"); return shopGroup;
     }
 
     @JsonProperty("group")
@@ -50,7 +50,7 @@ public class ShopPermission implements Serializable
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+								System.out.println("$#7832#"); return this.additionalProperties;
     }
 
     @JsonAnySetter

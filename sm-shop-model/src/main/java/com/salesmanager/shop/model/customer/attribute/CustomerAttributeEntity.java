@@ -14,7 +14,7 @@ public class CustomerAttributeEntity extends CustomerAttribute implements
 		this.textValue = textValue;
 	}
 	public String getTextValue() {
-		return textValue;
+		System.out.println("$#9043#"); return textValue;
 	}
 
 

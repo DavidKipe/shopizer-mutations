@@ -15,7 +15,7 @@ public class PersistableContent extends Entity implements Serializable {
   private boolean isDisplayedInMenu;
 
   public String getCode() {
-    return code;
+				System.out.println("$#9005#"); return code;
   }
 
   public void setCode(String code) {
@@ -23,7 +23,7 @@ public class PersistableContent extends Entity implements Serializable {
   }
   
   public List<ObjectContent> getDescriptions() {
-    return descriptions;
+				System.out.println("$#9006#"); return descriptions;
   }
 
   public void setDescriptions(List<ObjectContent> descriptions) {
@@ -31,7 +31,7 @@ public class PersistableContent extends Entity implements Serializable {
   }
 
   public boolean isDisplayedInMenu() {
-    return isDisplayedInMenu;
+				System.out.println("$#9008#"); System.out.println("$#9007#"); return isDisplayedInMenu;
   }
 
   public void setDisplayedInMenu(boolean isDisplayedInMenu) {

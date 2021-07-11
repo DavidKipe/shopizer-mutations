@@ -16,14 +16,14 @@ public class ReadableOrderProductDownloadPopulator extends
 			Language language) throws ConversionException {
 		try {
 			
-			target.setProductName(source.getOrderProduct().getProductName());
-			target.setDownloadCount(source.getDownloadCount());
-			target.setDownloadExpiryDays(source.getMaxdays());
-			target.setId(source.getId());
-			target.setFileName(source.getOrderProductFilename());
-			target.setOrderId(source.getOrderProduct().getOrder().getId());
+			System.out.println("$#10716#"); target.setProductName(source.getOrderProduct().getProductName());
+			System.out.println("$#10717#"); target.setDownloadCount(source.getDownloadCount());
+			System.out.println("$#10718#"); target.setDownloadExpiryDays(source.getMaxdays());
+			System.out.println("$#10719#"); target.setId(source.getId());
+			System.out.println("$#10720#"); target.setFileName(source.getOrderProductFilename());
+			System.out.println("$#10721#"); target.setOrderId(source.getOrderProduct().getOrder().getId());
 			
-			return target;
+			System.out.println("$#10722#"); return target;
 			
 		} catch(Exception e) {
 			throw new ConversionException(e);
@@ -32,7 +32,7 @@ public class ReadableOrderProductDownloadPopulator extends
 
 	@Override
 	protected ReadableOrderProductDownload createTarget() {
-		return new ReadableOrderProductDownload();
+		System.out.println("$#10723#"); return new ReadableOrderProductDownload();
 	}
 	
 

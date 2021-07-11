@@ -13,7 +13,7 @@ public class ReadableProductOptionValue extends ProductOptionValue {
 
 
 	public String getName() {
-		return name;
+		System.out.println("$#8823#"); return name;
 	}
 
 	public void setName(String name) {
@@ -21,7 +21,7 @@ public class ReadableProductOptionValue extends ProductOptionValue {
 	}
 
 	public String getPrice() {
-		return price;
+		System.out.println("$#8824#"); return price;
 	}
 
 	public void setPrice(String price) {
@@ -29,7 +29,7 @@ public class ReadableProductOptionValue extends ProductOptionValue {
 	}
 
 	public String getImage() {
-		return image;
+		System.out.println("$#8825#"); return image;
 	}
 
 	public void setImage(String image) {

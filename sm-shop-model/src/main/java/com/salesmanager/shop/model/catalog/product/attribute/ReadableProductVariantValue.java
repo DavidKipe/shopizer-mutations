@@ -16,7 +16,7 @@ public class ReadableProductVariantValue implements Serializable {
 
 
 	public Long getValue() {
-		return value;
+		System.out.println("$#8828#"); return value;
 	}
 
 
@@ -28,7 +28,7 @@ public class ReadableProductVariantValue implements Serializable {
 
 
   public Long getOption() {
-    return option;
+				System.out.println("$#8829#"); return option;
   }
 
 
@@ -40,7 +40,7 @@ public class ReadableProductVariantValue implements Serializable {
 
 
   public String getName() {
-    return name;
+				System.out.println("$#8830#"); return name;
   }
 
 
@@ -52,7 +52,7 @@ public class ReadableProductVariantValue implements Serializable {
 
 
 public String getDescription() {
-	return description;
+	System.out.println("$#8831#"); return description;
 }
 
 

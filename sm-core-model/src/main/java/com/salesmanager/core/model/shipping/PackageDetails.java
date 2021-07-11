@@ -17,61 +17,61 @@ public class PackageDetails {
 	
 	
 	public String getItemName() {
-		return itemName;
+		System.out.println("$#4537#"); return itemName;
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
 	public double getShippingWeight() {
-		return shippingWeight;
+		System.out.println("$#4538#"); return shippingWeight;
 	}
 	public void setShippingWeight(double shippingWeight) {
 		this.shippingWeight = shippingWeight;
 	}
 	public double getShippingMaxWeight() {
-		return shippingMaxWeight;
+		System.out.println("$#4539#"); return shippingMaxWeight;
 	}
 	public void setShippingMaxWeight(double shippingMaxWeight) {
 		this.shippingMaxWeight = shippingMaxWeight;
 	}
 	public double getShippingLength() {
-		return shippingLength;
+		System.out.println("$#4540#"); return shippingLength;
 	}
 	public void setShippingLength(double shippingLength) {
 		this.shippingLength = shippingLength;
 	}
 	public double getShippingHeight() {
-		return shippingHeight;
+		System.out.println("$#4541#"); return shippingHeight;
 	}
 	public void setShippingHeight(double shippingHeight) {
 		this.shippingHeight = shippingHeight;
 	}
 	public double getShippingWidth() {
-		return shippingWidth;
+		System.out.println("$#4542#"); return shippingWidth;
 	}
 	public void setShippingWidth(double shippingWidth) {
 		this.shippingWidth = shippingWidth;
 	}
 	public int getShippingQuantity() {
-		return shippingQuantity;
+		System.out.println("$#4543#"); return shippingQuantity;
 	}
 	public void setShippingQuantity(int shippingQuantity) {
 		this.shippingQuantity = shippingQuantity;
 	}
 	public int getTreshold() {
-		return treshold;
+		System.out.println("$#4544#"); return treshold;
 	}
 	public void setTreshold(int treshold) {
 		this.treshold = treshold;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#4545#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getType() {
-		return type;
+		System.out.println("$#4546#"); return type;
 	}
 	public void setType(String type) {
 		this.type = type;

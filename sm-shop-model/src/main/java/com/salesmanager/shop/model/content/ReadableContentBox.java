@@ -11,7 +11,7 @@ public class ReadableContentBox extends ReadableContentObject {
 	private String image;
 
 	public String getBoxContent() {
-		return boxContent;
+		System.out.println("$#9011#"); return boxContent;
 	}
 
 	public void setBoxContent(String boxContent) {
@@ -19,7 +19,7 @@ public class ReadableContentBox extends ReadableContentObject {
 	}
 
 	public String getImage() {
-		return image;
+		System.out.println("$#9012#"); return image;
 	}
 
 	public void setImage(String image) {

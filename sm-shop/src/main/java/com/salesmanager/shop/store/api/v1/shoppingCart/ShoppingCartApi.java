@@ -69,16 +69,16 @@ public class ShoppingCartApi {
       ReadableShoppingCart cart =
           shoppingCartFacade.addToCart(shoppingCartItem, merchantStore, language);
 
-      return cart;
+						System.out.println("$#12059#"); return cart;
 
     } catch (Exception e) {
       try {
-      if(e instanceof ResourceNotFoundException) {
+						System.out.println("$#12060#"); if(e instanceof ResourceNotFoundException) {
         //response.sendError(204, "Error while adding product to cart id [" + shoppingCartItems.getProduct() + "] not found or not available");
       }
       LOGGER.error("Error while adding product to cart", e);
 
-        response.sendError(503, "Error while adding product to cart " + e.getMessage());
+								System.out.println("$#12061#"); response.sendError(503, "Error while adding product to cart " + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -109,18 +109,18 @@ public class ShoppingCartApi {
       ReadableShoppingCart cart =
               shoppingCartFacade.modifyCart(code, shoppingCartItem, merchantStore, language);
 
-      if(cart == null) {
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+						System.out.println("$#12062#"); if(cart == null) {
+								System.out.println("$#12063#"); return new ResponseEntity<>(HttpStatus.NOT_FOUND);
       }
 
-      return new ResponseEntity<>(cart, HttpStatus.CREATED);
+						System.out.println("$#12064#"); return new ResponseEntity<>(cart, HttpStatus.CREATED);
 
     } catch (IllegalArgumentException e) {
       LOGGER.error("Cart or item not found " + code + " : " + shoppingCartItem.getProduct(), e);
-      return new ResponseEntity("Cart or Item not found " + code + " : " + shoppingCartItem.getProduct(), HttpStatus.NOT_FOUND);
+						System.out.println("$#12065#"); return new ResponseEntity("Cart or Item not found " + code + " : " + shoppingCartItem.getProduct(), HttpStatus.NOT_FOUND);
 
     } catch (Exception ignore) {
-      return new ResponseEntity("Error while modifying cart " + code + " " + ignore.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+						System.out.println("$#12066#"); return new ResponseEntity("Error while modifying cart " + code + " " + ignore.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -146,14 +146,14 @@ public class ShoppingCartApi {
       ReadableShoppingCart cart =
               shoppingCartFacade.modifyCartMulti(code, Arrays.asList(shoppingCartItems), merchantStore, language);
 
-      return new ResponseEntity<>(cart, HttpStatus.CREATED);
+						System.out.println("$#12067#"); return new ResponseEntity<>(cart, HttpStatus.CREATED);
 
     } catch (IllegalArgumentException e) {
       LOGGER.error("Cart or item not found " + code + " : " + shoppingCartItems, e);
-      return new ResponseEntity("Cart or Item not found " + code + " : " + shoppingCartItems, HttpStatus.NOT_FOUND);
+						System.out.println("$#12068#"); return new ResponseEntity("Cart or Item not found " + code + " : " + shoppingCartItems, HttpStatus.NOT_FOUND);
 
     } catch (Exception ignore) {
-      return new ResponseEntity("Error while modifying cart " + code + " " + ignore.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+						System.out.println("$#12069#"); return new ResponseEntity("Error while modifying cart " + code + " " + ignore.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -178,17 +178,17 @@ public class ShoppingCartApi {
     try {
       ReadableShoppingCart cart = shoppingCartFacade.getByCode(code, merchantStore, language);
 
-      if (cart == null) {
-        response.sendError(404, "No ShoppingCart found for customer code : " + code);
+						System.out.println("$#12070#"); if (cart == null) {
+								System.out.println("$#12071#"); response.sendError(404, "No ShoppingCart found for customer code : " + code);
         return null;
       }
 
-      return cart;
+						System.out.println("$#12072#"); return cart;
 
     } catch (Exception e) {
       LOGGER.error("Error while getting cart", e);
       try {
-        response.sendError(503, "Error while getting cart " + e.getMessage());
+								System.out.println("$#12073#"); response.sendError(503, "Error while getting cart " + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -219,20 +219,20 @@ public class ShoppingCartApi {
       // lookup customer
       Customer customer = customerService.getById(id);
 
-      if (customer == null) {
-        response.sendError(404, "No Customer found for ID : " + id);
+						System.out.println("$#12074#"); if (customer == null) {
+								System.out.println("$#12075#"); response.sendError(404, "No Customer found for ID : " + id);
         return null;
       }
 
       ReadableShoppingCart cart =
           shoppingCartFacade.addToCart(customer, shoppingCartItem, merchantStore, language);
 
-      return cart;
+						System.out.println("$#12076#"); return cart;
 
     } catch (Exception e) {
       LOGGER.error("Error while adding product to cart", e);
       try {
-        response.sendError(503, "Error while adding product to cart " + e.getMessage());
+								System.out.println("$#12077#"); response.sendError(503, "Error while adding product to cart " + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -262,24 +262,24 @@ public class ShoppingCartApi {
       // lookup customer
       Customer customer = customerService.getById(id);
 
-      if (customer == null) {
-        response.sendError(404, "No Customer found for ID : " + id);
+						System.out.println("$#12078#"); if (customer == null) {
+								System.out.println("$#12079#"); response.sendError(404, "No Customer found for ID : " + id);
         return null;
       }
 
       ReadableShoppingCart cart = shoppingCartFacade.getCart(customer, merchantStore, language);
 
-      if (cart == null) {
-        response.sendError(404, "No ShoppingCart found for customer ID : " + id);
+						System.out.println("$#12080#"); if (cart == null) {
+								System.out.println("$#12081#"); response.sendError(404, "No ShoppingCart found for customer ID : " + id);
         return null;
       }
 
-      return cart;
+						System.out.println("$#12082#"); return cart;
 
     } catch (Exception e) {
       LOGGER.error("Error while getting cart", e);
       try {
-        response.sendError(503, "Error while getting cart " + e.getMessage());
+								System.out.println("$#12083#"); response.sendError(503, "Error while getting cart " + e.getMessage());
       } catch (Exception ignore) {
       }
 
@@ -309,9 +309,9 @@ public class ShoppingCartApi {
       @RequestParam(defaultValue = "false") boolean body) throws Exception{
 
       ReadableShoppingCart updatedCart =  shoppingCartFacade.removeShoppingCartItem(cartCode, itemId, merchantStore, language, body);
-      if(body) {
-        return new ResponseEntity<>(updatedCart, HttpStatus.OK);
+						System.out.println("$#12084#"); if(body) {
+								System.out.println("$#12085#"); return new ResponseEntity<>(updatedCart, HttpStatus.OK);
       }
-      return new ResponseEntity<>(updatedCart, HttpStatus.NO_CONTENT);
+						System.out.println("$#12086#"); return new ResponseEntity<>(updatedCart, HttpStatus.NO_CONTENT);
   }
 }

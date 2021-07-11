@@ -80,47 +80,47 @@ public class CustomerLoginController extends AbstractController {
 
             //check if username is from the appropriate store
             Customer customerModel = customerFacade.getCustomerByUserName(userName, store);
-            if(customerModel==null) {
-            	jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-            	return jsonObject;
+												System.out.println("$#12424#"); if(customerModel==null) {
+													System.out.println("$#12425#"); jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+													System.out.println("$#12426#"); return jsonObject;
             }
             
-            if(!customerModel.getMerchantStore().getCode().equals(storeCode)) {
-            	jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-            	return jsonObject;
+												System.out.println("$#12427#"); if(!customerModel.getMerchantStore().getCode().equals(storeCode)) {
+													System.out.println("$#12428#"); jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+													System.out.println("$#12429#"); return jsonObject;
             }
             
-            customerFacade.authenticate(customerModel, userName, password);
+												System.out.println("$#12430#"); customerFacade.authenticate(customerModel, userName, password);
             //set customer in the http session
-            super.setSessionAttribute(Constants.CUSTOMER, customerModel, request);
-            jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
-            jsonObject.addEntry(Constants.RESPONSE_KEY_USERNAME, customerModel.getNick());
+												System.out.println("$#12431#"); super.setSessionAttribute(Constants.CUSTOMER, customerModel, request);
+												System.out.println("$#12432#"); jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+												System.out.println("$#12433#"); jsonObject.addEntry(Constants.RESPONSE_KEY_USERNAME, customerModel.getNick());
 
 
             
             
             LOG.info( "Fetching and merging Shopping Cart data" );
             String sessionShoppingCartCode= (String)request.getSession().getAttribute( Constants.SHOPPING_CART );
-            if(!StringUtils.isBlank(sessionShoppingCartCode)) {
+												System.out.println("$#12434#"); if(!StringUtils.isBlank(sessionShoppingCartCode)) {
 	            ShoppingCart shoppingCart = customerFacade.mergeCart( customerModel, sessionShoppingCartCode, store, language );
-	            if(shoppingCart != null) {
+													System.out.println("$#12435#"); if(shoppingCart != null) {
 		            ShoppingCartData shoppingCartData=this.populateShoppingCartData(shoppingCart, store, language);
-		            if(shoppingCartData !=null){
-		                jsonObject.addEntry(Constants.SHOPPING_CART, shoppingCartData.getCode());
-		                request.getSession().setAttribute(Constants.SHOPPING_CART, shoppingCartData.getCode());
+														System.out.println("$#12436#"); if(shoppingCartData !=null){
+																		System.out.println("$#12437#"); jsonObject.addEntry(Constants.SHOPPING_CART, shoppingCartData.getCode());
+																		System.out.println("$#12438#"); request.getSession().setAttribute(Constants.SHOPPING_CART, shoppingCartData.getCode());
 		                
 			            //set cart in the cookie
 			            Cookie c = new Cookie(Constants.COOKIE_NAME_CART, shoppingCartData.getCode());
-			            c.setMaxAge(60 * 24 * 3600);
-			            c.setPath(Constants.SLASH);
-			            response.addCookie(c);
+															System.out.println("$#12439#"); c.setMaxAge(60 * 24 * 3600);
+															System.out.println("$#12440#"); c.setPath(Constants.SLASH);
+															System.out.println("$#12441#"); response.addCookie(c);
 		                
 		            } else {
 		            	//DELETE COOKIE
 		            	Cookie c = new Cookie(Constants.COOKIE_NAME_CART, "");
-			            c.setMaxAge(0);
-			            c.setPath(Constants.SLASH);
-			            response.addCookie(c);
+															System.out.println("$#12442#"); c.setMaxAge(0);
+															System.out.println("$#12443#"); c.setPath(Constants.SLASH);
+															System.out.println("$#12444#"); response.addCookie(c);
 		            }
 	            }
 	            
@@ -129,14 +129,14 @@ public class CustomerLoginController extends AbstractController {
             } else {
 
 	            ShoppingCart cartModel = shoppingCartService.getShoppingCart(customerModel);
-	            if(cartModel!=null) {
-	                jsonObject.addEntry( Constants.SHOPPING_CART, cartModel.getShoppingCartCode());
-	                request.getSession().setAttribute(Constants.SHOPPING_CART, cartModel.getShoppingCartCode());
+													System.out.println("$#12445#"); if(cartModel!=null) {
+																	System.out.println("$#12446#"); jsonObject.addEntry( Constants.SHOPPING_CART, cartModel.getShoppingCartCode());
+																	System.out.println("$#12447#"); request.getSession().setAttribute(Constants.SHOPPING_CART, cartModel.getShoppingCartCode());
 	                
 		            Cookie c = new Cookie(Constants.COOKIE_NAME_CART, cartModel.getShoppingCartCode());
-		            c.setMaxAge(60 * 24 * 3600);
-		            c.setPath(Constants.SLASH);
-		            response.addCookie(c);
+														System.out.println("$#12448#"); c.setMaxAge(60 * 24 * 3600);
+														System.out.println("$#12449#"); c.setPath(Constants.SLASH);
+														System.out.println("$#12450#"); response.addCookie(c);
 	                
 	            }
 
@@ -148,18 +148,18 @@ public class CustomerLoginController extends AbstractController {
             
             //set username in the cookie
             Cookie c = new Cookie(Constants.COOKIE_NAME_USER, cookieValue.toString());
-            c.setMaxAge(60 * 24 * 3600);
-            c.setPath(Constants.SLASH);
-            response.addCookie(c);
+												System.out.println("$#12451#"); c.setMaxAge(60 * 24 * 3600);
+												System.out.println("$#12452#"); c.setPath(Constants.SLASH);
+												System.out.println("$#12453#"); response.addCookie(c);
             
             
         } catch (AuthenticationException ex) {
-        	jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+									System.out.println("$#12454#"); jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
         } catch(Exception e) {
-        	jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+									System.out.println("$#12455#"); jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
         }
         
-        return jsonObject;
+								System.out.println("$#12456#"); return jsonObject;
 		
 		
 	}
@@ -168,7 +168,7 @@ public class CustomerLoginController extends AbstractController {
 	public @ResponseBody String basicLogon(@RequestParam String userName, @RequestParam String password, @RequestParam String storeCode, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		AjaxResponse jsonObject = this.logon(userName, password, storeCode, request, response);
-		return jsonObject.toJSONString();
+		System.out.println("$#12457#"); return jsonObject.toJSONString();
 		
 	}
 	
@@ -184,7 +184,7 @@ public class CustomerLoginController extends AbstractController {
 	public @ResponseBody String jsonLogon(@ModelAttribute SecuredCustomer securedCustomer, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
         AjaxResponse jsonObject = this.logon(securedCustomer.getUserName(), securedCustomer.getPassword(), securedCustomer.getStoreCode(), request, response);
-        return jsonObject.toJSONString();
+								System.out.println("$#12458#"); return jsonObject.toJSONString();
         
 	
 	}
@@ -194,12 +194,12 @@ public class CustomerLoginController extends AbstractController {
     private ShoppingCartData populateShoppingCartData(final ShoppingCart cartModel , final MerchantStore store, final Language language){
 
         ShoppingCartDataPopulator shoppingCartDataPopulator = new ShoppingCartDataPopulator();
-        shoppingCartDataPopulator.setShoppingCartCalculationService( shoppingCartCalculationService );
-        shoppingCartDataPopulator.setPricingService( pricingService );
+								System.out.println("$#12459#"); shoppingCartDataPopulator.setShoppingCartCalculationService( shoppingCartCalculationService );
+								System.out.println("$#12460#"); shoppingCartDataPopulator.setPricingService( pricingService );
         
         try
         {
-            return shoppingCartDataPopulator.populate(  cartModel ,  store,  language);
+												System.out.println("$#12461#"); return shoppingCartDataPopulator.populate(  cartModel ,  store,  language);
         }
         catch ( ConversionException ce )
         {

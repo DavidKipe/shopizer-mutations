@@ -19,20 +19,20 @@ public class PersistableProductImagePopulator extends AbstractDataPopulator<Pers
 	public ProductImage populate(PersistableImage source, ProductImage target, MerchantStore store, Language language)
 			throws ConversionException {
 		
-		Validate.notNull(product,"Must set a product setProduct(Product)");
-		Validate.notNull(product.getId(),"Product must have an id not null");
-		Validate.notNull(source.getContentType(),"Content type must be set on persistable image");
+		System.out.println("$#9487#"); Validate.notNull(product,"Must set a product setProduct(Product)");
+		System.out.println("$#9488#"); Validate.notNull(product.getId(),"Product must have an id not null");
+		System.out.println("$#9489#"); Validate.notNull(source.getContentType(),"Content type must be set on persistable image");
 
 		
-		target.setDefaultImage(source.isDefaultImage());
-		target.setImageType(source.getImageType());
-		target.setProductImage(source.getName());
-		if(source.getImageUrl() != null) {
-			target.setProductImageUrl(source.getImageUrl());
+		System.out.println("$#9490#"); target.setDefaultImage(source.isDefaultImage());
+		System.out.println("$#9491#"); target.setImageType(source.getImageType());
+		System.out.println("$#9492#"); target.setProductImage(source.getName());
+		System.out.println("$#9493#"); if(source.getImageUrl() != null) {
+			System.out.println("$#9494#"); target.setProductImageUrl(source.getImageUrl());
 		}
-		target.setProduct(product);
+		System.out.println("$#9495#"); target.setProduct(product);
 		
-		return target;
+		System.out.println("$#9496#"); return target;
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class PersistableProductImagePopulator extends AbstractDataPopulator<Pers
 	}
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#9497#"); return product;
 	}
 
 	public void setProduct(Product product) {

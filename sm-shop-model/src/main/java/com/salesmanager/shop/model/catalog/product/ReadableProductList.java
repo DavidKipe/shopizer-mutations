@@ -17,7 +17,7 @@ public class ReadableProductList extends ReadableList {
 		this.products = products;
 	}
 	public List<ReadableProduct> getProducts() {
-		return products;
+		System.out.println("$#8951#"); return products;
 	}
 
 }

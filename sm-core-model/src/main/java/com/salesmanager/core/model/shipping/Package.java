@@ -12,56 +12,56 @@ public class Package implements Serializable {
 	 * 
 	 */
 	public int getTreshold() {
-		return treshold;
+		System.out.println("$#4527#"); return treshold;
 	}
 	public void setTreshold(int treshold) {
 		this.treshold = treshold;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#4528#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public double getBoxWidth() {
-		return boxWidth;
+		System.out.println("$#4529#"); return boxWidth;
 	}
 	public void setBoxWidth(double boxWidth) {
 		this.boxWidth = boxWidth;
 	}
 	public double getBoxHeight() {
-		return boxHeight;
+		System.out.println("$#4530#"); return boxHeight;
 	}
 	public void setBoxHeight(double boxHeight) {
 		this.boxHeight = boxHeight;
 	}
 	public double getBoxLength() {
-		return boxLength;
+		System.out.println("$#4531#"); return boxLength;
 	}
 	public void setBoxLength(double boxLength) {
 		this.boxLength = boxLength;
 	}
 	public double getBoxWeight() {
-		return boxWeight;
+		System.out.println("$#4532#"); return boxWeight;
 	}
 	public void setBoxWeight(double boxWeight) {
 		this.boxWeight = boxWeight;
 	}
 	public double getMaxWeight() {
-		return maxWeight;
+		System.out.println("$#4533#"); return maxWeight;
 	}
 	public void setMaxWeight(double maxWeight) {
 		this.maxWeight = maxWeight;
 	}
 
 	public boolean isDefaultPackaging() {
-		return defaultPackaging;
+		System.out.println("$#4535#"); System.out.println("$#4534#"); return defaultPackaging;
 	}
 	public void setDefaultPackaging(boolean defaultPackaging) {
 		this.defaultPackaging = defaultPackaging;
 	}
 	public ShippingPackageType getShipPackageType() {
-		return shipPackageType;
+		System.out.println("$#4536#"); return shipPackageType;
 	}
 	public void setShipPackageType(ShippingPackageType shipPackageType) {
 		this.shipPackageType = shipPackageType;

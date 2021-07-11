@@ -15,19 +15,19 @@ public class OrderStatusHistory extends Entity {
 	
 	
 	public long getOrderId() {
-		return orderId;
+		System.out.println("$#9114#"); return orderId;
 	}
 	public void setOrderId(long orderId) {
 		this.orderId = orderId;
 	}
 	public String getOrderStatus() {
-		return orderStatus;
+		System.out.println("$#9115#"); return orderStatus;
 	}
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
 	public String getComments() {
-		return comments;
+		System.out.println("$#9116#"); return comments;
 	}
 	public void setComments(String comments) {
 		this.comments = comments;

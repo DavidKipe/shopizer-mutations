@@ -34,22 +34,22 @@ public class PayPalRestPayment implements PaymentModule {
 		
 		//validate integrationKeys['account']
 		Map<String,String> keys = integrationConfiguration.getIntegrationKeys();
-		if(keys==null || StringUtils.isBlank(keys.get("client"))) {
+		System.out.println("$#720#"); if(keys==null || StringUtils.isBlank(keys.get("client"))) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("client");
 		}
 		
-		if(keys==null || StringUtils.isBlank(keys.get("secret"))) {
-			if(errorFields==null) {
+		System.out.println("$#722#"); if(keys==null || StringUtils.isBlank(keys.get("secret"))) {
+			System.out.println("$#724#"); if(errorFields==null) {
 				errorFields = new ArrayList<String>();
 			}
 			errorFields.add("secret");
 		}
 		
 
-		if(errorFields!=null) {
+		System.out.println("$#725#"); if(errorFields!=null) {
 			IntegrationException ex = new IntegrationException(IntegrationException.ERROR_VALIDATION_SAVE);
-			ex.setErrorFields(errorFields);
+			System.out.println("$#726#"); ex.setErrorFields(errorFields);
 			throw ex;
 			
 		}
@@ -234,7 +234,7 @@ public class PayPalRestPayment implements PaymentModule {
 		// OAuthTokenCredential by passing in
 		// ClientID and ClientSecret
 
-		return null;
+		System.out.println("$#727#"); return null;
 		//return new OAuthTokenCredential(clientID, clientSecret)
 		//		.getAccessToken();
 	}

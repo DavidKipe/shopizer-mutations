@@ -37,7 +37,7 @@ public class ProductFiles implements Serializable
     @Valid
     public List<MultipartFile> getFile()
     {
-        return file;
+								System.out.println("$#7806#"); return file;
     }
 
     public void setFile( final List<MultipartFile> file )
@@ -48,7 +48,7 @@ public class ProductFiles implements Serializable
 
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#7807#"); return product;
 	}
 
 	public void setProduct(Product product) {
@@ -60,7 +60,7 @@ public class ProductFiles implements Serializable
 	}
 
 	public DigitalProduct getDigitalProduct() {
-		return digitalProduct;
+		System.out.println("$#7808#"); return digitalProduct;
 	}
 
 

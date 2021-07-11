@@ -43,33 +43,33 @@ public abstract class SalesManagerEntity<K extends Serializable & Comparable<K>,
 	 * @return vrai si l'objet n'a pas encore été persisté
 	 */
 	public boolean isNew() {
-		return getId() == null;
+		System.out.println("$#4222#"); System.out.println("$#4221#"); return getId() == null;
 	}
 
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object object) {
-		if (object == null) {
-			return false;
+		System.out.println("$#4223#"); if (object == null) {
+			System.out.println("$#4224#"); return false;
 		}
-		if (object == this) {
-			return true;
+		System.out.println("$#4225#"); if (object == this) {
+			System.out.println("$#4226#"); return true;
 		}
 		
 		// l'objet peut être proxyfié donc on utilise Hibernate.getClass() pour sortir la vraie classe
-		if (Hibernate.getClass(object) != Hibernate.getClass(this)) {
-			return false;
+		System.out.println("$#4227#"); if (Hibernate.getClass(object) != Hibernate.getClass(this)) {
+			System.out.println("$#4228#"); return false;
 		}
 
 		SalesManagerEntity<K, E> entity = (SalesManagerEntity<K, E>) object; // NOSONAR : traité au-dessus mais wrapper Hibernate 
 		K id = getId();
 
-		if (id == null) {
-			return false;
+		System.out.println("$#4229#"); if (id == null) {
+			System.out.println("$#4230#"); return false;
 		}
 
-		return id.equals(entity.getId());
+		System.out.println("$#4232#"); System.out.println("$#4231#"); return id.equals(entity.getId());
 	}
 
 	@Override
@@ -77,16 +77,16 @@ public abstract class SalesManagerEntity<K extends Serializable & Comparable<K>,
 		int hash = 7;
 		
 		K id = getId();
-		hash = 31 * hash + ((id == null) ? 0 : id.hashCode());
+		System.out.println("$#4234#"); System.out.println("$#4233#"); hash = 31 * hash + ((id == null) ? 0 : id.hashCode());
 
-		return hash;
+		System.out.println("$#4236#"); return hash;
 	}
 
 	public int compareTo(E o) {
-		if (this == o) {
+		System.out.println("$#4237#"); if (this == o) {
 			return 0;
 		}
-		return this.getId().compareTo(o.getId());
+		System.out.println("$#4238#"); return this.getId().compareTo(o.getId());
 	}
 
 	@Override
@@ -100,6 +100,6 @@ public abstract class SalesManagerEntity<K extends Serializable & Comparable<K>,
 		builder.append(super.toString());
 		builder.append(">");
 		
-		return builder.toString();
+		System.out.println("$#4239#"); return builder.toString();
 	}
 }

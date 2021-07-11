@@ -15,7 +15,7 @@ public class PersistableProductOption extends ProductOptionEntity implements
 		this.descriptions = descriptions;
 	}
 	public List<ProductOptionDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#8799#"); return descriptions;
 	}
 
 }

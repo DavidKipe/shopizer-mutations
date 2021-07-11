@@ -26,7 +26,7 @@ public class MerchantStoreArgumentResolver implements HandlerMethodArgumentResol
 
   @Override
   public boolean supportsParameter(MethodParameter parameter) {
-    return parameter.getParameterType().equals(MerchantStore.class);
+				System.out.println("$#7894#"); System.out.println("$#7893#"); return parameter.getParameterType().equals(MerchantStore.class);
   }
 
 
@@ -49,7 +49,7 @@ public class MerchantStoreArgumentResolver implements HandlerMethodArgumentResol
     //TODO required filter
     //authorize request
     authorized = userFacade.authorizeStore(storeModel, httpServletRequest.getRequestURI());
-    System.out.println("is request authorized " + authorized + " for " + httpServletRequest.getRequestURI() + " and store " + storeModel.getCode());
-    return storeModel;
+				System.out.println("$#7896#"); System.out.println("is request authorized " + authorized + " for " + httpServletRequest.getRequestURI() + " and store " + storeModel.getCode());
+				System.out.println("$#7897#"); return storeModel;
   }
 }

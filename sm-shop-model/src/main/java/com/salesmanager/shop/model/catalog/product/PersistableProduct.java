@@ -26,26 +26,26 @@ public class PersistableProduct extends ProductEntity implements Serializable {
 	private RentalOwner owner;
 	
 	public List<ProductDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#8865#"); return descriptions;
 	}
 	public void setDescriptions(List<ProductDescription> descriptions) {
 		this.descriptions = descriptions;
 	}
 
 	public List<PersistableImage> getImages() {
-		return images;
+		System.out.println("$#8866#"); return images;
 	}
 	public void setImages(List<PersistableImage> images) {
 		this.images = images;
 	}
 	public List<Category> getCategories() {
-		return categories;
+		System.out.println("$#8867#"); return categories;
 	}
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
 	public List<RelatedProduct> getRelatedProducts() {
-		return relatedProducts;
+		System.out.println("$#8868#"); return relatedProducts;
 	}
 	public void setRelatedProducts(List<RelatedProduct> relatedProducts) {
 		this.relatedProducts = relatedProducts;
@@ -54,22 +54,22 @@ public class PersistableProduct extends ProductEntity implements Serializable {
 		this.attributes = attributes;
 	}
 	public List<PersistableProductAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#8869#"); return attributes;
 	}
 	public List<PersistableProductPrice> getProductPrices() {
-		return productPrices;
+		System.out.println("$#8870#"); return productPrices;
 	}
 	public void setProductPrices(List<PersistableProductPrice> productPrices) {
 		this.productPrices = productPrices;
 	}
 	public RentalOwner getOwner() {
-		return owner;
+		System.out.println("$#8871#"); return owner;
 	}
 	public void setOwner(RentalOwner owner) {
 		this.owner = owner;
 	}
 	public String getType() {
-		return type;
+		System.out.println("$#8872#"); return type;
 	}
 	public void setType(String type) {
 		this.type = type;

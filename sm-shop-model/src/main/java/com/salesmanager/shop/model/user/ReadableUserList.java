@@ -14,7 +14,7 @@ public class ReadableUserList extends ReadableList {
   private List<ReadableUser> data = new ArrayList<ReadableUser>();
 
   public List<ReadableUser> getData() {
-    return data;
+				System.out.println("$#9435#"); return data;
   }
 
   public void setData(List<ReadableUser> data) {

@@ -57,76 +57,76 @@ public class ShippingQuote implements Serializable {
 		this.shippingOptions = shippingOptions;
 	}
 	public List<ShippingOption> getShippingOptions() {
-		return shippingOptions;
+		System.out.println("$#4641#"); return shippingOptions;
 	}
 	public void setShippingModuleCode(String shippingModuleCode) {
 		this.shippingModuleCode = shippingModuleCode;
 	}
 	public String getShippingModuleCode() {
-		return shippingModuleCode;
+		System.out.println("$#4642#"); return shippingModuleCode;
 	}
 	public void setShippingReturnCode(String shippingReturnCode) {
 		this.shippingReturnCode = shippingReturnCode;
 	}
 	public String getShippingReturnCode() {
-		return shippingReturnCode;
+		System.out.println("$#4643#"); return shippingReturnCode;
 	}
 	public void setFreeShipping(boolean freeShipping) {
 		this.freeShipping = freeShipping;
 	}
 	public boolean isFreeShipping() {
-		return freeShipping;
+		System.out.println("$#4645#"); System.out.println("$#4644#"); return freeShipping;
 	}
 	public void setFreeShippingAmount(BigDecimal freeShippingAmount) {
 		this.freeShippingAmount = freeShippingAmount;
 	}
 	public BigDecimal getFreeShippingAmount() {
-		return freeShippingAmount;
+		System.out.println("$#4646#"); return freeShippingAmount;
 	}
 	public void setHandlingFees(BigDecimal handlingFees) {
 		this.handlingFees = handlingFees;
 	}
 	public BigDecimal getHandlingFees() {
-		return handlingFees;
+		System.out.println("$#4647#"); return handlingFees;
 	}
 	public void setApplyTaxOnShipping(boolean applyTaxOnShipping) {
 		this.applyTaxOnShipping = applyTaxOnShipping;
 	}
 	public boolean isApplyTaxOnShipping() {
-		return applyTaxOnShipping;
+		System.out.println("$#4649#"); System.out.println("$#4648#"); return applyTaxOnShipping;
 	}
 	public void setSelectedShippingOption(ShippingOption selectedShippingOption) {
 		this.selectedShippingOption = selectedShippingOption;
 	}
 	public ShippingOption getSelectedShippingOption() {
-		return selectedShippingOption;
+		System.out.println("$#4650#"); return selectedShippingOption;
 	}
 	public String getQuoteError() {
-		return quoteError;
+		System.out.println("$#4651#"); return quoteError;
 	}
 	public void setQuoteError(String quoteError) {
 		this.quoteError = quoteError;
 	}
 	public Map<String,Object> getQuoteInformations() {
-		return quoteInformations;
+		System.out.println("$#4652#"); return quoteInformations;
 	}
 	public void setQuoteInformations(Map<String,Object> quoteInformations) {
 		this.quoteInformations = quoteInformations;
 	}
 	public IntegrationModule getCurrentShippingModule() {
-		return currentShippingModule;
+		System.out.println("$#4653#"); return currentShippingModule;
 	}
 	public void setCurrentShippingModule(IntegrationModule currentShippingModule) {
 		this.currentShippingModule = currentShippingModule;
 	}
 	public List<String> getWarnings() {
-		return warnings;
+		System.out.println("$#4654#"); return warnings;
 	}
 	public void setWarnings(List<String> warnings) {
 		this.warnings = warnings;
 	}
 	public Delivery getDeliveryAddress() {
-		return deliveryAddress;
+		System.out.println("$#4655#"); return deliveryAddress;
 	}
 	public void setDeliveryAddress(Delivery deliveryAddress) {
 		this.deliveryAddress = deliveryAddress;

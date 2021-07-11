@@ -21,37 +21,37 @@ public class OrderTotal extends Entity implements Serializable {
 	
 	
 	public String getTitle() {
-		return title;
+		System.out.println("$#9189#"); return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#9190#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public int getOrder() {
-		return order;
+		System.out.println("$#9191#"); return order;
 	}
 	public void setOrder(int order) {
 		this.order = order;
 	}
 	public String getModule() {
-		return module;
+		System.out.println("$#9192#"); return module;
 	}
 	public void setModule(String module) {
 		this.module = module;
 	}
 	public BigDecimal getValue() {
-		return value;
+		System.out.println("$#9193#"); return value;
 	}
 	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 	public String getText() {
-		return text;
+		System.out.println("$#9194#"); return text;
 	}
 	public void setText(String text) {
 		this.text = text;

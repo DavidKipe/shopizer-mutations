@@ -13,7 +13,7 @@ public class PersistableContentEntity extends ContentEntity implements Serializa
 	private List<ContentDescriptionEntity> descriptions = new ArrayList<ContentDescriptionEntity>();
 
 	public List<ContentDescriptionEntity> getDescriptions() {
-		return descriptions;
+		System.out.println("$#9009#"); return descriptions;
 	}
 
 	public void setDescriptions(List<ContentDescriptionEntity> descriptions) {

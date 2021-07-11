@@ -12,7 +12,7 @@ public class ShopApplication extends SpringBootServletInitializer {
 	
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ShopApplication.class);
+								System.out.println("$#7948#"); return application.sources(ShopApplication.class);
     }
 	
     public static void main(String[] args) {

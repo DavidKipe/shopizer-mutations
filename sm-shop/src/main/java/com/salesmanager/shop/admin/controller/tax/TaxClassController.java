@@ -54,14 +54,14 @@ public class TaxClassController {
 	@RequestMapping(value={"/admin/tax/taxclass/list.html"}, method=RequestMethod.GET)
 	public String displayTaxClasses(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model, request);
+		System.out.println("$#7375#"); setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		TaxClass taxClass = new TaxClass();
-		taxClass.setMerchantStore(store);
+		System.out.println("$#7376#"); taxClass.setMerchantStore(store);
 		
 		model.addAttribute("taxClass", taxClass);
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClasses;
+		System.out.println("$#7377#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClasses;
 	}
 	
 	
@@ -78,27 +78,27 @@ public class TaxClassController {
 
 				List<TaxClass> taxClasses = taxClassService.listByStore(store);
 				for(TaxClass tax : taxClasses) {
-					if(!tax.getCode().equals(TaxClass.DEFAULT_TAX_CLASS)) {
+					System.out.println("$#7378#"); if(!tax.getCode().equals(TaxClass.DEFAULT_TAX_CLASS)) {
 						Map<String,String> entry = new HashMap<String,String>();
 						entry.put("taxClassId", String.valueOf(tax.getId()));
 						entry.put("code", tax.getCode());
 						entry.put("name", tax.getTitle());
-						resp.addDataEntry(entry);
+						System.out.println("$#7379#"); resp.addDataEntry(entry);
 					}
 				}
 
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+				System.out.println("$#7380#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging permissions", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7381#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7382#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7383#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#7384#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasRole('TAX')")
@@ -106,15 +106,15 @@ public class TaxClassController {
 	public String saveTaxClass(@Valid @ModelAttribute("taxClass") TaxClass taxClass, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 		
 		
-		setMenu(model, request);
+		System.out.println("$#7385#"); setMenu(model, request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		
 		//requires code and name
-		if(taxClass.getCode().equals(TaxClass.DEFAULT_TAX_CLASS)) {
+		System.out.println("$#7386#"); if(taxClass.getCode().equals(TaxClass.DEFAULT_TAX_CLASS)) {
 			ObjectError error = new ObjectError("code",messages.getMessage("message.taxclass.alreadyexist", locale));
-			result.addError(error);
+			System.out.println("$#7387#"); result.addError(error);
 		}
 		
 
@@ -122,20 +122,20 @@ public class TaxClassController {
 		//check if the code already exist
 		TaxClass taxClassDb = taxClassService.getByCode(taxClass.getCode(),store);
 		
-		if(taxClassDb!=null) {
+		System.out.println("$#7388#"); if(taxClassDb!=null) {
 			ObjectError error = new ObjectError("code",messages.getMessage("message.taxclass.alreadyexist", locale));
-			result.addError(error);
+			System.out.println("$#7389#"); result.addError(error);
 		}
 		
-		if (result.hasErrors()) {
-			return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClasses;
+		System.out.println("$#7390#"); if (result.hasErrors()) {
+			System.out.println("$#7391#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClasses;
 		}
 		
-		taxClassService.create(taxClass);
+		System.out.println("$#7392#"); taxClassService.create(taxClass);
 		
 		model.addAttribute("success","success");
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClasses;
+		System.out.println("$#7393#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClasses;
 		
 	}
 	
@@ -145,15 +145,15 @@ public class TaxClassController {
 	public String updateTaxClass(@Valid @ModelAttribute("taxClass") TaxClass taxClass, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 		
 		
-		setMenu(model, request);
+		System.out.println("$#7394#"); setMenu(model, request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		
 		//requires code and name
-		if(taxClass.getCode().equals(TaxClass.DEFAULT_TAX_CLASS)) {
+		System.out.println("$#7395#"); if(taxClass.getCode().equals(TaxClass.DEFAULT_TAX_CLASS)) {
 			ObjectError error = new ObjectError("code",messages.getMessage("message.taxclass.alreadyexist", locale));
-			result.addError(error);
+			System.out.println("$#7396#"); result.addError(error);
 		}
 		
 
@@ -161,20 +161,20 @@ public class TaxClassController {
 		//check if the code already exist
 		TaxClass taxClassDb = taxClassService.getByCode(taxClass.getCode(),store);
 		
-		if(taxClassDb!=null && taxClassDb.getId().longValue()!=taxClass.getId().longValue()) {
+		System.out.println("$#7397#"); if(taxClassDb!=null && taxClassDb.getId().longValue()!=taxClass.getId().longValue()) {
 			ObjectError error = new ObjectError("code",messages.getMessage("message.taxclass.alreadyexist", locale));
-			result.addError(error);
+			System.out.println("$#7399#"); result.addError(error);
 		}
 		
-		if (result.hasErrors()) {
-			return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClass;
+		System.out.println("$#7400#"); if (result.hasErrors()) {
+			System.out.println("$#7401#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClass;
 		}
 		
-		taxClassService.update(taxClass);
+		System.out.println("$#7402#"); taxClassService.update(taxClass);
 		
 		model.addAttribute("success","success");
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClass;
+		System.out.println("$#7403#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClass;
 		
 	}
 	
@@ -189,7 +189,7 @@ public class TaxClassController {
 
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7404#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
 		try {
 			
@@ -200,11 +200,11 @@ public class TaxClassController {
 			 */
 			
 
-			if(taxClassId==null){
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7405#"); if(taxClassId==null){
+				System.out.println("$#7406#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7407#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7408#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			long lTaxClassId;
@@ -212,47 +212,47 @@ public class TaxClassController {
 				lTaxClassId = Long.parseLong(taxClassId);
 			} catch (Exception e) {
 				LOGGER.error("Invalid taxClassId " + taxClassId);
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#7409#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7410#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7411#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			TaxClass taxClass = taxClassService.getById(lTaxClassId);
 			
-			if(taxClass==null) {
+			System.out.println("$#7412#"); if(taxClass==null) {
 				LOGGER.error("Invalid taxClassId " + taxClassId);
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#7413#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7414#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7415#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			//look if the taxclass is used for products
 			List<Product> products = productService.listByTaxClass(taxClass);
 
-			if(products!=null && products.size()>0) {
-				resp.setStatusMessage(messages.getMessage("message.product.association", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+			System.out.println("$#7417#"); System.out.println("$#7416#"); if(products!=null && products.size()>0) {
+				System.out.println("$#7419#"); resp.setStatusMessage(messages.getMessage("message.product.association", locale));
+				System.out.println("$#7420#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7421#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			
-			taxClassService.delete(taxClass);
+			System.out.println("$#7422#"); taxClassService.delete(taxClass);
 			
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#7423#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting tax class", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7424#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7425#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7426#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	
@@ -260,7 +260,7 @@ public class TaxClassController {
 	@RequestMapping(value="/admin/tax/taxclass/edit.html", method=RequestMethod.GET)
 	public String editTaxClass(@ModelAttribute("id") String id, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#7427#"); setMenu(model,request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
@@ -270,11 +270,11 @@ public class TaxClassController {
 			taxClass = taxClassService.getById(taxClassId);
 		} catch (Exception e) {
 			LOGGER.error("Cannot parse taxclassid " + id);
-			return "redirect:/admin/tax/taxclass/list.html";
+			System.out.println("$#7428#"); return "redirect:/admin/tax/taxclass/list.html";
 		}
 		
-		if(taxClass==null || taxClass.getMerchantStore().getId()!=store.getId()) {
-			return "redirect:/admin/tax/taxclass/list.html";
+		System.out.println("$#7429#"); if(taxClass==null || taxClass.getMerchantStore().getId()!=store.getId()) {
+			System.out.println("$#7431#"); return "redirect:/admin/tax/taxclass/list.html";
 		}
 		
 		
@@ -282,7 +282,7 @@ public class TaxClassController {
 		
 		model.addAttribute("taxClass", taxClass);
 		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClass;
+		System.out.println("$#7432#"); return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxClass;
 		
 		
 		

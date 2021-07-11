@@ -63,20 +63,20 @@ public class CustomWeightBasedShippingQuote implements ShippingQuoteModule {
 
 			MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(MODULE_CODE, store);
 	
-			if(configuration!=null) {
+			System.out.println("$#1035#"); if(configuration!=null) {
 				String value = configuration.getValue();
 				ObjectMapper mapper = new ObjectMapper();
 				try {
 					CustomShippingQuotesConfiguration config = mapper.readValue(value, CustomShippingQuotesConfiguration.class);
-					return config;
+					System.out.println("$#1036#"); return config;
 				} catch(Exception e) {
 					throw new ServiceException("Cannot parse json string " + value);
 				}
 	
 			} else {
 				CustomShippingQuotesConfiguration custom = new CustomShippingQuotesConfiguration();
-				custom.setModuleCode(MODULE_CODE);
-				return custom;
+				System.out.println("$#1037#"); custom.setModuleCode(MODULE_CODE);
+				System.out.println("$#1038#"); return custom;
 			}
 		
 		} catch (Exception e) {
@@ -95,8 +95,8 @@ public class CustomWeightBasedShippingQuote implements ShippingQuoteModule {
 			ShippingConfiguration shippingConfiguration, Locale locale)
 			throws IntegrationException {
 
-		if(StringUtils.isBlank(delivery.getPostalCode())) {
-			return null;
+		System.out.println("$#1039#"); if(StringUtils.isBlank(delivery.getPostalCode())) {
+			System.out.println("$#1040#"); return null;
 		}
 		
 		//get configuration
@@ -113,24 +113,24 @@ public class CustomWeightBasedShippingQuote implements ShippingQuoteModule {
 			for(CustomShippingQuotesRegion region : customConfiguration.getRegions()) {
 	
 				for(String countryCode : region.getCountries()) {
-					if(countryCode.equals(delivery.getCountry().getIsoCode())) {
+					System.out.println("$#1041#"); if(countryCode.equals(delivery.getCountry().getIsoCode())) {
 						
 						
 						//determine shipping weight
 						double weight = 0;
 						for(PackageDetails packageDetail : packages) {
-							weight = weight + packageDetail.getShippingWeight();
+							System.out.println("$#1042#"); weight = weight + packageDetail.getShippingWeight();
 						}
 						
 						//see the price associated with the width
 						List<CustomShippingQuoteWeightItem> quoteItems = region.getQuoteItems();
 						for(CustomShippingQuoteWeightItem quoteItem : quoteItems) {
-							if(weight<= quoteItem.getMaximumWeight()) {
+							System.out.println("$#1044#"); System.out.println("$#1043#"); if(weight<= quoteItem.getMaximumWeight()) {
 								shippingOption = new ShippingOption();
-								shippingOption.setOptionCode(new StringBuilder().append(CUSTOM_WEIGHT).toString());
-								shippingOption.setOptionId(new StringBuilder().append(CUSTOM_WEIGHT).append("_").append(region.getCustomRegionName()).toString());
-								shippingOption.setOptionPrice(quoteItem.getPrice());
-								shippingOption.setOptionPriceText(productPriceUtils.getStoreFormatedAmountWithCurrency(store, quoteItem.getPrice()));
+								System.out.println("$#1045#"); shippingOption.setOptionCode(new StringBuilder().append(CUSTOM_WEIGHT).toString());
+								System.out.println("$#1046#"); shippingOption.setOptionId(new StringBuilder().append(CUSTOM_WEIGHT).append("_").append(region.getCustomRegionName()).toString());
+								System.out.println("$#1047#"); shippingOption.setOptionPrice(quoteItem.getPrice());
+								System.out.println("$#1048#"); shippingOption.setOptionPriceText(productPriceUtils.getStoreFormatedAmountWithCurrency(store, quoteItem.getPrice()));
 								break;
 							}
 						}
@@ -142,13 +142,13 @@ public class CustomWeightBasedShippingQuote implements ShippingQuoteModule {
 				
 			}
 			
-			if(shippingOption!=null) {
+			System.out.println("$#1049#"); if(shippingOption!=null) {
 				List<ShippingOption> options = new ArrayList<ShippingOption>();
 				options.add(shippingOption);
-				return options;
+				System.out.println("$#1050#"); return options;
 			}
 			
-			return null;
+			System.out.println("$#1051#"); return null;
 		
 		} catch (Exception e) {
 			throw new IntegrationException(e);

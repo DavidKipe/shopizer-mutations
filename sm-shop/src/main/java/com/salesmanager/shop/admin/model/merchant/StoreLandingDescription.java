@@ -30,7 +30,7 @@ public class StoreLandingDescription implements Serializable {
 	}
 
 	public String getDescription() {
-		return description;
+		System.out.println("$#7810#"); return description;
 	}
 
 	public void setHomePageContent(String homePageContent) {
@@ -38,7 +38,7 @@ public class StoreLandingDescription implements Serializable {
 	}
 
 	public String getHomePageContent() {
-		return homePageContent;
+		System.out.println("$#7811#"); return homePageContent;
 	}
 
 	public void setKeywords(String keywords) {
@@ -46,7 +46,7 @@ public class StoreLandingDescription implements Serializable {
 	}
 
 	public String getKeywords() {
-		return keywords;
+		System.out.println("$#7812#"); return keywords;
 	}
 
 	public void setTitle(String title) {
@@ -54,7 +54,7 @@ public class StoreLandingDescription implements Serializable {
 	}
 
 	public String getTitle() {
-		return title;
+		System.out.println("$#7813#"); return title;
 	}
 
 	public void setLanguage(Language language) {
@@ -62,7 +62,7 @@ public class StoreLandingDescription implements Serializable {
 	}
 
 	public Language getLanguage() {
-		return language;
+		System.out.println("$#7814#"); return language;
 	}
 
 }

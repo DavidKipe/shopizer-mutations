@@ -33,7 +33,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	private RentalOwner owner;
 
 	public ProductDescription getDescription() {
-		return description;
+		System.out.println("$#8934#"); return description;
 	}
 
 	public void setDescription(ProductDescription description) {
@@ -41,7 +41,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public String getFinalPrice() {
-		return finalPrice;
+		System.out.println("$#8935#"); return finalPrice;
 	}
 
 	public void setFinalPrice(String finalPrice) {
@@ -49,7 +49,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public String getOriginalPrice() {
-		return originalPrice;
+		System.out.println("$#8936#"); return originalPrice;
 	}
 
 	public void setOriginalPrice(String originalPrice) {
@@ -57,7 +57,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public boolean isDiscounted() {
-		return discounted;
+		System.out.println("$#8938#"); System.out.println("$#8937#"); return discounted;
 	}
 
 	public void setDiscounted(boolean discounted) {
@@ -69,7 +69,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public List<ReadableImage> getImages() {
-		return images;
+		System.out.println("$#8939#"); return images;
 	}
 
 	public void setImage(ReadableImage image) {
@@ -77,7 +77,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public ReadableImage getImage() {
-		return image;
+		System.out.println("$#8940#"); return image;
 	}
 
 	public void setAttributes(List<ReadableProductAttribute> attributes) {
@@ -85,7 +85,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public List<ReadableProductAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#8941#"); return attributes;
 	}
 
 	public void setManufacturer(ReadableManufacturer manufacturer) {
@@ -93,11 +93,11 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public ReadableManufacturer getManufacturer() {
-		return manufacturer;
+		System.out.println("$#8942#"); return manufacturer;
 	}
 
 	public boolean isCanBePurchased() {
-		return canBePurchased;
+		System.out.println("$#8944#"); System.out.println("$#8943#"); return canBePurchased;
 	}
 
 	public void setCanBePurchased(boolean canBePurchased) {
@@ -105,7 +105,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public RentalOwner getOwner() {
-		return owner;
+		System.out.println("$#8945#"); return owner;
 	}
 
 	public void setOwner(RentalOwner owner) {
@@ -113,7 +113,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public List<ReadableCategory> getCategories() {
-		return categories;
+		System.out.println("$#8946#"); return categories;
 	}
 
 	public void setCategories(List<ReadableCategory> categories) {
@@ -121,7 +121,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public List<ReadableProductOption> getOptions() {
-		return options;
+		System.out.println("$#8947#"); return options;
 	}
 
 	public void setOptions(List<ReadableProductOption> options) {
@@ -129,7 +129,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public ReadableProductType getType() {
-		return type;
+		System.out.println("$#8948#"); return type;
 	}
 
 	public void setType(ReadableProductType type) {
@@ -137,7 +137,7 @@ public class ReadableProduct extends ProductEntity implements Serializable {
 	}
 
 	public ReadableProductPrice getProductPrice() {
-		return productPrice;
+		System.out.println("$#8949#"); return productPrice;
 	}
 
 	public void setProductPrice(ReadableProductPrice productPrice) {

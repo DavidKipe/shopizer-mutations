@@ -21,7 +21,7 @@ public class TaxConfiguration implements JSONAware {
 		JSONObject data = new JSONObject();
 		data.put("taxBasisCalculation", this.getTaxBasisCalculation().name());
 		
-		return data.toJSONString();
+		System.out.println("$#4819#"); return data.toJSONString();
 	}
 
 	public void setTaxBasisCalculation(TaxBasisCalculation taxBasisCalculation) {
@@ -29,7 +29,7 @@ public class TaxConfiguration implements JSONAware {
 	}
 
 	public TaxBasisCalculation getTaxBasisCalculation() {
-		return taxBasisCalculation;
+		System.out.println("$#4820#"); return taxBasisCalculation;
 	}
 
 	public void setCollectTaxIfDifferentProvinceOfStoreCountry(
@@ -38,7 +38,7 @@ public class TaxConfiguration implements JSONAware {
 	}
 
 	public boolean isCollectTaxIfDifferentProvinceOfStoreCountry() {
-		return collectTaxIfDifferentProvinceOfStoreCountry;
+		System.out.println("$#4822#"); System.out.println("$#4821#"); return collectTaxIfDifferentProvinceOfStoreCountry;
 	}
 
 	public void setCollectTaxIfDifferentCountryOfStoreCountry(
@@ -47,7 +47,7 @@ public class TaxConfiguration implements JSONAware {
 	}
 
 	public boolean isCollectTaxIfDifferentCountryOfStoreCountry() {
-		return collectTaxIfDifferentCountryOfStoreCountry;
+		System.out.println("$#4824#"); System.out.println("$#4823#"); return collectTaxIfDifferentCountryOfStoreCountry;
 	}
 
 }

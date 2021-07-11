@@ -18,7 +18,7 @@ public class ReadableSelectedProductVariant implements Serializable {
   private List<ReadableProductVariantValue> options = new ArrayList<ReadableProductVariantValue>();
   
   public List<ReadableProductVariantValue> getOptions() {
-    return options;
+				System.out.println("$#8832#"); return options;
   }
   public void setOptions(List<ReadableProductVariantValue> options) {
     this.options = options;

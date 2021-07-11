@@ -55,7 +55,7 @@ public class JWTAdminServicesImpl implements UserDetailsService{
 		//	lastModified = section.getDateModified();
 		//}
 		
-		return new JWTUser(
+		System.out.println("$#15236#"); return new JWTUser(
         		user.getId(),
         		userName,
         		user.getFirstName(),
@@ -79,7 +79,7 @@ public class JWTAdminServicesImpl implements UserDetailsService{
 
 				user = userService.getByUserName(userName);
 			
-				if(user==null) {
+				System.out.println("$#15237#"); if(user==null) {
 					//return null;
 					throw new UsernameNotFoundException("User " + userName + " not found");
 				}
@@ -94,7 +94,7 @@ public class JWTAdminServicesImpl implements UserDetailsService{
 			}
 			
 	
-			if(CollectionUtils.isNotEmpty(groupsId)) {
+			System.out.println("$#15238#"); if(CollectionUtils.isNotEmpty(groupsId)) {
 		    	List<Permission> permissions = permissionService.getPermissions(groupsId);
 		    	for(Permission permission : permissions) {
 		    		GrantedAuthority auth = new SimpleGrantedAuthority(permission.getPermissionName());
@@ -108,7 +108,7 @@ public class JWTAdminServicesImpl implements UserDetailsService{
 			throw new SecurityDataAccessException("Cannot authenticate customer",e);
 		}
 
-		return userDetails(userName, user, authorities);
+		System.out.println("$#15239#"); return userDetails(userName, user, authorities);
 	}
 
 }

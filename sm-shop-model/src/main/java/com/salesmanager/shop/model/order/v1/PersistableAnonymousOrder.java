@@ -12,7 +12,7 @@ public class PersistableAnonymousOrder extends PersistableOrder {
   private PersistableCustomer customer;
 
   public PersistableCustomer getCustomer() {
-    return customer;
+				System.out.println("$#9236#"); return customer;
   }
 
   public void setCustomer(PersistableCustomer customer) {

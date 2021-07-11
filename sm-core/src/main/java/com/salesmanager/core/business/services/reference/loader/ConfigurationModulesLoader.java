@@ -36,13 +36,13 @@ public class ConfigurationModulesLoader {
 			String jsonString = c.toJSONString();
 			jsonModules.append(jsonString);
 			
-			count ++;
-			if(count<configurations.size()) {
+			System.out.println("$#2722#"); count ++;
+			System.out.println("$#2724#"); System.out.println("$#2723#"); if(count<configurations.size()) {
 				jsonModules.append(",");
 			}
 		}
 		jsonModules.append("]");
-		return jsonModules.toString();
+		System.out.println("$#2725#"); return jsonModules.toString();
 		
 		
 	}
@@ -60,7 +60,7 @@ public class ConfigurationModulesLoader {
 
             Map[] objects = mapper.readValue(value, Map[].class);
             
-            for(int i = 0; i < objects.length; i++) {
+												System.out.println("$#2727#"); System.out.println("$#2726#"); for(int i = 0; i < objects.length; i++) {
             	
             	
             	Map object = objects[i];
@@ -68,33 +68,33 @@ public class ConfigurationModulesLoader {
             	IntegrationConfiguration configuration = new IntegrationConfiguration();
             	
             	String moduleCode = (String)object.get("moduleCode");
-            	if(object.get("active")!=null) {
-            		configuration.setActive((Boolean)object.get("active"));
+													System.out.println("$#2728#"); if(object.get("active")!=null) {
+														System.out.println("$#2729#"); configuration.setActive((Boolean)object.get("active"));
             	}
-            	if(object.get("defaultSelected")!=null) {
-            		configuration.setDefaultSelected((Boolean)object.get("defaultSelected"));
+													System.out.println("$#2730#"); if(object.get("defaultSelected")!=null) {
+														System.out.println("$#2731#"); configuration.setDefaultSelected((Boolean)object.get("defaultSelected"));
             	}
-            	if(object.get("environment")!=null) {
-            		configuration.setEnvironment((String)object.get("environment"));
+													System.out.println("$#2732#"); if(object.get("environment")!=null) {
+														System.out.println("$#2733#"); configuration.setEnvironment((String)object.get("environment"));
             	}
-            	configuration.setModuleCode(moduleCode);
+													System.out.println("$#2734#"); configuration.setModuleCode(moduleCode);
             	
             	modules.put(moduleCode, configuration);
 
-            	if(object.get("integrationKeys")!=null) {
+													System.out.println("$#2735#"); if(object.get("integrationKeys")!=null) {
             		Map<String,String> confs = (Map<String,String> )object.get("integrationKeys");
-            		configuration.setIntegrationKeys(confs);
+														System.out.println("$#2736#"); configuration.setIntegrationKeys(confs);
             	}
             	
-            	if(object.get("integrationKeys")!=null) {
+													System.out.println("$#2737#"); if(object.get("integrationKeys")!=null) {
             		Map<String,List<String>> options = (Map<String,List<String>> )object.get("integrationOptions");
-            		configuration.setIntegrationOptions(options);
+														System.out.println("$#2738#"); configuration.setIntegrationOptions(options);
             	}
 
             	
             }
             
-            return modules;
+												System.out.println("$#2739#"); return modules;
 
   		} catch (Exception e) {
   			throw new ServiceException(e);

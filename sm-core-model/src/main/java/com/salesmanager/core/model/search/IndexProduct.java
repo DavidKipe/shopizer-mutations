@@ -36,7 +36,7 @@ public class IndexProduct implements JSONAware {
 		obj.put("manufacturer", this.getManufacturer());
 		obj.put("lang", this.getLang());
 		obj.put("id", this.getId());
-		if(categories!=null) {
+		System.out.println("$#4499#"); if(categories!=null) {
 			JSONArray categoriesArray = new JSONArray();
 			for(String category : categories) {
 				categoriesArray.add(category);
@@ -44,7 +44,7 @@ public class IndexProduct implements JSONAware {
 			obj.put("categories", categoriesArray);
 		}
 		
-		if(tags!=null) {
+		System.out.println("$#4500#"); if(tags!=null) {
 			JSONArray tagsArray = new JSONArray();
 			for(String tag : tags) {
 				tagsArray.add(tag);
@@ -52,12 +52,12 @@ public class IndexProduct implements JSONAware {
 			obj.put("tags", tagsArray);
 		}
 		
-		return obj.toJSONString();
+		System.out.println("$#4501#"); return obj.toJSONString();
 
 	}
 
 	public String getName() {
-		return name;
+		System.out.println("$#4502#"); return name;
 	}
 
 	public void setName(String name) {
@@ -66,7 +66,7 @@ public class IndexProduct implements JSONAware {
 
 
 	public List<String> getCategories() {
-		return categories;
+		System.out.println("$#4503#"); return categories;
 	}
 
 	public void setCategories(List<String> categories) {
@@ -74,7 +74,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public boolean isAvailable() {
-		return available;
+		System.out.println("$#4505#"); System.out.println("$#4504#"); return available;
 	}
 
 	public void setAvailable(boolean available) {
@@ -82,7 +82,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public String getDescription() {
-		return description;
+		System.out.println("$#4506#"); return description;
 	}
 
 	public void setDescription(String description) {
@@ -90,7 +90,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public List<String> getTags() {
-		return tags;
+		System.out.println("$#4507#"); return tags;
 	}
 
 	public void setTags(List<String> tags) {
@@ -98,7 +98,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public String getHighlight() {
-		return highlight;
+		System.out.println("$#4508#"); return highlight;
 	}
 
 	public void setHighlight(String highlight) {
@@ -110,7 +110,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public Double getPrice() {
-		return price;
+		System.out.println("$#4509#"); return price;
 	}
 
 	public void setStore(String store) {
@@ -118,7 +118,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public String getStore() {
-		return store;
+		System.out.println("$#4510#"); return store;
 	}
 
 	public void setLang(String lang) {
@@ -126,7 +126,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public String getLang() {
-		return lang;
+		System.out.println("$#4511#"); return lang;
 	}
 
 	public void setId(String id) {
@@ -134,7 +134,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public String getId() {
-		return id;
+		System.out.println("$#4512#"); return id;
 	}
 
 	public void setManufacturer(String manufacturer) {
@@ -142,7 +142,7 @@ public class IndexProduct implements JSONAware {
 	}
 
 	public String getManufacturer() {
-		return manufacturer;
+		System.out.println("$#4513#"); return manufacturer;
 	}
 
 }

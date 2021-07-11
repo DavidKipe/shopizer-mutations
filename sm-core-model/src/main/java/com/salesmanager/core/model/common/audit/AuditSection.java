@@ -29,7 +29,7 @@ public class AuditSection implements Serializable {
   public AuditSection() {}
 
   public Date getDateCreated() {
-    return CloneUtils.clone(dateCreated);
+				System.out.println("$#4026#"); return CloneUtils.clone(dateCreated);
   }
 
   public void setDateCreated(Date dateCreated) {
@@ -37,7 +37,7 @@ public class AuditSection implements Serializable {
   }
 
   public Date getDateModified() {
-    return CloneUtils.clone(dateModified);
+				System.out.println("$#4027#"); return CloneUtils.clone(dateModified);
   }
 
   public void setDateModified(Date dateModified) {
@@ -45,7 +45,7 @@ public class AuditSection implements Serializable {
   }
 
   public String getModifiedBy() {
-    return modifiedBy;
+				System.out.println("$#4028#"); return modifiedBy;
   }
 
   public void setModifiedBy(String modifiedBy) {

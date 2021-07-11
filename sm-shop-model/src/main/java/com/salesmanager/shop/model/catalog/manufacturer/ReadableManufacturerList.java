@@ -14,7 +14,7 @@ public class ReadableManufacturerList extends ReadableList {
   private List<ReadableManufacturer> manufacturers = new ArrayList<ReadableManufacturer>();
 
   public List<ReadableManufacturer> getManufacturers() {
-    return manufacturers;
+				System.out.println("$#8756#"); return manufacturers;
   }
 
   public void setManufacturers(List<ReadableManufacturer> manufacturers) {

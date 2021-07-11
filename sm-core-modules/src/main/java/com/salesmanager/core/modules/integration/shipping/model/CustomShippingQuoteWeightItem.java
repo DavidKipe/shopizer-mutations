@@ -10,7 +10,7 @@ public class CustomShippingQuoteWeightItem extends CustomShippingQuoteItem imple
 	private String priceText;
 
 	public String getPriceText() {
-		return priceText;
+		System.out.println("$#4911#"); return priceText;
 	}
 
 	public void setPriceText(String priceText) {
@@ -22,7 +22,7 @@ public class CustomShippingQuoteWeightItem extends CustomShippingQuoteItem imple
 	}
 
 	public int getMaximumWeight() {
-		return maximumWeight;
+		System.out.println("$#4912#"); return maximumWeight;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -31,7 +31,7 @@ public class CustomShippingQuoteWeightItem extends CustomShippingQuoteItem imple
 		data.put("price", super.getPrice());
 		data.put("maximumWeight", this.getMaximumWeight());
 		
-		return data.toJSONString();
+		System.out.println("$#4913#"); return data.toJSONString();
 	}
 
 

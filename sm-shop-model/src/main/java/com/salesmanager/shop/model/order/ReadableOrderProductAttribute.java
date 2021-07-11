@@ -15,19 +15,19 @@ public class ReadableOrderProductAttribute extends Entity implements Serializabl
 	private String attributePrice;
 	private String attributeValue;
 	public String getAttributeName() {
-		return attributeName;
+		System.out.println("$#9146#"); return attributeName;
 	}
 	public void setAttributeName(String attributeName) {
 		this.attributeName = attributeName;
 	}
 	public String getAttributePrice() {
-		return attributePrice;
+		System.out.println("$#9147#"); return attributePrice;
 	}
 	public void setAttributePrice(String attributePrice) {
 		this.attributePrice = attributePrice;
 	}
 	public String getAttributeValue() {
-		return attributeValue;
+		System.out.println("$#9148#"); return attributeValue;
 	}
 	public void setAttributeValue(String attributeValue) {
 		this.attributeValue = attributeValue;

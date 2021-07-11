@@ -11,13 +11,13 @@ public class ReadableOrderTotal extends OrderTotal implements Serializable {
 	private String total;
 	private boolean discounted;
 	public String getTotal() {
-		return total;
+		System.out.println("$#9195#"); return total;
 	}
 	public void setTotal(String total) {
 		this.total = total;
 	}
 	public boolean isDiscounted() {
-		return discounted;
+		System.out.println("$#9197#"); System.out.println("$#9196#"); return discounted;
 	}
 	public void setDiscounted(boolean discounted) {
 		this.discounted = discounted;

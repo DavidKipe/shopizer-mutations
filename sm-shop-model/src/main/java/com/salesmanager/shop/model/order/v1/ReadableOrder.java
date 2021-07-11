@@ -25,37 +25,37 @@ public class ReadableOrder extends Order {
 	private List<ReadableOrderProduct> products;
 	
 	public List<ReadableOrderProduct> getProducts() {
-		return products;
+		System.out.println("$#9241#"); return products;
 	}
 	public void setProducts(List<ReadableOrderProduct> products) {
 		this.products = products;
 	}
 	public ReadableDelivery getDelivery() {
-		return delivery;
+		System.out.println("$#9242#"); return delivery;
 	}
 	public void setDelivery(ReadableDelivery delivery) {
 		this.delivery = delivery;
 	}
 	public ReadablePayment getPayment() {
-		return payment;
+		System.out.println("$#9243#"); return payment;
 	}
 	public void setPayment(ReadablePayment payment) {
 		this.payment = payment;
 	}
 	public ReadableTotal getTotal() {
-		return total;
+		System.out.println("$#9244#"); return total;
 	}
 	public void setTotal(ReadableTotal total) {
 		this.total = total;
 	}
 	public ShippingOption getShippingOption() {
-		return shippingOption;
+		System.out.println("$#9245#"); return shippingOption;
 	}
 	public void setShippingOption(ShippingOption shippingOption) {
 		this.shippingOption = shippingOption;
 	}
 	public ReadableBilling getBilling() {
-		return billing;
+		System.out.println("$#9246#"); return billing;
 	}
 	public void setBilling(ReadableBilling billing) {
 		this.billing = billing;

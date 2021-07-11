@@ -30,26 +30,26 @@ public class PersistableCatalogCategoryEntryMapper implements Mapper<Persistable
 	@Override
 	public CatalogCategoryEntry convert(PersistableCatalogCategoryEntry source, MerchantStore store, Language language) {
 		CatalogCategoryEntry destination = new CatalogCategoryEntry();
-		return this.convert(source, destination, store, language);
+		System.out.println("$#8227#"); return this.convert(source, destination, store, language);
 	}
 
 	@Override
 	public CatalogCategoryEntry convert(PersistableCatalogCategoryEntry source, CatalogCategoryEntry destination, MerchantStore store,
 			Language language) {
-		Validate.notNull(source, "CatalogEntry must not be null");
-		Validate.notNull(store, "MerchantStore must not be null");
-		Validate.notNull(source.getProductCode(), "ProductCode must not be null");
-		Validate.notNull(source.getCategoryCode(), "CategoryCode must not be null");
-		Validate.notNull(source.getCatalog(), "Catalog must not be null");
+		System.out.println("$#8228#"); Validate.notNull(source, "CatalogEntry must not be null");
+		System.out.println("$#8229#"); Validate.notNull(store, "MerchantStore must not be null");
+		System.out.println("$#8230#"); Validate.notNull(source.getProductCode(), "ProductCode must not be null");
+		System.out.println("$#8231#"); Validate.notNull(source.getCategoryCode(), "CategoryCode must not be null");
+		System.out.println("$#8232#"); Validate.notNull(source.getCatalog(), "Catalog must not be null");
 		
 		
 		
-		if(destination == null) {
+		System.out.println("$#8233#"); if(destination == null) {
 			destination = new CatalogCategoryEntry();
 			
 		}
-		destination.setId(source.getId());
-		destination.setVisible(source.isVisible());
+		System.out.println("$#8234#"); destination.setId(source.getId());
+		System.out.println("$#8235#"); destination.setVisible(source.isVisible());
 
 		
 		try {
@@ -57,11 +57,11 @@ public class PersistableCatalogCategoryEntryMapper implements Mapper<Persistable
 			String catalog = source.getCatalog();
 			
 			Catalog catalogModel = catalogFacade.getCatalog(catalog, store);
-			if(catalogModel == null) {
+			System.out.println("$#8236#"); if(catalogModel == null) {
 				throw new ConversionRuntimeException("Error while converting CatalogEntry product [" + source.getCatalog() + "] not found");
 			}
 			
-			destination.setCatalog(catalogModel);
+			System.out.println("$#8237#"); destination.setCatalog(catalogModel);
 
 /*			Product productModel = productFacade.getProduct(source.getProductCode(), store);
 			if(productModel == null) {
@@ -71,17 +71,17 @@ public class PersistableCatalogCategoryEntryMapper implements Mapper<Persistable
 			//destination.setProduct(productModel);
 			
 			Category categoryModel = categoryFacade.getByCode(source.getCategoryCode(), store);
-			if(categoryModel == null) {
+			System.out.println("$#8238#"); if(categoryModel == null) {
 				throw new ConversionRuntimeException("Error while converting CatalogEntry category [" + source.getCategoryCode() + "] not found");
 			}
 			
-			destination.setCategory(categoryModel);
+			System.out.println("$#8239#"); destination.setCategory(categoryModel);
 			
 		} catch (Exception e) {
 			throw new ConversionRuntimeException("Error while converting CatalogEntry", e);
 		}
 		
-		return destination;
+		System.out.println("$#8240#"); return destination;
 	}
 
 }

@@ -35,97 +35,97 @@ public class PersistableInventoryMapper implements Mapper<PersistableInventory, 
   public ProductAvailability convert(PersistableInventory source, MerchantStore store,
       Language language) {
     ProductAvailability availability = new ProductAvailability();
-    availability.setMerchantStore(store);
-    return convert(source, availability, store, language);
+				System.out.println("$#8530#"); availability.setMerchantStore(store);
+				System.out.println("$#8531#"); return convert(source, availability, store, language);
     
   }
 
   @Override
   public ProductAvailability convert(PersistableInventory source, ProductAvailability destination,
       MerchantStore store, Language language) {
-    Validate.notNull(destination, "Product availability cannot be null");
+				System.out.println("$#8532#"); Validate.notNull(destination, "Product availability cannot be null");
     
     try {
 
-    if(destination == null) {
+				System.out.println("$#8533#"); if(destination == null) {
       destination = new ProductAvailability();
     }
 
 
-    destination.setProductQuantity(source.getQuantity());
-    destination.setProductQuantityOrderMin(source.getProductQuantityOrderMax());
-    destination.setProductQuantityOrderMax(source.getProductQuantityOrderMin());
-    destination.setAvailable(source.isAvailable());
-    destination.setOwner(source.getOwner());
-    if(!StringUtils.isBlank(source.getRegion())) {
-      destination.setRegion(source.getRegion());
+				System.out.println("$#8534#"); destination.setProductQuantity(source.getQuantity());
+				System.out.println("$#8535#"); destination.setProductQuantityOrderMin(source.getProductQuantityOrderMax());
+				System.out.println("$#8536#"); destination.setProductQuantityOrderMax(source.getProductQuantityOrderMin());
+				System.out.println("$#8537#"); destination.setAvailable(source.isAvailable());
+				System.out.println("$#8538#"); destination.setOwner(source.getOwner());
+				System.out.println("$#8539#"); if(!StringUtils.isBlank(source.getRegion())) {
+						System.out.println("$#8540#"); destination.setRegion(source.getRegion());
     } else {
-      destination.setRegion(Constants.ALL_REGIONS);
+						System.out.println("$#8541#"); destination.setRegion(Constants.ALL_REGIONS);
     }
     
-    destination.setRegionVariant(source.getRegionVariant());
-    if(!StringUtils.isBlank(source.getDateAvailable())) {
-      destination.setProductDateAvailable(DateUtil.getDate(source.getDateAvailable()));
+				System.out.println("$#8542#"); destination.setRegionVariant(source.getRegionVariant());
+				System.out.println("$#8543#"); if(!StringUtils.isBlank(source.getDateAvailable())) {
+						System.out.println("$#8544#"); destination.setProductDateAvailable(DateUtil.getDate(source.getDateAvailable()));
     }
 
     for(PersistableProductPrice priceEntity : source.getPrices()) {
       
       ProductPrice price = new ProductPrice();
-      price.setId(null);
-      if(priceEntity.getId()!=null && priceEntity.getId().longValue()>0) {
-    	  price.setId(priceEntity.getId());
+						System.out.println("$#8545#"); price.setId(null);
+						System.out.println("$#8547#"); System.out.println("$#8546#"); if(priceEntity.getId()!=null && priceEntity.getId().longValue()>0) {
+							System.out.println("$#8549#"); price.setId(priceEntity.getId());
       }
       Set<ProductPrice> prices = new HashSet<ProductPrice>();
-      if(destination.getPrices()!=null) {
+						System.out.println("$#8550#"); if(destination.getPrices()!=null) {
         for(ProductPrice pp : destination.getPrices()) {
-          if(priceEntity.getId()!=null && priceEntity.getId().longValue()>0 && priceEntity.getId().longValue() == pp.getId().longValue()) {
+										System.out.println("$#8552#"); System.out.println("$#8551#"); if(priceEntity.getId()!=null && priceEntity.getId().longValue()>0 && priceEntity.getId().longValue() == pp.getId().longValue()) {
             price = pp;
-            price.setId(pp.getId());
+												System.out.println("$#8555#"); price.setId(pp.getId());
           }
         }
       }
 
-      price.setProductAvailability(destination);
-      price.setDefaultPrice(priceEntity.isDefaultPrice());
-      price.setProductPriceAmount(priceEntity.getOriginalPrice());
-      price.setDefaultPrice(priceEntity.isDefaultPrice());
-      price.setCode(priceEntity.getCode());
-      price.setProductPriceSpecialAmount(priceEntity.getDiscountedPrice());
-      if(priceEntity.getDiscountStartDate()!=null) {
+						System.out.println("$#8556#"); price.setProductAvailability(destination);
+						System.out.println("$#8557#"); price.setDefaultPrice(priceEntity.isDefaultPrice());
+						System.out.println("$#8558#"); price.setProductPriceAmount(priceEntity.getOriginalPrice());
+						System.out.println("$#8559#"); price.setDefaultPrice(priceEntity.isDefaultPrice());
+						System.out.println("$#8560#"); price.setCode(priceEntity.getCode());
+						System.out.println("$#8561#"); price.setProductPriceSpecialAmount(priceEntity.getDiscountedPrice());
+						System.out.println("$#8562#"); if(priceEntity.getDiscountStartDate()!=null) {
           Date startDate = DateUtil.getDate(priceEntity.getDiscountStartDate());
-          price.setProductPriceSpecialStartDate(startDate);
+										System.out.println("$#8563#"); price.setProductPriceSpecialStartDate(startDate);
       }
-      if(priceEntity.getDiscountEndDate()!=null) {
+						System.out.println("$#8564#"); if(priceEntity.getDiscountEndDate()!=null) {
           Date endDate = DateUtil.getDate(priceEntity.getDiscountEndDate());
-          price.setProductPriceSpecialEndDate(endDate);
+										System.out.println("$#8565#"); price.setProductPriceSpecialEndDate(endDate);
       }
       //destination.getPrices().add(price);
       
-      price.setProductAvailability(destination);
+						System.out.println("$#8566#"); price.setProductAvailability(destination);
       
       java.util.List<com.salesmanager.shop.model.catalog.product.ProductPriceDescription> descriptions = priceEntity.getDescriptions();
-      if(descriptions != null) {
+						System.out.println("$#8567#"); if(descriptions != null) {
         Set<ProductPriceDescription> descs = new HashSet<ProductPriceDescription>();
         for(com.salesmanager.shop.model.catalog.product.ProductPriceDescription desc : descriptions) {
           ProductPriceDescription description = null;
-          if(!CollectionUtils.isEmpty(price.getDescriptions())) {
+										System.out.println("$#8568#"); if(!CollectionUtils.isEmpty(price.getDescriptions())) {
             for(ProductPriceDescription d : price.getDescriptions()) {
-              if(desc.getId() != null && desc.getId().longValue() > 0 && desc.getId().longValue() == d.getId().longValue()) {
-                desc.setId(d.getId());
+														System.out.println("$#8570#"); System.out.println("$#8569#"); if(desc.getId() != null && desc.getId().longValue() > 0 && desc.getId().longValue() == d.getId().longValue()) {
+																System.out.println("$#8573#"); desc.setId(d.getId());
               }
             }
           }
           description = getDescription(desc);
-          description.setProductPrice(price);
+										System.out.println("$#8574#"); description.setProductPrice(price);
           descs.add(description);
         }
-        price.setDescriptions(descs);
+								System.out.println("$#8575#"); price.setDescriptions(descs);
       }
       prices.add(price);
-      destination.setPrices(prices);
+						System.out.println("$#8576#"); destination.setPrices(prices);
     }
     
-    return destination;
+				System.out.println("$#8577#"); return destination;
     
     } catch(Exception e) {
       throw new ConversionRuntimeException(e);
@@ -135,26 +135,26 @@ public class PersistableInventoryMapper implements Mapper<PersistableInventory, 
   
   private ProductPriceDescription getDescription(com.salesmanager.shop.model.catalog.product.ProductPriceDescription desc) throws ConversionException {
     ProductPriceDescription target = new ProductPriceDescription();
-    target.setDescription(desc.getDescription());
-    target.setName(desc.getName());
-    target.setTitle(desc.getTitle());
-    target.setId(null);
-    if(desc.getId()!=null && desc.getId().longValue()>0) {
-      target.setId(desc.getId());
+				System.out.println("$#8578#"); target.setDescription(desc.getDescription());
+				System.out.println("$#8579#"); target.setName(desc.getName());
+				System.out.println("$#8580#"); target.setTitle(desc.getTitle());
+				System.out.println("$#8581#"); target.setId(null);
+				System.out.println("$#8583#"); System.out.println("$#8582#"); if(desc.getId()!=null && desc.getId().longValue()>0) {
+						System.out.println("$#8585#"); target.setId(desc.getId());
     }
 
     Language lang;
     try {
       lang = languageService.getByCode(desc.getLanguage());
-      target.setLanguage(lang);
-      if(lang==null) {
+						System.out.println("$#8586#"); target.setLanguage(lang);
+						System.out.println("$#8587#"); if(lang==null) {
         throw new ConversionException("Language is null for code " + desc.getLanguage() + " use language ISO code [en, fr ...]");
     }
     } catch (ServiceException e) {
       throw new ConversionException(e);
     }
 
-    return target;
+				System.out.println("$#8588#"); return target;
 
   }
 

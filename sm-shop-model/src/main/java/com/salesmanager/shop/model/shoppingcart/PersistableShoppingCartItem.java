@@ -20,26 +20,26 @@ public class PersistableShoppingCartItem implements Serializable {
 	private int quantity;
 	private String promoCode;
 	public String getPromoCode() {
-		return promoCode;
+		System.out.println("$#9297#"); return promoCode;
 	}
 	public void setPromoCode(String promoCode) {
 		this.promoCode = promoCode;
 	}
 	public int getQuantity() {
-		return quantity;
+		System.out.println("$#9298#"); return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	private List<ProductAttribute> attributes;
 	public Long getProduct() {
-		return product;
+		System.out.println("$#9299#"); return product;
 	}
 	public void setProduct(Long product) {
 		this.product = product;
 	}
 	public List<ProductAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#9300#"); return attributes;
 	}
 	public void setAttributes(List<ProductAttribute> attributes) {
 		this.attributes = attributes;

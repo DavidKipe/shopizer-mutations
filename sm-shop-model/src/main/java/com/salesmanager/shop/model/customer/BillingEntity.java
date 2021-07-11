@@ -20,7 +20,7 @@ public class BillingEntity extends Address {
 	private String provinceName;
 
 	public String getCountryName() {
-		return countryName;
+		System.out.println("$#9057#"); return countryName;
 	}
 
 	public void setCountryName(String countryName) {
@@ -28,7 +28,7 @@ public class BillingEntity extends Address {
 	}
 
 	public String getProvinceName() {
-		return provinceName;
+		System.out.println("$#9058#"); return provinceName;
 	}
 
 	public void setProvinceName(String provinceName) {
@@ -36,7 +36,7 @@ public class BillingEntity extends Address {
 	}
 
 	public String getEmail() {
-		return email;
+		System.out.println("$#9059#"); return email;
 	}
 
 	public void setEmail(String email) {

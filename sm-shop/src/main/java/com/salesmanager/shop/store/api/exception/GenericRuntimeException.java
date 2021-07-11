@@ -11,34 +11,34 @@ public class GenericRuntimeException extends RuntimeException {
   private String errorMessage;
 
   public GenericRuntimeException(String errorCode, String errorMessage) {
-    this.setErrorCode(errorCode);
-    this.setErrorMessage(errorMessage);
+				System.out.println("$#11202#"); this.setErrorCode(errorCode);
+				System.out.println("$#11203#"); this.setErrorMessage(errorMessage);
   }
 
   public GenericRuntimeException(String errorMessage) {
-    this.setErrorMessage(errorMessage);
+				System.out.println("$#11204#"); this.setErrorMessage(errorMessage);
   }
 
   public GenericRuntimeException(Throwable exception) {
     super(exception);
-    this.setErrorCode(null);
-    this.setErrorMessage(null);
+				System.out.println("$#11205#"); this.setErrorCode(null);
+				System.out.println("$#11206#"); this.setErrorMessage(null);
   }
 
   public GenericRuntimeException(String errorMessage, Throwable exception) {
     super(exception);
-    this.setErrorCode(null);
-    this.setErrorMessage(errorMessage);
+				System.out.println("$#11207#"); this.setErrorCode(null);
+				System.out.println("$#11208#"); this.setErrorMessage(errorMessage);
   }
 
   public GenericRuntimeException(String errorCode, String errorMessage, Throwable exception) {
     super(exception);
-    this.setErrorCode(errorCode);
-    this.setErrorMessage(errorMessage);
+				System.out.println("$#11209#"); this.setErrorCode(errorCode);
+				System.out.println("$#11210#"); this.setErrorMessage(errorMessage);
   }
 
   public String getErrorCode() {
-    return errorCode;
+				System.out.println("$#11211#"); return errorCode;
   }
 
   public void setErrorCode(String errorCode) {
@@ -46,7 +46,7 @@ public class GenericRuntimeException extends RuntimeException {
   }
 
   public String getErrorMessage() {
-    return errorMessage;
+				System.out.println("$#11212#"); return errorMessage;
   }
 
   public void setErrorMessage(String errorMessage) {

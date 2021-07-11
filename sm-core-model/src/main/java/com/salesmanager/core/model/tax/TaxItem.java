@@ -17,7 +17,7 @@ public class TaxItem extends OrderTotalItem {
 	}
 
 	public String getLabel() {
-		return label;
+		System.out.println("$#4825#"); return label;
 	}
 
 	public void setTaxRate(TaxRate taxRate) {
@@ -25,7 +25,7 @@ public class TaxItem extends OrderTotalItem {
 	}
 
 	public TaxRate getTaxRate() {
-		return taxRate;
+		System.out.println("$#4826#"); return taxRate;
 	}
 
 

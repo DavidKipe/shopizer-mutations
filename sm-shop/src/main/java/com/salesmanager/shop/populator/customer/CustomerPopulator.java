@@ -59,184 +59,184 @@ public class CustomerPopulator extends
 
 		try {
 			
-			if(source.getId() !=null && source.getId()>0){
-			    target.setId( source.getId() );
+			System.out.println("$#10061#"); System.out.println("$#10060#"); if(source.getId() !=null && source.getId()>0){
+							System.out.println("$#10063#"); target.setId( source.getId() );
 			}
 
-			if(!StringUtils.isBlank(source.getPassword())) {
-			  target.setPassword(passwordEncoder.encode(source.getPassword()));
-			  target.setAnonymous(false);
+			System.out.println("$#10064#"); if(!StringUtils.isBlank(source.getPassword())) {
+					System.out.println("$#10065#"); target.setPassword(passwordEncoder.encode(source.getPassword()));
+					System.out.println("$#10066#"); target.setAnonymous(false);
 			}
 
-			target.setBilling(new Billing());
-			if (!StringUtils.isEmpty(source.getFirstName())) {
-				target.getBilling().setFirstName(
+			System.out.println("$#10067#"); target.setBilling(new Billing());
+			System.out.println("$#10068#"); if (!StringUtils.isEmpty(source.getFirstName())) {
+				System.out.println("$#10069#"); target.getBilling().setFirstName(
 						source.getFirstName()
 				);
 			}
-			if (!StringUtils.isEmpty(source.getLastName())) {
-				target.getBilling().setLastName(
+			System.out.println("$#10070#"); if (!StringUtils.isEmpty(source.getLastName())) {
+				System.out.println("$#10071#"); target.getBilling().setLastName(
 						source.getLastName()
 				);
 			}
 
-		    target.setProvider(source.getProvider());
+						System.out.println("$#10072#"); target.setProvider(source.getProvider());
 
-			target.setEmailAddress(source.getEmailAddress());
-			target.setNick(source.getUserName());
-			if(source.getGender()!=null && target.getGender()==null) {
-				target.setGender( com.salesmanager.core.model.customer.CustomerGender.valueOf( source.getGender() ) );
+			System.out.println("$#10073#"); target.setEmailAddress(source.getEmailAddress());
+			System.out.println("$#10074#"); target.setNick(source.getUserName());
+			System.out.println("$#10075#"); if(source.getGender()!=null && target.getGender()==null) {
+				System.out.println("$#10077#"); target.setGender( com.salesmanager.core.model.customer.CustomerGender.valueOf( source.getGender() ) );
 			}
-			if(target.getGender()==null) {
-				target.setGender( com.salesmanager.core.model.customer.CustomerGender.M);
+			System.out.println("$#10078#"); if(target.getGender()==null) {
+				System.out.println("$#10079#"); target.setGender( com.salesmanager.core.model.customer.CustomerGender.M);
 			}
 
 			Map<String,Country> countries = countryService.getCountriesMap(language);
 			Map<String,Zone> zones = zoneService.getZones(language);
 			
-			target.setMerchantStore( store );
+			System.out.println("$#10080#"); target.setMerchantStore( store );
 
 			Address sourceBilling = source.getBilling();
-			if(sourceBilling!=null) {
+			System.out.println("$#10081#"); if(sourceBilling!=null) {
 				Billing billing = target.getBilling();
-				billing.setAddress(sourceBilling.getAddress());
-				billing.setCity(sourceBilling.getCity());
-				billing.setCompany(sourceBilling.getCompany());
+				System.out.println("$#10082#"); billing.setAddress(sourceBilling.getAddress());
+				System.out.println("$#10083#"); billing.setCity(sourceBilling.getCity());
+				System.out.println("$#10084#"); billing.setCompany(sourceBilling.getCompany());
 				//billing.setCountry(country);
-				if (!StringUtils.isEmpty(sourceBilling.getFirstName()))
-					billing.setFirstName(sourceBilling.getFirstName());
-				if (!StringUtils.isEmpty(sourceBilling.getLastName()))
-					billing.setLastName(sourceBilling.getLastName());
-				billing.setTelephone(sourceBilling.getPhone());
-				billing.setPostalCode(sourceBilling.getPostalCode());
-				billing.setState(sourceBilling.getStateProvince());
+				System.out.println("$#10085#"); if (!StringUtils.isEmpty(sourceBilling.getFirstName()))
+					System.out.println("$#10086#"); billing.setFirstName(sourceBilling.getFirstName());
+				System.out.println("$#10087#"); if (!StringUtils.isEmpty(sourceBilling.getLastName()))
+					System.out.println("$#10088#"); billing.setLastName(sourceBilling.getLastName());
+				System.out.println("$#10089#"); billing.setTelephone(sourceBilling.getPhone());
+				System.out.println("$#10090#"); billing.setPostalCode(sourceBilling.getPostalCode());
+				System.out.println("$#10091#"); billing.setState(sourceBilling.getStateProvince());
 				Country billingCountry = null;
-				if(!StringUtils.isBlank(sourceBilling.getCountry())) {
+				System.out.println("$#10092#"); if(!StringUtils.isBlank(sourceBilling.getCountry())) {
 					billingCountry = countries.get(sourceBilling.getCountry());
-					if(billingCountry==null) {
+					System.out.println("$#10093#"); if(billingCountry==null) {
 						throw new ConversionException("Unsuported country code " + sourceBilling.getCountry());
 					}
-					billing.setCountry(billingCountry);
+					System.out.println("$#10094#"); billing.setCountry(billingCountry);
 				}
 				
-				if(billingCountry!=null && !StringUtils.isBlank(sourceBilling.getZone())) {
+				System.out.println("$#10095#"); if(billingCountry!=null && !StringUtils.isBlank(sourceBilling.getZone())) {
 					Zone zone = zoneService.getByCode(sourceBilling.getZone());
-					if(zone==null) {
+					System.out.println("$#10097#"); if(zone==null) {
 						throw new ConversionException("Unsuported zone code " + sourceBilling.getZone());
 					}
 					Zone zoneDescription = zones.get(zone.getCode());
-					billing.setZone(zoneDescription);
+					System.out.println("$#10098#"); billing.setZone(zoneDescription);
 				}
 				// target.setBilling(billing);
 
 			}
-			if(target.getBilling() ==null && source.getBilling()!=null){
+			System.out.println("$#10099#"); if(target.getBilling() ==null && source.getBilling()!=null){
 			    LOG.info( "Setting default values for billing" );
 			    Billing billing = new Billing();
 			    Country billingCountry = null;
-			    if(StringUtils.isNotBlank( source.getBilling().getCountry() )) {
+							System.out.println("$#10101#"); if(StringUtils.isNotBlank( source.getBilling().getCountry() )) {
                     billingCountry = countries.get(source.getBilling().getCountry());
-                    if(billingCountry==null) {
+																				System.out.println("$#10102#"); if(billingCountry==null) {
                         throw new ConversionException("Unsuported country code " + sourceBilling.getCountry());
                     }
-                    billing.setCountry(billingCountry);
-                    target.setBilling( billing );
+																				System.out.println("$#10103#"); billing.setCountry(billingCountry);
+																				System.out.println("$#10104#"); target.setBilling( billing );
                 }
 			}
 			Address sourceShipping = source.getDelivery();
-			if(sourceShipping!=null) {
+			System.out.println("$#10105#"); if(sourceShipping!=null) {
 				Delivery delivery = new Delivery();
-				delivery.setAddress(sourceShipping.getAddress());
-				delivery.setCity(sourceShipping.getCity());
-				delivery.setCompany(sourceShipping.getCompany());
-				delivery.setFirstName(sourceShipping.getFirstName());
-				delivery.setLastName(sourceShipping.getLastName());
-				delivery.setTelephone(sourceShipping.getPhone());
-				delivery.setPostalCode(sourceShipping.getPostalCode());
-				delivery.setState(sourceShipping.getStateProvince());
+				System.out.println("$#10106#"); delivery.setAddress(sourceShipping.getAddress());
+				System.out.println("$#10107#"); delivery.setCity(sourceShipping.getCity());
+				System.out.println("$#10108#"); delivery.setCompany(sourceShipping.getCompany());
+				System.out.println("$#10109#"); delivery.setFirstName(sourceShipping.getFirstName());
+				System.out.println("$#10110#"); delivery.setLastName(sourceShipping.getLastName());
+				System.out.println("$#10111#"); delivery.setTelephone(sourceShipping.getPhone());
+				System.out.println("$#10112#"); delivery.setPostalCode(sourceShipping.getPostalCode());
+				System.out.println("$#10113#"); delivery.setState(sourceShipping.getStateProvince());
 				Country deliveryCountry = null;
 				
 				
 				
-				if(!StringUtils.isBlank(sourceShipping.getCountry())) {
+				System.out.println("$#10114#"); if(!StringUtils.isBlank(sourceShipping.getCountry())) {
 					deliveryCountry = countries.get(sourceShipping.getCountry());
-					if(deliveryCountry==null) {
+					System.out.println("$#10115#"); if(deliveryCountry==null) {
 						throw new ConversionException("Unsuported country code " + sourceShipping.getCountry());
 					}
-					delivery.setCountry(deliveryCountry);
+					System.out.println("$#10116#"); delivery.setCountry(deliveryCountry);
 				}
 				
-				if(deliveryCountry!=null && !StringUtils.isBlank(sourceShipping.getZone())) {
+				System.out.println("$#10117#"); if(deliveryCountry!=null && !StringUtils.isBlank(sourceShipping.getZone())) {
 					Zone zone = zoneService.getByCode(sourceShipping.getZone());
-					if(zone==null) {
+					System.out.println("$#10119#"); if(zone==null) {
 						throw new ConversionException("Unsuported zone code " + sourceShipping.getZone());
 					}
 					Zone zoneDescription = zones.get(zone.getCode());
-					delivery.setZone(zoneDescription);
+					System.out.println("$#10120#"); delivery.setZone(zoneDescription);
 				}
-				target.setDelivery(delivery);
+				System.out.println("$#10121#"); target.setDelivery(delivery);
 			}
 			
-			if(source.getRating() != null) {
-				target.setCustomerReviewAvg(new BigDecimal(source.getRating().doubleValue()));
+			System.out.println("$#10122#"); if(source.getRating() != null) {
+				System.out.println("$#10123#"); target.setCustomerReviewAvg(new BigDecimal(source.getRating().doubleValue()));
 			}
 			
-			target.setCustomerReviewCount(source.getRatingCount());
+			System.out.println("$#10124#"); target.setCustomerReviewCount(source.getRatingCount());
 
 			
-			if(target.getDelivery() ==null && source.getDelivery()!=null){
+			System.out.println("$#10125#"); if(target.getDelivery() ==null && source.getDelivery()!=null){
 			    LOG.info( "Setting default value for delivery" );
 			    Delivery delivery = new Delivery();
 			    Country deliveryCountry = null;
-                if(StringUtils.isNotBlank( source.getDelivery().getCountry() )) {
+																System.out.println("$#10127#"); if(StringUtils.isNotBlank( source.getDelivery().getCountry() )) {
                     deliveryCountry = countries.get(source.getDelivery().getCountry());
-                    if(deliveryCountry==null) {
+																				System.out.println("$#10128#"); if(deliveryCountry==null) {
                         throw new ConversionException("Unsuported country code " + sourceShipping.getCountry());
                     }
-                    delivery.setCountry(deliveryCountry);
-                    target.setDelivery( delivery );
+																				System.out.println("$#10129#"); delivery.setCountry(deliveryCountry);
+																				System.out.println("$#10130#"); target.setDelivery( delivery );
                 }
 			}
 			
-			if(source.getAttributes()!=null) {
+			System.out.println("$#10131#"); if(source.getAttributes()!=null) {
 				for(PersistableCustomerAttribute attr : source.getAttributes()) {
 
 					CustomerOption customerOption = customerOptionService.getById(attr.getCustomerOption().getId());
-					if(customerOption==null) {
+					System.out.println("$#10132#"); if(customerOption==null) {
 						throw new ConversionException("Customer option id " + attr.getCustomerOption().getId() + " does not exist");
 					}
 					
 					CustomerOptionValue customerOptionValue = customerOptionValueService.getById(attr.getCustomerOptionValue().getId());
-					if(customerOptionValue==null) {
+					System.out.println("$#10133#"); if(customerOptionValue==null) {
 						throw new ConversionException("Customer option value id " + attr.getCustomerOptionValue().getId() + " does not exist");
 					}
 					
-					if(customerOption.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+					System.out.println("$#10134#"); if(customerOption.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 						throw new ConversionException("Invalid customer option id ");
 					}
 					
-					if(customerOptionValue.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+					System.out.println("$#10135#"); if(customerOptionValue.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 						throw new ConversionException("Invalid customer option value id ");
 					}
 					
 					CustomerAttribute attribute = new CustomerAttribute();
-					attribute.setCustomer(target);
-					attribute.setCustomerOption(customerOption);
-					attribute.setCustomerOptionValue(customerOptionValue);
-					attribute.setTextValue(attr.getTextValue());
+					System.out.println("$#10136#"); attribute.setCustomer(target);
+					System.out.println("$#10137#"); attribute.setCustomerOption(customerOption);
+					System.out.println("$#10138#"); attribute.setCustomerOptionValue(customerOptionValue);
+					System.out.println("$#10139#"); attribute.setTextValue(attr.getTextValue());
 					
 					target.getAttributes().add(attribute);
 					
 				}
 			}
 			
-			if(target.getDefaultLanguage()==null) {
+			System.out.println("$#10140#"); if(target.getDefaultLanguage()==null) {
 				
 				Language lang = source.getLanguage() == null ?
 						language : languageService.getByCode(source.getLanguage());
 
 				
-				target.setDefaultLanguage(lang);
+				System.out.println("$#10142#"); target.setDefaultLanguage(lang);
 			}
 
 		
@@ -247,12 +247,12 @@ public class CustomerPopulator extends
 		
 		
 		
-		return target;
+		System.out.println("$#10143#"); return target;
 	}
 
 	@Override
 	protected Customer createTarget() {
-		return new Customer();
+		System.out.println("$#10144#"); return new Customer();
 	}
 
 

@@ -12,7 +12,7 @@ public class ReadableCatalogCategoryEntry extends CatalogEntryEntity {
 	//private ReadableProduct product;
 	private ReadableCategory category;
 	public String getCreationDate() {
-		return creationDate;
+		System.out.println("$#8728#"); return creationDate;
 	}
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
@@ -24,7 +24,7 @@ public class ReadableCatalogCategoryEntry extends CatalogEntryEntity {
 		this.product = product;
 	}*/
 	public ReadableCategory getCategory() {
-		return category;
+		System.out.println("$#8729#"); return category;
 	}
 	public void setCategory(ReadableCategory category) {
 		this.category = category;

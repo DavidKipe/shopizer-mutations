@@ -34,13 +34,13 @@ public class ZoneDescription extends Description {
 	}
 	
 	public ZoneDescription(Zone zone, Language language, String name) {
-		setZone(zone);
-		setLanguage(language);
-		setName(name);
+		System.out.println("$#4495#"); setZone(zone);
+		System.out.println("$#4496#"); setLanguage(language);
+		System.out.println("$#4497#"); setName(name);
 	}
 	
 	public Zone getZone() {
-		return zone;
+		System.out.println("$#4498#"); return zone;
 	}
 
 	public void setZone(Zone zone) {

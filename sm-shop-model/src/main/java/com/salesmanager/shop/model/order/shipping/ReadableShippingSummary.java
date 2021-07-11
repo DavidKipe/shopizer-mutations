@@ -36,82 +36,82 @@ public class ReadableShippingSummary implements Serializable {
 	
 	
 	public BigDecimal getShipping() {
-		return shipping;
+		System.out.println("$#9163#"); return shipping;
 	}
 	public void setShipping(BigDecimal shipping) {
 		this.shipping = shipping;
 	}
 	public BigDecimal getHandling() {
-		return handling;
+		System.out.println("$#9164#"); return handling;
 	}
 	public void setHandling(BigDecimal handling) {
 		this.handling = handling;
 	}
 	public String getShippingModule() {
-		return shippingModule;
+		System.out.println("$#9165#"); return shippingModule;
 	}
 	public void setShippingModule(String shippingModule) {
 		this.shippingModule = shippingModule;
 	}
 	public String getShippingOption() {
-		return shippingOption;
+		System.out.println("$#9166#"); return shippingOption;
 	}
 	public void setShippingOption(String shippingOption) {
 		this.shippingOption = shippingOption;
 	}
 	public boolean isFreeShipping() {
-		return freeShipping;
+		System.out.println("$#9168#"); System.out.println("$#9167#"); return freeShipping;
 	}
 	public void setFreeShipping(boolean freeShipping) {
 		this.freeShipping = freeShipping;
 	}
 	public boolean isTaxOnShipping() {
-		return taxOnShipping;
+		System.out.println("$#9170#"); System.out.println("$#9169#"); return taxOnShipping;
 	}
 	public void setTaxOnShipping(boolean taxOnShipping) {
 		this.taxOnShipping = taxOnShipping;
 	}
 	public String getShippingText() {
-		return shippingText;
+		System.out.println("$#9171#"); return shippingText;
 	}
 	public void setShippingText(String shippingText) {
 		this.shippingText = shippingText;
 	}
 	public String getHandlingText() {
-		return handlingText;
+		System.out.println("$#9172#"); return handlingText;
 	}
 	public void setHandlingText(String handlingText) {
 		this.handlingText = handlingText;
 	}
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+		System.out.println("$#9173#"); return serialVersionUID;
 	}
 	public List<ShippingOption> getShippingOptions() {
-		return shippingOptions;
+		System.out.println("$#9174#"); return shippingOptions;
 	}
 	public void setShippingOptions(List<ShippingOption> shippingOptions) {
 		this.shippingOptions = shippingOptions;
 	}
 	public ShippingOption getSelectedShippingOption() {
-		return selectedShippingOption;
+		System.out.println("$#9175#"); return selectedShippingOption;
 	}
 	public void setSelectedShippingOption(ShippingOption selectedShippingOption) {
 		this.selectedShippingOption = selectedShippingOption;
 	}
 	public Map<String,String> getQuoteInformations() {
-		return quoteInformations;
+		System.out.println("$#9176#"); return quoteInformations;
 	}
 	public void setQuoteInformations(Map<String,String> quoteInformations) {
 		this.quoteInformations = quoteInformations;
 	}
 	public Address getDelivery() {
-		return delivery;
+		System.out.println("$#9177#"); return delivery;
 	}
 	public void setDelivery(ReadableDelivery delivery) {
 		this.delivery = delivery;
 	}
 	public boolean isShippingQuote() {
-		return shippingQuote;
+		System.out.println("$#9179#"); System.out.println("$#9178#"); return shippingQuote;
 	}
 	public void setShippingQuote(boolean shippingQuote) {
 		this.shippingQuote = shippingQuote;

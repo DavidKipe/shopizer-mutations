@@ -93,12 +93,12 @@ public class OrderPaymentApi {
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) throws Exception {
 
 		ShoppingCart cart = shoppingCartService.getByCode(code, merchantStore);
-		if (cart == null) {
+		System.out.println("$#11742#"); if (cart == null) {
 			throw new ResourceNotFoundException("Cart code " + code + " does not exist");
 		}
 
 		PersistablePaymentPopulator populator = new PersistablePaymentPopulator();
-		populator.setPricingService(pricingService);
+		System.out.println("$#11743#"); populator.setPricingService(pricingService);
 
 		Payment paymentModel = new Payment();
 
@@ -108,12 +108,12 @@ public class OrderPaymentApi {
 
 		ReadableTransaction transaction = new ReadableTransaction();
 		ReadableTransactionPopulator trxPopulator = new ReadableTransactionPopulator();
-		trxPopulator.setOrderService(orderService);
-		trxPopulator.setPricingService(pricingService);
+		System.out.println("$#11744#"); trxPopulator.setOrderService(orderService);
+		System.out.println("$#11745#"); trxPopulator.setPricingService(pricingService);
 
 		trxPopulator.populate(transactionModel, transaction, merchantStore, language);
 
-		return transaction;
+		System.out.println("$#11746#"); return transaction;
 
 	}
 
@@ -131,29 +131,29 @@ public class OrderPaymentApi {
 
 			Customer customer = customerService.getByNick(userName);
 
-			if (customer == null) {
-				response.sendError(401, "Error while initializing the payment customer not authorized");
+			System.out.println("$#11747#"); if (customer == null) {
+				System.out.println("$#11748#"); response.sendError(401, "Error while initializing the payment customer not authorized");
 				return null;
 			}
 
 			ShoppingCart cart = shoppingCartService.getByCode(code, merchantStore);
-			if (cart == null) {
+			System.out.println("$#11749#"); if (cart == null) {
 
 				throw new ResourceNotFoundException("Cart code " + code + " does not exist");
 			}
 
-			if (cart.getCustomerId() == null) {
-				response.sendError(404, "Cart code " + code + " does not exist for exist for user " + userName);
+			System.out.println("$#11750#"); if (cart.getCustomerId() == null) {
+				System.out.println("$#11751#"); response.sendError(404, "Cart code " + code + " does not exist for exist for user " + userName);
 				return null;
 			}
 
-			if (cart.getCustomerId().longValue() != customer.getId().longValue()) {
-				response.sendError(404, "Cart code " + code + " does not exist for exist for user " + userName);
+			System.out.println("$#11752#"); if (cart.getCustomerId().longValue() != customer.getId().longValue()) {
+				System.out.println("$#11753#"); response.sendError(404, "Cart code " + code + " does not exist for exist for user " + userName);
 				return null;
 			}
 
 			PersistablePaymentPopulator populator = new PersistablePaymentPopulator();
-			populator.setPricingService(pricingService);
+			System.out.println("$#11754#"); populator.setPricingService(pricingService);
 
 			Payment paymentModel = new Payment();
 
@@ -163,17 +163,17 @@ public class OrderPaymentApi {
 
 			ReadableTransaction transaction = new ReadableTransaction();
 			ReadableTransactionPopulator trxPopulator = new ReadableTransactionPopulator();
-			trxPopulator.setOrderService(orderService);
-			trxPopulator.setPricingService(pricingService);
+			System.out.println("$#11755#"); trxPopulator.setOrderService(orderService);
+			System.out.println("$#11756#"); trxPopulator.setPricingService(pricingService);
 
 			trxPopulator.populate(transactionModel, transaction, merchantStore, language);
 
-			return transaction;
+			System.out.println("$#11757#"); return transaction;
 
 		} catch (Exception e) {
 			LOGGER.error("Error while initializing the payment", e);
 			try {
-				response.sendError(503, "Error while initializing the payment " + e.getMessage());
+				System.out.println("$#11758#"); response.sendError(503, "Error while initializing the payment " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			return null;
@@ -193,11 +193,11 @@ public class OrderPaymentApi {
 			@ApiIgnore Language language) {
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#11759#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_ADMIN_ORDER, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
 		TransactionType transactionType = orderFacade.nextTransaction(id, merchantStore);
-		return "{\"transactionType\":\"" + transactionType.name() + "\"}";
+		System.out.println("$#11760#"); return "{\"transactionType\":\"" + transactionType.name() + "\"}";
 
 	}
 	
@@ -214,11 +214,11 @@ public class OrderPaymentApi {
 			@ApiIgnore Language language) {
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#11761#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_ADMIN_ORDER, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
 
-		return orderFacade.listTransactions(id, merchantStore);
+		System.out.println("$#11762#"); return orderFacade.listTransactions(id, merchantStore);
 
 	}
 
@@ -251,16 +251,16 @@ public class OrderPaymentApi {
 			Calendar cal = Calendar.getInstance();
 			Date sDate = null;
 
-			if (startDate != null) {
+			System.out.println("$#11763#"); if (startDate != null) {
 				sDate = Date.from(startDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 			} else {
-				cal.add(Calendar.DATE, -1);
+				System.out.println("$#11764#"); cal.add(Calendar.DATE, -1);
 				sDate = cal.getTime();
 			}
 
 			Date eDate = null;
 
-			if (endDate != null) {
+			System.out.println("$#11765#"); if (endDate != null) {
 				eDate = Date.from(endDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 			} else {
 				eDate = new Date();
@@ -268,12 +268,12 @@ public class OrderPaymentApi {
 
 			ReadableOrderList returnList = orderFacade.getCapturableOrderList(merchantStore, sDate, eDate, language);
 
-			return returnList;
+			System.out.println("$#11766#"); return returnList;
 
 		} catch (Exception e) {
 			LOGGER.error("Error while getting capturable payments", e);
 			try {
-				response.sendError(503, "Error while getting capturable payments " + e.getMessage());
+				System.out.println("$#11767#"); response.sendError(503, "Error while getting capturable payments " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			return null;

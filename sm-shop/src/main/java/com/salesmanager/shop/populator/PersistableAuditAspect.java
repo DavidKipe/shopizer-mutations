@@ -32,23 +32,23 @@ public class PersistableAuditAspect {
         public void afterReturning(JoinPoint joinPoint, Object result) {
     	
 			try {
-				if(result instanceof Auditable) {
+				System.out.println("$#10879#"); if(result instanceof Auditable) {
 					Auditable entity = (Auditable)result;
 					AuditSection audit = entity.getAuditSection();
-					if(entity.getAuditSection()==null) {
+					System.out.println("$#10880#"); if(entity.getAuditSection()==null) {
 						audit = new AuditSection();
 					}
-					audit.setDateModified(new Date());
+					System.out.println("$#10881#"); audit.setDateModified(new Date());
 					
 					Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-					if(auth!=null) {
-						if(auth instanceof UsernamePasswordAuthenticationToken) {//api only is captured
+					System.out.println("$#10882#"); if(auth!=null) {
+						System.out.println("$#10883#"); if(auth instanceof UsernamePasswordAuthenticationToken) {//api only is captured
 							com.salesmanager.shop.store.security.user.JWTUser user = (com.salesmanager.shop.store.security.user.JWTUser)auth.getPrincipal();
-							audit.setModifiedBy(user.getUsername());
+							System.out.println("$#10884#"); audit.setModifiedBy(user.getUsername());
 						}
 					}
 					//TODO put in log audit log trail
-					entity.setAuditSection(audit);
+					System.out.println("$#10885#"); entity.setAuditSection(audit);
 				}
 			} catch (Throwable e) {
 				LOGGER.error("Error while setting audit values" + e.getMessage());

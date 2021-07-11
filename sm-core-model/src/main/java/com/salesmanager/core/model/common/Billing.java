@@ -62,7 +62,7 @@ public class Billing {
 
 
 	public String getCompany() {
-		return company;
+		System.out.println("$#4029#"); return company;
 	}
 
 	public void setCompany(String company) {
@@ -70,7 +70,7 @@ public class Billing {
 	}
 
 	public String getAddress() {
-		return address;
+		System.out.println("$#4030#"); return address;
 	}
 
 	public void setAddress(String address) {
@@ -78,7 +78,7 @@ public class Billing {
 	}
 
 	public String getCity() {
-		return city;
+		System.out.println("$#4031#"); return city;
 	}
 
 	public void setCity(String city) {
@@ -86,7 +86,7 @@ public class Billing {
 	}
 
 	public String getPostalCode() {
-		return postalCode;
+		System.out.println("$#4032#"); return postalCode;
 	}
 
 	public void setPostalCode(String postalCode) {
@@ -94,7 +94,7 @@ public class Billing {
 	}
 	
 	public Country getCountry() {
-		return country;
+		System.out.println("$#4033#"); return country;
 	}
 
 	public void setCountry(Country country) {
@@ -102,7 +102,7 @@ public class Billing {
 	}
 
 	public Zone getZone() {
-		return zone;
+		System.out.println("$#4034#"); return zone;
 	}
 
 	public void setZone(Zone zone) {
@@ -110,7 +110,7 @@ public class Billing {
 	}
 	
 	public String getState() {
-		return state;
+		System.out.println("$#4035#"); return state;
 	}
 
 	public void setState(String state) {
@@ -122,12 +122,12 @@ public class Billing {
 	}
 
 	public String getTelephone() {
-		return telephone;
+		System.out.println("$#4036#"); return telephone;
 	}
 	
 	
 	public String getLastName() {
-		return lastName;
+		System.out.println("$#4037#"); return lastName;
 	}
 
 	public void setLastName(String lastName) {
@@ -135,7 +135,7 @@ public class Billing {
 	}
 	
 	public String getFirstName() {
-		return firstName;
+		System.out.println("$#4038#"); return firstName;
 	}
 
 	public void setFirstName(String firstName) {
@@ -143,7 +143,7 @@ public class Billing {
 	}
 
 	public String getLongitude() {
-		return longitude;
+		System.out.println("$#4039#"); return longitude;
 	}
 
 	public void setLongitude(String longitude) {
@@ -151,7 +151,7 @@ public class Billing {
 	}
 
 	public String getLatitude() {
-		return latitude;
+		System.out.println("$#4040#"); return latitude;
 	}
 
 	public void setLatitude(String latitude) {

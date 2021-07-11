@@ -10,7 +10,7 @@ public class ContentPath extends ContentName {
 	private String path;
 
 	public String getPath() {
-		return path;
+		System.out.println("$#8998#"); return path;
 	}
 
 	public void setPath(String path) {

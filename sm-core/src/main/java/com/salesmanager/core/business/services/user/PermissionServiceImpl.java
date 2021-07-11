@@ -36,13 +36,13 @@ public class PermissionServiceImpl extends
 	@Override
 	public List<Permission> getByName() {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("$#3358#"); return null;
 	}
 
 
 	@Override
 	public Permission getById(Integer permissionId) {
-		return permissionRepository.findOne(permissionId);
+		System.out.println("$#3359#"); return permissionRepository.findOne(permissionId);
 
 	}
 
@@ -50,9 +50,9 @@ public class PermissionServiceImpl extends
 	@Override
 	public void deletePermission(Permission permission) throws ServiceException {
 		permission = this.getById(permission.getId());//Prevents detached entity error
-		permission.setGroups(null);
+		System.out.println("$#3360#"); permission.setGroups(null);
 		
-		this.delete(permission);
+		System.out.println("$#3361#"); this.delete(permission);
 	}
 	
 
@@ -62,13 +62,13 @@ public class PermissionServiceImpl extends
 			throws ServiceException {
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		Set ids = new HashSet(groupIds);
-		return permissionRepository.findByGroups(ids);
+		System.out.println("$#3362#"); return permissionRepository.findByGroups(ids);
 	}
 
 	@Override
 	public PermissionList listByCriteria(PermissionCriteria criteria)
 			throws ServiceException {
-		return permissionRepository.listByCriteria(criteria);
+		System.out.println("$#3363#"); return permissionRepository.listByCriteria(criteria);
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class PermissionServiceImpl extends
 
 	@Override
 	public List<Permission> listPermission() throws ServiceException {
-		return permissionRepository.findAll();
+		System.out.println("$#3364#"); return permissionRepository.findAll();
 	}
 
 

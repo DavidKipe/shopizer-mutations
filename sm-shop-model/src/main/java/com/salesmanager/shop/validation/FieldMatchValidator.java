@@ -28,12 +28,12 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
         {
             final Object firstObj = this.beanUtils.getPropertyValue(value, this.firstFieldName);
             final Object secondObj = this.beanUtils.getPropertyValue(value, this.secondFieldName);
-            return firstObj == null && secondObj == null || firstObj != null && firstObj.equals(secondObj);
+												System.out.println("$#15836#"); System.out.println("$#15835#"); return firstObj == null && secondObj == null || firstObj != null && firstObj.equals(secondObj);
         }
         catch (final Exception ex)
         {
             LOG.info( "Error while getting values from object", ex );
-            return false;
+												System.out.println("$#15840#"); return false;
            
         }
        

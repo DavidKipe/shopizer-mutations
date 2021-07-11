@@ -18,13 +18,13 @@ public class ReadableTotal implements Serializable {
 	private List<ReadableOrderTotal> totals;
 	private String grandTotal;
 	public List<ReadableOrderTotal> getTotals() {
-		return totals;
+		System.out.println("$#9198#"); return totals;
 	}
 	public void setTotals(List<ReadableOrderTotal> totals) {
 		this.totals = totals;
 	}
 	public String getGrandTotal() {
-		return grandTotal;
+		System.out.println("$#9199#"); return grandTotal;
 	}
 	public void setGrandTotal(String grandTotal) {
 		this.grandTotal = grandTotal;

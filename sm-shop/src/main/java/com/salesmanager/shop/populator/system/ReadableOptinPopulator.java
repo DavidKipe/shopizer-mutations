@@ -14,22 +14,22 @@ public class ReadableOptinPopulator extends AbstractDataPopulator<Optin, Readabl
 	@Override
 	public ReadableOptin populate(Optin source, ReadableOptin target, MerchantStore store, Language language)
 			throws ConversionException {
-		Validate.notNull(store,"MerchantStore cannot be null");
-		Validate.notNull(source,"Optin cannot be null");
+		System.out.println("$#11156#"); Validate.notNull(store,"MerchantStore cannot be null");
+		System.out.println("$#11157#"); Validate.notNull(source,"Optin cannot be null");
 		
-		if(target==null) {
+		System.out.println("$#11158#"); if(target==null) {
 			target = new ReadableOptin();
 		}
 		
-		target.setCode(source.getCode());
-		target.setDescription(source.getDescription());
-		target.setEndDate(source.getEndDate());
-		target.setId(source.getId());
-		target.setOptinType(source.getOptinType().name());
-		target.setStartDate(source.getStartDate());
-		target.setStore(store.getCode());
+		System.out.println("$#11159#"); target.setCode(source.getCode());
+		System.out.println("$#11160#"); target.setDescription(source.getDescription());
+		System.out.println("$#11161#"); target.setEndDate(source.getEndDate());
+		System.out.println("$#11162#"); target.setId(source.getId());
+		System.out.println("$#11163#"); target.setOptinType(source.getOptinType().name());
+		System.out.println("$#11164#"); target.setStartDate(source.getStartDate());
+		System.out.println("$#11165#"); target.setStore(store.getCode());
 
-		return target;
+		System.out.println("$#11166#"); return target;
 	}
 
 	@Override

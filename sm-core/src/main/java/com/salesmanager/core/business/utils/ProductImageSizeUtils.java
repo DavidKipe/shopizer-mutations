@@ -32,16 +32,16 @@ public class ProductImageSizeUtils {
 				.getType();
 		BufferedImage resizedImage = new BufferedImage(width, height, type);
 		Graphics2D g = resizedImage.createGraphics();
-		g.setComposite(AlphaComposite.Src);
-		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+		System.out.println("$#3525#"); g.setComposite(AlphaComposite.Src);
+		System.out.println("$#3526#"); g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
 				RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		g.setRenderingHint(RenderingHints.KEY_RENDERING,
+		System.out.println("$#3527#"); g.setRenderingHint(RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY);
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		System.out.println("$#3528#"); g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		g.drawImage(image, 0, 0, width, height, null);
-		g.dispose();
-		return resizedImage;
+		System.out.println("$#3529#"); g.dispose();
+		System.out.println("$#3530#"); return resizedImage;
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class ProductImageSizeUtils {
 				: BufferedImage.TYPE_INT_ARGB;
 		BufferedImage ret = (BufferedImage) img;
 		int w, h;
-		if (higherQuality) {
+		System.out.println("$#3532#"); if (higherQuality) {
 			// Use multi-step technique: start with original size, then
 			// scale down in multiple passes with drawImage()
 			// until the target size is reached
@@ -77,30 +77,30 @@ public class ProductImageSizeUtils {
 		}
 
 		do {
-			if (higherQuality && w > targetWidth) {
-				w /= 2;
-				if (w < targetWidth) {
+			System.out.println("$#3534#"); System.out.println("$#3533#"); if (higherQuality && w > targetWidth) {
+				System.out.println("$#3536#"); w /= 2;
+				System.out.println("$#3538#"); System.out.println("$#3537#"); if (w < targetWidth) {
 					w = targetWidth;
 				}
 			}
 
-			if (higherQuality && h > targetHeight) {
-				h /= 2;
-				if (h < targetHeight) {
+			System.out.println("$#3540#"); System.out.println("$#3539#"); if (higherQuality && h > targetHeight) {
+				System.out.println("$#3542#"); h /= 2;
+				System.out.println("$#3544#"); System.out.println("$#3543#"); if (h < targetHeight) {
 					h = targetHeight;
 				}
 			}
 
 			BufferedImage tmp = new BufferedImage(w, h, type);
 			Graphics2D g2 = tmp.createGraphics();
-			g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, hint);
+			System.out.println("$#3545#"); g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, hint);
 			g2.drawImage(ret, 0, 0, w, h, null);
-			g2.dispose();
+			System.out.println("$#3546#"); g2.dispose();
 
 			ret = tmp;
-		} while (w != targetWidth || h != targetHeight);
+		System.out.println("$#3547#"); } while (w != targetWidth || h != targetHeight);
 
-		return ret;
+		System.out.println("$#3549#"); return ret;
 	}
 	
 	
@@ -109,10 +109,10 @@ public class ProductImageSizeUtils {
             int type = image.getType() == 0? BufferedImage.TYPE_INT_ARGB : image.getType();
 
             //*Special* if the width or height is 0 use image src dimensions
-            if (destinationWidth == 0) {
+												System.out.println("$#3551#"); if (destinationWidth == 0) {
             	destinationWidth = image.getWidth();
             }
-            if (destinationHeight == 0) {
+												System.out.println("$#3552#"); if (destinationHeight == 0) {
             	destinationHeight = image.getHeight();
             }
 
@@ -120,31 +120,31 @@ public class ProductImageSizeUtils {
             int fWidth = destinationWidth;
 
             //Work out the resized width/height
-            if (image.getHeight() > destinationHeight || image.getWidth() > destinationWidth) {
+												System.out.println("$#3555#"); System.out.println("$#3553#"); if (image.getHeight() > destinationHeight || image.getWidth() > destinationWidth) {
                 fHeight = destinationHeight;
                 int wid = destinationWidth;
-                float sum = (float)image.getWidth() / (float)image.getHeight();
-                fWidth = Math.round(fHeight * sum);
+																System.out.println("$#3557#"); float sum = (float)image.getWidth() / (float)image.getHeight();
+																System.out.println("$#3558#"); fWidth = Math.round(fHeight * sum);
 
-                if (fWidth > wid) {
+																System.out.println("$#3560#"); System.out.println("$#3559#"); if (fWidth > wid) {
                     //rezise again for the width this time
-                    fHeight = Math.round(wid/sum);
+																				System.out.println("$#3561#"); fHeight = Math.round(wid/sum);
                     fWidth = wid;
                 }
             }
 
             BufferedImage resizedImage = new BufferedImage(fWidth, fHeight, type);
             Graphics2D g = resizedImage.createGraphics();
-            g.setComposite(AlphaComposite.Src);
+												System.out.println("$#3562#"); g.setComposite(AlphaComposite.Src);
 
-            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+												System.out.println("$#3563#"); g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+												System.out.println("$#3564#"); g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+												System.out.println("$#3565#"); g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             g.drawImage(image, 0, 0, fWidth, fHeight, null);
-            g.dispose();
+												System.out.println("$#3566#"); g.dispose();
 
-            return resizedImage;
+												System.out.println("$#3567#"); return resizedImage;
 	}
 	
 

@@ -31,25 +31,25 @@ public class ProductOptionSetServiceImpl extends
 
 	@Override
 	public List<ProductOptionSet> listByStore(MerchantStore store, Language language) throws ServiceException {
-		return productOptionSetRepository.findByStore(store.getId(), language.getId());
+		System.out.println("$#1834#"); return productOptionSetRepository.findByStore(store.getId(), language.getId());
 	}
 
 
 	@Override
 	public ProductOptionSet getById(MerchantStore store, Long optionSetId, Language lang) {
-		return productOptionSetRepository.findOne(store.getId(), optionSetId, lang.getId());
+		System.out.println("$#1835#"); return productOptionSetRepository.findOne(store.getId(), optionSetId, lang.getId());
 	}
 
 
 	@Override
 	public ProductOptionSet getCode(MerchantStore store, String code) {
-		return productOptionSetRepository.findByCode(store.getId(), code);
+		System.out.println("$#1836#"); return productOptionSetRepository.findByCode(store.getId(), code);
 	}
 
 
 	@Override
 	public List<ProductOptionSet> getByProductType(Long productTypeId, MerchantStore store, Language lang) {
-		return productOptionSetRepository.findByProductType(productTypeId, store.getId(), lang.getId());
+		System.out.println("$#1837#"); return productOptionSetRepository.findByProductType(productTypeId, store.getId(), lang.getId());
 	}
 
 

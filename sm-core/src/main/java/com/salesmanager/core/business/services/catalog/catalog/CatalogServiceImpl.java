@@ -37,35 +37,35 @@ implements CatalogService {
 	@Override
 	public Catalog saveOrUddate(Catalog catalog, MerchantStore store) throws ServiceException {
 		catalogRepository.save(catalog);
-		return catalog;
+		System.out.println("$#1730#"); return catalog;
 	}
 
 	@Override
 	public Page<Catalog> getCatalogs(MerchantStore store, Language language, String name, int page, int count)
 			throws ServiceException {
 		Pageable pageRequest = PageRequest.of(page, count);
-		return pageableCatalogRepository.listByStore(store.getId(), name, pageRequest);
+		System.out.println("$#1731#"); return pageableCatalogRepository.listByStore(store.getId(), name, pageRequest);
 	}
 
 	@Override
 	public void delete(Catalog catalog) throws ServiceException {
-		Validate.notNull(catalog,"Catalog must not be null");
-		catalogRepository.delete(catalog);
+		System.out.println("$#1732#"); Validate.notNull(catalog,"Catalog must not be null");
+		System.out.println("$#1733#"); catalogRepository.delete(catalog);
 	}
 
 	@Override
 	public Catalog getById(Long catalogId, MerchantStore store) {
-		return catalogRepository.findById(catalogId, store.getId());
+		System.out.println("$#1734#"); return catalogRepository.findById(catalogId, store.getId());
 	}
 
 	@Override
 	public Catalog getByCode(String code, MerchantStore store) {
-		return catalogRepository.findByCode(code, store.getId());
+		System.out.println("$#1735#"); return catalogRepository.findByCode(code, store.getId());
 	}
 
 	@Override
 	public boolean existByCode(String code, MerchantStore store) {
-		return catalogRepository.existsByCode(code, store.getId());
+		System.out.println("$#1737#"); System.out.println("$#1736#"); return catalogRepository.existsByCode(code, store.getId());
 	}
 	
 	

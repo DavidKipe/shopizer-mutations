@@ -36,7 +36,7 @@ public class CustomShippingQuotesConfiguration extends IntegrationConfiguration 
 		
 
 
-		if(regions!=null && regions.size()>0) {
+		System.out.println("$#4891#"); System.out.println("$#4890#"); if(regions!=null && regions.size()>0) {
 			
 			returnString.append(",");
 			//org.json.simple.JSONArray array=new org.json.simple.JSONArray();
@@ -45,8 +45,8 @@ public class CustomShippingQuotesConfiguration extends IntegrationConfiguration 
 			regionsList.append("[");
 			for(CustomShippingQuotesRegion region : regions) {
 				regionsList.append(region.toJSONString());
-				countRegion ++;
-				if(countRegion<regions.size()) {
+				System.out.println("$#4893#"); countRegion ++;
+				System.out.println("$#4895#"); System.out.println("$#4894#"); if(countRegion<regions.size()) {
 					regionsList.append(",");
 				}
 			}
@@ -56,7 +56,7 @@ public class CustomShippingQuotesConfiguration extends IntegrationConfiguration 
 
 		//return data.toJSONString();
 		returnString.append("}");
-		return returnString.toString();
+		System.out.println("$#4896#"); return returnString.toString();
 		
 		
 		
@@ -65,7 +65,7 @@ public class CustomShippingQuotesConfiguration extends IntegrationConfiguration 
 
 	@Override
 	public String getModuleCode() {
-		return moduleCode;
+		System.out.println("$#4897#"); return moduleCode;
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class CustomShippingQuotesConfiguration extends IntegrationConfiguration 
 	}
 
 	public List<CustomShippingQuotesRegion> getRegions() {
-		return regions;
+		System.out.println("$#4898#"); return regions;
 	}
 
 }

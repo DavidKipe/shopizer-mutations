@@ -16,7 +16,7 @@ public class OutputContentFile extends StaticContentFile implements Serializable
     private ByteArrayOutputStream file;
     public ByteArrayOutputStream getFile()
     {
-        return file;
+								System.out.println("$#4115#"); return file;
     }
     public void setFile( ByteArrayOutputStream file )
     {

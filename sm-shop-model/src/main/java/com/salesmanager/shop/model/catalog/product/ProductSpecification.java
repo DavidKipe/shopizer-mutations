@@ -26,13 +26,13 @@ public class ProductSpecification implements Serializable {
   private String manufacturer; //manufacturer code
   
   public String getManufacturer() {
-    return manufacturer;
+				System.out.println("$#8918#"); return manufacturer;
   }
   public void setManufacturer(String manufacturer) {
     this.manufacturer = manufacturer;
   }
   public String getModel() {
-    return model;
+				System.out.println("$#8919#"); return model;
   }
   public void setModel(String model) {
     this.model = model;
@@ -41,43 +41,43 @@ public class ProductSpecification implements Serializable {
   private com.salesmanager.shop.model.references.WeightUnitOfMeasure weightUnitOfMeasure;
   
   public BigDecimal getHeight() {
-    return height;
+				System.out.println("$#8920#"); return height;
   }
   public void setHeight(BigDecimal height) {
     this.height = height;
   }
   public BigDecimal getWeight() {
-    return weight;
+				System.out.println("$#8921#"); return weight;
   }
   public void setWeight(BigDecimal weight) {
     this.weight = weight;
   }
   public BigDecimal getLength() {
-    return length;
+				System.out.println("$#8922#"); return length;
   }
   public void setLength(BigDecimal length) {
     this.length = length;
   }
   public BigDecimal getWidth() {
-    return width;
+				System.out.println("$#8923#"); return width;
   }
   public void setWidth(BigDecimal width) {
     this.width = width;
   }
   public DimensionUnitOfMeasure getDimensionUnitOfMeasure() {
-    return dimensionUnitOfMeasure;
+				System.out.println("$#8924#"); return dimensionUnitOfMeasure;
   }
   public void setDimensionUnitOfMeasure(DimensionUnitOfMeasure dimensionUnitOfMeasure) {
     this.dimensionUnitOfMeasure = dimensionUnitOfMeasure;
   }
   public WeightUnitOfMeasure getWeightUnitOfMeasure() {
-    return weightUnitOfMeasure;
+				System.out.println("$#8925#"); return weightUnitOfMeasure;
   }
   public void setWeightUnitOfMeasure(WeightUnitOfMeasure weightUnitOfMeasure) {
     this.weightUnitOfMeasure = weightUnitOfMeasure;
   }
   public static long getSerialversionuid() {
-    return serialVersionUID;
+				System.out.println("$#8926#"); return serialVersionUID;
   }
 
   

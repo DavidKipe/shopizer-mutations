@@ -39,7 +39,7 @@ public class PersistableProductReviewPopulator extends
 
 
 	public LanguageService getLanguageService() {
-		return languageService;
+		System.out.println("$#9640#"); return languageService;
 	}
 
 	public void setLanguageService(LanguageService languageService) {
@@ -52,62 +52,62 @@ public class PersistableProductReviewPopulator extends
 			throws ConversionException {
 		
 		
-		Validate.notNull(customerService,"customerService cannot be null");
-		Validate.notNull(productService,"productService cannot be null");
-		Validate.notNull(languageService,"languageService cannot be null");
-		Validate.notNull(source.getRating(),"Rating cannot bot be null");
+		System.out.println("$#9641#"); Validate.notNull(customerService,"customerService cannot be null");
+		System.out.println("$#9642#"); Validate.notNull(productService,"productService cannot be null");
+		System.out.println("$#9643#"); Validate.notNull(languageService,"languageService cannot be null");
+		System.out.println("$#9644#"); Validate.notNull(source.getRating(),"Rating cannot bot be null");
 		
 		try {
 			
-			if(target==null) {
+			System.out.println("$#9645#"); if(target==null) {
 				target = new ProductReview();
 			}
 			
 			Customer customer = customerService.getById(source.getCustomerId());
 			
 			//check if customer belongs to store
-			if(customer ==null || customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#9646#"); if(customer ==null || customer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 				throw new ConversionException("Invalid customer id for the given store");
 			}
 			
-			if(source.getDate() == null) {
+			System.out.println("$#9648#"); if(source.getDate() == null) {
 				String date = DateUtil.formatDate(new Date());
-				source.setDate(date);
+				System.out.println("$#9649#"); source.setDate(date);
 			}
-			target.setReviewDate(DateUtil.getDate(source.getDate()));
-			target.setCustomer(customer);
-			target.setReviewRating(source.getRating());
+			System.out.println("$#9650#"); target.setReviewDate(DateUtil.getDate(source.getDate()));
+			System.out.println("$#9651#"); target.setCustomer(customer);
+			System.out.println("$#9652#"); target.setReviewRating(source.getRating());
 			
 			Product product = productService.getById(source.getProductId());
 			
 			//check if product belongs to store
-			if(product ==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#9653#"); if(product ==null || product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 				throw new ConversionException("Invalid product id for the given store");
 			}
 			
-			target.setProduct(product);
+			System.out.println("$#9655#"); target.setProduct(product);
 			
 			Language lang = languageService.getByCode(language.getCode());
-			if(lang ==null) {
+			System.out.println("$#9656#"); if(lang ==null) {
 				throw new ConversionException("Invalid language code, use iso codes (en, fr ...)");
 			}
 			
 			ProductReviewDescription description = new ProductReviewDescription();
-			description.setDescription(source.getDescription());
-			description.setLanguage(lang);
-			description.setName("-");
-			description.setProductReview(target);
+			System.out.println("$#9657#"); description.setDescription(source.getDescription());
+			System.out.println("$#9658#"); description.setLanguage(lang);
+			System.out.println("$#9659#"); description.setName("-");
+			System.out.println("$#9660#"); description.setProductReview(target);
 			
 			Set<ProductReviewDescription> descriptions = new HashSet<ProductReviewDescription>();
 			descriptions.add(description);
 			
-			target.setDescriptions(descriptions);
+			System.out.println("$#9661#"); target.setDescriptions(descriptions);
 			
 			
 
 			
 			
-			return target;
+			System.out.println("$#9662#"); return target;
 			
 		} catch (Exception e) {
 			throw new ConversionException("Cannot populate ProductReview", e);
@@ -121,7 +121,7 @@ public class PersistableProductReviewPopulator extends
 	}
 	
 	public CustomerService getCustomerService() {
-		return customerService;
+		System.out.println("$#9663#"); return customerService;
 	}
 
 	public void setCustomerService(CustomerService customerService) {
@@ -129,7 +129,7 @@ public class PersistableProductReviewPopulator extends
 	}
 	
 	public ProductService getProductService() {
-		return productService;
+		System.out.println("$#9664#"); return productService;
 	}
 
 	public void setProductService(ProductService productService) {

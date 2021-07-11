@@ -24,11 +24,11 @@ public class PersistableOrderProduct extends OrderProductEntity implements
 	}
 
 	public List<ProductAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#9138#"); return attributes;
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		System.out.println("$#9139#"); return price;
 	}
 
 	public void setPrice(BigDecimal price) {

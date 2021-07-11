@@ -19,7 +19,7 @@ public class PersistableProductOptionValue extends ProductOptionValueEntity
 	}
 
 	public List<ProductOptionValueDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#8800#"); return descriptions;
 	}
 
 }

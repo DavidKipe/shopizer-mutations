@@ -74,7 +74,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4388#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -82,7 +82,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public String getTitle() {
-		return title;
+		System.out.println("$#4389#"); return title;
 	}
 
 	public void setTitle(String title) {
@@ -90,7 +90,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public String getText() {
-		return text;
+		System.out.println("$#4390#"); return text;
 	}
 
 	public void setText(String text) {
@@ -98,7 +98,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public BigDecimal getValue() {
-		return value;
+		System.out.println("$#4391#"); return value;
 	}
 
 	public void setValue(BigDecimal value) {
@@ -106,7 +106,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public String getModule() {
-		return module;
+		System.out.println("$#4392#"); return module;
 	}
 
 	public void setModule(String module) {
@@ -114,7 +114,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public int getSortOrder() {
-		return sortOrder;
+		System.out.println("$#4393#"); return sortOrder;
 	}
 
 	public void setSortOrder(int sortOrder) {
@@ -122,7 +122,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public Order getOrder() {
-		return order;
+		System.out.println("$#4394#"); return order;
 	}
 
 	public void setOrder(Order order) {
@@ -134,7 +134,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public String getOrderTotalCode() {
-		return orderTotalCode;
+		System.out.println("$#4395#"); return orderTotalCode;
 	}
 
 	public void setOrderValueType(OrderValueType orderValueType) {
@@ -142,7 +142,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public OrderValueType getOrderValueType() {
-		return orderValueType;
+		System.out.println("$#4396#"); return orderValueType;
 	}
 
 	public void setOrderTotalType(OrderTotalType orderTotalType) {
@@ -150,7 +150,7 @@ public class OrderTotal extends SalesManagerEntity<Long, OrderTotal> {
 	}
 
 	public OrderTotalType getOrderTotalType() {
-		return orderTotalType;
+		System.out.println("$#4397#"); return orderTotalType;
 	}
 
 

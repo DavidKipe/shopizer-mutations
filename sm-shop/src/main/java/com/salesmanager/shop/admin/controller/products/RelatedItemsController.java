@@ -58,7 +58,7 @@ public class RelatedItemsController {
 	public String displayRelatedItems(@RequestParam("id") long productId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		setMenu(model,request);
+		System.out.println("$#7077#"); setMenu(model,request);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
@@ -66,12 +66,12 @@ public class RelatedItemsController {
 		//get the product and validate it belongs to the current merchant
 		Product product = productService.getById(productId);
 		
-		if(product==null) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#7078#"); if(product==null) {
+			System.out.println("$#7079#"); return "redirect:/admin/products/products.html";
 		}
 		
-		if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-			return "redirect:/admin/products/products.html";
+		System.out.println("$#7080#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#7081#"); return "redirect:/admin/products/products.html";
 		}
 		
 		
@@ -81,7 +81,7 @@ public class RelatedItemsController {
 		
 		model.addAttribute("categories", readableCategories);
 		model.addAttribute("product", product);
-		return ControllerConstants.Tiles.Product.relatedItems;
+		System.out.println("$#7082#"); return ControllerConstants.Tiles.Product.relatedItems;
 		
 	}
 	
@@ -94,7 +94,7 @@ public class RelatedItemsController {
 		String sProductId = request.getParameter("productId");
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7083#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		try {
 			
@@ -107,11 +107,11 @@ public class RelatedItemsController {
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			
 			
-			if(product==null || product.getMerchantStore().getId().intValue()!= store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-				resp.setErrorString("Product id is not valid");
+			System.out.println("$#7084#"); if(product==null || product.getMerchantStore().getId().intValue()!= store.getId().intValue()) {
+				System.out.println("$#7086#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+				System.out.println("$#7087#"); resp.setErrorString("Product id is not valid");
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7088#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			
@@ -128,7 +128,7 @@ public class RelatedItemsController {
 				ProductDescription description = relatedProduct.getDescriptions().iterator().next();
 				Set<ProductDescription> descriptions = relatedProduct.getDescriptions();
 				for(ProductDescription desc : descriptions) {
-					if(desc.getLanguage().getId().intValue()==language.getId().intValue()) {
+					System.out.println("$#7089#"); if(desc.getLanguage().getId().intValue()==language.getId().intValue()) {
 						description = desc;
 					}
 				}
@@ -137,21 +137,21 @@ public class RelatedItemsController {
 				entry.put("name", description.getName());
 				entry.put("sku", relatedProduct.getSku());
 				entry.put("available", relatedProduct.isAvailable());
-				resp.addDataEntry(entry);
+				System.out.println("$#7090#"); resp.addDataEntry(entry);
 				
 			}
 			
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7091#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7092#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7093#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7094#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 
 
 	}
@@ -164,7 +164,7 @@ public class RelatedItemsController {
 		String baseProductId = request.getParameter("baseProductId");
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7095#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		try {
 			
@@ -176,53 +176,53 @@ public class RelatedItemsController {
 			
 			Product product = productService.getById(lProductId);
 			
-			if(product==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7096#"); if(product==null) {
+				System.out.println("$#7097#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7098#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7099#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#7100#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7101#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			Product baseProduct = productService.getById(lBaseProductId);
 			
-			if(baseProduct==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7102#"); if(baseProduct==null) {
+				System.out.println("$#7103#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7104#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(baseProduct.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7105#"); if(baseProduct.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#7106#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7107#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
 
 			ProductRelationship relationship = new ProductRelationship();
-			relationship.setActive(true);
-			relationship.setProduct(baseProduct);
-			relationship.setCode(ProductRelationshipType.RELATED_ITEM.name());
-			relationship.setStore(store);
-			relationship.setRelatedProduct(product);
+			System.out.println("$#7108#"); relationship.setActive(true);
+			System.out.println("$#7109#"); relationship.setProduct(baseProduct);
+			System.out.println("$#7110#"); relationship.setCode(ProductRelationshipType.RELATED_ITEM.name());
+			System.out.println("$#7111#"); relationship.setStore(store);
+			System.out.println("$#7112#"); relationship.setRelatedProduct(product);
 			
-			productRelationshipService.saveOrUpdate(relationship);
+			System.out.println("$#7113#"); productRelationshipService.saveOrUpdate(relationship);
 			
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7114#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7115#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7116#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7117#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	
@@ -234,7 +234,7 @@ public class RelatedItemsController {
 		String baseProductId = request.getParameter("baseProductId");
 		AjaxResponse resp = new AjaxResponse();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+					System.out.println("$#7118#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		
 		try {
 			
@@ -246,70 +246,70 @@ public class RelatedItemsController {
 			
 			Product product = productService.getById(lproductId);
 			
-			if(product==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7119#"); if(product==null) {
+				System.out.println("$#7120#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7121#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7122#"); if(product.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#7123#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7124#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			Product baseProduct = productService.getById(lBaseProductId);
 			
-			if(baseProduct==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7125#"); if(baseProduct==null) {
+				System.out.println("$#7126#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7127#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(baseProduct.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7128#"); if(baseProduct.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#7129#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7130#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
 			ProductRelationship relationship = null;
 			List<ProductRelationship> relationships = productRelationshipService.getByType(store, baseProduct, ProductRelationshipType.RELATED_ITEM);
 			
 			for(ProductRelationship r : relationships) {
-				if(r.getRelatedProduct().getId().longValue()==lproductId.longValue()) {
+				System.out.println("$#7131#"); if(r.getRelatedProduct().getId().longValue()==lproductId.longValue()) {
 					relationship = r;
 					break;
 				}
 			}
 			
-			if(relationship==null) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7132#"); if(relationship==null) {
+				System.out.println("$#7133#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7134#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 			
-			if(relationship.getStore().getId().intValue()!=store.getId().intValue()) {
-				resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7135#"); if(relationship.getStore().getId().intValue()!=store.getId().intValue()) {
+				System.out.println("$#7136#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+				System.out.println("$#7137#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 			}
 
 
 			
 			
-			productRelationshipService.delete(relationship);
+			System.out.println("$#7138#"); productRelationshipService.delete(relationship);
 			
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_OPERATION_COMPLETED);
+			System.out.println("$#7139#"); resp.setStatus(AjaxPageableResponse.RESPONSE_OPERATION_COMPLETED);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7140#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7141#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+		System.out.println("$#7142#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 	}
 	

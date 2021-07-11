@@ -14,7 +14,7 @@ public class ReadableContent extends Content {
   private String content;
 
   public String getContent() {
-    return content;
+				System.out.println("$#9010#"); return content;
   }
 
   public void setContent(String content) {

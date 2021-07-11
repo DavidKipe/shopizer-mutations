@@ -38,12 +38,12 @@ public class IntegrationModulesLoader {
             @SuppressWarnings("rawtypes")
 			Map[] objects = mapper.readValue(in, Map[].class);
             
-            for(int i = 0; i < objects.length; i++) {
+												System.out.println("$#2741#"); System.out.println("$#2740#"); for(int i = 0; i < objects.length; i++) {
             	
             	modules.add(this.loadModule(objects[i]));
             }
             
-            return modules;
+												System.out.println("$#2742#"); return modules;
 
   		} catch (Exception e) {
   			throw new ServiceException(e);
@@ -62,18 +62,18 @@ public class IntegrationModulesLoader {
 		
 			ObjectMapper mapper = new ObjectMapper();
 	    	IntegrationModule module = new IntegrationModule();
-	    	module.setModule((String)object.get("module"));
-	    	module.setCode((String)object.get("code"));
-	    	module.setImage((String)object.get("image"));
+						System.out.println("$#2743#"); module.setModule((String)object.get("module"));
+						System.out.println("$#2744#"); module.setCode((String)object.get("code"));
+						System.out.println("$#2745#"); module.setImage((String)object.get("image"));
 	    	
-	    	if(object.get("type")!=null) {
-	    		module.setType((String)object.get("type"));
+						System.out.println("$#2746#"); if(object.get("type")!=null) {
+							System.out.println("$#2747#"); module.setType((String)object.get("type"));
 	    	}
 	    	
-	    	if(object.get("customModule")!=null) {
+						System.out.println("$#2748#"); if(object.get("customModule")!=null) {
 	    		Object o = object.get("customModule");
 	    		Boolean b = false;
-	    		if(o instanceof Boolean) {
+							System.out.println("$#2749#"); if(o instanceof Boolean) {
 	    			b = (Boolean)object.get("customModule");
 	    		} else {
 	    			try {
@@ -82,13 +82,13 @@ public class IntegrationModulesLoader {
 	    				LOGGER.error("Cannot cast " + o.getClass() + " tp a boolean value");
 	    			}
 	    		}
-	    		module.setCustomModule(b);
+							System.out.println("$#2750#"); module.setCustomModule(b);
 	    	}
 	    	//module.setRegions(regions)
-	    	if(object.get("details")!=null) {
+						System.out.println("$#2751#"); if(object.get("details")!=null) {
 	    		
 	    		Map<String,String> details = (Map<String,String>)object.get("details");
-	    		module.setDetails(details);
+							System.out.println("$#2752#"); module.setDetails(details);
 	    		
 	    		//maintain the original json structure
 	    		StringBuilder detailsStructure = new StringBuilder();
@@ -100,13 +100,13 @@ public class IntegrationModulesLoader {
 	    			detailsStructure.append(":");
 	    			String jsonValueString = mapper.writeValueAsString(details.get(key));
 	    			detailsStructure.append(jsonValueString);
-	        		if(count<(details.size()-1)) {
+											System.out.println("$#2755#"); System.out.println("$#2754#"); System.out.println("$#2753#"); if(count<(details.size()-1)) {
 	        			detailsStructure.append(",");
 	        		}
-	        		count++;
+											System.out.println("$#2756#"); count++;
 	    		}
 	    		detailsStructure.append("}");
-	    		module.setConfigDetails(detailsStructure.toString());
+							System.out.println("$#2757#"); module.setConfigDetails(detailsStructure.toString());
 	    		
 	    	}
 	    	
@@ -117,7 +117,7 @@ public class IntegrationModulesLoader {
 	    	
 	    	
 	    	
-	    	if(confs!=null) {
+						System.out.println("$#2758#"); if(confs!=null) {
 	    		StringBuilder configString = new StringBuilder();
 	    		configString.append("[");
 	    		Map<String,ModuleConfig> moduleConfigs = new HashMap<String,ModuleConfig>();
@@ -129,16 +129,16 @@ public class IntegrationModulesLoader {
 	        		String env = (String)values.get("env");
 	        		
 	        		ModuleConfig config = new ModuleConfig();
-	        		config.setScheme((String)values.get("scheme"));
-	        		config.setHost((String)values.get("host"));
-	        		config.setPort((String)values.get("port"));
-	        		config.setUri((String)values.get("uri"));
-	        		config.setEnv((String)values.get("env"));
-	        		if((String)values.get("config1")!=null) {
-	        			config.setConfig1((String)values.get("config1"));
+											System.out.println("$#2759#"); config.setScheme((String)values.get("scheme"));
+											System.out.println("$#2760#"); config.setHost((String)values.get("host"));
+											System.out.println("$#2761#"); config.setPort((String)values.get("port"));
+											System.out.println("$#2762#"); config.setUri((String)values.get("uri"));
+											System.out.println("$#2763#"); config.setEnv((String)values.get("env"));
+											System.out.println("$#2764#"); if((String)values.get("config1")!=null) {
+												System.out.println("$#2765#"); config.setConfig1((String)values.get("config1"));
 	        		}
-	        		if((String)values.get("config2")!=null) {
-	        			config.setConfig2((String)values.get("config2"));
+											System.out.println("$#2766#"); if((String)values.get("config2")!=null) {
+												System.out.println("$#2767#"); config.setConfig2((String)values.get("config2"));
 	        		}
 	        		
 	        		String jsonConfigString = mapper.writeValueAsString(config);
@@ -146,20 +146,20 @@ public class IntegrationModulesLoader {
 	        		
 	        		moduleConfigs.put(env, config);
 	        		
-	        		if(count<(confs.size()-1)) {
+											System.out.println("$#2770#"); System.out.println("$#2769#"); System.out.println("$#2768#"); if(count<(confs.size()-1)) {
 	        			configString.append(",");
 	        		}
-	        		count++;
+											System.out.println("$#2771#"); count++;
 	        		
 	        		
 	        	}
 	        	configString.append("]");
-	        	module.setConfiguration(configString.toString());
-	        	module.setModuleConfigs(moduleConfigs);
+										System.out.println("$#2772#"); module.setConfiguration(configString.toString());
+										System.out.println("$#2773#"); module.setModuleConfigs(moduleConfigs);
 	    	}
 	    	
 	    	List<String> regions = (List<String>)object.get("regions");
-	    	if(regions!=null) {
+						System.out.println("$#2774#"); if(regions!=null) {
 	    		
 	
 	    		StringBuilder configString = new StringBuilder();
@@ -171,18 +171,18 @@ public class IntegrationModulesLoader {
 	    			String jsonConfigString = mapper.writeValueAsString(region);
 	    			configString.append(jsonConfigString);
 	    			
-	        		if(count<(regions.size()-1)) {
+											System.out.println("$#2777#"); System.out.println("$#2776#"); System.out.println("$#2775#"); if(count<(regions.size()-1)) {
 	        			configString.append(",");
 	        		}
-	        		count++;
+											System.out.println("$#2778#"); count++;
 	
 	    		}
 	    		configString.append("]");
-	    		module.setRegions(configString.toString());
+							System.out.println("$#2779#"); module.setRegions(configString.toString());
 	
 	    	}
 	    	
-	    	return module;
+						System.out.println("$#2780#"); return module;
     	
 		
 	}

@@ -28,11 +28,11 @@ public class ZoneFacadeImpl implements ZoneFacade {
   @Override
   public List<ReadableZone> getZones(String countryCode, Language language, MerchantStore merchantStore) {
     List<Zone> listZones = getListZones(countryCode, language);
-    if (listZones.isEmpty()){
+				System.out.println("$#14343#"); if (listZones.isEmpty()){
     	return Collections.emptyList();   
       //throw new ResourceNotFoundException("No zones found");
     }
-    return listZones.stream()
+				System.out.println("$#14344#"); return listZones.stream()
         .map(zone -> convertToReadableZone(zone, language, merchantStore))
         .collect(Collectors.toList());
   }
@@ -40,7 +40,7 @@ public class ZoneFacadeImpl implements ZoneFacade {
   private ReadableZone convertToReadableZone(Zone zone, Language language, MerchantStore merchantStore) {
     try{
       ReadableZonePopulator populator = new ReadableZonePopulator();
-      return populator.populate(zone, new ReadableZone(), merchantStore, language);
+						System.out.println("$#14346#"); return populator.populate(zone, new ReadableZone(), merchantStore, language);
     } catch (ConversionException e){
       throw new ConversionRuntimeException(e);
     }
@@ -48,7 +48,7 @@ public class ZoneFacadeImpl implements ZoneFacade {
 
   private List<Zone> getListZones(String countryCode, Language language) {
     try{
-      return zoneService.getZones(countryCode, language);
+						System.out.println("$#14347#"); return zoneService.getZones(countryCode, language);
     } catch (ServiceException e){
       throw new ServiceRuntimeException(e);
     }

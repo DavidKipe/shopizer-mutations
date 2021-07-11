@@ -13,19 +13,19 @@ public class PersistableInventory extends InventoryEntity {
   private Long productId;
   private List<PersistableProductPrice> prices;
   public String getStore() {
-    return store;
+				System.out.println("$#8845#"); return store;
   }
   public void setStore(String store) {
     this.store = store;
   }
   public List<PersistableProductPrice> getPrices() {
-    return prices;
+				System.out.println("$#8846#"); return prices;
   }
   public void setPrices(List<PersistableProductPrice> prices) {
     this.prices = prices;
   }
   public Long getProductId() {
-    return productId;
+				System.out.println("$#8847#"); return productId;
   }
   public void setProductId(Long productId) {
     this.productId = productId;

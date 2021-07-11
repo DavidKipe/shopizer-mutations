@@ -38,21 +38,21 @@ public abstract class AbstractAuthenticatinSuccessHandler extends SavedRequestAw
 		   */
 		  SecurityContext securityContext = SecurityContextHolder.getContext();
 		  HttpSession session = request.getSession(true);
-		  session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+				System.out.println("$#7861#"); session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 		  
 		  try {
 			  User user = userService.getByUserName(userName);
 			  
 			  Date lastAccess = user.getLoginTime();
-			  if(lastAccess==null) {
+					System.out.println("$#7862#"); if(lastAccess==null) {
 				  lastAccess = new Date();
 			  }
-			  user.setLastAccess(lastAccess);
-			  user.setLoginTime(new Date());
+					System.out.println("$#7863#"); user.setLastAccess(lastAccess);
+					System.out.println("$#7864#"); user.setLoginTime(new Date());
 			  
-			  userService.saveOrUpdate(user);
+					System.out.println("$#7865#"); userService.saveOrUpdate(user);
 			  
-			  redirectAfterSuccess(request,response);
+					System.out.println("$#7866#"); redirectAfterSuccess(request,response);
 
 		  
 		  } catch (Exception e) {

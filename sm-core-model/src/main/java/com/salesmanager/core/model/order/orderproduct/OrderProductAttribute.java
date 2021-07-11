@@ -58,7 +58,7 @@ public class OrderProductAttribute implements Serializable {
 	}
 	
 	public Long getId() {
-		return id;
+		System.out.println("$#4352#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -67,7 +67,7 @@ public class OrderProductAttribute implements Serializable {
 
 
 	public boolean isProductAttributeIsFree() {
-		return productAttributeIsFree;
+		System.out.println("$#4354#"); System.out.println("$#4353#"); return productAttributeIsFree;
 	}
 
 	public void setProductAttributeIsFree(boolean productAttributeIsFree) {
@@ -75,7 +75,7 @@ public class OrderProductAttribute implements Serializable {
 	}
 
 	public java.math.BigDecimal getProductAttributeWeight() {
-		return productAttributeWeight;
+		System.out.println("$#4355#"); return productAttributeWeight;
 	}
 
 	public void setProductAttributeWeight(
@@ -84,7 +84,7 @@ public class OrderProductAttribute implements Serializable {
 	}
 
 	public OrderProduct getOrderProduct() {
-		return orderProduct;
+		System.out.println("$#4356#"); return orderProduct;
 	}
 
 	public void setOrderProduct(OrderProduct orderProduct) {
@@ -92,7 +92,7 @@ public class OrderProductAttribute implements Serializable {
 	}
 
 	public String getProductAttributeName() {
-		return productAttributeName;
+		System.out.println("$#4357#"); return productAttributeName;
 	}
 
 	public void setProductAttributeName(String productAttributeName) {
@@ -100,7 +100,7 @@ public class OrderProductAttribute implements Serializable {
 	}
 
 	public String getProductAttributeValueName() {
-		return productAttributeValueName;
+		System.out.println("$#4358#"); return productAttributeValueName;
 	}
 
 	public void setProductAttributeValueName(String productAttributeValueName) {
@@ -108,7 +108,7 @@ public class OrderProductAttribute implements Serializable {
 	}
 
 	public BigDecimal getProductAttributePrice() {
-		return productAttributePrice;
+		System.out.println("$#4359#"); return productAttributePrice;
 	}
 
 	public void setProductAttributePrice(BigDecimal productAttributePrice) {
@@ -116,7 +116,7 @@ public class OrderProductAttribute implements Serializable {
 	}
 
 	public Long getProductOptionId() {
-		return productOptionId;
+		System.out.println("$#4360#"); return productOptionId;
 	}
 
 	public void setProductOptionId(Long productOptionId) {
@@ -124,7 +124,7 @@ public class OrderProductAttribute implements Serializable {
 	}
 
 	public Long getProductOptionValueId() {
-		return productOptionValueId;
+		System.out.println("$#4361#"); return productOptionValueId;
 	}
 
 	public void setProductOptionValueId(Long productOptionValueId) {

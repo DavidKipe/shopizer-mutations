@@ -14,25 +14,25 @@ public class MerchantConfigEntity extends Entity {
   private String value;
   private boolean active;
   public String getKey() {
-    return key;
+				System.out.println("$#9345#"); return key;
   }
   public void setKey(String key) {
     this.key = key;
   }
   public MerchantConfigurationType getType() {
-    return type;
+				System.out.println("$#9346#"); return type;
   }
   public void setType(MerchantConfigurationType type) {
     this.type = type;
   }
   public String getValue() {
-    return value;
+				System.out.println("$#9347#"); return value;
   }
   public void setValue(String value) {
     this.value = value;
   }
   public boolean isActive() {
-    return active;
+				System.out.println("$#9349#"); System.out.println("$#9348#"); return active;
   }
   public void setActive(boolean active) {
     this.active = active;

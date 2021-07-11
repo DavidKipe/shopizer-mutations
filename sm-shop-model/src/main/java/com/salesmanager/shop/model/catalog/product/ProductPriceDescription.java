@@ -12,7 +12,7 @@ public class ProductPriceDescription extends NamedEntity {
 	private String priceAppender;
 
 	public String getPriceAppender() {
-		return priceAppender;
+		System.out.println("$#8903#"); return priceAppender;
 	}
 
 	public void setPriceAppender(String priceAppender) {

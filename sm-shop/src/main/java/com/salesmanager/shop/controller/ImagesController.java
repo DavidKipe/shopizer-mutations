@@ -48,7 +48,7 @@ public class ImagesController {
 	public void init() {
 		try {
 			File file = ResourceUtils.getFile("classpath:static/not-found.png");
-			if(file != null) {
+			System.out.println("$#7956#"); if(file != null) {
 				byte[] bFile = Files.readAllBytes(file.toPath());
 				this.tempImage = bFile;
 			}
@@ -75,25 +75,25 @@ public class ImagesController {
 		
 		FileContentType imgType = null;
 		
-		if(FileContentType.LOGO.name().equals(imageType)) {
+		System.out.println("$#7957#"); if(FileContentType.LOGO.name().equals(imageType)) {
 			imgType = FileContentType.LOGO;
 		}
 		
-		if(FileContentType.IMAGE.name().equals(imageType)) {
+		System.out.println("$#7958#"); if(FileContentType.IMAGE.name().equals(imageType)) {
 			imgType = FileContentType.IMAGE;
 		}
 		
-		if(FileContentType.PROPERTY.name().equals(imageType)) {
+		System.out.println("$#7959#"); if(FileContentType.PROPERTY.name().equals(imageType)) {
 			imgType = FileContentType.PROPERTY;
 		}
 		
 		OutputContentFile image =contentService.getContentFile(storeCode, imgType, new StringBuilder().append(imageName).append(".").append(extension).toString());
 		
 		
-		if(image!=null) {
-			return image.getFile().toByteArray();
+		System.out.println("$#7960#"); if(image!=null) {
+			System.out.println("$#7961#"); return image.getFile().toByteArray();
 		} else {
-			return tempImage;
+			System.out.println("$#7962#"); return tempImage;
 		}
 
 	}
@@ -127,7 +127,7 @@ public class ImagesController {
 
 		ProductImageSize size = ProductImageSize.SMALL;
 		
-		if(imageType.equals(FileContentType.PRODUCTLG.name())) {
+		System.out.println("$#7963#"); if(imageType.equals(FileContentType.PRODUCTLG.name())) {
 			size = ProductImageSize.LARGE;
 		} 
 		
@@ -139,11 +139,11 @@ public class ImagesController {
 		} catch (ServiceException e) {
 			LOGGER.error("Cannot retrieve image " + imageName, e);
 		}
-		if(image!=null) {
-			return image.getFile().toByteArray();
+		System.out.println("$#7964#"); if(image!=null) {
+			System.out.println("$#7965#"); return image.getFile().toByteArray();
 		} else {
 			//empty image placeholder
-			return tempImage;
+			System.out.println("$#7966#"); return tempImage;
 		}
 
 	}
@@ -175,7 +175,7 @@ public class ImagesController {
 		
 		ProductImageSize size = ProductImageSize.SMALL;
 		
-		if(FileContentType.PRODUCTLG.name().equals(imageSize)) {
+		System.out.println("$#7967#"); if(FileContentType.PRODUCTLG.name().equals(imageSize)) {
 			size = ProductImageSize.LARGE;
 		} 
 		
@@ -188,11 +188,11 @@ public class ImagesController {
 		} catch (ServiceException e) {
 			LOGGER.error("Cannot retrieve image " + imageName, e);
 		}
-		if(image!=null) {
-			return image.getFile().toByteArray();
+		System.out.println("$#7968#"); if(image!=null) {
+			System.out.println("$#7969#"); return image.getFile().toByteArray();
 		} else {
 			//empty image placeholder
-			return tempImage;
+			System.out.println("$#7970#"); return tempImage;
 		}
 
 	}
@@ -227,9 +227,9 @@ public class ImagesController {
 		ProductImageSize size = ProductImageSize.LARGE;
 		
 				
-		if(StringUtils.isNotBlank(request.getParameter("size"))) {
+		System.out.println("$#7971#"); if(StringUtils.isNotBlank(request.getParameter("size"))) {
 			String requestSize = request.getParameter("size");
-			if(requestSize.equals(ProductImageSize.SMALL.name())) {
+			System.out.println("$#7972#"); if(requestSize.equals(ProductImageSize.SMALL.name())) {
 				size = ProductImageSize.SMALL;
 			} 
 		}
@@ -242,11 +242,11 @@ public class ImagesController {
 		} catch (ServiceException e) {
 			LOGGER.error("Cannot retrieve image " + imageName, e);
 		}
-		if(image!=null) {
-			return image.getFile().toByteArray();
+		System.out.println("$#7973#"); if(image!=null) {
+			System.out.println("$#7974#"); return image.getFile().toByteArray();
 		} else {
 			//empty image placeholder
-			return tempImage;
+			System.out.println("$#7975#"); return tempImage;
 		}
 
 	}

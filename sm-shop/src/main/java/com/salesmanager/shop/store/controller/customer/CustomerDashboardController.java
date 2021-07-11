@@ -55,7 +55,7 @@ public class CustomerDashboardController extends AbstractController {
 	    Language language = (Language)request.getAttribute(Constants.LANGUAGE);
 	    
 		Customer customer = (Customer)request.getAttribute(Constants.CUSTOMER);
-		getCustomerOptions(model, customer, store, language);
+		System.out.println("$#12407#"); getCustomerOptions(model, customer, store, language);
         
 
 		model.addAttribute("section","dashboard");
@@ -64,7 +64,7 @@ public class CustomerDashboardController extends AbstractController {
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.customer).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12408#"); return template.toString();
 		
 	}
 	
@@ -74,7 +74,7 @@ public class CustomerDashboardController extends AbstractController {
 		Map<Long,CustomerOption> options = new HashMap<Long,CustomerOption>();
 		//get options
 		List<CustomerOptionSet> optionSet = customerOptionSetService.listByStore(store, language);
-		if(!CollectionUtils.isEmpty(optionSet)) {
+		System.out.println("$#12409#"); if(!CollectionUtils.isEmpty(optionSet)) {
 			
 			
 			ReadableCustomerOptionPopulator optionPopulator = new ReadableCustomerOptionPopulator();
@@ -84,37 +84,37 @@ public class CustomerDashboardController extends AbstractController {
 			for(CustomerOptionSet optSet : optionSet) {
 				
 				com.salesmanager.core.model.customer.attribute.CustomerOption custOption = optSet.getCustomerOption();
-				if(!custOption.isActive() || !custOption.isPublicOption()) {
+				System.out.println("$#12410#"); if(!custOption.isActive() || !custOption.isPublicOption()) {
 					continue;
 				}
 				CustomerOption customerOption = options.get(custOption.getId());
 				
-				optionPopulator.setOptionSet(optSet);
+				System.out.println("$#12412#"); optionPopulator.setOptionSet(optSet);
 				
 				
 				
-				if(customerOption==null) {
+				System.out.println("$#12413#"); if(customerOption==null) {
 					customerOption = new CustomerOption();
-					customerOption.setId(custOption.getId());
-					customerOption.setType(custOption.getCustomerOptionType());
-					customerOption.setName(custOption.getDescriptionsSettoList().get(0).getName());
+					System.out.println("$#12414#"); customerOption.setId(custOption.getId());
+					System.out.println("$#12415#"); customerOption.setType(custOption.getCustomerOptionType());
+					System.out.println("$#12416#"); customerOption.setName(custOption.getDescriptionsSettoList().get(0).getName());
 					
 				} 
 				
 				optionPopulator.populate(custOption, customerOption, store, language);
 				options.put(customerOption.getId(), customerOption);
 
-				if(!CollectionUtils.isEmpty(customerAttributes)) {
+				System.out.println("$#12417#"); if(!CollectionUtils.isEmpty(customerAttributes)) {
 					for(CustomerAttribute customerAttribute : customerAttributes) {
-						if(customerAttribute.getCustomerOption().getId().longValue()==customerOption.getId()){
+						System.out.println("$#12418#"); if(customerAttribute.getCustomerOption().getId().longValue()==customerOption.getId()){
 							CustomerOptionValue selectedValue = new CustomerOptionValue();
 							com.salesmanager.core.model.customer.attribute.CustomerOptionValue attributeValue = customerAttribute.getCustomerOptionValue();
-							selectedValue.setId(attributeValue.getId());
+							System.out.println("$#12419#"); selectedValue.setId(attributeValue.getId());
 							CustomerOptionValueDescription optValue = attributeValue.getDescriptionsSettoList().get(0);
-							selectedValue.setName(optValue.getName());
-							customerOption.setDefaultValue(selectedValue);
-							if(customerOption.getType().equalsIgnoreCase(CustomerOptionType.Text.name())) {
-								selectedValue.setName(customerAttribute.getTextValue());
+							System.out.println("$#12420#"); selectedValue.setName(optValue.getName());
+							System.out.println("$#12421#"); customerOption.setDefaultValue(selectedValue);
+							System.out.println("$#12422#"); if(customerOption.getType().equalsIgnoreCase(CustomerOptionType.Text.name())) {
+								System.out.println("$#12423#"); selectedValue.setName(customerAttribute.getTextValue());
 							} 
 						}
 					}

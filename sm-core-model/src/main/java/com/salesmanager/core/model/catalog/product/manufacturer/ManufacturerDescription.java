@@ -45,7 +45,7 @@ public class ManufacturerDescription extends Description {
 	}
 
 	public String getUrl() {
-		return url;
+		System.out.println("$#3895#"); return url;
 	}
 
 	public void setUrl(String url) {
@@ -53,7 +53,7 @@ public class ManufacturerDescription extends Description {
 	}
 
 	public Integer getUrlClicked() {
-		return urlClicked;
+		System.out.println("$#3896#"); return urlClicked;
 	}
 
 	public void setUrlClicked(Integer urlClicked) {
@@ -61,7 +61,7 @@ public class ManufacturerDescription extends Description {
 	}
 
 	public Date getDateLastClick() {
-		return dateLastClick;
+		System.out.println("$#3897#"); return dateLastClick;
 	}
 
 	public void setDateLastClick(Date dateLastClick) {
@@ -69,7 +69,7 @@ public class ManufacturerDescription extends Description {
 	}
 
 	public Manufacturer getManufacturer() {
-		return manufacturer;
+		System.out.println("$#3898#"); return manufacturer;
 	}
 
 	public void setManufacturer(Manufacturer manufacturer) {

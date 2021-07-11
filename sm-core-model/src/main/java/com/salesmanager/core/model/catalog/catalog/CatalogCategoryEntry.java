@@ -61,7 +61,7 @@ public class CatalogCategoryEntry extends SalesManagerEntity<Long, CatalogCatego
     private boolean visible;
 
 	public Category getCategory() {
-		return category;
+		System.out.println("$#3731#"); return category;
 	}
 
 	public void setCategory(Category category) {
@@ -69,7 +69,7 @@ public class CatalogCategoryEntry extends SalesManagerEntity<Long, CatalogCatego
 	}
 
 	public Catalog getCatalog() {
-		return catalog;
+		System.out.println("$#3732#"); return catalog;
 	}
 
 	public void setCatalog(Catalog catalog) {
@@ -77,7 +77,7 @@ public class CatalogCategoryEntry extends SalesManagerEntity<Long, CatalogCatego
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#3733#"); return id;
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class CatalogCategoryEntry extends SalesManagerEntity<Long, CatalogCatego
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#3734#"); return auditSection;
 	}
 
 	@Override
@@ -98,7 +98,7 @@ public class CatalogCategoryEntry extends SalesManagerEntity<Long, CatalogCatego
 	}
 
 	public boolean isVisible() {
-		return visible;
+		System.out.println("$#3736#"); System.out.println("$#3735#"); return visible;
 	}
 
 	public void setVisible(boolean visible) {

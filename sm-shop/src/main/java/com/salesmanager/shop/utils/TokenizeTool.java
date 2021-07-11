@@ -37,10 +37,10 @@ public class TokenizeTool {
 	public static String tokenizeString(String token) throws Exception {
 		
 		Cipher aes = Cipher.getInstance(CIPHER); 
-		aes.init(Cipher.ENCRYPT_MODE, key); 
+		System.out.println("$#15812#"); aes.init(Cipher.ENCRYPT_MODE, key);
 		byte[] ciphertext = aes.doFinal(token.getBytes()); 
 		
-		return new String(ciphertext);
+		System.out.println("$#15813#"); return new String(ciphertext);
 		
 		
 	}

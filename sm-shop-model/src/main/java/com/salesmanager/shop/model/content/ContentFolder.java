@@ -14,13 +14,13 @@ public class ContentFolder {
 	private String path;
 	List<Content> content = new ArrayList<Content>();
 	public String getPath() {
-		return path;
+		System.out.println("$#8996#"); return path;
 	}
 	public void setPath(String path) {
 		this.path = path;
 	}
 	public List<Content> getContent() {
-		return content;
+		System.out.println("$#8997#"); return content;
 	}
 	public void setContent(List<Content> content) {
 		this.content = content;

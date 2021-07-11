@@ -15,25 +15,25 @@ public class SearchResponse {
 		this.totalCount = totalCount;
 	}
 	public long getTotalCount() {
-		return totalCount;
+		System.out.println("$#4521#"); return totalCount;
 	}
 	public void setEntryCount(long entryCount) {
 		this.entryCount = entryCount;
 	}
 	public long getEntryCount() {
-		return entryCount;
+		System.out.println("$#4522#"); return entryCount;
 	}
 	public void setEntries(List<SearchEntry> entries) {
 		this.entries = entries;
 	}
 	public List<SearchEntry> getEntries() {
-		return entries;
+		System.out.println("$#4523#"); return entries;
 	}
 	public void setFacets(Map<String,List<SearchFacet>> facets) {
 		this.facets = facets;
 	}
 	public Map<String,List<SearchFacet>> getFacets() {
-		return facets;
+		System.out.println("$#4524#"); return facets;
 	}
 
 }

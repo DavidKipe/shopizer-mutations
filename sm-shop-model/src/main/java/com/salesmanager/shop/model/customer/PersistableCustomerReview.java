@@ -9,7 +9,7 @@ public class PersistableCustomerReview extends CustomerReviewEntity {
 	private Long reviewedCustomer;
 
 	public Long getReviewedCustomer() {
-		return reviewedCustomer;
+		System.out.println("$#9087#"); return reviewedCustomer;
 	}
 
 	public void setReviewedCustomer(Long reviewedCustomer) {

@@ -48,7 +48,7 @@ public class EmailUtils {
 		templateTokens.put(EMAIL_DISCLAIMER, messages.getMessage("email.disclaimer", adminEmailArg, locale));
 		templateTokens.put(EMAIL_SPAM_DISCLAIMER, messages.getMessage("email.spam.disclaimer", locale));
 		
-		if(store.getStoreLogo()!=null) {
+		System.out.println("$#15697#"); if(store.getStoreLogo()!=null) {
 			//TODO revise
 			StringBuilder logoPath = new StringBuilder();
 			String scheme = Constants.HTTP_SCHEME;
@@ -58,7 +58,7 @@ public class EmailUtils {
 			templateTokens.put(LOGOPATH, store.getStorename());
 		}
 
-		return templateTokens;
+		System.out.println("$#15698#"); return templateTokens;
 	}
 
 }

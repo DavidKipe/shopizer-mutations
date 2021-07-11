@@ -35,7 +35,7 @@ public class ProductTypeServiceImpl extends SalesManagerEntityServiceImpl<Long, 
 
 	@Override
 	public ProductType getByCode(String code, MerchantStore store, Language language) throws ServiceException {
-		return productTypeRepository.findByCode(code, store.getId());
+		System.out.println("$#2066#"); return productTypeRepository.findByCode(code, store.getId());
 	}
 
 	@Override
@@ -46,35 +46,35 @@ public class ProductTypeServiceImpl extends SalesManagerEntityServiceImpl<Long, 
 	
 	@Override
 	public ProductType getProductType(String productTypeCode) {
-		return productTypeRepository.findByCode(productTypeCode);
+		System.out.println("$#2067#"); return productTypeRepository.findByCode(productTypeCode);
 	}
 
 	@Override
 	public Page<ProductType> getByMerchant(MerchantStore store, Language language, int page, int count) throws ServiceException {
 		Pageable pageRequest = PageRequest.of(page, count);
-		return pageableProductTypeRepository.listByStore(store.getId(), pageRequest);
+		System.out.println("$#2068#"); return pageableProductTypeRepository.listByStore(store.getId(), pageRequest);
 	}
 
 	@Override
 	public ProductType getById(Long id, MerchantStore store, Language language) throws ServiceException {
-		return productTypeRepository.findById(id, store.getId(), language.getId());
+		System.out.println("$#2069#"); return productTypeRepository.findById(id, store.getId(), language.getId());
 	}
 
 	@Override
 	public ProductType saveOrUpdate(ProductType productType) throws ServiceException {
-		if(productType.getId()!=null && productType.getId().longValue() > 0) {
-			this.update(productType);
+		System.out.println("$#2071#"); System.out.println("$#2070#"); if(productType.getId()!=null && productType.getId().longValue() > 0) {
+			System.out.println("$#2073#"); this.update(productType);
 		} else {
 			productType = super.saveAndFlush(productType);
 		}
 		
-		return productType;
+		System.out.println("$#2074#"); return productType;
 	}
 
 	@Override
 	public List<ProductType> listProductTypes(List<Long> ids, MerchantStore store, Language language)
 			throws ServiceException {
-		return productTypeRepository.findByIds(ids, store.getId(), language.getId());
+		System.out.println("$#2075#"); return productTypeRepository.findByIds(ids, store.getId(), language.getId());
 	}
 
 

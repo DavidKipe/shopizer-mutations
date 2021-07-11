@@ -35,7 +35,7 @@ public class ShippingOption implements Serializable {
 
 	public BigDecimal getOptionPrice() {
 		
-		if(optionPrice == null && !StringUtils.isBlank(this.getOptionPriceText())) {//if price text only is available, try to parse it
+		System.out.println("$#4614#"); if(optionPrice == null && !StringUtils.isBlank(this.getOptionPriceText())) {//if price text only is available, try to parse it
 			try {
 				this.optionPrice = new BigDecimal(this.getOptionPriceText());
 			} catch(Exception e) {
@@ -43,7 +43,7 @@ public class ShippingOption implements Serializable {
 			}
 		}
 		
-		return optionPrice;
+		System.out.println("$#4616#"); return optionPrice;
 	}
 	
 	public void setOptionPrice(BigDecimal optionPrice) {
@@ -54,54 +54,54 @@ public class ShippingOption implements Serializable {
 		this.optionCode = optionCode;
 	}
 	public String getOptionCode() {
-		return optionCode;
+		System.out.println("$#4617#"); return optionCode;
 	}
 	public void setOptionName(String optionName) {
 		this.optionName = optionName;
 	}
 	public String getOptionName() {
-		return optionName;
+		System.out.println("$#4618#"); return optionName;
 	}
 
 	public void setOptionPriceText(String optionPriceText) {
 		this.optionPriceText = optionPriceText;
 	}
 	public String getOptionPriceText() {
-		return optionPriceText;
+		System.out.println("$#4619#"); return optionPriceText;
 	}
 	public void setOptionId(String optionId) {
 		this.optionId = optionId;
 	}
 	public String getOptionId() {
-		return optionId;
+		System.out.println("$#4620#"); return optionId;
 	}
 	public void setOptionDeliveryDate(String optionDeliveryDate) {
 		this.optionDeliveryDate = optionDeliveryDate;
 	}
 	public String getOptionDeliveryDate() {
-		return optionDeliveryDate;
+		System.out.println("$#4621#"); return optionDeliveryDate;
 	}
 	public void setOptionShippingDate(String optionShippingDate) {
 		this.optionShippingDate = optionShippingDate;
 	}
 	public String getOptionShippingDate() {
-		return optionShippingDate;
+		System.out.println("$#4622#"); return optionShippingDate;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
 	public String getDescription() {
-		return description;
+		System.out.println("$#4623#"); return description;
 	}
 	public void setEstimatedNumberOfDays(String estimatedNumberOfDays) {
 		this.estimatedNumberOfDays = estimatedNumberOfDays;
 	}
 	public String getEstimatedNumberOfDays() {
-		return estimatedNumberOfDays;
+		System.out.println("$#4624#"); return estimatedNumberOfDays;
 	}
 
 	public String getShippingModuleCode() {
-		return shippingModuleCode;
+		System.out.println("$#4625#"); return shippingModuleCode;
 	}
 
 	public void setShippingModuleCode(String shippingModuleCode) {
@@ -109,7 +109,7 @@ public class ShippingOption implements Serializable {
 	}
 
 	public String getNote() {
-		return note;
+		System.out.println("$#4626#"); return note;
 	}
 
 	public void setNote(String note) {
@@ -117,7 +117,7 @@ public class ShippingOption implements Serializable {
 	}
 
 	public Long getShippingQuoteOptionId() {
-		return shippingQuoteOptionId;
+		System.out.println("$#4627#"); return shippingQuoteOptionId;
 	}
 
 	public void setShippingQuoteOptionId(Long shippingQuoteOptionId) {

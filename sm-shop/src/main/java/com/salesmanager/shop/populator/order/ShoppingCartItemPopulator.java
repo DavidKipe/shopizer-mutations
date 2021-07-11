@@ -32,14 +32,14 @@ public class ShoppingCartItemPopulator extends
 		Validate.notNull(shoppingCartService, "Requires to set shoppingCartService");
 
 		Product product = productService.getById(source.getProduct().getId());
-		if(source.getAttributes()!=null) {
+		System.out.println("$#10832#"); if(source.getAttributes()!=null) {
 
 			for(com.salesmanager.shop.model.catalog.product.attribute.ProductAttribute attr : source.getAttributes()) {
 				ProductAttribute attribute = productAttributeService.getById(attr.getId());
-				if(attribute==null) {
+				System.out.println("$#10833#"); if(attribute==null) {
 					throw new ConversionException("ProductAttribute with id " + attr.getId() + " is null");
 				}
-				if(attribute.getProduct().getId().longValue()!=source.getProduct().getId().longValue()) {
+				System.out.println("$#10834#"); if(attribute.getProduct().getId().longValue()!=source.getProduct().getId().longValue()) {
 					throw new ConversionException("ProductAttribute with id " + attr.getId() + " is not assigned to Product id " + source.getProduct().getId());
 				}
 				product.getAttributes().add(attribute);
@@ -47,7 +47,7 @@ public class ShoppingCartItemPopulator extends
 		}
 
 		try {
-			return shoppingCartService.populateShoppingCartItem(product);
+			System.out.println("$#10835#"); return shoppingCartService.populateShoppingCartItem(product);
 		} catch (ServiceException e) {
 			throw new ConversionException(e);
 		}
@@ -65,7 +65,7 @@ public class ShoppingCartItemPopulator extends
 	}
 
 	public ProductAttributeService getProductAttributeService() {
-		return productAttributeService;
+		System.out.println("$#10836#"); return productAttributeService;
 	}
 
 	public void setProductService(ProductService productService) {
@@ -73,7 +73,7 @@ public class ShoppingCartItemPopulator extends
 	}
 
 	public ProductService getProductService() {
-		return productService;
+		System.out.println("$#10837#"); return productService;
 	}
 
 	public void setShoppingCartService(ShoppingCartService shoppingCartService) {
@@ -81,7 +81,7 @@ public class ShoppingCartItemPopulator extends
 	}
 
 	public ShoppingCartService getShoppingCartService() {
-		return shoppingCartService;
+		System.out.println("$#10838#"); return shoppingCartService;
 	}
 
 }

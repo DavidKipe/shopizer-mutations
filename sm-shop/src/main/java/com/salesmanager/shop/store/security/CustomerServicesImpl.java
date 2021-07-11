@@ -44,10 +44,10 @@ public class CustomerServicesImpl extends AbstractCustomerServices{
 		CustomerDetails authUser = new CustomerDetails(userName, customer.getPassword(), true, true,
 				true, true, authorities);
 		
-		authUser.setEmail(customer.getEmailAddress());
-		authUser.setId(customer.getId());
+		System.out.println("$#15291#"); authUser.setEmail(customer.getEmailAddress());
+		System.out.println("$#15292#"); authUser.setId(customer.getId());
 		
-		return authUser;
+		System.out.println("$#15293#"); return authUser;
 	}
 	
 

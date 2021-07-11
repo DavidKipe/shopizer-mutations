@@ -19,7 +19,7 @@ public class ImageFilePathUtils extends AbstractimageFilePath{
 
 	@Override
 	public String getBasePath() {
-		return basePath;
+		System.out.println("$#15740#"); return basePath;
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class ImageFilePathUtils extends AbstractimageFilePath{
 	}
 	@Override
 	public String getContextPath() {
-		return super.getProperties().getProperty(CONTEXT_PATH);
+		System.out.println("$#15741#"); return super.getProperties().getProperty(CONTEXT_PATH);
 	}
 
 

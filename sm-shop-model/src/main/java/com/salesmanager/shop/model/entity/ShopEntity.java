@@ -14,7 +14,7 @@ public abstract class ShopEntity extends Entity implements Serializable {
 		this.language = language;
 	}
 	public String getLanguage() {
-		return language;
+		System.out.println("$#9109#"); return language;
 	}
 
 

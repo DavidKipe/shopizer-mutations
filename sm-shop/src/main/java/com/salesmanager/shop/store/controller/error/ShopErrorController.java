@@ -31,7 +31,7 @@ public class ShopErrorController {
 		LOGGER.error("Error page controller",ex);
 
 		ModelAndView model = null;
-		if(ex instanceof AccessDeniedException) {
+		System.out.println("$#12754#"); if(ex instanceof AccessDeniedException) {
 			
 			model = new ModelAndView("error/access_denied");
 			
@@ -43,7 +43,7 @@ public class ShopErrorController {
 			
 		}
 
-		return model;
+		System.out.println("$#12755#"); return model;
  
 	}
 	
@@ -66,7 +66,7 @@ public class ShopErrorController {
 		
 		
  
-		return model;
+		System.out.println("$#12756#"); return model;
  
 	}
 	
@@ -84,7 +84,7 @@ public class ShopErrorController {
 			
 		modelAndView = new ModelAndView("error/generic_error");
  
-		return modelAndView;
+		System.out.println("$#12757#"); return modelAndView;
  
 	}
 

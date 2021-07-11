@@ -78,7 +78,7 @@ public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> imple
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4787#"); return id;
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> imple
 	}
 
 	public Date getOptinDate() {
-		return optinDate;
+		System.out.println("$#4788#"); return optinDate;
 	}
 
 	public void setOptinDate(Date optinDate) {
@@ -95,7 +95,7 @@ public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> imple
 	}
 
 	public Optin getOptin() {
-		return optin;
+		System.out.println("$#4789#"); return optin;
 	}
 
 	public void setOptin(Optin optin) {
@@ -103,7 +103,7 @@ public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> imple
 	}
 
 	public String getFirstName() {
-		return firstName;
+		System.out.println("$#4790#"); return firstName;
 	}
 
 	public void setFirstName(String firstName) {
@@ -111,7 +111,7 @@ public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> imple
 	}
 
 	public String getLastName() {
-		return lastName;
+		System.out.println("$#4791#"); return lastName;
 	}
 
 	public void setLastName(String lastName) {
@@ -119,7 +119,7 @@ public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> imple
 	}
 
 	public String getEmail() {
-		return email;
+		System.out.println("$#4792#"); return email;
 	}
 
 	public void setEmail(String email) {
@@ -127,7 +127,7 @@ public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> imple
 	}
 
 	public String getValue() {
-		return value;
+		System.out.println("$#4793#"); return value;
 	}
 
 	public void setValue(String value) {
@@ -135,7 +135,7 @@ public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> imple
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4794#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {

@@ -97,21 +97,21 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 	private String name;
 	
 	public boolean isEmpty() {
-		return languageService.count() == 0;
+		System.out.println("$#2638#"); System.out.println("$#2637#"); return languageService.count() == 0;
 	}
 	
 	@Transactional
 	public void populate(String contextName) throws ServiceException {
 		this.name =  contextName;
 		
-		createSecurityGroups();
-		createLanguages();
-		createCountries();
-		createZones();
-		createCurrencies();
-		createSubReferences();
-		createModules();
-		createMerchant();
+		System.out.println("$#2639#"); createSecurityGroups();
+		System.out.println("$#2640#"); createLanguages();
+		System.out.println("$#2641#"); createCountries();
+		System.out.println("$#2642#"); createZones();
+		System.out.println("$#2643#"); createCurrencies();
+		System.out.println("$#2644#"); createSubReferences();
+		System.out.println("$#2645#"); createModules();
+		System.out.println("$#2646#"); createMerchant();
 
 
 	}
@@ -122,51 +122,51 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 		  //Map name object
 		  Map<String, Permission> permissionKeys = new HashMap<String, Permission>();
 		  Permission AUTH = new Permission("AUTH");
-		  permissionService.create(AUTH);
+				System.out.println("$#2647#"); permissionService.create(AUTH);
 		  permissionKeys.put(AUTH.getPermissionName(), AUTH);
 		  
 		  Permission SUPERADMIN = new Permission("SUPERADMIN");
-		  permissionService.create(SUPERADMIN);
+				System.out.println("$#2648#"); permissionService.create(SUPERADMIN);
 		  permissionKeys.put(SUPERADMIN.getPermissionName(), SUPERADMIN);
 		  
 		  Permission ADMIN = new Permission("ADMIN");
-		  permissionService.create(ADMIN);
+				System.out.println("$#2649#"); permissionService.create(ADMIN);
 		  permissionKeys.put(ADMIN.getPermissionName(), ADMIN);
 		  
 		  Permission PRODUCTS = new Permission("PRODUCTS");
-		  permissionService.create(PRODUCTS);
+				System.out.println("$#2650#"); permissionService.create(PRODUCTS);
 		  permissionKeys.put(PRODUCTS.getPermissionName(), PRODUCTS);
 		  
 		  Permission ORDER = new Permission("ORDER");
-		  permissionService.create(ORDER);
+				System.out.println("$#2651#"); permissionService.create(ORDER);
 		  permissionKeys.put(ORDER.getPermissionName(), ORDER);
 		  
 		  Permission CONTENT = new Permission("CONTENT");
-		  permissionService.create(CONTENT);
+				System.out.println("$#2652#"); permissionService.create(CONTENT);
 		  permissionKeys.put(CONTENT.getPermissionName(), CONTENT);
 		  
 		  Permission STORE = new Permission("STORE");
-		  permissionService.create(STORE);
+				System.out.println("$#2653#"); permissionService.create(STORE);
 		  permissionKeys.put(STORE.getPermissionName(), STORE);
 		  
 		  Permission TAX = new Permission("TAX");
-		  permissionService.create(TAX);
+				System.out.println("$#2654#"); permissionService.create(TAX);
 		  permissionKeys.put(TAX.getPermissionName(), TAX);
 		  
 		  Permission PAYMENT = new Permission("PAYMENT");
-		  permissionService.create(PAYMENT);
+				System.out.println("$#2655#"); permissionService.create(PAYMENT);
 		  permissionKeys.put(PAYMENT.getPermissionName(), PAYMENT);
 		  
 		  Permission CUSTOMER = new Permission("CUSTOMER");
-		  permissionService.create(CUSTOMER);
+				System.out.println("$#2656#"); permissionService.create(CUSTOMER);
 		  permissionKeys.put(CUSTOMER.getPermissionName(), CUSTOMER);
 		  
 		  Permission SHIPPING = new Permission("SHIPPING");
-		  permissionService.create(SHIPPING);
+				System.out.println("$#2657#"); permissionService.create(SHIPPING);
 		  permissionKeys.put(SHIPPING.getPermissionName(), SHIPPING);
 		  
 		  Permission AUTH_CUSTOMER = new Permission("AUTH_CUSTOMER");
-		  permissionService.create(AUTH_CUSTOMER);
+				System.out.println("$#2658#"); permissionService.create(AUTH_CUSTOMER);
 		  permissionKeys.put(AUTH_CUSTOMER.getPermissionName(), AUTH_CUSTOMER);
 		
 		  SecurityGroupsBuilder groupBuilder = new SecurityGroupsBuilder();
@@ -234,7 +234,7 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 		  .addPermission(permissionKeys.get("AUTH_CUSTOMER"));
 		  
 		  for(Group g : groupBuilder.build()) {
-			  groupService.create(g);
+					System.out.println("$#2659#"); groupService.create(g);
 		  }
 
 		
@@ -250,16 +250,16 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
             try {
             	java.util.Currency c = java.util.Currency.getInstance(code);
             	
-            	if(c==null) {
+													System.out.println("$#2660#"); if(c==null) {
             		LOGGER.info(String.format("%s : Populating Currencies : no currency for code : %s", name, code));
             	}
             	
             		//check if it exist
             		
 	            	Currency currency = new Currency();
-	            	currency.setName(c.getCurrencyCode());
-	            	currency.setCurrency(c);
-	            	currencyService.create(currency);
+														System.out.println("$#2661#"); currency.setName(c.getCurrencyCode());
+														System.out.println("$#2662#"); currency.setCurrency(c);
+														System.out.println("$#2663#"); currencyService.create(currency);
 
             //System.out.println(l.getCountry() + "   " + c.getSymbol() + "  " + c.getSymbol(l));
             } catch (IllegalArgumentException e) {
@@ -273,16 +273,16 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 		List<Language> languages = languageService.list();
 		for(String code : SchemaConstant.COUNTRY_ISO_CODE) {
 			Locale locale = SchemaConstant.LOCALES.get(code);
-			if (locale != null) {
+			System.out.println("$#2664#"); if (locale != null) {
 				Country country = new Country(code);
-				countryService.create(country);
+				System.out.println("$#2665#"); countryService.create(country);
 				
 				for (Language language : languages) {
 					String name = locale.getDisplayCountry(new Locale(language.getCode()));
 					//byte[] ptext = value.getBytes(Constants.ISO_8859_1); 
 					//String name = new String(ptext, Constants.UTF_8); 
 					CountryDescription description = new CountryDescription(language, name);
-					countryService.addCountryDescription(country, description);
+					System.out.println("$#2666#"); countryService.addCountryDescription(country, description);
 				}
 			}
 		}
@@ -295,7 +295,7 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
     		  Map<String,Zone> zonesMap = new HashMap<String,Zone>();
     		  zonesMap = zonesLoader.loadZones("reference/zoneconfig.json");
     		  
-    		  this.addZonesToDb(zonesMap);
+								System.out.println("$#2667#"); this.addZonesToDb(zonesMap);
 /*              
               for (Map.Entry<String, Zone> entry : zonesMap.entrySet()) {
             	    String key = entry.getKey();
@@ -325,8 +325,8 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
               //will load es zones and use a specific file for french es zones
       		  List<Map<String, Zone>> loadIndividualZones = zonesLoader.loadIndividualZones();
       		  
-      		loadIndividualZones.stream().forEach(z -> {
-					addZonesToDb(z);
+								System.out.println("$#2668#"); loadIndividualZones.stream().forEach(z -> {
+					System.out.println("$#2669#"); addZonesToDb(z);
 			});
 
   		} catch (Exception e) {
@@ -345,19 +345,19 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 	    	    String key = entry.getKey();
 	    	    Zone value = entry.getValue();
 
-	    	    if(value.getDescriptions()==null) {
+										System.out.println("$#2670#"); if(value.getDescriptions()==null) {
 	    	    	LOGGER.warn("This zone " + key + " has no descriptions");
 	    	    	continue;
 	    	    }
 	    	    
 	    	    List<ZoneDescription> zoneDescriptions = value.getDescriptions();
-	    	    value.setDescriptons(null);
+										System.out.println("$#2671#"); value.setDescriptons(null);
 	
-	    	    zoneService.create(value);
+										System.out.println("$#2672#"); zoneService.create(value);
 	    	    
 	    	    for(ZoneDescription description : zoneDescriptions) {
-	    	    	description.setZone(value);
-	    	    	zoneService.addDescription(value, description);
+											System.out.println("$#2673#"); description.setZone(value);
+											System.out.println("$#2674#"); zoneService.addDescription(value, description);
 	    	    }
 	        }
         
@@ -372,7 +372,7 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 		LOGGER.info(String.format("%s : Populating Languages ", name));
 		for(String code : SchemaConstant.LANGUAGE_ISO_CODE) {
 			Language language = new Language(code);
-			languageService.create(language);
+			System.out.println("$#2675#"); languageService.create(language);
 		}
 	}
 	
@@ -391,50 +391,50 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 		
 		//create a merchant
 		MerchantStore store = new MerchantStore();
-		store.setCountry(ca);
-		store.setCurrency(currency);
-		store.setDefaultLanguage(en);
-		store.setInBusinessSince(date);
-		store.setZone(qc);
-		store.setStorename("Default store");
-		store.setStorephone("888-888-8888");
-		store.setCode(MerchantStore.DEFAULT_STORE);
-		store.setStorecity("My city");
-		store.setStoreaddress("1234 Street address");
-		store.setStorepostalcode("H2H-2H2");
-		store.setStoreEmailAddress("john@test.com");
-		store.setDomainName("localhost:8080");
-		store.setStoreTemplate("december");
-		store.setRetailer(true);
-		store.setLanguages(supportedLanguages);
+		System.out.println("$#2676#"); store.setCountry(ca);
+		System.out.println("$#2677#"); store.setCurrency(currency);
+		System.out.println("$#2678#"); store.setDefaultLanguage(en);
+		System.out.println("$#2679#"); store.setInBusinessSince(date);
+		System.out.println("$#2680#"); store.setZone(qc);
+		System.out.println("$#2681#"); store.setStorename("Default store");
+		System.out.println("$#2682#"); store.setStorephone("888-888-8888");
+		System.out.println("$#2683#"); store.setCode(MerchantStore.DEFAULT_STORE);
+		System.out.println("$#2684#"); store.setStorecity("My city");
+		System.out.println("$#2685#"); store.setStoreaddress("1234 Street address");
+		System.out.println("$#2686#"); store.setStorepostalcode("H2H-2H2");
+		System.out.println("$#2687#"); store.setStoreEmailAddress("john@test.com");
+		System.out.println("$#2688#"); store.setDomainName("localhost:8080");
+		System.out.println("$#2689#"); store.setStoreTemplate("december");
+		System.out.println("$#2690#"); store.setRetailer(true);
+		System.out.println("$#2691#"); store.setLanguages(supportedLanguages);
 		
-		merchantService.create(store);
+		System.out.println("$#2692#"); merchantService.create(store);
 		
 		
 		TaxClass taxclass = new TaxClass(TaxClass.DEFAULT_TAX_CLASS);
-		taxclass.setMerchantStore(store);
+		System.out.println("$#2693#"); taxclass.setMerchantStore(store);
 		
-		taxClassService.create(taxclass);
+		System.out.println("$#2694#"); taxClassService.create(taxclass);
 		
 		//create default manufacturer
 		Manufacturer defaultManufacturer = new Manufacturer();
-		defaultManufacturer.setCode("DEFAULT");
-		defaultManufacturer.setMerchantStore(store);
+		System.out.println("$#2695#"); defaultManufacturer.setCode("DEFAULT");
+		System.out.println("$#2696#"); defaultManufacturer.setMerchantStore(store);
 		
 		ManufacturerDescription manufacturerDescription = new ManufacturerDescription();
-		manufacturerDescription.setLanguage(en);
-		manufacturerDescription.setName("DEFAULT");
-		manufacturerDescription.setManufacturer(defaultManufacturer);
-		manufacturerDescription.setDescription("DEFAULT");
+		System.out.println("$#2697#"); manufacturerDescription.setLanguage(en);
+		System.out.println("$#2698#"); manufacturerDescription.setName("DEFAULT");
+		System.out.println("$#2699#"); manufacturerDescription.setManufacturer(defaultManufacturer);
+		System.out.println("$#2700#"); manufacturerDescription.setDescription("DEFAULT");
 		defaultManufacturer.getDescriptions().add(manufacturerDescription);
 		
-		manufacturerService.create(defaultManufacturer);
+		System.out.println("$#2701#"); manufacturerService.create(defaultManufacturer);
 		
 	   Optin newsletter = new Optin();
-	   newsletter.setCode(OptinType.NEWSLETTER.name());
-	   newsletter.setMerchant(store);
-	   newsletter.setOptinType(OptinType.NEWSLETTER);
-	   optinService.create(newsletter);
+				System.out.println("$#2702#"); newsletter.setCode(OptinType.NEWSLETTER.name());
+				System.out.println("$#2703#"); newsletter.setMerchant(store);
+				System.out.println("$#2704#"); newsletter.setOptinType(OptinType.NEWSLETTER);
+				System.out.println("$#2705#"); optinService.create(newsletter);
 		
 		
 	}
@@ -445,7 +445,7 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 			
 			List<IntegrationModule> modules = modulesLoader.loadIntegrationModules("reference/integrationmodules.json");
             for (IntegrationModule entry : modules) {
-        	    moduleConfigurationService.create(entry);
+													System.out.println("$#2706#"); moduleConfigurationService.create(entry);
           }
 			
 			
@@ -462,8 +462,8 @@ public class InitializationDatabaseImpl implements InitializationDatabase {
 		
 		
 		ProductType productType = new ProductType();
-		productType.setCode(ProductType.GENERAL_TYPE);
-		productTypeService.create(productType);
+		System.out.println("$#2707#"); productType.setCode(ProductType.GENERAL_TYPE);
+		System.out.println("$#2708#"); productTypeService.create(productType);
 
 
 		

@@ -49,10 +49,10 @@ public class ShippingExpeditionApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12055#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		return shippingFacade.getExpeditionConfiguration(merchantStore, language);
+		System.out.println("$#12056#"); return shippingFacade.getExpeditionConfiguration(merchantStore, language);
 
 	}
 	
@@ -67,10 +67,10 @@ public class ShippingExpeditionApi {
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#12057#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_SHIPPING, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
-		shippingFacade.saveExpeditionConfiguration(expedition, merchantStore);
+		System.out.println("$#12058#"); shippingFacade.saveExpeditionConfiguration(expedition, merchantStore);
 
 	}
 

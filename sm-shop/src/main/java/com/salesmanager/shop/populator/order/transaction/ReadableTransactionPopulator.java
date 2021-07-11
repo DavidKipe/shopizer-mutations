@@ -24,11 +24,11 @@ public class ReadableTransactionPopulator extends AbstractDataPopulator<Transact
 			Language language) throws ConversionException {
 
 		
-		Validate.notNull(source,"PersistableTransaction must not be null");
-		Validate.notNull(orderService,"OrderService must not be null");
-		Validate.notNull(pricingService,"OrderService must not be null");
+		System.out.println("$#10864#"); Validate.notNull(source,"PersistableTransaction must not be null");
+		System.out.println("$#10865#"); Validate.notNull(orderService,"OrderService must not be null");
+		System.out.println("$#10866#"); Validate.notNull(pricingService,"OrderService must not be null");
 		
-		if(target == null) {
+		System.out.println("$#10867#"); if(target == null) {
 			target = new ReadableTransaction();
 		}
 		
@@ -36,19 +36,19 @@ public class ReadableTransactionPopulator extends AbstractDataPopulator<Transact
 		try {
 			
 
-			target.setAmount(pricingService.getDisplayAmount(source.getAmount(), store));
-			target.setDetails(source.getDetails());
-			target.setPaymentType(source.getPaymentType());
-			target.setTransactionType(source.getTransactionType());
-			target.setTransactionDate(DateUtil.formatDate(source.getTransactionDate()));
-			target.setId(source.getId());
+			System.out.println("$#10868#"); target.setAmount(pricingService.getDisplayAmount(source.getAmount(), store));
+			System.out.println("$#10869#"); target.setDetails(source.getDetails());
+			System.out.println("$#10870#"); target.setPaymentType(source.getPaymentType());
+			System.out.println("$#10871#"); target.setTransactionType(source.getTransactionType());
+			System.out.println("$#10872#"); target.setTransactionDate(DateUtil.formatDate(source.getTransactionDate()));
+			System.out.println("$#10873#"); target.setId(source.getId());
 			
-			if(source.getOrder() != null) {
-				target.setOrderId(source.getOrder().getId());
+			System.out.println("$#10874#"); if(source.getOrder() != null) {
+				System.out.println("$#10875#"); target.setOrderId(source.getOrder().getId());
 
 			}
 			
-			return target;
+			System.out.println("$#10876#"); return target;
 			
 			
 		
@@ -65,7 +65,7 @@ public class ReadableTransactionPopulator extends AbstractDataPopulator<Transact
 	}
 	
 	public OrderService getOrderService() {
-		return orderService;
+		System.out.println("$#10877#"); return orderService;
 	}
 
 	public void setOrderService(OrderService orderService) {
@@ -73,7 +73,7 @@ public class ReadableTransactionPopulator extends AbstractDataPopulator<Transact
 	}
 
 	public PricingService getPricingService() {
-		return pricingService;
+		System.out.println("$#10878#"); return pricingService;
 	}
 
 	public void setPricingService(PricingService pricingService) {

@@ -46,7 +46,7 @@ public class StoreLandingController {
 	@RequestMapping(value="/admin/store/storeLanding.html", method=RequestMethod.GET)
 	public String displayStoreLanding(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5664#"); setMenu(model,request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -61,23 +61,23 @@ public class StoreLandingController {
 		for(Language l : languages) {
 			
 			StoreLandingDescription landingDescription = null;
-			if(content!=null) {
+			System.out.println("$#5665#"); if(content!=null) {
 				for(ContentDescription desc : content.getDescriptions()) {
-					if(desc.getLanguage().getCode().equals(l.getCode())) {
+					System.out.println("$#5666#"); if(desc.getLanguage().getCode().equals(l.getCode())) {
 						landingDescription = new StoreLandingDescription();
-						landingDescription.setDescription(desc.getMetatagDescription());
-						landingDescription.setHomePageContent(desc.getDescription());
-						landingDescription.setKeywords(desc.getMetatagKeywords());
-						landingDescription.setTitle(desc.getName());//name is a not empty
-						landingDescription.setLanguage(desc.getLanguage());
+						System.out.println("$#5667#"); landingDescription.setDescription(desc.getMetatagDescription());
+						System.out.println("$#5668#"); landingDescription.setHomePageContent(desc.getDescription());
+						System.out.println("$#5669#"); landingDescription.setKeywords(desc.getMetatagKeywords());
+						System.out.println("$#5670#"); landingDescription.setTitle(desc.getName());//name is a not empty
+						System.out.println("$#5671#"); landingDescription.setLanguage(desc.getLanguage());
 						break;
 					}
 				}
 			}
 			
-			if(landingDescription==null) {
+			System.out.println("$#5672#"); if(landingDescription==null) {
 				landingDescription = new StoreLandingDescription();
-				landingDescription.setLanguage(l);
+				System.out.println("$#5673#"); landingDescription.setLanguage(l);
 			}
 			
 
@@ -85,38 +85,38 @@ public class StoreLandingController {
 			descriptions.add(landingDescription);
 		}
 		
-		landing.setDescriptions(descriptions);
+		System.out.println("$#5674#"); landing.setDescriptions(descriptions);
 
 		
 		model.addAttribute("store", store);
 		model.addAttribute("storeLanding", landing);
 
 		
-		return "admin-store-landing";
+		System.out.println("$#5675#"); return "admin-store-landing";
 	}
 	
 	@PreAuthorize("hasRole('STORE')")
 	@RequestMapping(value="/admin/store/saveLanding.html", method=RequestMethod.POST)
 	public String saveStoreLanding(@Valid @ModelAttribute("storeLanding") StoreLanding storeLanding, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5676#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
 		
-		if (result.hasErrors()) {
-			return "admin-store-landing";
+		System.out.println("$#5677#"); if (result.hasErrors()) {
+			System.out.println("$#5678#"); return "admin-store-landing";
 		}
 		
 		//get original store
 		Content content = contentService.getByCode("LANDING_PAGE", store);
 		
-		if(content==null) {
+		System.out.println("$#5679#"); if(content==null) {
 			content = new Content();
-			content.setVisible(true);
-			content.setContentType(ContentType.SECTION);
-			content.setCode("LANDING_PAGE");
-			content.setMerchantStore(store);
+			System.out.println("$#5680#"); content.setVisible(true);
+			System.out.println("$#5681#"); content.setContentType(ContentType.SECTION);
+			System.out.println("$#5682#"); content.setCode("LANDING_PAGE");
+			System.out.println("$#5683#"); content.setMerchantStore(store);
 		}
 		
 
@@ -159,7 +159,7 @@ public class StoreLandingController {
 
 		List<StoreLandingDescription> descriptions = storeLanding.getDescriptions();
 		List<ContentDescription> contentDescriptions = new ArrayList<ContentDescription>();
-		if(descriptions!=null) {
+		System.out.println("$#5684#"); if(descriptions!=null) {
 				
 				for(StoreLandingDescription description : descriptions) {
 					
@@ -167,17 +167,17 @@ public class StoreLandingController {
 					Language l = langs.get(code);
 					
 					ContentDescription contentDescription = null;
-					if(content.getDescriptions()!=null && content.getDescriptions().size()>0) {
+					System.out.println("$#5686#"); System.out.println("$#5685#"); if(content.getDescriptions()!=null && content.getDescriptions().size()>0) {
 						
 						for(ContentDescription desc : content.getDescriptions()) {
 							
-							if(desc.getLanguage().getCode().equals(l.getCode())) {
+							System.out.println("$#5688#"); if(desc.getLanguage().getCode().equals(l.getCode())) {
 								contentDescription = desc;
-								desc.setMetatagDescription(description.getDescription());
-								desc.setName(description.getTitle());
-								desc.setTitle(description.getTitle());
-								desc.setDescription(description.getHomePageContent());
-								desc.setMetatagKeywords(description.getKeywords());
+								System.out.println("$#5689#"); desc.setMetatagDescription(description.getDescription());
+								System.out.println("$#5690#"); desc.setName(description.getTitle());
+								System.out.println("$#5691#"); desc.setTitle(description.getTitle());
+								System.out.println("$#5692#"); desc.setDescription(description.getHomePageContent());
+								System.out.println("$#5693#"); desc.setMetatagKeywords(description.getKeywords());
 								
 								
 							}
@@ -185,16 +185,16 @@ public class StoreLandingController {
 						}
 					}
 					
-					if(contentDescription==null) {
+					System.out.println("$#5694#"); if(contentDescription==null) {
 						
 						
 						contentDescription = new ContentDescription();
-						contentDescription.setContent(content);
-						contentDescription.setLanguage(l);
-						contentDescription.setMetatagDescription(description.getDescription());
-						contentDescription.setName(description.getTitle());
-						contentDescription.setDescription(description.getHomePageContent());
-						contentDescription.setMetatagKeywords(description.getKeywords());
+						System.out.println("$#5695#"); contentDescription.setContent(content);
+						System.out.println("$#5696#"); contentDescription.setLanguage(l);
+						System.out.println("$#5697#"); contentDescription.setMetatagDescription(description.getDescription());
+						System.out.println("$#5698#"); contentDescription.setName(description.getTitle());
+						System.out.println("$#5699#"); contentDescription.setDescription(description.getHomePageContent());
+						System.out.println("$#5700#"); contentDescription.setMetatagKeywords(description.getKeywords());
 
 					}
 					
@@ -204,17 +204,17 @@ public class StoreLandingController {
 
 				}
 				
-				content.setDescriptions(contentDescriptions);
+				System.out.println("$#5701#"); content.setDescriptions(contentDescriptions);
 				
 			}
 
 
 		
-		contentService.saveOrUpdate(content);
+		System.out.println("$#5702#"); contentService.saveOrUpdate(content);
 
 		model.addAttribute("success","success");
 
-		return "admin-store-landing";
+		System.out.println("$#5703#"); return "admin-store-landing";
 	}
 	
 	private void setMenu(Model model, HttpServletRequest request) throws Exception {

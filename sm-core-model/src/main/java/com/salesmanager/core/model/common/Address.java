@@ -26,7 +26,7 @@ public class Address implements Serializable {
 
 
 	public String getCity() {
-		return city;
+		System.out.println("$#4011#"); return city;
 	}
 
 	public void setCity(String city) {
@@ -34,7 +34,7 @@ public class Address implements Serializable {
 	}
 
 	public String getPostalCode() {
-		return postalCode;
+		System.out.println("$#4012#"); return postalCode;
 	}
 
 	public void setPostalCode(String postalCode) {
@@ -42,11 +42,11 @@ public class Address implements Serializable {
 	}
 
 	public String getStateProvince() {
-		return stateProvince;
+		System.out.println("$#4013#"); return stateProvince;
 	}
 
 	public String getCountry() {
-		return country;
+		System.out.println("$#4014#"); return country;
 	}
 
 	public void setZone(String zone) {
@@ -54,7 +54,7 @@ public class Address implements Serializable {
 	}
 
 	public String getZone() {
-		return zone;
+		System.out.println("$#4015#"); return zone;
 	}
 
 

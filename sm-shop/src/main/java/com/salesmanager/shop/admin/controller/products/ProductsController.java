@@ -53,7 +53,7 @@ public class ProductsController {
 	public String displayProducts(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		setMenu(model,request);
+		System.out.println("$#7036#"); setMenu(model,request);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
@@ -64,7 +64,7 @@ public class ProductsController {
 		
 		model.addAttribute("categories", readableCategories);
 		
-		return "admin-products";
+		System.out.println("$#7037#"); return "admin-products";
 		
 	}
 
@@ -96,11 +96,11 @@ public class ProductsController {
 			
 			ProductCriteria criteria = new ProductCriteria();
 			
-			criteria.setStartIndex(startRow);
-			criteria.setMaxCount(endRow);
+			System.out.println("$#7038#"); criteria.setStartIndex(startRow);
+			System.out.println("$#7039#"); criteria.setMaxCount(endRow);
 			
 			
-			if(!StringUtils.isBlank(categoryId) && !categoryId.equals("-1")) {
+			System.out.println("$#7040#"); if(!StringUtils.isBlank(categoryId) && !categoryId.equals("-1")) {
 				
 				//get other filters
 				Long lcategoryId = 0L;
@@ -108,21 +108,21 @@ public class ProductsController {
 					lcategoryId = Long.parseLong(categoryId);
 				} catch (Exception e) {
 					LOGGER.error("Product page cannot parse categoryId " + categoryId );
-					resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+					System.out.println("$#7042#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 					String returnString = resp.toJSONString();
-					return new ResponseEntity<String>(returnString,HttpStatus.BAD_REQUEST);
+					System.out.println("$#7043#"); return new ResponseEntity<String>(returnString,HttpStatus.BAD_REQUEST);
 				} 
 				
 				
 
-				if(lcategoryId>0) {
+				System.out.println("$#7045#"); System.out.println("$#7044#"); if(lcategoryId>0) {
 				
 					Category category = categoryService.getById(lcategoryId, store.getId());
 	
-					if(category==null || category.getMerchantStore().getId()!=store.getId()) {
-						resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+					System.out.println("$#7046#"); if(category==null || category.getMerchantStore().getId()!=store.getId()) {
+						System.out.println("$#7048#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 						String returnString = resp.toJSONString();
-						return new ResponseEntity<String>(returnString,HttpStatus.BAD_REQUEST);
+						System.out.println("$#7049#"); return new ResponseEntity<String>(returnString,HttpStatus.BAD_REQUEST);
 					}
 					
 					//get all sub categories
@@ -137,7 +137,7 @@ public class ProductsController {
 						categoryIds.add(cat.getId());
 					}
 					categoryIds.add(category.getId());
-					criteria.setCategoryIds(categoryIds);
+					System.out.println("$#7050#"); criteria.setCategoryIds(categoryIds);
 				
 				}
 				
@@ -146,28 +146,28 @@ public class ProductsController {
 				
 			}
 			
-			if(!StringUtils.isBlank(sku)) {
-				criteria.setCode(sku);
+			System.out.println("$#7051#"); if(!StringUtils.isBlank(sku)) {
+				System.out.println("$#7052#"); criteria.setCode(sku);
 			}
 			
-			if(!StringUtils.isBlank(name)) {
-				criteria.setProductName(name);
+			System.out.println("$#7053#"); if(!StringUtils.isBlank(name)) {
+				System.out.println("$#7054#"); criteria.setProductName(name);
 			}
 			
-			if(!StringUtils.isBlank(available)) {
-				if(available.equals("true")) {
-					criteria.setAvailable(new Boolean(true));
+			System.out.println("$#7055#"); if(!StringUtils.isBlank(available)) {
+				System.out.println("$#7056#"); if(available.equals("true")) {
+					System.out.println("$#7057#"); criteria.setAvailable(new Boolean(true));
 				} else {
-					criteria.setAvailable(new Boolean(false));
+					System.out.println("$#7058#"); criteria.setAvailable(new Boolean(false));
 				}
 			}
 			
 			ProductList productList = productService.listByStore(store, language, criteria);
-			resp.setEndRow(productList.getTotalCount());
-			resp.setStartRow(startRow);
+			System.out.println("$#7059#"); resp.setEndRow(productList.getTotalCount());
+			System.out.println("$#7060#"); resp.setStartRow(startRow);
 			List<Product> plist = productList.getProducts();
 			
-			if(plist!=null) {
+			System.out.println("$#7061#"); if(plist!=null) {
 			
 				for(Product product : plist) {
 					
@@ -179,7 +179,7 @@ public class ProductsController {
 					entry.put("name", description.getName());
 					entry.put("sku", product.getSku());
 					entry.put("available", product.isAvailable());
-					resp.addDataEntry(entry);
+					System.out.println("$#7062#"); resp.addDataEntry(entry);
 					
 					
 					
@@ -187,16 +187,16 @@ public class ProductsController {
 			
 			}
 
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#7063#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging products", e);
-			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7064#"); resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7065#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,HttpStatus.OK);
+		System.out.println("$#7066#"); return new ResponseEntity<String>(returnString,HttpStatus.OK);
 
 
 	}
@@ -217,29 +217,29 @@ public class ProductsController {
 			
 			Product product = productService.getById(id);
 
-			if(product==null || product.getMerchantStore().getId()!=store.getId()) {
+			System.out.println("$#7067#"); if(product==null || product.getMerchantStore().getId()!=store.getId()) {
 
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#7069#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#7070#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				
 			} else {
 				
-				productService.delete(product);
-				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+				System.out.println("$#7071#"); productService.delete(product);
+				System.out.println("$#7072#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 				
 			}
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#7073#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#7074#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#7075#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#7076#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

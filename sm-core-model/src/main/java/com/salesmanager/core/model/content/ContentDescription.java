@@ -49,7 +49,7 @@ public class ContentDescription extends Description implements Serializable {
 	private String metatagTitle;
 	
 	public String getMetatagTitle() {
-		return metatagTitle;
+		System.out.println("$#4103#"); return metatagTitle;
 	}
 
 	public void setMetatagTitle(String metatagTitle) {
@@ -63,13 +63,13 @@ public class ContentDescription extends Description implements Serializable {
 	}
 	
 	public ContentDescription(String name, Language language) {
-		this.setName(name);
-		this.setLanguage(language);
-		super.setId(0L);
+		System.out.println("$#4104#"); this.setName(name);
+		System.out.println("$#4105#"); this.setLanguage(language);
+		System.out.println("$#4106#"); super.setId(0L);
 	}
 
 	public Content getContent() {
-		return content;
+		System.out.println("$#4107#"); return content;
 	}
 
 	public void setContent(Content content) {
@@ -77,7 +77,7 @@ public class ContentDescription extends Description implements Serializable {
 	}
 
 	public String getSeUrl() {
-		return seUrl;
+		System.out.println("$#4108#"); return seUrl;
 	}
 
 	public void setSeUrl(String seUrl) {
@@ -86,7 +86,7 @@ public class ContentDescription extends Description implements Serializable {
 
 
 	public String getMetatagKeywords() {
-		return metatagKeywords;
+		System.out.println("$#4109#"); return metatagKeywords;
 	}
 
 	public void setMetatagKeywords(String metatagKeywords) {
@@ -94,7 +94,7 @@ public class ContentDescription extends Description implements Serializable {
 	}
 
 	public String getMetatagDescription() {
-		return metatagDescription;
+		System.out.println("$#4110#"); return metatagDescription;
 	}
 
 	public void setMetatagDescription(String metatagDescription) {

@@ -12,13 +12,13 @@ public class ReadableCustomerAttribute extends CustomerAttributeEntity {
 		this.customerOption = customerOption;
 	}
 	public ReadableCustomerOption getCustomerOption() {
-		return customerOption;
+		System.out.println("$#9053#"); return customerOption;
 	}
 	public void setCustomerOptionValue(ReadableCustomerOptionValue customerOptionValue) {
 		this.customerOptionValue = customerOptionValue;
 	}
 	public ReadableCustomerOptionValue getCustomerOptionValue() {
-		return customerOptionValue;
+		System.out.println("$#9054#"); return customerOptionValue;
 	}
 
 

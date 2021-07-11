@@ -19,7 +19,7 @@ public class ReadableOrderTotalSummary implements Serializable {
 	private List<ReadableOrderTotal> totals = new ArrayList<ReadableOrderTotal>();//all other fees (tax, shipping ....)
 
 	public String getSubTotal() {
-		return subTotal;
+		System.out.println("$#9155#"); return subTotal;
 	}
 
 	public void setSubTotal(String subTotal) {
@@ -27,7 +27,7 @@ public class ReadableOrderTotalSummary implements Serializable {
 	}
 
 	public String getTotal() {
-		return total;
+		System.out.println("$#9156#"); return total;
 	}
 
 	public void setTotal(String total) {
@@ -35,7 +35,7 @@ public class ReadableOrderTotalSummary implements Serializable {
 	}
 
 	public String getTaxTotal() {
-		return taxTotal;
+		System.out.println("$#9157#"); return taxTotal;
 	}
 
 	public void setTaxTotal(String taxTotal) {
@@ -43,7 +43,7 @@ public class ReadableOrderTotalSummary implements Serializable {
 	}
 
 	public List<ReadableOrderTotal> getTotals() {
-		return totals;
+		System.out.println("$#9158#"); return totals;
 	}
 
 	public void setTotals(List<ReadableOrderTotal> totals) {

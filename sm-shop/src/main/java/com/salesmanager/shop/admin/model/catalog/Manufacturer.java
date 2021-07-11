@@ -33,7 +33,7 @@ public class Manufacturer implements Serializable {
 	@NotNull
 	private String code;
 	public String getCode() {
-		return code;
+		System.out.println("$#7774#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -45,7 +45,7 @@ public class Manufacturer implements Serializable {
 	
 	
 	public MultipartFile getImage() {
-		return image;
+		System.out.println("$#7775#"); return image;
 	}
 
 	public void setImage(MultipartFile image) {
@@ -53,7 +53,7 @@ public class Manufacturer implements Serializable {
 	}
 
 	public ProductImage getProductImage() {
-		return productImage;
+		System.out.println("$#7776#"); return productImage;
 	}
 
 	public void setProductImage(ProductImage productImage) {
@@ -61,7 +61,7 @@ public class Manufacturer implements Serializable {
 	}
 
 	public com.salesmanager.core.model.catalog.product.manufacturer.Manufacturer getManufacturer() {
-		return manufacturer;
+		System.out.println("$#7777#"); return manufacturer;
 	}
 
 	public void setManufacturer(
@@ -70,7 +70,7 @@ public class Manufacturer implements Serializable {
 	}
 
 	public List<ManufacturerDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#7778#"); return descriptions;
 	}
 
 	public void setDescriptions(List<ManufacturerDescription> descriptions) {
@@ -78,7 +78,7 @@ public class Manufacturer implements Serializable {
 	}
 
 	public Integer getOrder() {
-		return order;
+		System.out.println("$#7779#"); return order;
 	}
 
 	public void setOrder(Integer order) {

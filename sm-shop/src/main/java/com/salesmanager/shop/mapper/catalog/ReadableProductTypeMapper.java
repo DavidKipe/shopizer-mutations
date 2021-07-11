@@ -15,7 +15,7 @@ public class ReadableProductTypeMapper implements Mapper<ProductType, ReadablePr
 	@Override
 	public ReadableProductType convert(ProductType source, MerchantStore store, Language language) {
 		ReadableProductType type = new ReadableProductType();
-		return this.convert(source, type, store, language);
+		System.out.println("$#8524#"); return this.convert(source, type, store, language);
 	}
 
 	@Override
@@ -23,11 +23,11 @@ public class ReadableProductTypeMapper implements Mapper<ProductType, ReadablePr
 			Language language) {
 		Validate.notNull(source, "ProductType cannot be null");
 		Validate.notNull(destination, "ReadableProductType cannot be null");
-		destination.setId(source.getId());
-		destination.setCode(source.getCode());
-		destination.setName(source.getCode());
-		destination.setAllowAddToCart(source.isAllowAddToCart());
-		return destination;
+		System.out.println("$#8525#"); destination.setId(source.getId());
+		System.out.println("$#8526#"); destination.setCode(source.getCode());
+		System.out.println("$#8527#"); destination.setName(source.getCode());
+		System.out.println("$#8528#"); destination.setAllowAddToCart(source.isAllowAddToCart());
+		System.out.println("$#8529#"); return destination;
 	}
 
 }

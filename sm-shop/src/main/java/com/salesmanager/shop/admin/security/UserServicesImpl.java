@@ -74,7 +74,7 @@ public class UserServicesImpl implements WebUserServices{
 
 			user = userService.getByUserName(userName);
 
-			if(user==null) {
+			System.out.println("$#7871#"); if(user==null) {
 				return null;
 			}
 
@@ -109,7 +109,7 @@ public class UserServicesImpl implements WebUserServices{
 		
 		User secUser = new User(userName, user.getAdminPassword(), user.isActive(), true,
 				true, true, authorities);
-		return secUser;
+		System.out.println("$#7872#"); return secUser;
 	}
 	
 	
@@ -125,17 +125,17 @@ public class UserServicesImpl implements WebUserServices{
 		  
 		  //creation of the super admin admin:password)
 		  com.salesmanager.core.model.user.User user = new com.salesmanager.core.model.user.User("admin@shopizer.com",password,"admin@shopizer.com");
-		  user.setFirstName("Administrator");
-		  user.setLastName("User");
+				System.out.println("$#7873#"); user.setFirstName("Administrator");
+				System.out.println("$#7874#"); user.setLastName("User");
 		  
 		  for(Group group : groups) {
-			  if(group.getGroupName().equals(Constants.GROUP_SUPERADMIN) || group.getGroupName().equals(Constants.GROUP_ADMIN)) {
+					System.out.println("$#7875#"); if(group.getGroupName().equals(Constants.GROUP_SUPERADMIN) || group.getGroupName().equals(Constants.GROUP_ADMIN)) {
 				  user.getGroups().add(group);
 			  }
 		  }
 
-		  user.setMerchantStore(store);		  
-		  userService.create(user);
+				System.out.println("$#7877#"); user.setMerchantStore(store);
+				System.out.println("$#7878#"); userService.create(user);
 		
 		
 	}

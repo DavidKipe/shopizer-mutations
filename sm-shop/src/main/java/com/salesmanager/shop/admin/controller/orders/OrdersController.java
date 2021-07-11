@@ -70,11 +70,11 @@ public class OrdersController {
 	@RequestMapping(value="/admin/orders/list.html", method=RequestMethod.GET)
 	public String displayOrders(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5935#"); setMenu(model,request);
 
 		//the list of orders is from page method
 		
-		return ControllerConstants.Tiles.Order.orders;
+		System.out.println("$#5936#"); return ControllerConstants.Tiles.Order.orders;
 		
 		
 	}
@@ -96,15 +96,15 @@ public class OrdersController {
 			String customerName = request.getParameter("customer");
 			
 			OrderCriteria criteria = new OrderCriteria();
-			criteria.setOrderBy(CriteriaOrderBy.DESC);
-			criteria.setStartIndex(startRow);
-			criteria.setMaxCount(endRow);
-			if(!StringUtils.isBlank(paymentModule)) {
-				criteria.setPaymentMethod(paymentModule);
+			System.out.println("$#5937#"); criteria.setOrderBy(CriteriaOrderBy.DESC);
+			System.out.println("$#5938#"); criteria.setStartIndex(startRow);
+			System.out.println("$#5939#"); criteria.setMaxCount(endRow);
+			System.out.println("$#5940#"); if(!StringUtils.isBlank(paymentModule)) {
+				System.out.println("$#5941#"); criteria.setPaymentMethod(paymentModule);
 			}
 			
-			if(!StringUtils.isBlank(customerName)) {
-				criteria.setCustomerName(customerName);
+			System.out.println("$#5942#"); if(!StringUtils.isBlank(customerName)) {
+				System.out.println("$#5943#"); criteria.setCustomerName(customerName);
 			}
 			
 			Language language = (Language)request.getAttribute("LANGUAGE");
@@ -114,7 +114,7 @@ public class OrdersController {
 
 			OrderList orderList = orderService.listByStore(store, criteria);
 		
-			if(orderList.getOrders()!=null) {	
+			System.out.println("$#5944#"); if(orderList.getOrders()!=null) {
 			
 				for(Order order : orderList.getOrders()) {
 					
@@ -127,11 +127,11 @@ public class OrdersController {
 					entry.put("status", order.getStatus().name());
 					
 					
-					if ( paymentModules!= null && paymentModules.size() > 0 ) 
+					System.out.println("$#5946#"); System.out.println("$#5945#"); if ( paymentModules!= null && paymentModules.size() > 0 )
 					{	
-						for ( int index = 0; index < paymentModules.size(); index++ )
+						System.out.println("$#5949#"); System.out.println("$#5948#"); for ( int index = 0; index < paymentModules.size(); index++ )
 						{
-							if ( paymentModules.get(index).getCode().equalsIgnoreCase( order.getPaymentModuleCode() ) )
+							System.out.println("$#5950#"); if ( paymentModules.get(index).getCode().equalsIgnoreCase( order.getPaymentModuleCode() ) )
 							{
 								 paymentModule = paymentModules.get(index).getCode();
 								 break;
@@ -141,25 +141,25 @@ public class OrdersController {
 					}
 	
 					entry.put("paymentModule", paymentModule );
-					resp.addDataEntry(entry);				
+					System.out.println("$#5951#"); resp.addDataEntry(entry);
 					
 				}
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5952#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 			
 
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging orders", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5953#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5954#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5955#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	

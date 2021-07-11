@@ -12,7 +12,7 @@ public class ReadableProductAttributeValue extends ProductOptionValue {
 	private String description;
 
 	public String getName() {
-		return name;
+		System.out.println("$#8817#"); return name;
 	}
 
 	public void setName(String name) {
@@ -20,7 +20,7 @@ public class ReadableProductAttributeValue extends ProductOptionValue {
 	}
 
 	public String getLang() {
-		return lang;
+		System.out.println("$#8818#"); return lang;
 	}
 
 	public void setLang(String lang) {
@@ -28,7 +28,7 @@ public class ReadableProductAttributeValue extends ProductOptionValue {
 	}
 
 	public String getDescription() {
-		return description;
+		System.out.println("$#8819#"); return description;
 	}
 
 	public void setDescription(String description) {

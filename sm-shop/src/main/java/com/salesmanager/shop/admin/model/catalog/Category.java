@@ -24,7 +24,7 @@ public class Category implements Serializable {
   private List<CategoryDescription> descriptions = new ArrayList<CategoryDescription>();
 
   public com.salesmanager.core.model.catalog.category.Category getCategory() {
-    return category;
+				System.out.println("$#7769#"); return category;
   }
 
   public void setCategory(com.salesmanager.core.model.catalog.category.Category category) {
@@ -32,7 +32,7 @@ public class Category implements Serializable {
   }
 
   public List<CategoryDescription> getDescriptions() {
-    return descriptions;
+				System.out.println("$#7770#"); return descriptions;
   }
 
   public void setDescriptions(List<CategoryDescription> descriptions) {

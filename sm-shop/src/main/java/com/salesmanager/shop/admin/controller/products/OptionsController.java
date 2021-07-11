@@ -49,12 +49,12 @@ public class OptionsController {
 	@RequestMapping(value="/admin/options/options.html", method=RequestMethod.GET)
 	public String displayOptions(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#6230#"); setMenu(model,request);
 
 
 
 		
-		return "catalogue-options-list";
+		System.out.println("$#6231#"); return "catalogue-options-list";
 		
 		
 		
@@ -63,19 +63,19 @@ public class OptionsController {
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/options/editOption.html", method=RequestMethod.GET)
 	public String displayOptionEdit(@RequestParam("id") long optionId, HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
-		return displayOption(optionId,request,response,model,locale);
+		System.out.println("$#6232#"); return displayOption(optionId,request,response,model,locale);
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/options/createOption.html", method=RequestMethod.GET)
 	public String displayOption(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
-		return displayOption(null,request,response,model,locale);
+		System.out.println("$#6233#"); return displayOption(null,request,response,model,locale);
 	}
 	
 	private String displayOption(Long optionId, HttpServletRequest request, HttpServletResponse response,Model model,Locale locale) throws Exception {
 
 		
-		this.setMenu(model, request);
+		System.out.println("$#6234#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		List<Language> languages = store.getLanguages();
@@ -84,14 +84,14 @@ public class OptionsController {
 		
 		ProductOption option = new ProductOption();
 		
-		if(optionId!=null && optionId!=0) {//edit mode
+		System.out.println("$#6235#"); if(optionId!=null && optionId!=0) {//edit mode
 			
 			
 			option = productOptionService.getById(store, optionId);
 			
 			
-			if(option==null) {
-				return "redirect:/admin/options/options.html";
+			System.out.println("$#6237#"); if(option==null) {
+				System.out.println("$#6238#"); return "redirect:/admin/options/options.html";
 			}
 			
 			Set<ProductOptionDescription> optionDescriptions = option.getDescriptions();
@@ -102,12 +102,12 @@ public class OptionsController {
 			
 				ProductOptionDescription optionDescription = null;
 				
-				if(optionDescriptions!=null) {
+				System.out.println("$#6239#"); if(optionDescriptions!=null) {
 					
 					for(ProductOptionDescription description : optionDescriptions) {
 						
 						String code = description.getLanguage().getCode();
-						if(code.equals(l.getCode())) {
+						System.out.println("$#6240#"); if(code.equals(l.getCode())) {
 							optionDescription = description;
 						}
 						
@@ -115,9 +115,9 @@ public class OptionsController {
 					
 				}
 				
-				if(optionDescription==null) {
+				System.out.println("$#6241#"); if(optionDescription==null) {
 					optionDescription = new ProductOptionDescription();
-					optionDescription.setLanguage(l);
+					System.out.println("$#6242#"); optionDescription.setLanguage(l);
 				}
 				
 				descriptions.add(optionDescription);
@@ -129,7 +129,7 @@ public class OptionsController {
 			for(Language l : languages) {
 				
 				ProductOptionDescription desc = new ProductOptionDescription();
-				desc.setLanguage(l);
+				System.out.println("$#6243#"); desc.setLanguage(l);
 				descriptions.add(desc);
 				
 			}
@@ -137,9 +137,9 @@ public class OptionsController {
 		}
 		
 
-		option.setDescriptions(descriptions);
+		System.out.println("$#6244#"); option.setDescriptions(descriptions);
 		model.addAttribute("option", option);
-		return "catalogue-options-details";
+		System.out.println("$#6245#"); return "catalogue-options-details";
 		
 		
 	}
@@ -151,25 +151,25 @@ public class OptionsController {
 		
 
 		//display menu
-		setMenu(model,request);
+		System.out.println("$#6246#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		ProductOption dbEntity =	null;	
 
-		if(option.getId() != null && option.getId() >0) { //edit entry
+		System.out.println("$#6248#"); System.out.println("$#6247#"); if(option.getId() != null && option.getId() >0) { //edit entry
 			//get from DB
 			dbEntity = productOptionService.getById(option.getId());
 			
-			if(dbEntity==null) {
-				return "redirect:/admin/options/options.html";
+			System.out.println("$#6250#"); if(dbEntity==null) {
+				System.out.println("$#6251#"); return "redirect:/admin/options/options.html";
 			}
 		}
 		
 		//validate if it contains an existing code
 		ProductOption byCode = productOptionService.getByCode(store, option.getCode());
-		if(byCode!=null) {
+		System.out.println("$#6252#"); if(byCode!=null) {
 			ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
-			result.addError(error);
+			System.out.println("$#6253#"); result.addError(error);
 		}
 
 			
@@ -178,37 +178,37 @@ public class OptionsController {
 
 		List<ProductOptionDescription> descriptions = option.getDescriptionsList();
 		
-		if(descriptions!=null) {
+		System.out.println("$#6254#"); if(descriptions!=null) {
 				
 				for(ProductOptionDescription description : descriptions) {
 					
 					String code = description.getLanguage().getCode();
 					Language l = langs.get(code);
-					description.setLanguage(l);
-					description.setProductOption(option);
+					System.out.println("$#6255#"); description.setLanguage(l);
+					System.out.println("$#6256#"); description.setProductOption(option);
 	
 				}
 				
 		}
 			
-		option.setDescriptions(new HashSet<ProductOptionDescription>(descriptions));
-		option.setMerchantStore(store);
+		System.out.println("$#6257#"); option.setDescriptions(new HashSet<ProductOptionDescription>(descriptions));
+		System.out.println("$#6258#"); option.setMerchantStore(store);
 
 		
-		if (result.hasErrors()) {
-			return "catalogue-options-details";
+		System.out.println("$#6259#"); if (result.hasErrors()) {
+			System.out.println("$#6260#"); return "catalogue-options-details";
 		}
 		
 
 		
 		
-		productOptionService.saveOrUpdate(option);
+		System.out.println("$#6261#"); productOptionService.saveOrUpdate(option);
 
 
 		
 
 		model.addAttribute("success","success");
-		return "catalogue-options-details";
+		System.out.println("$#6262#"); return "catalogue-options-details";
 	}
 
 	
@@ -233,7 +233,7 @@ public class OptionsController {
 			
 			List<ProductOption> options = null;
 					
-			if(!StringUtils.isBlank(optionName)) {
+			System.out.println("$#6263#"); if(!StringUtils.isBlank(optionName)) {
 				
 				options = productOptionService.getByName(store, optionName, language);
 				
@@ -255,24 +255,24 @@ public class OptionsController {
 				
 				entry.put("name", description.getName());
 				entry.put("type", option.getProductOptionType());//TODO resolve with option type label
-				resp.addDataEntry(entry);
+				System.out.println("$#6264#"); resp.addDataEntry(entry);
 				
 				
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#6265#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 			
 
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while paging options", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6266#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6267#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#6268#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 		
 		
 	}
@@ -312,29 +312,29 @@ public class OptionsController {
 			
 			ProductOption entity = productOptionService.getById(id);
 
-			if(entity==null || entity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+			System.out.println("$#6269#"); if(entity==null || entity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				System.out.println("$#6271#"); resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				System.out.println("$#6272#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 				
 			} else {
 				
-				productOptionService.delete(entity);
-				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+				System.out.println("$#6273#"); productOptionService.delete(entity);
+				System.out.println("$#6274#"); resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 				
 			}
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting option", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#6275#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#6276#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#6277#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#6278#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 
 }

@@ -74,10 +74,10 @@ public class ShippingDecisionPreProcessorImpl implements ShippingQuotePrePostPro
 		
 		Double distance = null;
 		
-		if(quote!=null) {
+		System.out.println("$#1197#"); if(quote!=null) {
 			//look if distance has been calculated
-			if(quote.getQuoteInformations()!=null) {
-				if(quote.getQuoteInformations().containsKey(Constants.DISTANCE_KEY)) {
+			System.out.println("$#1198#"); if(quote.getQuoteInformations()!=null) {
+				System.out.println("$#1199#"); if(quote.getQuoteInformations().containsKey(Constants.DISTANCE_KEY)) {
 					distance = (Double)quote.getQuoteInformations().get(Constants.DISTANCE_KEY);
 				}
 			}
@@ -89,9 +89,9 @@ public class ShippingDecisionPreProcessorImpl implements ShippingQuotePrePostPro
 		Double size = null;
 		//calculate weight, volume and largest size
 		for(PackageDetails pack : packages) {
-			weight = weight + pack.getShippingWeight();
-			Double tmpVolume = pack.getShippingHeight() * pack.getShippingLength() * pack.getShippingWidth();
-			if(volume == null || tmpVolume.doubleValue() > volume.doubleValue()) { //take the largest volume
+			System.out.println("$#1200#"); weight = weight + pack.getShippingWeight();
+			System.out.println("$#1201#"); Double tmpVolume = pack.getShippingHeight() * pack.getShippingLength() * pack.getShippingWidth();
+			System.out.println("$#1204#"); System.out.println("$#1203#"); if(volume == null || tmpVolume.doubleValue() > volume.doubleValue()) { //take the largest volume
 				volume = tmpVolume;
 			} 
 			//largest size
@@ -100,7 +100,7 @@ public class ShippingDecisionPreProcessorImpl implements ShippingQuotePrePostPro
 			sizeList.add(pack.getShippingLength());
 			sizeList.add(pack.getShippingWidth());
 			Double maxSize = (Double)Collections.max(sizeList);
-			if(size==null || maxSize.doubleValue() > size.doubleValue()) {
+			System.out.println("$#1207#"); System.out.println("$#1206#"); if(size==null || maxSize.doubleValue() > size.doubleValue()) {
 				size = maxSize.doubleValue();
 			}
 		}
@@ -108,32 +108,32 @@ public class ShippingDecisionPreProcessorImpl implements ShippingQuotePrePostPro
 		//Build a ShippingInputParameters
 		ShippingInputParameters inputParameters = new ShippingInputParameters();
 		
-		inputParameters.setWeight((long)weight.doubleValue());
-		inputParameters.setCountry(delivery.getCountry().getIsoCode());
-		if(delivery.getZone()!=null && delivery.getZone().getCode()!=null) {
-			inputParameters.setProvince(delivery.getZone().getCode());
+		System.out.println("$#1209#"); inputParameters.setWeight((long)weight.doubleValue());
+		System.out.println("$#1210#"); inputParameters.setCountry(delivery.getCountry().getIsoCode());
+		System.out.println("$#1211#"); if(delivery.getZone()!=null && delivery.getZone().getCode()!=null) {
+			System.out.println("$#1213#"); inputParameters.setProvince(delivery.getZone().getCode());
 		} else {
-			inputParameters.setProvince(delivery.getState());
+			System.out.println("$#1214#"); inputParameters.setProvince(delivery.getState());
 		}
 		//inputParameters.setModuleName(currentModule.getCode());
 		
 		
-		if(size!=null) {
-			inputParameters.setSize((long)size.doubleValue());
+		System.out.println("$#1215#"); if(size!=null) {
+			System.out.println("$#1216#"); inputParameters.setSize((long)size.doubleValue());
 		}
 		
-		if(distance!=null) {
+		System.out.println("$#1217#"); if(distance!=null) {
 			double ddistance = distance.doubleValue();
 			long ldistance = (long)ddistance;
-			inputParameters.setDistance(ldistance);
+			System.out.println("$#1218#"); inputParameters.setDistance(ldistance);
 		}
 		
-		if(volume!=null) {
-			inputParameters.setVolume((long)volume.doubleValue());
+		System.out.println("$#1219#"); if(volume!=null) {
+			System.out.println("$#1220#"); inputParameters.setVolume((long)volume.doubleValue());
 		}
 		
 		LOGGER.debug("Setting input parameters " + inputParameters.toString());
-		System.out.println(inputParameters.toString());
+		System.out.println("$#1221#"); System.out.println(inputParameters.toString());
 		
 		
 		/**
@@ -145,17 +145,17 @@ public class ShippingDecisionPreProcessorImpl implements ShippingQuotePrePostPro
 		DecisionResponse resp = new DecisionResponse();
 		
         kieSession.insert(inputParameters);
-        kieSession.setGlobal("decision",resp);
+								System.out.println("$#1222#"); kieSession.setGlobal("decision",resp);
         kieSession.fireAllRules();
         //System.out.println(resp.getModuleName());
-        inputParameters.setModuleName(resp.getModuleName());
+								System.out.println("$#1223#"); inputParameters.setModuleName(resp.getModuleName());
 
 		LOGGER.debug("Using shipping nodule " + inputParameters.getModuleName());
 		
-		if(!StringUtils.isBlank(inputParameters.getModuleName())) {
+		System.out.println("$#1224#"); if(!StringUtils.isBlank(inputParameters.getModuleName())) {
 			for(IntegrationModule toBeUsed : allModules) {
-				if(toBeUsed.getCode().equals(inputParameters.getModuleName())) {
-					quote.setCurrentShippingModule(toBeUsed);
+				System.out.println("$#1225#"); if(toBeUsed.getCode().equals(inputParameters.getModuleName())) {
+					System.out.println("$#1226#"); quote.setCurrentShippingModule(toBeUsed);
 					break;
 				}
 			}
@@ -166,7 +166,7 @@ public class ShippingDecisionPreProcessorImpl implements ShippingQuotePrePostPro
 
 	@Override
 	public String getModuleCode() {
-		return MODULE_CODE;
+		System.out.println("$#1227#"); return MODULE_CODE;
 	}
 	
 

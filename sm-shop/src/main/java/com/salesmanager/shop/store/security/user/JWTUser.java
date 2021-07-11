@@ -47,63 +47,63 @@ public class JWTUser implements UserDetails {
 
     @JsonIgnore
     public Long getId() {
-        return id;
+								System.out.println("$#15368#"); return id;
     }
 
     @Override
     public String getUsername() {
-        return username;
+								System.out.println("$#15369#"); return username;
     }
 
     @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+								System.out.println("$#15370#"); return true;
     }
 
     @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+								System.out.println("$#15371#"); return true;
     }
 
     @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+								System.out.println("$#15372#"); return true;
     }
 
     public String getFirstname() {
-        return firstname;
+								System.out.println("$#15373#"); return firstname;
     }
 
     public String getLastname() {
-        return lastname;
+								System.out.println("$#15374#"); return lastname;
     }
 
     public String getEmail() {
-        return email;
+								System.out.println("$#15375#"); return email;
     }
 
     @JsonIgnore
     @Override
     public String getPassword() {
-        return password;
+								System.out.println("$#15376#"); return password;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+								System.out.println("$#15377#"); return authorities;
     }
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+								System.out.println("$#15379#"); System.out.println("$#15378#"); return enabled;
     }
 
     @JsonIgnore
     public Date getLastPasswordResetDate() {
-        return lastPasswordResetDate;
+								System.out.println("$#15380#"); return lastPasswordResetDate;
     }
 
 }

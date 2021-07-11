@@ -58,13 +58,13 @@ public class Description implements Auditable, Serializable {
 	}
 	
 	public Description(Language language, String name) {
-		this.setLanguage(language);
-		this.setName(name);
+		System.out.println("$#4068#"); this.setLanguage(language);
+		System.out.println("$#4069#"); this.setName(name);
 	}
 	
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4070#"); return auditSection;
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class Description implements Auditable, Serializable {
 	}
 
 	public Language getLanguage() {
-		return language;
+		System.out.println("$#4071#"); return language;
 	}
 
 	public void setLanguage(Language language) {
@@ -81,7 +81,7 @@ public class Description implements Auditable, Serializable {
 	}
 
 	public String getName() {
-		return name;
+		System.out.println("$#4072#"); return name;
 	}
 
 	public void setName(String name) {
@@ -89,7 +89,7 @@ public class Description implements Auditable, Serializable {
 	}
 
 	public String getTitle() {
-		return title;
+		System.out.println("$#4073#"); return title;
 	}
 
 	public void setTitle(String title) {
@@ -97,7 +97,7 @@ public class Description implements Auditable, Serializable {
 	}
 
 	public String getDescription() {
-		return description;
+		System.out.println("$#4074#"); return description;
 	}
 
 	public void setDescription(String description) {
@@ -105,7 +105,7 @@ public class Description implements Auditable, Serializable {
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4075#"); return id;
 	}
 
 	public void setId(Long id) {

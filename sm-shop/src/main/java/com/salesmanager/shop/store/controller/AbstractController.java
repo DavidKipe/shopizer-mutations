@@ -24,28 +24,28 @@ public abstract class AbstractController {
      */
     @SuppressWarnings( "unchecked" )
     protected <T> T getSessionAttribute(final String key, HttpServletRequest request) {
-	          return (T) com.salesmanager.shop.utils.SessionUtil.getSessionAttribute(key, request);
+											System.out.println("$#12196#"); return (T) com.salesmanager.shop.utils.SessionUtil.getSessionAttribute(key, request);
 
 	}
     
     protected void setSessionAttribute(final String key, final Object value, HttpServletRequest request) {
-    	com.salesmanager.shop.utils.SessionUtil.setSessionAttribute(key, value, request);
+					System.out.println("$#12197#"); com.salesmanager.shop.utils.SessionUtil.setSessionAttribute(key, value, request);
 	}
     
     
     protected void removeAttribute(final String key, HttpServletRequest request) {
-    	com.salesmanager.shop.utils.SessionUtil.removeSessionAttribute(key, request);
+					System.out.println("$#12198#"); com.salesmanager.shop.utils.SessionUtil.removeSessionAttribute(key, request);
 	}
     
     protected Language getLanguage(HttpServletRequest request) {
-    	return (Language)request.getAttribute(Constants.LANGUAGE);
+					System.out.println("$#12199#"); return (Language)request.getAttribute(Constants.LANGUAGE);
     }
 
     protected PaginationData createPaginaionData( final int pageNumber, final int pageSize )
     {
         final PaginationData paginaionData = new PaginationData(pageSize,pageNumber);
        
-        return paginaionData;
+								System.out.println("$#12200#"); return paginaionData;
     }
     
     protected PaginationData calculatePaginaionData( final PaginationData paginationData, final int pageSize, final int resultCount){
@@ -53,10 +53,10 @@ public abstract class AbstractController {
     	int currentPage = paginationData.getCurrentPage();
 
 
-    	int count = Math.min((currentPage * pageSize), resultCount);  
-    	paginationData.setCountByPage(count);
+					System.out.println("$#12201#"); int count = Math.min((currentPage * pageSize), resultCount);
+					System.out.println("$#12202#"); paginationData.setCountByPage(count);
 
-    	paginationData.setTotalCount( resultCount );
-        return paginationData;
+					System.out.println("$#12203#"); paginationData.setTotalCount( resultCount );
+								System.out.println("$#12204#"); return paginationData;
     }
 }

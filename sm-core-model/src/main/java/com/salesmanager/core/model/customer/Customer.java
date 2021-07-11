@@ -165,7 +165,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4180#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -175,7 +175,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 
 
 	public Date getDateOfBirth() {
-		return CloneUtils.clone(dateOfBirth);
+		System.out.println("$#4181#"); return CloneUtils.clone(dateOfBirth);
 	}
 
 	public void setDateOfBirth(Date dateOfBirth) {
@@ -183,7 +183,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public String getEmailAddress() {
-		return emailAddress;
+		System.out.println("$#4182#"); return emailAddress;
 	}
 
 	public void setEmailAddress(String emailAddress) {
@@ -191,7 +191,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public String getNick() {
-		return nick;
+		System.out.println("$#4183#"); return nick;
 	}
 
 	public void setNick(String nick) {
@@ -199,7 +199,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public String getCompany() {
-		return company;
+		System.out.println("$#4184#"); return company;
 	}
 
 	public void setCompany(String company) {
@@ -209,7 +209,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 
 
 	public String getPassword() {
-		return password;
+		System.out.println("$#4185#"); return password;
 	}
 
 	public void setPassword(String password) {
@@ -219,7 +219,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 
 
 	public boolean isAnonymous() {
-		return anonymous;
+		System.out.println("$#4187#"); System.out.println("$#4186#"); return anonymous;
 	}
 
 	public void setAnonymous(boolean anonymous) {
@@ -228,7 +228,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 
 
 	public List<ProductReview> getReviews() {
-		return reviews;
+		System.out.println("$#4188#"); return reviews;
 	}
 
 	public void setReviews(List<ProductReview> reviews) {
@@ -240,7 +240,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4189#"); return merchantStore;
 	}
 
 	public void setDelivery(Delivery delivery) {
@@ -248,7 +248,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public Delivery getDelivery() {
-		return delivery;
+		System.out.println("$#4190#"); return delivery;
 	}
 
 	public void setBilling(Billing billing) {
@@ -256,7 +256,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public Billing getBilling() {
-		return billing;
+		System.out.println("$#4191#"); return billing;
 	}
 
 	public void setGroups(List<Group> groups) {
@@ -264,10 +264,10 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public List<Group> getGroups() {
-		return groups;
+		System.out.println("$#4192#"); return groups;
 	}
 	public String getShowCustomerStateList() {
-		return showCustomerStateList;
+		System.out.println("$#4193#"); return showCustomerStateList;
 	}
 
 	public void setShowCustomerStateList(String showCustomerStateList) {
@@ -275,7 +275,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public String getShowBillingStateList() {
-		return showBillingStateList;
+		System.out.println("$#4194#"); return showBillingStateList;
 	}
 
 	public void setShowBillingStateList(String showBillingStateList) {
@@ -283,7 +283,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public String getShowDeliveryStateList() {
-		return showDeliveryStateList;
+		System.out.println("$#4195#"); return showDeliveryStateList;
 	}
 
 	public void setShowDeliveryStateList(String showDeliveryStateList) {
@@ -291,7 +291,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 	
 	public Language getDefaultLanguage() {
-		return defaultLanguage;
+		System.out.println("$#4196#"); return defaultLanguage;
 	}
 
 	public void setDefaultLanguage(Language defaultLanguage) {
@@ -303,7 +303,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public Set<CustomerAttribute> getAttributes() {
-		return attributes;
+		System.out.println("$#4197#"); return attributes;
 	}
 
 	public void setGender(CustomerGender gender) {
@@ -311,11 +311,11 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public CustomerGender getGender() {
-		return gender;
+		System.out.println("$#4198#"); return gender;
 	}
 
 	public BigDecimal getCustomerReviewAvg() {
-		return customerReviewAvg;
+		System.out.println("$#4199#"); return customerReviewAvg;
 	}
 
 	public void setCustomerReviewAvg(BigDecimal customerReviewAvg) {
@@ -323,7 +323,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 
 	public Integer getCustomerReviewCount() {
-		return customerReviewCount;
+		System.out.println("$#4200#"); return customerReviewCount;
 	}
 
 	public void setCustomerReviewCount(Integer customerReviewCount) {
@@ -332,7 +332,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4201#"); return auditSection;
 	}
 
 	@Override
@@ -341,7 +341,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> implements Audi
 	}
 	
 	public String getProvider() {
-		return provider;
+		System.out.println("$#4202#"); return provider;
 	}
 
 	public void setProvider(String provider) {

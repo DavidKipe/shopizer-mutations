@@ -69,7 +69,7 @@ public class GCPStaticContentAssetsManagerImpl implements ContentAssetsManager {
       Blob blob = storage.get(BlobId.of(bucketName, nodePath(merchantStoreCode, fileContentType) + contentName));
       LOGGER.info("Content getFile");
 
-      return getOutputContentFile(blob.getContent(BlobSourceOption.generationMatch()));
+						System.out.println("$#89#"); return getOutputContentFile(blob.getContent(BlobSourceOption.generationMatch()));
 
     } catch (Exception e) {
       LOGGER.error("Error while getting file", e);
@@ -91,17 +91,17 @@ public class GCPStaticContentAssetsManagerImpl implements ContentAssetsManager {
 			List<String> fileNames = new ArrayList<String>();
 	
 			for (Blob blob : blobs.iterateAll()) {
-				if (isInsideSubFolder(blob.getName()))
+				System.out.println("$#90#"); if (isInsideSubFolder(blob.getName()))
 				continue;
 				String mimetype = URLConnection.guessContentTypeFromName(blob.getName());
-				if (!StringUtils.isBlank(mimetype)) {
+				System.out.println("$#91#"); if (!StringUtils.isBlank(mimetype)) {
 				fileNames.add(getName(blob.getName()));
 				}
 	
 			}
 	
 			LOGGER.info("Content get file names");
-			return fileNames;
+			System.out.println("$#92#"); return fileNames;
 		} catch (Exception e) {
 			LOGGER.error("Error while getting file names", e);
 			throw new ServiceException(e);
@@ -121,7 +121,7 @@ public class GCPStaticContentAssetsManagerImpl implements ContentAssetsManager {
 			}
 		
 			LOGGER.info("Content get file names");
-			return files;
+			System.out.println("$#93#"); return files;
 		} catch (Exception e) {
 		LOGGER.error("Error while getting file names", e);
 		throw new ServiceException(e);
@@ -155,9 +155,9 @@ public class GCPStaticContentAssetsManagerImpl implements ContentAssetsManager {
 	@Override
 	public void addFiles(String merchantStoreCode, Optional<String> folderPath, List<InputContentFile> inputStaticContentDataList)
 			throws ServiceException {
-		if (CollectionUtils.isNotEmpty(inputStaticContentDataList)) {
+		System.out.println("$#94#"); if (CollectionUtils.isNotEmpty(inputStaticContentDataList)) {
 			for (InputContentFile inputFile : inputStaticContentDataList) {
-				this.addFile(merchantStoreCode, folderPath, inputFile);
+				System.out.println("$#95#"); this.addFile(merchantStoreCode, folderPath, inputFile);
 			}
 		}
 	}
@@ -195,7 +195,7 @@ public class GCPStaticContentAssetsManagerImpl implements ContentAssetsManager {
 
   
 	public CMSManager getCmsManager() {
-		return cmsManager;
+		System.out.println("$#96#"); return cmsManager;
 	}
 
 	public void setCmsManager(CMSManager cmsManager) {
@@ -218,7 +218,7 @@ public class GCPStaticContentAssetsManagerImpl implements ContentAssetsManager {
 	@Override
 	public List<String> listFolders(String merchantStoreCode, Optional<String> folderPath) throws ServiceException {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("$#97#"); return null;
 	}
 
 }

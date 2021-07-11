@@ -13,7 +13,7 @@ public class ReadableProductReview extends ProductReviewEntity implements Serial
 	private static final long serialVersionUID = 1L;
 	private ReadableCustomer customer;
 	public ReadableCustomer getCustomer() {
-		return customer;
+		System.out.println("$#8959#"); return customer;
 	}
 	public void setCustomer(ReadableCustomer customer) {
 		this.customer = customer;

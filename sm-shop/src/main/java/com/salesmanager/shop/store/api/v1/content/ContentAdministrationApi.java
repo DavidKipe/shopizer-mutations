@@ -87,7 +87,7 @@ public class ContentAdministrationApi {
 		List<ImageFile> files = folder.getContent().stream().map(x -> convertToImageFile(merchantStore, x))
 				.collect(Collectors.toList());
 
-		return files;
+		System.out.println("$#11562#"); return files;
 	}
 	
 	/**
@@ -105,7 +105,7 @@ public class ContentAdministrationApi {
 			@ApiIgnore MerchantStore merchantStore, 
 			@ApiIgnore Language language) throws Exception {
 		String decodedPath = decodeContentPath(path);
-		return contentFacade.getContentFolder(decodedPath, merchantStore);
+		System.out.println("$#11563#"); return contentFacade.getContentFolder(decodedPath, merchantStore);
 	}
 	
 	
@@ -132,19 +132,19 @@ public class ContentAdministrationApi {
 			@ApiIgnore Language language) {
 
 			ContentFile cf = new ContentFile();
-			cf.setContentType(qqfile.getContentType());
-			cf.setName(qqfilename);
+			System.out.println("$#11564#"); cf.setContentType(qqfile.getContentType());
+			System.out.println("$#11565#"); cf.setName(qqfilename);
 			try {
-				cf.setFile(qqfile.getBytes());
-				contentFacade.addContentFile(cf, merchantStore.getCode());
-				return new FileStatus();
+				System.out.println("$#11566#"); cf.setFile(qqfile.getBytes());
+				System.out.println("$#11567#"); contentFacade.addContentFile(cf, merchantStore.getCode());
+				System.out.println("$#11568#"); return new FileStatus();
 			} catch (IOException e) {
 				//throw new ServiceRuntimeException("Error while getting file bytes");
 				LOGGER.error("Error when uploadging file",e);
 				FileStatus fs = new FileStatus();
-				fs.setError(e.getMessage());
-				fs.setSuccess(false);
-				return fs;
+				System.out.println("$#11569#"); fs.setError(e.getMessage());
+				System.out.println("$#11570#"); fs.setSuccess(false);
+				System.out.println("$#11571#"); return fs;
 			}
 
 	}
@@ -156,12 +156,12 @@ public class ContentAdministrationApi {
 			@RequestParam(value = "path", required = true) String path,
 			@ApiIgnore MerchantStore merchantStore, 
 			@ApiIgnore Language language) {
-		String fileName = path.substring(path.lastIndexOf("/")+1, path.length());
+		System.out.println("$#11572#"); String fileName = path.substring(path.lastIndexOf("/")+1, path.length());
 		try {
 	    
 			//OutputContentFile file = contentFacade.download(merchantStore, FileContentType.IMAGE, fileName);
 			//return file.getFile().toByteArray();
-			return "https://s3.ca-central-1.amazonaws.com/shopizer-carl/files/DEFAULT/85.jpg";
+			System.out.println("$#11573#"); return "https://s3.ca-central-1.amazonaws.com/shopizer-carl/files/DEFAULT/85.jpg";
 		} catch (Exception e) {
 			//throw new ServiceRuntimeException("Error while getting file bytes");
 			LOGGER.error("Error when renaming file",e);
@@ -183,16 +183,16 @@ public class ContentAdministrationApi {
 
 		try {
 			
-			String fileName = path.substring(path.lastIndexOf("/")+1, path.length());
-			contentFacade.renameFile(merchantStore, FileContentType.IMAGE, fileName, newName);
-			return new FileStatus();
+			System.out.println("$#11574#"); String fileName = path.substring(path.lastIndexOf("/")+1, path.length());
+			System.out.println("$#11575#"); contentFacade.renameFile(merchantStore, FileContentType.IMAGE, fileName, newName);
+			System.out.println("$#11576#"); return new FileStatus();
 		} catch (Exception e) {
 			//throw new ServiceRuntimeException("Error while getting file bytes");
 			LOGGER.error("Error when renaming file",e);
 			FileStatus fs = new FileStatus();
-			fs.setError(e.getMessage());
-			fs.setSuccess(false);
-			return fs;
+			System.out.println("$#11577#"); fs.setError(e.getMessage());
+			System.out.println("$#11578#"); fs.setSuccess(false);
+			System.out.println("$#11579#"); return fs;
 		}
 
 	}
@@ -209,16 +209,16 @@ public class ContentAdministrationApi {
 
 		try {
 			
-			String fileName = path.substring(path.lastIndexOf("/")+1, path.length());
-			contentFacade.delete(merchantStore, fileName, FileContentType.IMAGE.name());
-			return new FileStatus();
+			System.out.println("$#11580#"); String fileName = path.substring(path.lastIndexOf("/")+1, path.length());
+			System.out.println("$#11581#"); contentFacade.delete(merchantStore, fileName, FileContentType.IMAGE.name());
+			System.out.println("$#11582#"); return new FileStatus();
 		} catch (Exception e) {
 			//throw new ServiceRuntimeException("Error while getting file bytes");
 			LOGGER.error("Error when renaming file",e);
 			FileStatus fs = new FileStatus();
-			fs.setError(e.getMessage());
-			fs.setSuccess(false);
-			return fs;
+			System.out.println("$#11583#"); fs.setError(e.getMessage());
+			System.out.println("$#11584#"); fs.setSuccess(false);
+			System.out.println("$#11585#"); return fs;
 		}
 
 	}
@@ -226,28 +226,28 @@ public class ContentAdministrationApi {
 
 	private ImageFile convertToImageFile(MerchantStore store, Content content) {
 		ImageFile f = new ImageFile();
-		f.setDir(false);
-		f.setId(imageUtils.buildStaticImageUtils(store, content.getName()));
-		f.setName(content.getName());
-		f.setUrl(imageUtils.buildStaticImageUtils(store, content.getName()));
-		f.setPath("image.png");
-		f.setSize(null);
-		return f;
+		System.out.println("$#11586#"); f.setDir(false);
+		System.out.println("$#11587#"); f.setId(imageUtils.buildStaticImageUtils(store, content.getName()));
+		System.out.println("$#11588#"); f.setName(content.getName());
+		System.out.println("$#11589#"); f.setUrl(imageUtils.buildStaticImageUtils(store, content.getName()));
+		System.out.println("$#11590#"); f.setPath("image.png");
+		System.out.println("$#11591#"); f.setSize(null);
+		System.out.println("$#11592#"); return f;
 	}
 
 	private ImageFile convertToFolder(String folder) {
 		ImageFile f = new ImageFile();
-		f.setDir(true);
-		f.setId(UUID.randomUUID().toString());
-		f.setName(DEFAULT_PATH + "images");
-		f.setUrl(DEFAULT_PATH + "images");
-		f.setPath(DEFAULT_PATH + "images");
-		return f;
+		System.out.println("$#11593#"); f.setDir(true);
+		System.out.println("$#11594#"); f.setId(UUID.randomUUID().toString());
+		System.out.println("$#11595#"); f.setName(DEFAULT_PATH + "images");
+		System.out.println("$#11596#"); f.setUrl(DEFAULT_PATH + "images");
+		System.out.println("$#11597#"); f.setPath(DEFAULT_PATH + "images");
+		System.out.println("$#11598#"); return f;
 	}
 	
 	private String decodeContentPath(String path) throws UnsupportedEncodingException {
 		try {
-			return StringUtils.isBlank(path) || path.contains("/images") ? "/" : URLDecoder.decode(path.replaceAll(",",""), "UTF-8");
+			System.out.println("$#11600#"); System.out.println("$#11599#"); return StringUtils.isBlank(path) || path.contains("/images") ? "/" : URLDecoder.decode(path.replaceAll(",",""), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			throw new RestApiException(e);
 		}
@@ -264,19 +264,19 @@ public class ContentAdministrationApi {
 		private String error = null;
 		private boolean preventRetry = true;
 		public boolean isSuccess() {
-			return success;
+			System.out.println("$#11603#"); System.out.println("$#11602#"); return success;
 		}
 		public void setSuccess(boolean success) {
 			this.success = success;
 		}
 		public String getError() {
-			return error;
+			System.out.println("$#11604#"); return error;
 		}
 		public void setError(String error) {
 			this.error = error;
 		}
 		public boolean isPreventRetry() {
-			return preventRetry;
+			System.out.println("$#11606#"); System.out.println("$#11605#"); return preventRetry;
 		}
 		public void setPreventRetry(boolean preventRetry) {
 			this.preventRetry = preventRetry;
@@ -288,7 +288,7 @@ public class ContentAdministrationApi {
 	class ImageFile implements Serializable {
 
 		public String getUrl() {
-			return url;
+			System.out.println("$#11607#"); return url;
 		}
 
 		public void setUrl(String url) {
@@ -296,7 +296,7 @@ public class ContentAdministrationApi {
 		}
 
 		public String getName() {
-			return name;
+			System.out.println("$#11608#"); return name;
 		}
 
 		public void setName(String name) {
@@ -304,7 +304,7 @@ public class ContentAdministrationApi {
 		}
 
 		public String getSize() {
-			return size;
+			System.out.println("$#11609#"); return size;
 		}
 
 		public void setSize(String size) {
@@ -312,7 +312,7 @@ public class ContentAdministrationApi {
 		}
 
 		public boolean isDir() {
-			return dir;
+			System.out.println("$#11611#"); System.out.println("$#11610#"); return dir;
 		}
 
 		public void setDir(boolean dir) {
@@ -320,7 +320,7 @@ public class ContentAdministrationApi {
 		}
 
 		public String getPath() {
-			return path;
+			System.out.println("$#11612#"); return path;
 		}
 
 		public void setPath(String path) {
@@ -328,7 +328,7 @@ public class ContentAdministrationApi {
 		}
 
 		public String getId() {
-			return id;
+			System.out.println("$#11613#"); return id;
 		}
 
 		public void setId(String id) {

@@ -39,7 +39,7 @@ public class ContentFiles implements Serializable
     //@Valid
     public List<MultipartFile> getFile()
     {
-        return file;
+								System.out.println("$#7797#"); return file;
     }
 
 	public void setFileName(String fileName) {
@@ -47,7 +47,7 @@ public class ContentFiles implements Serializable
 	}
 
 	public String getFileName() {
-		return fileName;
+		System.out.println("$#7798#"); return fileName;
 	}
 
     

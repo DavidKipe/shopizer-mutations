@@ -11,13 +11,13 @@ public class TaxRateEntity extends Entity {
 	private int priority;
 	private String code;
 	public int getPriority() {
-		return priority;
+		System.out.println("$#9425#"); return priority;
 	}
 	public void setPriority(int priority) {
 		this.priority = priority;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#9426#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;

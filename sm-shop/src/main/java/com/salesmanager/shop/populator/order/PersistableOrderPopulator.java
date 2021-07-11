@@ -52,13 +52,13 @@ public class PersistableOrderPopulator extends
 			MerchantStore store, Language language) throws ConversionException {
 		
 		
-		Validate.notNull(productService,"productService must be set");
-		Validate.notNull(digitalProductService,"digitalProductService must be set");
-		Validate.notNull(productAttributeService,"productAttributeService must be set");
-		Validate.notNull(customerService,"customerService must be set");
-		Validate.notNull(countryService,"countryService must be set");
-		Validate.notNull(zoneService,"zoneService must be set");
-		Validate.notNull(currencyService,"currencyService must be set");
+		System.out.println("$#10552#"); Validate.notNull(productService,"productService must be set");
+		System.out.println("$#10553#"); Validate.notNull(digitalProductService,"digitalProductService must be set");
+		System.out.println("$#10554#"); Validate.notNull(productAttributeService,"productAttributeService must be set");
+		System.out.println("$#10555#"); Validate.notNull(customerService,"customerService must be set");
+		System.out.println("$#10556#"); Validate.notNull(countryService,"countryService must be set");
+		System.out.println("$#10557#"); Validate.notNull(zoneService,"zoneService must be set");
+		System.out.println("$#10558#"); Validate.notNull(currencyService,"currencyService must be set");
 
 		try {
 			
@@ -67,32 +67,32 @@ public class PersistableOrderPopulator extends
 			Map<String,Zone> zonesMap = zoneService.getZones(language);
 			/** customer **/
 			PersistableCustomer customer = source.getCustomer();
-			if(customer!=null) {
-				if(customer.getId()!=null && customer.getId()>0) {
+			System.out.println("$#10559#"); if(customer!=null) {
+				System.out.println("$#10561#"); System.out.println("$#10560#"); if(customer.getId()!=null && customer.getId()>0) {
 					Customer modelCustomer = customerService.getById(customer.getId());
-					if(modelCustomer==null) {
+					System.out.println("$#10563#"); if(modelCustomer==null) {
 						throw new ConversionException("Customer id " + customer.getId() + " does not exists");
 					}
-					if(modelCustomer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+					System.out.println("$#10564#"); if(modelCustomer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 						throw new ConversionException("Customer id " + customer.getId() + " does not exists for store " + store.getCode());
 					}
-					target.setCustomerId(modelCustomer.getId());
-					target.setBilling(modelCustomer.getBilling());
-					target.setDelivery(modelCustomer.getDelivery());
-					target.setCustomerEmailAddress(source.getCustomer().getEmailAddress());
+					System.out.println("$#10565#"); target.setCustomerId(modelCustomer.getId());
+					System.out.println("$#10566#"); target.setBilling(modelCustomer.getBilling());
+					System.out.println("$#10567#"); target.setDelivery(modelCustomer.getDelivery());
+					System.out.println("$#10568#"); target.setCustomerEmailAddress(source.getCustomer().getEmailAddress());
 
 
 					
 				} 
 			}
 			
-			target.setLocale(LocaleUtils.getLocale(store));
+			System.out.println("$#10569#"); target.setLocale(LocaleUtils.getLocale(store));
 			
 			CreditCard creditCard = source.getCreditCard();
-			if(creditCard!=null) {
+			System.out.println("$#10570#"); if(creditCard!=null) {
 				String maskedNumber = CreditCardUtils.maskCardNumber(creditCard.getCcNumber());
-				creditCard.setCcNumber(maskedNumber);
-				target.setCreditCard(creditCard);
+				System.out.println("$#10571#"); creditCard.setCcNumber(maskedNumber);
+				System.out.println("$#10572#"); target.setCreditCard(creditCard);
 			}
 			
 			Currency currency = null;
@@ -102,47 +102,47 @@ public class PersistableOrderPopulator extends
 				throw new ConversionException("Currency not found for code " + source.getCurrency());
 			}
 			
-			if(currency==null) {
+			System.out.println("$#10573#"); if(currency==null) {
 				throw new ConversionException("Currency not found for code " + source.getCurrency());
 			}
 			
-			target.setCurrency(currency);
-			target.setDatePurchased(source.getDatePurchased());
+			System.out.println("$#10574#"); target.setCurrency(currency);
+			System.out.println("$#10575#"); target.setDatePurchased(source.getDatePurchased());
 			//target.setCurrency(store.getCurrency());
-			target.setCurrencyValue(new BigDecimal(0));
-			target.setMerchant(store);
-			target.setStatus(source.getOrderStatus());
-			target.setPaymentModuleCode(source.getPaymentModule());
-			target.setPaymentType(source.getPaymentType());
-			target.setShippingModuleCode(source.getShippingModule());
-			target.setCustomerAgreement(source.isCustomerAgreed());
-			target.setConfirmedAddress(source.isConfirmedAddress());
-			if(source.getPreviousOrderStatus()!=null) {
+			System.out.println("$#10576#"); target.setCurrencyValue(new BigDecimal(0));
+			System.out.println("$#10577#"); target.setMerchant(store);
+			System.out.println("$#10578#"); target.setStatus(source.getOrderStatus());
+			System.out.println("$#10579#"); target.setPaymentModuleCode(source.getPaymentModule());
+			System.out.println("$#10580#"); target.setPaymentType(source.getPaymentType());
+			System.out.println("$#10581#"); target.setShippingModuleCode(source.getShippingModule());
+			System.out.println("$#10582#"); target.setCustomerAgreement(source.isCustomerAgreed());
+			System.out.println("$#10583#"); target.setConfirmedAddress(source.isConfirmedAddress());
+			System.out.println("$#10584#"); if(source.getPreviousOrderStatus()!=null) {
 				List<OrderStatus> orderStatusList = source.getPreviousOrderStatus();
 				for(OrderStatus status : orderStatusList) {
 					OrderStatusHistory statusHistory = new OrderStatusHistory();
-					statusHistory.setStatus(status);
-					statusHistory.setOrder(target);
+					System.out.println("$#10585#"); statusHistory.setStatus(status);
+					System.out.println("$#10586#"); statusHistory.setOrder(target);
 					target.getOrderHistory().add(statusHistory);
 				}
 			}
 			
-			if(!StringUtils.isBlank(source.getComments())) {
+			System.out.println("$#10587#"); if(!StringUtils.isBlank(source.getComments())) {
 				OrderStatusHistory statusHistory = new OrderStatusHistory();
-				statusHistory.setStatus(null);
-				statusHistory.setOrder(target);
-				statusHistory.setComments(source.getComments());
+				System.out.println("$#10588#"); statusHistory.setStatus(null);
+				System.out.println("$#10589#"); statusHistory.setOrder(target);
+				System.out.println("$#10590#"); statusHistory.setComments(source.getComments());
 				target.getOrderHistory().add(statusHistory);
 			}
 			
 			List<PersistableOrderProduct> products = source.getOrderProductItems();
-			if(CollectionUtils.isEmpty(products)) {
+			System.out.println("$#10591#"); if(CollectionUtils.isEmpty(products)) {
 				throw new ConversionException("Requires at least 1 PersistableOrderProduct");
 			}
 			com.salesmanager.shop.populator.order.PersistableOrderProductPopulator orderProductPopulator = new PersistableOrderProductPopulator();
-			orderProductPopulator.setProductAttributeService(productAttributeService);
-			orderProductPopulator.setProductService(productService);
-			orderProductPopulator.setDigitalProductService(digitalProductService);
+			System.out.println("$#10592#"); orderProductPopulator.setProductAttributeService(productAttributeService);
+			System.out.println("$#10593#"); orderProductPopulator.setProductService(productService);
+			System.out.println("$#10594#"); orderProductPopulator.setDigitalProductService(digitalProductService);
 			
 			for(PersistableOrderProduct orderProduct : products) {
 				OrderProduct modelOrderProduct = new OrderProduct();
@@ -151,14 +151,14 @@ public class PersistableOrderPopulator extends
 			}
 			
 			List<OrderTotal> orderTotals = source.getTotals();
-			if(CollectionUtils.isNotEmpty(orderTotals)) {
+			System.out.println("$#10595#"); if(CollectionUtils.isNotEmpty(orderTotals)) {
 				for(OrderTotal total : orderTotals) {
 					com.salesmanager.core.model.order.OrderTotal totalModel = new com.salesmanager.core.model.order.OrderTotal();
-					totalModel.setModule(total.getModule());
-					totalModel.setOrder(target);
-					totalModel.setOrderTotalCode(total.getCode());
-					totalModel.setTitle(total.getTitle());
-					totalModel.setValue(total.getValue());
+					System.out.println("$#10596#"); totalModel.setModule(total.getModule());
+					System.out.println("$#10597#"); totalModel.setOrder(target);
+					System.out.println("$#10598#"); totalModel.setOrderTotalCode(total.getCode());
+					System.out.println("$#10599#"); totalModel.setTitle(total.getTitle());
+					System.out.println("$#10600#"); totalModel.setValue(total.getValue());
 					target.getOrderTotal().add(totalModel);
 				}
 			}
@@ -168,7 +168,7 @@ public class PersistableOrderPopulator extends
 		}
 		
 		
-		return target;
+		System.out.println("$#10601#"); return target;
 	}
 
 	@Override
@@ -181,7 +181,7 @@ public class PersistableOrderPopulator extends
 	}
 
 	public ProductService getProductService() {
-		return productService;
+		System.out.println("$#10602#"); return productService;
 	}
 
 	public void setDigitalProductService(DigitalProductService digitalProductService) {
@@ -189,7 +189,7 @@ public class PersistableOrderPopulator extends
 	}
 
 	public DigitalProductService getDigitalProductService() {
-		return digitalProductService;
+		System.out.println("$#10603#"); return digitalProductService;
 	}
 
 	public void setProductAttributeService(ProductAttributeService productAttributeService) {
@@ -197,11 +197,11 @@ public class PersistableOrderPopulator extends
 	}
 
 	public ProductAttributeService getProductAttributeService() {
-		return productAttributeService;
+		System.out.println("$#10604#"); return productAttributeService;
 	}
 	
 	public CustomerService getCustomerService() {
-		return customerService;
+		System.out.println("$#10605#"); return customerService;
 	}
 
 	public void setCustomerService(CustomerService customerService) {
@@ -209,7 +209,7 @@ public class PersistableOrderPopulator extends
 	}
 
 	public CountryService getCountryService() {
-		return countryService;
+		System.out.println("$#10606#"); return countryService;
 	}
 
 	public void setCountryService(CountryService countryService) {
@@ -217,7 +217,7 @@ public class PersistableOrderPopulator extends
 	}
 
 	public CurrencyService getCurrencyService() {
-		return currencyService;
+		System.out.println("$#10607#"); return currencyService;
 	}
 
 	public void setCurrencyService(CurrencyService currencyService) {
@@ -225,7 +225,7 @@ public class PersistableOrderPopulator extends
 	}
 
 	public ZoneService getZoneService() {
-		return zoneService;
+		System.out.println("$#10608#"); return zoneService;
 	}
 
 	public void setZoneService(ZoneService zoneService) {

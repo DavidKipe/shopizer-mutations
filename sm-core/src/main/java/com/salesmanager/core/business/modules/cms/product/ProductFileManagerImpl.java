@@ -43,7 +43,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
 
 
   public CoreConfiguration getConfiguration() {
-    return configuration;
+				System.out.println("$#315#"); return configuration;
   }
 
 
@@ -53,7 +53,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
 
 
   public ProductImageRemove getRemoveImage() {
-    return removeImage;
+				System.out.println("$#316#"); return removeImage;
   }
 
 
@@ -75,10 +75,10 @@ public class ProductFileManagerImpl extends ProductFileManager {
       // And please, unlike me, do something about the Exceptions :D
       byte[] buffer = new byte[1024];
       int len;
-      while ((len = contentImage.getFile().read(buffer)) > -1) {
-        baos.write(buffer, 0, len);
+						System.out.println("$#318#"); System.out.println("$#317#"); while ((len = contentImage.getFile().read(buffer)) > -1) {
+								System.out.println("$#319#"); baos.write(buffer, 0, len);
       }
-      baos.flush();
+						System.out.println("$#320#"); baos.flush();
 
       // Open new InputStreams using the recorded bytes
       // Can be repeated as many times as you wish
@@ -88,18 +88,18 @@ public class ProductFileManagerImpl extends ProductFileManager {
       BufferedImage bufferedImage = ImageIO.read(is2);
 
 
-      if (bufferedImage == null) {
+						System.out.println("$#321#"); if (bufferedImage == null) {
         LOGGER.error("Cannot read image format for " + productImage.getProductImage());
         throw new Exception("Cannot read image format " + productImage.getProductImage());
       }
 
       // contentImage.setBufferedImage(bufferedImage);
-      contentImage.setFile(is1);
+						System.out.println("$#322#"); contentImage.setFile(is1);
 
 
       // upload original -- L
-      contentImage.setFileContentType(FileContentType.PRODUCTLG);
-      uploadImage.addProductImage(productImage, contentImage);
+						System.out.println("$#323#"); contentImage.setFileContentType(FileContentType.PRODUCTLG);
+						System.out.println("$#324#"); uploadImage.addProductImage(productImage, contentImage);
 
       /*
        * //default large InputContentImage largeContentImage = new
@@ -134,7 +134,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
       // String ssmallImageWidth = configuration.getProperty("SMALL_IMAGE_WIDTH_SIZE");
 
       //Resizes
-      if (!StringUtils.isBlank(slargeImageHeight) && !StringUtils.isBlank(slargeImageWidth)) { // &&
+						System.out.println("$#325#"); if (!StringUtils.isBlank(slargeImageHeight) && !StringUtils.isBlank(slargeImageWidth)) { // &&
                                                                                                // !StringUtils.isBlank(ssmallImageHeight)
                                                                                                // &&
                                                                                                // !StringUtils.isBlank(ssmallImageWidth))
@@ -145,11 +145,11 @@ public class ProductFileManagerImpl extends ProductFileManager {
 
         String contentType = fileNameMap.getContentTypeFor(contentImage.getFileName());
         String extension = null;
-        if (contentType != null) {
-          extension = contentType.substring(contentType.indexOf('/') + 1, contentType.length());
+								System.out.println("$#327#"); if (contentType != null) {
+										System.out.println("$#328#"); extension = contentType.substring(contentType.indexOf('/') + 1, contentType.length());
         }
 
-        if (extension == null) {
+								System.out.println("$#329#"); if (extension == null) {
           extension = "jpeg";
         }
 
@@ -157,7 +157,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
         int largeImageHeight = Integer.parseInt(slargeImageHeight);
         int largeImageWidth = Integer.parseInt(slargeImageWidth);
 
-        if (largeImageHeight <= 0 || largeImageWidth <= 0) {
+								System.out.println("$#332#"); System.out.println("$#330#"); if (largeImageHeight <= 0 || largeImageWidth <= 0) {
           String sizeMsg =
               "Image configuration set to an invalid value [PRODUCT_IMAGE_HEIGHT_SIZE] "
                   + largeImageHeight + " , [PRODUCT_IMAGE_WIDTH_SIZE] " + largeImageWidth;
@@ -165,12 +165,12 @@ public class ProductFileManagerImpl extends ProductFileManager {
           throw new ServiceException(sizeMsg);
         }
 
-        if (!StringUtils.isBlank(configuration.getProperty(CROP_UPLOADED_IMAGES))
+								System.out.println("$#334#"); if (!StringUtils.isBlank(configuration.getProperty(CROP_UPLOADED_IMAGES))
             && configuration.getProperty(CROP_UPLOADED_IMAGES).equals(Constants.TRUE)) {
           // crop image
           ProductImageCropUtils utils =
               new ProductImageCropUtils(bufferedImage, largeImageWidth, largeImageHeight);
-          if (utils.isCropeable()) {
+										System.out.println("$#336#"); if (utils.isCropeable()) {
             bufferedImage = utils.getCroppedImage();
           }
         }
@@ -195,9 +195,9 @@ public class ProductFileManagerImpl extends ProductFileManager {
 
 
         ImageContentFile largeContentImage = new ImageContentFile();
-        largeContentImage.setFileContentType(FileContentType.PRODUCT);
-        largeContentImage.setFileName(productImage.getProductImage());
-        largeContentImage.setFile(isLarge);
+								System.out.println("$#337#"); largeContentImage.setFileContentType(FileContentType.PRODUCT);
+								System.out.println("$#338#"); largeContentImage.setFileName(productImage.getProductImage());
+								System.out.println("$#339#"); largeContentImage.setFile(isLarge);
 
 
         // largeContentImage.setBufferedImage(bufferedImage);
@@ -208,7 +208,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
         // StringBuilder().append("L-").append(productImage.getProductImage()).toString());
 
 
-        uploadImage.addProductImage(productImage, largeContentImage);
+								System.out.println("$#340#"); uploadImage.addProductImage(productImage, largeContentImage);
 
         // output.flush();
         // output.close();
@@ -248,8 +248,8 @@ public class ProductFileManagerImpl extends ProductFileManager {
     }
       } else {
         // small will be the same as the original
-        contentImage.setFileContentType(FileContentType.PRODUCT);
-        uploadImage.addProductImage(productImage, contentImage);
+								System.out.println("$#341#"); contentImage.setFileContentType(FileContentType.PRODUCT);
+								System.out.println("$#342#"); uploadImage.addProductImage(productImage, contentImage);
       }
 
 
@@ -258,7 +258,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
       throw new ServiceException(e);
     } finally {
       try {
-        productImage.getImage().close();
+								System.out.println("$#343#"); productImage.getImage().close();
       } catch (Exception ignore) {
       }
     }
@@ -268,7 +268,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
 
   public OutputContentFile getProductImage(ProductImage productImage) throws ServiceException {
     // will return original
-    return getImage.getProductImage(productImage);
+				System.out.println("$#344#"); return getImage.getProductImage(productImage);
   }
 
 
@@ -276,12 +276,12 @@ public class ProductFileManagerImpl extends ProductFileManager {
   public List<OutputContentFile> getImages(final String merchantStoreCode,
       FileContentType imageContentType) throws ServiceException {
     // will return original
-    return getImage.getImages(merchantStoreCode, FileContentType.PRODUCT);
+				System.out.println("$#345#"); return getImage.getImages(merchantStoreCode, FileContentType.PRODUCT);
   }
 
   @Override
   public List<OutputContentFile> getImages(Product product) throws ServiceException {
-    return getImage.getImages(product);
+				System.out.println("$#346#"); return getImage.getImages(product);
   }
 
 
@@ -289,7 +289,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
   @Override
   public void removeProductImage(ProductImage productImage) throws ServiceException {
 
-    this.removeImage.removeProductImage(productImage);
+				System.out.println("$#347#"); this.removeImage.removeProductImage(productImage);
 
     /*
      * ProductImage large = new ProductImage(); large.setProduct(productImage.getProduct());
@@ -309,7 +309,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
   @Override
   public void removeProductImages(Product product) throws ServiceException {
 
-    this.removeImage.removeProductImages(product);
+				System.out.println("$#348#"); this.removeImage.removeProductImages(product);
 
   }
 
@@ -317,13 +317,13 @@ public class ProductFileManagerImpl extends ProductFileManager {
   @Override
   public void removeImages(final String merchantStoreCode) throws ServiceException {
 
-    this.removeImage.removeImages(merchantStoreCode);
+				System.out.println("$#349#"); this.removeImage.removeImages(merchantStoreCode);
 
   }
 
 
   public ProductImagePut getUploadImage() {
-    return uploadImage;
+				System.out.println("$#350#"); return uploadImage;
   }
 
 
@@ -334,7 +334,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
 
 
   public ProductImageGet getGetImage() {
-    return getImage;
+				System.out.println("$#351#"); return getImage;
   }
 
 
@@ -346,7 +346,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
   @Override
   public OutputContentFile getProductImage(String merchantStoreCode, String productCode,
       String imageName) throws ServiceException {
-    return getImage.getProductImage(merchantStoreCode, productCode, imageName);
+				System.out.println("$#352#"); return getImage.getProductImage(merchantStoreCode, productCode, imageName);
   }
 
 
@@ -354,7 +354,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
   @Override
   public OutputContentFile getProductImage(String merchantStoreCode, String productCode,
       String imageName, ProductImageSize size) throws ServiceException {
-    return getImage.getProductImage(merchantStoreCode, productCode, imageName, size);
+				System.out.println("$#353#"); return getImage.getProductImage(merchantStoreCode, productCode, imageName, size);
   }
 
 

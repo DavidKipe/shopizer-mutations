@@ -23,7 +23,7 @@ public class CountryFacadeImpl implements CountryFacade {
 
   @Override
   public List<ReadableCountry> getListCountryZones(Language language, MerchantStore merchantStore) {
-    return getListOfCountryZones(language)
+				System.out.println("$#12318#"); return getListOfCountryZones(language)
         .stream()
         .map(country -> convertToReadableCountry(country, language, merchantStore))
         .collect(Collectors.toList());
@@ -32,7 +32,7 @@ public class CountryFacadeImpl implements CountryFacade {
   private ReadableCountry convertToReadableCountry(Country country, Language language, MerchantStore merchantStore) {
     try{
       ReadableCountryPopulator populator = new ReadableCountryPopulator();
-      return populator.populate(country, new ReadableCountry(), merchantStore, language);
+						System.out.println("$#12320#"); return populator.populate(country, new ReadableCountry(), merchantStore, language);
     } catch (ConversionException e) {
       throw new ConversionRuntimeException(e);
     }
@@ -40,7 +40,7 @@ public class CountryFacadeImpl implements CountryFacade {
 
   private List<Country> getListOfCountryZones(Language language) {
     try{
-      return countryService.listCountryZones(language);
+						System.out.println("$#12321#"); return countryService.listCountryZones(language);
     } catch (ServiceException e) {
       throw new ServiceRuntimeException(e);
     }

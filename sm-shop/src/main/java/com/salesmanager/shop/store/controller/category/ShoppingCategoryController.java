@@ -115,7 +115,7 @@ public class ShoppingCategoryController {
 		
 		
 		
-		return this.displayCategory(friendlyUrl,ref,model,request,response,locale);
+		System.out.println("$#12205#"); return this.displayCategory(friendlyUrl,ref,model,request,response,locale);
 	}
 	
 
@@ -132,7 +132,7 @@ public class ShoppingCategoryController {
 	@RequestMapping("/shop/category/{friendlyUrl}.html")
 	public String displayCategoryNoReference(@PathVariable final String friendlyUrl, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
-		return this.displayCategory(friendlyUrl,null,model,request,response,locale);
+		System.out.println("$#12206#"); return this.displayCategory(friendlyUrl,null,model,request,response,locale);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -141,45 +141,45 @@ public class ShoppingCategoryController {
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		
 		//set ref as request attribute
-		request.setAttribute("ref", ref);
+		System.out.println("$#12207#"); request.setAttribute("ref", ref);
 
 		//get category
 		Category category = categoryService.getBySeUrl(store, friendlyUrl);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
-		if(category==null) {
+		System.out.println("$#12208#"); if(category==null) {
 			LOGGER.error("No category found for friendlyUrl " + friendlyUrl);
 			//redirect on page not found
-			return PageBuilderUtils.build404(store);
+			System.out.println("$#12209#"); return PageBuilderUtils.build404(store);
 			
 		}
 		
-		if(!category.isVisible()) {
-			return PageBuilderUtils.buildHomePage(store);
+		System.out.println("$#12210#"); if(!category.isVisible()) {
+			System.out.println("$#12211#"); return PageBuilderUtils.buildHomePage(store);
 		}
 		
 		ReadableCategoryPopulator populator = new ReadableCategoryPopulator();
 		ReadableCategory categoryProxy = populator.populate(category, new ReadableCategory(), store, language);
 
 		Breadcrumb breadCrumb = breadcrumbsUtils.buildCategoryBreadcrumb(categoryProxy, store, language, request.getContextPath());
-		request.getSession().setAttribute(Constants.BREADCRUMB, breadCrumb);
-		request.setAttribute(Constants.BREADCRUMB, breadCrumb);
+		System.out.println("$#12212#"); request.getSession().setAttribute(Constants.BREADCRUMB, breadCrumb);
+		System.out.println("$#12213#"); request.setAttribute(Constants.BREADCRUMB, breadCrumb);
 		
 		
 		//meta information
 		PageInformation pageInformation = new PageInformation();
-		pageInformation.setPageDescription(categoryProxy.getDescription().getMetaDescription());
-		pageInformation.setPageKeywords(categoryProxy.getDescription().getKeyWords());
-		pageInformation.setPageTitle(categoryProxy.getDescription().getTitle());
-		pageInformation.setPageUrl(categoryProxy.getDescription().getFriendlyUrl());
+		System.out.println("$#12214#"); pageInformation.setPageDescription(categoryProxy.getDescription().getMetaDescription());
+		System.out.println("$#12215#"); pageInformation.setPageKeywords(categoryProxy.getDescription().getKeyWords());
+		System.out.println("$#12216#"); pageInformation.setPageTitle(categoryProxy.getDescription().getTitle());
+		System.out.println("$#12217#"); pageInformation.setPageUrl(categoryProxy.getDescription().getFriendlyUrl());
 		
 		//** retrieves category id drill down**//
 		String lineage = new StringBuilder().append(category.getLineage()).append(Constants.CATEGORY_LINEAGE_DELIMITER).toString();
 
 		
 		
-		request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
+		System.out.println("$#12218#"); request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
 		
 		List<Category> categs = categoryService.getListByLineage(store, lineage);
 		categs.add(category);
@@ -204,11 +204,11 @@ public class ShoppingCategoryController {
 		List<ReadableCategory> subCategories = null;
 		Map<Long,Long> countProductsByCategories = null;
 
-		if(store.isUseCache()) {
+		System.out.println("$#12219#"); if(store.isUseCache()) {
 
 			//get from the cache
 			subCategories = (List<ReadableCategory>) cache.getFromCache(subCategoriesCacheKey.toString());
-			if(subCategories==null) {
+			System.out.println("$#12220#"); if(subCategories==null) {
 				//get from missed cache
 				//Boolean missedContent = (Boolean)cache.getFromCache(subCategoriesMissed.toString());
 
@@ -216,8 +216,8 @@ public class ShoppingCategoryController {
 				    countProductsByCategories = getProductsByCategory(store, categs);
 					subCategories = getSubCategories(store,category,countProductsByCategories,language,locale);
 					
-					if(subCategories!=null) {
-						cache.putInCache(subCategories, subCategoriesCacheKey.toString());
+					System.out.println("$#12221#"); if(subCategories!=null) {
+						System.out.println("$#12222#"); cache.putInCache(subCategories, subCategoriesCacheKey.toString());
 					} else {
 						//cache.putInCache(new Boolean(true), subCategoriesCacheKey.toString());
 					}
@@ -231,7 +231,7 @@ public class ShoppingCategoryController {
 		//Parent category
 		ReadableCategory parentProxy  = null;
 
-		if(category.getParent()!=null) {
+		System.out.println("$#12223#"); if(category.getParent()!=null) {
 			Category parent = categoryService.getById(category.getParent().getId(), store.getId());
 			parentProxy = populator.populate(parent, new ReadableCategory(), store, language);
 		}
@@ -245,15 +245,15 @@ public class ShoppingCategoryController {
 		model.addAttribute("category", categoryProxy);
 		model.addAttribute("subCategories", subCategories);
 		
-		if(parentProxy!=null) {
-			request.setAttribute(Constants.LINK_CODE, parentProxy.getDescription().getFriendlyUrl());
+		System.out.println("$#12224#"); if(parentProxy!=null) {
+			System.out.println("$#12225#"); request.setAttribute(Constants.LINK_CODE, parentProxy.getDescription().getFriendlyUrl());
 		}
 		
 		
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Category.category).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12226#"); return template.toString();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -265,7 +265,7 @@ public class ShoppingCategoryController {
 				categories.stream().map(Category::getId).collect(Collectors.toList());
 		
 		/** List of manufacturers **/
-		if(subCategoryIds!=null && subCategoryIds.size()>0) {
+		System.out.println("$#12228#"); System.out.println("$#12227#"); if(subCategoryIds!=null && subCategoryIds.size()>0) {
 			
 			StringBuilder manufacturersKey = new StringBuilder();
 			manufacturersKey
@@ -280,20 +280,20 @@ public class ShoppingCategoryController {
 			.append(manufacturersKey.toString())
 			.append(Constants.MISSED_CACHE_KEY);
 
-			if(store.isUseCache()) {
+			System.out.println("$#12230#"); if(store.isUseCache()) {
 
 				//get from the cache
 				 
 				manufacturerList = (List<ReadableManufacturer>) cache.getFromCache(manufacturersKey.toString());
 				
 
-				if(manufacturerList==null) {
+				System.out.println("$#12231#"); if(manufacturerList==null) {
 					//get from missed cache
 					//Boolean missedContent = (Boolean)cache.getFromCache(manufacturersKeyMissed.toString());
 					//if(missedContent==null) {
 						manufacturerList = this.getManufacturers(store, subCategoryIds, language);
-						if(manufacturerList.isEmpty()) {
-							cache.putInCache(new Boolean(true), manufacturersKeyMissed.toString());
+						System.out.println("$#12232#"); if(manufacturerList.isEmpty()) {
+							System.out.println("$#12233#"); cache.putInCache(new Boolean(true), manufacturersKeyMissed.toString());
 						} else {
 							//cache.putInCache(manufacturerList, manufacturersKey.toString());
 						}
@@ -303,13 +303,13 @@ public class ShoppingCategoryController {
 				manufacturerList  = this.getManufacturers(store, subCategoryIds, language);
 			}
 		}
-		return manufacturerList;
+		System.out.println("$#12234#"); return manufacturerList;
 	}
 		
 	private List<ReadableManufacturer> getManufacturers(MerchantStore store, List<Long> ids, Language language) throws Exception {
 		List<ReadableManufacturer> manufacturerList = new ArrayList<ReadableManufacturer>();
 		List<com.salesmanager.core.model.catalog.product.manufacturer.Manufacturer> manufacturers = manufacturerService.listByProductsByCategoriesId(store, ids, language);
-		if(!manufacturers.isEmpty()) {
+		System.out.println("$#12235#"); if(!manufacturers.isEmpty()) {
 			
 			for(com.salesmanager.core.model.catalog.product.manufacturer.Manufacturer manufacturer : manufacturers) {
 				ReadableManufacturer manuf = new ReadableManufacturerPopulator().populate(manufacturer, new ReadableManufacturer(), store, language);
@@ -317,7 +317,7 @@ public class ShoppingCategoryController {
 				
 			}
 		}
-		return manufacturerList;
+		System.out.println("$#12236#"); return manufacturerList;
 	}
 	
 	
@@ -332,7 +332,7 @@ public class ShoppingCategoryController {
 	 */
 	private Map<Long,Long> getProductsByCategory(MerchantStore store, List<Category> categories) throws Exception {
 
-		if(categories.isEmpty()) {
+		System.out.println("$#12237#"); if(categories.isEmpty()) {
 			return null;
 		}
 		
@@ -347,7 +347,7 @@ public class ShoppingCategoryController {
 			countByCategories.put(id, qty);
 		}
 
-		return countByCategories;
+		System.out.println("$#12238#"); return countByCategories;
 		
 	}
 	
@@ -363,16 +363,16 @@ public class ShoppingCategoryController {
 		
 		for(Category sub : subCategories) {
 			ReadableCategory cProxy  = populator.populate(sub, new ReadableCategory(), store, language);
-			if(productCount!=null) {
+			System.out.println("$#12239#"); if(productCount!=null) {
 				Long total = productCount.get(cProxy.getId());
-				if(total!=null) {
-					cProxy.setProductCount(total.intValue());
+				System.out.println("$#12240#"); if(total!=null) {
+					System.out.println("$#12241#"); cProxy.setProductCount(total.intValue());
 				}
 			}
 			subCategoryProxies.add(cProxy);
 		}
 		
-		return subCategoryProxies;
+		System.out.println("$#12242#"); return subCategoryProxies;
 		
 	}
 	
@@ -387,26 +387,26 @@ public class ShoppingCategoryController {
 		
 		Map<String,Language> langs = languageService.getLanguagesMap();
 		Language l = langs.get(language);
-		if(l==null) {
+		System.out.println("$#12243#"); if(l==null) {
 			l = languageService.getByCode(Constants.DEFAULT_LANGUAGE);
 		}
 		
 		MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 
-		if(merchantStore!=null) {
-			if(!merchantStore.getCode().equals(store)) {
+		System.out.println("$#12244#"); if(merchantStore!=null) {
+			System.out.println("$#12245#"); if(!merchantStore.getCode().equals(store)) {
 				merchantStore = null; //reset for the current request
 			}
 		}
 		
-		if(merchantStore== null) {
+		System.out.println("$#12246#"); if(merchantStore== null) {
 			merchantStore = merchantStoreService.getByCode(store);
 		}
 		
-		if(merchantStore==null) {
+		System.out.println("$#12247#"); if(merchantStore==null) {
 			LOGGER.error("Merchant store is null for code " + store);
-			response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
-			return null;
+			System.out.println("$#12248#"); response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
+			System.out.println("$#12249#"); return null;
 		}
 		
 		List<Category> categories = categoryService.listByStore(merchantStore, l);
@@ -419,7 +419,7 @@ public class ShoppingCategoryController {
 			returnCategories.add(categoryProxy);
 		}
 		
-		return returnCategories;
+		System.out.println("$#12250#"); return returnCategories;
 	}
 
 	/**
@@ -450,28 +450,28 @@ public class ShoppingCategoryController {
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 			Map<String,Language> langs = languageService.getLanguagesMap();
 
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#12251#"); if(merchantStore!=null) {
+				System.out.println("$#12252#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null; //reset for the current request
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#12253#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#12254#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
+				System.out.println("$#12255#"); response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
 				return null;
 			}
 			
 			//get the category by code
 			Category cat = categoryService.getBySeUrl(merchantStore, category);
 
-			if(cat==null) {
+			System.out.println("$#12256#"); if(cat==null) {
 				LOGGER.error("Category with friendly url " + category + " is null");
-				response.sendError(503, "Category is null");//TODO localized message
+				System.out.println("$#12257#"); response.sendError(503, "Category is null");//TODO localized message
 			}
 			
 			String lineage = new StringBuilder().append(cat.getLineage()).append(cat.getId()).append("/").toString();
@@ -479,7 +479,7 @@ public class ShoppingCategoryController {
 			List<Category> categories = categoryService.getListByLineage(store, lineage);
 			
 			List<Long> ids = new ArrayList<Long>();
-			if(categories!=null && categories.size()>0) {
+			System.out.println("$#12259#"); System.out.println("$#12258#"); if(categories!=null && categories.size()>0) {
 				for(Category c : categories) {
 					ids.add(c.getId());
 				}
@@ -487,7 +487,7 @@ public class ShoppingCategoryController {
 			ids.add(cat.getId());
 			
 			Language lang = langs.get(language);
-			if(lang==null) {
+			System.out.println("$#12261#"); if(lang==null) {
 				lang = langs.get(Constants.DEFAULT_LANGUAGE);
 			}
 			
@@ -496,8 +496,8 @@ public class ShoppingCategoryController {
 			ProductList productList = new ProductList();
 			
 			ReadableProductPopulator populator = new ReadableProductPopulator();
-			populator.setPricingService(pricingService);
-			populator.setimageUtils(imageUtils);
+			System.out.println("$#12262#"); populator.setPricingService(pricingService);
+			System.out.println("$#12263#"); populator.setimageUtils(imageUtils);
 
 			for(Product product : products) {
 				//create new proxy product
@@ -506,13 +506,13 @@ public class ShoppingCategoryController {
 	
 			}
 			
-			productList.setProductCount(productList.getProducts().size());
-			return productList;
+			System.out.println("$#12264#"); productList.setProductCount(productList.getProducts().size());
+			System.out.println("$#12265#"); return productList;
 			
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while getting category",e);
-			response.sendError(503, "Error while getting category");
+			System.out.println("$#12266#"); response.sendError(503, "Error while getting category");
 		}
 		
 		return null;
@@ -535,7 +535,7 @@ public class ShoppingCategoryController {
 	public ProductList getProducts(@PathVariable int start, @PathVariable int max, @PathVariable String store, @PathVariable final String language, @PathVariable final String category, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		return this.getProducts(start, max, store, language, category, null, model, request, response);
+		System.out.println("$#12267#"); return this.getProducts(start, max, store, language, category, null, model, request, response);
 	}
 	
 	
@@ -561,11 +561,11 @@ public class ShoppingCategoryController {
 		
 		List<QueryFilter> queryFilters = null;
 		try {
-			if(filterType.equals(QueryFilterType.BRAND.name())) {//the only one implemented so far
+			System.out.println("$#12268#"); if(filterType.equals(QueryFilterType.BRAND.name())) {//the only one implemented so far
 				QueryFilter filter = new QueryFilter();
-				filter.setFilterType(QueryFilterType.BRAND);
-				filter.setFilterId(Long.parseLong(filterValue));
-				if(queryFilters==null) {
+				System.out.println("$#12269#"); filter.setFilterType(QueryFilterType.BRAND);
+				System.out.println("$#12270#"); filter.setFilterId(Long.parseLong(filterValue));
+				System.out.println("$#12271#"); if(queryFilters==null) {
 					queryFilters = new ArrayList<QueryFilter>();
 				}
 				queryFilters.add(filter);
@@ -574,7 +574,7 @@ public class ShoppingCategoryController {
 			LOGGER.error("Invalid filter or filter-value " + filterType + " - " + filterValue,e);
 		}
 		
-		return this.getProducts(start, max, store, language, category, queryFilters, model, request, response);
+		System.out.println("$#12272#"); return this.getProducts(start, max, store, language, category, queryFilters, model, request, response);
 	}
 	
 	
@@ -588,35 +588,35 @@ public class ShoppingCategoryController {
 			List<BigDecimal> prices = new ArrayList<BigDecimal>();
 			String ref = "";
 			
-			if(request.getParameter("ref") != null) {
+			System.out.println("$#12273#"); if(request.getParameter("ref") != null) {
 				ref = request.getParameter("ref");
 			}
-			request.setAttribute("ref", ref);
+			System.out.println("$#12274#"); request.setAttribute("ref", ref);
 			
 			Map<String,Language> langs = languageService.getLanguagesMap();
 			
-			if(merchantStore!=null) {
-				if(!merchantStore.getCode().equals(store)) {
+			System.out.println("$#12275#"); if(merchantStore!=null) {
+				System.out.println("$#12276#"); if(!merchantStore.getCode().equals(store)) {
 					merchantStore = null; //reset for the current request
 				}
 			}
 			
-			if(merchantStore== null) {
+			System.out.println("$#12277#"); if(merchantStore== null) {
 				merchantStore = merchantStoreService.getByCode(store);
 			}
 			
-			if(merchantStore==null) {
+			System.out.println("$#12278#"); if(merchantStore==null) {
 				LOGGER.error("Merchant store is null for code " + store);
-				response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
+				System.out.println("$#12279#"); response.sendError(503, "Merchant store is null for code " + store);//TODO localized message
 				return null;
 			}
 			
 			//get the category by code
 			Category cat = categoryService.getBySeUrl(merchantStore, category);
 			
-			if(cat==null) {
+			System.out.println("$#12280#"); if(cat==null) {
 				LOGGER.error("Category " + category + " is null");
-				response.sendError(503, "Category is null");//TODO localized message
+				System.out.println("$#12281#"); response.sendError(503, "Category is null");//TODO localized message
 				return null;
 			}
 			
@@ -626,9 +626,9 @@ public class ShoppingCategoryController {
 			List<Category> categories = categoryService.getListByLineage(store, lineage);
 			
 			List<Long> ids = new ArrayList<Long>();
-			if(categories!=null && categories.size()>0) {
+			System.out.println("$#12283#"); System.out.println("$#12282#"); if(categories!=null && categories.size()>0) {
 				for(Category c : categories) {
-					if(c.isVisible()) {
+					System.out.println("$#12285#"); if(c.isVisible()) {
 						ids.add(c.getId());
 					}
 				}
@@ -637,20 +637,20 @@ public class ShoppingCategoryController {
 			
 
 			Language lang = langs.get(language);
-			if(lang==null) {
+			System.out.println("$#12286#"); if(lang==null) {
 				lang = langs.get(Constants.DEFAULT_LANGUAGE);
 			}
 			
 			ProductCriteria productCriteria = new ProductCriteria();
-			productCriteria.setMaxCount(max);
-			productCriteria.setStartIndex(start);
-			productCriteria.setCategoryIds(ids);
-			productCriteria.setAvailable(true);
+			System.out.println("$#12287#"); productCriteria.setMaxCount(max);
+			System.out.println("$#12288#"); productCriteria.setStartIndex(start);
+			System.out.println("$#12289#"); productCriteria.setCategoryIds(ids);
+			System.out.println("$#12290#"); productCriteria.setAvailable(true);
 			
-			if(filters!=null) {
+			System.out.println("$#12291#"); if(filters!=null) {
 				for(QueryFilter filter : filters) {
-					if(filter.getFilterType().name().equals(QueryFilterType.BRAND.name())) {//the only filter implemented
-						productCriteria.setManufacturerId(filter.getFilterId());
+					System.out.println("$#12292#"); if(filter.getFilterType().name().equals(QueryFilterType.BRAND.name())) {//the only filter implemented
+						System.out.println("$#12293#"); productCriteria.setManufacturerId(filter.getFilterId());
 					}
 				}
 			}
@@ -658,8 +658,8 @@ public class ShoppingCategoryController {
 			com.salesmanager.core.model.catalog.product.ProductList products = productService.listByStore(merchantStore, lang, productCriteria);
 
 			ReadableProductPopulator populator = new ReadableProductPopulator();
-			populator.setPricingService(pricingService);
-			populator.setimageUtils(imageUtils);
+			System.out.println("$#12294#"); populator.setPricingService(pricingService);
+			System.out.println("$#12295#"); populator.setimageUtils(imageUtils);
 			
 			ProductList productList = new ProductList();
 			for(Product product : products.getProducts()) {
@@ -673,37 +673,37 @@ public class ShoppingCategoryController {
 			
 
 			/** order products based on the specified order **/
-		    Collections.sort(productList.getProducts(), new Comparator<ReadableProduct>() {
+						System.out.println("$#12296#"); Collections.sort(productList.getProducts(), new Comparator<ReadableProduct>() {
 
 				@Override
 				public int compare(ReadableProduct o1, ReadableProduct o2) {
 					int order1 = o1.getSortOrder();
 					int order2 = o2.getSortOrder();
-					return order1 - order2;
+					System.out.println("$#12306#"); System.out.println("$#12305#"); return order1 - order2;
 				}
 		    });
 			
 			
-			productList.setProductCount(products.getTotalCount());
+			System.out.println("$#12297#"); productList.setProductCount(products.getTotalCount());
 			
-			if(CollectionUtils.isNotEmpty(prices)) {
+			System.out.println("$#12298#"); if(CollectionUtils.isNotEmpty(prices)) {
 				BigDecimal minPrice = (BigDecimal)Collections.min(prices);
 				BigDecimal maxPrice = (BigDecimal)Collections.max(prices);
 				
-				if(minPrice !=null && maxPrice !=null) {
-					productList.setMinPrice(minPrice);
-					productList.setMaxPrice(maxPrice);
+				System.out.println("$#12299#"); if(minPrice !=null && maxPrice !=null) {
+					System.out.println("$#12301#"); productList.setMinPrice(minPrice);
+					System.out.println("$#12302#"); productList.setMaxPrice(maxPrice);
 				}
 			}
 			
 			
 			
-			return productList;
+			System.out.println("$#12303#"); return productList;
 			
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while getting products",e);
-			response.sendError(503, "An error occured while retrieving products " + e.getMessage());
+			System.out.println("$#12304#"); response.sendError(503, "An error occured while retrieving products " + e.getMessage());
 		}
 		
 		return null;

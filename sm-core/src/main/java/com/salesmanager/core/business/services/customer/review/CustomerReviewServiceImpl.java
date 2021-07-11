@@ -35,9 +35,9 @@ public class CustomerReviewServiceImpl extends
 	private void saveOrUpdate(CustomerReview review) throws ServiceException {
 		
 
-		Validate.notNull(review,"CustomerReview cannot be null");
-		Validate.notNull(review.getCustomer(),"CustomerReview.customer cannot be null");
-		Validate.notNull(review.getReviewedCustomer(),"CustomerReview.reviewedCustomer cannot be null");
+		System.out.println("$#2229#"); Validate.notNull(review,"CustomerReview cannot be null");
+		System.out.println("$#2230#"); Validate.notNull(review.getCustomer(),"CustomerReview.customer cannot be null");
+		System.out.println("$#2231#"); Validate.notNull(review.getReviewedCustomer(),"CustomerReview.reviewedCustomer cannot be null");
 		
 		
 		//refresh customer
@@ -45,7 +45,7 @@ public class CustomerReviewServiceImpl extends
 		
 		//ajust product rating
 		Integer count = 0;
-		if(customer.getCustomerReviewCount()!=null) {
+		System.out.println("$#2232#"); if(customer.getCustomerReviewCount()!=null) {
 			count = customer.getCustomerReviewCount();
 		}
 				
@@ -53,7 +53,7 @@ public class CustomerReviewServiceImpl extends
 		
 
 		BigDecimal averageRating = customer.getCustomerReviewAvg();
-		if(averageRating==null) {
+		System.out.println("$#2233#"); if(averageRating==null) {
 			averageRating = new BigDecimal(0);
 		}
 		//get reviews
@@ -62,48 +62,48 @@ public class CustomerReviewServiceImpl extends
 		BigDecimal totalRating = averageRating.multiply(new BigDecimal(count));
 		totalRating = totalRating.add(new BigDecimal(review.getReviewRating()));
 		
-		count = count + 1;
-		double avg = totalRating.doubleValue() / count.intValue();
+		System.out.println("$#2234#"); count = count + 1;
+		System.out.println("$#2235#"); double avg = totalRating.doubleValue() / count.intValue();
 		
-		customer.setCustomerReviewAvg(new BigDecimal(avg));
-		customer.setCustomerReviewCount(count);
-		super.save(review);
+		System.out.println("$#2236#"); customer.setCustomerReviewAvg(new BigDecimal(avg));
+		System.out.println("$#2237#"); customer.setCustomerReviewCount(count);
+		System.out.println("$#2238#"); super.save(review);
 		
-		customerService.update(customer);
+		System.out.println("$#2239#"); customerService.update(customer);
 		
-		review.setReviewedCustomer(customer);
+		System.out.println("$#2240#"); review.setReviewedCustomer(customer);
 
 		
 	}
 	
 	public void update(CustomerReview review) throws ServiceException {
-		this.saveOrUpdate(review);
+		System.out.println("$#2241#"); this.saveOrUpdate(review);
 	}
 	
 	public void create(CustomerReview review) throws ServiceException {
-		this.saveOrUpdate(review);
+		System.out.println("$#2242#"); this.saveOrUpdate(review);
 	}
 	
 	
 
 	@Override
 	public List<CustomerReview> getByCustomer(Customer customer) {
-		Validate.notNull(customer,"Customer cannot be null");
-		return customerReviewRepository.findByReviewer(customer.getId());
+		System.out.println("$#2243#"); Validate.notNull(customer,"Customer cannot be null");
+		System.out.println("$#2244#"); return customerReviewRepository.findByReviewer(customer.getId());
 	}
 
 	@Override
 	public List<CustomerReview> getByReviewedCustomer(Customer customer) {
-		Validate.notNull(customer,"Customer cannot be null");
-		return customerReviewRepository.findByReviewed(customer.getId());
+		System.out.println("$#2245#"); Validate.notNull(customer,"Customer cannot be null");
+		System.out.println("$#2246#"); return customerReviewRepository.findByReviewed(customer.getId());
 	}
 
 
 	@Override
 	public CustomerReview getByReviewerAndReviewed(Long reviewer, Long reviewed) {
-		Validate.notNull(reviewer,"Reviewer customer cannot be null");
-		Validate.notNull(reviewed,"Reviewer customer cannot be null");
-		return customerReviewRepository.findByRevieweAndReviewed(reviewer, reviewed);
+		System.out.println("$#2247#"); Validate.notNull(reviewer,"Reviewer customer cannot be null");
+		System.out.println("$#2248#"); Validate.notNull(reviewed,"Reviewer customer cannot be null");
+		System.out.println("$#2249#"); return customerReviewRepository.findByRevieweAndReviewed(reviewer, reviewed);
 	}
 
 }

@@ -29,7 +29,7 @@ public class ProductAttributeServiceImpl extends
 	@Override
 	public ProductAttribute getById(Long id) {
 		
-		return productAttributeRepository.findOne(id);
+		System.out.println("$#1814#"); return productAttributeRepository.findOne(id);
 		
 	}
 	
@@ -38,7 +38,7 @@ public class ProductAttributeServiceImpl extends
 	public List<ProductAttribute> getByOptionId(MerchantStore store,
 			Long id) throws ServiceException {
 		
-		return productAttributeRepository.findByOptionId(store.getId(), id);
+		System.out.println("$#1815#"); return productAttributeRepository.findByOptionId(store.getId(), id);
 		
 	}
 	
@@ -46,7 +46,7 @@ public class ProductAttributeServiceImpl extends
 	public List<ProductAttribute> getByAttributeIds(MerchantStore store,
 			Product product, List<Long> ids) throws ServiceException {
 		
-		return productAttributeRepository.findByAttributeIds(store.getId(), product.getId(), ids);
+		System.out.println("$#1816#"); return productAttributeRepository.findByAttributeIds(store.getId(), product.getId(), ids);
 		
 	}
 	
@@ -54,7 +54,7 @@ public class ProductAttributeServiceImpl extends
 	public List<ProductAttribute> getByOptionValueId(MerchantStore store,
 			Long id) throws ServiceException {
 		
-		return productAttributeRepository.findByOptionValueId(store.getId(), id);
+		System.out.println("$#1817#"); return productAttributeRepository.findByOptionValueId(store.getId(), id);
 		
 	}
 	
@@ -64,7 +64,7 @@ public class ProductAttributeServiceImpl extends
 	@Override
 	public List<ProductAttribute> getByProductId(MerchantStore store,
 			Product product, Language language) throws ServiceException {
-		return productAttributeRepository.findByProductId(store.getId(), product.getId(), language.getId());
+		System.out.println("$#1818#"); return productAttributeRepository.findByProductId(store.getId(), product.getId(), language.getId());
 		
 	}
 
@@ -81,7 +81,7 @@ public class ProductAttributeServiceImpl extends
 		
 		//override method, this allows the error that we try to remove a detached instance
 		attribute = this.getById(attribute.getId());
-		super.delete(attribute);
+		System.out.println("$#1819#"); super.delete(attribute);
 		
 	}
 
@@ -90,7 +90,7 @@ public class ProductAttributeServiceImpl extends
       String lineage, Language language) throws Exception {
     
     List<ProductAttribute> attributes = productAttributeRepository.findOptionsByCategoryLineage(store.getId(), lineage, language.getId());
-    return attributes;
+				System.out.println("$#1820#"); return attributes;
   }
 
 }

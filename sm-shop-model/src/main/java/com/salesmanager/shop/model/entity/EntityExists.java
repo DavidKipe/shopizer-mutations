@@ -19,7 +19,7 @@ public class EntityExists implements Serializable {
 	}
 
 	public boolean isExists() {
-		return exists;
+		System.out.println("$#9096#"); System.out.println("$#9095#"); return exists;
 	}
 
 	public void setExists(boolean exists) {

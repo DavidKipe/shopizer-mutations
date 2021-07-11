@@ -62,7 +62,7 @@ public class ConfigurationsApi {
 	      @ApiIgnore MerchantStore merchantStore,
 	      @ApiIgnore Language language) {
 	      //return customerFacade.create(customer, merchantStore, language);
-		  return null;
+				System.out.println("$#11559#"); return null;
 
 	  }
 	  
@@ -84,7 +84,7 @@ public class ConfigurationsApi {
 	      @ApiIgnore MerchantStore merchantStore,
 	      @ApiIgnore Language language) {
 	      //return customerFacade.create(customer, merchantStore, language);
-		  return null;
+				System.out.println("$#11560#"); return null;
 
 	  }
 	

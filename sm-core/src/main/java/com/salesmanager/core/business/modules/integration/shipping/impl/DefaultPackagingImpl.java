@@ -40,7 +40,7 @@ public class DefaultPackagingImpl implements Packaging {
 			throws ServiceException {
 
 		
-		if (products == null) {
+		System.out.println("$#1054#"); if (products == null) {
 			throw new ServiceException("Product list cannot be null !!");
 		}
 
@@ -54,7 +54,7 @@ public class DefaultPackagingImpl implements Packaging {
 		
 		
 		ShippingConfiguration shippingConfiguration = shippingService.getShippingConfiguration(store);
-		if(shippingConfiguration==null) {
+		System.out.println("$#1055#"); if(shippingConfiguration==null) {
 			throw new ServiceException("ShippingConfiguration not found for merchant " + store.getCode());
 		}
 		
@@ -78,7 +78,7 @@ public class DefaultPackagingImpl implements Packaging {
 		for(ShippingProduct shippingProduct : products){
 
 			Product product = shippingProduct.getProduct();
-			if (product.isProductVirtual()) {
+			System.out.println("$#1056#"); if (product.isProductVirtual()) {
 				continue;
 			}
 
@@ -91,21 +91,21 @@ public class DefaultPackagingImpl implements Packaging {
 			BigDecimal h = product.getProductHeight();
 			BigDecimal l = product.getProductLength();
 			BigDecimal wd = product.getProductWidth();
-			if(w==null) {
+			System.out.println("$#1057#"); if(w==null) {
 				w = new BigDecimal(defaultWeight);
 			}
-			if(h==null) {
+			System.out.println("$#1058#"); if(h==null) {
 				h = new BigDecimal(defaultHeight);
 			}
-			if(l==null) {
+			System.out.println("$#1059#"); if(l==null) {
 				l = new BigDecimal(defaultLength);
 			}
-			if(wd==null) {
+			System.out.println("$#1060#"); if(wd==null) {
 				wd = new BigDecimal(defaultWidth);
 			}
-			if (attrs != null && attrs.size() > 0) {
+			System.out.println("$#1062#"); System.out.println("$#1061#"); if (attrs != null && attrs.size() > 0) {
 				for(ProductAttribute attribute : attrs) {
-					if(attribute.getProductAttributeWeight()!=null) {
+					System.out.println("$#1064#"); if(attribute.getProductAttributeWeight()!=null) {
 						w = w.add(attribute.getProductAttributeWeight());
 					}
 				}
@@ -113,33 +113,33 @@ public class DefaultPackagingImpl implements Packaging {
 			
 
 
-			if (qty > 1) {
+			System.out.println("$#1066#"); System.out.println("$#1065#"); if (qty > 1) {
 
-				for (int i = 1; i <= qty; i++) {
+				System.out.println("$#1069#"); System.out.println("$#1068#"); System.out.println("$#1067#"); for (int i = 1; i <= qty; i++) {
 					Product temp = new Product();
-					temp.setProductHeight(h);
-					temp.setProductLength(l);
-					temp.setProductWidth(wd);
-					temp.setProductWeight(w);
-					temp.setAttributes(product.getAttributes());
-					temp.setDescriptions(product.getDescriptions());
+					System.out.println("$#1070#"); temp.setProductHeight(h);
+					System.out.println("$#1071#"); temp.setProductLength(l);
+					System.out.println("$#1072#"); temp.setProductWidth(wd);
+					System.out.println("$#1073#"); temp.setProductWeight(w);
+					System.out.println("$#1074#"); temp.setAttributes(product.getAttributes());
+					System.out.println("$#1075#"); temp.setDescriptions(product.getDescriptions());
 					individualProducts.add(temp);
 				}
 			} else {
 				Product temp = new Product();
-				temp.setProductHeight(h);
-				temp.setProductLength(l);
-				temp.setProductWidth(wd);
-				temp.setProductWeight(w);
-				temp.setAttributes(product.getAttributes());
-				temp.setDescriptions(product.getDescriptions());
+				System.out.println("$#1076#"); temp.setProductHeight(h);
+				System.out.println("$#1077#"); temp.setProductLength(l);
+				System.out.println("$#1078#"); temp.setProductWidth(wd);
+				System.out.println("$#1079#"); temp.setProductWeight(w);
+				System.out.println("$#1080#"); temp.setAttributes(product.getAttributes());
+				System.out.println("$#1081#"); temp.setDescriptions(product.getDescriptions());
 				individualProducts.add(temp);
 			}
-			iterCount++;
+			System.out.println("$#1082#"); iterCount++;
 		}
 
-		if (iterCount == 0) {
-			return null;
+		System.out.println("$#1083#"); if (iterCount == 0) {
+			System.out.println("$#1084#"); return null;
 		}
 
 		int productCount = individualProducts.size();
@@ -149,11 +149,11 @@ public class DefaultPackagingImpl implements Packaging {
 		//start the creation of boxes
 		PackingBox box = new PackingBox();
 		// set box max volume
-		double maxVolume = width * length * height;
+		System.out.println("$#1085#"); double maxVolume = width * length * height;
 
-		if (maxVolume == 0 || maxweight == 0) {
+		System.out.println("$#1087#"); if (maxVolume == 0 || maxweight == 0) {
 			
-			merchantLogService.save(new MerchantLog(store,"shipping","Check shipping box configuration, it has a volume of "
+			System.out.println("$#1089#"); merchantLogService.save(new MerchantLog(store,"shipping","Check shipping box configuration, it has a volume of "
 							+ maxVolume + " and a maximum weight of "
 							+ maxweight
 							+ ". Those values must be greater than 0."));
@@ -164,8 +164,8 @@ public class DefaultPackagingImpl implements Packaging {
 		}
 		
 		
-		box.setVolumeLeft(maxVolume);
-		box.setWeightLeft(maxweight);
+		System.out.println("$#1090#"); box.setVolumeLeft(maxVolume);
+		System.out.println("$#1091#"); box.setWeightLeft(maxweight);
 
 		boxesList.add(box);//assign first box
 
@@ -173,7 +173,7 @@ public class DefaultPackagingImpl implements Packaging {
 		List<Product> assignedProducts = new ArrayList<Product>();
 
 		// calculate the volume for the next object
-		if (assignedProducts.size() > 0) {
+		System.out.println("$#1093#"); System.out.println("$#1092#"); if (assignedProducts.size() > 0) {
 			individualProducts.removeAll(assignedProducts);
 			assignedProducts = new ArrayList<Product>();
 		}
@@ -189,19 +189,21 @@ public class DefaultPackagingImpl implements Packaging {
 
 
 			// validate if product fits in the box
+			System.out.println("$#1095#"); System.out.println("$#1094#");
+			System.out.println("$#1096#"); System.out.println("$#1098#");
 			if (p.getProductWidth().doubleValue() > width
 					|| p.getProductHeight().doubleValue() > height
 					|| p.getProductLength().doubleValue() > length) {
 				// log message to customer
-				merchantLogService.save(new MerchantLog(store,"shipping","Product "
+				System.out.println("$#1100#"); merchantLogService.save(new MerchantLog(store,"shipping","Product "
 						+ p.getSku()
 						+ " has a demension larger than the box size specified. Will use per item calculation."));
 				throw new ServiceException("Product configuration exceeds box configuraton");
 
 			}
 
-			if (productWeight > maxweight) {
-				merchantLogService.save(new MerchantLog(store,"shipping","Product "
+			System.out.println("$#1102#"); System.out.println("$#1101#"); if (productWeight > maxweight) {
+				System.out.println("$#1103#"); merchantLogService.save(new MerchantLog(store,"shipping","Product "
 						+ p.getSku()
 						+ " has a weight larger than the box maximum weight specified. Will use per item calculation."));
 				
@@ -209,13 +211,14 @@ public class DefaultPackagingImpl implements Packaging {
 
 			}
 
+			System.out.println("$#1104#");
 			double productVolume = (p.getProductWidth().doubleValue()
 					* p.getProductHeight().doubleValue() * p
 					.getProductLength().doubleValue());
 
-			if (productVolume == 0) {
+			System.out.println("$#1106#"); if (productVolume == 0) {
 				
-				merchantLogService.save(new MerchantLog(store,"shipping","Product "
+				System.out.println("$#1107#"); merchantLogService.save(new MerchantLog(store,"shipping","Product "
 						+ p.getSku()
 						+ " has one of the dimension set to 0 and therefore cannot calculate the volume"));
 				
@@ -224,7 +227,7 @@ public class DefaultPackagingImpl implements Packaging {
 
 			}
 			
-			if (productVolume > maxVolume) {
+			System.out.println("$#1109#"); System.out.println("$#1108#"); if (productVolume > maxVolume) {
 				
 				throw new ServiceException("Product configuration exceeds box configuraton");
 				
@@ -238,49 +241,50 @@ public class DefaultPackagingImpl implements Packaging {
 				double volumeLeft = pbox.getVolumeLeft();
 				double weightLeft = pbox.getWeightLeft();
 
+				System.out.println("$#1112#"); System.out.println("$#1111#"); System.out.println("$#1110#"); System.out.println("$#1113#");
 				if ((volumeLeft * .75) >= productVolume
 						&& pbox.getWeightLeft() >= productWeight) {// fit the item
 																	// in this
 																	// box
 					// fit in the current box
-					volumeLeft = volumeLeft - productVolume;
-					pbox.setVolumeLeft(volumeLeft);
-					weightLeft = weightLeft - productWeight;
-					pbox.setWeightLeft(weightLeft);
+					System.out.println("$#1115#"); volumeLeft = volumeLeft - productVolume;
+					System.out.println("$#1116#"); pbox.setVolumeLeft(volumeLeft);
+					System.out.println("$#1117#"); weightLeft = weightLeft - productWeight;
+					System.out.println("$#1118#"); pbox.setWeightLeft(weightLeft);
 
 					assignedProducts.add(p);
-					productCount--;
+					System.out.println("$#1119#"); productCount--;
 
 					double w = pbox.getWeight();
-					w = w + productWeight;
-					pbox.setWeight(w);
+					System.out.println("$#1120#"); w = w + productWeight;
+					System.out.println("$#1121#"); pbox.setWeight(w);
 					productAssigned = true;
-					maxBox--;
+					System.out.println("$#1122#"); maxBox--;
 					break;
 
 				}
 
 			}
 
-			if (!productAssigned) {// create a new box
+			System.out.println("$#1123#"); if (!productAssigned) {// create a new box
 
 				box = new PackingBox();
 				// set box max volume
-				box.setVolumeLeft(maxVolume);
-				box.setWeightLeft(maxweight);
+				System.out.println("$#1124#"); box.setVolumeLeft(maxVolume);
+				System.out.println("$#1125#"); box.setWeightLeft(maxweight);
 
 				boxesList.add(box);
 
-				double volumeLeft = box.getVolumeLeft() - productVolume;
-				box.setVolumeLeft(volumeLeft);
-				double weightLeft = box.getWeightLeft() - productWeight;
-				box.setWeightLeft(weightLeft);
+				System.out.println("$#1126#"); double volumeLeft = box.getVolumeLeft() - productVolume;
+				System.out.println("$#1127#"); box.setVolumeLeft(volumeLeft);
+				System.out.println("$#1128#"); double weightLeft = box.getWeightLeft() - productWeight;
+				System.out.println("$#1129#"); box.setWeightLeft(weightLeft);
 				assignedProducts.add(p);
-				productCount--;
+				System.out.println("$#1130#"); productCount--;
 				double w = box.getWeight();
-				w = w + productWeight;
-				box.setWeight(w);
-				maxBox--;
+				System.out.println("$#1131#"); w = w + productWeight;
+				System.out.println("$#1132#"); box.setWeight(w);
+				System.out.println("$#1133#"); maxBox--;
 			}
 
 		}
@@ -291,21 +295,21 @@ public class DefaultPackagingImpl implements Packaging {
 
 		//Iterator ubIt = usedBoxesList.iterator();
 
-		System.out.println("###################################");
-		System.out.println("Number of boxes " + boxesList.size());
-		System.out.println("###################################");
+		System.out.println("$#1134#"); System.out.println("###################################");
+		System.out.println("$#1135#"); System.out.println("Number of boxes " + boxesList.size());
+		System.out.println("$#1136#"); System.out.println("###################################");
 
 		for(PackingBox pb : boxesList) {
 			PackageDetails details = new PackageDetails();
-			details.setShippingHeight(height);
-			details.setShippingLength(length);
-			details.setShippingWeight(weight + box.getWeight());
-			details.setShippingWidth(width);
-			details.setItemName(store.getCode());
+			System.out.println("$#1137#"); details.setShippingHeight(height);
+			System.out.println("$#1138#"); details.setShippingLength(length);
+			System.out.println("$#1140#"); System.out.println("$#1139#"); details.setShippingWeight(weight + box.getWeight());
+			System.out.println("$#1141#"); details.setShippingWidth(width);
+			System.out.println("$#1142#"); details.setItemName(store.getCode());
 			boxes.add(details);
 		}
 
-		return boxes;
+		System.out.println("$#1143#"); return boxes;
 
 	}
 
@@ -319,7 +323,7 @@ public class DefaultPackagingImpl implements Packaging {
 		for(ShippingProduct shippingProduct : products) {
 			Product product = shippingProduct.getProduct();
 
-			if (product.isProductVirtual()) {
+			System.out.println("$#1144#"); if (product.isProductVirtual()) {
 				continue;
 			}
 
@@ -330,21 +334,21 @@ public class DefaultPackagingImpl implements Packaging {
 			BigDecimal h = product.getProductHeight();
 			BigDecimal l = product.getProductLength();
 			BigDecimal wd = product.getProductWidth();
-			if(w==null) {
+			System.out.println("$#1145#"); if(w==null) {
 				w = new BigDecimal(defaultWeight);
 			}
-			if(h==null) {
+			System.out.println("$#1146#"); if(h==null) {
 				h = new BigDecimal(defaultHeight);
 			}
-			if(l==null) {
+			System.out.println("$#1147#"); if(l==null) {
 				l = new BigDecimal(defaultLength);
 			}
-			if(wd==null) {
+			System.out.println("$#1148#"); if(wd==null) {
 				wd = new BigDecimal(defaultWidth);
 			}
-			if (attributes != null && attributes.size() > 0) {
+			System.out.println("$#1150#"); System.out.println("$#1149#"); if (attributes != null && attributes.size() > 0) {
 				for(ProductAttribute attribute : attributes) {
-					if(attribute.getAttributeAdditionalWeight()!=null) {
+					System.out.println("$#1152#"); if(attribute.getAttributeAdditionalWeight()!=null) {
 						w = w.add(attribute.getProductAttributeWeight());
 					}
 				}
@@ -352,47 +356,47 @@ public class DefaultPackagingImpl implements Packaging {
 			
 			
 
-			if (shippingProduct.getQuantity() == 1) {
+			System.out.println("$#1153#"); if (shippingProduct.getQuantity() == 1) {
 				PackageDetails detail = new PackageDetails();
 
 	
-				detail.setShippingHeight(h
+				System.out.println("$#1154#"); detail.setShippingHeight(h
 						.doubleValue());
-				detail.setShippingLength(l
+				System.out.println("$#1155#"); detail.setShippingLength(l
 						.doubleValue());
-				detail.setShippingWeight(w.doubleValue());
-				detail.setShippingWidth(wd.doubleValue());
-				detail.setShippingQuantity(shippingProduct.getQuantity());
+				System.out.println("$#1156#"); detail.setShippingWeight(w.doubleValue());
+				System.out.println("$#1157#"); detail.setShippingWidth(wd.doubleValue());
+				System.out.println("$#1158#"); detail.setShippingQuantity(shippingProduct.getQuantity());
 				String description = "item";
-				if(product.getDescriptions().size()>0) {
+				System.out.println("$#1160#"); System.out.println("$#1159#"); if(product.getDescriptions().size()>0) {
 					description = product.getDescriptions().iterator().next().getName();
 				}
-				detail.setItemName(description);
+				System.out.println("$#1161#"); detail.setItemName(description);
 	
 				packages.add(detail);
-			} else if (shippingProduct.getQuantity() > 1) {
-				for (int i = 0; i < shippingProduct.getQuantity(); i++) {
+			} else if (shippingProduct.getQuantity() > 1) { System.out.println("$#1162#"); System.out.println("$#1163#");
+				System.out.println("$#1165#"); System.out.println("$#1164#"); for (int i = 0; i < shippingProduct.getQuantity(); i++) {
 					PackageDetails detail = new PackageDetails();
-					detail.setShippingHeight(h
+					System.out.println("$#1166#"); detail.setShippingHeight(h
 							.doubleValue());
-					detail.setShippingLength(l
+					System.out.println("$#1167#"); detail.setShippingLength(l
 							.doubleValue());
-					detail.setShippingWeight(w.doubleValue());
-					detail.setShippingWidth(wd
+					System.out.println("$#1168#"); detail.setShippingWeight(w.doubleValue());
+					System.out.println("$#1169#"); detail.setShippingWidth(wd
 							.doubleValue());
-					detail.setShippingQuantity(1);//issue seperate shipping
+					System.out.println("$#1170#"); detail.setShippingQuantity(1);//issue seperate shipping
 					String description = "item";
-					if(product.getDescriptions().size()>0) {
+					System.out.println("$#1172#"); System.out.println("$#1171#"); if(product.getDescriptions().size()>0) {
 						description = product.getDescriptions().iterator().next().getName();
 					}
-					detail.setItemName(description);
+					System.out.println("$#1173#"); detail.setItemName(description);
 					
 					packages.add(detail);
 				}
 			}
 		}
 		
-		return packages;
+		System.out.println("$#1174#"); return packages;
 		
 		
 		
@@ -409,7 +413,7 @@ class PackingBox {
 	private double weight;
 
 	public double getVolumeLeft() {
-		return volumeLeft;
+		System.out.println("$#1175#"); return volumeLeft;
 	}
 
 	public void setVolumeLeft(double volumeLeft) {
@@ -417,7 +421,7 @@ class PackingBox {
 	}
 
 	public double getWeight() {
-		return weight;
+		System.out.println("$#1176#"); return weight;
 	}
 
 	public void setWeight(double weight) {
@@ -425,7 +429,7 @@ class PackingBox {
 	}
 
 	public double getWeightLeft() {
-		return weightLeft;
+		System.out.println("$#1177#"); return weightLeft;
 	}
 
 	public void setWeightLeft(double weightLeft) {

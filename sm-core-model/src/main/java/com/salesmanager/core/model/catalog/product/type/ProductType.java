@@ -60,7 +60,7 @@ public class ProductType extends SalesManagerEntity<Long, ProductType> implement
 
   @Override
   public Long getId() {
-    return id;
+				System.out.println("$#4002#"); return id;
   }
 
   @Override
@@ -70,7 +70,7 @@ public class ProductType extends SalesManagerEntity<Long, ProductType> implement
 
   @Override
   public AuditSection getAuditSection() {
-    return auditSection;
+				System.out.println("$#4003#"); return auditSection;
   }
 
   @Override
@@ -79,7 +79,7 @@ public class ProductType extends SalesManagerEntity<Long, ProductType> implement
   }
 
   public boolean isAllowAddToCart() {
-    return allowAddToCart;
+				System.out.println("$#4005#"); System.out.println("$#4004#"); return allowAddToCart;
   }
 
   public void setAllowAddToCart(boolean allowAddToCart) {
@@ -87,7 +87,7 @@ public class ProductType extends SalesManagerEntity<Long, ProductType> implement
   }
 
   public String getCode() {
-    return code;
+				System.out.println("$#4006#"); return code;
   }
 
   public void setCode(String code) {
@@ -95,7 +95,7 @@ public class ProductType extends SalesManagerEntity<Long, ProductType> implement
   }
 
   public Boolean getAllowAddToCart() {
-    return allowAddToCart;
+				System.out.println("$#4008#"); System.out.println("$#4007#"); return allowAddToCart;
   }
 
   public void setAllowAddToCart(Boolean allowAddToCart) {
@@ -103,7 +103,7 @@ public class ProductType extends SalesManagerEntity<Long, ProductType> implement
   }
 
   public MerchantStore getMerchantStore() {
-    return merchantStore;
+				System.out.println("$#4009#"); return merchantStore;
   }
 
   public void setMerchantStore(MerchantStore merchantStore) {

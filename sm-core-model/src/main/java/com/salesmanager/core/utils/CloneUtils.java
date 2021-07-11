@@ -7,8 +7,8 @@ public class CloneUtils {
 	private CloneUtils() {};
 	
 	public static Date clone(Date date) {
-		if (date != null) {
-			return (Date) date.clone();
+		System.out.println("$#4914#"); if (date != null) {
+			System.out.println("$#4915#"); return (Date) date.clone();
 		}
 		return null;
 	}

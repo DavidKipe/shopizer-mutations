@@ -16,7 +16,7 @@ public class ProductTypeEntity extends Entity implements Serializable {
 	boolean allowAddToCart;
 
 	public boolean isAllowAddToCart() {
-		return allowAddToCart;
+		System.out.println("$#8966#"); System.out.println("$#8965#"); return allowAddToCart;
 	}
 
 	public void setAllowAddToCart(boolean allowAddToCart) {
@@ -24,7 +24,7 @@ public class ProductTypeEntity extends Entity implements Serializable {
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#8967#"); return code;
 	}
 
 	public void setCode(String code) {
@@ -32,7 +32,7 @@ public class ProductTypeEntity extends Entity implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		System.out.println("$#8968#"); return name;
 	}
 
 	public void setName(String name) {

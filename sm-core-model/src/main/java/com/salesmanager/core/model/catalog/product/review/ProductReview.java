@@ -83,7 +83,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#3990#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -91,7 +91,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	}
 
 	public Double getReviewRating() {
-		return reviewRating;
+		System.out.println("$#3991#"); return reviewRating;
 	}
 
 	public void setReviewRating(Double reviewRating) {
@@ -99,7 +99,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	}
 
 	public Long getReviewRead() {
-		return reviewRead;
+		System.out.println("$#3992#"); return reviewRead;
 	}
 
 	public void setReviewRead(Long reviewRead) {
@@ -107,7 +107,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	}
 
 	public Integer getStatus() {
-		return status;
+		System.out.println("$#3993#"); return status;
 	}
 
 	public void setStatus(Integer status) {
@@ -115,7 +115,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	}
 
 	public Customer getCustomer() {
-		return customer;
+		System.out.println("$#3994#"); return customer;
 	}
 
 	public void setCustomer(Customer customer) {
@@ -123,7 +123,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	}
 
 	public Product getProduct() {
-		return product;
+		System.out.println("$#3995#"); return product;
 	}
 
 	public void setProduct(Product product) {
@@ -131,7 +131,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	}
 
 	public Set<ProductReviewDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#3996#"); return descriptions;
 	}
 
 	public void setDescriptions(Set<ProductReviewDescription> descriptions) {
@@ -140,7 +140,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	
 	@Override
 	public AuditSection getAuditSection() {
-		return audit;
+		System.out.println("$#3997#"); return audit;
 	}
 	
 	@Override
@@ -149,7 +149,7 @@ public class ProductReview extends SalesManagerEntity<Long, ProductReview> imple
 	}
 	
 	public Date getReviewDate() {
-		return reviewDate;
+		System.out.println("$#3998#"); return reviewDate;
 	}
 
 	public void setReviewDate(Date reviewDate) {

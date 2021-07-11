@@ -88,19 +88,19 @@ public class CustomerProductReviewController extends AbstractController {
 
 		// get product
 		Product product = productService.getById(productId);
-		if (product == null) {
-			return "redirect:" + Constants.SHOP_URI;
+		System.out.println("$#12477#"); if (product == null) {
+			System.out.println("$#12478#"); return "redirect:" + Constants.SHOP_URI;
 		}
 
-		if (product.getMerchantStore().getId().intValue() != store.getId().intValue()) {
-			return "redirect:" + Constants.SHOP_URI;
+		System.out.println("$#12479#"); if (product.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+			System.out.println("$#12480#"); return "redirect:" + Constants.SHOP_URI;
 		}
 
 		// create readable product
 		ReadableProduct readableProduct = new ReadableProduct();
 		ReadableProductPopulator readableProductPopulator = new ReadableProductPopulator();
-		readableProductPopulator.setPricingService(pricingService);
-		readableProductPopulator.setimageUtils(imageUtils);
+		System.out.println("$#12481#"); readableProductPopulator.setPricingService(pricingService);
+		System.out.println("$#12482#"); readableProductPopulator.setimageUtils(imageUtils);
 		readableProductPopulator.populate(product, readableProduct, store, language);
 		model.addAttribute("product", readableProduct);
 
@@ -108,7 +108,7 @@ public class CustomerProductReviewController extends AbstractController {
 
 		List<ProductReview> reviews = productReviewService.getByProduct(product, language);
 		for (ProductReview r : reviews) {
-			if (r.getCustomer().getId().longValue() == customer.getId().longValue()) {
+			System.out.println("$#12483#"); if (r.getCustomer().getId().longValue() == customer.getId().longValue()) {
 
 				ReadableProductReviewPopulator reviewPopulator = new ReadableProductReviewPopulator();
 				ReadableProductReview rev = new ReadableProductReview();
@@ -120,8 +120,8 @@ public class CustomerProductReviewController extends AbstractController {
 		}
 
 		ProductReview review = new ProductReview();
-		review.setCustomer(customer);
-		review.setProduct(product);
+		System.out.println("$#12484#"); review.setCustomer(customer);
+		System.out.println("$#12485#"); review.setProduct(product);
 
 		ReadableProductReview productReview = new ReadableProductReview();
 		ReadableProductReviewPopulator reviewPopulator = new ReadableProductReviewPopulator();
@@ -134,7 +134,7 @@ public class CustomerProductReviewController extends AbstractController {
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.review).append(".")
 				.append(store.getStoreTemplate());
 
-		return template.toString();
+		System.out.println("$#12486#"); return template.toString();
 
 	}
 
@@ -149,33 +149,33 @@ public class CustomerProductReviewController extends AbstractController {
 
 		Customer customer = customerFacade.getCustomerByUserName(request.getRemoteUser(), store);
 
-		if (customer == null) {
-			return "redirect:" + Constants.SHOP_URI;
+		System.out.println("$#12487#"); if (customer == null) {
+			System.out.println("$#12488#"); return "redirect:" + Constants.SHOP_URI;
 		}
 
 		Product product = productService.getById(review.getProductId());
-		if (product == null) {
-			return "redirect:" + Constants.SHOP_URI;
+		System.out.println("$#12489#"); if (product == null) {
+			System.out.println("$#12490#"); return "redirect:" + Constants.SHOP_URI;
 		}
 
-		if (StringUtils.isBlank(review.getDescription())) {
+		System.out.println("$#12491#"); if (StringUtils.isBlank(review.getDescription())) {
 			FieldError error = new FieldError("description", "description",
 					messages.getMessage("NotEmpty.review.description", locale));
-			bindingResult.addError(error);
+			System.out.println("$#12492#"); bindingResult.addError(error);
 		}
 
-		if (review.getRating() == null) {
+		System.out.println("$#12493#"); if (review.getRating() == null) {
 			FieldError error = new FieldError("rating", "rating",
 					messages.getMessage("NotEmpty.review.rating", locale, "Product rating is required"));
-			bindingResult.addError(error);
+			System.out.println("$#12494#"); bindingResult.addError(error);
 		}
 
-		review.setDescription(StringEscapeUtils.escapeHtml4(review.getDescription()));
+		System.out.println("$#12495#"); review.setDescription(StringEscapeUtils.escapeHtml4(review.getDescription()));
 
 		ReadableProduct readableProduct = new ReadableProduct();
 		ReadableProductPopulator readableProductPopulator = new ReadableProductPopulator();
-		readableProductPopulator.setPricingService(pricingService);
-		readableProductPopulator.setimageUtils(imageUtils);
+		System.out.println("$#12496#"); readableProductPopulator.setPricingService(pricingService);
+		System.out.println("$#12497#"); readableProductPopulator.setimageUtils(imageUtils);
 		readableProductPopulator.populate(product, readableProduct, store, language);
 		model.addAttribute("product", readableProduct);
 
@@ -183,9 +183,9 @@ public class CustomerProductReviewController extends AbstractController {
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.review).append(".")
 				.append(store.getStoreTemplate());
 
-		if (bindingResult.hasErrors()) {
+		System.out.println("$#12498#"); if (bindingResult.hasErrors()) {
 
-			return template.toString();
+			System.out.println("$#12499#"); return template.toString();
 
 		}
 
@@ -193,26 +193,26 @@ public class CustomerProductReviewController extends AbstractController {
 		List<ProductReview> reviews = productReviewService.getByProduct(product);
 
 		for (ProductReview r : reviews) {
-			if (r.getCustomer().getId().longValue() == customer.getId().longValue()) {
+			System.out.println("$#12500#"); if (r.getCustomer().getId().longValue() == customer.getId().longValue()) {
 				ReadableProductReviewPopulator reviewPopulator = new ReadableProductReviewPopulator();
 				ReadableProductReview rev = new ReadableProductReview();
 				reviewPopulator.populate(r, rev, store, language);
 
 				model.addAttribute("customerReview", rev);
-				return template.toString();
+				System.out.println("$#12501#"); return template.toString();
 			}
 		}
 
 		PersistableProductReviewPopulator populator = new PersistableProductReviewPopulator();
-		populator.setCustomerService(customerService);
-		populator.setLanguageService(languageService);
-		populator.setProductService(productService);
+		System.out.println("$#12502#"); populator.setCustomerService(customerService);
+		System.out.println("$#12503#"); populator.setLanguageService(languageService);
+		System.out.println("$#12504#"); populator.setProductService(productService);
 
-		review.setDate(DateUtil.formatDate(new Date()));
-		review.setCustomerId(customer.getId());
+		System.out.println("$#12505#"); review.setDate(DateUtil.formatDate(new Date()));
+		System.out.println("$#12506#"); review.setCustomerId(customer.getId());
 
 		ProductReview productReview = populator.populate(review, store, language);
-		productReviewService.create(productReview);
+		System.out.println("$#12507#"); productReviewService.create(productReview);
 
 		model.addAttribute("review", review);
 		model.addAttribute("success", "success");
@@ -223,7 +223,7 @@ public class CustomerProductReviewController extends AbstractController {
 
 		model.addAttribute("customerReview", rev);
 
-		return template.toString();
+		System.out.println("$#12508#"); return template.toString();
 
 	}
 

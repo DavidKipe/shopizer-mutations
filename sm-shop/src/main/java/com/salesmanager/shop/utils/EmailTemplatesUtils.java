@@ -97,7 +97,7 @@ public class EmailTemplatesUtils {
 		    	   
 		    	   //format Billing address
 		    	   StringBuilder billing = new StringBuilder();
-		    	   if(StringUtils.isBlank(order.getBilling().getCompany())) {
+										System.out.println("$#15638#"); if(StringUtils.isBlank(order.getBilling().getCompany())) {
 		    		   billing.append(order.getBilling().getFirstName()).append(" ")
 		    		   .append(order.getBilling().getLastName()).append(LINE_BREAK);
 		    	   } else {
@@ -106,17 +106,17 @@ public class EmailTemplatesUtils {
 		    	   billing.append(order.getBilling().getAddress()).append(LINE_BREAK);
 		    	   billing.append(order.getBilling().getCity()).append(", ");
 		    	   
-		    	   if(order.getBilling().getZone()!=null) {
+										System.out.println("$#15639#"); if(order.getBilling().getZone()!=null) {
 		    		   Zone zone = zones.get(order.getBilling().getZone().getCode());
-		    		   if(zone!=null) {
+											System.out.println("$#15640#"); if(zone!=null) {
 		    			   billing.append(zone.getName());
 		    		   }
 		    		   billing.append(LINE_BREAK);
-		    	   } else if(!StringUtils.isBlank(order.getBilling().getState())) {
+										} else if(!StringUtils.isBlank(order.getBilling().getState())) { System.out.println("$#15641#");
 		    		   billing.append(order.getBilling().getState()).append(LINE_BREAK); 
 		    	   }
 		    	   Country country = countries.get(order.getBilling().getCountry().getIsoCode());
-		    	   if(country!=null) {
+										System.out.println("$#15642#"); if(country!=null) {
 		    		   billing.append(country.getName()).append(" ");
 		    	   }
 		    	   billing.append(order.getBilling().getPostalCode());
@@ -124,9 +124,9 @@ public class EmailTemplatesUtils {
 		    	   
 		    	   //format shipping address
 		    	   StringBuilder shipping = null;
-		    	   if(order.getDelivery()!=null && !StringUtils.isBlank(order.getDelivery().getFirstName())) {
+										System.out.println("$#15643#"); if(order.getDelivery()!=null && !StringUtils.isBlank(order.getDelivery().getFirstName())) {
 		    		   shipping = new StringBuilder();
-			    	   if(StringUtils.isBlank(order.getDelivery().getCompany())) {
+											System.out.println("$#15645#"); if(StringUtils.isBlank(order.getDelivery().getCompany())) {
 			    		   shipping.append(order.getDelivery().getFirstName()).append(" ")
 			    		   .append(order.getDelivery().getLastName()).append(LINE_BREAK);
 			    	   } else {
@@ -135,23 +135,23 @@ public class EmailTemplatesUtils {
 			    	   shipping.append(order.getDelivery().getAddress()).append(LINE_BREAK);
 			    	   shipping.append(order.getDelivery().getCity()).append(", ");
 			    	   
-			    	   if(order.getDelivery().getZone()!=null) {
+											System.out.println("$#15646#"); if(order.getDelivery().getZone()!=null) {
 			    		   Zone zone = zones.get(order.getDelivery().getZone().getCode());
-			    		   if(zone!=null) {
+												System.out.println("$#15647#"); if(zone!=null) {
 			    			   shipping.append(zone.getName());
 			    		   }
 			    		   shipping.append(LINE_BREAK);
-			    	   } else if(!StringUtils.isBlank(order.getDelivery().getState())) {
+											} else if(!StringUtils.isBlank(order.getDelivery().getState())) { System.out.println("$#15648#");
 			    		   shipping.append(order.getDelivery().getState()).append(LINE_BREAK); 
 			    	   }
 			    	   Country deliveryCountry = countries.get(order.getDelivery().getCountry().getIsoCode());
-			    	   if(country!=null) {
+											System.out.println("$#15649#"); if(country!=null) {
 			    		   shipping.append(deliveryCountry.getName()).append(" ");
 			    	   }
 			    	   shipping.append(order.getDelivery().getPostalCode());
 		    	   }
 		    	   
-		    	   if(shipping==null && StringUtils.isNotBlank(order.getShippingModuleCode())) {
+										System.out.println("$#15650#"); if(shipping==null && StringUtils.isNotBlank(order.getShippingModuleCode())) {
 		    		   //TODO IF HAS NO SHIPPING
 		    		   shipping = billing;
 		    	   }
@@ -178,7 +178,7 @@ public class EmailTemplatesUtils {
 		    		   		orderTable.append(CLOSING_TD);
 		    		   		orderTable.append(TD);
 		    		   		orderTable.append("<strong>");
-		    		   			if(total.getModule().equals("tax")) {
+														System.out.println("$#15652#"); if(total.getModule().equals("tax")) {
 		    		   				orderTable.append(total.getText()).append(": ");
 
 		    		   			} else {
@@ -220,7 +220,7 @@ public class EmailTemplatesUtils {
 		           templateTokens.put(EmailConstants.PAYMENT_METHOD_TITLE, messages.getMessage("label.order.paymentmode",customerLocale));
 		           templateTokens.put(EmailConstants.PAYMENT_METHOD_DETAILS, messages.getMessage(new StringBuilder().append("payment.type.").append(order.getPaymentType().name()).toString(),customerLocale,order.getPaymentType().name()));
 		           
-		           if(StringUtils.isNotBlank(order.getShippingModuleCode())) {
+													System.out.println("$#15653#"); if(StringUtils.isNotBlank(order.getShippingModuleCode())) {
 		        	   //templateTokens.put(EmailConstants.SHIPPING_METHOD_DETAILS, messages.getMessage(new StringBuilder().append("module.shipping.").append(order.getShippingModuleCode()).toString(),customerLocale,order.getShippingModuleCode()));
 		        	   templateTokens.put(EmailConstants.SHIPPING_METHOD_DETAILS, messages.getMessage(new StringBuilder().append("module.shipping.").append(order.getShippingModuleCode()).toString(),new String[]{merchantStore.getStorename()},customerLocale));
 		        	   templateTokens.put(EmailConstants.ADDRESS_SHIPPING_TITLE, messages.getMessage("label.order.shippingmethod",customerLocale));
@@ -242,15 +242,15 @@ public class EmailTemplatesUtils {
 
 		           String[] title = {merchantStore.getStorename(), String.valueOf(order.getId())};
 		           Email email = new Email();
-		           email.setFrom(merchantStore.getStorename());
-		           email.setFromEmail(merchantStore.getStoreEmailAddress());
-		           email.setSubject(messages.getMessage("email.order.title", title, customerLocale));
-		           email.setTo(toEmail);
-		           email.setTemplateName(EmailConstants.EMAIL_ORDER_TPL);
-		           email.setTemplateTokens(templateTokens);
+													System.out.println("$#15654#"); email.setFrom(merchantStore.getStorename());
+													System.out.println("$#15655#"); email.setFromEmail(merchantStore.getStoreEmailAddress());
+													System.out.println("$#15656#"); email.setSubject(messages.getMessage("email.order.title", title, customerLocale));
+													System.out.println("$#15657#"); email.setTo(toEmail);
+													System.out.println("$#15658#"); email.setTemplateName(EmailConstants.EMAIL_ORDER_TPL);
+													System.out.println("$#15659#"); email.setTemplateTokens(templateTokens);
 
 		           LOGGER.debug( "Sending email to {} for order id {} ",customer.getEmailAddress(), order.getId() );
-		           emailService.sendHtmlEmail(merchantStore, email);
+													System.out.println("$#15660#"); emailService.sendHtmlEmail(merchantStore, email);
 
 		       } catch (Exception e) {
 		           LOGGER.error("Error occured while sending order confirmation email ",e);
@@ -291,15 +291,15 @@ public class EmailTemplatesUtils {
 	           templateTokens.put(EmailConstants.CUSTOMER_ACCESS_URL, customerUrl);
 
 	           Email email = new Email();
-	           email.setFrom(merchantStore.getStorename());
-	           email.setFromEmail(merchantStore.getStoreEmailAddress());
-	           email.setSubject(messages.getMessage("email.newuser.title",customerLocale));
-	           email.setTo(customer.getEmailAddress());
-	           email.setTemplateName(EmailConstants.EMAIL_CUSTOMER_TPL);
-	           email.setTemplateTokens(templateTokens);
+												System.out.println("$#15661#"); email.setFrom(merchantStore.getStorename());
+												System.out.println("$#15662#"); email.setFromEmail(merchantStore.getStoreEmailAddress());
+												System.out.println("$#15663#"); email.setSubject(messages.getMessage("email.newuser.title",customerLocale));
+												System.out.println("$#15664#"); email.setTo(customer.getEmailAddress());
+												System.out.println("$#15665#"); email.setTemplateName(EmailConstants.EMAIL_CUSTOMER_TPL);
+												System.out.println("$#15666#"); email.setTemplateTokens(templateTokens);
 
 	           LOGGER.debug( "Sending email to {} on their  registered email id {} ",customer.getBilling().getFirstName(),customer.getEmailAddress() );
-	           emailService.sendHtmlEmail(merchantStore, email);
+												System.out.println("$#15667#"); emailService.sendHtmlEmail(merchantStore, email);
 
 	       } catch (Exception e) {
 	           LOGGER.error("Error occured while sending welcome email ",e);
@@ -330,17 +330,17 @@ public class EmailTemplatesUtils {
 
 
 		           Email email = new Email();
-		           email.setFrom(contact.getName());
+													System.out.println("$#15668#"); email.setFrom(contact.getName());
 		           //since shopizer sends email to store email, sender is store email
-		           email.setFromEmail(merchantStore.getStoreEmailAddress());
-		           email.setSubject(messages.getMessage("email.contact.title",storeLocale));
+													System.out.println("$#15669#"); email.setFromEmail(merchantStore.getStoreEmailAddress());
+													System.out.println("$#15670#"); email.setSubject(messages.getMessage("email.contact.title",storeLocale));
 		           //contact has to be delivered to store owner, receiver is store email
-		           email.setTo(merchantStore.getStoreEmailAddress());
-		           email.setTemplateName(EmailConstants.EMAIL_CONTACT_TMPL);
-		           email.setTemplateTokens(templateTokens);
+													System.out.println("$#15671#"); email.setTo(merchantStore.getStoreEmailAddress());
+													System.out.println("$#15672#"); email.setTemplateName(EmailConstants.EMAIL_CONTACT_TMPL);
+													System.out.println("$#15673#"); email.setTemplateTokens(templateTokens);
 
 		           LOGGER.debug( "Sending contact email");
-		           emailService.sendHtmlEmail(merchantStore, email);
+													System.out.println("$#15674#"); emailService.sendHtmlEmail(merchantStore, email);
 
 		       } catch (Exception e) {
 		           LOGGER.error("Error occured while sending contact email ",e);
@@ -376,7 +376,7 @@ public class EmailTemplatesUtils {
 		        String[] statusMessage = {DateUtil.formatDate(lastHistory.getDateAdded()),status};
 		        
 		        String comments = lastHistory.getComments();
-		        if(StringUtils.isBlank(comments)) {
+										System.out.println("$#15675#"); if(StringUtils.isBlank(comments)) {
 		        	comments = messages.getMessage("label.order." + order.getStatus().name(), customerLocale, order.getStatus().name());
 		        }
 		        
@@ -386,16 +386,16 @@ public class EmailTemplatesUtils {
 				
 				
 				Email email = new Email();
-				email.setFrom(merchantStore.getStorename());
-				email.setFromEmail(merchantStore.getStoreEmailAddress());
-				email.setSubject(messages.getMessage("email.order.status.title",new String[]{String.valueOf(order.getId())},customerLocale));
-				email.setTo(customer.getEmailAddress());
-				email.setTemplateName(EmailConstants.ORDER_STATUS_TMPL);
-				email.setTemplateTokens(templateTokens);
+				System.out.println("$#15676#"); email.setFrom(merchantStore.getStorename());
+				System.out.println("$#15677#"); email.setFromEmail(merchantStore.getStoreEmailAddress());
+				System.out.println("$#15678#"); email.setSubject(messages.getMessage("email.order.status.title",new String[]{String.valueOf(order.getId())},customerLocale));
+				System.out.println("$#15679#"); email.setTo(customer.getEmailAddress());
+				System.out.println("$#15680#"); email.setTemplateName(EmailConstants.ORDER_STATUS_TMPL);
+				System.out.println("$#15681#"); email.setTemplateTokens(templateTokens);
 	
 	
 				
-				emailService.sendHtmlEmail(merchantStore, email);
+				System.out.println("$#15682#"); emailService.sendHtmlEmail(merchantStore, email);
 
 	       } catch (Exception e) {
 	           LOGGER.error("Error occured while sending order download email ",e);
@@ -435,15 +435,15 @@ public class EmailTemplatesUtils {
 	           String[] orderInfo = {String.valueOf(order.getId())};
 	           
 	           Email email = new Email();
-	           email.setFrom(merchantStore.getStorename());
-	           email.setFromEmail(merchantStore.getStoreEmailAddress());
-	           email.setSubject(messages.getMessage("email.order.download.title", orderInfo, customerLocale));
-	           email.setTo(customer.getEmailAddress());
-	           email.setTemplateName(EmailConstants.EMAIL_ORDER_DOWNLOAD_TPL);
-	           email.setTemplateTokens(templateTokens);
+												System.out.println("$#15683#"); email.setFrom(merchantStore.getStorename());
+												System.out.println("$#15684#"); email.setFromEmail(merchantStore.getStoreEmailAddress());
+												System.out.println("$#15685#"); email.setSubject(messages.getMessage("email.order.download.title", orderInfo, customerLocale));
+												System.out.println("$#15686#"); email.setTo(customer.getEmailAddress());
+												System.out.println("$#15687#"); email.setTemplateName(EmailConstants.EMAIL_ORDER_DOWNLOAD_TPL);
+												System.out.println("$#15688#"); email.setTemplateTokens(templateTokens);
 
 	           LOGGER.debug( "Sending email to {} with download info",customer.getEmailAddress() );
-	           emailService.sendHtmlEmail(merchantStore, email);
+												System.out.println("$#15689#"); emailService.sendHtmlEmail(merchantStore, email);
 
 	       } catch (Exception e) {
 	           LOGGER.error("Error occured while sending order download email ",e);
@@ -478,16 +478,16 @@ public class EmailTemplatesUtils {
 		        
 
 				Email email = new Email();
-				email.setFrom(merchantStore.getStorename());
-				email.setFromEmail(merchantStore.getStoreEmailAddress());
-				email.setSubject(messages.getMessage("label.notification.title.passwordchanged",customerLocale));
-				email.setTo(customer.getEmailAddress());
-				email.setTemplateName(EmailConstants.EMAIL_NOTIFICATION_TMPL);
-				email.setTemplateTokens(templateTokens);
+				System.out.println("$#15690#"); email.setFrom(merchantStore.getStorename());
+				System.out.println("$#15691#"); email.setFromEmail(merchantStore.getStoreEmailAddress());
+				System.out.println("$#15692#"); email.setSubject(messages.getMessage("label.notification.title.passwordchanged",customerLocale));
+				System.out.println("$#15693#"); email.setTo(customer.getEmailAddress());
+				System.out.println("$#15694#"); email.setTemplateName(EmailConstants.EMAIL_NOTIFICATION_TMPL);
+				System.out.println("$#15695#"); email.setTemplateTokens(templateTokens);
 	
 	
 				
-				emailService.sendHtmlEmail(merchantStore, email);
+				System.out.println("$#15696#"); emailService.sendHtmlEmail(merchantStore, email);
 
 	       } catch (Exception e) {
 	           LOGGER.error("Error occured while sending change password email ",e);

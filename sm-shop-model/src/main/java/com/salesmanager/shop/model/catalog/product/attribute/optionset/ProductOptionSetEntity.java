@@ -13,19 +13,19 @@ public class ProductOptionSetEntity implements Serializable {
 	private String code;
 	private boolean readOnly;
 	public Long getId() {
-		return id;
+		System.out.println("$#8787#"); return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getCode() {
-		return code;
+		System.out.println("$#8788#"); return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
 	}
 	public boolean isReadOnly() {
-		return readOnly;
+		System.out.println("$#8790#"); System.out.println("$#8789#"); return readOnly;
 	}
 	public void setReadOnly(boolean readOnly) {
 		this.readOnly = readOnly;

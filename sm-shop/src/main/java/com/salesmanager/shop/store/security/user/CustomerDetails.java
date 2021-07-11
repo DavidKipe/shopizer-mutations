@@ -36,7 +36,7 @@ public class CustomerDetails extends User {
 	}
 
 	public String getEmail() {
-		return email;
+		System.out.println("$#15364#"); return email;
 	}
 
 	public void setEmail(String email) {
@@ -44,7 +44,7 @@ public class CustomerDetails extends User {
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#15365#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -52,7 +52,7 @@ public class CustomerDetails extends User {
 	}
 
 	public String getFirstName() {
-		return firstName;
+		System.out.println("$#15366#"); return firstName;
 	}
 
 	public void setFirstName(String firstName) {
@@ -60,7 +60,7 @@ public class CustomerDetails extends User {
 	}
 
 	public String getLastName() {
-		return lastName;
+		System.out.println("$#15367#"); return lastName;
 	}
 
 	public void setLastName(String lastName) {

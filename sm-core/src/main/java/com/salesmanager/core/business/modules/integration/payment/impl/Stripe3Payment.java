@@ -65,12 +65,12 @@ public class Stripe3Payment implements PaymentModule {
 
 			String apiKey = configuration.getIntegrationKeys().get("secretKey");
 
-			if (StringUtils.isBlank(apiKey)) {
+			System.out.println("$#728#"); if (StringUtils.isBlank(apiKey)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process Stripe, missing payment.metaData");
-				te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-				te.setMessageCode("message.payment.error");
-				te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#729#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#730#"); te.setMessageCode("message.payment.error");
+				System.out.println("$#731#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 				throw te;
 			}
 
@@ -87,11 +87,11 @@ public class Stripe3Payment implements PaymentModule {
 
 			intent.getClientSecret();
 
-			transaction.setAmount(amount);
+			System.out.println("$#732#"); transaction.setAmount(amount);
 			//transaction.setOrder(order);
-			transaction.setTransactionDate(new Date());
-			transaction.setTransactionType(TransactionType.AUTHORIZE);
-			transaction.setPaymentType(PaymentType.CREDITCARD);
+			System.out.println("$#733#"); transaction.setTransactionDate(new Date());
+			System.out.println("$#734#"); transaction.setTransactionType(TransactionType.AUTHORIZE);
+			System.out.println("$#735#"); transaction.setPaymentType(PaymentType.CREDITCARD);
 			transaction.getTransactionDetails().put("TRANSACTIONID", intent.getId());
 			transaction.getTransactionDetails().put("TRNAPPROVED", intent.getStatus());
 			transaction.getTransactionDetails().put("TRNORDERNUMBER", intent.getId());
@@ -102,7 +102,7 @@ public class Stripe3Payment implements PaymentModule {
 			throw buildException(e);
 		}
 
-		return transaction;
+		System.out.println("$#736#"); return transaction;
 	}
 
 	@Override
@@ -117,23 +117,23 @@ public class Stripe3Payment implements PaymentModule {
 		Map<String,String> keys = integrationConfiguration.getIntegrationKeys();
 		
 		//validate integrationKeys['secretKey']
-		if(keys==null || StringUtils.isBlank(keys.get("secretKey"))) {
+		System.out.println("$#737#"); if(keys==null || StringUtils.isBlank(keys.get("secretKey"))) {
 			errorFields = new ArrayList<String>();
 			errorFields.add("secretKey");
 		}
 		
 		//validate integrationKeys['publishableKey']
-		if(keys==null || StringUtils.isBlank(keys.get("publishableKey"))) {
-			if(errorFields==null) {
+		System.out.println("$#739#"); if(keys==null || StringUtils.isBlank(keys.get("publishableKey"))) {
+			System.out.println("$#741#"); if(errorFields==null) {
 				errorFields = new ArrayList<String>();
 			}
 			errorFields.add("publishableKey");
 		}
 		
 		
-		if(errorFields!=null) {
+		System.out.println("$#742#"); if(errorFields!=null) {
 			IntegrationException ex = new IntegrationException(IntegrationException.ERROR_VALIDATION_SAVE);
-			ex.setErrorFields(errorFields);
+			System.out.println("$#743#"); ex.setErrorFields(errorFields);
 			throw ex;
 		}
 	}
@@ -153,12 +153,12 @@ public class Stripe3Payment implements PaymentModule {
 
 			String apiKey = configuration.getIntegrationKeys().get("secretKey");
 
-			if(payment.getPaymentMetaData()==null || StringUtils.isBlank(apiKey)) {
+			System.out.println("$#744#"); if(payment.getPaymentMetaData()==null || StringUtils.isBlank(apiKey)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process Stripe, missing payment.metaData");
-				te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-				te.setMessageCode("message.payment.error");
-				te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#746#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#747#"); te.setMessageCode("message.payment.error");
+				System.out.println("$#748#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 				throw te;
 			}
 			
@@ -167,12 +167,12 @@ public class Stripe3Payment implements PaymentModule {
 			 */
 			String token = payment.getPaymentMetaData().get("stripe_token");
 			
-			if(StringUtils.isBlank(token)) {
+			System.out.println("$#749#"); if(StringUtils.isBlank(token)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process Stripe, missing stripe token");
-				te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-				te.setMessageCode("message.payment.error");
-				te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#750#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#751#"); te.setMessageCode("message.payment.error");
+				System.out.println("$#752#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 				throw te;
 			}
 
@@ -182,11 +182,11 @@ public class Stripe3Payment implements PaymentModule {
 					token
 			);
 			
-			transaction.setAmount(amount);
+			System.out.println("$#753#"); transaction.setAmount(amount);
 			//transaction.setOrder(order);
-			transaction.setTransactionDate(new Date());
-			transaction.setTransactionType(TransactionType.AUTHORIZE);
-			transaction.setPaymentType(PaymentType.CREDITCARD);
+			System.out.println("$#754#"); transaction.setTransactionDate(new Date());
+			System.out.println("$#755#"); transaction.setTransactionType(TransactionType.AUTHORIZE);
+			System.out.println("$#756#"); transaction.setPaymentType(PaymentType.CREDITCARD);
 			transaction.getTransactionDetails().put("TRANSACTIONID", token);
 			transaction.getTransactionDetails().put("TRNAPPROVED", paymentIntent.getStatus());
 			transaction.getTransactionDetails().put("TRNORDERNUMBER", paymentIntent.getId());  // <---- We store the PI id here
@@ -198,7 +198,7 @@ public class Stripe3Payment implements PaymentModule {
 
 		} 
 		
-		return transaction;
+		System.out.println("$#757#"); return transaction;
 
 		
 	}
@@ -214,23 +214,23 @@ public class Stripe3Payment implements PaymentModule {
 
 			String apiKey = configuration.getIntegrationKeys().get("secretKey");
 
-			if(StringUtils.isBlank(apiKey)) {
+			System.out.println("$#758#"); if(StringUtils.isBlank(apiKey)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process Stripe, missing payment.metaData");
-				te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-				te.setMessageCode("message.payment.error");
-				te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#759#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#760#"); te.setMessageCode("message.payment.error");
+				System.out.println("$#761#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 				throw te;
 			}
 
 			String chargeId = capturableTransaction.getTransactionDetails().get("TRNORDERNUMBER");       // <---- We retrieve the PI id here
 
-			if(StringUtils.isBlank(chargeId)) {
+			System.out.println("$#762#"); if(StringUtils.isBlank(chargeId)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process Stripe capture, missing TRNORDERNUMBER");
-				te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-				te.setMessageCode("message.payment.error");
-				te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#763#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#764#"); te.setMessageCode("message.payment.error");
+				System.out.println("$#765#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 				throw te;
 			}
 
@@ -245,6 +245,7 @@ public class Stripe3Payment implements PaymentModule {
 					chargeId
 			);
 
+			System.out.println("$#766#");
 			PaymentIntentCaptureParams params =
 					PaymentIntentCaptureParams.builder()
 							.setAmountToCapture(Long.parseLong(strAmount))
@@ -257,17 +258,17 @@ public class Stripe3Payment implements PaymentModule {
 
 			paymentIntent = paymentIntent.capture(params);
 
-			transaction.setAmount(order.getTotal());
-			transaction.setOrder(order);
-			transaction.setTransactionDate(new Date());
-			transaction.setTransactionType(TransactionType.CAPTURE);
-			transaction.setPaymentType(PaymentType.CREDITCARD);
+			System.out.println("$#768#"); transaction.setAmount(order.getTotal());
+			System.out.println("$#769#"); transaction.setOrder(order);
+			System.out.println("$#770#"); transaction.setTransactionDate(new Date());
+			System.out.println("$#771#"); transaction.setTransactionType(TransactionType.CAPTURE);
+			System.out.println("$#772#"); transaction.setPaymentType(PaymentType.CREDITCARD);
 			transaction.getTransactionDetails().put("TRANSACTIONID", capturableTransaction.getTransactionDetails().get("TRANSACTIONID"));
 			transaction.getTransactionDetails().put("TRNAPPROVED", paymentIntent.getStatus());
 			transaction.getTransactionDetails().put("TRNORDERNUMBER", paymentIntent.getId());
 			transaction.getTransactionDetails().put("MESSAGETEXT", null);
 
-			return transaction;
+			System.out.println("$#773#"); return transaction;
 
 		} catch (Exception e) {
 			throw buildException(e);
@@ -282,26 +283,26 @@ public class Stripe3Payment implements PaymentModule {
 		
 		String apiKey = configuration.getIntegrationKeys().get("secretKey");
 
-		if(payment.getPaymentMetaData()==null || StringUtils.isBlank(apiKey)) {
+		System.out.println("$#774#"); if(payment.getPaymentMetaData()==null || StringUtils.isBlank(apiKey)) {
 			IntegrationException te = new IntegrationException(
 					"Can't process Stripe, missing payment.metaData");
-			te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-			te.setMessageCode("message.payment.error");
-			te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+			System.out.println("$#776#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+			System.out.println("$#777#"); te.setMessageCode("message.payment.error");
+			System.out.println("$#778#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 			throw te;
 		}
 		
 		String token = payment.getPaymentMetaData().get("stripe_token");
-		if(StringUtils.isBlank(token)) { //possibly from api
+		System.out.println("$#779#"); if(StringUtils.isBlank(token)) { //possibly from api
 		  token = payment.getPaymentMetaData().get("paymentToken");
 		}
 		
-		if(StringUtils.isBlank(token)) {
+		System.out.println("$#780#"); if(StringUtils.isBlank(token)) {
 			IntegrationException te = new IntegrationException(
 					"Can't process Stripe, missing stripe token");
-			te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-			te.setMessageCode("message.payment.error");
-			te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+			System.out.println("$#781#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+			System.out.println("$#782#"); te.setMessageCode("message.payment.error");
+			System.out.println("$#783#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 			throw te;
 		}
 		
@@ -335,6 +336,7 @@ public class Stripe3Payment implements PaymentModule {
 					token
 		  	);
 
+			System.out.println("$#784#");
 			PaymentIntentCaptureParams params =
 					PaymentIntentCaptureParams.builder()
 							.setAmountToCapture(Long.parseLong(strAmount))
@@ -350,11 +352,11 @@ public class Stripe3Payment implements PaymentModule {
 			//Map<String,String> metadata = ch.getMetadata();
 			
 			
-			transaction.setAmount(amount);
+			System.out.println("$#786#"); transaction.setAmount(amount);
 			//transaction.setOrder(order);
-			transaction.setTransactionDate(new Date());
-			transaction.setTransactionType(TransactionType.AUTHORIZECAPTURE);
-			transaction.setPaymentType(PaymentType.CREDITCARD);
+			System.out.println("$#787#"); transaction.setTransactionDate(new Date());
+			System.out.println("$#788#"); transaction.setTransactionType(TransactionType.AUTHORIZECAPTURE);
+			System.out.println("$#789#"); transaction.setPaymentType(PaymentType.CREDITCARD);
 			transaction.getTransactionDetails().put("TRANSACTIONID", token);
 			transaction.getTransactionDetails().put("TRNAPPROVED", paymentIntent.getStatus());
 			transaction.getTransactionDetails().put("TRNORDERNUMBER", paymentIntent.getId());
@@ -362,13 +364,13 @@ public class Stripe3Payment implements PaymentModule {
 			
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			System.out.println("$#790#"); e.printStackTrace();
 
 			throw buildException(e);
 	
 		} 
 		
-		return transaction;  
+		System.out.println("$#791#"); return transaction;
 		
 	}
 
@@ -382,12 +384,12 @@ public class Stripe3Payment implements PaymentModule {
 		
 		String apiKey = configuration.getIntegrationKeys().get("secretKey");
 
-		if(StringUtils.isBlank(apiKey)) {
+		System.out.println("$#792#"); if(StringUtils.isBlank(apiKey)) {
 			IntegrationException te = new IntegrationException(
 					"Can't process Stripe, missing payment.metaData");
-			te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-			te.setMessageCode("message.payment.error");
-			te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+			System.out.println("$#793#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+			System.out.println("$#794#"); te.setMessageCode("message.payment.error");
+			System.out.println("$#795#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 			throw te;
 		}
 
@@ -417,17 +419,17 @@ public class Stripe3Payment implements PaymentModule {
 			Refund re = Refund.create(params);
 
 			transaction = new Transaction();
-			transaction.setAmount(order.getTotal());
-			transaction.setOrder(order);
-			transaction.setTransactionDate(new Date());
-			transaction.setTransactionType(TransactionType.CAPTURE);
-			transaction.setPaymentType(PaymentType.CREDITCARD);
+			System.out.println("$#796#"); transaction.setAmount(order.getTotal());
+			System.out.println("$#797#"); transaction.setOrder(order);
+			System.out.println("$#798#"); transaction.setTransactionDate(new Date());
+			System.out.println("$#799#"); transaction.setTransactionType(TransactionType.CAPTURE);
+			System.out.println("$#800#"); transaction.setPaymentType(PaymentType.CREDITCARD);
 			transaction.getTransactionDetails().put("TRANSACTIONID", transaction.getTransactionDetails().get("TRANSACTIONID"));
 			transaction.getTransactionDetails().put("TRNAPPROVED", re.getReason());
 			transaction.getTransactionDetails().put("TRNORDERNUMBER", re.getId());
 			transaction.getTransactionDetails().put("MESSAGETEXT", null);
 
-			return transaction;
+			System.out.println("$#801#"); return transaction;
 
 			
 		} catch(Exception e) {
@@ -443,7 +445,7 @@ public class Stripe3Payment implements PaymentModule {
 	private IntegrationException buildException(Exception ex) {
 		
 		
-	if(ex instanceof CardException) {
+	System.out.println("$#802#"); if(ex instanceof CardException) {
 		  CardException e = (CardException)ex;
 		  // Since it's a decline, CardException will be caught
 		  //System.out.println("Status is: " + e.getCode());
@@ -469,100 +471,100 @@ public class Stripe3Payment implements PaymentModule {
 			
 			String declineCode = e.getDeclineCode();
 			
-			if("card_declined".equals(declineCode)) {
+			System.out.println("$#803#"); if("card_declined".equals(declineCode)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process stripe message " + e.getMessage());
-				te.setExceptionType(IntegrationException.EXCEPTION_PAYMENT_DECLINED);
-				te.setMessageCode("message.payment.declined");
-				te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
-				return te;
+				System.out.println("$#804#"); te.setExceptionType(IntegrationException.EXCEPTION_PAYMENT_DECLINED);
+				System.out.println("$#805#"); te.setMessageCode("message.payment.declined");
+				System.out.println("$#806#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+				System.out.println("$#807#"); return te;
 			}
 			
-			if("invalid_number".equals(declineCode)) {
+			System.out.println("$#808#"); if("invalid_number".equals(declineCode)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process stripe message " + e.getMessage());
-				te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
-				te.setMessageCode("messages.error.creditcard.number");
-				te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
-				return te;
+				System.out.println("$#809#"); te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#810#"); te.setMessageCode("messages.error.creditcard.number");
+				System.out.println("$#811#"); te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#812#"); return te;
 			}
 			
-			if("invalid_expiry_month".equals(declineCode)) {
+			System.out.println("$#813#"); if("invalid_expiry_month".equals(declineCode)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process stripe message " + e.getMessage());
-				te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
-				te.setMessageCode("messages.error.creditcard.dateformat");
-				te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
-				return te;
+				System.out.println("$#814#"); te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#815#"); te.setMessageCode("messages.error.creditcard.dateformat");
+				System.out.println("$#816#"); te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#817#"); return te;
 			}
 			
-			if("invalid_expiry_year".equals(declineCode)) {
+			System.out.println("$#818#"); if("invalid_expiry_year".equals(declineCode)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process stripe message " + e.getMessage());
-				te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
-				te.setMessageCode("messages.error.creditcard.dateformat");
-				te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
-				return te;
+				System.out.println("$#819#"); te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#820#"); te.setMessageCode("messages.error.creditcard.dateformat");
+				System.out.println("$#821#"); te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#822#"); return te;
 			}
 			
-			if("invalid_cvc".equals(declineCode)) {
+			System.out.println("$#823#"); if("invalid_cvc".equals(declineCode)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process stripe message " + e.getMessage());
-				te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
-				te.setMessageCode("messages.error.creditcard.cvc");
-				te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
-				return te;
+				System.out.println("$#824#"); te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#825#"); te.setMessageCode("messages.error.creditcard.cvc");
+				System.out.println("$#826#"); te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#827#"); return te;
 			}
 			
-			if("incorrect_number".equals(declineCode)) {
+			System.out.println("$#828#"); if("incorrect_number".equals(declineCode)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process stripe message " + e.getMessage());
-				te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
-				te.setMessageCode("messages.error.creditcard.number");
-				te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
-				return te;
+				System.out.println("$#829#"); te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#830#"); te.setMessageCode("messages.error.creditcard.number");
+				System.out.println("$#831#"); te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#832#"); return te;
 			}
 			
-			if("incorrect_cvc".equals(declineCode)) {
+			System.out.println("$#833#"); if("incorrect_cvc".equals(declineCode)) {
 				IntegrationException te = new IntegrationException(
 						"Can't process stripe message " + e.getMessage());
-				te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
-				te.setMessageCode("messages.error.creditcard.cvc");
-				te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
-				return te;
+				System.out.println("$#834#"); te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#835#"); te.setMessageCode("messages.error.creditcard.cvc");
+				System.out.println("$#836#"); te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
+				System.out.println("$#837#"); return te;
 			}
 			
 			//nothing good so create generic error
 			IntegrationException te = new IntegrationException(
 					"Can't process stripe card  " + e.getMessage());
-			te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
-			te.setMessageCode("messages.error.creditcard.number");
-			te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
-			return te;
+			System.out.println("$#838#"); te.setExceptionType(IntegrationException.EXCEPTION_VALIDATION);
+			System.out.println("$#839#"); te.setMessageCode("messages.error.creditcard.number");
+			System.out.println("$#840#"); te.setErrorCode(IntegrationException.EXCEPTION_VALIDATION);
+			System.out.println("$#841#"); return te;
 		
 
 		  
-	} else if (ex instanceof InvalidRequestException) {
+	} else if (ex instanceof InvalidRequestException) { System.out.println("$#842#");
 		LOGGER.error("InvalidRequest error with stripe", ex.getMessage());
 		InvalidRequestException e =(InvalidRequestException)ex;
 		IntegrationException te = new IntegrationException(
 				"Can't process Stripe, missing invalid payment parameters");
-		te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-		te.setMessageCode("messages.error.creditcard.number");
-		te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
-		return te;
+		System.out.println("$#843#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+		System.out.println("$#844#"); te.setMessageCode("messages.error.creditcard.number");
+		System.out.println("$#845#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+		System.out.println("$#846#"); return te;
 		
-	} else if (ex instanceof AuthenticationException) {
+	} else if (ex instanceof AuthenticationException) { System.out.println("$#847#");
 		LOGGER.error("Authentication error with stripe", ex.getMessage());
 		AuthenticationException e = (AuthenticationException)ex;
 		  // Authentication with Stripe's API failed
 		  // (maybe you changed API keys recently)
 		IntegrationException te = new IntegrationException(
 				"Can't process Stripe, missing invalid payment parameters");
-		te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-		te.setMessageCode("message.payment.error");
-		te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
-		return te;
+		System.out.println("$#848#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+		System.out.println("$#849#"); te.setMessageCode("message.payment.error");
+		System.out.println("$#850#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+		System.out.println("$#851#"); return te;
 		
 	} /*else if (ex instanceof APIConnectionException) {
 		LOGGER.error("API connection error with stripe", ex.getMessage());
@@ -574,31 +576,31 @@ public class Stripe3Payment implements PaymentModule {
 		te.setMessageCode("message.payment.error");
 		te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
 		return te;
-	} */else if (ex instanceof StripeException) {
+	} */else if (ex instanceof StripeException) { System.out.println("$#852#");
 		LOGGER.error("Error with stripe", ex.getMessage());
 		StripeException e = (StripeException)ex;
 		  // Display a very generic error to the user, and maybe send
 		  // yourself an email
 		IntegrationException te = new IntegrationException(
 				"Can't process Stripe authorize, missing invalid payment parameters");
-		te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-		te.setMessageCode("message.payment.error");
-		te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
-		return te;
+		System.out.println("$#853#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+		System.out.println("$#854#"); te.setMessageCode("message.payment.error");
+		System.out.println("$#855#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+		System.out.println("$#856#"); return te;
 		
 		
 
-	} else if (ex instanceof Exception) {
+	} else if (ex instanceof Exception) { System.out.println("$#857#");
 		LOGGER.error("Stripe module error", ex.getMessage());
-		if(ex instanceof IntegrationException) {
-			return (IntegrationException)ex;
+		System.out.println("$#858#"); if(ex instanceof IntegrationException) {
+			System.out.println("$#859#"); return (IntegrationException)ex;
 		} else {
 			IntegrationException te = new IntegrationException(
 					"Can't process Stripe authorize, exception", ex);
-			te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-			te.setMessageCode("message.payment.error");
-			te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
-			return te;
+			System.out.println("$#860#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+			System.out.println("$#861#"); te.setMessageCode("message.payment.error");
+			System.out.println("$#862#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+			System.out.println("$#863#"); return te;
 		}
 
 
@@ -606,10 +608,10 @@ public class Stripe3Payment implements PaymentModule {
 		LOGGER.error("Stripe module error", ex.getMessage());
 		IntegrationException te = new IntegrationException(
 				"Can't process Stripe authorize, exception", ex);
-		te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
-		te.setMessageCode("message.payment.error");
-		te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
-		return te;
+		System.out.println("$#864#"); te.setExceptionType(IntegrationException.TRANSACTION_EXCEPTION);
+		System.out.println("$#865#"); te.setMessageCode("message.payment.error");
+		System.out.println("$#866#"); te.setErrorCode(IntegrationException.TRANSACTION_EXCEPTION);
+		System.out.println("$#867#"); return te;
 	}
 
 	}

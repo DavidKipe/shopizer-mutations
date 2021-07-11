@@ -69,7 +69,7 @@ public class ContactController extends AbstractController {
 		
 		model.addAttribute("googleMapsKey",googleMapsKey);
 		
-		request.setAttribute(Constants.LINK_CODE, CONTACT_LINK);
+		System.out.println("$#14051#"); request.setAttribute(Constants.LINK_CODE, CONTACT_LINK);
 
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
@@ -80,20 +80,20 @@ public class ContactController extends AbstractController {
 		
 		Content content = contentService.getByCode(Constants.CONTENT_CONTACT_US, store, language);
 		ContentDescription contentDescription = null;
-		if(content!=null && content.isVisible()) {
+		System.out.println("$#14052#"); if(content!=null && content.isVisible()) {
 			contentDescription = content.getDescription();
 		}
 		
-		if(contentDescription!=null) {
+		System.out.println("$#14054#"); if(contentDescription!=null) {
 
 			//meta information
 			PageInformation pageInformation = new PageInformation();
-			pageInformation.setPageDescription(contentDescription.getMetatagDescription());
-			pageInformation.setPageKeywords(contentDescription.getMetatagKeywords());
-			pageInformation.setPageTitle(contentDescription.getTitle());
-			pageInformation.setPageUrl(contentDescription.getName());
+			System.out.println("$#14055#"); pageInformation.setPageDescription(contentDescription.getMetatagDescription());
+			System.out.println("$#14056#"); pageInformation.setPageKeywords(contentDescription.getMetatagKeywords());
+			System.out.println("$#14057#"); pageInformation.setPageTitle(contentDescription.getTitle());
+			System.out.println("$#14058#"); pageInformation.setPageUrl(contentDescription.getName());
 			
-			request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
+			System.out.println("$#14059#"); request.setAttribute(Constants.REQUEST_PAGE_INFORMATION, pageInformation);
 			
 			model.addAttribute("content",contentDescription);
 
@@ -103,7 +103,7 @@ public class ContactController extends AbstractController {
 		
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Content.contactus).append(".").append(store.getStoreTemplate());
-		return template.toString();
+		System.out.println("$#14060#"); return template.toString();
 		
 		
 	}
@@ -119,38 +119,38 @@ public class ContactController extends AbstractController {
 		try {
 
 	        
-	        if(!StringUtils.isBlank(request.getParameter("g-recaptcha-response"))) {
+									System.out.println("$#14061#"); if(!StringUtils.isBlank(request.getParameter("g-recaptcha-response"))) {
 	        	boolean validateCaptcha = captchaRequestUtils.checkCaptcha(request.getParameter("g-recaptcha-response"));
 	        	
-                if ( !validateCaptcha )
+																System.out.println("$#14062#"); if ( !validateCaptcha )
                 {
                     LOGGER.debug( "Captcha response does not matched" );
         			FieldError error = new FieldError("captchaChallengeField","captchaChallengeField",messages.getMessage("validaion.recaptcha.not.matched", locale));
-        			bindingResult.addError(error);
+											System.out.println("$#14063#"); bindingResult.addError(error);
                 }
 	        }
 	        
 	        
 	        
-	        if ( bindingResult.hasErrors() )
+									System.out.println("$#14064#"); if ( bindingResult.hasErrors() )
 	        {
 	            LOGGER.debug( "found {} validation error while validating in customer registration ",
 	                         bindingResult.getErrorCount() );
-	            ajaxResponse.setErrorString(bindingResult.getAllErrors().get(0).getDefaultMessage());
-	            ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-	            return ajaxResponse.toJSONString();
+													System.out.println("$#14065#"); ajaxResponse.setErrorString(bindingResult.getAllErrors().get(0).getDefaultMessage());
+													System.out.println("$#14066#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+													System.out.println("$#14067#"); return ajaxResponse.toJSONString();
 
 	        }
 	        
-	        emailTemplatesUtils.sendContactEmail(contact, store, LocaleUtils.getLocale(store.getDefaultLanguage()), request.getContextPath());
+									System.out.println("$#14068#"); emailTemplatesUtils.sendContactEmail(contact, store, LocaleUtils.getLocale(store.getDefaultLanguage()), request.getContextPath());
 			
-			ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#14069#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 		} catch(Exception e) {
 			LOGGER.error("An error occured while trying to send an email",e);
-			ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#14070#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
-		return ajaxResponse.toJSONString();
+		System.out.println("$#14071#"); return ajaxResponse.toJSONString();
 		
 		
 	}

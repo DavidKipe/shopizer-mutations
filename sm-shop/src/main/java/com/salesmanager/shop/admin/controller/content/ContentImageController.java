@@ -68,7 +68,7 @@ public class ContentImageController {
 	public String displayFileBrowser(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		return ControllerConstants.Tiles.ContentImages.fileBrowser;
+		System.out.println("$#5111#"); return ControllerConstants.Tiles.ContentImages.fileBrowser;
 		
 	}
 	
@@ -86,8 +86,8 @@ public class ContentImageController {
 	@RequestMapping(value={"/admin/content/contentImages.html","/admin/content/contentManagement.html"}, method=RequestMethod.GET)
 	public String getContentImages(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		this.setMenu(model, request);
-		return ControllerConstants.Tiles.ContentImages.contentImages;
+		System.out.println("$#5112#"); this.setMenu(model, request);
+		System.out.println("$#5113#"); return ControllerConstants.Tiles.ContentImages.contentImages;
 		
 	}
 	
@@ -105,7 +105,7 @@ public class ContentImageController {
 			
 			List<String> imageNames = contentService.getContentFilesNames(store.getCode(),FileContentType.IMAGE);
 			
-			if(imageNames!=null) {
+			System.out.println("$#5114#"); if(imageNames!=null) {
 
 				for(String name : imageNames) {
 
@@ -115,23 +115,23 @@ public class ContentImageController {
 					
 					entry.put("name", name);
 					entry.put("id", name);
-					resp.addDataEntry(entry);
+					System.out.println("$#5115#"); resp.addDataEntry(entry);
 
 				}
 			
 			}
 			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			System.out.println("$#5116#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			LOGGER.error("Error while paging content images", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5117#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5118#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5119#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	/**
@@ -147,7 +147,7 @@ public class ContentImageController {
 	@RequestMapping(value="/admin/content/createContentImages.html", method=RequestMethod.GET)
     public String displayContentImagesCreate(final Model model, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
       
-	    return ControllerConstants.Tiles.ContentImages.addContentImages;
+					System.out.println("$#5120#"); return ControllerConstants.Tiles.ContentImages.addContentImages;
 
     }
 	
@@ -172,37 +172,37 @@ public class ContentImageController {
 	@RequestMapping(value="/admin/content/saveContentImages.html", method=RequestMethod.POST)
 	public String saveContentImages(@ModelAttribute(value="contentFiles") @Valid final ContentFiles contentImages, final BindingResult bindingResult,final Model model, final HttpServletRequest request) throws Exception{
 	    
-		this.setMenu(model, request);
-	    if (bindingResult.hasErrors()) {
+		System.out.println("$#5121#"); this.setMenu(model, request);
+					System.out.println("$#5122#"); if (bindingResult.hasErrors()) {
 	        LOGGER.info( "Found {} Validation errors", bindingResult.getErrorCount());
-	       return ControllerConstants.Tiles.ContentImages.addContentImages;
+								System.out.println("$#5123#"); return ControllerConstants.Tiles.ContentImages.addContentImages;
 	       
         }
 	    final List<InputContentFile> contentImagesList=new ArrayList<InputContentFile>();
         final MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-        if(CollectionUtils.isNotEmpty( contentImages.getFile() )){
+								System.out.println("$#5124#"); if(CollectionUtils.isNotEmpty( contentImages.getFile() )){
             LOGGER.info("Saving {} content images for merchant {}",contentImages.getFile().size(),store.getId());
             for(final MultipartFile multipartFile:contentImages.getFile()){
-                if(!multipartFile.isEmpty()){
+																System.out.println("$#5125#"); if(!multipartFile.isEmpty()){
                     ByteArrayInputStream inputStream = new ByteArrayInputStream( multipartFile.getBytes() );
                     InputContentFile cmsContentImage = new InputContentFile();
-                    cmsContentImage.setFileName(multipartFile.getOriginalFilename() );
-                    cmsContentImage.setMimeType( multipartFile.getContentType() );
-                    cmsContentImage.setFile( inputStream );
-                    cmsContentImage.setFileContentType(FileContentType.IMAGE);
+																				System.out.println("$#5126#"); cmsContentImage.setFileName(multipartFile.getOriginalFilename() );
+																				System.out.println("$#5127#"); cmsContentImage.setMimeType( multipartFile.getContentType() );
+																				System.out.println("$#5128#"); cmsContentImage.setFile( inputStream );
+																				System.out.println("$#5129#"); cmsContentImage.setFileContentType(FileContentType.IMAGE);
                     contentImagesList.add( cmsContentImage);
                 }
             }
             
-            if(CollectionUtils.isNotEmpty( contentImagesList )){
-                contentService.addContentFiles( store.getCode(), contentImagesList );
+												System.out.println("$#5130#"); if(CollectionUtils.isNotEmpty( contentImagesList )){
+																System.out.println("$#5131#"); contentService.addContentFiles( store.getCode(), contentImagesList );
             }
             else{
                 // show error message on UI
             }
         }
        
-        return ControllerConstants.Tiles.ContentImages.contentImages;
+								System.out.println("$#5132#"); return ControllerConstants.Tiles.ContentImages.contentImages;
 	}
 	
 	
@@ -227,20 +227,20 @@ public class ContentImageController {
 			
 
 			
-			contentService.removeFile(store.getCode(), FileContentType.IMAGE, imageName);
+			System.out.println("$#5133#"); contentService.removeFile(store.getCode(), FileContentType.IMAGE, imageName);
 
 		
 		
 		} catch (Exception e) {
 			LOGGER.error("Error while deleting product", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
+			System.out.println("$#5134#"); resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			System.out.println("$#5135#"); resp.setErrorMessage(e);
 		}
 		
 		String returnString = resp.toJSONString();
 		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
+					System.out.println("$#5136#"); httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		System.out.println("$#5137#"); return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
 	}
 	
 	private void setMenu(Model model, HttpServletRequest request) throws Exception {

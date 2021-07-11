@@ -46,7 +46,7 @@ public class ContentBoxesController {
         map.put("RIGHT", "RIGHT");
 
 
-        return (map.entrySet()); 
+								System.out.println("$#5084#"); return (map.entrySet());
     } 
 
 
@@ -56,10 +56,10 @@ public class ContentBoxesController {
 	@RequestMapping(value="/admin/content/boxes/list.html", method=RequestMethod.GET)
 	public String listContentBoxes(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		setMenu(model,request);
+		System.out.println("$#5085#"); setMenu(model,request);
 
 		model.addAttribute("boxes", true);
-		return ControllerConstants.Tiles.Content.contentPages;
+		System.out.println("$#5086#"); return ControllerConstants.Tiles.Content.contentPages;
 		
 		
 	}
@@ -68,11 +68,11 @@ public class ContentBoxesController {
 	@RequestMapping(value="/admin/content/boxes/create.html", method=RequestMethod.GET)
 	public String createBox(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		model.addAttribute("boxes", true);
-		setMenu(model,request);
+		System.out.println("$#5087#"); setMenu(model,request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Content content = new Content();
-		content.setMerchantStore(store);
-		content.setContentType(ContentType.BOX);
+		System.out.println("$#5088#"); content.setMerchantStore(store);
+		System.out.println("$#5089#"); content.setContentType(ContentType.BOX);
 		
 		
 		List<Language> languages = store.getLanguages();
@@ -81,7 +81,7 @@ public class ContentBoxesController {
 		for(Language l : languages) {
 			
 			ContentDescription description = new ContentDescription();
-			description.setLanguage(l);
+			System.out.println("$#5090#"); description.setLanguage(l);
 			content.getDescriptions().add(description);
 		}
 		
@@ -94,7 +94,7 @@ public class ContentBoxesController {
 		model.addAttribute("content",content);
 		
 
-		return ControllerConstants.Tiles.Content.contentPagesDetails;
+		System.out.println("$#5091#"); return ControllerConstants.Tiles.Content.contentPagesDetails;
 		
 		
 	}
@@ -103,7 +103,7 @@ public class ContentBoxesController {
 	@RequestMapping(value="/admin/content/boxes/details.html", method=RequestMethod.GET)
 	public String getContentDetails(@RequestParam("id") Long id, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		model.addAttribute("boxes", true);
-		setMenu(model,request);
+		System.out.println("$#5092#"); setMenu(model,request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		Content content = contentService.getById(id);
 		
@@ -114,19 +114,19 @@ public class ContentBoxesController {
 		
 		model.addAttribute("positions",positions);
 		
-		if(content==null) {
+		System.out.println("$#5093#"); if(content==null) {
 			LOGGER.error("Content entity null for id " + id);
-			return "redirect:/admin/content/boxes/listContent.html";
+			System.out.println("$#5094#"); return "redirect:/admin/content/boxes/listContent.html";
 		}
 		
-		if(content.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+		System.out.println("$#5095#"); if(content.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 			LOGGER.error("Content id " + id + " does not belong to merchant " + store.getId());
-			return "redirect:/admin/content/boxes/listContent.html";
+			System.out.println("$#5096#"); return "redirect:/admin/content/boxes/listContent.html";
 		}
 		
-		if(!content.getContentType().name().equals(ContentType.BOX.name())) {
+		System.out.println("$#5097#"); if(!content.getContentType().name().equals(ContentType.BOX.name())) {
 			LOGGER.error("This controller does not handle content type " + content.getContentType().name());
-			return "redirect:/admin/content/boxes/listContent.html";
+			System.out.println("$#5098#"); return "redirect:/admin/content/boxes/listContent.html";
 		}
 		
 		List<Language> languages = store.getLanguages();
@@ -134,17 +134,17 @@ public class ContentBoxesController {
 		List<ContentDescription> descriptions = new ArrayList<ContentDescription>();
 		for(Language l : languages) {
 			for(ContentDescription description : content.getDescriptions()) {
-				if(description.getLanguage().getCode().equals(l.getCode())) {
+				System.out.println("$#5099#"); if(description.getLanguage().getCode().equals(l.getCode())) {
 					descriptions.add(description);
 				}
 			}
 		}
-		content.setDescriptions(descriptions);
+		System.out.println("$#5100#"); content.setDescriptions(descriptions);
 		
 		model.addAttribute("content",content);
 		
 
-		return ControllerConstants.Tiles.Content.contentPagesDetails;
+		System.out.println("$#5101#"); return ControllerConstants.Tiles.Content.contentPagesDetails;
 		
 		
 	}
@@ -157,7 +157,7 @@ public class ContentBoxesController {
 	@RequestMapping(value="/admin/content/boxes/save.html", method=RequestMethod.POST)
 	public String saveContent(@Valid @ModelAttribute Content content, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		model.addAttribute("boxes", true);
-		setMenu(model,request);
+		System.out.println("$#5102#"); setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -167,8 +167,8 @@ public class ContentBoxesController {
 		
 		model.addAttribute("positions",positions);
 		
-		if (result.hasErrors()) {
-			return ControllerConstants.Tiles.Content.contentPagesDetails;
+		System.out.println("$#5103#"); if (result.hasErrors()) {
+			System.out.println("$#5104#"); return ControllerConstants.Tiles.Content.contentPagesDetails;
 		}
 		
 		Map<String,Language> langs = languageService.getLanguagesMap();
@@ -176,18 +176,18 @@ public class ContentBoxesController {
 		List<ContentDescription> descriptions = content.getDescriptions();
 		for(ContentDescription description : descriptions) {
 			Language l = langs.get(description.getLanguage().getCode());
-			description.setLanguage(l);
-			description.setContent(content);
+			System.out.println("$#5105#"); description.setLanguage(l);
+			System.out.println("$#5106#"); description.setContent(content);
 		}
 		
-		content.setContentType(ContentType.BOX);
-		content.setMerchantStore(store);
-		contentService.saveOrUpdate(content);
+		System.out.println("$#5107#"); content.setContentType(ContentType.BOX);
+		System.out.println("$#5108#"); content.setMerchantStore(store);
+		System.out.println("$#5109#"); contentService.saveOrUpdate(content);
 		
 		
 		model.addAttribute("content",content);
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Content.contentPagesDetails;
+		System.out.println("$#5110#"); return ControllerConstants.Tiles.Content.contentPagesDetails;
 		
 		
 	}

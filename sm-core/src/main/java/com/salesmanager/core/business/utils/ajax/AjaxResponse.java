@@ -23,19 +23,19 @@ public class AjaxResponse implements JSONAware {
 	private Map<String,String> dataMap = new HashMap<String,String>();
 	private Map<String,String> validationMessages = new HashMap<String,String>();
 	public Map<String, String> getValidationMessages() {
-		return validationMessages;
+		System.out.println("$#3397#"); return validationMessages;
 	}
 	public void setValidationMessages(Map<String, String> validationMessages) {
 		this.validationMessages = validationMessages;
 	}
 	public int getStatus() {
-		return status;
+		System.out.println("$#3398#"); return status;
 	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
 	protected List<Map<String,String>> getData() {
-		return data;
+		System.out.println("$#3399#"); return data;
 	}
 	
 	public void addDataEntry(Map<String,String> dataEntry) {
@@ -48,11 +48,11 @@ public class AjaxResponse implements JSONAware {
 	
 	
 	public void setErrorMessage(Throwable t) {
-		this.setStatusMessage(t.getMessage());
+		System.out.println("$#3400#"); this.setStatusMessage(t.getMessage());
 	}
 	
 	public void setErrorString(String t) {
-		this.setStatusMessage(t);
+		System.out.println("$#3401#"); this.setStatusMessage(t);
 	}
 	
 
@@ -64,7 +64,7 @@ public class AjaxResponse implements JSONAware {
 	
 	
 	public String getStatusMessage() {
-		return statusMessage;
+		System.out.println("$#3402#"); return statusMessage;
 	}
 	public void setStatusMessage(String statusMessage) {
 		this.statusMessage = statusMessage;
@@ -78,10 +78,10 @@ public class AjaxResponse implements JSONAware {
 		returnString.append("\"response\"").append(":");
 		returnString.append("{");
 		returnString.append("\"status\"").append(":").append(this.getStatus());
-		if(this.getStatusMessage()!=null && this.getStatus()!=0) {
+		System.out.println("$#3403#"); if(this.getStatusMessage()!=null && this.getStatus()!=0) {
 			returnString.append(",").append("\"statusMessage\"").append(":\"").append(JSONObject.escape(this.getStatusMessage())).append("\"");
 		}
-		return returnString.toString();
+		System.out.println("$#3405#"); return returnString.toString();
 		
 	}
 	
@@ -92,11 +92,11 @@ public class AjaxResponse implements JSONAware {
 		
 		returnString.append(getJsonInfo());
 
-		if(this.getData().size()>0) {
+		System.out.println("$#3407#"); System.out.println("$#3406#"); if(this.getData().size()>0) {
 			StringBuilder dataEntries = null;
 			int count = 0;
 			for(Map keyValue : this.getData()) {
-				if(dataEntries == null) {
+				System.out.println("$#3408#"); if(dataEntries == null) {
 					dataEntries = new StringBuilder();
 				}
 				JSONObject data = new JSONObject();
@@ -106,24 +106,24 @@ public class AjaxResponse implements JSONAware {
 				}
 				String dataField = data.toJSONString();
 				dataEntries.append(dataField);
-				if(count<this.data.size()-1) {
+				System.out.println("$#3411#"); System.out.println("$#3410#"); System.out.println("$#3409#"); if(count<this.data.size()-1) {
 					dataEntries.append(",");
 				}
-				count ++;
+				System.out.println("$#3412#"); count ++;
 			}
 			
 			returnString.append(",").append("\"data\"").append(":[");
-			if(dataEntries!=null) {
+			System.out.println("$#3413#"); if(dataEntries!=null) {
 				returnString.append(dataEntries.toString());
 			}
 			returnString.append("]");
 		}
 		
-		if(this.getDataMap().size()>0) {
+		System.out.println("$#3415#"); System.out.println("$#3414#"); if(this.getDataMap().size()>0) {
 			StringBuilder dataEntries = null;
 			int count = 0;
 			for(String key : this.getDataMap().keySet()) {
-				if(dataEntries == null) {
+				System.out.println("$#3416#"); if(dataEntries == null) {
 					dataEntries = new StringBuilder();
 				}
 				
@@ -131,22 +131,22 @@ public class AjaxResponse implements JSONAware {
 				dataEntries.append(":");
 				dataEntries.append("\"").append(this.getDataMap().get(key)).append("\"");
 
-				if(count<this.getDataMap().size()-1) {
+				System.out.println("$#3419#"); System.out.println("$#3418#"); System.out.println("$#3417#"); if(count<this.getDataMap().size()-1) {
 					dataEntries.append(",");
 				}
-				count ++;
+				System.out.println("$#3420#"); count ++;
 			}
 
-			if(dataEntries!=null) {
+			System.out.println("$#3421#"); if(dataEntries!=null) {
 				returnString.append(",").append(dataEntries.toString());
 			}
 		}
 		
-		if(CollectionUtils.isNotEmpty(this.getValidationMessages().values())) {
+		System.out.println("$#3422#"); if(CollectionUtils.isNotEmpty(this.getValidationMessages().values())) {
 			StringBuilder dataEntries = null;
 			int count = 0;
 			for(String key : this.getValidationMessages().keySet()) {
-				if(dataEntries == null) {
+				System.out.println("$#3423#"); if(dataEntries == null) {
 					dataEntries = new StringBuilder();
 				}
 				dataEntries.append("{");
@@ -155,14 +155,14 @@ public class AjaxResponse implements JSONAware {
 				dataEntries.append("\"message\":\"").append(this.getValidationMessages().get(key)).append("\"");
 				dataEntries.append("}");
 
-				if(count<this.getValidationMessages().size()-1) {
+				System.out.println("$#3426#"); System.out.println("$#3425#"); System.out.println("$#3424#"); if(count<this.getValidationMessages().size()-1) {
 					dataEntries.append(",");
 				}
-				count ++;
+				System.out.println("$#3427#"); count ++;
 			}
 			
 			returnString.append(",").append("\"validations\"").append(":[");
-			if(dataEntries!=null) {
+			System.out.println("$#3428#"); if(dataEntries!=null) {
 				returnString.append(dataEntries.toString());
 			}
 			returnString.append("]");
@@ -172,12 +172,12 @@ public class AjaxResponse implements JSONAware {
 		returnString.append("}}");
 
 		
-		return returnString.toString();
+		System.out.println("$#3429#"); return returnString.toString();
 
 		
 	}
 	public Map<String,String> getDataMap() {
-		return dataMap;
+		System.out.println("$#3430#"); return dataMap;
 	}
 	public void setDataMap(Map<String,String> dataMap) {
 		this.dataMap = dataMap;

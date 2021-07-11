@@ -56,7 +56,7 @@ public class ProductVariant extends SalesManagerEntity<Long, ProductVariant> imp
 	@Override
 	public AuditSection getAuditSection() {
 		// TODO Auto-generated method stub
-		return auditSection;
+		System.out.println("$#3838#"); return auditSection;
 	}
 	@Override
 	public void setAuditSection(AuditSection audit) {
@@ -67,7 +67,7 @@ public class ProductVariant extends SalesManagerEntity<Long, ProductVariant> imp
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return this.id;
+		System.out.println("$#3839#"); return this.id;
 	}
 	@Override
 	public void setId(Long id) {
@@ -76,19 +76,19 @@ public class ProductVariant extends SalesManagerEntity<Long, ProductVariant> imp
 		
 	}
 	public ProductAttribute getAttribute() {
-		return attribute;
+		System.out.println("$#3840#"); return attribute;
 	}
 	public void setAttribute(ProductAttribute attribute) {
 		this.attribute = attribute;
 	}
 	public Integer getProductQuantity() {
-		return productQuantity;
+		System.out.println("$#3841#"); return productQuantity;
 	}
 	public void setProductQuantity(Integer productQuantity) {
 		this.productQuantity = productQuantity;
 	}
 	public ProductAvailability getProductAvailability() {
-		return productAvailability;
+		System.out.println("$#3842#"); return productAvailability;
 	}
 	public void setProductAvailability(ProductAvailability productAvailability) {
 		this.productAvailability = productAvailability;

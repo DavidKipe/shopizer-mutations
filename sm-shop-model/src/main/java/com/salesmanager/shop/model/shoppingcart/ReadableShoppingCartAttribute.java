@@ -13,13 +13,13 @@ public class ReadableShoppingCartAttribute extends ShopEntity {
 	private ReadableShoppingCartAttributeOptionValue optionValue;
 	
 	public ReadableShoppingCartAttributeOption getOption() {
-		return option;
+		System.out.println("$#9311#"); return option;
 	}
 	public void setOption(ReadableShoppingCartAttributeOption option) {
 		this.option = option;
 	}
 	public ReadableShoppingCartAttributeOptionValue getOptionValue() {
-		return optionValue;
+		System.out.println("$#9312#"); return optionValue;
 	}
 	public void setOptionValue(ReadableShoppingCartAttributeOptionValue optionValue) {
 		this.optionValue = optionValue;

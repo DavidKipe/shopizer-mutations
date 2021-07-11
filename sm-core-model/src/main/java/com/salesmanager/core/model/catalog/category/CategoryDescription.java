@@ -39,7 +39,7 @@ public class CategoryDescription extends Description {
 	private String categoryHighlight;
 
 	public String getCategoryHighlight() {
-		return categoryHighlight;
+		System.out.println("$#3758#"); return categoryHighlight;
 	}
 
 	public void setCategoryHighlight(String categoryHighlight) {
@@ -59,13 +59,13 @@ public class CategoryDescription extends Description {
 	}
 	
 	public CategoryDescription(String name, Language language) {
-		this.setName(name);
-		this.setLanguage(language);
-		super.setId(0L);
+		System.out.println("$#3759#"); this.setName(name);
+		System.out.println("$#3760#"); this.setLanguage(language);
+		System.out.println("$#3761#"); super.setId(0L);
 	}
 	
 	public String getSeUrl() {
-		return seUrl;
+		System.out.println("$#3762#"); return seUrl;
 	}
 
 	public void setSeUrl(String seUrl) {
@@ -73,7 +73,7 @@ public class CategoryDescription extends Description {
 	}
 
 	public String getMetatagTitle() {
-		return metatagTitle;
+		System.out.println("$#3763#"); return metatagTitle;
 	}
 
 	public void setMetatagTitle(String metatagTitle) {
@@ -81,7 +81,7 @@ public class CategoryDescription extends Description {
 	}
 
 	public String getMetatagKeywords() {
-		return metatagKeywords;
+		System.out.println("$#3764#"); return metatagKeywords;
 	}
 
 	public void setMetatagKeywords(String metatagKeywords) {
@@ -89,7 +89,7 @@ public class CategoryDescription extends Description {
 	}
 
 	public String getMetatagDescription() {
-		return metatagDescription;
+		System.out.println("$#3765#"); return metatagDescription;
 	}
 
 	public void setMetatagDescription(String metatagDescription) {
@@ -97,7 +97,7 @@ public class CategoryDescription extends Description {
 	}
 
 	public Category getCategory() {
-		return category;
+		System.out.println("$#3766#"); return category;
 	}
 
 	public void setCategory(Category category) {

@@ -10,7 +10,7 @@ public class ReadableProductName extends ProductEntity {
 	private String name;
 
 	public String getName() {
-		return name;
+		System.out.println("$#8952#"); return name;
 	}
 
 	public void setName(String name) {

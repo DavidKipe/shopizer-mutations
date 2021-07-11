@@ -23,13 +23,13 @@ public class ReadableManufacturerPopulator extends
       throws ConversionException {
 
 
-    if (language == null) {
+				System.out.println("$#10448#"); if (language == null) {
       target = new ReadableManufacturerFull();
     }
-    target.setOrder(source.getOrder());
-    target.setId(source.getId());
-    target.setCode(source.getCode());
-    if (source.getDescriptions() != null && source.getDescriptions().size() > 0) {
+				System.out.println("$#10449#"); target.setOrder(source.getOrder());
+				System.out.println("$#10450#"); target.setId(source.getId());
+				System.out.println("$#10451#"); target.setCode(source.getCode());
+				System.out.println("$#10453#"); System.out.println("$#10452#"); if (source.getDescriptions() != null && source.getDescriptions().size() > 0) {
 
       List<com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription> fulldescriptions =
           new ArrayList<com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription>();
@@ -37,7 +37,7 @@ public class ReadableManufacturerPopulator extends
       Set<ManufacturerDescription> descriptions = source.getDescriptions();
       ManufacturerDescription description = null;
       for (ManufacturerDescription desc : descriptions) {
-        if (language != null && desc.getLanguage().getCode().equals(language.getCode())) {
+								System.out.println("$#10455#"); if (language != null && desc.getLanguage().getCode().equals(language.getCode())) {
           description = desc;
           break;
         } else {
@@ -47,21 +47,21 @@ public class ReadableManufacturerPopulator extends
 
 
 
-      if (description != null) {
+						System.out.println("$#10457#"); if (description != null) {
         com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription d =
             populateDescription(description);
-        target.setDescription(d);
+								System.out.println("$#10458#"); target.setDescription(d);
       }
 
-      if (target instanceof ReadableManufacturerFull) {
-        ((ReadableManufacturerFull) target).setDescriptions(fulldescriptions);
+						System.out.println("$#10459#"); if (target instanceof ReadableManufacturerFull) {
+								System.out.println("$#10460#"); ((ReadableManufacturerFull) target).setDescriptions(fulldescriptions);
       }
 
     }
 
 
 
-    return target;
+				System.out.println("$#10461#"); return target;
   }
 
   @Override
@@ -71,19 +71,19 @@ public class ReadableManufacturerPopulator extends
 
   com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription populateDescription(
       ManufacturerDescription description) {
-    if (description == null) {
+				System.out.println("$#10462#"); if (description == null) {
       return null;
     }
     com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription d =
         new com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription();
-    d.setName(description.getName());
-    d.setDescription(description.getDescription());
-    d.setId(description.getId());
-    d.setTitle(description.getTitle());
-    if (description.getLanguage() != null) {
-      d.setLanguage(description.getLanguage().getCode());
+				System.out.println("$#10463#"); d.setName(description.getName());
+				System.out.println("$#10464#"); d.setDescription(description.getDescription());
+				System.out.println("$#10465#"); d.setId(description.getId());
+				System.out.println("$#10466#"); d.setTitle(description.getTitle());
+				System.out.println("$#10467#"); if (description.getLanguage() != null) {
+						System.out.println("$#10468#"); d.setLanguage(description.getLanguage().getCode());
     }
-    return d;
+				System.out.println("$#10469#"); return d;
   }
 
 }

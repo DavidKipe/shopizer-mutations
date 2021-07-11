@@ -59,7 +59,7 @@ public class ShippingOptionsController {
 	public String displayShippingOptions(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#7313#"); this.setMenu(model, request);
 
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
@@ -67,26 +67,26 @@ public class ShippingOptionsController {
 		
 		ShippingConfiguration shippingConfiguration =  shippingService.getShippingConfiguration(store);
 		
-		if(shippingConfiguration==null) {
+		System.out.println("$#7314#"); if(shippingConfiguration==null) {
 			shippingConfiguration = new ShippingConfiguration();
-			shippingConfiguration.setShippingType(ShippingType.INTERNATIONAL);
+			System.out.println("$#7315#"); shippingConfiguration.setShippingType(ShippingType.INTERNATIONAL);
 		}
 		
-		if(shippingConfiguration!=null) {
+		System.out.println("$#7316#"); if(shippingConfiguration!=null) {
 			
-			if(shippingConfiguration.getHandlingFees()!=null) {
-				shippingConfiguration.setHandlingFeesText(priceUtil.getAdminFormatedAmount(store,shippingConfiguration.getHandlingFees()));
+			System.out.println("$#7317#"); if(shippingConfiguration.getHandlingFees()!=null) {
+				System.out.println("$#7318#"); shippingConfiguration.setHandlingFeesText(priceUtil.getAdminFormatedAmount(store,shippingConfiguration.getHandlingFees()));
 			}
 			
-			if(shippingConfiguration.getOrderTotalFreeShipping()!=null) {
-				shippingConfiguration.setOrderTotalFreeShippingText(priceUtil.getAdminFormatedAmount(store,shippingConfiguration.getOrderTotalFreeShipping()));
+			System.out.println("$#7319#"); if(shippingConfiguration.getOrderTotalFreeShipping()!=null) {
+				System.out.println("$#7320#"); shippingConfiguration.setOrderTotalFreeShippingText(priceUtil.getAdminFormatedAmount(store,shippingConfiguration.getOrderTotalFreeShipping()));
 			}
 			
 		}
 		
 
 		model.addAttribute("configuration", shippingConfiguration);
-		return ControllerConstants.Tiles.Shipping.shippingOptions;
+		System.out.println("$#7321#"); return ControllerConstants.Tiles.Shipping.shippingOptions;
 		
 		
 	}
@@ -107,50 +107,50 @@ public class ShippingOptionsController {
 	public String saveShippingOptions(@ModelAttribute("configuration") ShippingConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
 
-		this.setMenu(model, request);
+		System.out.println("$#7322#"); this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		//get original configuration
 		ShippingConfiguration shippingConfiguration =  shippingService.getShippingConfiguration(store);
 		
-		if(shippingConfiguration==null) {
+		System.out.println("$#7323#"); if(shippingConfiguration==null) {
 			shippingConfiguration = new ShippingConfiguration();
 		}
 		
 		BigDecimal submitedOrderPrice = null;
-		if(!StringUtils.isBlank(configuration.getOrderTotalFreeShippingText())){
+		System.out.println("$#7324#"); if(!StringUtils.isBlank(configuration.getOrderTotalFreeShippingText())){
 			try {
 				submitedOrderPrice = priceUtil.getAmount(configuration.getOrderTotalFreeShippingText());
-				shippingConfiguration.setOrderTotalFreeShipping(submitedOrderPrice);
+				System.out.println("$#7325#"); shippingConfiguration.setOrderTotalFreeShipping(submitedOrderPrice);
 			} catch (Exception e) {
 				ObjectError error = new ObjectError("orderTotalFreeShippingText",messages.getMessage("message.invalid.price", locale));
-				result.addError(error);
+				System.out.println("$#7326#"); result.addError(error);
 			}
 		}
 		
 		BigDecimal submitedHandlingPrice = null;
-		if(!StringUtils.isBlank(configuration.getHandlingFeesText())){
+		System.out.println("$#7327#"); if(!StringUtils.isBlank(configuration.getHandlingFeesText())){
 			try {
 				submitedHandlingPrice = priceUtil.getAmount(configuration.getHandlingFeesText());
-				shippingConfiguration.setHandlingFees(submitedHandlingPrice);
+				System.out.println("$#7328#"); shippingConfiguration.setHandlingFees(submitedHandlingPrice);
 			} catch (Exception e) {
 				ObjectError error = new ObjectError("handlingFeesText",messages.getMessage("message.invalid.price", locale));
-				result.addError(error);
+				System.out.println("$#7329#"); result.addError(error);
 			}
 		}
 		
-		shippingConfiguration.setFreeShippingEnabled(configuration.isFreeShippingEnabled());
-		shippingConfiguration.setTaxOnShipping(configuration.isTaxOnShipping());
-		if(configuration.getShipFreeType()!=null) {
-			shippingConfiguration.setShipFreeType(configuration.getShipFreeType());
+		System.out.println("$#7330#"); shippingConfiguration.setFreeShippingEnabled(configuration.isFreeShippingEnabled());
+		System.out.println("$#7331#"); shippingConfiguration.setTaxOnShipping(configuration.isTaxOnShipping());
+		System.out.println("$#7332#"); if(configuration.getShipFreeType()!=null) {
+			System.out.println("$#7333#"); shippingConfiguration.setShipFreeType(configuration.getShipFreeType());
 		}
-		shippingConfiguration.setShipOptionPriceType(configuration.getShipOptionPriceType());
+		System.out.println("$#7334#"); shippingConfiguration.setShipOptionPriceType(configuration.getShipOptionPriceType());
 
-		shippingService.saveShippingConfiguration(shippingConfiguration, store);
+		System.out.println("$#7335#"); shippingService.saveShippingConfiguration(shippingConfiguration, store);
 		
 		model.addAttribute("configuration", configuration);
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Shipping.shippingOptions;
+		System.out.println("$#7336#"); return ControllerConstants.Tiles.Shipping.shippingOptions;
 		
 		
 	}

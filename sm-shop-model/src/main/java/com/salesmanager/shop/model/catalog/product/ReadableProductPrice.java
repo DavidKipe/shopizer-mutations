@@ -15,25 +15,25 @@ public class ReadableProductPrice extends Entity implements Serializable {
 	private ProductPriceDescription description;
 
 	public String getOriginalPrice() {
-		return originalPrice;
+		System.out.println("$#8953#"); return originalPrice;
 	}
 	public void setOriginalPrice(String originalPrice) {
 		this.originalPrice = originalPrice;
 	}
 	public String getFinalPrice() {
-		return finalPrice;
+		System.out.println("$#8954#"); return finalPrice;
 	}
 	public void setFinalPrice(String finalPrice) {
 		this.finalPrice = finalPrice;
 	}
 	public boolean isDiscounted() {
-		return discounted;
+		System.out.println("$#8956#"); System.out.println("$#8955#"); return discounted;
 	}
 	public void setDiscounted(boolean discounted) {
 		this.discounted = discounted;
 	}
   public ProductPriceDescription getDescription() {
-    return description;
+				System.out.println("$#8957#"); return description;
   }
   public void setDescription(ProductPriceDescription description) {
     this.description = description;

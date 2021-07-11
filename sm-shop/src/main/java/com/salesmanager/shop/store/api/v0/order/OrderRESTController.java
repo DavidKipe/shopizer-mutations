@@ -102,25 +102,25 @@ public class OrderRESTController {
 	@Deprecated
 	public PersistableOrder createOrder(@PathVariable final String store, @Valid @RequestBody PersistableOrder order, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-		if(merchantStore!=null) {
-			if(!merchantStore.getCode().equals(store)) {
+		System.out.println("$#11287#"); if(merchantStore!=null) {
+			System.out.println("$#11288#"); if(!merchantStore.getCode().equals(store)) {
 				merchantStore = null;
 			}
 		}
 		
-		if(merchantStore== null) {
+		System.out.println("$#11289#"); if(merchantStore== null) {
 			merchantStore = merchantStoreService.getByCode(store);
 		}
 		
-		if(merchantStore==null) {
+		System.out.println("$#11290#"); if(merchantStore==null) {
 			LOGGER.error("Merchant store is null for code " + store);
-			response.sendError(503, "Merchant store is null for code " + store);
+			System.out.println("$#11291#"); response.sendError(503, "Merchant store is null for code " + store);
 			return null;
 		}
 		
 		
 		PersistableCustomer cust = order.getCustomer();
-		if(cust!=null) {
+		System.out.println("$#11292#"); if(cust!=null) {
 		    Customer customer = new Customer();
 /*			CustomerPopulator populator = new CustomerPopulator();
 			populator.setCountryService(countryService);
@@ -130,24 +130,24 @@ public class OrderRESTController {
 			populator.setZoneService(zoneService);
 			populator.setGroupService(groupService);*/
 			customerPopulator.populate(cust, customer, merchantStore, merchantStore.getDefaultLanguage());
-			customerService.save(customer);
-			cust.setId(customer.getId());
+			System.out.println("$#11293#"); customerService.save(customer);
+			System.out.println("$#11294#"); cust.setId(customer.getId());
 		}
 		
 		
 		Order modelOrder = new Order();
 		PersistableOrderPopulator populator = new PersistableOrderPopulator();
-		populator.setDigitalProductService(digitalProductService);
-		populator.setProductAttributeService(productAttributeService);
-		populator.setProductService(productService);
+		System.out.println("$#11295#"); populator.setDigitalProductService(digitalProductService);
+		System.out.println("$#11296#"); populator.setProductAttributeService(productAttributeService);
+		System.out.println("$#11297#"); populator.setProductService(productService);
 		
 		populator.populate(order, modelOrder, merchantStore, merchantStore.getDefaultLanguage());
 		
 	
-		orderService.save(modelOrder);
-		order.setId(modelOrder.getId());
+		System.out.println("$#11298#"); orderService.save(modelOrder);
+		System.out.println("$#11299#"); order.setId(modelOrder.getId());
 		
-		return order;
+		System.out.println("$#11300#"); return order;
 	}
 	
 	
@@ -168,19 +168,19 @@ public class OrderRESTController {
 	@ResponseBody
 	public ReadableOrderList listOrders(@PathVariable final String store, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-		if(merchantStore!=null) {
-			if(!merchantStore.getCode().equals(store)) {
+		System.out.println("$#11301#"); if(merchantStore!=null) {
+			System.out.println("$#11302#"); if(!merchantStore.getCode().equals(store)) {
 				merchantStore = null;
 			}
 		}
 		
-		if(merchantStore== null) {
+		System.out.println("$#11303#"); if(merchantStore== null) {
 			merchantStore = merchantStoreService.getByCode(store);
 		}
 		
-		if(merchantStore==null) {
+		System.out.println("$#11304#"); if(merchantStore==null) {
 			LOGGER.error("Merchant store is null for code " + store);
-			response.sendError(503, "Merchant store is null for code " + store);
+			System.out.println("$#11305#"); response.sendError(503, "Merchant store is null for code " + store);
 			return null;
 		}
 		
@@ -192,16 +192,16 @@ public class OrderRESTController {
 		int startCount = 0;
 		int maxCount = 0;
 		
-		if(StringUtils.isBlank(lang)) {
+		System.out.println("$#11306#"); if(StringUtils.isBlank(lang)) {
 			lang = merchantStore.getDefaultLanguage().getCode();
 		}
 		
 		
 		Language language = languageService.getByCode(lang);
 		
-		if(language==null) {
+		System.out.println("$#11307#"); if(language==null) {
 			LOGGER.error("Language is null for code " + lang);
-			response.sendError(503, "Language is null for code " + lang);
+			System.out.println("$#11308#"); response.sendError(503, "Language is null for code " + lang);
 			return null;
 		}
 		
@@ -221,7 +221,7 @@ public class OrderRESTController {
 		
 		ReadableOrderList returnList = orderFacade.getReadableOrderList(merchantStore, startCount, maxCount, language);
 
-		return returnList;
+		System.out.println("$#11309#"); return returnList;
 	}
 	
 	/**
@@ -241,19 +241,19 @@ public class OrderRESTController {
 	@ResponseBody
 	public ReadableOrderList listOrders(@PathVariable final String store, @PathVariable final Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-		if(merchantStore!=null) {
-			if(!merchantStore.getCode().equals(store)) {
+		System.out.println("$#11310#"); if(merchantStore!=null) {
+			System.out.println("$#11311#"); if(!merchantStore.getCode().equals(store)) {
 				merchantStore = null;
 			}
 		}
 		
-		if(merchantStore== null) {
+		System.out.println("$#11312#"); if(merchantStore== null) {
 			merchantStore = merchantStoreService.getByCode(store);
 		}
 		
-		if(merchantStore==null) {
+		System.out.println("$#11313#"); if(merchantStore==null) {
 			LOGGER.error("Merchant store is null for code " + store);
-			response.sendError(503, "Merchant store is null for code " + store);
+			System.out.println("$#11314#"); response.sendError(503, "Merchant store is null for code " + store);
 			return null;
 		}
 		
@@ -265,16 +265,16 @@ public class OrderRESTController {
 		int startCount = 0;
 		int maxCount = 0;
 		
-		if(StringUtils.isBlank(lang)) {
+		System.out.println("$#11315#"); if(StringUtils.isBlank(lang)) {
 			lang = merchantStore.getDefaultLanguage().getCode();
 		}
 		
 		
 		Language language = languageService.getByCode(lang);
 		
-		if(language==null) {
+		System.out.println("$#11316#"); if(language==null) {
 			LOGGER.error("Language is null for code " + lang);
-			response.sendError(503, "Language is null for code " + lang);
+			System.out.println("$#11317#"); response.sendError(503, "Language is null for code " + lang);
 			return null;
 		}
 		
@@ -292,21 +292,21 @@ public class OrderRESTController {
 		
 		Customer customer = customerService.getById(id);
 		
-		if(customer==null) {
+		System.out.println("$#11318#"); if(customer==null) {
 			LOGGER.error("Customer is null for id " + id);
-			response.sendError(503, "Customer is null for id " + id);
+			System.out.println("$#11319#"); response.sendError(503, "Customer is null for id " + id);
 			return null;
 		}
 		
-		if(customer.getMerchantStore().getId().intValue()!=merchantStore.getId().intValue()) {
+		System.out.println("$#11320#"); if(customer.getMerchantStore().getId().intValue()!=merchantStore.getId().intValue()) {
 			LOGGER.error("Customer is null for id " + id + " and store id " + store);
-			response.sendError(503, "Customer is null for id " + id + " and store id " + store);
+			System.out.println("$#11321#"); response.sendError(503, "Customer is null for id " + id + " and store id " + store);
 			return null;
 		}
 		
 		ReadableOrderList returnList = orderFacade.getReadableOrderList(merchantStore, startCount, maxCount, language);
 
-		return returnList;
+		System.out.println("$#11322#"); return returnList;
 	}
 
 }

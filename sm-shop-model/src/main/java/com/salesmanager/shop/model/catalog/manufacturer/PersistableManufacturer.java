@@ -16,7 +16,7 @@ public class PersistableManufacturer extends ManufacturerEntity implements
 		this.descriptions = descriptions;
 	}
 	public List<ManufacturerDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#8753#"); return descriptions;
 	}
 
 }

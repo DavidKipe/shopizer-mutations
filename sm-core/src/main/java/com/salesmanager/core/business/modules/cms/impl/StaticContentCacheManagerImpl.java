@@ -28,17 +28,17 @@ public class StaticContentCacheManagerImpl extends CacheManagerImpl {
 
   public StaticContentCacheManagerImpl(String location, String root) {
 
-    super.init(NAMED_CACHE, location);
+				System.out.println("$#186#"); super.init(NAMED_CACHE, location);
     this.location = location;
     this.root = root;
   }
 
   public String getLocation() {
-    return location;
+				System.out.println("$#187#"); return location;
   }
 
   @Override
   public String getRootName() {
-    return root;
+				System.out.println("$#188#"); return root;
   }
 }

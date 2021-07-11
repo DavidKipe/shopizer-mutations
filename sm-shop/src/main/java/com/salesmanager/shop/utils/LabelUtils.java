@@ -19,18 +19,18 @@ public class LabelUtils implements ApplicationContextAware {
 	}
 	
 	public String getMessage(String key, Locale locale) {
-		return applicationContext.getMessage(key, null, locale);
+		System.out.println("$#15742#"); return applicationContext.getMessage(key, null, locale);
 	}
 	
 	public String getMessage(String key, Locale locale, String defaultValue) {
 		try {
-			return applicationContext.getMessage(key, null, locale);
+			System.out.println("$#15743#"); return applicationContext.getMessage(key, null, locale);
 		} catch(Exception ignore) {}
-		return defaultValue;
+		System.out.println("$#15744#"); return defaultValue;
 	}
 	
 	public String getMessage(String key, String[] args, Locale locale) {
-		return applicationContext.getMessage(key, args, locale);
+		System.out.println("$#15745#"); return applicationContext.getMessage(key, args, locale);
 	}
 
 }

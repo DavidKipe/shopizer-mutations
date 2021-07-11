@@ -52,7 +52,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
 		List<ProductRelationship> relations =  q.getResultList();
 
     	
-    	return relations;
+					System.out.println("$#1609#"); return relations;
 		
 
 	}
@@ -85,7 +85,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
 		List<ProductRelationship> relations =  q.getResultList();
 
     	
-    	return relations;
+					System.out.println("$#1610#"); return relations;
 		
 
 	}
@@ -144,7 +144,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
 		List<ProductRelationship> relations =  q.getResultList();
 
     	
-    	return relations;
+					System.out.println("$#1611#"); return relations;
 		
 
 	}
@@ -191,7 +191,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
 		List<ProductRelationship> relations =  q.getResultList();
 
     	
-    	return relations;
+					System.out.println("$#1612#"); return relations;
 		
 
 	}
@@ -219,7 +219,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
     	
     	Map<String,ProductRelationship> relationMap = new HashMap<String,ProductRelationship>();
     	for(ProductRelationship relationship : relations) {
-    		if(!relationMap.containsKey(relationship.getCode())) {
+						System.out.println("$#1613#"); if(!relationMap.containsKey(relationship.getCode())) {
     			relationMap.put(relationship.getCode(), relationship);
     		}
     	}
@@ -227,7 +227,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
     	List<ProductRelationship> returnList = new ArrayList<ProductRelationship>(relationMap.values());
 
     	
-    	return returnList;
+					System.out.println("$#1614#"); return returnList;
 		
 
 	}
@@ -259,7 +259,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
 		List<ProductRelationship> relations =  q.getResultList();
 
     	
-    	return relations;
+					System.out.println("$#1615#"); return relations;
 		
 
 	}
@@ -292,7 +292,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
 		List<ProductRelationship> relations =  q.getResultList();
 
     	
-    	return relations;
+					System.out.println("$#1616#"); return relations;
 		
 
 	}
@@ -341,7 +341,7 @@ public class ProductRelationshipRepositoryImpl implements ProductRelationshipRep
 		List<ProductRelationship> relations =  q.getResultList();
 
     	
-    	return relations;
+					System.out.println("$#1617#"); return relations;
 		
 
 	}

@@ -58,7 +58,7 @@ public class ServiceException extends Exception {
 	}
 	
 	public int getExceptionType() {
-		return exceptionType;
+		System.out.println("$#30#"); return exceptionType;
 	}
 	
 	public void setExceptionType(int exceptionType) {
@@ -66,7 +66,7 @@ public class ServiceException extends Exception {
 	}
 	
 	public String getMessageCode() {
-		return messageCode;
+		System.out.println("$#31#"); return messageCode;
 	}
 
 }

@@ -12,11 +12,11 @@ public class WebApplicationCacheUtils {
 	private CacheUtils cache;
 	
 	public Object getFromCache(String key) throws Exception {
-		return cache.getFromCache(key);
+		System.out.println("$#15817#"); return cache.getFromCache(key);
 	}
 	
 	public void putInCache(String key, Object object) throws Exception {
-		cache.putInCache(object, key);
+		System.out.println("$#15818#"); cache.putInCache(object, key);
 	}
 
 }

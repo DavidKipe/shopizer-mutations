@@ -69,7 +69,7 @@ public class FileHistory implements Serializable {
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4280#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -77,7 +77,7 @@ public class FileHistory implements Serializable {
 	}
 
 	public MerchantStore getStore() {
-		return store;
+		System.out.println("$#4281#"); return store;
 	}
 
 	public void setStore(MerchantStore store) {
@@ -85,7 +85,7 @@ public class FileHistory implements Serializable {
 	}
 
 	public Long getFileId() {
-		return fileId;
+		System.out.println("$#4282#"); return fileId;
 	}
 
 	public void setFileId(Long fileId) {
@@ -93,7 +93,7 @@ public class FileHistory implements Serializable {
 	}
 
 	public Integer getFilesize() {
-		return filesize;
+		System.out.println("$#4283#"); return filesize;
 	}
 
 	public void setFilesize(Integer filesize) {
@@ -101,7 +101,7 @@ public class FileHistory implements Serializable {
 	}
 
 	public Date getDateAdded() {
-		return CloneUtils.clone(dateAdded);
+		System.out.println("$#4284#"); return CloneUtils.clone(dateAdded);
 	}
 
 	public void setDateAdded(Date dateAdded) {
@@ -109,7 +109,7 @@ public class FileHistory implements Serializable {
 	}
 
 	public Date getDateDeleted() {
-		return CloneUtils.clone(dateDeleted);
+		System.out.println("$#4285#"); return CloneUtils.clone(dateDeleted);
 	}
 
 	public void setDateDeleted(Date dateDeleted) {
@@ -117,7 +117,7 @@ public class FileHistory implements Serializable {
 	}
 
 	public Date getAccountedDate() {
-		return CloneUtils.clone(accountedDate);
+		System.out.println("$#4286#"); return CloneUtils.clone(accountedDate);
 	}
 
 	public void setAccountedDate(Date accountedDate) {
@@ -125,7 +125,7 @@ public class FileHistory implements Serializable {
 	}
 
 	public Integer getDownloadCount() {
-		return downloadCount;
+		System.out.println("$#4287#"); return downloadCount;
 	}
 
 	public void setDownloadCount(Integer downloadCount) {

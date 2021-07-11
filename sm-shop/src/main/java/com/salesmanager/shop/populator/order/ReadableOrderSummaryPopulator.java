@@ -34,26 +34,26 @@ public class ReadableOrderSummaryPopulator extends AbstractDataPopulator<OrderTo
 		Validate.notNull(pricingService,"PricingService must be set");
 		Validate.notNull(messages,"LabelUtils must be set");
 		
-		if(target==null) {
+		System.out.println("$#10749#"); if(target==null) {
 			target = new ReadableOrderTotalSummary();
 		}
 		
 		try {
 		
-			if(source.getSubTotal() != null) {
-				target.setSubTotal(pricingService.getDisplayAmount(source.getSubTotal(), store));
+			System.out.println("$#10750#"); if(source.getSubTotal() != null) {
+				System.out.println("$#10751#"); target.setSubTotal(pricingService.getDisplayAmount(source.getSubTotal(), store));
 			}
-			if(source.getTaxTotal()!=null) {
-				target.setTaxTotal(pricingService.getDisplayAmount(source.getTaxTotal(), store));
+			System.out.println("$#10752#"); if(source.getTaxTotal()!=null) {
+				System.out.println("$#10753#"); target.setTaxTotal(pricingService.getDisplayAmount(source.getTaxTotal(), store));
 			}
-			if(source.getTotal() != null) {
-				target.setTotal(pricingService.getDisplayAmount(source.getTotal(), store));
+			System.out.println("$#10754#"); if(source.getTotal() != null) {
+				System.out.println("$#10755#"); target.setTotal(pricingService.getDisplayAmount(source.getTotal(), store));
 			}
 			
-			if(!CollectionUtils.isEmpty(source.getTotals())) {
+			System.out.println("$#10756#"); if(!CollectionUtils.isEmpty(source.getTotals())) {
 				ReadableOrderTotalPopulator orderTotalPopulator = new ReadableOrderTotalPopulator();
-				orderTotalPopulator.setMessages(messages);
-				orderTotalPopulator.setPricingService(pricingService);
+				System.out.println("$#10757#"); orderTotalPopulator.setMessages(messages);
+				System.out.println("$#10758#"); orderTotalPopulator.setPricingService(pricingService);
 				for(OrderTotal orderTotal : source.getTotals()) {
 					ReadableOrderTotal t = new ReadableOrderTotal();
 					orderTotalPopulator.populate(orderTotal, t, store, language);
@@ -67,7 +67,7 @@ public class ReadableOrderSummaryPopulator extends AbstractDataPopulator<OrderTo
 			throw new ConversionException(e);
 		}
 		
-		return target;
+		System.out.println("$#10759#"); return target;
 		
 	}
 
@@ -79,7 +79,7 @@ public class ReadableOrderSummaryPopulator extends AbstractDataPopulator<OrderTo
 	
 	
 	public PricingService getPricingService() {
-		return pricingService;
+		System.out.println("$#10760#"); return pricingService;
 	}
 
 	public void setPricingService(PricingService pricingService) {
@@ -87,7 +87,7 @@ public class ReadableOrderSummaryPopulator extends AbstractDataPopulator<OrderTo
 	}
 	
 	public LabelUtils getMessages() {
-		return messages;
+		System.out.println("$#10761#"); return messages;
 	}
 
 	public void setMessages(LabelUtils messages) {

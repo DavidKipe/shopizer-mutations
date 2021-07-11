@@ -10,7 +10,7 @@ public class ReadableCatalogName extends CatalogEntity {
 	private String creationDate;
 
 	public String getCreationDate() {
-		return creationDate;
+		System.out.println("$#8732#"); return creationDate;
 	}
 
 	public void setCreationDate(String creationDate) {

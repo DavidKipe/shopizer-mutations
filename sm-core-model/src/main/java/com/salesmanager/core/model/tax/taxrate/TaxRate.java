@@ -121,7 +121,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	
 	
 	public String getRateText() {
-		return rateText;
+		System.out.println("$#4827#"); return rateText;
 	}
 
 	public void setRateText(String rateText) {
@@ -132,7 +132,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4828#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -141,7 +141,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#4829#"); return auditSection;
 	}
 	
 	@Override
@@ -150,7 +150,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public Integer getTaxPriority() {
-		return taxPriority;
+		System.out.println("$#4830#"); return taxPriority;
 	}
 
 	public void setTaxPriority(Integer taxPriority) {
@@ -158,7 +158,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public BigDecimal getTaxRate() {
-		return taxRate;
+		System.out.println("$#4831#"); return taxRate;
 	}
 
 	public void setTaxRate(BigDecimal taxRate) {
@@ -166,7 +166,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public boolean isPiggyback() {
-		return piggyback;
+		System.out.println("$#4833#"); System.out.println("$#4832#"); return piggyback;
 	}
 
 	public void setPiggyback(boolean piggyback) {
@@ -174,7 +174,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public TaxClass getTaxClass() {
-		return taxClass;
+		System.out.println("$#4834#"); return taxClass;
 	}
 
 	public void setTaxClass(TaxClass taxClass) {
@@ -184,7 +184,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 
 
 	public List<TaxRateDescription> getDescriptions() {
-		return descriptions;
+		System.out.println("$#4835#"); return descriptions;
 	}
 
 	public void setDescriptions(List<TaxRateDescription> descriptions) {
@@ -194,7 +194,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#4836#"); return merchantStore;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -206,7 +206,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public Country getCountry() {
-		return country;
+		System.out.println("$#4837#"); return country;
 	}
 
 	public void setZone(Zone zone) {
@@ -214,7 +214,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public Zone getZone() {
-		return zone;
+		System.out.println("$#4838#"); return zone;
 	}
 
 
@@ -223,7 +223,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public List<TaxRate> getTaxRates() {
-		return taxRates;
+		System.out.println("$#4839#"); return taxRates;
 	}
 
 	public void setParent(TaxRate parent) {
@@ -231,7 +231,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public TaxRate getParent() {
-		return parent;
+		System.out.println("$#4840#"); return parent;
 	}
 
 	public void setStateProvince(String stateProvince) {
@@ -239,7 +239,7 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public String getStateProvince() {
-		return stateProvince;
+		System.out.println("$#4841#"); return stateProvince;
 	}
 
 	public void setCode(String code) {
@@ -247,6 +247,6 @@ public class TaxRate  extends SalesManagerEntity<Long, TaxRate> implements Audit
 	}
 
 	public String getCode() {
-		return code;
+		System.out.println("$#4842#"); return code;
 	}
 }

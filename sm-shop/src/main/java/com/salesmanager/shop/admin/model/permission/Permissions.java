@@ -28,7 +28,7 @@ public class Permissions implements Serializable
 
     @JsonProperty("permission")
     public List<ShopPermission> getShopPermission() {
-        return shopPermission;
+								System.out.println("$#7826#"); return shopPermission;
     }
 
     @JsonProperty("permission")
@@ -38,7 +38,7 @@ public class Permissions implements Serializable
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+								System.out.println("$#7827#"); return this.additionalProperties;
     }
 
     @JsonAnySetter

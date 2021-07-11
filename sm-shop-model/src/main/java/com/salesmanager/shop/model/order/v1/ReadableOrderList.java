@@ -17,7 +17,7 @@ public class ReadableOrderList extends ReadableList implements Serializable {
 	
 	
 	public List<ReadableOrder> getOrders() {
-		return orders;
+		System.out.println("$#9247#"); return orders;
 	}
 	public void setOrders(List<ReadableOrder> orders) {
 		this.orders = orders;

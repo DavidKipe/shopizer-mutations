@@ -47,14 +47,14 @@ public class ProcessorsConfiguration {
 	@Bean
 	public List<OrderProcessor> orderPreProcessors() {
 		List<OrderProcessor> processors = new ArrayList<OrderProcessor>();
-		return processors;
+		System.out.println("$#26#"); return processors;
 	}
 	
 	@Bean
 	public List<OrderProcessor> orderPostProcessors() {
 		List<OrderProcessor> processors = new ArrayList<OrderProcessor>();
 		//processors.add(indexOrderProcessor);
-		return processors;
+		System.out.println("$#27#"); return processors;
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public class ProcessorsConfiguration {
 	public List<ShoppingCartProcessor> shoppingCartPostProcessors() {
 		List<ShoppingCartProcessor> processors = new ArrayList<ShoppingCartProcessor>();
 		//processors.add(shippingCartProcessor);
-		return processors;
+		System.out.println("$#28#"); return processors;
 	}
 	
 	
@@ -79,7 +79,7 @@ public class ProcessorsConfiguration {
 		List<OrderTotalPostProcessorModule> processors = new ArrayList<OrderTotalPostProcessorModule>();
 		///processors.add(new com.salesmanager.core.business.modules.order.total.ManufacturerShippingCodeOrderTotalModuleImpl());
 		processors.add(promoCodeCalculatorModule);
-		return processors;
+		System.out.println("$#29#"); return processors;
 		
 	}
 

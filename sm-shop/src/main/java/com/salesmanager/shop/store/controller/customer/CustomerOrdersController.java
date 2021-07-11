@@ -71,15 +71,15 @@ public class CustomerOrdersController extends AbstractController {
 
         }
     	
-    	if(customer==null) {
-    		return "redirect:/"+Constants.SHOP_URI;
+					System.out.println("$#12464#"); if(customer==null) {
+						System.out.println("$#12465#"); return "redirect:/"+Constants.SHOP_URI;
     	}
         
         PaginationData paginaionData=createPaginaionData(page,Constants.MAX_ORDERS_PAGE);
-        ReadableOrderList readable= orderFacade.getReadableOrderList(store, customer, (paginaionData.getOffset() -1),paginaionData.getPageSize(), language);
+								System.out.println("$#12466#"); ReadableOrderList readable= orderFacade.getReadableOrderList(store, customer, (paginaionData.getOffset() -1),paginaionData.getPageSize(), language);
         
         model.addAttribute( "customerOrders", readable);
-        if(readable!=null) {
+								System.out.println("$#12467#"); if(readable!=null) {
         	model.addAttribute( "paginationData", calculatePaginaionData(paginaionData,Constants.MAX_ORDERS_PAGE, readable.getNumber()));
         } else {
         	model.addAttribute( "paginationData", null);
@@ -88,7 +88,7 @@ public class CustomerOrdersController extends AbstractController {
         
         
         StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.customerOrders).append(".").append(store.getStoreTemplate());
-        return template.toString();
+								System.out.println("$#12468#"); return template.toString();
 	}
 	
 
@@ -100,7 +100,7 @@ public class CustomerOrdersController extends AbstractController {
 		
 		Language language = (Language)request.getAttribute(Constants.LANGUAGE);
 		
-		if(StringUtils.isBlank( orderId )){
+		System.out.println("$#12469#"); if(StringUtils.isBlank( orderId )){
         	LOGGER.error( "Order Id can not be null or empty" );
         }
         LOGGER.info( "Fetching order details for Id " +orderId);
@@ -111,7 +111,7 @@ public class CustomerOrdersController extends AbstractController {
         	lOrderId = Long.parseLong(orderId);
         } catch(NumberFormatException nfe) {
         	LOGGER.error("Cannot parse orderId to long " + orderId);
-        	return "redirect:/"+Constants.SHOP_URI;
+									System.out.println("$#12470#"); return "redirect:/"+Constants.SHOP_URI;
         }
         
         
@@ -124,8 +124,8 @@ public class CustomerOrdersController extends AbstractController {
 
         }
     	
-    	if(customer==null) {
-    		return "redirect:/"+Constants.SHOP_URI;
+					System.out.println("$#12473#"); if(customer==null) {
+						System.out.println("$#12474#"); return "redirect:/"+Constants.SHOP_URI;
     	}
     	
     	ReadableOrder order = orderFacade.getReadableOrder(lOrderId, store, customer.getDefaultLanguage());
@@ -134,7 +134,7 @@ public class CustomerOrdersController extends AbstractController {
         
 		//check if any downloads exist for this order
 		List<OrderProductDownload> orderProductDownloads = orderProdctDownloadService.getByOrderId(order.getId());
-		if(CollectionUtils.isNotEmpty(orderProductDownloads)) {
+		System.out.println("$#12475#"); if(CollectionUtils.isNotEmpty(orderProductDownloads)) {
 			ReadableOrderProductDownloadPopulator populator = new ReadableOrderProductDownloadPopulator();
 			List<ReadableOrderProductDownload> downloads = new ArrayList<ReadableOrderProductDownload>();
 			for(OrderProductDownload download : orderProductDownloads) {
@@ -146,7 +146,7 @@ public class CustomerOrdersController extends AbstractController {
 		}
 
         StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.customerOrder).append(".").append(store.getStoreTemplate());
-        return template.toString();
+								System.out.println("$#12476#"); return template.toString();
         
     }
 }

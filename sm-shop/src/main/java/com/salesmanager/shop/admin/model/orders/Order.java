@@ -34,7 +34,7 @@ public class Order implements Serializable {
 	
 	
 	public String getDatePurchased() {
-		return datePurchased;
+		System.out.println("$#7815#"); return datePurchased;
 	}
 
 	public void setDatePurchased(String datePurchased) {
@@ -42,7 +42,7 @@ public class Order implements Serializable {
 	}
 
 	public Long getId() {
-		return Id;
+		System.out.println("$#7816#"); return Id;
 	}
 
 	public void setId(Long id) {
@@ -50,7 +50,7 @@ public class Order implements Serializable {
 	}
 
 	public String getOrderHistoryComment() {
-		return orderHistoryComment;
+		System.out.println("$#7817#"); return orderHistoryComment;
 	}
 
 	public void setOrderHistoryComment(String orderHistoryComment) {
@@ -58,7 +58,7 @@ public class Order implements Serializable {
 	}
 
 	public List<OrderStatus> getOrderStatusList() {
-		return orderStatusList;
+		System.out.println("$#7818#"); return orderStatusList;
 	}
 
 	public void setOrderStatusList(List<OrderStatus> orderStatusList) {
@@ -66,7 +66,7 @@ public class Order implements Serializable {
 	}
 
 	public com.salesmanager.core.model.order.Order getOrder() {
-		return order;
+		System.out.println("$#7819#"); return order;
 	}
 
 	public void setOrder(com.salesmanager.core.model.order.Order order) {
@@ -74,7 +74,7 @@ public class Order implements Serializable {
 	}
 
 	public Delivery getDelivery() {
-		return delivery;
+		System.out.println("$#7820#"); return delivery;
 	}
 
 	public void setDelivery(Delivery delivery) {
@@ -82,7 +82,7 @@ public class Order implements Serializable {
 	}
 
 	public Billing getBilling() {
-		return billing;
+		System.out.println("$#7821#"); return billing;
 	}
 
 	public void setBilling(Billing billing) {

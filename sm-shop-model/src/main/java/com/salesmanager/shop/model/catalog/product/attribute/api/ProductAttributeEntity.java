@@ -20,17 +20,17 @@ public class ProductAttributeEntity extends ProductAttribute implements Serializ
 		this.sortOrder = sortOrder;
 	}
 	public int getSortOrder() {
-		return sortOrder;
+		System.out.println("$#8766#"); return sortOrder;
 	}
 	public void setAttributeDefault(boolean attributeDefault) {
 		this.attributeDefault = attributeDefault;
 	}
 	public boolean isAttributeDefault() {
-		return attributeDefault;
+		System.out.println("$#8768#"); System.out.println("$#8767#"); return attributeDefault;
 	}
 
 	public boolean isAttributeDisplayOnly() {
-		return attributeDisplayOnly;
+		System.out.println("$#8770#"); System.out.println("$#8769#"); return attributeDisplayOnly;
 	}
 	public void setAttributeDisplayOnly(boolean attributeDisplayOnly) {
 		this.attributeDisplayOnly = attributeDisplayOnly;

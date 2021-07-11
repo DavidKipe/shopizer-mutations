@@ -14,13 +14,13 @@ public class AttributeCriteria implements Serializable {
 		this.attributeCode = attributeCode;
 	}
 	public String getAttributeCode() {
-		return attributeCode;
+		System.out.println("$#3780#"); return attributeCode;
 	}
 	public void setAttributeValue(String attributeValue) {
 		this.attributeValue = attributeValue;
 	}
 	public String getAttributeValue() {
-		return attributeValue;
+		System.out.println("$#3781#"); return attributeValue;
 	}
 
 }

@@ -17,7 +17,7 @@ public class PersistableUser extends UserEntity {
   private List<PersistableGroup> groups = new ArrayList<PersistableGroup>();
 
   public String getPassword() {
-    return password;
+				System.out.println("$#9427#"); return password;
   }
 
   public void setPassword(String password) {
@@ -25,7 +25,7 @@ public class PersistableUser extends UserEntity {
   }
 
   public List<PersistableGroup> getGroups() {
-    return groups;
+				System.out.println("$#9428#"); return groups;
   }
 
   public void setGroups(List<PersistableGroup> groups) {
@@ -33,7 +33,7 @@ public class PersistableUser extends UserEntity {
   }
 
 public String getStore() {
-	return store;
+	System.out.println("$#9429#"); return store;
 }
 
 public void setStore(String store) {

@@ -12,7 +12,7 @@ public class ReadableMarketPlace extends MarketPlaceEntity {
 	private ReadableMerchantStore store;
 
 	public ReadableMerchantStore getStore() {
-		return store;
+		System.out.println("$#9113#"); return store;
 	}
 
 	public void setStore(ReadableMerchantStore store) {

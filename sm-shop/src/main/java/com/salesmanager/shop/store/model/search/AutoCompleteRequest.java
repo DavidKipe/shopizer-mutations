@@ -45,7 +45,7 @@ public class AutoCompleteRequest {
 		match.put(MATCH, keyword);
 		
 		mq.put(QUERY, match);
-		return mq.toJSONString();
+		System.out.println("$#15212#"); return mq.toJSONString();
 	}
 	
 	/** keyword_en_default **/
@@ -54,13 +54,13 @@ public class AutoCompleteRequest {
 		qBuilder.append(KEYWORD).append(UNDERSCORE).append(getLanguageCode()).append(UNDERSCORE)
 		.append(getMerchantCode());
 		
-		return qBuilder.toString().toLowerCase();
+		System.out.println("$#15213#"); return qBuilder.toString().toLowerCase();
 	}
 	
 	
 
 	public String getMerchantCode() {
-		return merchantCode;
+		System.out.println("$#15214#"); return merchantCode;
 	}
 
 	public void setMerchantCode(String merchantCode) {
@@ -68,7 +68,7 @@ public class AutoCompleteRequest {
 	}
 
 	public String getLanguageCode() {
-		return languageCode;
+		System.out.println("$#15215#"); return languageCode;
 	}
 
 	public void setLanguageCode(String languageCode) {

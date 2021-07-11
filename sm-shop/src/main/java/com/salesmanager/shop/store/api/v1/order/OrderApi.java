@@ -102,16 +102,16 @@ public class OrderApi {
 
 		Customer customer = customerService.getById(id);
 
-		if (customer == null) {
+		System.out.println("$#11687#"); if (customer == null) {
 			LOGGER.error("Customer is null for id " + id);
-			response.sendError(404, "Customer is null for id " + id);
+			System.out.println("$#11688#"); response.sendError(404, "Customer is null for id " + id);
 			return null;
 		}
 
-		if (start == null) {
+		System.out.println("$#11689#"); if (start == null) {
 			start = new Integer(0);
 		}
-		if (count == null) {
+		System.out.println("$#11690#"); if (count == null) {
 			count = new Integer(100);
 		}
 
@@ -124,13 +124,13 @@ public class OrderApi {
 
 		List<ReadableOrder> orders = returnList.getOrders();
 
-		if (!CollectionUtils.isEmpty(orders)) {
+		System.out.println("$#11691#"); if (!CollectionUtils.isEmpty(orders)) {
 			for (ReadableOrder order : orders) {
-				order.setCustomer(readableCustomer);
+				System.out.println("$#11692#"); order.setCustomer(readableCustomer);
 			}
 		}
 
-		return returnList;
+		System.out.println("$#11693#"); return returnList;
 	}
 
 	/**
@@ -155,19 +155,19 @@ public class OrderApi {
 		Principal principal = request.getUserPrincipal();
 		String userName = principal.getName();
 
-		System.out.println("who os the username ? " + userName);
+		System.out.println("$#11694#"); System.out.println("who os the username ? " + userName);
 
 		Customer customer = customerService.getByNick(userName);
 
-		if (customer == null) {
-			response.sendError(401, "Error while listing orders, customer not authorized");
+		System.out.println("$#11695#"); if (customer == null) {
+			System.out.println("$#11696#"); response.sendError(401, "Error while listing orders, customer not authorized");
 			return null;
 		}
 
-		if (page == null) {
+		System.out.println("$#11697#"); if (page == null) {
 			page = new Integer(0);
 		}
-		if (count == null) {
+		System.out.println("$#11698#"); if (count == null) {
 			count = new Integer(100);
 		}
 
@@ -177,17 +177,17 @@ public class OrderApi {
 
 		ReadableOrderList returnList = orderFacade.getReadableOrderList(merchantStore, customer, page, count, language);
 
-		if (returnList == null) {
+		System.out.println("$#11699#"); if (returnList == null) {
 			returnList = new ReadableOrderList();
 		}
 
 		List<ReadableOrder> orders = returnList.getOrders();
-		if (!CollectionUtils.isEmpty(orders)) {
+		System.out.println("$#11700#"); if (!CollectionUtils.isEmpty(orders)) {
 			for (ReadableOrder order : orders) {
-				order.setCustomer(readableCustomer);
+				System.out.println("$#11701#"); order.setCustomer(readableCustomer);
 			}
 		}
-		return returnList;
+		System.out.println("$#11702#"); return returnList;
 	}
 
 	/**
@@ -219,18 +219,18 @@ public class OrderApi {
 
 
 		OrderCriteria orderCriteria = new OrderCriteria();
-		orderCriteria.setPageSize(count);
-		orderCriteria.setStartPage(page);
+		System.out.println("$#11703#"); orderCriteria.setPageSize(count);
+		System.out.println("$#11704#"); orderCriteria.setStartPage(page);
 
-		orderCriteria.setCustomerName(name);
-		orderCriteria.setCustomerPhone(phone);
-		orderCriteria.setStatus(status);
-		orderCriteria.setEmail(email);
-		orderCriteria.setId(id);
+		System.out.println("$#11705#"); orderCriteria.setCustomerName(name);
+		System.out.println("$#11706#"); orderCriteria.setCustomerPhone(phone);
+		System.out.println("$#11707#"); orderCriteria.setStatus(status);
+		System.out.println("$#11708#"); orderCriteria.setEmail(email);
+		System.out.println("$#11709#"); orderCriteria.setId(id);
 
 
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#11710#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_ADMIN_ORDER, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
 		ReadableOrderList orders = orderFacade.getReadableOrderList(orderCriteria, merchantStore);
@@ -244,7 +244,7 @@ public class OrderApi {
 								timeElapsed / 1000000);
 								**/
 		
-		return orders;
+		System.out.println("$#11711#"); return orders;
 
 	}
 
@@ -266,13 +266,13 @@ public class OrderApi {
 			@ApiIgnore Language language) {
 		
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#11712#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_ADMIN_ORDER, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
 
 		ReadableOrder order = orderFacade.getReadableOrder(id, merchantStore, language);
 
-		return order;
+		System.out.println("$#11713#"); return order;
 	}
 
 	/**
@@ -296,33 +296,33 @@ public class OrderApi {
 
 		Customer customer = customerService.getByNick(userName);
 
-		if (customer == null) {
-			response.sendError(401, "Error while performing checkout customer not authorized");
+		System.out.println("$#11714#"); if (customer == null) {
+			System.out.println("$#11715#"); response.sendError(401, "Error while performing checkout customer not authorized");
 			return null;
 		}
 
 		ReadableOrder order = orderFacade.getReadableOrder(id, merchantStore, language);
 
-		if (order == null) {
+		System.out.println("$#11716#"); if (order == null) {
 			LOGGER.error("Order is null for id " + id);
-			response.sendError(404, "Order is null for id " + id);
+			System.out.println("$#11717#"); response.sendError(404, "Order is null for id " + id);
 			return null;
 		}
 
-		if (order.getCustomer() == null) {
+		System.out.println("$#11718#"); if (order.getCustomer() == null) {
 			LOGGER.error("Order is null for customer " + principal);
-			response.sendError(404, "Order is null for customer " + principal);
+			System.out.println("$#11719#"); response.sendError(404, "Order is null for customer " + principal);
 			return null;
 		}
 
-		if (order.getCustomer().getId() != null
+		System.out.println("$#11720#"); if (order.getCustomer().getId() != null
 				&& order.getCustomer().getId().longValue() != customer.getId().longValue()) {
 			LOGGER.error("Order is null for customer " + principal);
-			response.sendError(404, "Order is null for customer " + principal);
+			System.out.println("$#11722#"); response.sendError(404, "Order is null for customer " + principal);
 			return null;
 		}
 
-		return order;
+		System.out.println("$#11723#"); return order;
 	}
 
 	/**
@@ -350,32 +350,32 @@ public class OrderApi {
 
 			Customer customer = customerService.getByNick(userName);
 
-			if (customer == null) {
-				response.sendError(401, "Error while performing checkout customer not authorized");
+			System.out.println("$#11724#"); if (customer == null) {
+				System.out.println("$#11725#"); response.sendError(401, "Error while performing checkout customer not authorized");
 				return null;
 			}
 
 			ShoppingCart cart = shoppingCartService.getByCode(code, merchantStore);
-			if (cart == null) {
+			System.out.println("$#11726#"); if (cart == null) {
 				throw new ResourceNotFoundException("Cart code " + code + " does not exist");
 			}
 
-			order.setShoppingCartId(cart.getId());
-			order.setCustomerId(customer.getId());
+			System.out.println("$#11727#"); order.setShoppingCartId(cart.getId());
+			System.out.println("$#11728#"); order.setCustomerId(customer.getId());
 
 			Order modelOrder = orderFacade.processOrder(order, customer, merchantStore, language, locale);
 			Long orderId = modelOrder.getId();
-			order.setId(orderId);
+			System.out.println("$#11729#"); order.setId(orderId);
 
 			// hash payment token
-			order.getPayment().setPaymentToken("***");
+			System.out.println("$#11730#"); order.getPayment().setPaymentToken("***");
 
-			return order;
+			System.out.println("$#11731#"); return order;
 
 		} catch (Exception e) {
 			LOGGER.error("Error while processing checkout", e);
 			try {
-				response.sendError(503, "Error while processing checkout " + e.getMessage());
+				System.out.println("$#11732#"); response.sendError(503, "Error while processing checkout " + e.getMessage());
 			} catch (Exception ignore) {
 			}
 			return null;
@@ -393,31 +393,31 @@ public class OrderApi {
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language) {
 
-		Validate.notNull(order.getCustomer(), "Customer must not be null");
+		System.out.println("$#11733#"); Validate.notNull(order.getCustomer(), "Customer must not be null");
 
 		ShoppingCart cart;
 		try {
 			cart = shoppingCartService.getByCode(code, merchantStore);
 
-			if (cart == null) {
+			System.out.println("$#11734#"); if (cart == null) {
 				throw new ResourceNotFoundException("Cart code " + code + " does not exist");
 			}
 
 			Customer customer = new Customer();
 			customer = customerFacade.populateCustomerModel(customer, order.getCustomer(), merchantStore, language);
 
-			order.setShoppingCartId(cart.getId());
+			System.out.println("$#11735#"); order.setShoppingCartId(cart.getId());
 
 			Order modelOrder = orderFacade.processOrder(order, customer, merchantStore, language,
 					LocaleUtils.getLocale(language));
 			Long orderId = modelOrder.getId();
-			order.setId(orderId);
+			System.out.println("$#11736#"); order.setId(orderId);
 			// set customer id
-			order.getCustomer().setId(modelOrder.getCustomerId());
+			System.out.println("$#11737#"); order.getCustomer().setId(modelOrder.getCustomerId());
 
 			// hash payment token
-			order.getPayment().setPaymentToken("***");
-			return order;
+			System.out.println("$#11738#"); order.getPayment().setPaymentToken("***");
+			System.out.println("$#11739#"); return order;
 
 		} catch (Exception e) {
 			throw new ServiceRuntimeException("Error during checkout " + e.getMessage(), e);
@@ -438,11 +438,11 @@ public class OrderApi {
 			@ApiIgnore Language language) {
 		
 		String user = authorizationUtils.authenticatedUser();
-		authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
+		System.out.println("$#11740#"); authorizationUtils.authorizeUser(user, Stream.of(Constants.GROUP_SUPERADMIN, Constants.GROUP_ADMIN,
 				Constants.GROUP_ADMIN_ORDER, Constants.GROUP_ADMIN_RETAIL).collect(Collectors.toList()), merchantStore);
 
 		
-		orderFacade.updateOrderCustomre(id, orderCustomer, merchantStore);
+		System.out.println("$#11741#"); orderFacade.updateOrderCustomre(id, orderCustomer, merchantStore);
 		return;
 		
 	}

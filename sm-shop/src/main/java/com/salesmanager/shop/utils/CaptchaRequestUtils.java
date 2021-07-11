@@ -57,7 +57,7 @@ public class CaptchaRequestUtils {
 	    
 	    // Create a method instance.
         HttpPost post = new HttpPost(url);
-	    post.setEntity(new UrlEncodedFormEntity(data,StandardCharsets.UTF_8));
+					System.out.println("$#15582#"); post.setEntity(new UrlEncodedFormEntity(data,StandardCharsets.UTF_8));
 	    
 	    boolean checkCaptcha = false;
 	    
@@ -67,7 +67,7 @@ public class CaptchaRequestUtils {
             HttpResponse httpResponse = client.execute(post);
             int statusCode = httpResponse.getStatusLine().getStatusCode();
 
-	      if (statusCode != HttpStatus.SC_OK) {
+							System.out.println("$#15583#"); if (statusCode != HttpStatus.SC_OK) {
 	    	throw new Exception("Got an invalid response from reCaptcha " + url + " [" + httpResponse.getStatusLine() + "]");
 	      }
 
@@ -90,21 +90,21 @@ public class CaptchaRequestUtils {
 	  	  
 	  	  String successInd = map.get(SUCCESS_INDICATOR);
 	  	  
-	  	  if(StringUtils.isBlank(successInd)) {
+						System.out.println("$#15584#"); if(StringUtils.isBlank(successInd)) {
 	  		  throw new Exception("Unreadable response from reCaptcha " + json);
 	  	  }
 	  	  
 	  	  Boolean responseBoolean = Boolean.valueOf(successInd);
 	  	  
-	  	  if(responseBoolean) {
+						System.out.println("$#15585#"); if(responseBoolean) {
 	  		checkCaptcha = true;
 	  	  }
 	  	  
-	  	  return checkCaptcha;
+						System.out.println("$#15587#"); System.out.println("$#15586#"); return checkCaptcha;
 
 	    } finally {
 	      // Release the connection.
-	      post.releaseConnection();
+							System.out.println("$#15588#"); post.releaseConnection();
 	    }  
 	  }
 

@@ -42,7 +42,7 @@ public class OrderTotalServiceImpl implements OrderTotalService {
 		
 		List<OrderTotal> totals = null;
 		
-		if(orderTotalPostProcessors != null) {
+		System.out.println("$#2424#"); if(orderTotalPostProcessors != null) {
 			for(OrderTotalPostProcessorModule module : orderTotalPostProcessors) {
 				//TODO check if the module is enabled from the Admin
 				
@@ -53,23 +53,23 @@ public class OrderTotalServiceImpl implements OrderTotalService {
 					Product product = productService.getProductForLocale(productId, language, languageService.toLocale(language, store));
 					
 					OrderTotal orderTotal = module.caculateProductPiceVariation(summary, item, product, customer, store);
-					if(orderTotal==null) {
+					System.out.println("$#2425#"); if(orderTotal==null) {
 						continue;
 					}
-					if(totals==null) {
+					System.out.println("$#2426#"); if(totals==null) {
 						totals = new ArrayList<OrderTotal>();
-						variation.setVariations(totals);
+						System.out.println("$#2427#"); variation.setVariations(totals);
 					}
 					
 					//if product is null it will be catched when invoking the module
-					orderTotal.setText(StringUtils.isNoneBlank(orderTotal.getText())?orderTotal.getText():product.getProductDescription().getName());
+					System.out.println("$#2429#"); orderTotal.setText(StringUtils.isNoneBlank(orderTotal.getText())?orderTotal.getText():product.getProductDescription().getName());
 					variation.getVariations().add(orderTotal);	
 				}
 			}
 		}
 		
 		
-		return variation;
+		System.out.println("$#2430#"); return variation;
 	}
 
 }

@@ -43,7 +43,7 @@ public class Currency extends SalesManagerEntity<Long, Currency> implements Seri
 	
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#4461#"); return id;
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class Currency extends SalesManagerEntity<Long, Currency> implements Seri
 	}
 
 	public java.util.Currency getCurrency() {
-		return currency;
+		System.out.println("$#4462#"); return currency;
 	}
 
 	public void setCurrency(java.util.Currency currency) {
@@ -61,7 +61,7 @@ public class Currency extends SalesManagerEntity<Long, Currency> implements Seri
 	}
 
 	public Boolean getSupported() {
-		return supported;
+		System.out.println("$#4464#"); System.out.println("$#4463#"); return supported;
 	}
 
 	public void setSupported(Boolean supported) {
@@ -69,18 +69,18 @@ public class Currency extends SalesManagerEntity<Long, Currency> implements Seri
 	}
 	
 	public String getCode() {
-		if (currency.getCurrencyCode() != code) {
-			return currency.getCurrencyCode();
+		System.out.println("$#4465#"); if (currency.getCurrencyCode() != code) {
+			System.out.println("$#4466#"); return currency.getCurrencyCode();
 		}
-		return code;
+		System.out.println("$#4467#"); return code;
 	}
 	
 	public String getSymbol() {
-		return currency.getSymbol();
+		System.out.println("$#4468#"); return currency.getSymbol();
 	}
 
 	public String getName() {
-		return name;
+		System.out.println("$#4469#"); return name;
 	}
 
 	public void setName(String name) {

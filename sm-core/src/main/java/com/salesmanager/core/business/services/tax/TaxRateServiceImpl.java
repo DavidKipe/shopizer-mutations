@@ -31,52 +31,52 @@ public class TaxRateServiceImpl extends SalesManagerEntityServiceImpl<Long, TaxR
 	@Override
 	public List<TaxRate> listByStore(MerchantStore store)
 			throws ServiceException {
-		return taxRateRepository.findByStore(store.getId());
+		System.out.println("$#3281#"); return taxRateRepository.findByStore(store.getId());
 	}
 	
 	@Override
 	public List<TaxRate> listByStore(MerchantStore store, Language language)
 			throws ServiceException {
-		return taxRateRepository.findByStoreAndLanguage(store.getId(), language.getId());
+		System.out.println("$#3282#"); return taxRateRepository.findByStoreAndLanguage(store.getId(), language.getId());
 	}
 	
 	
 	@Override
 	public TaxRate getByCode(String code, MerchantStore store)
 			throws ServiceException {
-		return taxRateRepository.findByStoreAndCode(store.getId(), code);
+		System.out.println("$#3283#"); return taxRateRepository.findByStoreAndCode(store.getId(), code);
 	}
 	
 	@Override
 	public List<TaxRate> listByCountryZoneAndTaxClass(Country country, Zone zone, TaxClass taxClass, MerchantStore store, Language language) throws ServiceException {
-		return taxRateRepository.findByMerchantAndZoneAndCountryAndLanguage(store.getId(), zone.getId(), country.getId(), language.getId());
+		System.out.println("$#3284#"); return taxRateRepository.findByMerchantAndZoneAndCountryAndLanguage(store.getId(), zone.getId(), country.getId(), language.getId());
 	}
 	
 	@Override
 	public List<TaxRate> listByCountryStateProvinceAndTaxClass(Country country, String stateProvince, TaxClass taxClass, MerchantStore store, Language language) throws ServiceException {
-		return taxRateRepository.findByMerchantAndProvinceAndCountryAndLanguage(store.getId(), stateProvince, country.getId(), language.getId());
+		System.out.println("$#3285#"); return taxRateRepository.findByMerchantAndProvinceAndCountryAndLanguage(store.getId(), stateProvince, country.getId(), language.getId());
 	}
 	
 	@Override
 	public void delete(TaxRate taxRate) throws ServiceException {
 		
-		taxRateRepository.delete(taxRate);
+		System.out.println("$#3286#"); taxRateRepository.delete(taxRate);
 		
 	}
 	
 	@Override
 	public TaxRate saveOrUpdate(TaxRate taxRate) throws ServiceException {
-		if(taxRate.getId()!=null && taxRate.getId().longValue() > 0) {
-			this.update(taxRate);
+		System.out.println("$#3288#"); System.out.println("$#3287#"); if(taxRate.getId()!=null && taxRate.getId().longValue() > 0) {
+			System.out.println("$#3290#"); this.update(taxRate);
 		} else {
 			taxRate = super.saveAndFlush(taxRate);
 		}
-		return taxRate;
+		System.out.println("$#3291#"); return taxRate;
 	}
 
 	@Override
 	public TaxRate getById(Long id, MerchantStore store) throws ServiceException {
-		return taxRateRepository.findByStoreAndId(store.getId(), id);
+		System.out.println("$#3292#"); return taxRateRepository.findByStoreAndId(store.getId(), id);
 	}
 		
 

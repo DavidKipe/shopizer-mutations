@@ -47,87 +47,87 @@ public class ReadableMerchantStorePopulator extends
 	public ReadableMerchantStore populate(MerchantStore source,
 			ReadableMerchantStore target, MerchantStore store, Language language)
 			throws ConversionException {
-		Validate.notNull(countryService,"Must use setter for countryService");
-		Validate.notNull(zoneService,"Must use setter for zoneService");
+		System.out.println("$#11100#"); Validate.notNull(countryService,"Must use setter for countryService");
+		System.out.println("$#11101#"); Validate.notNull(zoneService,"Must use setter for zoneService");
 		
-		if(target == null) {
+		System.out.println("$#11102#"); if(target == null) {
 			target = new ReadableMerchantStore();
 		}
 		
-		target.setId(source.getId());
-		target.setCode(source.getCode());
-		if(source.getDefaultLanguage() != null) {
-			target.setDefaultLanguage(source.getDefaultLanguage().getCode());
+		System.out.println("$#11103#"); target.setId(source.getId());
+		System.out.println("$#11104#"); target.setCode(source.getCode());
+		System.out.println("$#11105#"); if(source.getDefaultLanguage() != null) {
+			System.out.println("$#11106#"); target.setDefaultLanguage(source.getDefaultLanguage().getCode());
 		}
 
-		target.setCurrency(source.getCurrency().getCode());
-		target.setPhone(source.getStorephone());
+		System.out.println("$#11107#"); target.setCurrency(source.getCurrency().getCode());
+		System.out.println("$#11108#"); target.setPhone(source.getStorephone());
 		
 		ReadableAddress address = new ReadableAddress();
-		address.setAddress(source.getStoreaddress());
-		address.setCity(source.getStorecity());
-		if(source.getCountry()!=null) {
+		System.out.println("$#11109#"); address.setAddress(source.getStoreaddress());
+		System.out.println("$#11110#"); address.setCity(source.getStorecity());
+		System.out.println("$#11111#"); if(source.getCountry()!=null) {
 			try {
-				address.setCountry(source.getCountry().getIsoCode());
+				System.out.println("$#11112#"); address.setCountry(source.getCountry().getIsoCode());
 				Country c =countryService.getCountriesMap(language).get(source.getCountry().getIsoCode());
-				if(c!=null) {
-					address.setCountry(c.getIsoCode());
+				System.out.println("$#11113#"); if(c!=null) {
+					System.out.println("$#11114#"); address.setCountry(c.getIsoCode());
 				}
 			} catch (ServiceException e) {
 				logger.error("Cannot get Country", e);
 			}
 		}
 		
-		if(source.getParent() != null) {
+		System.out.println("$#11115#"); if(source.getParent() != null) {
 		  ReadableMerchantStore parent = populate(source.getParent(),
             new ReadableMerchantStore(), source, language);
-		  target.setParent(parent);
+				System.out.println("$#11116#"); target.setParent(parent);
 		}
 		
-		if(target.getParent() == null) {
-			target.setRetailer(true);
+		System.out.println("$#11117#"); if(target.getParent() == null) {
+			System.out.println("$#11118#"); target.setRetailer(true);
 		} else {
-			target.setRetailer(source.isRetailer()!=null?source.isRetailer().booleanValue():false);	
+			System.out.println("$#11120#"); target.setRetailer(source.isRetailer()!=null?source.isRetailer().booleanValue():false);
 		}
 		
 		
-		target.setDimension(MeasureUnit.valueOf(source.getSeizeunitcode()));
-		target.setWeight(MeasureUnit.valueOf(source.getWeightunitcode()));
+		System.out.println("$#11121#"); target.setDimension(MeasureUnit.valueOf(source.getSeizeunitcode()));
+		System.out.println("$#11122#"); target.setWeight(MeasureUnit.valueOf(source.getWeightunitcode()));
 		
-		if(source.getZone()!=null) {
-			address.setStateProvince(source.getZone().getCode());
+		System.out.println("$#11123#"); if(source.getZone()!=null) {
+			System.out.println("$#11124#"); address.setStateProvince(source.getZone().getCode());
 			try {
 				Zone z = zoneService.getZones(language).get(source.getZone().getCode());
-				address.setStateProvince(z.getCode());
+				System.out.println("$#11125#"); address.setStateProvince(z.getCode());
 			} catch (ServiceException e) {
 				logger.error("Cannot get Zone", e);
 			}
 		}
 		
 		
-		if(!StringUtils.isBlank(source.getStorestateprovince())) {
-			address.setStateProvince(source.getStorestateprovince());
+		System.out.println("$#11126#"); if(!StringUtils.isBlank(source.getStorestateprovince())) {
+			System.out.println("$#11127#"); address.setStateProvince(source.getStorestateprovince());
 		}
 		
-		if(!StringUtils.isBlank(source.getStoreLogo())) {
+		System.out.println("$#11128#"); if(!StringUtils.isBlank(source.getStoreLogo())) {
 			ReadableImage image = new ReadableImage();
-			image.setName(source.getStoreLogo());
-			if(filePath!=null) {
-				image.setPath(filePath.buildStoreLogoFilePath(source));
+			System.out.println("$#11129#"); image.setName(source.getStoreLogo());
+			System.out.println("$#11130#"); if(filePath!=null) {
+				System.out.println("$#11131#"); image.setPath(filePath.buildStoreLogoFilePath(source));
 			}
-			target.setLogo(image);
+			System.out.println("$#11132#"); target.setLogo(image);
 		}
 		
-		address.setPostalCode(source.getStorepostalcode());
+		System.out.println("$#11133#"); address.setPostalCode(source.getStorepostalcode());
 
-		target.setAddress(address);
+		System.out.println("$#11134#"); target.setAddress(address);
 		
-		target.setCurrencyFormatNational(source.isCurrencyFormatNational());
-		target.setEmail(source.getStoreEmailAddress());
-		target.setName(source.getStorename());
-		target.setId(source.getId());
-		target.setInBusinessSince(DateUtil.formatDate(source.getInBusinessSince()));
-		target.setUseCache(source.isUseCache());
+		System.out.println("$#11135#"); target.setCurrencyFormatNational(source.isCurrencyFormatNational());
+		System.out.println("$#11136#"); target.setEmail(source.getStoreEmailAddress());
+		System.out.println("$#11137#"); target.setName(source.getStorename());
+		System.out.println("$#11138#"); target.setId(source.getId());
+		System.out.println("$#11139#"); target.setInBusinessSince(DateUtil.formatDate(source.getInBusinessSince()));
+		System.out.println("$#11140#"); target.setUseCache(source.isUseCache());
 		
 		
 /*		List<Language> languages = source.getLanguages();
@@ -141,27 +141,27 @@ public class ReadableMerchantStorePopulator extends
 			//target.setSupportedLanguages(langs);
 		}*/
 		
-		if(!CollectionUtils.isEmpty(source.getLanguages())) {
+		System.out.println("$#11141#"); if(!CollectionUtils.isEmpty(source.getLanguages())) {
 			List<Language> supported = new ArrayList<Language>();
 			for(Language lang : source.getLanguages()) {
 				supported.add(lang);
 			}
-			target.setSupportedLanguages(supported);
+			System.out.println("$#11142#"); target.setSupportedLanguages(supported);
 		}
 		
-		if(source.getAuditSection()!=null) {
+		System.out.println("$#11143#"); if(source.getAuditSection()!=null) {
 			ReadableAudit audit = new ReadableAudit();
-			if(source.getAuditSection().getDateCreated()!=null) {
-				audit.setCreated(DateUtil.formatDate(source.getAuditSection().getDateCreated()));
+			System.out.println("$#11144#"); if(source.getAuditSection().getDateCreated()!=null) {
+				System.out.println("$#11145#"); audit.setCreated(DateUtil.formatDate(source.getAuditSection().getDateCreated()));
 			}
-			if(source.getAuditSection().getDateModified()!=null) {
-				audit.setModified(DateUtil.formatDate(source.getAuditSection().getDateCreated()));
+			System.out.println("$#11146#"); if(source.getAuditSection().getDateModified()!=null) {
+				System.out.println("$#11147#"); audit.setModified(DateUtil.formatDate(source.getAuditSection().getDateCreated()));
 			}
-			audit.setUser(source.getAuditSection().getModifiedBy());
-			target.setReadableAudit(audit);
+			System.out.println("$#11148#"); audit.setUser(source.getAuditSection().getModifiedBy());
+			System.out.println("$#11149#"); target.setReadableAudit(audit);
 		}
 
-		return target;
+		System.out.println("$#11150#"); return target;
 	}
 
 	@Override
@@ -171,7 +171,7 @@ public class ReadableMerchantStorePopulator extends
 	}
 	
 	public CountryService getCountryService() {
-		return countryService;
+		System.out.println("$#11151#"); return countryService;
 	}
 
 	public void setCountryService(CountryService countryService) {
@@ -179,7 +179,7 @@ public class ReadableMerchantStorePopulator extends
 	}
 
 	public ZoneService getZoneService() {
-		return zoneService;
+		System.out.println("$#11152#"); return zoneService;
 	}
 
 	public void setZoneService(ZoneService zoneService) {
@@ -187,7 +187,7 @@ public class ReadableMerchantStorePopulator extends
 	}
 
 	public ImageFilePath getFilePath() {
-		return filePath;
+		System.out.println("$#11153#"); return filePath;
 	}
 
 	public void setFilePath(ImageFilePath filePath) {

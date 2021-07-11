@@ -16,12 +16,12 @@ public class AdminAccessDeniedHandler implements AccessDeniedHandler {
 			HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException,
 			ServletException {
-		response.sendRedirect(request.getContextPath() + getAccessDeniedUrl());
+		System.out.println("$#15525#"); response.sendRedirect(request.getContextPath() + getAccessDeniedUrl());
 
 	}
 	
 	public String getAccessDeniedUrl() {
-		return accessDeniedUrl;
+		System.out.println("$#15526#"); return accessDeniedUrl;
 	}
 
 	public void setAccessDeniedUrl(String accessDeniedUrl) {

@@ -8,7 +8,7 @@ public class MerchantStoreCriteria extends Criteria {
 	private boolean stores = false;
 
 	public boolean isRetailers() {
-		return retailers;
+		System.out.println("$#4273#"); System.out.println("$#4272#"); return retailers;
 	}
 
 	public void setRetailers(boolean retailers) {
@@ -16,7 +16,7 @@ public class MerchantStoreCriteria extends Criteria {
 	}
 
 	public boolean isStores() {
-		return stores;
+		System.out.println("$#4275#"); System.out.println("$#4274#"); return stores;
 	}
 
 	public void setStores(boolean stores) {

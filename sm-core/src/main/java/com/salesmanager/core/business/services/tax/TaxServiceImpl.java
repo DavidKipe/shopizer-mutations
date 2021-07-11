@@ -57,7 +57,7 @@ public class TaxServiceImpl
 		
 		MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(TAX_CONFIGURATION, store);
 		TaxConfiguration taxConfiguration = null;
-		if(configuration!=null) {
+		System.out.println("$#3293#"); if(configuration!=null) {
 			String value = configuration.getValue();
 			
 			ObjectMapper mapper = new ObjectMapper();
@@ -67,7 +67,7 @@ public class TaxServiceImpl
 				throw new ServiceException("Cannot parse json string " + value);
 			}
 		}
-		return taxConfiguration;
+		System.out.println("$#3294#"); return taxConfiguration;
 	}
 	
 	
@@ -76,15 +76,15 @@ public class TaxServiceImpl
 		
 		MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(TAX_CONFIGURATION, store);
 
-		if(configuration==null) {
+		System.out.println("$#3295#"); if(configuration==null) {
 			configuration = new MerchantConfiguration();
-			configuration.setMerchantStore(store);
-			configuration.setKey(TAX_CONFIGURATION);
+			System.out.println("$#3296#"); configuration.setMerchantStore(store);
+			System.out.println("$#3297#"); configuration.setKey(TAX_CONFIGURATION);
 		}
 		
 		String value = shippingConfiguration.toJSONString();
-		configuration.setValue(value);
-		merchantConfigurationService.saveOrUpdate(configuration);
+		System.out.println("$#3298#"); configuration.setValue(value);
+		System.out.println("$#3299#"); merchantConfigurationService.saveOrUpdate(configuration);
 		
 	}
 	
@@ -92,23 +92,23 @@ public class TaxServiceImpl
 	public List<TaxItem> calculateTax(OrderSummary orderSummary, Customer customer, MerchantStore store, Language language) throws ServiceException {
 		
 
-		if(customer==null) {
-			return null;
+		System.out.println("$#3300#"); if(customer==null) {
+			System.out.println("$#3301#"); return null;
 		}
 
 		List<ShoppingCartItem> items = orderSummary.getProducts();
 		
 		List<TaxItem> taxLines = new ArrayList<TaxItem>();
 		
-		if(items==null) {
-			return taxLines;
+		System.out.println("$#3302#"); if(items==null) {
+			System.out.println("$#3303#"); return taxLines;
 		}
 		
 		//determine tax calculation basis
 		TaxConfiguration taxConfiguration = this.getTaxConfiguration(store);
-		if(taxConfiguration==null) {
+		System.out.println("$#3304#"); if(taxConfiguration==null) {
 			taxConfiguration = new TaxConfiguration();
-			taxConfiguration.setTaxBasisCalculation(TaxBasisCalculation.SHIPPINGADDRESS);
+			System.out.println("$#3305#"); taxConfiguration.setTaxBasisCalculation(TaxBasisCalculation.SHIPPINGADDRESS);
 		}
 		
 		Country country = customer.getBilling().getCountry();
@@ -116,21 +116,21 @@ public class TaxServiceImpl
 		String stateProvince = customer.getBilling().getState();
 		
 		TaxBasisCalculation taxBasisCalculation = taxConfiguration.getTaxBasisCalculation();
-		if(taxBasisCalculation.name().equals(TaxBasisCalculation.SHIPPINGADDRESS)){
+		System.out.println("$#3306#"); if(taxBasisCalculation.name().equals(TaxBasisCalculation.SHIPPINGADDRESS)){
 			Delivery shipping = customer.getDelivery();
-			if(shipping!=null) {
+			System.out.println("$#3307#"); if(shipping!=null) {
 				country = shipping.getCountry();
 				zone = shipping.getZone();
 				stateProvince = shipping.getState();
 			}
-		} else if(taxBasisCalculation.name().equals(TaxBasisCalculation.BILLINGADDRESS)){
+		} else if(taxBasisCalculation.name().equals(TaxBasisCalculation.BILLINGADDRESS)){ System.out.println("$#3308#");
 			Billing billing = customer.getBilling();
-			if(billing!=null) {
+			System.out.println("$#3309#"); if(billing!=null) {
 				country = billing.getCountry();
 				zone = billing.getZone();
 				stateProvince = billing.getState();
 			}
-		} else if(taxBasisCalculation.name().equals(TaxBasisCalculation.STOREADDRESS)){
+		} else if(taxBasisCalculation.name().equals(TaxBasisCalculation.STOREADDRESS)){ System.out.println("$#3310#");
 			country = store.getCountry();
 			zone = store.getZone();
 			stateProvince = store.getStorestateprovince();
@@ -138,35 +138,35 @@ public class TaxServiceImpl
 		
 		//check other conditions
 		//do not collect tax on other provinces of same country
-		if(!taxConfiguration.isCollectTaxIfDifferentProvinceOfStoreCountry()) {
-			if((zone!=null && store.getZone()!=null) && (zone.getId().longValue() != store.getZone().getId().longValue())) {
-				return null;
+		System.out.println("$#3311#"); if(!taxConfiguration.isCollectTaxIfDifferentProvinceOfStoreCountry()) {
+			System.out.println("$#3312#"); if((zone!=null && store.getZone()!=null) && (zone.getId().longValue() != store.getZone().getId().longValue())) {
+				System.out.println("$#3315#"); return null;
 			}
-			if(!StringUtils.isBlank(stateProvince)) {
-				if(store.getZone()!=null) {
-					if(!store.getZone().getName().equals(stateProvince)) {
-						return null;
+			System.out.println("$#3316#"); if(!StringUtils.isBlank(stateProvince)) {
+				System.out.println("$#3317#"); if(store.getZone()!=null) {
+					System.out.println("$#3318#"); if(!store.getZone().getName().equals(stateProvince)) {
+						System.out.println("$#3319#"); return null;
 					}
 				}
-				else if(!StringUtils.isBlank(store.getStorestateprovince())) {
+				else if(!StringUtils.isBlank(store.getStorestateprovince())) { System.out.println("$#3320#");
 
-					if(!store.getStorestateprovince().equals(stateProvince)) {
-						return null;
+					System.out.println("$#3321#"); if(!store.getStorestateprovince().equals(stateProvince)) {
+						System.out.println("$#3322#"); return null;
 					}
 				}
 			}
 		}
 		
 		//collect tax in different countries
-		if(taxConfiguration.isCollectTaxIfDifferentCountryOfStoreCountry()) {
+		System.out.println("$#3323#"); if(taxConfiguration.isCollectTaxIfDifferentCountryOfStoreCountry()) {
 			//use store country
 			country = store.getCountry();
 			zone = store.getZone();
 			stateProvince = store.getStorestateprovince();
 		}
 		
-		if(zone == null && StringUtils.isBlank(stateProvince)) {
-			return null;
+		System.out.println("$#3324#"); if(zone == null && StringUtils.isBlank(stateProvince)) {
+			System.out.println("$#3326#"); return null;
 		}
 		
 		Map<Long,TaxClass> taxClasses =  new HashMap<Long,TaxClass>();
@@ -179,11 +179,11 @@ public class TaxServiceImpl
 				TaxClass taxClass = item.getProduct().getTaxClass();
 				int quantity = item.getQuantity();
 				itemPrice = itemPrice.multiply(new BigDecimal(quantity));
-				if(taxClass==null) {
+				System.out.println("$#3327#"); if(taxClass==null) {
 					taxClass = taxClassService.getByCode(DEFAULT_TAX_CLASS);
 				}
 				BigDecimal subTotal = taxClassAmountMap.get(taxClass.getId());
-				if(subTotal==null) {
+				System.out.println("$#3328#"); if(subTotal==null) {
 					subTotal = new BigDecimal(0);
 					subTotal.setScale(2, RoundingMode.HALF_UP);
 				}
@@ -204,14 +204,14 @@ public class TaxServiceImpl
 				TaxClass defaultTaxClass = taxClassService.getByCode(TaxClass.DEFAULT_TAX_CLASS);
 				//taxClasses.put(defaultTaxClass.getId(), defaultTaxClass);
 				BigDecimal amnt = taxClassAmountMap.get(defaultTaxClass.getId());
-				if(amnt==null) {
+				System.out.println("$#3329#"); if(amnt==null) {
 					amnt = new BigDecimal(0);
 					amnt.setScale(2, RoundingMode.HALF_UP);
 				}
 				ShippingSummary shippingSummary = orderSummary.getShippingSummary();
-				if(shippingSummary!=null && shippingSummary.getShipping()!=null && shippingSummary.getShipping().doubleValue()>0) {
+				System.out.println("$#3331#"); System.out.println("$#3330#"); if(shippingSummary!=null && shippingSummary.getShipping()!=null && shippingSummary.getShipping().doubleValue()>0) {
 					amnt = amnt.add(shippingSummary.getShipping());
-					if(shippingSummary.getHandling()!=null && shippingSummary.getHandling().doubleValue()>0) {
+					System.out.println("$#3335#"); System.out.println("$#3334#"); if(shippingSummary.getHandling()!=null && shippingSummary.getHandling().doubleValue()>0) {
 						amnt = amnt.add(shippingSummary.getHandling());
 					}
 				}
@@ -227,13 +227,13 @@ public class TaxServiceImpl
 			
 			//get taxRate by tax class
 			List<TaxRate> taxRates = null; 
-			if(!StringUtils.isBlank(stateProvince)&& zone==null) {
+			System.out.println("$#3337#"); if(!StringUtils.isBlank(stateProvince)&& zone==null) {
 				taxRates = taxRateService.listByCountryStateProvinceAndTaxClass(country, stateProvince, taxClasses.get(taxClassId), store, language);
 			} else {
 				taxRates = taxRateService.listByCountryZoneAndTaxClass(country, zone, taxClasses.get(taxClassId), store, language);
 			}
 			
-			if(taxRates==null || taxRates.size()==0){
+			System.out.println("$#3339#"); if(taxRates==null || taxRates.size()==0){
 				continue;
 			}
 			BigDecimal taxedItemValue = null;
@@ -245,21 +245,21 @@ public class TaxServiceImpl
 				double taxRateDouble = taxRate.getTaxRate().doubleValue();//5% ... 8% ...
 				
 
-				if(taxRate.isPiggyback()) {//(compound)
-					if(totalTaxedItemValue.doubleValue()>0) {
+				System.out.println("$#3341#"); if(taxRate.isPiggyback()) {//(compound)
+					System.out.println("$#3343#"); System.out.println("$#3342#"); if(totalTaxedItemValue.doubleValue()>0) {
 						beforeTaxeAmount = totalTaxedItemValue;
 					}
 				} //else just use nominal taxing (combine)
 				
-				double value  = (beforeTaxeAmount.doubleValue() * taxRateDouble)/100;
+				System.out.println("$#3345#"); System.out.println("$#3344#"); double value  = (beforeTaxeAmount.doubleValue() * taxRateDouble)/100;
 				double roundedValue = new BigDecimal(value).setScale(2, RoundingMode.HALF_UP).doubleValue();
 				taxedItemValue = new BigDecimal(roundedValue).setScale(2, RoundingMode.HALF_UP);
 				totalTaxedItemValue = beforeTaxeAmount.add(taxedItemValue);
 				
 				TaxItem taxItem = new TaxItem();
-				taxItem.setItemPrice(taxedItemValue);
-				taxItem.setLabel(taxRate.getDescriptions().get(0).getName());
-				taxItem.setTaxRate(taxRate);
+				System.out.println("$#3346#"); taxItem.setItemPrice(taxedItemValue);
+				System.out.println("$#3347#"); taxItem.setLabel(taxRate.getDescriptions().get(0).getName());
+				System.out.println("$#3348#"); taxItem.setTaxRate(taxRate);
 				taxItems.add(taxItem);
 				
 			}
@@ -273,7 +273,7 @@ public class TaxServiceImpl
 		for(TaxItem taxItem : taxItems) {
 			
 			TaxRate taxRate = taxItem.getTaxRate();
-			if(!taxItemsMap.containsKey(taxRate.getCode())) {
+			System.out.println("$#3349#"); if(!taxItemsMap.containsKey(taxRate.getCode())) {
 				taxItemsMap.put(taxRate.getCode(), taxItem);
 			} 
 			
@@ -283,8 +283,8 @@ public class TaxServiceImpl
 			
 		}
 		
-		if(taxItemsMap.size()==0) {
-			return null;
+		System.out.println("$#3350#"); if(taxItemsMap.size()==0) {
+			System.out.println("$#3351#"); return null;
 		}
 			
 			
@@ -294,7 +294,7 @@ public class TaxServiceImpl
 		
 		@SuppressWarnings("unchecked")
 		List<TaxItem> list = new ArrayList<TaxItem>(values);
-		return list;
+		System.out.println("$#3352#"); return list;
 
 	}
 

@@ -45,10 +45,10 @@ public class ManufacturerImageUrlTag extends RequestContextAwareTag {
 	public int doStartTagInternal() throws JspException {
 		try {
 			
-			if (filePathUtils==null || imageUtils==null) {
+			System.out.println("$#15415#"); if (filePathUtils==null || imageUtils==null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15417#"); factory.autowireBean(this);
 	        }
 
 
@@ -62,7 +62,7 @@ public class ManufacturerImageUrlTag extends RequestContextAwareTag {
 			String baseUrl = filePathUtils.buildStoreUri(merchantStore, request);
 			imagePath.append(baseUrl);
 			
-			pageContext.getOut().print(imagePath.toString());
+			System.out.println("$#15418#"); pageContext.getOut().print(imagePath.toString());
 
 
 			
@@ -73,7 +73,7 @@ public class ManufacturerImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15419#"); return EVAL_PAGE;
 	}
 
 
@@ -82,7 +82,7 @@ public class ManufacturerImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public String getImageName() {
-		return imageName;
+		System.out.println("$#15420#"); return imageName;
 	}
 
 	public void setImageType(String imageType) {
@@ -90,11 +90,11 @@ public class ManufacturerImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public String getImageType() {
-		return imageType;
+		System.out.println("$#15421#"); return imageType;
 	}
 
 	public Manufacturer getManufacturer() {
-		return manufacturer;
+		System.out.println("$#15422#"); return manufacturer;
 	}
 
 	public void setManufacturer(Manufacturer manufacturer) {

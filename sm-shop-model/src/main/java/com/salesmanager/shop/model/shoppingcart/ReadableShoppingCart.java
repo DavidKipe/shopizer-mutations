@@ -36,7 +36,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public Long getCustomer() {
-		return customer;
+		System.out.println("$#9301#"); return customer;
 	}
 
 
@@ -48,7 +48,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public List<ReadableOrderTotal> getTotals() {
-		return totals;
+		System.out.println("$#9302#"); return totals;
 	}
 
 
@@ -60,7 +60,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public List<ReadableShoppingCartItem> getProducts() {
-		return products;
+		System.out.println("$#9303#"); return products;
 	}
 
 
@@ -72,7 +72,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public String getCode() {
-		return code;
+		System.out.println("$#9304#"); return code;
 	}
 
 
@@ -82,7 +82,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 	}
 	
 	public BigDecimal getSubtotal() {
-		return subtotal;
+		System.out.println("$#9305#"); return subtotal;
 	}
 
 
@@ -94,7 +94,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public String getDisplaySubTotal() {
-		return displaySubTotal;
+		System.out.println("$#9306#"); return displaySubTotal;
 	}
 
 
@@ -106,7 +106,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public BigDecimal getTotal() {
-		return total;
+		System.out.println("$#9307#"); return total;
 	}
 
 
@@ -118,7 +118,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public String getDisplayTotal() {
-		return displayTotal;
+		System.out.println("$#9308#"); return displayTotal;
 	}
 
 
@@ -130,7 +130,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public int getQuantity() {
-		return quantity;
+		System.out.println("$#9309#"); return quantity;
 	}
 
 
@@ -142,7 +142,7 @@ public class ReadableShoppingCart extends ShoppingCartEntity {
 
 
 	public Long getOrder() {
-		return order;
+		System.out.println("$#9310#"); return order;
 	}
 
 

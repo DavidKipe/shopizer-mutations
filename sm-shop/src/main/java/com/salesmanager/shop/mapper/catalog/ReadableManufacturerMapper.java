@@ -21,18 +21,18 @@ public class ReadableManufacturerMapper implements Mapper<Manufacturer, Readable
 
     Optional<com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription> description =
         getDescription(source, language, target);
-    description.ifPresent(target::setDescription);
+				System.out.println("$#8412#"); description.ifPresent(target::setDescription);
 
-    target.setCode(source.getCode());
-    target.setId(source.getId());
-    target.setOrder(source.getOrder());
+				System.out.println("$#8413#"); target.setCode(source.getCode());
+				System.out.println("$#8414#"); target.setId(source.getId());
+				System.out.println("$#8415#"); target.setOrder(source.getOrder());
     Optional<com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription> desc = this.getDescription(source, language, target);
-    if(description.isPresent()) {
-    	target.setDescription(desc.get());
+				System.out.println("$#8416#"); if(description.isPresent()) {
+					System.out.println("$#8417#"); target.setDescription(desc.get());
     }
     
 
-    return target;
+				System.out.println("$#8418#"); return target;
   }
 
   private Optional<com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription> getDescription(
@@ -40,9 +40,9 @@ public class ReadableManufacturerMapper implements Mapper<Manufacturer, Readable
 
     Optional<ManufacturerDescription> description =
         getDescription(source.getDescriptions(), language);
-    if (source.getDescriptions() != null && !source.getDescriptions().isEmpty()
+				System.out.println("$#8419#"); if (source.getDescriptions() != null && !source.getDescriptions().isEmpty()
         && description.isPresent()) {
-      return Optional.of(convertDescription(description.get(), source));
+						System.out.println("$#8422#"); return Optional.of(convertDescription(description.get(), source));
     } else {
       return Optional.empty();
     }
@@ -52,8 +52,8 @@ public class ReadableManufacturerMapper implements Mapper<Manufacturer, Readable
       Set<ManufacturerDescription> descriptionsLang, Language language) {
     Optional<ManufacturerDescription> descriptionByLang = descriptionsLang.stream()
         .filter(desc -> desc.getLanguage().getCode().equals(language.getCode())).findAny();
-    if (descriptionByLang.isPresent()) {
-      return descriptionByLang;
+				System.out.println("$#8425#"); if (descriptionByLang.isPresent()) {
+						System.out.println("$#8426#"); return descriptionByLang;
     } else {
       return Optional.empty();
     }
@@ -64,18 +64,18 @@ public class ReadableManufacturerMapper implements Mapper<Manufacturer, Readable
     final com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription desc =
         new com.salesmanager.shop.model.catalog.manufacturer.ManufacturerDescription();
 
-    desc.setFriendlyUrl(description.getUrl());
-    desc.setId(description.getId());
-    desc.setLanguage(description.getLanguage().getCode());
-    desc.setName(description.getName());
-    desc.setDescription(description.getDescription());
-    return desc;
+				System.out.println("$#8427#"); desc.setFriendlyUrl(description.getUrl());
+				System.out.println("$#8428#"); desc.setId(description.getId());
+				System.out.println("$#8429#"); desc.setLanguage(description.getLanguage().getCode());
+				System.out.println("$#8430#"); desc.setName(description.getName());
+				System.out.println("$#8431#"); desc.setDescription(description.getDescription());
+				System.out.println("$#8432#"); return desc;
   }
 
   @Override
   public ReadableManufacturer convert(Manufacturer source, ReadableManufacturer destination,
       MerchantStore store, Language language) {
-    return destination;
+				System.out.println("$#8433#"); return destination;
   }
 
 }

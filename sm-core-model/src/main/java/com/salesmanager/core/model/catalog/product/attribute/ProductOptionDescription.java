@@ -36,14 +36,14 @@ public class ProductOptionDescription extends Description {
 	}
 	
 	public String getProductOptionComment() {
-		return productOptionComment;
+		System.out.println("$#3814#"); return productOptionComment;
 	}
 	public void setProductOptionComment(String productOptionComment) {
 		this.productOptionComment = productOptionComment;
 	}
 
 	public ProductOption getProductOption() {
-		return productOption;
+		System.out.println("$#3815#"); return productOption;
 	}
 
 	public void setProductOption(ProductOption productOption) {

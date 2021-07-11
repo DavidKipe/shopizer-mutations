@@ -53,7 +53,7 @@ public class SearchApi {
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language,
       HttpServletRequest request) {
-    return searchFacade.search(merchantStore, language, searchRequest);
+				System.out.println("$#12028#"); return searchFacade.search(merchantStore, language, searchRequest);
   }
 
   @PostMapping("/search/autocomplete")
@@ -66,6 +66,6 @@ public class SearchApi {
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language,
       HttpServletRequest request) {
-    return searchFacade.autocompleteRequest(searchRequest.getQuery(), merchantStore, language);
+				System.out.println("$#12029#"); return searchFacade.autocompleteRequest(searchRequest.getQuery(), merchantStore, language);
   }
 }

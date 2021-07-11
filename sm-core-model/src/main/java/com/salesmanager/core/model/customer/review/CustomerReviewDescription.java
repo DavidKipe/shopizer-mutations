@@ -44,7 +44,7 @@ public class CustomerReviewDescription extends Description {
 	private CustomerReview customerReview;
 
 	public CustomerReview getCustomerReview() {
-		return customerReview;
+		System.out.println("$#4218#"); return customerReview;
 	}
 
 	public void setCustomerReview(CustomerReview customerReview) {
@@ -55,8 +55,8 @@ public class CustomerReviewDescription extends Description {
 	}
 
 	public CustomerReviewDescription(Language language, String name) {
-		this.setLanguage(language);
-		this.setName(name);
+		System.out.println("$#4219#"); this.setLanguage(language);
+		System.out.println("$#4220#"); this.setName(name);
 	}
 
 

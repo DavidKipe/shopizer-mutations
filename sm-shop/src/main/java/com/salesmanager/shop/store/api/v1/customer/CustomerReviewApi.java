@@ -79,7 +79,7 @@ public class CustomerReviewApi {
       @Valid @RequestBody PersistableCustomerReview review,
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language) {
-    return customerFacade.createCustomerReview(id, review, merchantStore, language);
+				System.out.println("$#11682#"); return customerFacade.createCustomerReview(id, review, merchantStore, language);
   }
 
   @GetMapping("/customers/{id}/reviews")
@@ -89,7 +89,7 @@ public class CustomerReviewApi {
   })
   public List<ReadableCustomerReview> getAll(
       @PathVariable final Long id, @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
-    return customerFacade.getAllCustomerReviewsByReviewed(id, merchantStore, language);
+				System.out.println("$#11683#"); return customerFacade.getAllCustomerReviewsByReviewed(id, merchantStore, language);
   }
 
 	@PutMapping("/private/customers/{id}/reviews/{reviewid}")
@@ -99,7 +99,7 @@ public class CustomerReviewApi {
       @Valid @RequestBody PersistableCustomerReview review,
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language) {
-      return customerFacade.updateCustomerReview(id, reviewId, review, merchantStore, language);
+						System.out.println("$#11684#"); return customerFacade.updateCustomerReview(id, reviewId, review, merchantStore, language);
 	}
 
   @DeleteMapping("/private/customers/{id}/reviews/{reviewId}")
@@ -108,6 +108,6 @@ public class CustomerReviewApi {
       @PathVariable final Long reviewId,
       @ApiIgnore MerchantStore merchantStore,
       @ApiIgnore Language language) {
-    customerFacade.deleteCustomerReview(id, reviewId, merchantStore, language);
+				System.out.println("$#11685#"); customerFacade.deleteCustomerReview(id, reviewId, merchantStore, language);
   }
 }

@@ -43,7 +43,7 @@ public class MarketPlace extends SalesManagerEntity<Long, MarketPlace> implement
 
 	@Override
 	public AuditSection getAuditSection() {
-		return auditSection;
+		System.out.println("$#3776#"); return auditSection;
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class MarketPlace extends SalesManagerEntity<Long, MarketPlace> implement
 
 	@Override
 	public Long getId() {
-		return id;
+		System.out.println("$#3777#"); return id;
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class MarketPlace extends SalesManagerEntity<Long, MarketPlace> implement
 	}
 
 	public MerchantStore getStore() {
-		return store;
+		System.out.println("$#3778#"); return store;
 	}
 
 	public void setStore(MerchantStore store) {
@@ -72,7 +72,7 @@ public class MarketPlace extends SalesManagerEntity<Long, MarketPlace> implement
 
 
 	public String getCode() {
-		return code;
+		System.out.println("$#3779#"); return code;
 	}
 
 	public void setCode(String code) {

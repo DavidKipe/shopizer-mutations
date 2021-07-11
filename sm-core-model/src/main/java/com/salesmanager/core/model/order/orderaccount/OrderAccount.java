@@ -56,7 +56,7 @@ private static final long serialVersionUID = -2429388347536330540L;
 	}
 
 	public Long getId() {
-		return id;
+		System.out.println("$#4318#"); return id;
 	}
 
 	public void setId(Long id) {
@@ -64,7 +64,7 @@ private static final long serialVersionUID = -2429388347536330540L;
 	}
 
 	public Order getOrder() {
-		return order;
+		System.out.println("$#4319#"); return order;
 	}
 
 	public void setOrder(Order order) {
@@ -72,7 +72,7 @@ private static final long serialVersionUID = -2429388347536330540L;
 	}
 
 	public Date getOrderAccountStartDate() {
-		return CloneUtils.clone(orderAccountStartDate);
+		System.out.println("$#4320#"); return CloneUtils.clone(orderAccountStartDate);
 	}
 
 	public void setOrderAccountStartDate(Date orderAccountStartDate) {
@@ -80,7 +80,7 @@ private static final long serialVersionUID = -2429388347536330540L;
 	}
 
 	public Date getOrderAccountEndDate() {
-		return CloneUtils.clone(orderAccountEndDate);
+		System.out.println("$#4321#"); return CloneUtils.clone(orderAccountEndDate);
 	}
 
 	public void setOrderAccountEndDate(Date orderAccountEndDate) {
@@ -88,7 +88,7 @@ private static final long serialVersionUID = -2429388347536330540L;
 	}
 
 	public Integer getOrderAccountBillDay() {
-		return orderAccountBillDay;
+		System.out.println("$#4322#"); return orderAccountBillDay;
 	}
 
 	public void setOrderAccountBillDay(Integer orderAccountBillDay) {
@@ -96,7 +96,7 @@ private static final long serialVersionUID = -2429388347536330540L;
 	}
 
 	public Set<OrderAccountProduct> getOrderAccountProducts() {
-		return orderAccountProducts;
+		System.out.println("$#4323#"); return orderAccountProducts;
 	}
 
 	public void setOrderAccountProducts(

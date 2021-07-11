@@ -83,14 +83,14 @@ public class ProductVariantApi {
 
     Product product = productService.getById(id);
 
-    if (product == null) {
-      response.sendError(404, "Product not fount for id " + id);
+				System.out.println("$#12013#"); if (product == null) {
+						System.out.println("$#12014#"); response.sendError(404, "Product not fount for id " + id);
       return null;
     }
 
     List<ReadableProductVariantValue> ids = options.getOptions();
 
-    if (CollectionUtils.isEmpty(ids)) {
+				System.out.println("$#12015#"); if (CollectionUtils.isEmpty(ids)) {
       return null;
     }
     List<ReadableProductVariantValue> variants = options.getOptions();
@@ -103,7 +103,7 @@ public class ProductVariantApi {
       Long option = attribute.getProductOption().getId();
       Long optionValue = attribute.getProductOptionValue().getId();
       for(ReadableProductVariantValue v : variants) {
-        if(v.getOption().longValue() == option.longValue()
+								System.out.println("$#12016#"); if(v.getOption().longValue() == option.longValue()
             && v.getValue().longValue() == optionValue.longValue()) {
           attributes.add(attribute);
         }
@@ -114,9 +114,9 @@ public class ProductVariantApi {
     FinalPrice price = pricingService.calculateProductPrice(product, attributes);
     ReadableProductPrice readablePrice = new ReadableProductPrice();
     ReadableFinalPricePopulator populator = new ReadableFinalPricePopulator();
-    populator.setPricingService(pricingService);
+				System.out.println("$#12018#"); populator.setPricingService(pricingService);
     populator.populate(price, readablePrice, merchantStore, language);
-    return readablePrice;
+				System.out.println("$#12019#"); return readablePrice;
   }
 
   
@@ -140,7 +140,7 @@ public class ProductVariantApi {
       HttpServletResponse response)
       throws Exception {
     
-    return categoryFacade.categoryProductVariants(id, merchantStore, language);
+				System.out.println("$#12020#"); return categoryFacade.categoryProductVariants(id, merchantStore, language);
     
   }
   

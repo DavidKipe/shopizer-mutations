@@ -44,54 +44,54 @@ public class ShopOrder extends PersistableOrder implements Serializable {
 		this.shoppingCartItems = shoppingCartItems;
 	}
 	public List<ShoppingCartItem> getShoppingCartItems() {
-		return shoppingCartItems;
+		System.out.println("$#9180#"); return shoppingCartItems;
 	}
 
 	public void setOrderTotalSummary(OrderTotalSummary orderTotalSummary) {
 		this.orderTotalSummary = orderTotalSummary;
 	}
 	public OrderTotalSummary getOrderTotalSummary() {
-		return orderTotalSummary;
+		System.out.println("$#9181#"); return orderTotalSummary;
 	}
 
 	public ShippingSummary getShippingSummary() {
-		return shippingSummary;
+		System.out.println("$#9182#"); return shippingSummary;
 	}
 	public void setShippingSummary(ShippingSummary shippingSummary) {
 		this.shippingSummary = shippingSummary;
 	}
 	public ShippingOption getSelectedShippingOption() {
-		return selectedShippingOption;
+		System.out.println("$#9183#"); return selectedShippingOption;
 	}
 	public void setSelectedShippingOption(ShippingOption selectedShippingOption) {
 		this.selectedShippingOption = selectedShippingOption;
 	}
 	public String getErrorMessage() {
-		return errorMessage;
+		System.out.println("$#9184#"); return errorMessage;
 	}
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 	public String getPaymentMethodType() {
-		return paymentMethodType;
+		System.out.println("$#9185#"); return paymentMethodType;
 	}
 	public void setPaymentMethodType(String paymentMethodType) {
 		this.paymentMethodType = paymentMethodType;
 	}
 	public Map<String,String> getPayment() {
-		return payment;
+		System.out.println("$#9186#"); return payment;
 	}
 	public void setPayment(Map<String,String> payment) {
 		this.payment = payment;
 	}
 	public String getDefaultPaymentMethodCode() {
-		return defaultPaymentMethodCode;
+		System.out.println("$#9187#"); return defaultPaymentMethodCode;
 	}
 	public void setDefaultPaymentMethodCode(String defaultPaymentMethodCode) {
 		this.defaultPaymentMethodCode = defaultPaymentMethodCode;
 	}
 	public String getCartCode() {
-		return cartCode;
+		System.out.println("$#9188#"); return cartCode;
 	}
 	public void setCartCode(String cartCode) {
 		this.cartCode = cartCode;

@@ -21,18 +21,18 @@ public class ServicesAuthenticationSuccessHandler extends SimpleUrlAuthenticatio
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
-        if (savedRequest == null) {
-            clearAuthenticationAttributes(request);
+								System.out.println("$#15354#"); if (savedRequest == null) {
+												System.out.println("$#15355#"); clearAuthenticationAttributes(request);
             return;
         }
         String targetUrlParam = getTargetUrlParameter();
-        if (isAlwaysUseDefaultTargetUrl() || (targetUrlParam != null && StringUtils.hasText(request.getParameter(targetUrlParam)))) {
-            requestCache.removeRequest(request, response);
-            clearAuthenticationAttributes(request);
+								System.out.println("$#15356#"); if (isAlwaysUseDefaultTargetUrl() || (targetUrlParam != null && StringUtils.hasText(request.getParameter(targetUrlParam)))) {
+												System.out.println("$#15359#"); requestCache.removeRequest(request, response);
+												System.out.println("$#15360#"); clearAuthenticationAttributes(request);
             return;
         }
 
-        clearAuthenticationAttributes(request);
+								System.out.println("$#15361#"); clearAuthenticationAttributes(request);
     }
 
     public void setRequestCache(RequestCache requestCache) {

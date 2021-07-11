@@ -60,7 +60,7 @@ public class ProductOptionApi {
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
 		ReadableProductOptionEntity entity = productOptionFacade.saveOption(option, merchantStore, language);
-		return entity;
+		System.out.println("$#11942#"); return entity;
 
 	}
 
@@ -73,7 +73,7 @@ public class ProductOptionApi {
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
 		boolean isOptionExist = productOptionFacade.optionExists(code, merchantStore);
-		return new ResponseEntity<EntityExists>(new EntityExists(isOptionExist), HttpStatus.OK);
+		System.out.println("$#11943#"); return new ResponseEntity<EntityExists>(new EntityExists(isOptionExist), HttpStatus.OK);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -84,7 +84,7 @@ public class ProductOptionApi {
 	public ResponseEntity<EntityExists> optionValueExists(@RequestParam(value = "code") String code,
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 		boolean isOptionExist = productOptionFacade.optionValueExists(code, merchantStore);
-		return new ResponseEntity<EntityExists>(new EntityExists(isOptionExist), HttpStatus.OK);
+		System.out.println("$#11944#"); return new ResponseEntity<EntityExists>(new EntityExists(isOptionExist), HttpStatus.OK);
 	}
 
 	@ResponseStatus(HttpStatus.CREATED)
@@ -99,7 +99,7 @@ public class ProductOptionApi {
 
 		ReadableProductOptionValueEntity entity = productOptionFacade.saveOptionValue( optionValue,
 				merchantStore, language);
-		return entity;
+		System.out.println("$#11945#"); return entity;
 
 	}
 	
@@ -114,7 +114,7 @@ public class ProductOptionApi {
 			@ApiIgnore Language language, 
 			HttpServletRequest request, HttpServletResponse response) {
 
-		productOptionFacade.addOptionValueImage(file, id, merchantStore, language);
+		System.out.println("$#11946#"); productOptionFacade.addOptionValueImage(file, id, merchantStore, language);
 
 
 	}
@@ -129,7 +129,7 @@ public class ProductOptionApi {
 			@ApiIgnore Language language, 
 			HttpServletRequest request, HttpServletResponse response) {
 
-		productOptionFacade.removeOptionValueImage(id, merchantStore, language);
+		System.out.println("$#11947#"); productOptionFacade.removeOptionValueImage(id, merchantStore, language);
 
 	}
 
@@ -141,7 +141,7 @@ public class ProductOptionApi {
 	public ReadableProductOptionEntity getOption(@PathVariable Long id, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
-		return productOptionFacade.getOption(id, merchantStore, language);
+		System.out.println("$#11948#"); return productOptionFacade.getOption(id, merchantStore, language);
 
 	}
 	
@@ -153,7 +153,7 @@ public class ProductOptionApi {
 	public ReadableProductOptionValueEntity getOptionValue(@PathVariable Long id, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
-		return productOptionFacade.getOptionValue(id, merchantStore, language);
+		System.out.println("$#11949#"); return productOptionFacade.getOptionValue(id, merchantStore, language);
 
 	}
 
@@ -164,7 +164,7 @@ public class ProductOptionApi {
 	public void updateOption(@Valid @RequestBody PersistableProductOptionEntity option, @PathVariable Long optionId,
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language, HttpServletRequest request,
 			HttpServletResponse response) {
-		option.setId(optionId);
+		System.out.println("$#11950#"); option.setId(optionId);
 		productOptionFacade.saveOption(option, merchantStore, language);
 		return;
 
@@ -177,7 +177,7 @@ public class ProductOptionApi {
 	public void deleteOption(@PathVariable Long optionId, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
-		productOptionFacade.deleteOption(optionId, merchantStore);
+		System.out.println("$#11951#"); productOptionFacade.deleteOption(optionId, merchantStore);
 		return;
 
 	}
@@ -192,7 +192,7 @@ public class ProductOptionApi {
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
-		optionValue.setId(id);
+		System.out.println("$#11952#"); optionValue.setId(id);
 		productOptionFacade.saveOptionValue(optionValue, merchantStore, language);
 		return;
 
@@ -207,7 +207,7 @@ public class ProductOptionApi {
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
-		productOptionFacade.deleteOptionValue(id, merchantStore);
+		System.out.println("$#11953#"); productOptionFacade.deleteOptionValue(id, merchantStore);
 		return;
 
 	}
@@ -223,7 +223,7 @@ public class ProductOptionApi {
 			@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
 			@RequestParam(value = "count", required = false, defaultValue = "10") Integer count) {
 
-		return productOptionFacade.options(merchantStore, language, name, page, count);
+		System.out.println("$#11954#"); return productOptionFacade.options(merchantStore, language, name, page, count);
 
 	}
 
@@ -238,7 +238,7 @@ public class ProductOptionApi {
 			@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
 			@RequestParam(value = "count", required = false, defaultValue = "10") Integer count) {
 
-		return productOptionFacade.optionValues(merchantStore, language, name, page, count);
+		System.out.println("$#11955#"); return productOptionFacade.optionValues(merchantStore, language, name, page, count);
 
 	}
 	
@@ -253,7 +253,7 @@ public class ProductOptionApi {
 			@ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
-		return productOptionFacade.getAttributesList(id, merchantStore, language);
+		System.out.println("$#11956#"); return productOptionFacade.getAttributesList(id, merchantStore, language);
 
 	}
 	
@@ -270,7 +270,7 @@ public class ProductOptionApi {
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
 		ReadableProductAttributeEntity entity = productOptionFacade.getAttribute(id, attributeId, merchantStore, language);
-		return entity;
+		System.out.println("$#11957#"); return entity;
 
 	}
 	
@@ -284,7 +284,7 @@ public class ProductOptionApi {
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
 		ReadableProductAttributeEntity entity = productOptionFacade.saveAttribute(id, attribute, merchantStore, language);
-		return entity;
+		System.out.println("$#11958#"); return entity;
 
 	}
 	
@@ -296,7 +296,7 @@ public class ProductOptionApi {
 			@ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language, HttpServletRequest request,
 			HttpServletResponse response) {
 
-		attribute.setId(attributeId);
+		System.out.println("$#11959#"); attribute.setId(attributeId);
 		productOptionFacade.saveAttribute(id, attribute, merchantStore, language);
 		return;
 
@@ -309,7 +309,7 @@ public class ProductOptionApi {
 	public void deleteAttribute(@PathVariable Long id,@PathVariable Long attributeId, @ApiIgnore MerchantStore merchantStore,
 			@ApiIgnore Language language, HttpServletRequest request, HttpServletResponse response) {
 
-		productOptionFacade.deleteAttribute(id, attributeId, merchantStore);
+		System.out.println("$#11960#"); productOptionFacade.deleteAttribute(id, attributeId, merchantStore);
 		return;
 
 	}

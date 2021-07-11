@@ -36,7 +36,7 @@ public class CustomerOptionValueDescription extends Description {
 	}
 
 	public CustomerOptionValue getCustomerOptionValue() {
-		return customerOptionValue;
+		System.out.println("$#4152#"); return customerOptionValue;
 	}
 
 	public void setCustomerOptionValue(CustomerOptionValue customerOptionValue) {

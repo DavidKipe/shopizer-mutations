@@ -29,7 +29,7 @@ public class PersistableProductOptionValuePopulator extends
 	private LanguageService languageService;
 	
 	public LanguageService getLanguageService() {
-		return languageService;
+		System.out.println("$#9511#"); return languageService;
 	}
 
 	public void setLanguageService(LanguageService languageService) {
@@ -41,31 +41,31 @@ public class PersistableProductOptionValuePopulator extends
 			ProductOptionValue target, MerchantStore store, Language language)
 			throws ConversionException {
 		
-		Validate.notNull(languageService, "Requires to set LanguageService");
+		System.out.println("$#9512#"); Validate.notNull(languageService, "Requires to set LanguageService");
 		
 		
 		try {
 			
 
-			target.setMerchantStore(store);
-			target.setProductOptionValueSortOrder(source.getOrder());
-			target.setCode(source.getCode());
+			System.out.println("$#9513#"); target.setMerchantStore(store);
+			System.out.println("$#9514#"); target.setProductOptionValueSortOrder(source.getOrder());
+			System.out.println("$#9515#"); target.setCode(source.getCode());
 			
-			if(!CollectionUtils.isEmpty(source.getDescriptions())) {
+			System.out.println("$#9516#"); if(!CollectionUtils.isEmpty(source.getDescriptions())) {
 				Set<com.salesmanager.core.model.catalog.product.attribute.ProductOptionValueDescription> descriptions = new HashSet<com.salesmanager.core.model.catalog.product.attribute.ProductOptionValueDescription>();
 				for(ProductOptionValueDescription desc  : source.getDescriptions()) {
 					com.salesmanager.core.model.catalog.product.attribute.ProductOptionValueDescription description = new com.salesmanager.core.model.catalog.product.attribute.ProductOptionValueDescription();
 					Language lang = languageService.getByCode(desc.getLanguage());
-					if(lang==null) {
+					System.out.println("$#9517#"); if(lang==null) {
 						throw new ConversionException("Language is null for code " + description.getLanguage() + " use language ISO code [en, fr ...]");
 					}
-					description.setLanguage(lang);
-					description.setName(desc.getName());
-					description.setTitle(desc.getTitle());
-					description.setProductOptionValue(target);
+					System.out.println("$#9518#"); description.setLanguage(lang);
+					System.out.println("$#9519#"); description.setName(desc.getName());
+					System.out.println("$#9520#"); description.setTitle(desc.getTitle());
+					System.out.println("$#9521#"); description.setProductOptionValue(target);
 					descriptions.add(description);
 				}
-				target.setDescriptions(descriptions);
+				System.out.println("$#9522#"); target.setDescriptions(descriptions);
 			}
 		
 		} catch (Exception e) {
@@ -73,7 +73,7 @@ public class PersistableProductOptionValuePopulator extends
 		}
 		
 		
-		return target;
+		System.out.println("$#9523#"); return target;
 	}
 
 	@Override

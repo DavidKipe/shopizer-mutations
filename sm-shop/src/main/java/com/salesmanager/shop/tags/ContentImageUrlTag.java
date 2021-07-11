@@ -42,23 +42,23 @@ public class ContentImageUrlTag extends RequestContextAwareTag {
 		try {
 
 
-			if (filePathUtils==null || imageUtils==null) {
+			System.out.println("$#15406#"); if (filePathUtils==null || imageUtils==null) {
 	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
 	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
+													System.out.println("$#15408#"); factory.autowireBean(this);
 	        }
 			
 			HttpServletRequest request = (HttpServletRequest) pageContext
 					.getRequest();
 			
 			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-			if(this.getMerchantStore()!=null) {
+			System.out.println("$#15409#"); if(this.getMerchantStore()!=null) {
 				merchantStore = this.getMerchantStore();
 			}
 
 			String img = imageUtils.buildStaticImageUtils(merchantStore,this.getImageType(),this.getImageName());
 
-			pageContext.getOut().print(img);
+			System.out.println("$#15410#"); pageContext.getOut().print(img);
 
 
 			
@@ -69,7 +69,7 @@ public class ContentImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public int doEndTag() {
-		return EVAL_PAGE;
+		System.out.println("$#15411#"); return EVAL_PAGE;
 	}
 
 	public void setMerchantStore(MerchantStore merchantStore) {
@@ -77,7 +77,7 @@ public class ContentImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public MerchantStore getMerchantStore() {
-		return merchantStore;
+		System.out.println("$#15412#"); return merchantStore;
 	}
 
 	public void setImageName(String imageName) {
@@ -85,7 +85,7 @@ public class ContentImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public String getImageName() {
-		return imageName;
+		System.out.println("$#15413#"); return imageName;
 	}
 
 	public void setImageType(String imageType) {
@@ -93,7 +93,7 @@ public class ContentImageUrlTag extends RequestContextAwareTag {
 	}
 
 	public String getImageType() {
-		return imageType;
+		System.out.println("$#15414#"); return imageType;
 	}
 
 

@@ -13,7 +13,7 @@ public class ApplicationContextListenerUtils implements ApplicationListener<Cont
 		 ApplicationContext applicationContext = event.getApplicationContext();
 		 /** init search service **/
 		 SearchService searchService = (SearchService)applicationContext.getBean("productSearchService");
-		 searchService.initService();
+			System.out.println("$#3431#"); searchService.initService();
 		
 	}
 

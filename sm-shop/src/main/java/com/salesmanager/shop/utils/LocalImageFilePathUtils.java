@@ -19,7 +19,7 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 
 	@Override
 	public String getBasePath() {
-		return basePath;
+		System.out.println("$#15775#"); return basePath;
 	}
 
 	@Override
@@ -36,10 +36,10 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 	 */
 	public String buildStaticimageUtils(MerchantStore store, String imageName) {
 		StringBuilder imgName = new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append("/").append(FileContentType.IMAGE.name()).append("/");
-				if(!StringUtils.isBlank(imageName)) {
+				System.out.println("$#15776#"); if(!StringUtils.isBlank(imageName)) {
 					imgName.append(imageName);
 				}
-		return imgName.toString();
+		System.out.println("$#15777#"); return imgName.toString();
 				
 	}
 	
@@ -52,10 +52,10 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 	 */
 	public String buildStaticimageUtils(MerchantStore store, String type, String imageName) {
 		StringBuilder imgName = new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append("/").append(type).append("/");
-		if(!StringUtils.isBlank(imageName)) {
+		System.out.println("$#15778#"); if(!StringUtils.isBlank(imageName)) {
 				imgName.append(imageName);
 		}
-		return imgName.toString();
+		System.out.println("$#15779#"); return imgName.toString();
 
 	}
 	
@@ -68,7 +68,7 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 	 * @return
 	 */
 	public String buildManufacturerimageUtils(MerchantStore store, Manufacturer manufacturer, String imageName) {
-		return new StringBuilder().append(getBasePath()).append("/").append(store.getCode()).append("/").
+		System.out.println("$#15780#"); return new StringBuilder().append(getBasePath()).append("/").append(store.getCode()).append("/").
 				append(FileContentType.MANUFACTURER.name()).append("/")
 				.append(manufacturer.getId()).append("/")
 				.append(imageName).toString();
@@ -83,7 +83,7 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 	 * @return
 	 */
 	public String buildProductimageUtils(MerchantStore store, Product product, String imageName) {
-		return new StringBuilder().append(getBasePath()).append("/products/").append(store.getCode()).append("/")
+		System.out.println("$#15781#"); return new StringBuilder().append(getBasePath()).append("/products/").append(store.getCode()).append("/")
 				.append(product.getSku()).append("/").append("LARGE").append("/").append(imageName).toString();
 	}
 	
@@ -96,7 +96,7 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 	 * @return
 	 */
 	public String buildProductimageUtils(MerchantStore store, String sku, String imageName) {
-		return new StringBuilder().append(getBasePath()).append("/products/").append(store.getCode()).append("/")
+		System.out.println("$#15782#"); return new StringBuilder().append(getBasePath()).append("/products/").append(store.getCode()).append("/")
 				.append(sku).append("/").append("LARGE").append("/").append(imageName).toString();
 	}
 	
@@ -108,7 +108,7 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 	 * @return
 	 */
 	public String buildLargeProductimageUtils(MerchantStore store, String sku, String imageName) {
-		return new StringBuilder().append(getBasePath()).append("/products/").append(store.getCode()).append("/")
+		System.out.println("$#15783#"); return new StringBuilder().append(getBasePath()).append("/products/").append(store.getCode()).append("/")
 				.append(sku).append("/").append("LARGE").append("/").append(imageName).toString();
 	}
 
@@ -120,7 +120,7 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 	 * @return
 	 */
 	public String buildStoreLogoFilePath(MerchantStore store) {
-		return new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append("/").append(FileContentType.LOGO).append("/")
+		System.out.println("$#15784#"); return new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append("/").append(FileContentType.LOGO).append("/")
 				.append(store.getStoreLogo()).toString();
 	}
 	
@@ -131,13 +131,13 @@ public class LocalImageFilePathUtils extends AbstractimageFilePath{
 	 * @return
 	 */
 	public String buildProductPropertyimageUtils(MerchantStore store, String imageName) {
-		return new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append("/").append(FileContentType.PROPERTY).append("/")
+		System.out.println("$#15785#"); return new StringBuilder().append(getBasePath()).append(Constants.FILES_URI).append(Constants.SLASH).append(store.getCode()).append("/").append(FileContentType.PROPERTY).append("/")
 				.append(imageName).toString();
 	}
 	
 	@Override
 	public String getContextPath() {
-		return super.getProperties().getProperty(CONTEXT_PATH);
+		System.out.println("$#15786#"); return super.getProperties().getProperty(CONTEXT_PATH);
 	}
 	
 
