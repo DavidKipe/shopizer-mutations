@@ -297,7 +297,9 @@ public class GCPProductContentFileManager implements ProductAssetsManager {
         sb.append(SMALL);
 						} else if (contentImage.name().equals(FileContentType.PRODUCTLG.name())) { System.out.println("$#257#");
         sb.append(LARGE);
-      }
+      } else {
+						  System.out.println("$#257#"); // manual correction for else-if mutation coverage
+    }
 
 						System.out.println("$#258#"); return sb.append(Constants.SLASH).toString();
     

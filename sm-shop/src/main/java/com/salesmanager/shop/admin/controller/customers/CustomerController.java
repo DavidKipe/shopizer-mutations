@@ -311,6 +311,8 @@ public class CustomerController {
 				 ObjectError error = new ObjectError("billingState",messages.getMessage("NotEmpty.customer.billingState", locale));
 					System.out.println("$#5276#"); result.addError(error);
 			
+		} else {
+			System.out.println("$#5274#"); // manual correction for else-if mutation coverage
 		}
 		 
 		System.out.println("$#5277#"); if( StringUtils.isBlank(customer.getBilling().getPostalCode() ) ){
@@ -377,6 +379,8 @@ public class CustomerController {
 				deliveryZone = null ;
 				System.out.println("$#5296#"); customer.getDelivery().setState( customer.getDelivery().getState() );
 			}
+		} else {
+			System.out.println("$#5294#"); // manual correction for else-if mutation coverage
 		}
 	
 		System.out.println("$#5297#"); if ("yes".equalsIgnoreCase(customer.getShowBillingStateList())) {
@@ -390,6 +394,8 @@ public class CustomerController {
 				billingZone = null ;
 				System.out.println("$#5302#"); customer.getBilling().setState( customer.getBilling().getState() );
 			}
+		} else {
+			System.out.println("$#5300#"); // manual correction for else-if mutation coverage
 		}
 				
 

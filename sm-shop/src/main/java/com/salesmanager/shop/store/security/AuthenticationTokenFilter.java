@@ -77,6 +77,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 		        	//Facebook
 		        	//facebookCustomerAuthenticationManager.authenticateRequest(request, response);
 		        } else {
+											System.out.println("$#15256#"); // manual correction for else-if mutation coverage
 		        	LOGGER.warn("couldn't find any authorization token, will ignore the header");
 		        }
 	        

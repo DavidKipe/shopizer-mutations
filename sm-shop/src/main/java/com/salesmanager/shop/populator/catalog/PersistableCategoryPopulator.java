@@ -83,6 +83,7 @@ public class PersistableCategoryPopulator extends
 			} else if(source.getParent().getId()!=null) { System.out.println("$#9461#");
 				 parent = categoryService.getById(source.getParent().getId(), store.getId());
 			} else {
+				System.out.println("$#9461#"); // manual correction for else-if mutation coverage
 				throw new ConversionException("Category parent needs at least an id or a code for reference");
 			}
 			System.out.println("$#9462#"); if(parent !=null && parent.getMerchantStore().getId().intValue()!=store.getId().intValue()) {

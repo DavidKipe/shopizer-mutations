@@ -155,6 +155,8 @@ public class ContentServiceImpl extends SalesManagerEntityServiceImpl<Long, Cont
 			System.out.println("$#2111#"); contentFile.setFileContentType(FileContentType.STATIC_FILE);
 			System.out.println("$#2112#"); addFile(merchantStoreCode, contentFile);
 		} else {
+			System.out.println("$#2107#"); // manual correction for else-if mutation coverage
+			System.out.println("$#2110#"); // manual correction for else-if mutation coverage
 			System.out.println("$#2113#"); addImage(merchantStoreCode, contentFile);
 		}
 

@@ -882,6 +882,10 @@ public class StoreFilter extends HandlerInterceptorAdapter {
 								System.out.println("$#8202#"); contentItem.setUrl(content.getDescription().getSeUrl());
 								items.add(contentItem);
 							}
+						} else {
+							System.out.println("$#8185#"); // manual correction for else-if mutation coverage
+							System.out.println("$#8191#"); // manual correction for else-if mutation coverage
+							System.out.println("$#8197#"); // manual correction for else-if mutation coverage
 						}
 
 					}

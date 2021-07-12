@@ -958,7 +958,9 @@ public class ShoppingOrderController extends AbstractController {
             		} else {
             			model.addAttribute("errorMessages", paymentDeclinedMessage);
             		}
-            	}
+            	} else {
+														System.out.println("$#13379#"); // manual correction for else-if mutation coverage
+			}
             	
             	
             	

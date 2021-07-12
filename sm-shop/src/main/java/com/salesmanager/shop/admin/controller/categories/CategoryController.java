@@ -203,6 +203,7 @@ public class CategoryController {
 												} else if(!StringUtils.isBlank(categoryCode)) { System.out.println("$#4963#");
                 categoryService.listByCodes(store, new ArrayList<>(Collections.singletonList(categoryCode)), language);
             } else {
+													System.out.println("$#4963#"); // manual correction for else-if mutation coverage
                 categories = categoryService.listByStore(store, language);
             }
             for(Category category : categories) {

@@ -555,6 +555,10 @@ public class StripePayment implements PaymentModule {
 
 
 	} else {
+		System.out.println("$#976#"); // manual correction for else-if mutation coverage
+		System.out.println("$#981#"); // manual correction for else-if mutation coverage
+		System.out.println("$#986#"); // manual correction for else-if mutation coverage
+		System.out.println("$#991#"); // manual correction for else-if mutation coverage
 		LOGGER.error("Stripe module error", ex.getMessage());
 		IntegrationException te = new IntegrationException(
 				"Can't process Stripe authorize, exception", ex);

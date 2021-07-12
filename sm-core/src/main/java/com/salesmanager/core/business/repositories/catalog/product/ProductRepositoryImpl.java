@@ -324,6 +324,8 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		else if (results.size() == 1) { System.out.println("$#1691#");
 			System.out.println("$#1529#");
 			return (Product) results.get(0);
+		} else {
+			System.out.println("$#1691#"); // manual correction for else-if mutation coverage
 		}
 		throw new NonUniqueResultException();
 

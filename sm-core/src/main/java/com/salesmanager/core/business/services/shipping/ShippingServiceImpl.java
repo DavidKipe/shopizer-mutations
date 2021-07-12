@@ -443,6 +443,8 @@ public class ShippingServiceImpl implements ShippingService {
 					System.out.println("$#2969#"); shippingQuote.setShippingReturnCode(ShippingQuote.NO_SHIPPING_TO_SELECTED_COUNTRY + " " + shipCountry.getIsoCode());
 					System.out.println("$#2970#"); return shippingQuote;
 				}
+			} else {
+				System.out.println("$#2967#"); // manual correction for else-if mutation coverage
 			}
 			
 			//must have a shipping module configured

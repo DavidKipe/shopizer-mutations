@@ -94,7 +94,9 @@ public class ContentRepositoryImpl implements ContentRepositoryCustom {
 	        	return null;
 									} else if (results.size() >= 1) { System.out.println("$#1625#"); System.out.println("$#1626#");
 	        		content = results.get(0);
-	        }
+	        } else {
+										System.out.println("$#1625#"); System.out.println("$#1626#"); // manual correction for else-if mutation coverage
+		}
 	        
 			System.out.println("$#1627#"); if(content!=null) {
 				System.out.println("$#1628#"); return content.getDescription();

@@ -516,7 +516,9 @@ public class BeanStreamPayment implements PaymentModule {
 			transactionType = "PA";
 		} else if(type == TransactionType.AUTHORIZECAPTURE) { System.out.println("$#472#");
 			transactionType = "P";
-		} 
+		} else {
+			System.out.println("$#472#");  // manual correction for else-if mutation coverage
+			}
 		
 		CreditCardPayment creditCardPayment = (CreditCardPayment)payment;
 

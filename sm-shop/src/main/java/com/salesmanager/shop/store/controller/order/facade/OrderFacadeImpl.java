@@ -489,6 +489,11 @@ public class OrderFacadeImpl implements OrderFacade {
 					creditCardType = CreditCardType.DINERS;
 				} else if (CreditCardType.DISCOVERY.name().equalsIgnoreCase(cardType)) { System.out.println("$#12889#");
 					creditCardType = CreditCardType.DISCOVERY;
+				} else {
+					System.out.println("$#12886#"); // manual correction for else-if mutation coverage
+					System.out.println("$#12887#"); // manual correction for else-if mutation coverage
+					System.out.println("$#12888#"); // manual correction for else-if mutation coverage
+					System.out.println("$#12889#"); // manual correction for else-if mutation coverage
 				}
 
 				System.out.println("$#12890#"); ((CreditCardPayment) payment).setCreditCard(creditCardType);
@@ -885,6 +890,11 @@ public class OrderFacadeImpl implements OrderFacade {
 					creditCardType = CreditCardType.DINERS;
 				} else if (cardType.equalsIgnoreCase(CreditCardType.DISCOVERY.name())) { System.out.println("$#13005#");
 					creditCardType = CreditCardType.DISCOVERY;
+				} else {
+					System.out.println("$#13002#"); // manual correction for else-if mutation coverage
+					System.out.println("$#13003#"); // manual correction for else-if mutation coverage
+					System.out.println("$#13004#"); // manual correction for else-if mutation coverage
+					System.out.println("$#13005#"); // manual correction for else-if mutation coverage
 				}
 
 				System.out.println("$#13006#"); if (creditCardType == null) {
@@ -1508,6 +1518,9 @@ public class OrderFacadeImpl implements OrderFacade {
 			} else if(last.getTransactionType().name().equals(TransactionType.REFUND.name())) { System.out.println("$#13175#");
 				System.out.println("$#13176#"); return TransactionType.OK;
 			} else {
+				System.out.println("$#13171#"); // manual correction for else-if mutation coverage
+				System.out.println("$#13173#"); // manual correction for else-if mutation coverage
+				System.out.println("$#13175#"); // manual correction for else-if mutation coverage
 				System.out.println("$#13177#"); return TransactionType.OK;
 			}
 

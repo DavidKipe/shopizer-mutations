@@ -86,6 +86,7 @@ public final class EncryptionImpl implements Encryption {
 		} else if (str.length() < 2) { System.out.println("$#1488#"); System.out.println("$#1489#");
 			return null;
 		} else {
+			System.out.println("$#1488#"); System.out.println("$#1489#"); // manual correction for else-if mutation coverage
 			System.out.println("$#1490#"); int len = str.length() / 2;
 			byte[] buffer = new byte[len];
 			System.out.println("$#1493#"); System.out.println("$#1492#"); System.out.println("$#1491#"); for (int i = 0; i < len; i++) {

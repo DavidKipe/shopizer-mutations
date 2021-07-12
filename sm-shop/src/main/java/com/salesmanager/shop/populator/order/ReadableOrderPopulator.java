@@ -180,6 +180,10 @@ public class ReadableOrderPopulator extends
 				
 			}
 			else {
+				System.out.println("$#10695#"); // manual correction for else-if mutation coverage
+				System.out.println("$#10699#"); // manual correction for else-if mutation coverage
+				System.out.println("$#10703#"); // manual correction for else-if mutation coverage
+				System.out.println("$#10707#"); // manual correction for else-if mutation coverage
 				com.salesmanager.shop.model.order.total.OrderTotal otherTotal = createTotal(t);
 				totals.add(otherTotal);
 			}

@@ -393,6 +393,8 @@ public class DefaultPackagingImpl implements Packaging {
 					
 					packages.add(detail);
 				}
+			} else {
+				System.out.println("$#1162#"); System.out.println("$#1163#"); // manual correction for else-if mutation coverage
 			}
 		}
 		

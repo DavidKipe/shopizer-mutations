@@ -171,6 +171,7 @@ public class BraintreePayment implements PaymentModule {
         	com.braintreegateway.Transaction transaction = result.getTransaction();
         	authorizationId = transaction.getAuthorizedTransactionId();
         } else {
+									System.out.println("$#531#"); // manual correction for else-if mutation coverage
             String errorString = "";
             for (ValidationError error : result.getErrors().getAllDeepValidationErrors()) {
                errorString += "Error: " + error.getCode() + ": " + error.getMessage() + "\n";

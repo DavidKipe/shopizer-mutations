@@ -199,6 +199,8 @@ public class ShoppingOrderPaymentController extends AbstractController {
 					} catch (Exception e) {
 						System.out.println("$#13501#"); ajaxResponse.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 					}
+				} else {
+					System.out.println("$#13494#"); // manual correction for else-if mutation coverage
 				}
 			}
 

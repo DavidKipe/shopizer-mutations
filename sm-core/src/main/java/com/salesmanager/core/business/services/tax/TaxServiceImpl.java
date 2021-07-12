@@ -134,6 +134,9 @@ public class TaxServiceImpl
 			country = store.getCountry();
 			zone = store.getZone();
 			stateProvince = store.getStorestateprovince();
+		} else {
+			System.out.println("$#3308#"); // manual correction for else-if mutation coverage
+			System.out.println("$#3310#"); // manual correction for else-if mutation coverage
 		}
 		
 		//check other conditions
@@ -153,6 +156,8 @@ public class TaxServiceImpl
 					System.out.println("$#3321#"); if(!store.getStorestateprovince().equals(stateProvince)) {
 						System.out.println("$#3322#"); return null;
 					}
+				} else {
+					System.out.println("$#3320#"); // manual correction for else-if mutation coverage
 				}
 			}
 		}

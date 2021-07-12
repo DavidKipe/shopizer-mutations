@@ -363,6 +363,9 @@ public class PaymentServiceImpl implements PaymentService {
 			transaction = module.authorizeAndCapture(store, customer, items, amount, payment, configuration, integrationModule);
 		} else if(transactionType == TransactionType.INIT)  { System.out.println("$#2482#");
 			transaction = module.initTransaction(store, customer, amount, payment, configuration, integrationModule);
+		} else {
+			System.out.println("$#2481#"); // manual correction for else-if mutation coverage
+			System.out.println("$#2482#"); // manual correction for else-if mutation coverage
 		}
 
 

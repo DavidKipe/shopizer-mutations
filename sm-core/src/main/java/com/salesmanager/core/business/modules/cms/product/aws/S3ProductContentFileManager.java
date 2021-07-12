@@ -32,7 +32,7 @@ import com.salesmanager.core.model.content.OutputContentFile;
 
 /**
  * Product content file manager with AWS S3
- * 
+ *
  * @author carlsamson
  *
  */
@@ -40,7 +40,7 @@ public class S3ProductContentFileManager
     implements ProductAssetsManager {
 
   /**
-   * 
+   *
    */
   private static final long serialVersionUID = 1L;
 
@@ -267,7 +267,7 @@ public class S3ProductContentFileManager
 
   /**
    * Builds an amazon S3 client
-   * 
+   *
    * @return
    */
   private AmazonS3 s3Client() {
@@ -326,6 +326,8 @@ public class S3ProductContentFileManager
       sb.append(SMALL);
 				} else if (contentImage.getFileContentType().name().equals(FileContentType.PRODUCTLG.name())) { System.out.println("$#222#");
       sb.append(LARGE);
+    } else {
+				  System.out.println("$#222#"); // manual correction for else-if mutation coverage
     }
 
 				System.out.println("$#223#"); return sb.append(Constants.SLASH).toString();

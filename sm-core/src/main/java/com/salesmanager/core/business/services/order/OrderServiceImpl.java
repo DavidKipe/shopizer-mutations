@@ -657,6 +657,9 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 							capturable = false;
 						} else if(TransactionType.REFUND.name().equals(t.getTransactionType().name())) { System.out.println("$#2421#");
 							capturable = false;
+						} else {
+							System.out.println("$#2420#"); // manual correction for else-if mutation coverage
+							System.out.println("$#2421#"); // manual correction for else-if mutation coverage
 						}
 						
 					}

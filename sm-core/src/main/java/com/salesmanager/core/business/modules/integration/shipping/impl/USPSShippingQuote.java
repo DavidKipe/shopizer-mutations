@@ -296,6 +296,7 @@ public class USPSShippingQuote implements ShippingQuoteModule {
 			} else if (totalL + totalG <= 108) { System.out.println("$#1386#"); System.out.println("$#1387#"); System.out.println("$#1388#");
 				size = "LARGE";
 			} else {
+				System.out.println("$#1386#"); System.out.println("$#1387#"); System.out.println("$#1388#"); // manual correction for else-if mutation coverage
 				size = "OVERSIZE";
 			}
 

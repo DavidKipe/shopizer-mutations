@@ -114,7 +114,9 @@ public class EmailTemplatesUtils {
 		    		   billing.append(LINE_BREAK);
 										} else if(!StringUtils.isBlank(order.getBilling().getState())) { System.out.println("$#15641#");
 		    		   billing.append(order.getBilling().getState()).append(LINE_BREAK); 
-		    	   }
+		    	   } else {
+											System.out.println("$#15641#"); // manual correction for else-if mutation coverage
+			       }
 		    	   Country country = countries.get(order.getBilling().getCountry().getIsoCode());
 										System.out.println("$#15642#"); if(country!=null) {
 		    		   billing.append(country.getName()).append(" ");
@@ -143,7 +145,9 @@ public class EmailTemplatesUtils {
 			    		   shipping.append(LINE_BREAK);
 											} else if(!StringUtils.isBlank(order.getDelivery().getState())) { System.out.println("$#15648#");
 			    		   shipping.append(order.getDelivery().getState()).append(LINE_BREAK); 
-			    	   }
+			    	   } else {
+												System.out.println("$#15648#"); // manual correction for else-if mutation coverage
+				       }
 			    	   Country deliveryCountry = countries.get(order.getDelivery().getCountry().getIsoCode());
 											System.out.println("$#15649#"); if(country!=null) {
 			    		   shipping.append(deliveryCountry.getName()).append(" ");
