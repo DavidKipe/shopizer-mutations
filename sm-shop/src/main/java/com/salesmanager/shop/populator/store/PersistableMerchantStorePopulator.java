@@ -147,8 +147,10 @@ public class PersistableMerchantStorePopulator extends AbstractDataPopulator<Per
 			}
 		}
 
-		System.out.println("$#11093#"); if (StringUtils.isNotEmpty(source.getTemplate()))
-			System.out.println("$#11094#"); target.setStoreTemplate(source.getTemplate());
+		System.out.println("$#11093#"); if (StringUtils.isNotEmpty(source.getTemplate())) { // manual correction for 'if' without '{' problem
+			System.out.println("$#11094#");
+			target.setStoreTemplate(source.getTemplate());
+		}
 		
 		System.out.println("$#11095#"); return target;
 	}

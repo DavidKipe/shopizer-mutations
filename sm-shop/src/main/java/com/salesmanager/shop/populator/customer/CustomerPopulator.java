@@ -103,10 +103,14 @@ public class CustomerPopulator extends
 				System.out.println("$#10083#"); billing.setCity(sourceBilling.getCity());
 				System.out.println("$#10084#"); billing.setCompany(sourceBilling.getCompany());
 				//billing.setCountry(country);
-				System.out.println("$#10085#"); if (!StringUtils.isEmpty(sourceBilling.getFirstName()))
-					System.out.println("$#10086#"); billing.setFirstName(sourceBilling.getFirstName());
-				System.out.println("$#10087#"); if (!StringUtils.isEmpty(sourceBilling.getLastName()))
-					System.out.println("$#10088#"); billing.setLastName(sourceBilling.getLastName());
+				System.out.println("$#10085#"); if (!StringUtils.isEmpty(sourceBilling.getFirstName())) { // manual correction for 'if' without '{' problem
+					System.out.println("$#10086#");
+					billing.setFirstName(sourceBilling.getFirstName());
+				}
+				System.out.println("$#10087#"); if (!StringUtils.isEmpty(sourceBilling.getLastName())) { // manual correction for 'if' without '{' problem
+					System.out.println("$#10088#");
+					billing.setLastName(sourceBilling.getLastName());
+				}
 				System.out.println("$#10089#"); billing.setTelephone(sourceBilling.getPhone());
 				System.out.println("$#10090#"); billing.setPostalCode(sourceBilling.getPostalCode());
 				System.out.println("$#10091#"); billing.setState(sourceBilling.getStateProvince());

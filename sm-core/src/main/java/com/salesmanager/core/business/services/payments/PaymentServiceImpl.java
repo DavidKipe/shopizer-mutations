@@ -688,8 +688,10 @@ public class PaymentServiceImpl implements PaymentService {
 		System.out.println("$#2572#"); System.out.println("$#2571#"); System.out.println("$#2570#"); System.out.println("$#2569#"); for (int i = number.length - 2; i > -1; i -= 2) {
 			System.out.println("$#2573#"); number[i] *= 2;
 	
-			System.out.println("$#2575#"); System.out.println("$#2574#"); if (number[i] > 9)
-				System.out.println("$#2576#"); number[i] -= 9;
+			System.out.println("$#2575#"); System.out.println("$#2574#"); if (number[i] > 9) { // manual correction for 'if' without '{' problem
+				System.out.println("$#2576#");
+				number[i] -= 9;
+			}
 		}
 	
 		System.out.println("$#2579#"); System.out.println("$#2578#"); System.out.println("$#2577#"); for (int i = 0; i < number.length; i++) {

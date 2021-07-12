@@ -42,8 +42,10 @@ public class ReadableUserPopulator extends AbstractDataPopulator<User, ReadableU
     // set default language
 				System.out.println("$#11192#"); target.setDefaultLanguage(Constants.DEFAULT_LANGUAGE);
 
-				System.out.println("$#11193#"); if (source.getDefaultLanguage() != null)
-						System.out.println("$#11194#"); target.setDefaultLanguage(source.getDefaultLanguage().getCode());
+				System.out.println("$#11193#"); if (source.getDefaultLanguage() != null) { // manual correction for 'if' without '{' problem
+					  System.out.println("$#11194#");
+					  target.setDefaultLanguage(source.getDefaultLanguage().getCode());
+				  }
 				System.out.println("$#11195#"); target.setMerchant(store.getCode());
 				System.out.println("$#11196#"); target.setId(source.getId());
 
